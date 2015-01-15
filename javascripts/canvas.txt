@@ -1,0 +1,1 @@
+Canvas是完全透明的，可以用position和z-index来重叠合成。
