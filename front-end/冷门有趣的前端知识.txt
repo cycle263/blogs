@@ -1,0 +1,11 @@
+1、浏览器内容可编辑
+<html contenteditable>, 或者console里执行document.body.contenteditable = true;
+
+2、简单的文字模糊效果
+p {
+    color: transparent;
+    text-shadow: #111 0 0 5px;
+}
+
+3、console.table
+JavaScript关联数组以表格形式输出到浏览器console，效果很惊赞，界面很美观
