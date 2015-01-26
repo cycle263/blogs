@@ -7,5 +7,21 @@ p {
     text-shadow: #111 0 0 5px;
 }
 
-3、console.table
+3、console.table 或者table()
 JavaScript关联数组以表格形式输出到浏览器console，效果很惊赞，界面很美观
+
+4、格式化console.log
+%s	字符串
+%d, %i	整数（不支持指定位数）
+%f	浮点数（不支持指定位数）
+%o	对象
+%c	CSS样式
+
+5、console.time和conosle.timeEnd计算时间差
+
+6、monitor(f)监控某个函数
+
+7、monitorEvents(object[, events])监控元素事件
+
+8、getEventListeners获取元素绑定的所有事件
+
