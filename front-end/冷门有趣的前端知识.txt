@@ -23,5 +23,5 @@ JavaScript关联数组以表格形式输出到浏览器console，效果很惊赞
 
 7、monitorEvents(object[, events])监控元素事件
 
-8、getEventListeners获取元素绑定的所有事件
+8、getEventListeners(object)获取元素绑定的所有事件
 
