@@ -1,0 +1,5 @@
+1、输入框防止元素标记注入
+// Prevents input from having injected markup
+function cleanInput(input) {
+    return $('<div/>').text(input).text();
+}
