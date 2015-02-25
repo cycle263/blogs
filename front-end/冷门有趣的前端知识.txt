@@ -25,3 +25,5 @@ JavaScript关联数组以表格形式输出到浏览器console，效果很惊赞
 
 8、getEventListeners(object)获取元素绑定的所有事件
 
+9、如果一个元素拥有ID属性,那么ID属性的属性值就会成为window对象的属性名.
+如果一个元素拥有name属性,那么name属性的属性值就会成为window对象的属性名.但这个元素的标签名必须是: a, applet, area, embed, form, frame, frameset, iframe, img, object,其中的一个.
