@@ -9,3 +9,14 @@ alert(i); // shows 43
 i = 42;
 alert(++i); // shows 43
 alert(i); // shows 43
+
+
+2、变量声明提升（Hoisting）
+var myvar = 'my value';  
+
+(function() {  
+    alert(myvar); // undefined  
+    var myvar = 'local value';  
+    alert(myvar); // 'local value'
+})(); 
+alert(myvar); // 'my value'
