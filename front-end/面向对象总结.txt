@@ -69,6 +69,13 @@ function createObject(proto) {
 Student.prototype = createObject(Person.prototype);
 Student.prototype.constructor = Student;    //避免构造函数指向混乱
 
+//继续扩展
+function extend(Child, Parent){
+    Child.prototype = createObject(Parent.prototype);
+    Child.prototype.constructor = Child;
+    Child.Parent = Parent.prototype;    //方便直接调用父类的原型方法，特别是在子类重载了此方法
+}
+
 
 /*******************************************************/
 继承注意点
