@@ -82,7 +82,7 @@ function Animal(name) {
 }
 // methods
 Animal.prototype.run = function() {
-  alert(this + " is running!");
+  alert(this + " is running!");   //this不是字符串，将会自动调用toString进行类型转换
 }
 Animal.prototype.toString = function() {
   return this.name;
