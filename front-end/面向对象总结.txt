@@ -59,19 +59,19 @@ alert(student1 instanceof Student); // true
 
 对于“Student.prototype = Object.create(Person.prototype);”这一行，在不支持 Object.create方法的老JavaScript引擎中，可以使用一个"polyfill"（又名"shim"，查看文章链接），或者使用一个function来获得相同的返回值，就像下面：
 
-function createObject(proto) {
+function inherit(proto) {
     function ctor() { }
     ctor.prototype = proto;
     return new ctor();
 }
 
 // Usage:
-Student.prototype = createObject(Person.prototype);
+Student.prototype = inherit(Person.prototype);
 Student.prototype.constructor = Student;    //避免构造函数指向混乱
 
 //继续扩展
 function extend(Child, Parent){
-    Child.prototype = createObject(Parent.prototype);
+    Child.prototype = inherit(Parent.prototype);
     Child.prototype.constructor = Child;
     Child.Parent = Parent.prototype;    //方便直接调用父类的原型方法，特别是在子类重载了此方法
 }
