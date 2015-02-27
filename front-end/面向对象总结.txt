@@ -67,3 +67,25 @@ function createObject(proto) {
 
 // Usage:
 Student.prototype = createObject(Person.prototype);
+Student.prototype.constructor = Student;
+
+
+/*******************************************************/
+继承注意点
+function Hamster(){}
+Hamster.prototype = {
+    constructor: Hamster,
+    foods: [],
+    obj: {},
+    found: function(something){
+        this.foods.push(something);     //寻址先找自有属性，然后依次往上寻址原型上的属性
+    },
+    alter: function(){
+        this.obj = function(){};    //直接用赋值方式修改，将会添加实例的自有属性
+    }
+}
+
+var speedy = new Hamster();
+var lazy = new Hamster();
+speedy.obj.test = 'abc';
+console.log(speedy.obj.test, lazy.obj.test);    //abc abc      这样修改不能添加自有属性，当然也无法通过实例直接删除原型
