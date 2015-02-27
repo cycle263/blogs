@@ -28,7 +28,7 @@ function Student(firstName, subject) {
 };
 
 // 建立一个由Person.prototype继承而来的Student.prototype对象.
-// 注意: 常见的错误是使用 "new Person()"来建立Student.prototype.
+// 注意: 常见的错误是使用 "new Person()"来建立Student.prototype.可是，并不需要实例化Person,只是继承
 // 这样做的错误之处有很多, 最重要的一点是我们在实例化时
 // 不能赋予Person类任何的FirstName参数
 // 调用Person的正确位置如下，我们从Student中来调用它
@@ -67,7 +67,7 @@ function createObject(proto) {
 
 // Usage:
 Student.prototype = createObject(Person.prototype);
-Student.prototype.constructor = Student;
+Student.prototype.constructor = Student;    //避免构造函数指向混乱
 
 
 /*******************************************************/
