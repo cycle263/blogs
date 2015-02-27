@@ -76,6 +76,35 @@ function extend(Child, Parent){
     Child.Parent = Parent.prototype;    //方便直接调用父类的原型方法，特别是在子类重载了此方法
 }
 
+// --------- the base object ------------
+function Animal(name) {
+  this.name = name;
+}
+// methods
+Animal.prototype.run = function() {
+  alert(this + " is running!");
+}
+Animal.prototype.toString = function() {
+  return this.name;
+}
+
+// --------- the child object -----------
+function Rabbit(name) {
+  Rabbit.parent.constructor.apply(this, arguments);
+}
+// inherit
+extend(Rabbit, Animal);
+
+// override
+Rabbit.prototype.run = function() {
+  Rabbit.parent.run.apply(this);
+  alert(this + " bounces high into the sky!");
+}
+
+var rabbit = new Rabbit('Jumper');
+rabbit.run();
+
+
 
 /*******************************************************/
 继承注意点
