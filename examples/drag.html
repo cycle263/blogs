@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style>
+        .drap{
+            width:400px;
+            height: 300px;
+            background-color: #ccc;            
+            position: fixed;
+            top: 20px;
+            left: 30px;
+            z-index: 9;
+        }
+        .drap-title{
+            background-color: #aaa;
+            height: 30%;
+            cursor: move;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="drap">
+            <div class="drap-title">title</div>
+        </div>
+        <script>
+            (function(){
+                function DrapDiv(divEle){
+                    this.target = divEle;
+                    this.parent = divEle.parentElement;
+                    this.init();
+                    this.dragging = false;
+                }
+                DrapDiv.prototype = {
+                    constructor: DrapDiv,
+                    mousedown: {},
+                    divPos: {},
+                    init: function(){
+                        var that = this;
+                        this.target.addEventListener('mousedown', function(event){
+                            event.preventDefault();
+                            that.updateMouseData(event.clientX, event.clientY);
+                            that.updateDivPosition(parseInt(getComputedStyle(that.parent).left), parseInt(getComputedStyle(that.parent).top));
+                            that.dragging = true;
+                        }, false);
+
+                        document.addEventListener('mousemove', function(event){
+                            event.preventDefault();
+                            if(that.dragging === true){
+                                var diffX = event.clientX - that.mousedown.x,
+                                    diffY = event.clientY - that.mousedown.y;
+                                that.moveDiv(diffX, diffY);
+                            }
+                        }, true);
+
+                        this.target.addEventListener('mouseup', function(event){
+                            if(that.dragging === true){
+                                var diffX = event.clientX - that.mousedown.x,
+                                    diffY = event.clientY - that.mousedown.y;
+                                that.moveDiv(diffX, diffY);
+                                that.dragging = false;
+                            }
+                        }, true);
+                    },
+                    updateMouseData: function(x, y){
+                        this.mousedown.x = x;
+                        this.mousedown.y = y;
+                    },
+                    updateDivPosition: function(left, top){
+                        this.divPos.left = left;
+                        this.divPos.top = top;
+                    },
+                    moveDiv: function(dx, dy){
+                        var left = this.divPos.left + dx,
+                            top = this.divPos.top + dy;
+
+                        this.parent.style.top = top + 'px';
+                        this.parent.style.left = left + 'px';
+                    }
+                };
+
+                var drap = new DrapDiv(document.getElementsByClassName('drap-title')[0]);
+            })();
+        </script>
+    </body>
+</html>
