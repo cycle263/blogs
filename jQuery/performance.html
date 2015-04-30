@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            <li>
+                <h3>高效能使用jQuery</h3>
+            </li>
+            <li>
+                <p>尽可能使用最新版本，新版本有很多性能改进</p>
+            </li>
+            <li>
+                <p>选择合适的选择器：id和tag(调用javascript原生方法) > class(getElementByClassName) > 伪类和属性(querySelector和querySelectorAll)</p>
+            </li>
+            <li>
+                <p>选择器的父子关系：$parent.find('.child') > $('.child', $parent) >  $('.child', $('#parent')) >  $parent.children('.child') >  $('#parent > .child') > $('#parent .child')。</p>
+                <p><strong>总体原则：</strong>优先使用链式写法，其次缓存选择器变量</p>
+            </li>
+            <li>
+                <p>不要过度依赖jQuery，尽量使用原生javascript。例如：事件回调内的this对象</p>
+            </li>
+            <li>
+                <p></p>
+            </li>
+            <li>
+                <p></p>
+            </li>
+        </ul>
+    </body>
+</html>
