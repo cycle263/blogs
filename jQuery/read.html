@@ -9,6 +9,11 @@
                 <p>原生javascript：element.dataset获取或设置，对象先进行字符串化（JSON.stringify），可在DOM结构中查看到“data-*”的属性值</p>
                 <p>jQuery: $(ele).data()直接获取或赋值，对象通用需先字符串化，获取时需解析（JSON.parse）</p>
             </li>
+            <li>
+                <h3>jQuery(document).ready VS window.onload</h3>
+                <p>window.onload是在网页中的所有元素（包括关联的资源文件：图片、样式等）完全加载后才会执行，并且只会执行一次；等价于jQuery(window).load</p>
+                <p>jQuery(document).ready是在DOM准备就绪的时候被调用，并且可以多次执行。简式写法：$(function(){})或者$().ready()</p>
+            </li>
         </ul>
     </body>
 </html>
