@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <title>Hello React!</title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <p>
+          <pre>
+            <html>
+              <head>
+                <title>Hello React!</title>
+                <script src="build/react.js"></script>
+                <!-- No need for JSXTransformer! -->
+              </head>
+              <body>
+                <div id="example"></div>
+                <script src="build/helloworld.js"></script>
+              </body>
+            </html>
+          </pre>
+        </p>
+      </li>
+    </ul>
+  </body>
+</html>
