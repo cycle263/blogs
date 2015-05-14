@@ -3,3 +3,26 @@
 function cleanInput(input) {
     return $('<div/>').text(input).text();
 }
+
+2、btoa和atob
+将ascii字符串或二进制数据转换成一个base64编码过的字符串,该方法不能直接作用于Unicode字符串.
+function utf8_to_b64( str ) {
+    return window.btoa(encodeURIComponent( str ));
+}
+
+3、String.prototype.charCodeAt()和String.fromCharCode()
+charCodeAt() 返回指定索引处字符的 Unicode 数值，String.fromCharCode() 静态方法根据指定的 Unicode 编码中的序号值来返回一个字符串。
+
+4、encodeURIComponent和encodeURI的区分
+var arr = [];
+for(var i=0;i<2568;i++) {
+  var char=String.fromCharCode(i);
+  if(encodeURI(char)!==encodeURIComponent(char)) {
+    arr.push({
+      character:char,
+      encodeURI:encodeURI(char),
+      encodeURIComponent:encodeURIComponent(char)
+    });
+  }
+}
+console.table(arr);
