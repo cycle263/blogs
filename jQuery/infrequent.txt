@@ -1,0 +1,3 @@
+1、jquery只使用一次的事件，即调用一次后将事件解绑，可以使用$(ele).one方法；
+
+2、触发事件可以使用trigger方法，或者直接调用事件（click()）;原生javascript写法不同：IE中，fireEvent触发，其他浏览器dispatchEvent；
