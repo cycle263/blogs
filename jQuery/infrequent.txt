@@ -1,3 +1,11 @@
 1、jquery只使用一次的事件，即调用一次后将事件解绑，可以使用$(ele).one方法；
 
-2、触发事件可以使用trigger方法，或者直接调用事件（click()）;原生javascript写法不同：IE中，fireEvent触发，其他浏览器dispatchEvent；
+2、触发事件可以使用trigger方法，或者直接调用事件（click()）;原生javascript可直接调用click方法，其他事件则需创建自定义事件，
+然后在IE中，fireEvent触发，其他浏览器dispatchEvent(event)；
+
+3、创建自定义事件方式
+①.document.createEvent(eventType)--不推荐。eventType：UIEvent、MouseEvent、MutationEvent、MutationNameEvent、TextEvent、
+KeyboardEvent、CustomEvent、Event。
+②.new CustomEvent、new MouseEvent、new ClipboardEvent、new UIEvent、new TouchEvent等等（https://developer.mozilla.org/en-US/docs/Web/API/Event）
+
+4、元素ownerDocument即包含该元素的document元素。
