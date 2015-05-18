@@ -26,3 +26,11 @@ for(var i=0;i<2568;i++) {
   }
 }
 console.table(arr);
+
+5、获取查询字符串的值
+function getParameterByName(name,search) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),  //[^&#]，非&且非#
+        results = regex.exec(search || location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
