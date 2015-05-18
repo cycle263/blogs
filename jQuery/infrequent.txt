@@ -21,6 +21,7 @@ KeyboardEvent、CustomEvent、Event。
 7、jQuery.extend 和 jQuery.fn.extend
 $.fn.extend({myMethod: function(){}});
 //jQuery("div").myMethod(),  creates 1 plugin
- 
 $.extend({myMethod2: function(){}});
 //jQuery.myMethod2()
+
+8、
