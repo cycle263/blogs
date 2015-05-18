@@ -24,4 +24,4 @@ $.fn.extend({myMethod: function(){}});
 $.extend({myMethod2: function(){}});
 //jQuery.myMethod2()
 
-8、
+8、jQuery不触发浏览器默认事件，调用triggerHandler方法，只会触发jQuery绑定的事件处理函数。
