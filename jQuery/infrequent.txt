@@ -15,3 +15,12 @@ KeyboardEvent、CustomEvent、Event。
   ①.只用添加属性名称就生效的使用prop；
   ②.只存在true/false的属性应该使用prop(checked、disabled、selected...);
   ③.其他情况尽可能使用attr
+  
+6、获取所有的表单域jQuery(':input'), 其中包括select、textarea等。
+
+7、jQuery.extend 和 jQuery.fn.extend
+$.fn.extend({myMethod: function(){}});
+//jQuery("div").myMethod(),  creates 1 plugin
+ 
+$.extend({myMethod2: function(){}});
+//jQuery.myMethod2()
