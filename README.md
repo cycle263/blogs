@@ -1,4 +1,4 @@
 # 各类信息总结
-## javascript
-## css
-## html5 - canvas
+## 1.javascript
+## 2.css
+## 3.html5 - canvas
