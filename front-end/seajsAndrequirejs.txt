@@ -1,0 +1,2 @@
+seajs：按需异步加载，即需即加载（CMD）
+requirejs：提前预加载（AMD）
