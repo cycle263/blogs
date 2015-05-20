@@ -1,2 +1,39 @@
 seajs：按需异步加载，即需即加载（CMD）
 requirejs：提前预加载（AMD）
+
+seajs内部运作案例：
+index.js :
+seajs.use(['./a','jquery'],function(a,$){
+    var num = a.a;
+    $('#J_A').text(num);
+})
+
+a.js :
+;define(function(require,exports,module){
+    var b = require('./b');
+    var a = function(){
+        return 1 + parseInt(b.b());
+    }
+    exports.a = a;
+})
+
+b.js :
+;define(function(require,exports,module){
+    var c = require('./c');
+
+    var b = function(){
+        return 2 + parseInt(c.c());
+    }
+    exports.b = b;
+})
+
+c.js :
+;define(function(require,exports,module){
+    var c = function(){
+        return 3;
+    }
+    exports.c = c;
+})
+由上述可知 a 依赖 b ，b依赖c。
+首先将会执行seajs本身，在这个过程中将会定义其中一些全局的方法，seajs多版本的容错等等。
+当程序进入到index.js
