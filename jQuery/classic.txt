@@ -1,0 +1,9 @@
+1、全选复选框联动(jQuery版本)
+var $checkboxs = $("[name=items]:checkbox"),
+    $checkAll = $("$checkAll");
+$checkboxs.click(function(){
+    $checkAll.prop("checked", $checkboxs.filter(":checked").length === $checkboxs.length);
+});
+$checkAll.click(function(){
+    $checkboxs.prop("checked", this.checked);
+});
