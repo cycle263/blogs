@@ -1,5 +1,5 @@
 # 各类信息总结
-## javascript
+## 1.javascript
 * jQuery
 * bootstrap
 * seajs
