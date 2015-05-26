@@ -2,8 +2,10 @@
 ## 1.javascript
 * jQuery
 * bootstrap
+* angularjs
 * seajs
 * nodejs
+* iojs
 
 ## 2.css
 * css3
