@@ -23,3 +23,4 @@
 ## 4.others
 * git
 * grunt
+* velocity
