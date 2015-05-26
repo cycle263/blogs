@@ -19,3 +19,7 @@
 * web worker
 * localStorage
 * sessionStorage
+
+## 4.others
+* git
+* grunt
