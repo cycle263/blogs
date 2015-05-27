@@ -17,6 +17,7 @@
 * long-polling
 * pipeline
 * web worker
+* Server-Sent Event
 * localStorage
 * sessionStorage
 
@@ -24,3 +25,4 @@
 * git
 * grunt
 * velocity
+
