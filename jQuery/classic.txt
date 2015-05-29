@@ -7,3 +7,12 @@ $checkboxs.click(function(){
 $checkAll.click(function(){
     $checkboxs.prop("checked", this.checked);
 });
+
+2、jQuery.ajax模板总结
+jQuery.ajaxPerfilter([dataTypes], handler(options, originalOptions, jqXHR)), 发送请求之前的一个全局过滤器。
+jQuery.ajaxSetup, global属性为true,其他的全局方法才会生效，不论global为何值，跨域脚本和jsonp请求除外则永远不会生效
+jQuery.ajaxSend
+jQuery.ajaxStart
+jQuery.ajaxStop
+jQuery.ajaxComplete
+jQuery.ajaxSuccess
