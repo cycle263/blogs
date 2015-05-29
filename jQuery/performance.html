@@ -25,7 +25,7 @@
             <li>
                 <p>减少DOM操作，j例如：$.data(ele, key, value)优于$(ele).data(key, value), $.data()会给元素对象设定一个属性internalKey，
                 并且在全局cache列表中增加一个同internalKey值一样的id，所有的数据实际存放的位置就是jQuery.cache中,
-                另外，elem.data()方法是定义在jQuery函数的prototype对象上面的， 而$.data()方法是定义jQuery函数上面的</p>
+                另外，elem.data()方法是定义在jQuery函数的prototype对象上面的， 而$.data()方法是定义jQuery函数上面的(类似静态方法)</p>
             </li>
             <li>
                 <p>一个操作对某元素进行多次DOM操作，却无法使用变动class来实现，可以考虑使用detach分离元素</p>
