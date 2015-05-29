@@ -16,3 +16,11 @@ jQuery.ajaxStart
 jQuery.ajaxStop
 jQuery.ajaxComplete
 jQuery.ajaxSuccess
+
+3、deferred对象的总结
+deferred.done(doneCallbacks)
+deferred.fail(failCallbacks)
+deferred.promise(), 返回延迟对象的Promise对象
+deferred.reject(args), 拒绝延迟对象，传参调用失败的回调函数
+deferred.reject(context, [args]), 带上上下文的拒绝
+deferred.resolve(args), 解决延迟对象，传参调用成功的回调函数
