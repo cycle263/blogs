@@ -22,5 +22,9 @@ deferred.done(doneCallbacks)
 deferred.fail(failCallbacks)
 deferred.promise(), 返回延迟对象的Promise对象
 deferred.reject(args), 拒绝延迟对象，传参调用失败的回调函数
-deferred.reject(context, [args]), 带上上下文的拒绝
+deferred.rejectWith(context, [args]), 带上上下文的拒绝
 deferred.resolve(args), 解决延迟对象，传参调用成功的回调函数
+deferred.resolveWith(context, [args]), 带上下文解决延迟对象，传参调用成功的回调函数
+deferred.then(doneCallbacks, failCallbacks)， 延迟对象得到解决或拒绝
+deferred.alwarys(alwarysCallbacks), 不论延迟对象是解决还是拒绝，都有处理的程序
+deferred.pipe([doneFilter], [failFilter]), 筛选器（和或）, 返回promise
