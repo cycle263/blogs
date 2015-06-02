@@ -8,7 +8,18 @@
     <script>
     (function(window, undefined){
         parent.postMessage("Hello, I come from iframe! ","http://fiddle.jshell.net/");
+        
+        document.getElementsByTagName('body').addEventListener('click', function(){
+            parent.postMessage("Hello, I come from click event! ","*");
+        }, false);
     })(window);
+    
+    /*parent javascript*/
+    /*(function(window, undefined){
+        addEventListener('message', function(){
+           console.log(event.data); 
+        });
+    })(window);*/
     </script>
 </body>
 </html>
