@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title></title>
+</head>
+<body>
+
+    <script>
+    (function(window, undefined){
+      setInterval(function() {
+          parent.postMessage("Hello","http://jsfiddle.net/");
+      },1000);
+    })(window);
+    </script>
+</body>
+</html>
