@@ -8,6 +8,7 @@
     <script>
     (function(window, undefined){
       setInterval(function() {
+          console.log(parent);
           parent.postMessage("Hello","http://fiddle.jshell.net/");
       },1000);
     })(window);
