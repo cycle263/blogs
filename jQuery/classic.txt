@@ -28,3 +28,6 @@ deferred.resolveWith(context, [args]), 带上下文解决延迟对象，传参�
 deferred.then(doneCallbacks, failCallbacks)， 延迟对象得到解决或拒绝
 deferred.alwarys(alwarysCallbacks), 不论延迟对象是解决还是拒绝，都有处理的程序
 deferred.pipe([doneFilter], [failFilter]), 筛选器（和或）, 返回promise
+
+4、选择器使用技巧
+$('a[href^="http://"]'), 表示接属性href值以http://开头的超链接元素
