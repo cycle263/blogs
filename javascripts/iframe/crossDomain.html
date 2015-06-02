@@ -7,9 +7,10 @@
 <body>
     <script>
     (function(window, undefined){
+        var body = document.getElementsByTagName('body');
         parent.postMessage("Hello, I come from iframe! ","http://fiddle.jshell.net/");
         
-        document.getElementsByTagName('body').addEventListener('click', function(){
+        body[0].addEventListener('click', function(){
             parent.postMessage("Hello, I come from click event! ","*");
         }, false);
     })(window);
