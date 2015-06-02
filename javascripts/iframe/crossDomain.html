@@ -7,9 +7,7 @@
 <body>
     <script>
     (function(window, undefined){
-      setInterval(function() {
-          parent.postMessage("Hello, I come from iframe! ","http://fiddle.jshell.net/");
-      },1000);
+        parent.postMessage("Hello, I come from iframe! ","http://fiddle.jshell.net/");
     })(window);
     </script>
 </body>
