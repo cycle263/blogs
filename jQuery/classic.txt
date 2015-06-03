@@ -34,3 +34,7 @@ $('a[href^="http://"]'), 表示接属性href值以http://开头的超链接元�
 
 5、jQuery事件回调中的event和e
 $(ele).click(function(e){});尽量在回调的形参中使用e,而不是event，因为event是javascript原生事件返回的，避免用jQuery事件重写
+
+6、兄弟选择器sublings vs $("ele ~ ele") vs prevAll vs nextAll
+
+7、获取元素内容content vs html vs text
