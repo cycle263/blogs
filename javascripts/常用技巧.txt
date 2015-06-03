@@ -47,3 +47,5 @@ var urlParams;
     while (match = search.exec(query))
        urlParams[decode(match[1])] = decode(match[2]);
 })();
+
+6、parseInt使用时尽量指定进制位数，避免出现parseInt("0x10");//16。而parseFloat则不会这样。
