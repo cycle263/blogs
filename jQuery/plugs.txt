@@ -47,7 +47,8 @@ gt: function(a, i, m){  //a表示当前遍历的DOM元素； i表示当前DOM元
 三、插件-屏幕居中
 jQuery.fn.extend({
   "center": function(){
-    var $w = $(window), wh = $w.height(),
-      ww = $w.width(),
+    var $w = $(window);
+    this.css({"position": "absolute", "top": ($w.height()-this.height())/2+$w.scrollTop()+'px', "left": ($w.width()-this.width())/2+$w.scrollLeft()+'px'});
+    return this;
   }
 });
