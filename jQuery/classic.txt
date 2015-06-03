@@ -36,7 +36,9 @@ $('a[href$=".pdf"]'), 表示href值以后缀名pdf结尾的超链接
 5、jQuery事件回调中的event和e
 $(ele).click(function(e){});尽量在回调的形参中使用e,而不是event，因为event是javascript原生事件返回的，避免用jQuery事件重写
 
-6、兄弟选择器sublings vs $("ele ~ ele") vs prevAll vs nextAll vs prevUtil vs parent vs parents vs closest
-prevUtil, 直到什么元素终止
+6、兄弟选择器siblings vs $("ele ~ ele") vs prevAll vs nextAll vs prevUtil vs parent vs parents vs closest
+siblings(ele), 所有的同辈元素, ele参数可以进行过滤
+$("ele1 ~ ele2"), 选择ele1元素后面的所有兄弟元素ele2
+prevUtil(ele), 直到ele元素为止
 
 7、获取元素内容contents vs html vs text
