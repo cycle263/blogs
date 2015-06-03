@@ -36,6 +36,6 @@ $('a[href$=".pdf"]'), 表示href值以后缀名pdf结尾的超链接
 5、jQuery事件回调中的event和e
 $(ele).click(function(e){});尽量在回调的形参中使用e,而不是event，因为event是javascript原生事件返回的，避免用jQuery事件重写
 
-6、兄弟选择器sublings vs $("ele ~ ele") vs prevAll vs nextAll
+6、兄弟选择器sublings vs $("ele ~ ele") vs prevAll vs nextAll vs prevUtil vs parent vs parents vs closest
 
-7、获取元素内容content vs html vs text
+7、获取元素内容contents vs html vs text
