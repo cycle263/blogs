@@ -1,0 +1,3 @@
+document.cookie
+
+四个属性：domain、expire、path、
