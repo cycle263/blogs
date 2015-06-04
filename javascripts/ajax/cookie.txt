@@ -1,5 +1,6 @@
 1、获取的所有cookie: document.cookie.
 Cookie是一个键值对形式的字符串。只能用这个方法一次赋值或更新一个cookie。
+example: document.cookie = "someCookieName=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
 
 2、以下可选的cookie属性值跟在键值对后，定义cookie的设定/更新，跟着一个分号以作分隔：
   ;path=path (例如 '/', '/mydir') 如果没有定义，默认为当前文档位置的路径。
