@@ -1,14 +1,14 @@
 1、i++和++i
-++variable increments the variable, returning the new value.
-variable++ increments the variable, but returns the old value.
---variable decrements the variable, returning the new value.
-variable-- decrements the variable, but returns the old value.
-var i = 42;
-alert(i++); // shows 42
-alert(i); // shows 43
-i = 42;
-alert(++i); // shows 43
-alert(i); // shows 43
+    ++variable increments the variable, returning the new value.
+    variable++ increments the variable, but returns the old value.
+    --variable decrements the variable, returning the new value.
+    variable-- decrements the variable, but returns the old value.
+    var i = 42;
+    alert(i++); // shows 42
+    alert(i); // shows 43
+    i = 42;
+    alert(++i); // shows 43
+    alert(i); // shows 43
 
 
 2、变量声明提升（Hoisting）
@@ -48,33 +48,36 @@ screenX/Y gives the coordinates relative to the screen in device pixels.
 下面是鼠标事件的全部坐标属性
 Mouse Event Properties
 clientX, clientY
-
 Standard: W3C Recommendation
 Mouse position relative to the browser's visible viewport.
 
 screenX, screenY
-
 Standard: W3C Recommendation
 Mouse position relative to the user's physical screen.
 
 offsetX, offsetY
-
 Standard: W3C Working Draft
 Mouse position relative to the target element. This is implemented very inconsistently between browsers.
 
 pageX, pageY
-
 Standard: W3C Working Draft
 Mouse position relative to the html document (ie. layout viewport).
 
 x, y
-
 Standard: W3C Working Draft
 Equivalent to clientX, clientY, but is unsupported by some browsers. Use clientX, clientY instead.
 
 layerX, layerY
-
 No Standard
 Mouse position relative to the closest positioned ancestor element. If none of the ancestor elements have positioning, the mouse position is relative to the document (like pageX, pageY). LayerX, layerY have an uncertain future.
 
 QuirksMode has a great compatibility table that details inconsistencies in the non-standard properties. Know that only clientX, clientY, screenX, and screenY are part of the W3C Spec.
+
+6、正則匹配比較： exec, test;  字符串匹配：match, search  参见：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
+ RegExp:
+ (1). 一个字符串是否匹配一个正则表达式（RegExp），可使用 RegExp.test(str)。 RegExp.input/RegExp.$_:传入的字符串，这里是静态属性；
+ (2). 只是需要第一个匹配结果，你可能想要使用 RegExp.exec(str)。当正则表达式使用 "g" 标志时，可以多次执行exec方法来查找同一个字符串中的成功匹配。regexp.lastIndex/regexp.source（正则模式的字符串）,注意，这里是实例
+ 
+ String: match
+ 
+
