@@ -30,12 +30,18 @@
             </li>
             <li>
                 <h3>ajax的请求证书{xhrFields:'withCredentials': true}--1.5.1版本之上可用</h3>
-                <p>在跨域请求时，浏览器默认不会发送cookie和身份验证信息，需要在jQuery的ajax请求option内设置xhrFields对象中的withCredentials属性</p>
+                <p>在跨域请求时，浏览器默认不会发送cookie和身份验证信息，需要在jQuery的ajax请求option内
+                设置xhrFields对象中的withCredentials属性</p>
             </li>
             <li>
                 <h3>jQuery.fn.each vs jQuery.each</h3>
                 <p>jQuery.fn.each内部也通过调用静态方法jQuery.each方法来实现。each会遍历jQuery对象，并在每个元素上执行回调函数。
                 回调函数也是在当前元素的上下文语境中出发，也即是this指向当前元素。</p>
+            </li>
+            <li>
+                <h3>jQuery.pushStack</h3>
+                <p>jQuery.pushStack是核心方法之一，它创建了一个新的空jQuery对象，然后把DOM集合放入这个对象，
+                并保留对当前jQuery对象的引用。</p>
             </li>
         </ul>
     </body>
