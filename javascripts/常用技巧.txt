@@ -49,3 +49,6 @@ var urlParams;
 })();
 
 6、parseInt使用时尽量指定进制位数，避免出现parseInt("0x10");//16。而parseFloat则不会这样。
+
+7、String.prototype.anchor(name) vs String.prototype.link(url)
+一个传递name属性，一个传递href属性，创建一个超链接，存在一个问题就是不传都会在属性里填充undefined.
