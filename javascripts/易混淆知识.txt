@@ -69,15 +69,18 @@ Equivalent to clientX, clientY, but is unsupported by some browsers. Use clientX
 
 layerX, layerY
 No Standard
-Mouse position relative to the closest positioned ancestor element. If none of the ancestor elements have positioning, the mouse position is relative to the document (like pageX, pageY). LayerX, layerY have an uncertain future.
+Mouse position relative to the closest positioned ancestor element. If none of the ancestor elements have positioning, 
+the mouse position is relative to the document (like pageX, pageY). LayerX, layerY have an uncertain future.
 
-QuirksMode has a great compatibility table that details inconsistencies in the non-standard properties. Know that only clientX, clientY, screenX, and screenY are part of the W3C Spec.
+QuirksMode has a great compatibility table that details inconsistencies in the non-standard properties.
+Know that only clientX, clientY, screenX, and screenY are part of the W3C Spec.
 
-6、正則匹配比較： exec, test;  字符串匹配：match, search, replace  参见：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
+6、正則匹配比較： exec, test;  字符串匹配：match, search, replace  
+    参见：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
  RegExp:
  (1). 一个字符串是否匹配一个正则表达式（RegExp），可使用 RegExp.test(str)。 RegExp.input/RegExp.$_:传入的字符串，这里是静态属性；
- (2). 只是需要第一个匹配结果，你可能想要使用 RegExp.exec(str)。当正则表达式使用 "g" 标志时，可以多次执行exec方法来查找同一个字符串中的成功匹配(while方法)。结果数组resultArr包含index、input;而正则实例regexp包含lastIndex、source、ignoreCase、global、multiline（正则模式的字符串）属性。
- (3). 
+ (2). 只是需要第一个匹配结果，你可能想要使用 RegExp.exec(str)。当正则表达式使用 "g" 标志时，可以多次执行exec方法来查找同一个字符串中的成功匹配(while方法)。
+ 结果数组resultArr包含index、input;而正则实例regexp包含lastIndex、source、ignoreCase、global、multiline（正则模式的字符串）属性。
  
  String: 
  (1). match, 当字符串匹配到正则表达式（regular expression）时，match() 方法会提取匹配项。如果正则表达式没有 g 标志，返回和 RegExp.exec(str) 相同的结果。
