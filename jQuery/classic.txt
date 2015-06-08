@@ -44,3 +44,6 @@ $("ele1 ~ ele2"), 选择ele1元素后面的所有兄弟元素ele2
 prevUtil(ele), 直到ele元素为止
 
 7、获取元素内容contents vs html vs text
+
+8、input输入框和textarea键盘事件包含selectionStart、selectionEnd、selectionDirection属性，
+分别代表：选择文本开始位置，结束位置，选择方向。
