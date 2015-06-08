@@ -79,8 +79,9 @@ return false两样都是
     参见：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
  RegExp:
  (1). test, 一个字符串是否匹配一个正则表达式（RegExp），可使用 RegExp.test(str)。 RegExp.input/RegExp.$_:传入的字符串，这里是静态属性；
- (2). exec, 只是需要第一个匹配结果，你可能想要使用 RegExp.exec(str)。当正则表达式使用 "g" 标志时，可以多次执行exec方法来查找同一个字符串中的成功匹配(while方法)。
- 结果数组resultArr包含index、input;而正则实例regexp包含lastIndex、source、ignoreCase、global、multiline（正则模式的字符串）属性。
+ (2). exec, 只是需要第一个匹配结果，你可能想要使用 RegExp.exec(str)。当正则表达式使用 "g" 标志时，可以多次执行exec方法来
+ 查找同一个字符串中的成功匹配(while方法)。 结果数组resultArr包含index、input;而正则实例regexp包含lastIndex、source、
+ ignoreCase、global、multiline（正则模式的字符串）属性。
  
  String: 
  (1). match, 当字符串匹配到正则表达式（regular expression）时，match()方法会提取匹配项。如果正则表达式没有g标志，
