@@ -16,12 +16,12 @@
         
         body[0].addEventListener('click', function(){
             //给发窗口发送消息
-            parent.postMessage("Hello, I come from click event of iframe! ","*");
+            parent.postMessage("Hello, I come from click event of iframe! ","http://fiddle.jshell.net/");
         }, false);
         
         //接收父窗口来的消息
-        addEventListener('message', function(){
-           console.log(event.data); 
+        addEventListener('message', function(e){
+           console.log(event.data, e===event); 
         });
     })(window);
     
