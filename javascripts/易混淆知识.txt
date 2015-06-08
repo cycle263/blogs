@@ -78,11 +78,16 @@ return false两样都是
 6、正則匹配比較： exec, test;  字符串匹配：match, search, replace  
     参见：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
  RegExp:
- (1). 一个字符串是否匹配一个正则表达式（RegExp），可使用 RegExp.test(str)。 RegExp.input/RegExp.$_:传入的字符串，这里是静态属性；
- (2). 只是需要第一个匹配结果，你可能想要使用 RegExp.exec(str)。当正则表达式使用 "g" 标志时，可以多次执行exec方法来查找同一个字符串中的成功匹配(while方法)。
+ (1). test, 一个字符串是否匹配一个正则表达式（RegExp），可使用 RegExp.test(str)。 RegExp.input/RegExp.$_:传入的字符串，这里是静态属性；
+ (2). exec, 只是需要第一个匹配结果，你可能想要使用 RegExp.exec(str)。当正则表达式使用 "g" 标志时，可以多次执行exec方法来查找同一个字符串中的成功匹配(while方法)。
  结果数组resultArr包含index、input;而正则实例regexp包含lastIndex、source、ignoreCase、global、multiline（正则模式的字符串）属性。
  
  String: 
- (1). match, 当字符串匹配到正则表达式（regular expression）时，match() 方法会提取匹配项。如果正则表达式没有 g 标志，返回和 RegExp.exec(str) 相同的结果。
- 
+ (1). match, 当字符串匹配到正则表达式（regular expression）时，match()方法会提取匹配项。如果正则表达式没有g标志，
+ 返回和 RegExp.exec(str) 相同的结果，返回[第一个匹配值,[分组匹配值,]input,index];
+ (2). search, 执行一个查找，看该字符串对象与一个正则表达式是否匹配。如果匹配成功，则 search() 返回正则表达式在字符串中
+ 首次匹配项的索引。否则，返回 -1。当你想要知道字符串中是否存在某个模式（pattern）时可使用 search，类似于正则表达式
+ 的 test 方法。当要了解更多匹配信息时，可使用 match（会更慢），该方法类似于正则表达式的 exec 方法。
+ (3). replace, replace() 方法使用一个替换值（replacement）替换掉一个匹配模式（pattern）在原字符串中某些或所有的匹配项，
+ 并返回替换后的字符串。这个替换模式可以是字符串或者 RegExp，替换值可以是一个字符串或者一个函数。该方法并不改变调用它的字符串本身,而只是返回替换后的字符串.
 
