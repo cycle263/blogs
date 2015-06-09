@@ -3,13 +3,14 @@
 * jQuery
 * bootstrap
 * angularjs
+* reactjs
 * seajs
 * nodejs
 * iojs
 
 ## 2.css
 * css3
-* css2
+* css
 
 ## 3.html5
 * canvas
@@ -25,4 +26,5 @@
 * git
 * grunt
 * velocity
+* gulp
 
