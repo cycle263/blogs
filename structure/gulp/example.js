@@ -2,7 +2,13 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
+    autoprefixer = require('gulp-autoprefixer'),
     rename = require('gulp-rename'),
+    imagemin = require('gulp-imagemin'),
+    notify = require('gulp-notify'),
+    cache = require('gulp-cache'),
+    livereload = require('gulp-livereload'),
+    del = require('del'),
     minifyCss = require('gulp-minify-css');
 
 // 文件的路径配置
@@ -50,6 +56,11 @@ gulp.task('images', function() {
     .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
     .pipe(gulp.dest('D:/client/resources/build/img'))
     .pipe(notify({ message: 'Images task complete' }));
+});
+
+// 清理原来压缩的文件
+gulp.task('clean', function(cb) {
+    del(['D:/client/resources/build/css', 'D:/client/resources/build/js', 'D:/client/resources/build/img'], cb)
 });
 
 // 监听任务
