@@ -8,7 +8,8 @@ var gulp = require('gulp'),
 // 文件的路径配置
 var paths = {
     scripts: ['D:/client/resources/**/*.js', '!D:/client/resources/**/*.min.js'],
-    css: ['D:/client/resources/**/*.css']
+    css: ['D:/client/resources/**/*.css'],
+    images: ['D:/client/resources/images/**/*']
 };
 
 // 检查脚本
@@ -41,6 +42,14 @@ gulp.task('minify-css', function(){
             gutil.log(err);
             this.emit('end');
         });
+});
+
+// 压缩图片
+gulp.task('images', function() {
+  return gulp.src(paths.images)
+    .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
+    .pipe(gulp.dest('D:/client/resources/build/img'))
+    .pipe(notify({ message: 'Images task complete' }));
 });
 
 // 监听任务
