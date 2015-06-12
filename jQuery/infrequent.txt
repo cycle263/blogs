@@ -29,6 +29,7 @@ attributes表示文档中DOM状态信息，而properties表示元素的动态状
 
 9、获取元素下的子元素的index方法：
   Array.prototype.indexOf.call(this.parentElement.children, this);
+  Array.prototype.slice.call(htmlCollection)//htmlCollection快速转换为array
   
 10、多元运算写法区别：（三元运算的扩展）
 var i = 9; 
