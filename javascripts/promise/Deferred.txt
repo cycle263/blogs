@@ -28,3 +28,7 @@
         一个参数，那么等同于done()。
 　　（9）deferred.always()用来指定回调函数的，不管调用的是deferred.resolve()还是deferred.reject()，最后总是执行。
 　　    $.ajax( "test.html" ).always( function() { alert("已执行！");} );
+
+4、Deferred.then方法
+  jQuery中的Deferred，1.8版本之前，返回原有的deferred对象，外部也可以修改其状态；1.8版本之后，返回deferred.promise，
+  也就是deferred的
