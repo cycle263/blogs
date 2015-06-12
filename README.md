@@ -1,6 +1,7 @@
 # 各类信息总结
 ## 1.javascript
 * jQuery
+* jQuery mobile
 * bootstrap
 * angularjs
 * reactjs
