@@ -30,5 +30,14 @@
 　　    $.ajax( "test.html" ).always( function() { alert("已执行！");} );
 
 4、Deferred.then方法
-  jQuery中的Deferred，1.8版本之前，返回原有的deferred对象，外部也可以修改其状态；1.8版本之后，返回deferred.promise，
-  也就是deferred的
+  在jQuery 1.8之前，then()只是.done().fail()写法的语法糖，两种写法是等价的。在jQuery 1.8之后，then()返回一个新的promise对象，
+  而done()返回的是原有的deferred对象。如果then()指定的回调函数有返回值，该返回值会作为参数，传入后面的回调函数。
+  例如：
+  $.ajax( url1, { dataType: "json" } )
+  .then(function( data ) {
+      return $.ajax( url2, { data: { user: data.userId } } );
+  }).done(function( data ) {
+    // 从url2获取的数据
+  });
+  上面代码最后那个done方法，处理的是从url2获取的数据，而不是从url1获取的数据。利用then()会修改返回值这个特性，我们可以在
+  调用其他回调函数之前，对前一步操作返回的值进行处理。
