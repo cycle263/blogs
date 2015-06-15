@@ -52,3 +52,13 @@ var urlParams;
 
 7、String.prototype.anchor(name) vs String.prototype.link(url)
 一个传递name属性，一个传递href属性，创建一个超链接，存在一个问题就是不传都会在属性里填充undefined.
+
+8、递归函数
+    [1,2,3,4,5].map(function factorial (n) {
+      return !(n > 1) ? 1 : factorial(n-1)*n;
+    });
+    当回调函数是匿名函数时，此时可以使用arguments隐藏对象，代表执行函数的参数对象;arguments 对象仅在函数内部有效，
+    在函数外部调用 arguments 对象会出现一个错误。
+    arguments.callee, 指向当前执行的函数。
+    arguments.caller, 指向调用当前函数的函数。
+    arguments.length, 指向传递给当前函数的参数数量。
