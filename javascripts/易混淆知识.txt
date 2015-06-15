@@ -93,6 +93,7 @@ return false两样都是
  并返回替换后的字符串。这个替换模式可以是字符串或者 RegExp，替换值可以是一个字符串或者一个函数。该方法并不改变调用它的字符串本身,而只是返回替换后的字符串.
 
 7、script标签的defer属性和async属性
+    参见：http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html
     相同点：
     (1). 加载外部文件不阻塞页面渲染；
     (2). 使用这两个属性不能调用document.write方法；
