@@ -1,0 +1,4 @@
+1、把console内的代码添加到sources
+在代码最后加上    //@ sourceURL = name.js;
+
+2、
