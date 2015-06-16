@@ -1,4 +1,6 @@
 1、把console内的代码添加到sources
 在代码最后加上    //@ sourceURL = name.js;
 
-2、
+2、ctrl+shift+o搜寻sources里的函数名称，ctrl+o搜寻文件名，ctrl+shift+f搜寻文件内容
+
+3、
