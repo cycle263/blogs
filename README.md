@@ -8,6 +8,9 @@
 * seajs
 * nodejs
 * iojs
+* AtScript
+* TypeScript
+* ECMAScript6
 
 ## 2.css
 * css3
