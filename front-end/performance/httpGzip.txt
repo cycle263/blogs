@@ -13,3 +13,5 @@ HTTP 压缩是在 HTTP 1.0 规范（RFC 1945）中引入的，最初支持 gzip 
     （Cyclic Redundancy Check）的 Lempel-Ziv 编码（LZ77）。
   (2).Compress。通用 UNIX 文件压缩程序 compress 产生的编码格式。这种格式是一种自适应的 Lempel-Ziv-Welch 编码（LZW）。
   (3).Deflate。RFC 1950 中定义的 zlib 格式，并与 RFC 1951 中定义的 deflate 压缩机制相结合。
+
+前端不需要做任何改变，目前浏览器在XHR requests里都会自动添加合适的accept-encoding。
