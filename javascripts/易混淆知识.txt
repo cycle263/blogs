@@ -113,3 +113,5 @@ reduce: 四个参数：初始值（或者上一次回调函数的返回值），
         return a.concat(b);
     }); //[0, 1, 2, 3, 4, 5]
 reduceRight：与 reduce() 的执行方向相反。
+
+9、Object的静态方法：freeze、preventExtensions、seal(密封)
