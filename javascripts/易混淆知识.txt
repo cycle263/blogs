@@ -102,3 +102,14 @@ return false两样都是
     (1). h4定义了defer, h5定义了async
     (2). defer并行下载之后，还需DOM解析完成之后才会执行；而async则会在下载之后立即执行
 
+8、Array.prototype的every、map、forEach、some、reduce、reduceRight
+every: 方法测试数组的所有元素是否都通过了指定函数, 返回布尔值。callback被调用时传入三个参数：元素值，元素的索引，原数组。
+map: 返回一个由原数组中的每个元素调用一个指定方法后的返回值组成的新数组。callback被调用时传入三个参数：同上
+forEach： 让数组的每一项都执行一次给定的函数。callback被调用时传入三个参数：同上
+some: 测试数组中的某些元素是否通过了指定函数的测试。callback被调用时传入三个参数：同上
+reduce: 四个参数：初始值（或者上一次回调函数的返回值），当前元素值，当前索引，调用 reduce 的数组。
+    arr.reduce(callback,[initialValue]), initialValue为空，则currentValue等于数组中的第二个值。
+    例如：var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+        return a.concat(b);
+    }); //[0, 1, 2, 3, 4, 5]
+reduceRight：与 reduce() 的执行方向相反。
