@@ -62,3 +62,9 @@ var urlParams;
     arguments.callee, 指向当前执行的函数。
     arguments.caller, 指向调用当前函数的函数。
     arguments.length, 指向传递给当前函数的参数数量。
+    
+9、String.prototype.replace()的第二个参数$&、$$、$'、$·
+    $&：当前模式匹配子串值；
+    $'：当前模式匹配子串右边的字符串值；
+    $`：当前模式匹配子串左边的字符串值；
+
