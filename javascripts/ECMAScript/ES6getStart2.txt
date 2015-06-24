@@ -45,3 +45,5 @@
 function escapeRegExp(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 }
+已经有提议将这个需求标准化，作为Regexp.escape()，放入ES7。
+
