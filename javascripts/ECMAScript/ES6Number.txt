@@ -4,3 +4,19 @@
   加前缀0的写法。
   
 2、Number.isFinite(), Number.isNaN()
+  ES6在Number对象上，新提供了Number.isFinite()和Number.isNaN()两个方法，用来检查Infinite和NaN这两个特殊值。
+  Number.isFinite()用来检查一个数值是否非无穷（infinity）。Number.isFinite("15"); // false
+  (function (global) {
+    var global_isFinite = global.isFinite;
+  
+    Object.defineProperty(Number, 'isFinite', {
+      value: function isFinite(value) {
+        return typeof value === 'number' && global_isFinite(value);
+      },
+      configurable: true,
+      enumerable: false,
+      writable: true
+    });
+  })(this);
+  Number.isNaN()用来检查一个值是否为NaN。与传统的全局方法isFinite()和isNaN()的区别在于，传统方法先调用Number()将非数值的值转为
+  数值，再进行判断，而这两个新方法只对数值有效，非数值一律返回false。
