@@ -1,2 +1,23 @@
 数值的扩展
-1、
+1、Array.from()
+  Array.from方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象
+  （包括ES6新增的数据结构Set和Map）。
+  let ps = document.querySelectorAll('p');
+  Array.from(ps).forEach(function (p) {
+    console.log(p);
+  });
+  
+  对于还没有部署该方法的浏览器，可以用Array.prototyp.slice.call方法替代。还有Array()方法可以备用。
+  Array.from()还可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理。
+  Array.from(arrayLike, x => x * x);   // 等同于
+  Array.from(arrayLike).map(x => x * x);
+  
+  Array.from()的一个应用是，将字符串转为数组，然后返回字符串的长度。这样可以避免JavaScript将大于\uFFFF的Unicode字符，
+  算作两个字符的bug。
+  function countSymbols(string) {
+    return Array.from(string).length;
+  }
+  
+2、Array.of()
+  Array.of方法用于将一组值，转换为数组
+  
