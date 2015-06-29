@@ -1,4 +1,4 @@
-Math对象的扩展
+Math对象的扩展（没有原型方法，不是函数对象）
 1、Math.trunc()
   Math.trunc方法用于去除一个数的小数部分，返回整数部分。不会四舍五入，不同于Number.prototype.toFixed, 
   Math.ceil, Math.floor, Math.round
