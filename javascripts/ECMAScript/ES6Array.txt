@@ -47,10 +47,15 @@
 7、数组推导
   ES6提供简洁写法，允许直接通过现有数组生成新数组，这被称为数组推导（array comprehension）。
   数组推导中，for...of结构总是写在最前面，返回的表达式写在最后面。for...of后面还可以附加if语句，用来设定循环的限制条件。
+  数组推导的方括号构成了一个单独的作用域，在这个方括号中声明的变量类似于使用let语句声明的变量。
+  数组推导需要注意的地方是，新数组会立即在内存中生成。这时，如果原数组是一个很大的数组，将会非常耗费内存。
   var years = [ 1954, 1974, 1990, 2006, 2010, 2014 ];
   [for (year of years) if (year > 2000) year];// [ 2006, 2010, 2014 ]
   [for (year of years) if (year > 2000) if(year < 2010) year];// [ 2006]
   [for (year of years) if (year > 2000 && year < 2010) year];// [ 2006]
   
-8、
+8、Array.observe()，Array.unobserve()
+这两个方法用于监听（取消监听）数组的变化，指定回调函数。
+它们的用法与Object.observe和Object.unobserve方法完全一致，也属于ES7.
+对象可监听的变化一共有六种，而数组只有四种：add、update、delete、splice（数组的length属性发生变化）
   
