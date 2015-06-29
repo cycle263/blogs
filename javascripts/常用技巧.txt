@@ -68,3 +68,7 @@ var urlParams;
     $'：当前模式匹配子串右边的字符串值；
     $`：当前模式匹配子串左边的字符串值；
 
+10、Number.prototype.toFixed和toPrecision、toExponential方法
+    toFixed: 原来为全局方法，ES6将被收为Number原型方法，先四舍五入后固定小数点位数。
+    toPrecision: 四舍五入后截取小数点位数，指定精确度。
+    toExponential: 四舍五入后截取小数点后转换成指数形式。
