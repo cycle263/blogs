@@ -59,3 +59,5 @@
   (8). Symbol.for为Symbol值登记的名字，是全局环境的，可以在不同的iframe或service worker中取到同一个值。
 
 7、内置的Symbol
+  ES6还提供一些内置的Symbol值，指向语言内部使用的方法。
+  （1）Symbol.hasInstance
