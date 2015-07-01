@@ -66,6 +66,17 @@ $ git checkout gh-pages
       <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
     </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+    <script>
+      var totalTime = 0.5*60, interTime;
+      interTime = setInterval(function(){
+         totalTime--;    
+          var m = Math.floor(totalTime/ 60), s = totalTime % 60;
+          console.log(m+':'+(s >= 10 ? s : "0" + s));
+          if(totalTime <= 0){
+              clearInterval(interTime);
+              console.log('end');
+          }
+      }, 1000);
+    </script>  
   </body>
 </html>
