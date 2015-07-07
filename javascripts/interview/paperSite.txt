@@ -9,3 +9,6 @@ https://github.com/h5bp/Front-end-Developer-Interview-Questions
 
 4、魅族前端面试
 http://www.w3cfuns.com/blog-5469697-5406704.html
+
+5、前端工程师面试问题列表
+http://blog.jobbole.com/29269/
