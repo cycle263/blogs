@@ -19,47 +19,46 @@ if(typeof Array.isArray==="undefined")
         return Object.prototype.toString.call(arg)==="[object Array]"
     };  
 }
+
 3.已知ID的Input输入框，希望获取这个输入框的输入值，怎么做？(不使用第三方框架)
 document.getElementById(“ID”).value
+
 4.希望获取到页面中所有的checkbox怎么做？(不使用第三方框架)
-var domList = document.getElementsByTagName(‘input’)
+var domList = document.getElementsByTagName('input')
 var checkBoxList = [];
 var len = domList.length;　　//缓存到局部变量
 while (len--) {　　//使用while的效率会比for循环更高
-　　if (domList[len].type == ‘checkbox’) {
+　　if (domList[len].type == 'checkbox') {
     　　checkBoxList.push(domList[len]);
 　　}
 }
+
 5.设置一个已知ID的DIV的html内容为xxxx，字体颜色设置为黑色(不使用第三方框架)
 var dom = document.getElementById(“ID”);
-dom.innerHTML = “xxxx”
-dom.style.color = “#000”
-6.当一个DOM节点被点击时候，我们希望能够执行一个函数，应该怎么做？
+dom.innerHTML = "xxxx";
+dom.style.color = "#000";
 
+6.当一个DOM节点被点击时候，我们希望能够执行一个函数，应该怎么做？
  直接在DOM里绑定事件：<div onclick=”test()”></div>
  在JS里通过onclick绑定：xxx.onclick = test
  通过事件添加进行绑定：addEventListener(xxx, ‘click’, test)
 那么问题来了，Javascript的事件流模型都有什么？
-
 “事件冒泡”：事件开始由最具体的元素接受，然后逐级向上传播
 “事件捕捉”：事件由最不具体的节点先接收，然后逐级向下，一直到最具体的
 “DOM事件流”：三个阶段：事件捕捉，目标阶段，事件冒泡
+
 7.什么是Ajax和JSON，它们的优缺点。
-
 Ajax是异步JavaScript和XML，用于在Web页面中实现异步数据交互。
-
 优点：
-
 　可以使得页面不重载全部内容的情况下加载局部内容，降低数据传输量
 　避免用户不断刷新或者跳转页面，提高用户体验
+　
 缺点：
-
 　对搜索引擎不友好（
 　要实现ajax下的前后退功能成本较大
 　可能造成请求数的增加
 　跨域问题限制
 JSON是一种轻量级的数据交换格式，ECMA的一个子集
-
 优点：轻量级、易于人的阅读和编写，便于机器（JavaScript）解析，支持复合数据类型（数组、对象、字符串、数字）
 
  8.看下列代码输出为何？解释原因。
@@ -196,38 +195,29 @@ for(var i=0; i<10; i++){
         iArray.push(getRandom(10,100));
 }
 iArray.sort();
-20.把两个数组合并，并删除第二个元素。
 
+20.把两个数组合并，并删除第二个元素。
 var array1 = ['a','b','c'];
 var bArray = ['d','e','f'];
 var cArray = array1.concat(bArray);
 cArray.splice(1,1);
+
 21.怎样添加、移除、移动、复制、创建和查找节点（原生JS，实在基础，没细写每一步）
 
 1）创建新节点
-
 createDocumentFragment()    //创建一个DOM片段
-
 createElement()   //创建一个具体的元素
-
 createTextNode()   //创建一个文本节点
 
 2）添加、移除、替换、插入
-
 appendChild()      //添加
-
 removeChild()      //移除
-
 replaceChild()      //替换
-
 insertBefore()      //插入
 
 3）查找
-
 getElementsByTagName()    //通过标签名称
-
 getElementsByName()     //通过元素的Name属性的值
-
 getElementById()        //通过元素Id，唯一性
 
 22.有这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
@@ -242,12 +232,12 @@ function serilizeUrl(url) {
     }
     return result;
 }
+
 23.正则表达式构造函数var reg=new RegExp(“xxx”)与正则表达字面量var reg=//有什么不同？匹配邮箱的正则表达式？
-
 答案：当使用RegExp()构造函数的时候，不仅需要转义引号（即\”表示”），并且还需要双反斜杠（即\\表示一个\）。使用正则表达字面量的效率更高。 
-
 邮箱的正则匹配：
 var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+
 24.看下面代码，给出输出结果。
 for(var i=1;i<=3;i++){
   setTimeout(function(){
