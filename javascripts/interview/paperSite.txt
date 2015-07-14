@@ -12,3 +12,6 @@ http://www.w3cfuns.com/blog-5469697-5406704.html
 
 5、前端工程师面试问题列表
 http://blog.jobbole.com/29269/
+
+6、40道html5面试题
+http://blog.jobbole.com/78346/
