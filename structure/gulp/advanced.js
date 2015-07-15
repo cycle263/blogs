@@ -87,7 +87,7 @@ gulp.task('compile', ['rev'], function () {
 });
 
 
-gulp.task('beforePulish', ['compile'] function(){
+gulp.task('beforePulish', ['compile'], function(){
 	console.log('start beforePulish task...');
 });
 
