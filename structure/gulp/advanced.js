@@ -7,9 +7,10 @@ var gulp = require('gulp'),
 	minifyCss = require('gulp-minify-css'),
 	handlebars = require('gulp-compile-handlebars'),
 	rename = require('gulp-rename'),
+	merge = require('merge-stream'),
 	paths = {
-		scripts: ['htdocs/source/**/*.js'],
-		css: ['htdocs/css/**/*.css']
+		scripts: ['htdocs/source/examination/**/*.js', '!htdocs/source/examination/**/assets/*.js'],
+		css: ['htdocs/css/**/*.css', '!htdocs/css/**/assets/*.css']
 	},
 	getPackageJson = function () {
 		return JSON.parse(fs.readFileSync('./package.json', 'utf8'));
@@ -25,7 +26,6 @@ var gulp = require('gulp'),
 
 //压缩src目录下的js文件
 gulp.task('scripts', function () {
-	console.log('start scripts task...');
     return gulp.src(paths.scripts)
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'))
@@ -44,7 +44,6 @@ gulp.task('scripts', function () {
 
 //压缩css
 gulp.task('minify-css', function(){
-	console.log('start minifyCss task...');
 	return gulp.src(paths.css)
         .pipe(minifyCss())
         .pipe(gulp.dest('htdocs/css'))
@@ -56,25 +55,36 @@ gulp.task('minify-css', function(){
 
 //版本号调整
 gulp.task('rev', function(){
-	console.log('start rev task...');
-	return gulp.src(paths.css)
+	var css = gulp.src(paths.css)
 		.pipe(rev())
-		.pipe(gulp.dest('htdocs/css/asset'))
-		.src(paths.scripts)
+		.pipe(gulp.dest('htdocs/css/assets'))
+		.pipe(rev.manifest({
+			base: 'htdocs',
+			merge: true
+		}))
+		.pipe(gulp.dest('htdocs'))
+		.on('error', function(err){
+            gutil.log(err);
+            this.emit('end');
+        }),	
+		js = gulp.src(paths.scripts)
 		.pipe(rev())
-		.pipe(gulp.dest('htdocs/js/asset'))
-		.pipe(rev.manifest())
+		.pipe(gulp.dest('htdocs/js/examination/assets'))
+		.pipe(rev.manifest({
+			base: 'htdocs',
+			merge: true
+		}))
 		.pipe(gulp.dest('htdocs'))
 		.on('error', function(err){
             gutil.log(err);
             this.emit('end');
         });
+	return merge(css, js);	
 });
 
 //编译目标文件调整版本号
 gulp.task('compile', ['rev'], function () {
-	console.log('start compile task...');
-    var manifest = JSON.parse(fs.readFileSync('htdocs/rev-manifest.json', 'utf8'));
+    var manifest = JSON.parse(fs.readFileSync('rev-manifest.json', 'utf8'));
 
     return gulp.src('uisvr/theme/standards/head.html')
 		.pipe(handlebars(manifest, handlebarOpts))
@@ -87,9 +97,7 @@ gulp.task('compile', ['rev'], function () {
 });
 
 
-gulp.task('beforePulish', ['compile'], function(){
-	console.log('start beforePulish task...');
-});
+gulp.task('beforePulish', ['compile']);
 
 //监听任务
 gulp.task('watch', function(){
