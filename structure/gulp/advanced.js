@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	utf8Convert = require('gulp-utf8-convert'),
 	rev = require('gulp-rev'),
+	revTime = require('gulp-rev-mtime'),
 	fs = require('fs'),
 	jshint = require('gulp-jshint'),
 	minifyCss = require('gulp-minify-css'),
@@ -10,7 +11,8 @@ var gulp = require('gulp'),
 	merge = require('merge-stream'),
 	paths = {
 		scripts: ['htdocs/source/examination/**/*.js', '!htdocs/source/examination/**/assets/*.js'],
-		css: ['htdocs/css/**/*.css', '!htdocs/css/**/assets/*.css']
+		css: ['htdocs/css/**/*.css', '!htdocs/css/**/assets/*.css'],
+		html: ['templates/**/screen/*.vm']
 	},
 	getPackageJson = function () {
 		return JSON.parse(fs.readFileSync('./package.json', 'utf8'));
@@ -96,8 +98,17 @@ gulp.task('compile', ['rev'], function () {
         });
 });
 
-
 gulp.task('beforePulish', ['compile']);
+
+//JS文件添加时间戳(只支持utf-8)
+gulp.task('pulish', function () {
+    gulp.src(paths.html)
+        .pipe(revTime({
+          'suffix': 'rev',
+          'fileTypes': ['js']
+        }))
+        .pipe(gulp.dest('templates'));
+});
 
 //监听任务
 gulp.task('watch', function(){
