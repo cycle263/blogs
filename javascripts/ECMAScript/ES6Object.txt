@@ -68,3 +68,6 @@
   (6).Symbol.toPrimitive
   (7).Symbol.toStringTag
   (8).Symbol.unscopables
+
+8、Proxy
+  Proxy用于修改某些操作的默认行为，等同于在语言层面做出修改.
