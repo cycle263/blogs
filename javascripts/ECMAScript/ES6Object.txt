@@ -60,4 +60,11 @@
 
 7、内置的Symbol
   ES6还提供一些内置的Symbol值，指向语言内部使用的方法。
-  （1）Symbol.hasInstance
+  (1).Symbol.hasInstance
+  (2).Symbol.isConcatSpreadable
+  (3).Symbol.isRegExp
+  (4).Symbol.match
+  (5).Symbol.iterator
+  (6).Symbol.toPrimitive
+  (7).Symbol.toStringTag
+  (8).Symbol.unscopables
