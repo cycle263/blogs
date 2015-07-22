@@ -31,7 +31,13 @@ attributes表示文档中DOM状态信息，而properties表示元素的动态状
   Array.prototype.indexOf.call(this.parentElement.children, this);
   Array.prototype.slice.call(htmlCollection)//htmlCollection快速转换为array
   
-10、多元运算写法区别：（三元运算的扩展）
-var i = 9; 
-i > 1 ? i == 8 ? i < 15 ? 1 : 2 : 3 : 4;   //3. 冒号从右至左截断, 类似于if(if(if()))else
-i < 15 ? 1 : i == 8 ? 2 : i > 1 ? 3 : 4;    //1. 类似于if else if else if
+10、jQuery常见数组操作
+  $.each(array, [callback]) 遍历
+  $.grep(array, callback, [invert])使用过滤函数过滤数组元素(第三个参数为true或false,对过滤函数返回值取反)
+  $.map(array,[callback])按给定条件转换数组
+  $.merge(first,second)合并两个数组
+  $.unique(array)过滤数组中重复元素
+  $.makeArray(obj) 将类数组对象转换为数组
+  $(dom).toArray()将所有DOM元素恢复成数组
+  
+11、
