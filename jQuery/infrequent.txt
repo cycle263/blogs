@@ -39,7 +39,4 @@ attributes表示文档中DOM状态信息，而properties表示元素的动态状
   $.unique(array)过滤数组中重复元素
   $.makeArray(obj) 将类数组对象转换为数组
   $(dom).toArray()将所有DOM元素恢复成数组
-  
-11、jquery事件
-  绑定在本元素的事件，默认不冒泡；
-  绑定在祖先元素的事件可以多次绑定；
+
