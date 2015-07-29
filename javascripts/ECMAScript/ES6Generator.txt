@@ -25,3 +25,24 @@
   Generator函数从暂停状态到恢复运行，它的上下文状态（context）是不变的。通过next方法的参数，就有办法在Generator函数开始运行
   之后，继续向函数体内部注入值。
   另外需要注意，yield语句不能用在普通函数中，否则会报错。
+  
+3、for...of
+  使用for...of语句时不需要使用next方法。
+  next方法的返回对象的done属性为true，for...of循环就会中止，且不包含该返回对象,因此的return的返回值不会返回。
+  
+4、throw
+  Generator函数可以在函数体外抛出错误，然后在函数体内捕获。
+  用遍历器的throw方法抛出的，而不是用throw命令抛出的。后者只能被函数体外的catch语句捕获。
+  如果遍历器函数内部没有部署try...catch代码块，那么throw方法抛出的错误，将被外部try...catch代码块捕获。
+  如果遍历器函数内部部署了try...catch代码块，那么遍历器的throw方法抛出的错误，不影响下一次遍历，否则遍历直接终止。
+  
+5、yield*语句
+  如果yield命令后面跟的是一个遍历器，需要在yield命令后面加上星号，表明它返回的是一个遍历器。这被称为yield*语句。
+  yield*语句等同于在Generator函数内部，部署一个for...of循环。
+
+6、作为对象属性的Generator函数
+  let obj = {
+    myGeneratorMethod: function* () {
+  简写成：
+  let obj = {
+    * myGeneratorMethod() {
