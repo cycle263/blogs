@@ -16,6 +16,7 @@
   }
   
 3、this绑定
+  两种方式：局部变量引用this形成闭包；回调函数使用bind(this), map函数中可以传入第二参作为this
   function CVSReader(separators){
     this.separators = separators || [","];
     this.regexp = new RegExp(this.separators.map(function(sep){
