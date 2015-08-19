@@ -18,7 +18,7 @@
 3、this绑定
   function CVSReader(separators){
     this.separators = separators || [","];
-    this.regexp = new Regexp(this.separators.map(function(sep){
+    this.regexp = new RegExp(this.separators.map(function(sep){
       return "\\" + sep;
     }).join("|"));
   }
