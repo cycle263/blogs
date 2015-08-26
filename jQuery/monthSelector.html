@@ -54,11 +54,9 @@
  .c-calendar-month li:hover, .c-calendar-year li:hover{background-color: #eeeeee;}
  .c-calendar-month li.active, .c-calendar-year li.active{color: #ffffff;background-color: #6cb5f4;}
  .c-btns{text-align:center;padding:5px;border: 1px #ccd solid;margin-top: -4px;}
- </style>
- 
+ </style> 
 </head>
 <body>
-
     <div class="c-month-container">
         <input type="text" id="c-month-input" />
         <div class="c-month-calendar" style="display:none;">
@@ -107,7 +105,7 @@
                 };
 
                 var init = function(){
-                    renderMonth();
+                    showMonth ? renderMonth() : container.find('.c-calendar-month').hide();
                     renderYear();
 
                     //弹出日历选择框
@@ -138,7 +136,7 @@
                     container.on('click', '.c-btns .button-primary', function(event){
                         var m = container.find('.c-calendar-month .active').data('value') - 0,
                             y = container.find('.c-calendar-year .active').text();
-                        input.val(y + (m > 9 ? "-" + m : "-0" + m));
+                        showMonth ? input.val(y + (m > 9 ? "-" + m : "-0" + m)) : input.val(y);
                         jQuery('.c-month-calendar').hide();
                     });
 
@@ -151,7 +149,8 @@
                 init();
             }
         });
-
+        
+        //调用方法
         jQuery('.c-month-container').monthCalendar(true);
     </script>
     <!-- script end -->
