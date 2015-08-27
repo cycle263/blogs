@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>test</title>
+    </head>
+    <style>
+        body{font-family: Georgia;}
+        .m-pager{position: relative;font-family:"Microsoft YaHei", "微软雅黑",Georgia;}
+        .m-page-right{position: absolute;right: 20px;top:0;}
+        .m-pager-list{display: inline-block;margin:0;}
+        .m-pager-list li{display: inline-block;list-style:none;border: 1px solid #ddd; padding:2px 8px;cursor: pointer;}
+        .m-pager-list .active{background-color: #6cb5f4;color: #fff;border-color: #6cb5f4;}
+        .m-pager-list li:hover{background-color: #ccc;}
+        .m-page-num{width:40px;margin:0 5px;}
+    </style>
+    <body>
+        <div id="content">
+            <form id="testForm">
+                <div>
+                    <input name="name" type="text" />
+                    <button type="button" class="pager-query">查询</button>
+                </div>
+                <div class="formContent">
+                    
+                </div>
+                <div class="pagerContainer"></div>
+            </form>
+        </div>  
+
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script charset="utf-8" src="pager.js"></script>
+        <script>
+        $(function(){
+            $('.pagerContainer').Paper('http://localhost:8082/getPagerDatas.json',function(res, text, xhr){
+                $('.formContent').html('<p>一共有'+res.itemsCount+'条数据, 当前在第'+res.currentPage+'页, 每页有'+res.pageSize+'条数据。</p>'+'<p>'+res.currentTime+'</p>');
+            }, {
+                currentForm: '#testForm',
+                pageSize: 5,
+                maxPageNum: 5
+            });
+        });
+        </script>
+    </body>
+</html>
