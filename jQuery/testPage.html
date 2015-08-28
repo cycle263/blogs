@@ -1,8 +1,9 @@
+<!DOCTYPE HTML>
 <html>
     <head>
         <title>test</title>
-    </head>
-    <style>
+        <meta charset="utf-8">
+        <style>
         body{font-family: Georgia;}
         .m-pager{position: relative;font-family:"Microsoft YaHei", "微软雅黑",Georgia;}
         .m-page-right{position: absolute;right: 20px;top:0;}
@@ -19,8 +20,152 @@
             line-height: 22px;
             margin: 12px;
         }
-    </style>
+
+        .date-table{border-collapse: collapse;}
+        .date-table tr>td,.date-table tr>th{border: 1px solid #797979;height: 75px;width: 141px;}
+        .date-table tr>th{background-color: #D7D7D7;height: 36px;}
+        .date-table tr>.disabled{background-color: #F2F2F2;}
+        .date-table .date-container{height: 75px;width: 141px;position: relative;}
+        .date-container .date{position: absolute;top: 8px;left: 8px;}
+        .date-container a{right: 8px;bottom: 8px;position: absolute;  text-decoration: none;color: #0099FF;font-size: 13px;}
+        .date-container a:hover{color: #ccc;}
+        .c-tabs{list-style: none;padding-left: 0;width: 1008px;border-bottom: 2px solid #949494;}
+        .c-tabs li{display: inline-block;height: 28px;line-height: 28px;border: 2px solid #949494;  border-radius: 5px 5px 0 0;padding: 5px 24px;position: relative;top: 2px;background-color: #e4e4e4;cursor: pointer;}
+        .c-tabs li.active{border-bottom-color: transparent;background-color: #fff;}
+
+        .c-month-calendar .button {
+          display: inline-block;
+          *display: inline;
+          /* IE7 inline-block hack */
+          *zoom: 1;
+          margin-bottom: 0;
+          font-weight: normal;
+          text-align: center;
+          vertical-align: middle;
+          cursor: pointer;
+          background-image: none;
+          border: 1px solid transparent;
+          white-space: nowrap;
+          line-height: 20px;
+          padding: 4px 12px;
+          font-size: 14px;
+          border-radius: 4px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          color: #333333;
+          background-color: #ffffff;
+          border-color: #cccccc;
+        }
+        .c-month-calendar .button-primary {
+          color: #ffffff;
+          background-color: #6cb5f4;
+          border-color: #54a9f2;
+          margin-right: 12px;
+        }
+        .c-month-calendar .button:hover,
+        .c-month-calendar .button:focus,
+        .c-month-calendar .button:active,
+        .c-month-calendar .button.active,
+        .c-month-calendar .open .dropdown-toggle.button {
+          color: #333333;
+          background-color: #e6e6e6;
+          border-color: #adadad;
+        }
+        #c-month-input{min-width: 100px;padding: 5px 12px;width: 100px;cursor: pointer;padding-right: 12px;}
+        .c-down-arrow{background: url("https://t.alipayobjects.com/images/rmsweb/T1G6lhXn8bXXXXXXXX.png") no-repeat;position: absolute;  top: 11px;right: 12px;width: 8px;height: 6px;cursor: pointer;}
+        .c-month-container{position:absolute;font-family: 'ArialMT', 'Arial';color: #333333;font-size:13px;left: 830px;top: 24px;}
+        .c-month-calendar{position:absolute;top:30px;width: 301px;z-index: 9999;background-color: #FFF;}
+        .c-calendar-month, .c-calendar-year{width:130px;height:248px;border:1px #ccd solid;list-style:none; display: inline-block;padding:2px;margin:0;}
+        .c-calendar-month{width:160px;margin-right: -5px;}
+        .c-calendar-month li, .c-calendar-year li{padding:2px 4px;float: left;margin: 4px 0 0 6px;width: 50px;height: 32px;line-height: 32px;text-align: center;color: #333333;cursor:pointer;}
+        .c-calendar-month li{width:64px;}
+        .c-prev,.c-next{font-weight:bold;}
+        .c-calendar-month li:hover, .c-calendar-year li:hover{background-color: #eeeeee;}
+        .c-calendar-month li.active, .c-calendar-year li.active{color: #ffffff;background-color: #6cb5f4;}
+        .c-btns{text-align:center;padding:5px;border: 1px #ccd solid;margin-top: -4px;}
+        </style>
+    </head>
     <body>
+        <div class="c-content">
+            <ul class="c-tabs">
+                <li class="c-tab active">Transaction Info</li>
+                <li class="c-tab">Tmall Transaction Info</li>
+                <li class="c-tab">Alitrip Transaction Info</li>
+                <li class="c-tab">Settlement Info</li>
+            </ul>
+            <div class="c-month-container">
+                <label for="">Month： </label>
+                <input type="text" id="c-month-input" name="selectedDate" />
+                <span class="c-down-arrow"></span>
+                <div class="c-month-calendar" style="display:none;">
+                    <ul class="c-calendar-month"></ul>
+                    <ul class="c-calendar-year"></ul>
+                    <div class="c-btns">
+                        <button class="button button-primary">OK</button>
+                        <button class="button">Cancel</button>  
+                    </div>
+                </div>
+            </div>
+            <table class="date-table">
+                <thead>
+                    <tr>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div class="date-container">
+                            <span class="date">10</span>
+                            <a href="">Download</a>
+                        </div></td>
+                        <td><div class="date-container">
+                            <span class="date">11</span>
+                            <a href="">Download</a>
+                        </div></td>
+                        <td><div class="date-container">
+                            <span class="date">12</span>
+                            <a href="">Download</a>
+                        </div></td>
+                        <td><div class="date-container">
+                            <span class="date">13</span>
+                            <a href="">Download</a>
+                        </div></td>
+                        <td><div class="date-container">
+                            <span class="date">14</span>
+                            <a href="">Download</a>
+                        </div></td>
+                        <td><div class="date-container">
+                            <span class="date">15</span>
+                            <a href="">Download</a>
+                        </div></td>
+                        <td><div class="date-container">
+                            <span class="date">16</span>
+                            <a href="">Download</a>
+                        </div></td>
+                    </tr>
+                    <tr>
+                        <td><div class="date-container">
+                            <span class="date">17</span>
+                            <a href="">Download</a>
+                        </div></td>
+                        <td class="disabled"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="testImg">You can download the transactions after 2015-09-01.</div>
         <div id="content">
             <form id="testForm">
@@ -35,20 +180,28 @@
             </form>
         </div>  
 
-        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="paper.js" charset="utf-8"></script>
+        <script src="../jquery/jquery-1.9.1.js"></script>
+        <script charset="utf-8" src="monthCalendar.js"></script>
+        <script charset="utf-8" src="pager.js"></script>
         <script>
-        $(function(){
-            $('.pagerContainer').Paper('http://localhost:8082/getPagerDatas.json',function(res, text, xhr){
-                $('.formContent').html('<p>一共有'+res.itemsCount+'条数据, 当前在第'+res.currentPage+'页, 每页有'+res.pageSize+'条数据。</p>'+'<p>'+res.currentTime+'</p>');
+        jQuery(function(){
+            //分页组件调用
+            jQuery('.pagerContainer').Paper('http://localhost:8082/getPagerDatas.json',function(res, text, xhr){
+                jQuery('.formContent').html('<p>一共有'+res.itemsCount+'条数据, 当前在第'+res.currentPage+'页, 每页有'+res.pageSize+'条数据。</p>'+'<p>'+res.currentTime+'</p>');
             }, {
                 currentForm: '#testForm',
                 pageSize: 5,
                 maxPageNum: 5
             });
-            jQuery.ajax({
+
+            jQuery('.c-tabs').on('click', '.c-tab', function(event){
+                jQuery('.c-tabs .active').removeClass('active');
+                jQuery(this).addClass('active');
+            });
+
+            //请求jsonp数据
+            /*jQuery.ajax({
                 dataType: "jsonp",
-                jsonpCallback: "jsonpCallback",
                 url: 'weeks.json',
                 success: function(res, text, xhr){
                     console.log(res);
@@ -57,7 +210,10 @@
                     alert('network error: ' + textStatus);
                     throw new Error(errorThrown);
                 }
-            });
+            });*/
+
+            //月历控件调用方法
+            jQuery('.c-month-container').monthCalendar(true);
         });
         </script>
     </body>
