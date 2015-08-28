@@ -47,11 +47,11 @@
                 maxPageNum: 5
             });
             jQuery.ajax({
-                dataType: "json",
+                dataType: "jsonp",
+                jsonp: "_callback",
                 url: 'weeks.json',
                 success: function(res, text, xhr){
-                    renderPager(res, text, xhr);
-                    callback(res, text, xhr);
+                    console.log(res);
                 },
                 error: function(jqXHR, textStatus, errorThrown){
                     alert('network error: ' + textStatus);
