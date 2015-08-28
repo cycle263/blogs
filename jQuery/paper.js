@@ -1,158 +1,191 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>日期选择器</title>
- 
- <style>
- .button {
-  display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-  *zoom: 1;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  line-height: 20px;
-  padding: 4px 12px;
-  font-size: 14px;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #333333;
-  background-color: #ffffff;
-  border-color: #cccccc;
-}
-.button-primary {
-  color: #ffffff;
-  background-color: #6cb5f4;
-  border-color: #54a9f2;
-}
-.button:hover,
-.button:focus,
-.button:active,
-.button.active,
-.open .dropdown-toggle.button {
-  color: #333333;
-  background-color: #e6e6e6;
-  border-color: #adadad;
-}
- .c-month-container{position:relative;font-family: 'ArialMT', 'Arial';color: #333333;font-size:13px;}
- .c-month-calendar{position:absolute;top:24px;}
- .c-calendar-month, .c-calendar-year{width:130px;height:248px;border:1px #ccd solid;list-style:none; display: inline-block;padding:2px;margin:0;}
- .c-calendar-month{width:160px;margin-right: -5px;}
- .c-calendar-month li, .c-calendar-year li{padding:2px 4px;float: left;margin: 4px 0 0 6px;width: 50px;height: 32px;line-height: 32px;text-align: center;color: #333333;cursor:pointer;}
- .c-calendar-month li{width:64px;}
- .c-prev,.c-next{font-weight:bold;}
- .c-calendar-month li:hover, .c-calendar-year li:hover{background-color: #eeeeee;}
- .c-calendar-month li.active, .c-calendar-year li.active{color: #ffffff;background-color: #6cb5f4;}
- .c-btns{text-align:center;padding:5px;border: 1px #ccd solid;margin-top: -4px;}
- </style> 
-</head>
-<body>
-    <div class="c-month-container">
-        <input type="text" id="c-month-input" />
-        <div class="c-month-calendar" style="display:none;">
-            <ul class="c-calendar-month"></ul>
-            <ul class="c-calendar-year"></ul>
-            <div class="c-btns">
-                <button class="button button-primary">OK</button>
-                <button class="button">Cancel</button>  
-            </div>
-        </div>
-    </div>
-    
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
- 
-    <!-- script start --> 
-    <script type="text/javascript">
-        jQuery.fn.extend({
-            /*
-             * @id 容器id  
-             * @showMonth 展示月份部分
-             */
-            "monthCalendar": function(showMonth){
-                var container = this,
-                    curFirstYear,
-                    input = container.find('#c-month-input');
+/*
+ * @url
+ * @callback
+ * @opts
+ * exampel: $("#container").Pager(url, cb, opts)
+ * author: cycle
+ * create date: 2015-08-21
+ */
+jQuery.fn.extend({
+    /*
+    * @url 请求地址(必传)
+    * @callback 请求回调函数(必传)
+    * @opts 其他可选参数
+     */
+    'Paper': function(url, callback, opts){
+        if(!url){
+            throw new SyntaxError('No url...');
+        }
+        if(!callback){
+            throw new SyntaxError('No callback...');
+        }
+        if(!jQuery.isFunction(callback)){
+            throw new TypeError('Callback is not function...');
+        }
 
-                //渲染月份
-                var renderMonth = function(){
-                    var m = (new Date()).getMonth() + 1, str = '', arr = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-                    for(var i = 1, l = arr.length; i <= l; i++){
-                        str += '<li data-value="' + i + '">' + arr[i - 1] + '</li>';
+        opts = jQuery.extend({
+            "currentForm": "body",   //格式： "$(#myForm)" -- 同一页面多个分页组件必传
+            "method": "GET",            //默认请求方法
+            "currentPage": 0,           //当前页数
+            "pageSize": 10,             //每页显示条数
+            "maxPageNum": 8,            //每批最大页面数
+            "firstPageNum": 1,          //默认第一个页码数
+            "itemsCount": 0,            //总条数
+            "pagesCount": 0             //总页数
+        }, opts);
+
+        var container = this,
+            form = $(opts.currentForm),
+            renderPager = function(res, text, xhr){
+                jQuery.extend(opts, res);
+                var pagesCount = opts.pagesCount - 0,
+                    currentPage = opts.currentPage - 0,
+                str = '<div class="m-pager">'
+                    +'<span>共计<i class="m-itemsCount">'+opts.itemsCount+'</i>条，一共<i class="m-pagesCount">'+opts.pagesCount+'</i>页</span>';
+
+                if(pagesCount){
+                    if(currentPage > pagesCount || currentPage < 0 || !jQuery.isNumeric(currentPage)){
+                        alert('无此页数据！');
+                        return;
                     }
-                    container.find('.c-calendar-month').html(str).find('li').filter(function(){return $(this).data("value") - 0 === m}).addClass('active');
-                };
+                    str += '<div class="m-page-right"><ul class="m-pager-list">';
+                    str += renderFirstPage();
+                    str += renderPageNum();
+                    str += renderLastPage();
+                    str += "</ul>";
+                    str += '<span class="m-page-skip"><input class="m-page-num" type="text" /><button class="m-page-btn">跳转</button></span>'
+                        +'</div></div>';
+                }
+                container.html(str);
+            },
 
-                //渲染年份
-                var renderYear = function(){
-                    var y = (new Date()).getFullYear(), str = '<li class="c-prev"><<</li><li class="c-next">>></li><li>', arr = [];
-                    curFirstYear = curFirstYear === undefined ? y - 4 : curFirstYear;
-                    for(var i = 0; i < 10; i++){
-                        arr.push(curFirstYear + i);
+            renderPageNum = function(){
+                var i = opts.firstPageNum - 0, str = '', pageNums,
+                    pCount = opts.pagesCount - 0,
+                    firstNum = opts.firstPageNum - 0,
+                    curPage = opts.currentPage - 0,
+                    difference = pCount - firstNum,
+                    maxNum = opts.maxPageNum - 0;
+                if(!pCount){
+                    alert('No data...');
+                }else{
+                    pageNums = difference > maxNum ? maxNum : difference;
+                    for(var num = 1; num <= pageNums; i++,num++){
+                        str += '<li class="' + (curPage === i ? 'active' : '') +'"><a class="pager-num" page-num="'+i+'">'+i+'</a></li>';
                     }
-                    str += arr.join("</li><li>");
-                    str += "</li>";
-                    container.find('.c-calendar-year').html(str).find('li').filter(function(){return $(this).text() - 0 === y}).addClass('active');
-                };
+                }
+                return str;
+            },
 
-                var init = function(){
-                    showMonth ? renderMonth() : container.find('.c-calendar-month').hide();
-                    renderYear();
+            renderFirstPage = function(){
+                var curPage = opts.currentPage - 0;
+                if(curPage !== 1){
+                    return '<li class="m-prev-pager"><a><<</a></li>';
+                }
+                return '';
+            },
 
-                    //弹出日历选择框
-                    container.on('click', '#c-month-input', function(event){
-                        event.stopPropagation();
-                        jQuery(this).siblings('.c-month-calendar').show();
-                    });
+            renderLastPage = function(){
+                var pCount = opts.pagesCount - 0,
+                    firstNum = opts.firstPageNum - 0,
+                    difference = pCount - firstNum,
+                    maxNum = opts.maxPageNum - 0
+                    curPage = opts.currentPage - 0;
+                if(curPage !== pCount && difference > maxNum){
+                    return '<li class="m-next-pager"><a>>></a></li>';
+                }
+                return '';
+            },
 
-                    //年月选择事件
-                    container.on('click', 'li:not(".c-next,.c-prev")', function(event){
-                        var me = $(this);
-                        me.closest('ul').find('.active').removeClass('active');
-                        me.addClass('active');
-                    });
+            initEvents = function(){                
+                //查询按钮点击事件
+                form.on("click", ".pager-query", function(event){
+                    event.preventDefault();
+                    opts.currentPage = 1;
+                    pagerRequest();
+                });
 
-                    //下一批年份
-                    container.on('click', '.c-next', function(event){
-                        curFirstYear += 10;
-                        renderYear();
-                    });
-                    //上一批年份
-                    container.on('click', '.c-prev', function(event){
-                        curFirstYear -= 10;
-                        renderYear();
-                    });
+                //数字按钮点击事件
+                form.on("click", ".m-pager-list li:not('.m-prev-pager,.m-next-pager')", function(event){
+                    event.preventDefault();
+                    opts.currentPage = $(this).find('.pager-num').attr('page-num') - 0;                    
+                    pagerRequest();
+                });
 
-                    //OK按钮点击事件
-                    container.on('click', '.c-btns .button-primary', function(event){
-                        var m = container.find('.c-calendar-month .active').data('value') - 0,
-                            y = container.find('.c-calendar-year .active').text();
-                        showMonth ? input.val(y + (m > 9 ? "-" + m : "-0" + m)) : input.val(y);
-                        jQuery('.c-month-calendar').hide();
-                    });
+                //翻批次按钮点击事件
+                form.on("click", ".m-prev-pager, .m-next-pager", function(event){
+                    event.preventDefault();
+                    if($(this).hasClass("m-next-pager")){
+                        opts.currentPage = form.find('.m-pager-list li:not(".m-next-pager") .pager-num').last().attr('page-num') - 0 + 1;
+                    }else{
+                        opts.currentPage = form.find('.m-pager-list li:not(".m-prev-pager") .pager-num').first().attr('page-num') - opts.maxPageNum;
+                    }
+                    opts.firstPageNum = opts.currentPage;     
+                    pagerRequest();
+                });
 
-                    //隐藏日历选择框
-                    container.on('click', '.c-btns .button', function(event){
-                        jQuery('.c-month-calendar').hide();
-                    });
-                };
+                //跳转按钮点击事件
+                form.on("click", ".m-pager .m-page-btn", function(event){
+                    event.preventDefault();
+                    opts.currentPage = $(this).siblings('.m-page-num').val() - 0;
+                    if(!jQuery.isNumeric(opts.currentPage) || opts.currentPage <= 0){
+                        alert('无此页数据！');
+                        return;
+                    }               
+                    pagerRequest();
+                });
+            },
 
-                init();
-            }
+            pagerRequest = function(){
+                jQuery.extend(opts, jQuery.serializeObject(form));
+                jQuery.ajax({
+                    type: opts.method,
+                    url: url,
+                    data: opts,
+                    success: function(res, text, xhr){
+                        renderPager(res, text, xhr);
+                        callback(res, text, xhr);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        alert('network error: ' + textStatus);
+                        throw new Error(errorThrown);
+                    }
+                });
+            };
+
+        initEvents();
+    }    
+});
+
+//序列化成json对象
+jQuery.extend({
+    "serializeObject": function($form){
+        if(jQuery.type($form) !== "object"){
+            throw new TypeError('Param is not jQuery selector...');
+        }
+
+        var tempArr = $form.serializeArray(),
+            result = {};
+        jQuery.map(tempArr, function(n, i){
+            result[n['name']] = n['value'];
         });
-        
-        //调用方法
-        jQuery('.c-month-container').monthCalendar(true);
-    </script>
-    <!-- script end -->
-</body>
-</html>
+
+        return result;
+    }
+});
+
+/*
+ * 样式
+.m-pager{position: relative;font-family:"Microsoft YaHei", "微软雅黑",Georgia;}
+.m-page-right{position: absolute;right: 20px;top:0;}
+.m-pager-list{display: inline-block;margin:0;}
+.m-pager-list li{display: inline-block;list-style:none;border: 1px solid #ddd; padding:2px 8px;cursor: pointer;}
+.m-pager-list .active{background-color: #6cb5f4;color: #fff;border-color: #6cb5f4;}
+.m-pager-list li:hover{background-color: #ccc;}
+.m-page-num{width:40px;margin:0 5px;}
+ */
+
+/*
+ * exmaple:
+ * $('.pagerContainer').Paper(url,callback,opts)
+ */
