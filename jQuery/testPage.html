@@ -47,7 +47,7 @@
                 maxPageNum: 5
             });
             jQuery.ajax({
-                dataType: "jsonp",
+                dataType: "json",
                 url: 'weeks.json',
                 success: function(res, text, xhr){
                     renderPager(res, text, xhr);
