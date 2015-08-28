@@ -2,7 +2,7 @@
  * @url
  * @callback
  * @opts
- * exampel: $("#container").Pager(url, cb, opts)
+ * exampel: jQuery("#container").Pager(url, cb, opts)
  * author: cycle
  * create date: 2015-08-21
  */
@@ -24,7 +24,7 @@ jQuery.fn.extend({
         }
 
         opts = jQuery.extend({
-            "currentForm": "body",   //格式： "$(#myForm)" -- 同一页面多个分页组件必传
+            "currentForm": "body",   //格式： "jQuery(#myForm)" -- 同一页面多个分页组件必传
             "method": "GET",            //默认请求方法
             "currentPage": 0,           //当前页数
             "pageSize": 10,             //每页显示条数
@@ -35,7 +35,7 @@ jQuery.fn.extend({
         }, opts);
 
         var container = this,
-            form = $(opts.currentForm),
+            form = jQuery(opts.currentForm),
             renderPager = function(res, text, xhr){
                 jQuery.extend(opts, res);
                 var pagesCount = opts.pagesCount - 0,
@@ -108,14 +108,14 @@ jQuery.fn.extend({
                 //数字按钮点击事件
                 form.on("click", ".m-pager-list li:not('.m-prev-pager,.m-next-pager')", function(event){
                     event.preventDefault();
-                    opts.currentPage = $(this).find('.pager-num').attr('page-num') - 0;                    
+                    opts.currentPage = jQuery(this).find('.pager-num').attr('page-num') - 0;                    
                     pagerRequest();
                 });
 
                 //翻批次按钮点击事件
                 form.on("click", ".m-prev-pager, .m-next-pager", function(event){
                     event.preventDefault();
-                    if($(this).hasClass("m-next-pager")){
+                    if(jQuery(this).hasClass("m-next-pager")){
                         opts.currentPage = form.find('.m-pager-list li:not(".m-next-pager") .pager-num').last().attr('page-num') - 0 + 1;
                     }else{
                         opts.currentPage = form.find('.m-pager-list li:not(".m-prev-pager") .pager-num').first().attr('page-num') - opts.maxPageNum;
@@ -127,7 +127,7 @@ jQuery.fn.extend({
                 //跳转按钮点击事件
                 form.on("click", ".m-pager .m-page-btn", function(event){
                     event.preventDefault();
-                    opts.currentPage = $(this).siblings('.m-page-num').val() - 0;
+                    opts.currentPage = jQuery(this).siblings('.m-page-num').val() - 0;
                     if(!jQuery.isNumeric(opts.currentPage) || opts.currentPage <= 0){
                         alert('无此页数据！');
                         return;
@@ -138,6 +138,7 @@ jQuery.fn.extend({
 
             pagerRequest = function(){
                 jQuery.extend(opts, jQuery.serializeObject(form));
+                jQuery.support.cors = true;     //兼容IE
                 jQuery.ajax({
                     type: opts.method,
                     url: url,
@@ -159,12 +160,12 @@ jQuery.fn.extend({
 
 //序列化成json对象
 jQuery.extend({
-    "serializeObject": function($form){
-        if(jQuery.type($form) !== "object"){
+    "serializeObject": function(jQueryform){
+        if(jQuery.type(jQueryform) !== "object"){
             throw new TypeError('Param is not jQuery selector...');
         }
 
-        var tempArr = $form.serializeArray(),
+        var tempArr = jQueryform.serializeArray(),
             result = {};
         jQuery.map(tempArr, function(n, i){
             result[n['name']] = n['value'];
@@ -187,5 +188,5 @@ jQuery.extend({
 
 /*
  * exmaple:
- * $('.pagerContainer').Paper(url,callback,opts)
+ * jQuery('.pagerContainer').Paper(url,callback,opts)
  */
