@@ -1,35 +1,35 @@
 {
-    'weeks':[{
-        'week': 'Tuesday',
-        'down': 'download',
-        'date': '1'
+    "weeks":[{
+        "week": "Tuesday",
+        "down": "download",
+        "date": "1"
     },{
-        'week': 'Thursday',
-        'down': 'download',
-        'date': '1'
+        "week": "Thursday",
+        "down": "download",
+        "date": "1"
     },{
-        'week': 'Tuesday',
-        'down': 'download',
-        'date': '1'
+        "week": "Tuesday",
+        "down": "download",
+        "date": "1"
     },{
-        'week': 'Tuesday',
-        'down': 'download',
-        'date': '1'
+        "week": "Tuesday",
+        "down": "download",
+        "date": "1"
     },{
-        'week': 'Tuesday',
-        'down': 'No Transactions',
-        'date': '1'
+        "week": "Tuesday",
+        "down": "No Transactions",
+        "date": "1"
     },{
-        'week': 'Friday',
-        'down': 'download',
-        'date': '1'
+        "week": "Friday",
+        "down": "download",
+        "date": "1"
     },{
-        'week': 'Tuesday',
-        'down': 'download',
-        'date': '1'
+        "week": "Tuesday",
+        "down": "download",
+        "date": "1"
     },{
-        'week': 'Sunday',
-        'down': 'download',
-        'date': '1'
+        "week": "Sunday",
+        "down": "download",
+        "date": "1"
     }]
 }
