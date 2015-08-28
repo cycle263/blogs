@@ -48,7 +48,7 @@
             });
             jQuery.ajax({
                 dataType: "jsonp",
-                jsonp: "_callback",
+                jsonpCallback: "jsonpCallback",
                 url: 'weeks.json',
                 success: function(res, text, xhr){
                     console.log(res);
