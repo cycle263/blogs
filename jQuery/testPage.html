@@ -11,8 +11,17 @@
         .m-pager-list .active{background-color: #6cb5f4;color: #fff;border-color: #6cb5f4;}
         .m-pager-list li:hover{background-color: #ccc;}
         .m-page-num{width:40px;margin:0 5px;}
+
+        .testImg{
+            background: url("https://t.alipayobjects.com/images/rmsweb/T185lhXhhgXXXXXXXX.PNG") no-repeat;
+            padding-left: 30px;
+            height: 22px;
+            line-height: 22px;
+            margin: 12px;
+        }
     </style>
     <body>
+        <div class="testImg">You can download the transactions after 2015-09-01.</div>
         <div id="content">
             <form id="testForm">
                 <div>
@@ -26,7 +35,7 @@
             </form>
         </div>  
 
-        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="../jquery/jquery-1.9.1.js"></script>
         <script charset="utf-8" src="pager.js"></script>
         <script>
         $(function(){
@@ -36,6 +45,18 @@
                 currentForm: '#testForm',
                 pageSize: 5,
                 maxPageNum: 5
+            });
+            jQuery.ajax({
+                dataType: "jsonp",
+                url: 'weeks.json',
+                success: function(res, text, xhr){
+                    renderPager(res, text, xhr);
+                    callback(res, text, xhr);
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    alert('network error: ' + textStatus);
+                    throw new Error(errorThrown);
+                }
             });
         });
         </script>
