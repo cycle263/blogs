@@ -87,8 +87,9 @@ jQuery.fn.extend({
             },
 
             renderPrevPages = function(){
-                var curPage = opts.currentPage - 0;
-                if(curPage !== 1){
+                var curPage = opts.currentPage - 0,
+                    maxNum = opts.maxPageNum - 0;
+                if(curPage > maxNum){
                     return '<li class="m-prev-pager"><a>Prev</a></li>';
                 }
                 return '';
