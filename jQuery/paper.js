@@ -24,11 +24,11 @@ jQuery.fn.extend({
         }
 
         opts = jQuery.extend({
-            "currentForm": "body",   //格式： "jQuery(#myForm)" -- 同一页面多个分页组件必传
+            "currentForm": "body",      //格式： "jQuery(#myForm)" -- 同一页面多个分页组件必传
             "method": "GET",            //默认请求方法
             "currentPage": 0,           //当前页数
-            "pageSize": 10,             //每页显示条数
-            "maxPageNum": 8,            //每批最大页面数
+            "pageSize": 10,             //默认每页显示条数
+            "maxPageNum": 8,            //默认每批最大页面数
             "firstPageNum": 1,          //默认第一个页码数
             "itemsCount": 0,            //总条数
             "pagesCount": 0             //总页数
@@ -37,11 +37,11 @@ jQuery.fn.extend({
         var container = this,
             form = jQuery(opts.currentForm),
             renderPager = function(res, text, xhr){
-                jQuery.extend(opts, res);
+                jQuery.extend(opts, {"itemsCount": res.itemsCount, "pagesCount": res.pagesCount});
                 var pagesCount = opts.pagesCount - 0,
                     currentPage = opts.currentPage - 0,
-                str = '<div class="m-pager">'
-                    +'<span>共计<i class="m-itemsCount">'+opts.itemsCount+'</i>条，一共<i class="m-pagesCount">'+opts.pagesCount+'</i>页</span>';
+                    str = '<div class="m-pager">'
+                    +'<span>共计<i class="m-itemsCount">'+opts.itemsCount+'</i>条，一共<i class="m-pagesCount">'+pagesCount+'</i>页</span>';
 
                 if(pagesCount){
                     if(currentPage > pagesCount || currentPage < 0 || !jQuery.isNumeric(currentPage)){
@@ -62,9 +62,8 @@ jQuery.fn.extend({
             renderPageNum = function(){
                 var i = opts.firstPageNum - 0, str = '', pageNums,
                     pCount = opts.pagesCount - 0,
-                    firstNum = opts.firstPageNum - 0,
                     curPage = opts.currentPage - 0,
-                    difference = pCount - firstNum,
+                    difference = pCount - i + 1,
                     maxNum = opts.maxPageNum - 0;
                 if(!pCount){
                     alert('No data...');
@@ -120,7 +119,7 @@ jQuery.fn.extend({
                     }else{
                         opts.currentPage = form.find('.m-pager-list li:not(".m-prev-pager") .pager-num').first().attr('page-num') - opts.maxPageNum;
                     }
-                    opts.firstPageNum = opts.currentPage;     
+                    opts.firstPageNum = opts.currentPage - 0;     
                     pagerRequest();
                 });
 
@@ -128,6 +127,11 @@ jQuery.fn.extend({
                 form.on("click", ".m-pager .m-page-btn", function(event){
                     event.preventDefault();
                     opts.currentPage = jQuery(this).siblings('.m-page-num').val() - 0;
+
+                    var curPage = opts.currentPage - 0,
+                        maxNum = opts.maxPageNum - 0,
+                        batchs = Math.floor(curPage / maxNum);
+                    opts.firstPageNum = batchs * maxNum + 1;
                     if(!jQuery.isNumeric(opts.currentPage) || opts.currentPage <= 0){
                         alert('无此页数据！');
                         return;
@@ -137,12 +141,18 @@ jQuery.fn.extend({
             },
 
             pagerRequest = function(){
-                jQuery.extend(opts, jQuery.serializeObject(form));
+                jQuery.extend(opts, jQuery.serializeObject(form));                
                 jQuery.support.cors = true;     //兼容IE
                 jQuery.ajax({
                     type: opts.method,
                     url: url,
-                    data: opts,
+                    data: jQuery.objectFilter(opts, function(value, key){
+                        var notMust = {'currentForm': false, 'method': false, 'itemsCount': false, 'pagesCount': false};
+                        if(!(key in notMust)){
+                            return true;
+                        }
+                        return false;
+                    }),
                     success: function(res, text, xhr){
                         renderPager(res, text, xhr);
                         callback(res, text, xhr);
@@ -170,6 +180,18 @@ jQuery.extend({
         jQuery.map(tempArr, function(n, i){
             result[n['name']] = n['value'];
         });
+
+        return result;
+    },
+    //过滤json对象方法
+    "objectFilter": function(obj, predicate) {
+        var result = {}, key;
+
+        for (key in obj) {
+            if (obj.hasOwnProperty(key) && predicate(obj[key], key)) {
+                result[key] = obj[key];
+            }
+        }
 
         return result;
     }
