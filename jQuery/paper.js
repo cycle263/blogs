@@ -89,7 +89,7 @@ jQuery.fn.extend({
             renderPrevPages = function(){
                 var curPage = opts.currentPage - 0;
                 if(curPage !== 1){
-                    return '<li class="m-prev-pager"><a><<</a></li>';
+                    return '<li class="m-prev-pager"><a>Prev</a></li>';
                 }
                 return '';
             },
