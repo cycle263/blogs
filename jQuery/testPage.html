@@ -12,7 +12,6 @@
         .m-pager-list .active{background-color: #6cb5f4;color: #fff;border-color: #6cb5f4;}
         .m-pager-list li:hover{background-color: #ccc;}
         .m-page-num{width:40px;margin:0 5px;}
-
         .testImg{
             background: url("https://t.alipayobjects.com/images/rmsweb/T185lhXhhgXXXXXXXX.PNG") no-repeat;
             padding-left: 30px;
@@ -188,11 +187,11 @@
         jQuery(function(){
             //分页组件调用
             jQuery('.pagerContainer').Paper('http://localhost:8082/getPagerDatas.json',function(res, text, xhr){
-                jQuery('.formContent').html('<p>一共有'+res.itemsCount+'条数据, 当前在第'+res.currentPage+'页, 每页有'+res.pageSize+'条数据。</p>'+'<p>'+res.currentTime+'</p>');
+                jQuery('.formContent').html('<p>一共有'+res.itemsCount+'条数据, 当前在第'+res.currentPage+'页, 每页只显示'+res.pageSize+'条数据。</p>'+'<p>'+res.currentTime+'</p><p>当前页第一条数据为第'+res.firstItemNum+'条。</p>');
             }, {
                 currentForm: '#testForm',
-                pageSize: 5,
-                maxPageNum: 5
+                pageSize: 10,
+                maxPageNum: 8
             });
 
             jQuery('.c-tabs').on('click', '.c-tab', function(event){
