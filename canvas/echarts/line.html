@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px;width:1000px;margin:0 auto;"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts图表
+        var myChart = echarts.init(document.getElementById('main'), 'macarons');    //第二个参数为主题类型
+        
+        var option = {
+            tooltip: {
+                trigger: "item",
+                axisPointer: {
+                    type: "none"
+                },
+				formatter: "{b}{a}: {c}%",
+                textStyle: {
+                    fontFamily: "Microsoft YaHei, 微软雅黑, Georgia",
+                    fontSize: 12
+                }
+            },
+            legend: {
+                data:['通过率', '完成率']
+            },
+			toolbox: {
+				show: true,
+                x: 900,
+				feature: {
+					saveAsImage: {show: true}
+				}
+			},
+            dataZoom: {
+                show: true,
+                start: 60,
+                y: 310
+            },
+            grid: {
+                borderWidth: 0
+            },
+            axis: {
+                splitLine: {
+                    show: false
+                }
+            },
+            xAxis: [{
+                type : 'category',
+                splitLine: {
+                    show: false
+                },
+                data : ["余额宝","支付宝","蚂蚁金服","高额贷款","掌中宝","阿里巴巴", "花呗", "借钱吧", "红包", "天猫超市","余额宝","支付宝","蚂蚁金服","高额贷款","掌中宝","阿里巴巴", "花呗", "借钱吧", "红包", "天猫超市","余额宝","支付宝","蚂蚁金服","高额贷款","掌中宝","阿里巴巴", "花呗", "借钱吧", "红包", "天猫超市"],
+                axisLabel: {
+                    rotate: -45
+                }
+            }],
+            yAxis: [{
+                type : 'value',
+                splitLine: {
+                    show: false
+                },
+                boundaryGap: [0.2,0.2],
+				axisLabel: {
+					formatter: "{value}%"
+				}
+            }],
+            series : [
+                {
+                    "name":"通过率",
+                    "type":"line",
+                    "data":[45, 80, 40, 70, 90, 50, 76, 84, 96, 69, 45, 80, 40, 70, 90, 50, 76, 84, 96, 69,45, 80, 65, 70, 90, 50, 76, 84, 96, 69],
+                    "itemStyle": {
+                        "normal": {
+                            "color": "#D87A80"
+                        }
+                    },               
+					"markPoint": {
+						symbol: "heart",
+						effect: {
+							show: true,
+							loop: true,
+							type: "scale",
+                            scaleSize: 1.2
+						},
+                        itemStyle: {
+                            normal: {
+                                label: {
+                                    formatter: "{c}%"
+                                }
+                            }
+                        },
+                        tooltip: {
+                            formatter: "{b}{a}: {c}%"
+                        }, 
+						data: [{
+							type: "max",
+                            name: "最大",
+                            effect: {
+                                color: "#D87A80",
+                                shadowColor: "#D87A80"
+                            }
+						}, {
+							type: "min",
+                            name: "最小",
+                            effect: {
+                                color: "#D87A80",
+                                shadowColor: "#D87A80"
+                            }
+						}]
+					},
+                    markLine : {
+                        itemStyle: {
+                            normal: {
+                                lineStyle: {
+                                    width: 0.8
+                                },
+                                label: {
+                                    formatter: "{c}%"
+                                }
+                            }
+                        },
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                }, {
+                    "name":"完成率",
+                    "type":"line",
+                    "data":[75, 60, 40, 70, 87, 54, 79, 44, 90, 79, 65, 73, 64, 75, 91, 59, 76, 83, 84, 60,85, 84, 70, 73, 88, 80, 86, 84, 94, 69],
+                    "itemStyle": {
+                        "normal": {
+                            "color": "#5AB1EF"
+                        }
+                    },              
+                    "markPoint": {
+                        symbol: "pin",
+                        effect: {
+                            show: true,
+                            loop: true,
+                            type: "scale",
+                            scaleSize: 1.2
+                        },
+                        itemStyle: {
+                            normal: {                                
+                                label: {
+                                    formatter: "{c}%"
+                                }
+                            }
+                        },
+                        tooltip: {
+                            formatter: "{b}{a}: {c}%"
+                        }, 
+                        data: [{
+                            type: "max",
+                            name: "最大",
+                            effect: {
+                                color: "#5AB1EF",
+                                shadowColor: "#5AB1EF"
+                            }
+                        }, {
+                            type: "min",
+                            name: "最小",
+                            effect: {
+                                color: "#5AB1EF",
+                                shadowColor: "#5AB1EF"
+                            }
+                        }]
+                    },
+                    markLine : {
+                        itemStyle: {
+                            normal: {
+                                lineStyle: {
+                                    width: 0.8
+                                },
+                                label: {
+                                    formatter: "{c}%"
+                                }
+                            }
+                        },
+                        data : [
+                            {type : 'average', name: '平均值'}
+                        ]
+                    }
+                }
+            ]
+        };
+
+        // 为echarts对象加载数据 
+        myChart.setOption(option); 
+    </script>
+</body>
