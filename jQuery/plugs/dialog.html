@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Dialog</title>
+        <style>
+        .d-container{display:none;position: absolute;top: 60px;width: 820px;max-height: 520px;margin-left: -410px;left: 50%;background-color: #fff;border: 1px solid rgba(0,0,0,.2);box-shadow: 0 5px 15px rgba(0,0,0,.5);border-radius: 6px;padding: 16px;padding-top: 8px;}
+        .d-header{margin-top:5px;height: 26px;}
+        .d-content{margin-top:18px;}
+        .d-close{font-size: 26px;float: right;cursor: pointer;}
+        </style>
+    </head>
+    <body>
+        <button class="openClass">Open</button>
+        <div class="d-container">            
+            <div class="d-header"><span class="d-close" title="close">×</span></div>
+            <div class="d-content"></div>
+        </div>
+        <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+        (function(window){
+            jQuery.fn.extend({
+                "showDialog": function(trigger,opts){
+                    var container = this,
+                        body = jQuery('body'),
+                        init = function(){
+                            _initDialog();
+                            _initEvents();
+                        },
+                        _initDialog = function(){
+                            container.css(opts);
+                        },
+                        _initEvents = function(){                        
+                            body.on('click', trigger, function(){
+                                container.show();
+                            });
+
+                            container.on('click', '.d-close', function(){
+                                container.hide();
+                            });
+                        };
+                    init();
+                }
+            });
+
+            jQuery('.d-container').showDialog('.openClass', {'height': '400px'});
+        })(window, undefined);
+        </script>
+    </body>
+</html>
