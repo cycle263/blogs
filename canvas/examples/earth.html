@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Earth</title>
+</head>
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>
+    (function(window){
+        var sun = new Image();
+        var moon = new Image();
+        var earth = new Image();
+        function init(){
+            sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+            moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+            earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+            window.requestAnimationFrame(draw);
+        }
+
+        function draw() {
+            var canvas = document.getElementById('canvas'),
+                ctx = canvas.getContext('2d'),
+                earthRate = 6,
+                moonRate = 6,
+                width = canvas.width,
+                height = canvas.height,
+                earthRotateR = width / 2 * 0.7;
+
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.clearRect(0,0,width,height); // clear canvas
+
+            ctx.fillStyle = 'rgba(0,0,0,0.4)';
+            ctx.strokeStyle = 'rgba(0,153,255,0.4)';
+            ctx.save();
+            ctx.translate(width/2,height/2);
+
+            // Earth
+            var time = new Date();
+            ctx.rotate( ((2*Math.PI)/earthRate)*time.getSeconds() + ((2*Math.PI)/(earthRate * 1000))*time.getMilliseconds() );
+            ctx.translate(earthRotateR,0);
+            ctx.fillRect(0,-12,50,24); // Shadow
+            ctx.drawImage(earth,-12,-12);
+
+            // Moon
+            ctx.save();
+            ctx.rotate( ((2*Math.PI)/moonRate)*time.getSeconds() + ((2*Math.PI)/(moonRate*1000))*time.getMilliseconds() );
+            ctx.translate(0,28.5);
+            ctx.drawImage(moon,-3.5,-3.5);
+            ctx.restore();
+
+            ctx.restore();
+              
+            ctx.beginPath();
+            ctx.arc(width/2,height/2,earthRotateR,0,Math.PI*2,false); // Earth orbit
+            ctx.stroke();
+             
+            ctx.drawImage(sun,0,0,width,height);
+
+            window.requestAnimationFrame(draw);
+        }
+
+        init();
+    })(window, undefined);
+    </script>
+</body>
+</html>
