@@ -8,8 +8,8 @@
     .c-tabs li{display: inline-block;height: 28px;line-height: 28px;border: 2px solid #949494;  border-radius: 5px 5px 0 0;padding: 5px 24px;position: relative;top: 2px;background-color: #e4e4e4;cursor: pointer;}
     .c-tabs li.active{border-bottom-color: transparent;background-color: #fff;}
 
-    .content-header,.content-footer{width: 1024px;margin:0 auto;}
-    .content-footer h4{margin-bottom: 12px;}
+    .content-header,.content-footer{width: 1024px;margin:0 auto;font-family: "Microsoft YaHei, 微软雅黑, Georgia";}
+    .content-footer h4{margin-bottom: 12px;font-weight: bold;}
     
     /*bootstrap*/
     .table {
@@ -56,6 +56,7 @@
     .table thead:first-child tr:first-child th{
         border-top: 1px solid #dddddd;
     }
+    .table .th-sort{cursor: pointer;}
     .table th .x-caret{cursor: pointer;margin-left: 5px;vertical-align: middle;}
     /*bootstrap*/
     </style>
@@ -94,19 +95,23 @@
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="height:300px;width:900px;margin:0 auto;"></div>
     
-    <div class="content-footer">
+    <form class="content-footer sort-form" action="" method="POST">
+        <!-- 隐藏域 -->
+        <input type="hidden" id="sortField" name="sortField" />
+        <input type="hidden" id="descending" name="descending" />
+
         <h4>任务列表：</h4>
         <table class="table table-bordered table-hover table-sort">
             <thead>
                 <tr>
-                    <th>任务名称</th>
-                    <th>通过率<span class="x-caret x-caret-down"></span></th>
-                    <th>完成率<span class="x-caret x-caret-down"></span></th>
-                    <th>平均完成时长<span class="x-caret x-caret-down"></span></th>
-                    <th>平均得分<span class="x-caret x-caret-down"></span></th>
-                    <th>服务引导正确率<span class="x-caret x-caret-down"></span></th>
-                    <th>服务引导类目正确率<span class="x-caret x-caret-down"></span></th>
-                    <th>平均台本分数<span class="x-caret x-caret-down"></span></th>                  
+                    <th class="th-sort">任务名称<span sortValue="caseName" class="x-caret x-caret-down"></span></th>
+                    <th class="th-sort">通过率<span sortValue="passRate" class="x-caret x-caret-down"></span></th>
+                    <th class="th-sort">完成率<span sortValue="finishRate" class="x-caret x-caret-down"></span></th>
+                    <th class="th-sort">平均完成时长<span sortValue="averageTime" class="x-caret x-caret-down"></span></th>
+                    <th class="th-sort">平均得分<span sortValue="averageScore" class="x-caret x-caret-down"></span></th>
+                    <th class="th-sort">服务引导正确率<span sortValue="csAccuracy" class="x-caret x-caret-down"></span></th>
+                    <th class="th-sort">服务引导类目正确率<span sortValue="csCategoryAccuracy" class="x-caret x-caret-down"></span></th>
+                    <th class="th-sort">平均台本分数<span sortValue="averageScriptScore" class="x-caret x-caret-down"></span></th>                  
                 </tr>
             </thead>
             <tbody>
@@ -132,11 +137,12 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </form>
 
     <!-- ECharts单文件引入 -->
     <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <!-- TODO -->
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts图表
         var myChart = echarts.init(document.getElementById('main'), 'macarons');    //第二个参数为主题类型
@@ -166,7 +172,7 @@
             dataZoom: {
                 show: true,
                 start: 60,
-                y: 310
+                y: 210
             },
             grid: {
                 borderWidth: 0
@@ -181,6 +187,7 @@
                 splitLine: {
                     show: false
                 },
+                //TODO X轴的标签名称
                 data : ["余额宝","支付宝","蚂蚁金服","高额贷款","掌中宝","阿里巴巴", "花呗", "借钱吧", "红包", "天猫超市","余额宝","支付宝","蚂蚁金服","高额贷款","掌中宝","阿里巴巴", "花呗", "借钱吧", "红包", "天猫超市","余额宝","支付宝","蚂蚁金服","高额贷款","掌中宝","阿里巴巴", "花呗", "借钱吧", "红包", "天猫超市"],
                 axisLabel: {
                     rotate: -45
@@ -191,18 +198,23 @@
                 splitLine: {
                     show: false
                 },
-                min: 0,
                 max: 100,
-                boundaryGap: [0.2,0.2],
+                min: -20,
+                splitNumber: 6,           
 				axisLabel: {
-					formatter: "{value}%"
+					formatter: function(v){
+                        if(v >= 0){
+                            return v + "%";
+                        }
+                    }
 				}
             }],
             series : [
                 {
                     "name":"通过率",
                     "type":"line",
-                    "data":[45, 80, 40, 70, 90, 50, 76, 84, 96, 69, 45, 80, 40, 70, 90, 50, 76, 84, 96, 69,45, 80, 65, 70, 90, 50, 76, 84, 96, 69],
+                    //通过率的值TODO
+                    "data":[45, 80, 40, 70, 90, 50, 76, 84, 96, 69, 45, 80, 40, 70, 90, 50, 76, 84, 16, 9,45, 80, 65, 96, 70, 50, 76, 4, 66, 69],
                     "itemStyle": {
                         "normal": {
                             "color": "#D87A80"
@@ -260,6 +272,7 @@
                 }, {
                     "name":"完成率",
                     "type":"line",
+                    //完成率的值TODO
                     "data":[75, 60, 40, 70, 87, 54, 79, 44, 90, 79, 65, 73, 64, 75, 91, 59, 76, 83, 84, 60,85, 84, 70, 73, 88, 80, 86, 84, 94, 69],
                     "itemStyle": {
                         "normal": {
@@ -322,9 +335,16 @@
         // 为echarts对象加载数据 
         myChart.setOption(option);
 
-        $('.table-sort').on('click', '.x-caret', function(){
-            var self = $(this);
-            self.toggleClass('x-caret-up');
+        $('.table-sort').on('click', '.th-sort', function(){
+            var self = $(this),
+                caret = self.find('.x-caret'),
+                form = self.closest('.sort-form');
+            caret.toggleClass('x-caret-up');
+
+            //更新隐藏域值
+            $('#sortField').val(caret.attr('sortValue'));   //TODO
+            $('#descending').val(caret.hasClass('x-caret-up'));
+            form.submit();
         });
     </script>
 </body>
