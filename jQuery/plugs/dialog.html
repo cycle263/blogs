@@ -4,15 +4,14 @@
         <meta charset="utf-8" />
         <title>Dialog</title>
         <style>
-        pre  {margin-left: auto;
-          margin-right: auto;
-          padding-top: 10px;
-          padding-bottom: 10px;
-          padding-left: 0.7rem;
-          line-height: 1.2;
-          color: #FFF;
-          background: #111;
-          border-radius: 5px;
+        pre {
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 0.7rem;
+            line-height: 1.2;
+            color: #FFF;
+            background: #111;
+            border-radius: 5px;
         }
 
         .d-container{display:none;position: absolute;top: 60px;width: 820px;max-height: 520px;margin-left: -410px;left: 50%;background-color: #fff;border: 1px solid rgba(0,0,0,.2);box-shadow: 0 5px 15px rgba(0,0,0,.5);border-radius: 6px;padding: 16px;padding-top: 8px;}
@@ -22,15 +21,18 @@
         </style>
     </head>
     <body>
+        
+        <h4>css引用：</h4>
         <pre>
-            <b>css引用：</b>
             <div>
 .d-container{display:none;position: absolute;top: 60px;width: 820px;max-height: 520px;margin-left: -410px;left: 50%;background-color: #fff;border: 1px solid rgba(0,0,0,.2);box-shadow: 0 5px 15px rgba(0,0,0,.5);border-radius: 6px;padding: 16px;padding-top: 8px;}
 .d-header{margin-top:5px;height: 26px;}
 .d-content{margin-top:18px;}
 .d-close{font-size: 26px;float: right;cursor: pointer;}
             </div>
-            <b>VM引用：</b>
+        </pre>
+        <h4>VM引用：</h4>
+        <pre>
             <div>
 &lt;button class="openClass"&gt;Open&lt;/button&gt;
 &lt;div class="d-container"&gt;            
@@ -38,11 +40,14 @@
     &lt;div class="d-content"&gt;&lt;/div&gt;
 &lt;/div&gt;
             </div>
-            <div>弹出框内容可以直接写在".d-content"元素之内。</div>
-            <b>JS引用：</b>
-            <div>jQuery('.d-container').showDialog('.openClass', {'height': '400px'});</div>
-            <div>".d-container"位弹出框容器，".openClass"为触发弹出框展示的元素，后面json为弹出框配置项。</div>
         </pre>
+        <p>弹出框内容可以直接写在".d-content"元素之内。</p>
+
+        <h4>JS引用：</h4>
+        <pre>
+            <div>jQuery('.d-container').showDialog('.openClass', {'height': '400px'});</div>
+        </pre>
+        <p>".d-container"位弹出框容器，".openClass"为触发弹出框展示的元素，后面json为弹出框配置项。</p>        
         <button class="openClass">Open</button>
         <div class="d-container">            
             <div class="d-header"><span class="d-close" title="close">×</span></div>
