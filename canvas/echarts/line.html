@@ -2,11 +2,140 @@
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
+    <link rel="stylesheet" href="http://g.alicdn.com/bui/bui/1.1.17/css/bs3/dpl-min.css">
+    <style>
+    .c-tabs{list-style: none;padding-left: 0;width: 100%;border-bottom: 2px solid #949494;margin-bottom: 0;}
+    .c-tabs li{display: inline-block;height: 28px;line-height: 28px;border: 2px solid #949494;  border-radius: 5px 5px 0 0;padding: 5px 24px;position: relative;top: 2px;background-color: #e4e4e4;cursor: pointer;}
+    .c-tabs li.active{border-bottom-color: transparent;background-color: #fff;}
+
+    .content-header,.content-footer{width: 1024px;margin:0 auto;}
+    .content-footer h4{margin-bottom: 12px;}
+    
+    /*bootstrap*/
+    .table {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        line-height: 20px;
+        text-align: center;
+        vertical-align: top;
+        border-top: 1px solid #dddddd;
+    }
+    .table th {
+        font-weight: bold;
+    }
+
+    .table thead>tr>th {
+        vertical-align: bottom;
+    }
+    .table-bordered {
+        border: 1px solid #dddddd;
+        border-collapse: separate;
+        *border-collapse: collapse;
+        border-left: 0;
+        border-top: 0;
+        -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+                border-radius: 4px;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border-left: 1px solid #dddddd;
+    }
+    .table-hover>tbody>tr:hover {
+        background-color: #f5f5f5
+    }
+    .table-bordered thead tr:last-child th{
+        border-bottom-width: 1px;
+    }
+    .table thead:first-child tr:first-child th{
+        border-top: 1px solid #dddddd;
+    }
+    .table th .x-caret{cursor: pointer;margin-left: 5px;vertical-align: middle;}
+    /*bootstrap*/
+    </style>
 </head>
 <body>
+    <div class="content-header">
+        <div class="content-search form-search"></div>
+        <ul class="c-tabs">
+            <li class="c-tab active">趋势分析</li>
+        </ul>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>指标</th>
+                    <th>当前值</th>
+                    <th>7日均值</th>
+                    <th>30日均值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>通过率</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>完成率</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="height:400px;width:1000px;margin:0 auto;"></div>
+    <div id="main" style="height:300px;width:900px;margin:0 auto;"></div>
+    
+    <div class="content-footer">
+        <h4>任务列表：</h4>
+        <table class="table table-bordered table-hover table-sort">
+            <thead>
+                <tr>
+                    <th>任务名称</th>
+                    <th>通过率<span class="x-caret x-caret-down"></span></th>
+                    <th>完成率<span class="x-caret x-caret-down"></span></th>
+                    <th>平均完成时长<span class="x-caret x-caret-down"></span></th>
+                    <th>平均得分<span class="x-caret x-caret-down"></span></th>
+                    <th>服务引导正确率<span class="x-caret x-caret-down"></span></th>
+                    <th>服务引导类目正确率<span class="x-caret x-caret-down"></span></th>
+                    <th>平均台本分数<span class="x-caret x-caret-down"></span></th>                  
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>余额宝新人培训</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>国际业务老人培训</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <!-- ECharts单文件引入 -->
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts图表
@@ -29,7 +158,7 @@
             },
 			toolbox: {
 				show: true,
-                x: 900,
+                x: 800,
 				feature: {
 					saveAsImage: {show: true}
 				}
@@ -62,6 +191,8 @@
                 splitLine: {
                     show: false
                 },
+                min: 0,
+                max: 100,
                 boundaryGap: [0.2,0.2],
 				axisLabel: {
 					formatter: "{value}%"
@@ -189,6 +320,11 @@
         };
 
         // 为echarts对象加载数据 
-        myChart.setOption(option); 
+        myChart.setOption(option);
+
+        $('.table-sort').on('click', '.x-caret', function(){
+            var self = $(this);
+            self.toggleClass('x-caret-up');
+        });
     </script>
 </body>
