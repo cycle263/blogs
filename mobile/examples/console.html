@@ -5,20 +5,28 @@
     <title></title>
   </head>
   <body>
-    <div>
-      设备宽度：
-      <div class="width">
-
+      <div class="screenWidth">
+        设备宽度：<span></span>
       </div>
-      ，设备高度：
-      <div class="height">
-
+      <div class="screenHeight">
+        设备高度：<span></span>
       </div>
-    </div>
+      <div class="clientWidth">
+        布局宽度：<span></span>
+      </div>
+      <div class="devicePixelRatio">
+        设备像素比：<span></span>
+      </div>
+      <div class="orientation">
+        屏幕方向：<span></span>
+      </div>
     <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
     <script type="text/javascript">
-    $('.width').text(screen.width);
-    $('.height').text(screen.height);
+    $('.screenWidth span').text(screen.width);
+    $('.screenHeight span').text(screen.height);
+    $('.clientWidth span').text(document.documentElement.clientWidth);
+    $('.devicePixelRatio span').text(devicePixelRatio);
+    $('.orientation span').text(orientation);
     </script>
   </body>
 </html>
