@@ -1,3 +1,6 @@
 1、父元素宽度固定，子元素img宽度超过父元素,可使用max-width避免图片溢出；通用可以使用word-break:break避免超长单词溢出；
 
-2、
+2、闭合浮动，撑高父容器的几种方法：
+    ①. 添加额外标签--样式clear: both，或者增加伪元素：:after清除;
+    ②. 使用 br标签和其自身的 html属性<br clear="all">；
+    ③. 父元素设置 overflow：hidden 或者 display:table；
