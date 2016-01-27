@@ -1,6 +1,23 @@
 1、父元素宽度固定，子元素img宽度超过父元素,可使用max-width避免图片溢出；通用可以使用word-break:break避免超长单词溢出；
 
 2、闭合浮动，撑高父容器的几种方法：
+
     ①. 添加额外标签--样式clear: both，或者增加伪元素：:after清除;
+    
     ②. 使用 br标签和其自身的 html属性<br clear="all">；
+    
     ③. 父元素设置 overflow：hidden 或者 display:table；
+    
+    背后的原理：触发BFC，解决父容器塌陷问题
+    
+3、那么如何触发BFC呢？
+
+    1. float 除了none以外的值 
+ 
+    2. overflow 除了visible 以外的值（hidden，auto，scroll ） 
+ 
+    3. display (table-cell，table-caption，inline-block) 
+ 
+    4. position（absolute，fixed） 
+ 
+    5. fieldset元素
