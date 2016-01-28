@@ -3,17 +3,22 @@ import ReactDom from 'react-dom';
 import '../common/style.css'
 
 const GroceryList = React.createClass({
+  getInitialState: function() {
+    return {}
+  },
+
   handleClick: function(i) {
-    alert('You clicked: ' + this.props.items[i]);
+    this.props.clickCallback(this.props.items[i], i);
   },
 
   render: function() {
-    console.log(this.refs);
     return (
       <div>
         {this.props.items.map(function(item, i) {
           return (
-            <div className="list" onClick={this.handleClick.bind(this, i)} key={i}>{item}</div>
+            <div className={item.active
+              ? "list active"
+              : "list"} onClick={this.handleClick.bind(this, i)} key={i}>{item.name}</div>
           );
         }, this)}
       </div>
@@ -22,15 +27,46 @@ const GroceryList = React.createClass({
 });
 
 const App = React.createClass({
-  handleClick(event){
-    console.log(ReactDom.findDOMNode(this.refs.Grocery));
+  getInitialState: function() {
+    return {
+      data: [
+        {
+          name: 'Apple',
+          active: true
+        }, {
+          name: 'Banana',
+          active: false
+        }, {
+          name: 'Cranberry',
+          active: false
+        }
+      ]
+    }
   },
+
+  handleClick(event) {
+    console.log(ReactDom.findDOMNode(this.refs.showText));
+  },
+
+  clickCallback: function(content, i) {
+    var data = this.state.data.slice();
+    data.forEach((item, key) => {
+      item.active = false;
+    });
+    data[i].active = true;
+    this.refs.showText.value = content.name;
+    this.setState(data);
+  },
+
   render: function() {
     return (
       <div className="container">
-        <GroceryList ref="Grocery" on items={['Apple', 'Banana', 'Cranberry']} />
-        <div>
-          <button onClick={this.handleClick}>Test</button>
+        <GroceryList clickCallback={this.clickCallback} items={this.state.data}/>
+        <div style={{
+          marginTop: 12
+        }}>
+          <button className="btn" onClick={this.handleClick}>获取DOM</button>
+          <input ref="showText" type="text"/>
         </div>
       </div>
     )
