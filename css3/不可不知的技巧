@@ -3,6 +3,27 @@
 2、闭合浮动，撑高父容器的几种方法：
 
     ①. 添加额外标签--样式clear: both，或者增加伪元素：:after清除;
+        
+        .clearfix{
+           *zoom:1;           //触发IE hasLayout 
+        }
+        .clearfix:after{
+           content:".";       //生成内容作为最后一个元素
+           display:block;     //使生成的元素以块级元素显示,占满剩余空间
+           height:0;          //避免生成内容破坏原有布局的高度
+           visibility:hidden; //使生成的内容不可见，并允许可能被生成内容盖住的内容可以进行点击和交互
+           clear:both;
+        }
+        
+        
+        .clearfix{
+           *zoom:1;
+        }
+        .clearfix:after{
+           content:"";
+           display:table;
+           clear:both;
+        }
     
     ②. 使用 br标签和其自身的 html属性<br clear="all">；
     
