@@ -23,21 +23,29 @@
     </head>
     <body>
         <div class="annular-container">
-            <canvas class="annular" width="80" height="80">60|after|120</canvas>
+            <canvas class="annular" width="180" height="180">9|after|120</canvas>
+            <canvas class="annular" width="88" height="88">59|before|150</canvas>
+            <canvas class="annular" width="80" height="80">89|after|100</canvas>
+        </div>
+        <div class="annular-container">
+            <canvas class="annular" width="80" height="80">29|after|80</canvas>
+            <canvas class="annular" width="80" height="80">99|before|120</canvas>
+            <canvas class="annular" width="80" height="80">99|after|100</canvas>
         </div>
         <script src="../libs/zepto.min.js"></script>
         <script type="text/javascript">
         $(function(){
             $.fn.annular = function(){
-                $(this).each(function(){
+                $(this).each(function(key, item){
                     var canvas = this,
                         w = canvas.width,
                         h = canvas.height,
                         ctx = canvas.getContext('2d'),
                         text = $(this).text(),
                         tempArr = text.split('|'),
-                        num = tempArr[0] - 0,
+                        num = tempArr[0] - 0 || 0,
                         status = tempArr[1],
+                        total = tempArr[2] - 0 || 100,
                         content = '',
                         numText = '',
                         rate = 0,
@@ -45,13 +53,14 @@
 
                     if(num === undefined || status === undefined) return;
                     if(status === 'after'){
-                        content = num >= 60 ? '分通过' : '分不通过';
-                        color = num >= 60 ? '#0099FF' : '#FF9900';
+                        rate = num / total;
+                        content = rate >= 0.6 ? '分通过' : '分不通过';
+                        color = rate >= 0.6 ? '#0099FF' : '#FF9900';
                         numText = num + '';
-                        rate = num / tempArr[2];
                     }else if(status === 'before'){
+                        rate = num / total;
                         content = '进度';
-                        numText = num + '/' + tempArr[2];
+                        numText = num + '/' + total;
                     }
 
                     //画底色圆形
@@ -59,36 +68,53 @@
                     ctx.beginPath();
                     ctx.fillStyle = "#999999";
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 - 0.5, 0, Math.PI * 2, false);
+                    ctx.arc(w / 2, h / 2, w / 2, 0, Math.PI * 2, false);
                     ctx.fill();
                     ctx.closePath();
 
-                    //画进度圆形
-                    ctx.beginPath();
-                    ctx.fillStyle = color;
-                    ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 - 0.5, -Math.PI * 0.5, Math.PI * (2 * rate - 0.5), false);
-                    ctx.fill();
-                    ctx.closePath();
+                    var processAnimate = function(cur){
+                        cur = cur === undefined ? 0 : cur;
+                        cur += 0.01;
+                        console.log(cur, rate, key);
+                        if(cur < rate){
+                            requestAnimationFrame(function(){
+                                processAnimate(cur);
+                            });
+                        }else{
+                            doText();
+                            return;
+                        }
+                        //画进度圆形
+                        ctx.beginPath();
+                        ctx.fillStyle = color;
+                        ctx.moveTo(w / 2, h / 2);
+                        ctx.arc(w / 2, h / 2, w / 2, -Math.PI * 0.5, Math.PI * (2 * cur - 0.5), false);
+                        ctx.fill();
+                        ctx.closePath();
 
-                    //画白色圆形，构造底色环形
-                    ctx.beginPath();
-                    ctx.fillStyle = "#fff";
-                    ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 * 0.8 - 0.5, 0, Math.PI * 2, false);
-                    ctx.fill();
-                    ctx.closePath();
+                        //画白色圆形，构造底色环形
+                        ctx.beginPath();
+                        ctx.fillStyle = "#fff";
+                        ctx.moveTo(w / 2, h / 2);
+                        ctx.arc(w / 2, h / 2, w / 2 * 0.8 + 1, 0, Math.PI * 2, false);
+                        ctx.fill();
+                        ctx.closePath();
+                    }
 
-                    ctx.beginPath();
-                    var size = 14;
-                    ctx.font = size + "px YaHei";
-                    ctx.fillStyle = "#A6A19D";
-                    var numTextPro = ctx.measureText(numText),
-                        contentPro = ctx.measureText(content);
+                    var doText = function(){
+                        ctx.beginPath();
+                        var size = 14;
+                        ctx.font = size + "px YaHei";
+                        ctx.fillStyle = "#A6A19D";
+                        var numTextPro = ctx.measureText(numText),
+                            contentPro = ctx.measureText(content);
 
-                    ctx.fillText(numText, w / 2 - numTextPro.width / 2, h / 2 - size / 2);
-                    ctx.fillText(content, w / 2 - contentPro.width / 2, h / 2 + size);
-                    ctx.closePath();
+                        ctx.fillText(numText, w / 2 - numTextPro.width / 2, h / 2 - size / 2);
+                        ctx.fillText(content, w / 2 - contentPro.width / 2, h / 2 + size);
+                        ctx.closePath();
+                    };
+
+                    processAnimate();
                 });
             };
 
