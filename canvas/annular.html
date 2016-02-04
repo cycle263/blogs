@@ -11,9 +11,11 @@
                 var docEl = doc.documentElement,
                     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
                     recalc = function () {
-                        var clientWidth = docEl.clientWidth;
+                        var clientWidth = docEl.clientWidth,
+                            zoom = clientWidth / 320;
                         if (!clientWidth) return;
-                        docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
+                        docEl.style.fontSize = 16 * zoom + 'px';
+                        docEl.setAttribute('zoom', zoom);
                     };
                 if (!doc.addEventListener) return;
                 win.addEventListener(resizeEvt, recalc, false);
@@ -108,7 +110,7 @@
 
                     var doText = function(){
                         ctx.beginPath();
-                        var size = 14;
+                        var size = 14 * $(document.documentElement).attr('zoom');
                         ctx.font = size + "px YaHei";
                         ctx.fillStyle = "#A6A19D";
                         var numTextPro = ctx.measureText(numText),
@@ -122,8 +124,9 @@
                     processAnimate();
                 });
             };
-
-            $('.annular').annular();
+            var w = $('.annular').attr('width'),
+                zoom = document.documentElement.getAttribute('zoom');
+            $('.annular').attr('width', w * zoom).attr('height', w * zoom).annular();
         });
         </script>
     </body>
