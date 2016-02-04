@@ -23,8 +23,8 @@
     </head>
     <body>
         <div class="annular-container">
-            <canvas class="annular" width="180" height="180">9|after|120</canvas>
-            <canvas class="annular" width="88" height="88">59|before|150</canvas>
+            <canvas class="annular" width="80" height="80">9|after|120</canvas>
+            <canvas class="annular" width="80" height="80">59|before|150</canvas>
             <canvas class="annular" width="80" height="80">89|after|100</canvas>
         </div>
         <div class="annular-container">
@@ -68,7 +68,7 @@
                     ctx.beginPath();
                     ctx.fillStyle = "#999999";
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2, 0, Math.PI * 2, false);
+                    ctx.arc(w / 2, h / 2, w / 2 - 1, 0, Math.PI * 2, false);
                     ctx.fill();
                     ctx.closePath();
 
@@ -81,14 +81,19 @@
                                 processAnimate(cur);
                             });
                         }else{
+                            doAnnular(rate);
                             doText();
                             return;
                         }
+                        doAnnular(cur);
+                    };
+
+                    var doAnnular = function(cur){
                         //画进度圆形
                         ctx.beginPath();
                         ctx.fillStyle = color;
                         ctx.moveTo(w / 2, h / 2);
-                        ctx.arc(w / 2, h / 2, w / 2, -Math.PI * 0.5, Math.PI * (2 * cur - 0.5), false);
+                        ctx.arc(w / 2, h / 2, w / 2 - 1, -Math.PI * 0.5, Math.PI * (2 * cur - 0.5), false);
                         ctx.fill();
                         ctx.closePath();
 
@@ -96,10 +101,10 @@
                         ctx.beginPath();
                         ctx.fillStyle = "#fff";
                         ctx.moveTo(w / 2, h / 2);
-                        ctx.arc(w / 2, h / 2, w / 2 * 0.8 + 1, 0, Math.PI * 2, false);
+                        ctx.arc(w / 2, h / 2, w / 2 * 0.8, 0, Math.PI * 2, false);
                         ctx.fill();
                         ctx.closePath();
-                    }
+                    };
 
                     var doText = function(){
                         ctx.beginPath();
