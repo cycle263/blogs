@@ -56,6 +56,22 @@
                 width: 49%;
                 height: 100%;
             }
+            .menu-title{
+                background-color: #ccc;
+                font-size: 0.75rem;
+                color: #333;
+            }
+            .menu-content li{
+                list-style: none;
+                border-radius: 5rem;
+                border: 1px solid #ccc;
+                color: #ccc;
+                display: inline-block;
+            }
+            .menu-content li.checked{
+                background-color: #ccc;
+                color: #fff;
+            }
         </style>
         <script type="text/javascript">
             (function (doc, win, undefined) {
@@ -118,7 +134,13 @@
         <script type="text/javascript">
 
             $('.wp-inner').swipepage({
-                duration: 300
+                duration: 300,
+                beforeChange: function(data){
+                    console.log(arguments);
+                },
+                afterChange: function(data){
+                    console.log(arguments);
+                }
             });
             $('button').click(function(event){
                 $.fn.swipepage.moveTo($('input').val() - 0, false);
