@@ -193,25 +193,25 @@
         <script src="../../libs/zepto.swipepage.min.js"></script>
         <script type="text/javascript">
         $(function(){
-            // $('.wp-inner').swipepage({
-            //     duration: 300,
-            //     beforeChange: function(data){
-            //         console.log(arguments);
-            //     },
-            //     afterChange: function(data){
-            //         console.log(arguments);
-            //     }
-            // });
-            // $('button').click(function(event){
-            //     $.fn.swipepage.moveTo($('input').val() - 0, false);
-            // });
+            $('.wp-inner').swipepage({
+                duration: 300,
+                beforeChange: function(data){
+                    console.log(arguments);
+                },
+                afterChange: function(data){
+                    console.log(arguments);
+                }
+            });
+            $('button').click(function(event){
+                $.fn.swipepage.moveTo($('input').val() - 0, false);
+            });
             
             setTimeout(function(){
                 debugInfo();
             }, 2000);
             debugInfo();
             function debugInfo(){
-                alert('html clientWidth: ' + $('html').width() + '; html zoom: ' + $('html').css('zoom') + '; html font size: ' + $('html').css('font-size') + '; document.documentElement.clientWidth: ' + document.documentElement.clientWidth);
+                alert('wp-inner width: ' + $('.wp-inner').width() + '; page1 width: ' + $('.page1').width());
             }
         });
         </script>
