@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-        <name="wap-font-scale" content="no"/>
         <title>swipe page</title>
         <link rel="stylesheet" href="../../stylesheets/reset.css" media="screen" title="no title" charset="utf-8">
         <style media="screen">
@@ -142,7 +141,7 @@
                         var clientWidth = docEl.clientWidth;
                         if (!clientWidth) return;
                         docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
-                        docEl.style.zoom = 1;
+                        docEl.style.zoom = 3;
                     };
                 if (!doc.addEventListener) return;
                 win.addEventListener(resizeEvt, recalc, false);
