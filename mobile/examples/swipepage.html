@@ -140,7 +140,7 @@
                     recalc = function () {
                         var clientWidth = docEl.clientWidth;
                         if (!clientWidth) return;
-                        //docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
+                        docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
                     };
                 if (!doc.addEventListener) return;
                 win.addEventListener(resizeEvt, recalc, false);
@@ -192,19 +192,21 @@
         <script src="../../libs/zepto.min.js"></script>
         <script src="../../libs/zepto.swipepage.min.js"></script>
         <script type="text/javascript">
-
+        $(function(
             $('.wp-inner').swipepage({
                 duration: 300,
                 beforeChange: function(data){
-                    console.log(arguments);
+                    alert(arguments);
                 },
                 afterChange: function(data){
-                    console.log(arguments);
+                    alert(arguments);
                 }
             });
             $('button').click(function(event){
                 $.fn.swipepage.moveTo($('input').val() - 0, false);
             });
+            alert('document clientWidth: ' + $(document.clientWidth));
+        });    
         </script>
     </body>
 </html>
