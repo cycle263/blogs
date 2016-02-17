@@ -102,13 +102,13 @@
             }
             .question-answers{
                 list-style:none;
-                padding: 0 0.6rem;
                 text-align: left;
             }
             .question-answers li{
                 height:2.2rem;
                 line-height:2.2rem;
                 cursor:pointer;
+                padding: 0 0.8rem;
             }
             .question-answers .question-answer-icon{
                 font-size:0.75rem;
@@ -124,7 +124,10 @@
                 margin-bottom:0.5rem;
                 text-align: center;
             }
-            .question-answers .question-answer-icon.checked{
+            .question-answers li.checked{
+                background-color:#fff;
+            }
+            .question-answers li.checked .question-answer-icon{
                 background-color: #ccc;
                 color: #fff;
             }
