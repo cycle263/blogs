@@ -193,18 +193,18 @@
         <script src="../../libs/zepto.swipepage.min.js"></script>
         <script type="text/javascript">
         $(function(){
-            $('.wp-inner').swipepage({
-                duration: 300,
-                beforeChange: function(data){
-                    console.log(arguments);
-                },
-                afterChange: function(data){
-                    console.log(arguments);
-                }
-            });
-            $('button').click(function(event){
-                $.fn.swipepage.moveTo($('input').val() - 0, false);
-            });
+            // $('.wp-inner').swipepage({
+            //     duration: 300,
+            //     beforeChange: function(data){
+            //         console.log(arguments);
+            //     },
+            //     afterChange: function(data){
+            //         console.log(arguments);
+            //     }
+            // });
+            // $('button').click(function(event){
+            //     $.fn.swipepage.moveTo($('input').val() - 0, false);
+            // });
             
             setTimeout(function(){
                 debugInfo();
