@@ -196,16 +196,16 @@
             $('.wp-inner').swipepage({
                 duration: 300,
                 beforeChange: function(data){
-                    alert(arguments);
+                    console.log(arguments);
                 },
                 afterChange: function(data){
-                    alert(arguments);
+                    console.log(arguments);
                 }
             });
             $('button').click(function(event){
                 $.fn.swipepage.moveTo($('input').val() - 0, false);
             });
-            alert('document clientWidth: ' + $(document.clientWidth));
+            alert('document clientWidth: ' + $(document)[0].clientWidth);
         });    
         </script>
     </body>
