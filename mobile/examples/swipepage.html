@@ -205,11 +205,15 @@
             $('button').click(function(event){
                 $.fn.swipepage.moveTo($('input').val() - 0, false);
             });
-            alert('html clientWidth: ' + $('html').width() + '; html zoom: ' + $('html').css('zoom'));
+            
             setTimeout(function(){
-                alert('html clientWidth: ' + $('html') + '; html zoom: ' + $('html').css('zoom'));
+                debugInfo();
             }, 2000);
-        });    
+            debugInfo();
+            function debugInfo(){
+                alert('html clientWidth: ' + $('html').width() + '; html zoom: ' + $('html').css('zoom') + '; html font size: ' + $('html').css('font-size'));
+            }
+        });
         </script>
     </body>
 </html>
