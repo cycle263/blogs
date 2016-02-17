@@ -210,10 +210,10 @@
             
             setTimeout(function(){
                 debugInfo();
-            }, 2000);
+            }, 1000);
             debugInfo();
             function debugInfo(){
-                alert('wp-inner width: ' + $('.wp-inner').width() + '; innerWidth width: ' + innerWidth);
+                alert('document.documentElement.clientWidth: ' + document.documentElement.clientWidth + '; innerWidth: ' + innerWidth);
             }
         });
         </script>
