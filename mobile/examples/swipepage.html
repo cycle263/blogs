@@ -205,7 +205,10 @@
             $('button').click(function(event){
                 $.fn.swipepage.moveTo($('input').val() - 0, false);
             });
-            alert('document clientWidth: ' + $(document.documentElement).width());
+            alert('document clientWidth: ' + $(document.documentElement).width() + '; body zoom' + $(body).css(zoom));
+            setTimeout(function(){
+                alert('document clientWidth: ' + $(document.documentElement).width() + '; body zoom' + $(body).css(zoom));
+            }, 2000);
         });    
         </script>
     </body>
