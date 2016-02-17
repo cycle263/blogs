@@ -205,7 +205,7 @@
             $('button').click(function(event){
                 $.fn.swipepage.moveTo($('input').val() - 0, false);
             });
-            alert('document clientWidth: ' + $(document)[0].clientWidth);
+            alert('document clientWidth: ' + $(document.documentElement).width());
         });    
         </script>
     </body>
