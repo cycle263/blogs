@@ -84,7 +84,7 @@
                 list-style: none;
                 border-radius: 5rem;
                 border: 1px solid #01AAEE;
-                color: #999;
+                color: #01AAEE;
                 display: inline-block;
                 height:2rem;
                 line-height:2rem;
@@ -95,7 +95,7 @@
                 cursor:pointer;
             }
             .menu-content li.checked{
-                background-color: #ccc;
+                background-color: #01AAEE;
                 color: #fff;
             }
             
@@ -118,7 +118,7 @@
                 list-style: none;
                 border-radius: 5rem;
                 border: 1px solid #01AAEE;
-                color: #999;
+                color: #01AAEE;
                 display: inline-block;
                 height:1.5rem;
                 line-height:1.5rem;
@@ -128,10 +128,10 @@
                 text-align: center;
             }
             .question-answers li.checked{
-                background-color:#fff;
+                background-color:#01AAEE;
             }
             .question-answers li.checked .question-answer-icon{
-                background-color: #ccc;
+                background-color: #01AAEE;
                 color: #fff;
             }
         </style>
@@ -213,7 +213,7 @@
             }, 2000);
             debugInfo();
             function debugInfo(){
-                alert('wp-inner width: ' + $('.wp-inner').width() + '; document width: ' + $(document).width());
+                alert('wp-inner width: ' + $('.wp-inner').width() + '; innerWidth width: ' + innerWidth);
             }
         });
         </script>
