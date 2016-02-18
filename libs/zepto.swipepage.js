@@ -60,12 +60,12 @@
         that.movingFlag = false;
 
         that.$this.addClass('swipepage-wp');
-        that.$parent = that.$this.parent();
-        that.$pages = that.$this.find(o.page).addClass('swipepage-page swipepage-dir-' + o.dir);
-        that.pagesLength = that.$pages.length;
+        // that.$parent = that.$this.parent();
+        // that.$pages = that.$this.find(o.page).addClass('swipepage-page swipepage-dir-' + o.dir);
+        // that.pagesLength = that.$pages.length;
         // that.update();
-        that.initEvent();
-        that.start();
+        // that.initEvent();
+        // that.start();
     }
 
     function Swipepage($this, option) {
@@ -81,10 +81,10 @@
                 this.$this.width(this.width * this.pagesLength);
             }
 
-            // this.height = this.$parent.height();
-            // this.$pages.height(this.height);
+            this.height = this.$parent.height();
+            this.$pages.height(this.height);
 
-            // this.moveTo(this.curIndex < 0 ? this.o.start : this.curIndex);
+            this.moveTo(this.curIndex < 0 ? this.o.start : this.curIndex);
         },
         initEvent: function() {
             var that = this;
