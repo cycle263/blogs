@@ -220,9 +220,9 @@
     });
 
     $.fn.swipepage = function(option) {
-        if (!swipepage) {
-            swipepage = new Swipepage($(this), option);
-        }
+        // if (!swipepage) {
+        //     swipepage = new Swipepage($(this), option);
+        // }
         return this;
     };
     $.fn.swipepage.version = '0.5.0';
