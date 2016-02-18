@@ -4,7 +4,7 @@
  * Copyright 2014 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/zepto.swipepage/blob/master/LICENSE)
  */
-;(function($, window, undefined) {
+;(function() {
     // if (typeof $ === 'undefined') {
     //     throw new Error('zepto.swipepage\'s script requires Zepto');
     // }
@@ -218,13 +218,13 @@
     //     }
     // });
 
-    $.fn.swipepage = function(option) {
+    $.fn.swipepage = function() {
         // if (!swipepage) {
         //     swipepage = new Swipepage($(this), option);
         // }
         // return this;
     };
-    $.fn.swipepage.version = '0.5.0';
+    // $.fn.swipepage.version = '0.5.0';
 
     // $.each(['update', 'moveTo', 'moveNext', 'movePrev', 'start', 'stop', 'getCurIndex', 'holdTouch', 'unholdTouch'], function(key, val) {
     //     $.fn.swipepage[val] = function() {
@@ -234,4 +234,4 @@
     //         return swipepage[val].apply(swipepage, [].slice.call(arguments, 0));
     //     };
     // });
-}(Zepto, window));
+}());
