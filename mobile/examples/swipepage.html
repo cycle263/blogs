@@ -192,9 +192,10 @@
         </div>
 
         <script src="../../libs/zepto.min.js"></script>
-        <script src="../../libs/zepto.swipepage.js"></script>
+        <!--<script src="../../libs/zepto.swipepage.js"></script>-->
         <script type="text/javascript">
         $(function(){
+            $.fn.swipepage = function() {};
             $('.wp-inner').swipepage();
             // $('button').click(function(event){
             //     $.fn.swipepage.moveTo($('input').val() - 0, false);
