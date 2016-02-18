@@ -10,7 +10,6 @@
         <style media="screen">
             html,body{
                 height: 100%;
-                width: 100%;
                 font-size: 16px;
                 background-color:#fff;
                 overflow:hidden;
@@ -18,7 +17,6 @@
             
             .wp-inner{
                 height: 100%;
-                width: 100%;
                 box-sizing: border-box;
                 overflow:hidden;
                 padding-bottom: 2.5rem;
@@ -46,7 +44,6 @@
             }
             .section{
                 height: 100%;
-                width: 100%;
                 line-height: 100%;
                 text-align: center;
             }
@@ -322,6 +319,7 @@
             });
             
             $('.wp-inner').swipepage();
+            $('.btns').width(innerWidth);
             $('.page1').on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 0;
                 $('.menu-content li.checked').removeClass('checked');
