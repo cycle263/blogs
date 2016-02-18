@@ -271,9 +271,10 @@
                     if (this.o.dir === 'h') {
                         this.width = this.$parent.width();
                         this.$pages.width(this.width);
+                        this.$this.width(this.width * this.pagesLength);
                         var that = this;
                         setTimeout(function(){
-                            that.$this.width(that.width * that.pagesLength);
+                            alert($('body').width());
                         },1300);
                     }
         
