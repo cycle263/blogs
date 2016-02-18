@@ -70,7 +70,7 @@
 
     function Swipepage($this, option) {
         this.$this = $this;
-        init.call(this, option);
+        // init.call(this, option);
     }
 
     $.extend(Swipepage.prototype, {
