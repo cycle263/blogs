@@ -219,19 +219,19 @@
     });
 
     $.fn.swipepage = function(option) {
-        if (!swipepage) {
-            swipepage = new Swipepage($(this), option);
-        }
-        return this;
+        // if (!swipepage) {
+        //     swipepage = new Swipepage($(this), option);
+        // }
+        // return this;
     };
     $.fn.swipepage.version = '0.5.0';
 
-    $.each(['update', 'moveTo', 'moveNext', 'movePrev', 'start', 'stop', 'getCurIndex', 'holdTouch', 'unholdTouch'], function(key, val) {
-        $.fn.swipepage[val] = function() {
-            if (!swipepage) {
-                return 0;
-            }
-            return swipepage[val].apply(swipepage, [].slice.call(arguments, 0));
-        };
-    });
+    // $.each(['update', 'moveTo', 'moveNext', 'movePrev', 'start', 'stop', 'getCurIndex', 'holdTouch', 'unholdTouch'], function(key, val) {
+    //     $.fn.swipepage[val] = function() {
+    //         if (!swipepage) {
+    //             return 0;
+    //         }
+    //         return swipepage[val].apply(swipepage, [].slice.call(arguments, 0));
+    //     };
+    // });
 }(Zepto, window));
