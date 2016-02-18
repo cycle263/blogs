@@ -227,12 +227,9 @@
                 if (cur < 0) {
                     return !!loop ? pagesLength - 1 : 0;
                 }
-        
                 if (cur >= pagesLength) {
                     return !!loop ? 0 : pagesLength - 1;
                 }
-        
-        
                 return cur;
             }
         
@@ -276,7 +273,7 @@
                         this.$pages.width(this.width);
                         var that = this;
                         setTimeout(function(){
-                            that.$this.width(this.width * this.pagesLength);
+                            that.$this.width(that.width * that.pagesLength);
                         },300);
                     }
         
