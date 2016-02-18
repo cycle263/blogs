@@ -195,10 +195,10 @@
         <script src="../../libs/zepto.swipepage.js"></script>
         <script type="text/javascript">
         $(function(){
-            var swipepage =  $('.wp-inner').swipepage();
-            $('button').click(function(event){
-                $.fn.swipepage.moveTo($('input').val() - 0, false);
-            });
+            $('.wp-inner').swipepage();
+            // $('button').click(function(event){
+            //     $.fn.swipepage.moveTo($('input').val() - 0, false);
+            // });
             
             setTimeout(function(){
                 debugInfo();
