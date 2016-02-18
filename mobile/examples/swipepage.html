@@ -278,7 +278,7 @@
                 startY = e.targetTouches[0].pageY;
             });
             $('body').on('touchend', function(e) {
-                var move = e.changedTouches[0].pageY - startY;
+                var move = startY - e.changedTouches[0].pageY;
                 $(this).scrollTop(move);
             });
         });
