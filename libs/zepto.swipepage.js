@@ -66,6 +66,7 @@
         that.update();
         that.initEvent();
         that.start();
+        alert(innerWidth);
     }
 
     function Swipepage($this, option) {
