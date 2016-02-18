@@ -58,7 +58,6 @@
                 font-size:1.2rem;
                 background-color:#CCCCCC;
                 color:#fff;
-                width: 50%;
                 height: 100%;
             }
             .btn-submit{
@@ -319,7 +318,7 @@
             });
             
             $('.wp-inner').swipepage();
-            $('.btns').width(innerWidth);
+            $('.btns .btn').width(innerWidth/2);
             $('.page1').on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 0;
                 $('.menu-content li.checked').removeClass('checked');
