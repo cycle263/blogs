@@ -86,6 +86,7 @@
             this.$pages.height(this.height);
 
             this.moveTo(this.curIndex < 0 ? this.o.start : this.curIndex);
+            alert(innerWidth);
         },
         initEvent: function() {
             var that = this;
