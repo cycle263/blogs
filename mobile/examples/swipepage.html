@@ -195,14 +195,15 @@
         <script src="../../libs/zepto.swipepage.js"></script>
         <script type="text/javascript">
         $(function(){
-            //$('.wp-inner').swipepage();
+            var swipepage =  $('.wp-inner').swipepage();
             $('button').click(function(event){
                 $.fn.swipepage.moveTo($('input').val() - 0, false);
             });
             
             setTimeout(function(){
                 debugInfo();
-            }, 800);
+                $(window).width(swipepage.width());
+            }, 500);
             debugInfo();
             function debugInfo(){
                 alert('document.documentElement.clientWidth: ' + document.documentElement.clientWidth + '; innerWidth: ' + innerWidth + '; window width: ' + $(window).width());
