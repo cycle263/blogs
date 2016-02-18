@@ -64,8 +64,8 @@
         that.$pages = that.$this.find(o.page).addClass('swipepage-page swipepage-dir-' + o.dir);
         that.pagesLength = that.$pages.length;
         that.update();
-        that.initEvent();
-        that.start();
+        // that.initEvent();
+        // that.start();
     }
 
     function Swipepage($this, option) {
@@ -195,16 +195,16 @@
                 });
             }
 
-            // window.setTimeout(function() {
-            //     that.movingFlag = false;
-            //     if (next !== cur) {
-            //         that.o.afterChange({
-            //             prev: cur,
-            //             cur: next
-            //         });
-            //         that.$pages.removeClass('cur').eq(next).addClass('cur');
-            //     }
-            // }, that.o.duration);
+            window.setTimeout(function() {
+                that.movingFlag = false;
+                if (next !== cur) {
+                    that.o.afterChange({
+                        prev: cur,
+                        cur: next
+                    });
+                    that.$pages.removeClass('cur').eq(next).addClass('cur');
+                }
+            }, that.o.duration);
 
             return 0;
         },
