@@ -36,7 +36,6 @@
             return !!loop ? 0 : pagesLength - 1;
         }
 
-
         return cur;
     }
 
@@ -60,17 +59,17 @@
         that.movingFlag = false;
 
         that.$this.addClass('swipepage-wp');
-        // that.$parent = that.$this.parent();
-        // that.$pages = that.$this.find(o.page).addClass('swipepage-page swipepage-dir-' + o.dir);
-        // that.pagesLength = that.$pages.length;
-        // that.update();
-        // that.initEvent();
-        // that.start();
+        that.$parent = that.$this.parent();
+        that.$pages = that.$this.find(o.page).addClass('swipepage-page swipepage-dir-' + o.dir);
+        that.pagesLength = that.$pages.length;
+        that.update();
+        that.initEvent();
+        that.start();
     }
 
     function Swipepage($this, option) {
         this.$this = $this;
-        // init.call(this, option);
+        init.call(this, option);
     }
 
     $.extend(Swipepage.prototype, {
@@ -220,9 +219,9 @@
     });
 
     $.fn.swipepage = function(option) {
-        // if (!swipepage) {
-        //     swipepage = new Swipepage($(this), option);
-        // }
+        if (!swipepage) {
+            swipepage = new Swipepage($(this), option);
+        }
         return this;
     };
     $.fn.swipepage.version = '0.5.0';
