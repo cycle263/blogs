@@ -66,7 +66,6 @@
         that.update();
         that.initEvent();
         that.start();
-        alert(innerWidth);
     }
 
     function Swipepage($this, option) {
@@ -86,7 +85,6 @@
             this.$pages.height(this.height);
 
             this.moveTo(this.curIndex < 0 ? this.o.start : this.curIndex);
-            alert(innerWidth);
         },
         initEvent: function() {
             var that = this;
@@ -197,16 +195,16 @@
                 });
             }
 
-            window.setTimeout(function() {
-                that.movingFlag = false;
-                if (next !== cur) {
-                    that.o.afterChange({
-                        prev: cur,
-                        cur: next
-                    });
-                    that.$pages.removeClass('cur').eq(next).addClass('cur');
-                }
-            }, that.o.duration);
+            // window.setTimeout(function() {
+            //     that.movingFlag = false;
+            //     if (next !== cur) {
+            //         that.o.afterChange({
+            //             prev: cur,
+            //             cur: next
+            //         });
+            //         that.$pages.removeClass('cur').eq(next).addClass('cur');
+            //     }
+            // }, that.o.duration);
 
             return 0;
         },
