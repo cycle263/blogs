@@ -259,7 +259,7 @@
                 that.$parent = that.$this.parent();
                 that.$pages = that.$this.find(o.page).addClass('swipepage-page swipepage-dir-' + o.dir);
                 that.pagesLength = that.$pages.length;
-                that.update();
+                // that.update();
                 that.initEvent();
                 that.start();
             }
@@ -416,10 +416,10 @@
             });
         
             $.fn.swipepage = function(option) {
-                // if (!swipepage) {
-                //     swipepage = new Swipepage($(this), option);
-                // }
-                // return this;
+                if (!swipepage) {
+                    swipepage = new Swipepage($(this), option);
+                }
+                return this;
             };
             $.fn.swipepage.version = '0.5.0';
         
