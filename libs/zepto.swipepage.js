@@ -63,7 +63,7 @@
         that.$parent = that.$this.parent();
         that.$pages = that.$this.find(o.page).addClass('swipepage-page swipepage-dir-' + o.dir);
         that.pagesLength = that.$pages.length;
-        that.update();
+        // that.update();
         that.initEvent();
         that.start();
     }
