@@ -61,6 +61,9 @@
                 height: 100%;
                 line-height: 100%;
             }
+            .btns .btn *{
+                vertical-align: middle;
+            }
             .btn-submit{
                 float:left;
             }
@@ -252,7 +255,7 @@
                 </ul>
                 <div class="btns">
                     <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>
-                    <button class="btn btn-record" type="button" name="button"><img class="record-icon"></img>0/100</button>
+                    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>
                 </div>
             </div>
             <div pageIndex="3" class="section page3">
@@ -264,8 +267,8 @@
                     <li><span class="question-answer-icon">D</span><span class="question-answer-text">稳定金融市场健康发展</span></li>
                 </ul>
                 <div class="btns">
-                    <button class="btn btn-submit" type="button" name="button"><i class="submit-icon"></i>交卷</button>
-                    <button class="btn btn-record" type="button" name="button"><i class="record-icon"></i>0/100</button>
+                    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>
                 </div>
             </div>
             <div pageIndex="4" class="section page4">
@@ -277,8 +280,8 @@
                     <li><span class="question-answer-icon">D</span><span class="question-answer-text">稳定金融市场健康发展</span></li>
                 </ul>
                 <div class="btns">
-                    <button class="btn btn-submit" type="button" name="button"><i class="submit-icon"></i>交卷</button>
-                    <button class="btn btn-record" type="button" name="button"><i class="record-icon"></i>0/100</button>
+                    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>
                 </div>
             </div>
             
@@ -291,8 +294,8 @@
                     <li><span class="question-answer-icon">D</span><span class="question-answer-text">稳定金融市场健康发展</span></li>
                 </ul>
                 <div class="btns">
-                    <button class="btn btn-submit" type="button" name="button"><i class="submit-icon"></i>交卷</button>
-                    <button class="btn btn-record" type="button" name="button"><i class="record-icon"></i>0/100</button>
+                    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>
                 </div>
             </div>
             
@@ -305,8 +308,8 @@
                     <li><span class="question-answer-icon">D</span><span class="question-answer-text">稳定金融市场健康发展</span></li>
                 </ul>
                 <div class="btns">
-                    <button class="btn btn-submit" type="button" name="button"><i class="submit-icon"></i>交卷</button>
-                    <button class="btn btn-record" type="button" name="button"><i class="record-icon"></i>0/100</button>
+                    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>
                 </div>
             </div>
         </div>
@@ -317,7 +320,7 @@
         $(function(){
             //题卡滚动
             var startY = 0, total = 0, count = 100;
-            $('.btn-record').text('0/' + count);
+            $('.btn-record span').text('0/' + count);
             $('body').on('touchstart', function(e) {
                 startY = e.targetTouches[0].pageY;
             });
@@ -339,7 +342,7 @@
                 
                 if(!me.parent().find('.checked').length){
                     total++;
-                    $('.btn-record').text(total + '/' + count);
+                    $('.btn-record span').text(total + '/' + count);
                     var pageIndex = $(this).closest('.section').attr('pageIndex') - 0;
                     $('.menu-content li').eq(pageIndex - 2).addClass('checked');
                 }
