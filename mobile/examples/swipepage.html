@@ -338,6 +338,11 @@
                 me.siblings('.checked').removeClass('checked');
                 me.addClass('checked');
             });
+            
+            //返回题卡页面
+            $('.btn-record').on('click tap', function(e){
+                if(linkId) $.fn.swipepage.moveTo(0, false);
+            });
         });
         </script>
     </body>
