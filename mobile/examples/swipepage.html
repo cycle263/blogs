@@ -48,6 +48,7 @@
             }
             
             .btns{
+                width: 12rem;
                 height: 3rem;
                 line-height: 3rem;
                 position: absolute;
@@ -285,10 +286,10 @@
                     <li><span class="question-answer-icon">C</span><span class="question-answer-text">扶植创新互联网行业</span></li>
                     <li><span class="question-answer-icon">D</span><span class="question-answer-text">稳定金融市场健康发展</span></li>
                 </ul>
-                <!--<div class="btns">-->
-                <!--    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>-->
-                <!--    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>-->
-                <!--</div>-->
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>
+                </div>
             </div>
             
             <div pageIndex="5" class="section page5">
@@ -299,10 +300,10 @@
                     <li><span class="question-answer-icon">C</span><span class="question-answer-text">扶植创新互联网行业</span></li>
                     <li><span class="question-answer-icon">D</span><span class="question-answer-text">稳定金融市场健康发展</span></li>
                 </ul>
-                <!--<div class="btns">-->
-                <!--    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>-->
-                <!--    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>-->
-                <!--</div>-->
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>
+                </div>
             </div>
             
             <div pageIndex="6" class="section page6">
@@ -313,10 +314,10 @@
                     <li><span class="question-answer-icon">C</span><span class="question-answer-text">扶植创新互联网行业</span></li>
                     <li><span class="question-answer-icon">D</span><span class="question-answer-text">稳定金融市场健康发展</span></li>
                 </ul>
-                <!--<div class="btns">-->
-                <!--    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>-->
-                <!--    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>-->
-                <!--</div>-->
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>
+                </div>
             </div>
         </div>
 
@@ -336,7 +337,7 @@
             });
             
             $('.wp-inner').swipepage();
-            //$('.btns .btn').width(innerWidth/2 - 2);    //定义按钮宽度
+            //$('.btns .btn').width(document.documentElement.clientWidth/2 - 2);    //定义按钮宽度
 
             $('.page1').on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 0;
