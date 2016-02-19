@@ -52,7 +52,6 @@
                 height: 3rem;
                 line-height: 3rem;
                 position: absolute;
-                /*left: 0;*/
                 bottom: 0;
             }
             .btns .btn{
@@ -338,7 +337,7 @@
             });
             
             $('.wp-inner').swipepage();
-            $('.btns .btn').width(document.documentElement.clientWidth/2 - 2);    //定义按钮宽度
+            $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
 
             $('.page1').on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 0;
