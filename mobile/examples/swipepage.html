@@ -336,10 +336,8 @@
             });
             
             $('.wp-inner').swipepage();
-            $('.btns .btn').width(innerWidth/2);    //定义按钮宽度
-            setTimeout(function(){
-                alert($('.btns').width());
-            }, 500);
+            $('.btns .btn').width(innerWidth/2 - 2);    //定义按钮宽度
+
             $('.page1').on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 0;
                 if(linkId) $.fn.swipepage.moveTo(linkId, false);
