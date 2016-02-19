@@ -254,10 +254,10 @@
                     <li><span class="question-answer-icon">C</span><span class="question-answer-text">扶植创新互联网行业</span></li>
                     <li><span class="question-answer-icon">D</span><span class="question-answer-text">稳定金融市场健康发展</span></li>
                 </ul>
-                <!--<div class="btns">-->
-                <!--    <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>交卷</span></button>-->
-                <!--    <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>-->
-                <!--</div>-->
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button"><!--<img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img>--><span>交卷</span></button>
+                    <!--<button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>0/100</span></button>-->
+                </div>
             </div>
             <div pageIndex="3" class="section page3">
                 <div class="question-title"><span class="question-num">2.</span><span class="question-text">中国国家产业该如何持续性发展？</span></div>
@@ -331,7 +331,7 @@
             });
             
             $('.wp-inner').swipepage();
-            $('.btns .btn').width(innerWidth/2 - 5);    //定义按钮宽度
+            $('.btns .btn').width(innerWidth/2);    //定义按钮宽度
             $('.page1').on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 0;
                 if(linkId) $.fn.swipepage.moveTo(linkId, false);
