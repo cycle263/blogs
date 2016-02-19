@@ -156,6 +156,15 @@
                 border: 1px solid #01AAEE;
                 color: #01AAEE;
             }
+            
+            .mask{
+                background-color:rgba(0, 0, 0, 0.6);
+                position:fixed;
+                top:0
+                z-index: 999;
+                width:100%;
+                height:100%;
+            }
         </style>
         <script type="text/javascript">
             (function (doc, win, undefined) {
@@ -320,6 +329,8 @@
                 </div>
             </div>
         </div>
+        
+        <div class="mask"></div>
 
         <script src="../../libs/zepto.min.js"></script>
         <script src="../../libs/zepto.swipepage.min.js"></script>
@@ -337,6 +348,7 @@
             });
             
             $('.wp-inner').swipepage();
+            $.fn.swipepage.moveTo(1, false);    //默认第一题
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
 
             $('.page1').on('click tap', '.menu-content li', function(e){
