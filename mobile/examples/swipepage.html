@@ -396,7 +396,7 @@
             window.swipepage = $('.wp-inner').swipepage();
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
 
-            $('.page1').on('click tap', '.menu-content li', function(e){
+            $('.section').last().on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 1;
                 if(linkId) $.fn.swipepage.moveTo(linkId, false);
             });
