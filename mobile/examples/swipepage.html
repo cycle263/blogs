@@ -158,7 +158,7 @@
                 color: #01AAEE;
             }
             
-            .mask{
+            .mask,.submit-mask{
                 background-color:rgba(0, 0, 0, 0.6);
                 position:fixed;
                 top:0;
@@ -171,6 +171,16 @@
             }
             .mask img{
                 margin-top: 8rem;
+            }
+            .submit-dialog{
+                position:fixed;
+                top:50%;
+                width:80%;
+                z-index: 1000;
+                height: 5rem;
+                margin-top:-5rem;
+                border-radius: 5px;
+                background-color: #FFF;
             }
         </style>
         <script type="text/javascript">
@@ -337,8 +347,21 @@
             </div>
         </div>
         
+        <!--左右滑动提示-->
         <div class="mask"><img width="50%" src="https://os.alipayobjects.com/rmsportal/geOZvLyXLZtiGrf.png"></img><br /><span>左右滑动切换题目</span></div>
-
+    
+        <!--交卷提示框-->
+        <div class="submit-dialog" style="display:none;">
+            <div class="dialog-content">
+                
+            </div>
+            <div class="dialog-btns">
+                <span>任性交卷</span>
+                <span>继续答题</span>
+            </div>
+        </div>
+        <div class="submit-mask" style="display:none;"></div>
+            
         <script src="../../libs/zepto.min.js"></script>
         <script src="../../libs/zepto.swipepage.min.js"></script>
         <script type="text/javascript">
