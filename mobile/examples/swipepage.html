@@ -394,11 +394,10 @@
             });
             
             window.swipepage = $('.wp-inner').swipepage();
-            $.fn.swipepage.moveTo(1, false);    //默认第一题
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
 
             $('.page1').on('click tap', '.menu-content li', function(e){
-                var linkId = $(this).attr('linkId') - 0;
+                var linkId = $(this).attr('linkId') - 1;
                 if(linkId) $.fn.swipepage.moveTo(linkId, false);
             });
             
@@ -418,7 +417,7 @@
             
             //返回题卡页面
             $('.btn-record').on('click tap', function(e){
-                $.fn.swipepage.moveTo(0, false);
+                $.fn.swipepage.moveTo($('.section').length - 1, false);
             });
             
             //任性交卷提示
