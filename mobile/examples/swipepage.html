@@ -214,20 +214,6 @@
                 border-left: 1px solid #D9D9D9;
             }
         </style>
-        <script type="text/javascript">
-            (function (doc, win, undefined) {
-                var docEl = doc.documentElement,
-                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-                    recalc = function () {
-                        var clientWidth = docEl.clientWidth;
-                        if (!clientWidth) return;
-                        docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
-                    };
-                if (!doc.addEventListener) return;
-                //win.addEventListener(resizeEvt, recalc, false);
-                doc.addEventListener('DOMContentLoaded', recalc, false);
-            })(document, window);
-        </script>
     </head>
     <body>
         <div class="wp-inner">
@@ -398,7 +384,20 @@
             </div>
         </div>
         <div class="submit-mask" style="display:none;"></div>
-            
+        <script type="text/javascript">
+            (function (doc, win, undefined) {
+                var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
+                    };
+                if (!doc.addEventListener) return;
+                //win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+            })(document, window);
+        </script>
         <script src="../../libs/zepto.min.js"></script>
         <script src="../../libs/zepto.swipepage.min.js"></script>
         <script type="text/javascript">
@@ -411,12 +410,18 @@
             });
             $('body').on('touchend', function(e) {
                 var move = startY - e.changedTouches[0].pageY;
-                $('.page1').scrollTop(move);
+                $('.section').last().scrollTop(move);
             });
             
             window.swipepage = $('.wp-inner').swipepage();
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
-            $(window).on('orientationchange', function(){
+            $(window).on('orientationchange', function(event){
+                if(event.orientation === 'landscape'){
+                    $('.btns').css('position', 'relative');
+                }else{
+                    $('.btns').css('position', 'position');
+                }
+                
                 $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
             });
 
