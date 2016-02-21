@@ -393,7 +393,7 @@
                 $('.page1').scrollTop(move);
             });
             
-            $('.wp-inner').swipepage();
+            window.swipepage = $('.wp-inner').swipepage();
             $.fn.swipepage.moveTo(1, false);    //默认第一题
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
 
@@ -423,7 +423,7 @@
             
             //任性交卷提示
             $('.btn-submit').on('click tap', function(e){
-                $('.submit-dialog', '.submit-mask').show();
+                $('.submit-dialog,.submit-mask').show();
             });
             
             //遮罩层
