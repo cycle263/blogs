@@ -409,7 +409,7 @@
                     total++;
                     $('.btn-record span').text(total + '/' + count);
                     var pageIndex = $(this).closest('.section').attr('pageIndex') - 0;
-                    $('.menu-content li').eq(pageIndex - 2).addClass('checked');
+                    $('.menu-content li').eq(pageIndex - 1).addClass('checked');
                 }
                 me.siblings('.checked').removeClass('checked');
                 me.addClass('checked');
