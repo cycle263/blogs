@@ -372,8 +372,8 @@
                 
             </div>
             <div class="dialog-btns">
-                <span>任性交卷</span>
-                <span>继续答题</span>
+                <span class="dialog-btn-submit">任性交卷</span>
+                <span class="dialog-btn-cancel">继续答题</span>
             </div>
         </div>
         <div class="submit-mask" style="display:none;"></div>
@@ -419,6 +419,11 @@
             //返回题卡页面
             $('.btn-record').on('click tap', function(e){
                 $.fn.swipepage.moveTo(0, false);
+            });
+            
+            //任性交卷提示
+            $('.btn-submit').on('click tap', function(e){
+                $('.submit-dialog', '.submit-mask').show();
             });
             
             //遮罩层
