@@ -184,20 +184,22 @@
                 background-color: #FFF;
             }
             .dialog-content{
-                height:5rem;
-                line-height:1.5rem;
+                height: 3rem;
+                line-height: 1.5rem;
+                color: #333;
                 text-align: center;
+                padding: 1rem;
             }
             .dialog-btns{
-                height:3rem;
-                line-height:3rem;
+                height: 3rem;
+                line-height: 3rem;
                 border-top: 1px solid #D9D9D9;
             }
             .dialog-btns span{
                 width: 49%;
                 display: inline-block;
                 text-align: center;
-                color:#01AAEE;
+                color: #01AAEE;
             }
             .dialog-btn-cancel{
                 border-left: 1px solid #D9D9D9;
@@ -417,6 +419,8 @@
                 }
                 me.siblings('.checked').removeClass('checked');
                 me.addClass('checked');
+                
+                //TODO
             });
             
             //返回题卡页面
@@ -427,6 +431,14 @@
             //任性交卷提示
             $('.btn-submit').on('click tap', function(e){
                 $('.submit-dialog,.submit-mask').show();
+            });
+            $('.dialog-btn-cancel').on('click tap', function(e){
+                $('.submit-dialog,.submit-mask').hide();
+            });
+            $('.dialog-btn-submit').on('click tap', function(e){
+                $('.submit-dialog,.submit-mask').hide();
+                
+                //TODO
             });
             
             //遮罩层
