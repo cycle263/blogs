@@ -398,7 +398,7 @@
 
             $('.section').last().on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 1;
-                if(linkId) $.fn.swipepage.moveTo(linkId, false);
+                if(linkId !== NaN && linkId >= 0) $.fn.swipepage.moveTo(linkId, false);
             });
             
             //做完题后题卡进度更新
