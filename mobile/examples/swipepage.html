@@ -139,6 +139,7 @@
             .question-answers{
                 list-style:none;
                 text-align: left;
+                min-height:12rem;
             }
             .question-answers li{
                 line-height:1.5rem;
@@ -152,9 +153,9 @@
                 border: 1px solid #ADADAD;
                 color: #ADADAD;
                 display: inline-block;
-                height:1.5rem;
-                line-height:1.5rem;
-                width:1.5rem;
+                height:1.2rem;
+                line-height:1.2rem;
+                width:1.2rem;
                 margin-right: 0.4rem;
                 text-align: center;
             }
@@ -394,7 +395,7 @@
                         docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
                     };
                 if (!doc.addEventListener) return;
-                //win.addEventListener(resizeEvt, recalc, false);
+                win.addEventListener(resizeEvt, recalc, false);
                 doc.addEventListener('DOMContentLoaded', recalc, false);
             })(document, window);
         </script>
