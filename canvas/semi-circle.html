@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>annular</title>
+        <style media="screen">
+            html, body{height: 100%;font-size: 20px;}
+        </style>
+        <script type="text/javascript">
+            (function (doc, win) {
+                var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
+                    };
+                if (!doc.addEventListener) return;
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+            })(document, window);
+        </script>
+    </head>
+    <body>
+        <div class="annular-container">
+            <canvas class="annular" width="80" height="80">9|after|120</canvas>
+            <canvas class="annular" width="80" height="80">59|before|150</canvas>
+            <canvas class="annular" width="80" height="80">89|after|100</canvas>
+        </div>
+        <div class="annular-container">
+            <canvas class="annular" width="80" height="80">29|after|80</canvas>
+            <canvas class="annular" width="80" height="80">99|before|120</canvas>
+            <canvas class="annular" width="80" height="80">99|after|100</canvas>
+        </div>
+        <script src="../libs/zepto.min.js"></script>
+        <script type="text/javascript">
+        $(function(){
+            $.fn.annular = function(){
+                $(this).each(function(){
+                    var canvas = this,
+                        w = canvas.width,
+                        h = canvas.height,
+                        ctx = canvas.getContext('2d'),
+                        text = $(this).text(),
+                        tempArr = text.split('|'),
+                        num = tempArr[0] - 0,
+                        status = tempArr[1],
+                        content = '',
+                        numText = '',
+                        rate = 0,
+                        color = '#0098FF';
+
+                    if(num === undefined || status === undefined) return;
+                    if(status === 'after'){
+                        content = num >= 60 ? '分通过' : '分不通过';
+                        color = num >= 60 ? '#0099FF' : '#FF9900';
+                        numText = num + '';
+                        rate = num / tempArr[2];
+                    }else if(status === 'before'){
+                        content = '进度';
+                        numText = num + '/' + tempArr[2];
+                    }
+
+                    //画底色圆形
+                    ctx.clearRect(0, 0, w, h);
+                    ctx.beginPath();
+                    ctx.fillStyle = "#999999";
+                    ctx.moveTo(w / 2, h / 2);
+                    ctx.arc(w / 2, h / 2, w / 2 - 1, 0, Math.PI * 2, false);
+                    ctx.fill();
+                    ctx.closePath();
+
+                    //画进度圆形
+                    ctx.beginPath();
+                    ctx.fillStyle = color;
+                    ctx.moveTo(w / 2, h / 2);
+                    ctx.arc(w / 2, h / 2, w / 2 - 1, -Math.PI * 0.5, Math.PI * (2 * rate - 0.5), false);
+                    ctx.fill();
+                    ctx.closePath();
+
+                    //画白色圆形，构造底色环形
+                    ctx.beginPath();
+                    ctx.fillStyle = "#fff";
+                    ctx.moveTo(w / 2, h / 2);
+                    ctx.arc(w / 2, h / 2, w / 2 * 0.8, 0, Math.PI * 2, false);
+                    ctx.fill();
+                    ctx.closePath();
+
+                    ctx.beginPath();
+                    var size = 14;
+                    ctx.font = size + "px YaHei";
+                    ctx.fillStyle = "#A6A19D";
+                    var numTextPro = ctx.measureText(numText),
+                        contentPro = ctx.measureText(content);
+
+                    ctx.fillText(numText, w / 2 - numTextPro.width / 2, h / 2 - size / 2);
+                    ctx.fillText(content, w / 2 - contentPro.width / 2, h / 2 + size);
+                    ctx.closePath();
+                });
+            };
+
+            $('.annular').annular();
+        });
+        </script>
+    </body>
+</html>
