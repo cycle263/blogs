@@ -437,7 +437,7 @@
                 me.siblings().each(function(){
                     otherH += $(this).height();
                 });
-                me.css('min-height', (me.parent.height() - otherH) + 'px');
+                me.css('min-height', (me.parent().height() - otherH) + 'px');
             });
             $(window).on('orientationchange', function(event){
                 $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
