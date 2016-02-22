@@ -419,7 +419,7 @@
             });
             $('body').on('touchend', function(e) {
                 var move = startY - e.changedTouches[0].pageY;
-                $('.section').last().scrollTop(move);
+                $('.section.cur').scrollTop(move);
             });
             
             window.swipepage = $('.wp-inner').swipepage();
