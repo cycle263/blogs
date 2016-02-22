@@ -385,7 +385,6 @@
         <script type="text/javascript">
             (function (doc, win, undefined) {
                 var docEl = doc.documentElement,
-                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
                     getDevice = function(){
                         var obj = {};
                         obj.width = docEl.clientWidth;
@@ -395,17 +394,8 @@
                         obj.remHeight = obj.height / obj.rootSize;
                         obj.landscape = orientation === 90 || orientation === -90;
                         return obj;
-                    },
-                    recalc = function () {
-                        var clientWidth = docEl.clientWidth;
-                        if (!clientWidth) return;
-                        docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
-                        win.deviceInfo = getDevice();
                     };
-                if (!doc.addEventListener) return;
                 win.deviceInfo = getDevice();
-                win.addEventListener(resizeEvt, recalc, false);
-                doc.addEventListener('DOMContentLoaded', recalc, false);
             })(document, window);
         </script>
         <script src="../../libs/zepto.min.js"></script>
