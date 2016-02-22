@@ -199,7 +199,7 @@
             }
             .dialog-btns{
                 height: 50px;
-                line-height: 48px;
+                line-height: 47px;
                 border-top: 1px solid #D9D9D9;
             }
             .dialog-btns span{
@@ -210,12 +210,6 @@
             }
             .dialog-btn-cancel{
                 border-left: 1px solid #D9D9D9;
-            }
-            
-            @media screen and (orientation: landscape) {
-                .btns{
-                    position: relative;
-                }
             }
         </style>
     </head>
@@ -475,6 +469,8 @@
             //任性交卷提示
             $('.btn-submit').on('click tap', function(e){
                 $('.submit-dialog,.submit-mask').show();
+                $('.dialog-content .finished').text(total);
+                $('.dialog-content .unfinished').text(count - total);
             });
             $('.dialog-btn-cancel').on('click tap', function(e){
                 $('.submit-dialog,.submit-mask').hide();
