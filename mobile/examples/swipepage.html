@@ -397,6 +397,7 @@
                         obj.remWidth = obj.width / obj.rootSize;
                         obj.remHeight = obj.height / obj.rootSize;
                         obj.landscape = orientation === 90 || orientation === -90;
+                        return obj;
                     },
                     recalc = function () {
                         var clientWidth = docEl.clientWidth;
