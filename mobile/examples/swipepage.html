@@ -421,13 +421,13 @@
             //题卡滚动
             var startY = 0, total = 0, count = 100;
             $('.btn-record span').text('0/' + count);
-            $('body').on('touchstart', function(e) {
-                startY = e.targetTouches[0].pageY;
-            });
-            $('body').on('touchend', function(e) {
-                var move = startY - e.changedTouches[0].pageY;
-                $('.section.cur')[0].scrollTop = move;
-            });
+            // $('body').on('touchstart', function(e) {
+            //     startY = e.targetTouches[0].pageY;
+            // });
+            // $('body').on('touchend', function(e) {
+            //     var move = startY - e.changedTouches[0].pageY;
+            //     $('.section.cur')[0].scrollTop = move;
+            // });
             
             window.swipepage = $('.wp-inner').swipepage({der: 0.2});
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
