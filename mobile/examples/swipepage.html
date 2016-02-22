@@ -214,14 +214,6 @@
             .dialog-btn-cancel{
                 border-left: 1px solid #D9D9D9;
             }
-            
-            @media only screen and (orientation: landscape){
-                .btns{
-                    position: relative;
-                    height: 2rem;
-                    line-height: 2rem;
-                }
-            }
         </style>
     </head>
     <body>
@@ -397,12 +389,23 @@
             (function (doc, win, undefined) {
                 var docEl = doc.documentElement,
                     resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    getDevice = function(){
+                        var obj = {};
+                        obj.width = docEl.clientWidth;
+                        obj.height = docEl.clientHeight;
+                        obj.rootSize = 16 * (docEl.clientWidth / 320);
+                        obj.remWidth = obj.width / obj.rootSize;
+                        obj.remHeight = obj.height / obj.rootSize;
+                        obj.landscape = orientation === 90 || orientation === -90;
+                    },
                     recalc = function () {
                         var clientWidth = docEl.clientWidth;
                         if (!clientWidth) return;
                         docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
+                        win.deviceInfo = getDevice();
                     };
                 if (!doc.addEventListener) return;
+                win.deviceInfo = getDevice();
                 win.addEventListener(resizeEvt, recalc, false);
                 doc.addEventListener('DOMContentLoaded', recalc, false);
             })(document, window);
@@ -426,6 +429,11 @@
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
             $(window).on('orientationchange', function(event){
                 $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
+                if(deviceInfo.landscape){
+                    $('.btns').css('position', 'relative');
+                }else{
+                    $('.btns').css('position', 'absolute');
+                }
             });
 
             $('.section').last().on('click tap', '.menu-content li', function(e){
