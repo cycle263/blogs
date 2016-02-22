@@ -429,7 +429,7 @@
                 startY = e.targetTouches[0].pageY;
             });
             $('body').on('touchend', function(e) {
-                var move = startY - e.changedTouches[0].pageY,
+                var move = e.changedTouches[0].pageY - startY,
                     yPx = move + "px";
                 $('.section.cur').css({
                     'transform' : 'translatey(' + yPx + ');',
