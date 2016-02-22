@@ -439,6 +439,10 @@
                 $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
                 if(deviceInfo.landscape){
                     $('.btns').css('position', 'relative');
+                    $('.cur').css({
+                        '-webkit-transform': 'rotate(-90deg)',
+                        'transform': 'rotate(-90deg)'
+                    });
                 }else{
                     $('.btns').css('position', 'absolute');
                 }
