@@ -429,10 +429,10 @@
             $('body').on('touchend', function(e) {
                 var move = e.changedTouches[0].pageY - startY,
                     yPx = move + "px";
-                // $('.section.cur .menu-box, .section.cur .question-answers').css({
-                //     'transform' : 'translatey(' + yPx + ');',
-                //     '-webkit-transform' : 'translatey(' + yPx + ');'
-                // });
+                $('.section.cur').css({
+                    'transform' : 'translatey(' + yPx + ');',
+                    '-webkit-transform' : 'translatey(' + yPx + ');'
+                });
             });
             
             window.swipepage = $('.wp-inner').swipepage({der: 0.2});
