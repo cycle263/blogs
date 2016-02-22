@@ -6,31 +6,10 @@
         <style media="screen">
             html, body{height: 100%;font-size: 20px;}
         </style>
-        <script type="text/javascript">
-            (function (doc, win) {
-                var docEl = doc.documentElement,
-                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-                    recalc = function () {
-                        var clientWidth = docEl.clientWidth;
-                        if (!clientWidth) return;
-                        docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
-                    };
-                if (!doc.addEventListener) return;
-                win.addEventListener(resizeEvt, recalc, false);
-                doc.addEventListener('DOMContentLoaded', recalc, false);
-            })(document, window);
-        </script>
     </head>
     <body>
         <div class="annular-container">
-            <canvas class="annular" width="80" height="80">9|after|120</canvas>
-            <canvas class="annular" width="80" height="80">59|before|150</canvas>
-            <canvas class="annular" width="80" height="80">89|after|100</canvas>
-        </div>
-        <div class="annular-container">
-            <canvas class="annular" width="80" height="80">29|after|80</canvas>
-            <canvas class="annular" width="80" height="80">99|before|120</canvas>
-            <canvas class="annular" width="80" height="80">99|after|100</canvas>
+            <canvas class="annular" width="280" height="280">9|after|120</canvas>
         </div>
         <script src="../libs/zepto.min.js"></script>
         <script type="text/javascript">
@@ -66,7 +45,7 @@
                     ctx.beginPath();
                     ctx.fillStyle = "#999999";
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 - 1, 0, Math.PI * 2, false);
+                    ctx.arc(w / 2, h / 2, w / 2 - 1, Math.PI * 0.75, Math.PI * 0.25, true);
                     ctx.fill();
                     ctx.closePath();
 
@@ -74,7 +53,7 @@
                     ctx.beginPath();
                     ctx.fillStyle = color;
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 - 1, -Math.PI * 0.5, Math.PI * (2 * rate - 0.5), false);
+                    ctx.arc(w / 2, h / 2, w / 2 - 1, Math.PI * 0.75, 0, true);
                     ctx.fill();
                     ctx.closePath();
 
@@ -82,7 +61,7 @@
                     ctx.beginPath();
                     ctx.fillStyle = "#fff";
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 * 0.8, 0, Math.PI * 2, false);
+                    ctx.arc(w / 2, h / 2, w / 2 * 0.8, Math.PI * 0.75, Math.PI * 0.25, true);
                     ctx.fill();
                     ctx.closePath();
 
