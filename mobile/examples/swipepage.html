@@ -130,6 +130,7 @@
             }
             .question-title{
                 padding: 0.8rem;
+                padding-bottom: 0.2rem;
                 text-align: left;
                 line-height: 1.5rem;
             }
@@ -213,6 +214,12 @@
             }
             .dialog-btn-cancel{
                 border-left: 1px solid #D9D9D9;
+            }
+            
+            @media screen and (orientation: landscape) {
+                .btns{
+                    position: relative;
+                }
             }
         </style>
     </head>
@@ -422,8 +429,12 @@
                 startY = e.targetTouches[0].pageY;
             });
             $('body').on('touchend', function(e) {
-                var move = startY - e.changedTouches[0].pageY;
-                $('.section.cur').scrollTop(move);
+                var move = startY - e.changedTouches[0].pageY,
+                    yPx = move + "px";
+                $('.section.cur').css({
+                    'transform' : 'translatey(' + yPx + ');',
+                    '-webkit-transform' : 'translatey(' + yPx + ');'
+                });
             });
             
             window.swipepage = $('.wp-inner').swipepage();
