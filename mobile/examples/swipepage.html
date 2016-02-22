@@ -51,8 +51,6 @@
             .btns{
                 height: 50px;
                 line-height: 50px;
-                position: absolute;
-                bottom: 0;
             }
             .btns .btn{
                 font-size:18px;
@@ -130,7 +128,7 @@
                 padding: 12px;
                 padding-bottom: 3px;
                 text-align: left;
-                line-height: 24px;
+                line-height: 25px;
             }
             .question-num{
                 margin-right:3px;
@@ -141,7 +139,7 @@
                 min-height: 200px;
             }
             .question-answers li{
-                line-height:24px;
+                line-height:25px;
                 cursor:pointer;
                 padding: 5px 12px;
             }
@@ -176,7 +174,7 @@
                 width:100%;
                 height:100%;
                 color:#fff;
-                font-size:24px;
+                font-size:25px;
             }
             .mask img{
                 margin-top: 30%;
@@ -433,17 +431,16 @@
             
             window.swipepage = $('.wp-inner').swipepage({der: 0.2});
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
+            $('.question-answers').each(function(k, ele){
+                var me = $(this),
+                    otherH = 0;
+                me.siblings().each(function(){
+                    otherH += $(this).height();
+                });
+                me.css('min-height', (me.parent.height() - otherH) + 'px');
+            });
             $(window).on('orientationchange', function(event){
                 $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
-                if(deviceInfo.landscape){
-                    $('.btns').css('position', 'relative');
-                    $('.cur').css({
-                        '-webkit-transform': 'rotate(-90deg)',
-                        'transform': 'rotate(-90deg)'
-                    });
-                }else{
-                    $('.btns').css('position', 'absolute');
-                }
             });
 
             $('.section').last().on('click tap', '.menu-content li', function(e){
