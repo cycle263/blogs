@@ -405,6 +405,21 @@
                         obj.landscape = orientation === 90 || orientation === -90;
                         return obj;
                     },
+                    touchScroll(id){
+                    		var el=document.getElementById(id);
+                    		var scrollStartPos=0;
+                    
+                    		document.getElementById(id).addEventListener("touchstart", function(event) {
+                    			scrollStartPos=this.scrollTop+event.touches[0].pageY;
+                    			event.preventDefault();
+                    		},false);
+                    
+                    		document.getElementById(id).addEventListener("touchmove", function(event) {
+                    			this.scrollTop=scrollStartPos-event.touches[0].pageY;
+                    			event.preventDefault();
+                    		},false);
+                    	
+                    },
                     recalc = function () {
                         var clientWidth = docEl.clientWidth;
                         if (!clientWidth) return;
@@ -426,14 +441,12 @@
             $('.btn-record span').text('0/' + count);
             $('body').on('touchstart', function(e) {
                 startY = e.targetTouches[0].pageY;
+                e.preventDefault();
             });
             $('body').on('touchend', function(e) {
-                var move = e.changedTouches[0].pageY - startY,
-                    yPx = move + "px";
-                $('.section.cur').css({
-                    'transform' : 'translatey(' + yPx + ');',
-                    '-webkit-transform' : 'translatey(' + yPx + ');'
-                });
+                var move = e.changedTouches[0].pageY - startY;
+                $('.section.cur')[0].scrollTop = move;
+                e.preventDefault();
             });
             
             window.swipepage = $('.wp-inner').swipepage({der: 0.2});
