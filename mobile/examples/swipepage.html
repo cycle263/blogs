@@ -15,6 +15,13 @@
                 overflow:hidden;
                 font-family: "微软雅黑", Tahoma, Helvetica, Arial, "Microsoft Yahei",STXihei, "华文细黑", sans-serif;
             }
+            @media only screen and (orientation: landscape){
+                .btns{
+                    position: relative;
+                    height: 2rem;
+                    line-height: 2rem;
+                }
+            }
             
             .wp-inner{
                 height: 100%;
@@ -417,12 +424,6 @@
             window.swipepage = $('.wp-inner').swipepage();
             $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
             $(window).on('orientationchange', function(event){
-                if(event.orientation === 'landscape'){
-                    $('.btns').css('position', 'relative');
-                }else{
-                    $('.btns').css('position', 'position');
-                }
-                
                 $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
             });
 
