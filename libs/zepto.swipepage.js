@@ -81,8 +81,8 @@
                 this.$this.width(this.width * this.pagesLength);
             }
 
-            this.height = this.$parent.height();
-            this.$pages.height(this.height);
+            // this.height = this.$parent.height();
+            // this.$pages.height(this.height);
 
             this.moveTo(this.curIndex < 0 ? this.o.start : this.curIndex);
         },
