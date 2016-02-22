@@ -427,12 +427,10 @@
             $('.btn-record span').text('0/' + count);
             $('body').on('touchstart', function(e) {
                 startY = e.targetTouches[0].pageY;
-                e.preventDefault();
             });
             $('body').on('touchend', function(e) {
                 var move = e.changedTouches[0].pageY - startY;
                 $('.section.cur')[0].scrollTop = move;
-                e.preventDefault();
             });
             
             window.swipepage = $('.wp-inner').swipepage({der: 0.2});
