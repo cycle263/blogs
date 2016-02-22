@@ -426,7 +426,7 @@
             });
             $('body').on('touchend', function(e) {
                 var move = startY - e.changedTouches[0].pageY;
-                $('.section.cur')[0].scrollTop = move;
+                $('.section.cur')[0].scrollTop += move;
             });
             
             window.swipepage = $('.wp-inner').swipepage({der: 0.2});
@@ -444,6 +444,7 @@
             $(window).on('orientationchange', function(event){
                 initPage();
             });
+            initPage();
 
             $('.section').last().on('click tap', '.menu-content li', function(e){
                 var linkId = $(this).attr('linkId') - 1;
