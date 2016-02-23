@@ -77,16 +77,16 @@
 
                     //画白色圆形，构造底色环形
                     ctx.beginPath();
-                    ctx.fillStyle = "#45B287";
+                    ctx.fillStyle = "#42B18E";
                     ctx.moveTo(w / 2, h / 2);
                     ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.74, Math.PI * 0.26, false);
                     ctx.fill();
                     ctx.closePath();
 
                     ctx.beginPath();
-                    var size = 14;
+                    var size = 18;
                     ctx.font = size + "px YaHei";
-                    ctx.fillStyle = "#A6A19D";
+                    ctx.fillStyle = "#FFF";
                     var numTextPro = ctx.measureText(numText),
                         contentPro = ctx.measureText(content);
 
