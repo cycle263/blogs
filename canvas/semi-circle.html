@@ -46,12 +46,11 @@
                         content = '',
                         numText = '',
                         rate = 0,
-                        color = '#0098FF';
+                        color = '#FFF';
 
                     if(num === undefined || status === undefined) return;
                     if(status === 'after'){
                         content = num >= 60 ? '分通过' : '分不通过';
-                        color = num >= 60 ? '#0099FF' : '#FF9900';
                         numText = num + '';
                         rate = num / tempArr[2];
                     }else if(status === 'before'){
@@ -78,7 +77,7 @@
 
                     //画白色圆形，构造底色环形
                     ctx.beginPath();
-                    ctx.fillStyle = "transparent";
+                    ctx.fillStyle = "#45B287";
                     ctx.moveTo(w / 2, h / 2);
                     ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.74, Math.PI * 0.26, false);
                     ctx.fill();
