@@ -77,7 +77,11 @@
 
                     //画白色圆形，构造底色环形
                     ctx.beginPath();
-                    ctx.fillStyle = "#42B18E";
+                    var linear = ctx.createLinearGradient(w / 2, 20, w / 2, h * 0.8);
+                    linear.addColorStop(0,'#50B476');
+                    linear.addColorStop(0.5,'#48B384');
+                    linear.addColorStop(1,'#40B192');
+                    ctx.fillStyle = linear;
                     ctx.moveTo(w / 2, h / 2);
                     ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.74, Math.PI * 0.26, false);
                     ctx.fill();
