@@ -21,6 +21,9 @@
                 height: 50%;
                 margin: 0 auto;
             }
+            .result-container canvas{
+                margin-top:30%;
+            }
         </style>
     </head>
     <body>
@@ -77,13 +80,13 @@
 
                     //画白色圆形，构造底色环形
                     ctx.beginPath();
-                    var linear = ctx.createLinearGradient(w / 2, 20, w / 2, h * 0.8);
+                    var linear = ctx.createLinearGradient(w / 2, 0, w / 2, h * 0.6);
                     linear.addColorStop(0,'#4FB476');
                     linear.addColorStop(0.5,'#46B286');
                     linear.addColorStop(1,'#3DB197');
                     ctx.fillStyle = linear;
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, h / 2 * 0.95, Math.PI * 0.8, Math.PI * 0.2, false);
+                    ctx.arc(w / 2, h / 2, h / 2 * 0.92, Math.PI * 0.8, Math.PI * 0.2, false);
                     ctx.fill();
                     ctx.closePath();
 
