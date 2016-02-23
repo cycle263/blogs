@@ -14,6 +14,7 @@
                 background-color:#39B3C4;
                 font-family: "微软雅黑", "Microsoft Yahei", "黑体", sans-serif;
                 background: url('https://os.alipayobjects.com/rmsportal/lUwNYKjbMApzJSG.png') no-repeat;
+                background-size: cover;
                 position: relative;
             }
             .result-container{
@@ -23,14 +24,17 @@
         </style>
     </head>
     <body>
-        <div class="result-container">
-            <canvas class="annular" width="60%" height="80%">47|after|100</canvas>
-        </div>
+        <div class="result-container">47|after|100</div>
         <script src="../libs/zepto.min.js"></script>
         <script type="text/javascript">
         $(function(){
             $.fn.annular = function(){
-                $(this).each(function(){
+                var me = $(this),
+                    w = me.width(),
+                    h = me.height(),
+                    text = me.text();
+                $(this).append('<canvas class="annular" width="' + w + '" height="' + h / 2 + '">'+text+'</canvas');
+                $('.annular', $(this)).each(function(){
                     var canvas = this,
                         w = canvas.width,
                         h = canvas.height,
@@ -93,7 +97,7 @@
                 });
             };
 
-            $('.annular').annular();
+            $('.result-container').annular();
         });
         </script>
     </body>
