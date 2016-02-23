@@ -77,15 +77,17 @@
                     ctx.closePath();
 
                     ctx.beginPath();
-                    var size = 18;
-                    ctx.font = size + "px YaHei";
+                    ctx.font = "18px YaHei";
                     ctx.fillStyle = "#FFF";
                     var numTextPro = ctx.measureText(numText),
                         contentPro = ctx.measureText(content);
                     
-                    ctx.fillText(copywrite, w / 2 - numTextPro.width / 2, h / 2 - size);
-                    ctx.fillText(numText, w / 2 - numTextPro.width / 2, h / 2 - size / 2);
-                    ctx.fillText(content, w / 2 - contentPro.width / 2, h / 2 + size);
+                    ctx.fillText(copywrite, w / 2 - copywrite.width / 2, size * 2);
+                    ctx.save();
+                    ctx.font = "48px YaHei";
+                    ctx.fillText(numText, w / 2 - numTextPro.width / 2, h / 2);
+                    ctx.restore();
+                    ctx.fillText(content, w / 2 - contentPro.width / 2, h - size);
                     ctx.closePath();
                 });
             };
