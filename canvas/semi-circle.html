@@ -4,12 +4,21 @@
         <meta charset="utf-8">
         <title>annular</title>
         <style media="screen">
-            html, body{height: 100%;font-size: 20px;}
+            html, body{
+                height:100%;
+                font-size: 16px;
+                background-color:#fff;
+                font-family: "微软雅黑", "Microsoft Yahei", "黑体", sans-serif;
+            }
+            .result-container{
+                background: url('https://os.alipayobjects.com/rmsportal/lUwNYKjbMApzJSG.png') no-repeat;
+                position: relative;
+            }
         </style>
     </head>
     <body>
-        <div class="annular-container">
-            <canvas class="annular" width="280" height="280">9|after|120</canvas>
+        <div class="result-container">
+            <canvas class="annular" width="60%" height="80%">47|after|100</canvas>
         </div>
         <script src="../libs/zepto.min.js"></script>
         <script type="text/javascript">
@@ -43,7 +52,7 @@
                     //画底色圆形
                     ctx.clearRect(0, 0, w, h);
                     ctx.beginPath();
-                    ctx.fillStyle = "#999999";
+                    ctx.fillStyle = "#379176";
                     ctx.moveTo(w / 2, h / 2);
                     ctx.arc(w / 2, h / 2, w / 2 - 1, Math.PI * 0.75, Math.PI * 0.25, false);
                     ctx.fill();
