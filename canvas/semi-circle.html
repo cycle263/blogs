@@ -80,17 +80,15 @@
                     var size = 18;
                     ctx.font = size + "px YaHei";
                     ctx.fillStyle = "#A1DDE0";
-                    var numTextPro = ctx.measureText(numText),
-                        contentPro = ctx.measureText(content);
                     
-                    ctx.fillText(copywrite, w / 2 - copywrite.width / 2, size * 2);
+                    ctx.fillText(copywrite, w / 2 - ctx.measureText(copywrite).width / 2, size * 2);
                     ctx.save();
                     size = 48;
                     ctx.font = size + "px YaHei";
                     ctx.fillStyle = "#FFFFFF";
-                    ctx.fillText(numText, w / 2 - numTextPro.width / 2, h / 2);
+                    ctx.fillText(numText, w / 2 - ctx.measureText(numText).width / 2, h / 2);
                     ctx.restore();
-                    ctx.fillText(content, w / 2 - contentPro.width / 2, h - size);
+                    ctx.fillText(content, w / 2 - ctx.measureText(content).width / 2, h - size);
                     ctx.closePath();
                 });
             };
