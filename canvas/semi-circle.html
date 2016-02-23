@@ -33,7 +33,7 @@
                     w = me.width(),
                     h = me.height(),
                     text = me.text();
-                $(this).html('<canvas class="annular" width="' + w + '" height="' + h / 2 + '">'+text+'</canvas');
+                $(this).html('<canvas class="annular" width="' + w + '" height="' + h * 0.8 + '">'+text+'</canvas');
                 $('.annular', $(this)).each(function(){
                     var canvas = this,
                         w = canvas.width,
@@ -78,7 +78,7 @@
 
                     //画白色圆形，构造底色环形
                     ctx.beginPath();
-                    ctx.fillStyle = "#fff";
+                    ctx.fillStyle = "transparent";
                     ctx.moveTo(w / 2, h / 2);
                     ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.74, Math.PI * 0.26, false);
                     ctx.fill();
