@@ -64,30 +64,22 @@
                     //画底色圆形
                     ctx.clearRect(0, 0, w, h);
                     ctx.beginPath();
-                    ctx.fillStyle = "#379176";
+                    //ctx.fillStyle = "#379176";
+                    ctx.strokeStyle = "#379176";
                     ctx.moveTo(w / 2, h / 2);
                     ctx.arc(w / 2, h / 2, h / 2 - 1, Math.PI * 0.8, Math.PI * 0.2, false);
-                    ctx.fill();
+                    //ctx.fill();
+                    ctx.stroke();
                     ctx.closePath();
 
                     //画进度圆形
                     ctx.beginPath();
-                    ctx.fillStyle = color;
+                    //ctx.fillStyle = color;
+                    ctx.strokeStyle = color;
                     ctx.moveTo(w / 2, h / 2);
                     ctx.arc(w / 2, h / 2, h / 2 - 1, Math.PI * 0.8, 0, false);
-                    ctx.fill();
-                    ctx.closePath();
-
-                    //画白色圆形，构造底色环形
-                    ctx.beginPath();
-                    var linear = ctx.createLinearGradient(w / 2, 0, w / 2, h * 0.6);
-                    linear.addColorStop(0,'#4FB476');
-                    linear.addColorStop(0.5,'#46B286');
-                    linear.addColorStop(1,'#3DB197');
-                    ctx.fillStyle = linear;
-                    ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, h / 2 * 0.92, Math.PI * 0.8, Math.PI * 0.2, false);
-                    ctx.fill();
+                    //ctx.fill();
+                    ctx.stroke();
                     ctx.closePath();
 
                     ctx.beginPath();
