@@ -33,7 +33,7 @@
                     w = me.width(),
                     h = me.height(),
                     text = me.text();
-                $(this).append('<canvas class="annular" width="' + w + '" height="' + h / 2 + '">'+text+'</canvas');
+                $(this).html('<canvas class="annular" width="' + w + '" height="' + h / 2 + '">'+text+'</canvas');
                 $('.annular', $(this)).each(function(){
                     var canvas = this,
                         w = canvas.width,
@@ -64,7 +64,7 @@
                     ctx.beginPath();
                     ctx.fillStyle = "#379176";
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 - 1, Math.PI * 0.75, Math.PI * 0.25, false);
+                    ctx.arc(w / 2, h / 2, h / 2 - 1, Math.PI * 0.75, Math.PI * 0.25, false);
                     ctx.fill();
                     ctx.closePath();
 
@@ -72,7 +72,7 @@
                     ctx.beginPath();
                     ctx.fillStyle = color;
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 - 1, Math.PI * 0.75, 0, false);
+                    ctx.arc(w / 2, h / 2, h / 2 - 1, Math.PI * 0.75, 0, false);
                     ctx.fill();
                     ctx.closePath();
 
@@ -80,7 +80,7 @@
                     ctx.beginPath();
                     ctx.fillStyle = "#fff";
                     ctx.moveTo(w / 2, h / 2);
-                    ctx.arc(w / 2, h / 2, w / 2 * 0.9, Math.PI * 0.74, Math.PI * 0.26, false);
+                    ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.74, Math.PI * 0.26, false);
                     ctx.fill();
                     ctx.closePath();
 
