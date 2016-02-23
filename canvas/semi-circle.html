@@ -27,7 +27,7 @@
         </style>
     </head>
     <body>
-        <div class="result-container">47|after|100</div>
+        <div count="1" highest="90" class="result-container">47|100</div>
         <script src="../libs/zepto.min.js"></script>
         <script type="text/javascript">
         $(function(){
@@ -45,21 +45,17 @@
                         text = $(this).text(),
                         tempArr = text.split('|'),
                         num = tempArr[0] - 0,
-                        status = tempArr[1],
                         content = '',
+                        copywrite = '本次得分',
                         numText = '',
                         rate = 0,
                         color = '#FFF';
 
                     if(num === undefined || status === undefined) return;
-                    if(status === 'after'){
-                        content = num >= 60 ? '分通过' : '分不通过';
-                        numText = num + '';
-                        rate = num / tempArr[2];
-                    }else if(status === 'before'){
-                        content = '进度';
-                        numText = num + '/' + tempArr[2];
-                    }
+                    
+                    content = '已考'+me.attr("count")+'次，最高得分'+me.attr("highest")+'分';
+                    numText = num + '';
+                    rate = num / tempArr[1];
 
                     //画底色圆形
                     ctx.clearRect(0, 0, w, h);
@@ -67,7 +63,7 @@
                     ctx.lineWidth = 6;
                     ctx.lineCap = "round";
                     ctx.strokeStyle = "#379176";
-                    ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.9, Math.PI * 0.1, false);
+                    ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.85, Math.PI * 0.15, false);
                     ctx.stroke();
                     ctx.closePath();
 
@@ -76,7 +72,7 @@
                     ctx.strokeStyle = color;
                     ctx.lineWidth = 6;
                     ctx.lineCap = "round";
-                    ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.9, - Math.PI * 0.5, false);
+                    ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.85, Math.PI * ((2 - (0.85- 0.15)) * rate + 0.85), false);
                     ctx.stroke();
                     ctx.closePath();
 
@@ -86,7 +82,8 @@
                     ctx.fillStyle = "#FFF";
                     var numTextPro = ctx.measureText(numText),
                         contentPro = ctx.measureText(content);
-
+                    
+                    ctx.fillText(copywrite, w / 2 - numTextPro.width / 2, h / 2 - size);
                     ctx.fillText(numText, w / 2 - numTextPro.width / 2, h / 2 - size / 2);
                     ctx.fillText(content, w / 2 - contentPro.width / 2, h / 2 + size);
                     ctx.closePath();
