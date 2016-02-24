@@ -142,9 +142,13 @@
             };
             
             var bw,bh,rate;
-            if(orientation === 90 || orientation === -90){
-                rate = innerWidth / innerHeight;
-            }else if(orientation === 0 || orientation === 180){
+            if(orientation){
+                if(orientation === 90 || orientation === -90){
+                    rate = innerWidth / innerHeight;
+                }else if(orientation === 0 || orientation === 180){
+                    rate = innerHeight / innerWidth;
+                }
+            }else{
                 rate = innerHeight / innerWidth;
             }
             bh = rate * innerWidth;
