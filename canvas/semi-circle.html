@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="https://os.alipayobjects.com/rmsportal/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
         <style media="screen">
             html, body{
-                width: 100%;
                 height:100%;
                 font-size: 16px;
                 background-color:#39B3C4;
@@ -19,7 +18,6 @@
                 position: relative;
             }
             .result-container{
-                width: 100%;
                 height: 50%;
                 margin: 0 auto;
             }
@@ -27,6 +25,7 @@
                 position: relative;
                 top: 20%;
             }
+            
         </style>
     </head>
     <body>
@@ -96,12 +95,16 @@
 
             $('.result-container').annular();
             if(orientation === 90 || orientation === -90){
+                var rate = innerHeight / innerWidth;
                 $('body').css({
+                    'height': rate * innerWidth + 'px',
+                    'width': innerWidth + 'px',
                     'transform': 'rotate(90deg)',
                     '-webkit-transform': 'rotate(90deg)'
                 });
             }
             $(window).on('orientationchange', function(){
+                var rate = innerHeight / innerWidth;
                 if(orientation === 0 || orientation === 180){
                     $('body').css({
                         'transform': 'rotate(0)',
@@ -109,6 +112,8 @@
                     });
                 }else if(orientation === 90 || orientation === -90){
                     $('body').css({
+                        'height': rate * innerWidth + 'px',
+                        'width': innerWidth + 'px',
                         'transform': 'rotate(90deg)',
                         '-webkit-transform': 'rotate(90deg)'
                     });
