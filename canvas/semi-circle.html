@@ -81,14 +81,15 @@
                     ctx.font = size + "px YaHei";
                     ctx.fillStyle = "#A1DDE0";
                     
-                    ctx.fillText(copywrite, w / 2 - ctx.measureText(copywrite).width / 2, size * 3);
+                    ctx.fillText(copywrite, w / 2 - ctx.measureText(copywrite).width / 2, size * 2.5);
                     ctx.save();
-                    size = 90;
+                    size = 80;
                     ctx.font = size + "px YaHei";
                     ctx.fillStyle = "#FFFFFF";
                     ctx.fillText(numText, w / 2 - ctx.measureText(numText).width / 2, h / 2);
                     ctx.restore();
-                    ctx.fillText(content, w / 2 - ctx.measureText(content).width / 2, h - size * 2);
+                    size = 18;
+                    ctx.fillText(content, w / 2 - ctx.measureText(content).width / 2, h - size * 2.5);
                     ctx.closePath();
                 });
             };
