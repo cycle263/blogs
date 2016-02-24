@@ -105,7 +105,13 @@
                         'transform': 'rotate(0)',
                         '-webkit-transform': 'rotate(0)'
                     });
+                }else if(orientation === 90 || orientation === -90){
+                    $(this).css({
+                        'transform': 'rotate(90deg)',
+                        '-webkit-transform': 'rotate(90deg)'
+                    });
                 }
+                location.reload();
             });
         });
         </script>
