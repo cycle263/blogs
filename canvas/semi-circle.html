@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="https://os.alipayobjects.com/rmsportal/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
         <style media="screen">
             html, body{
-                height:100%;
                 font-size: 16px;
                 background-color:#39B3C4;
                 font-family: "微软雅黑", "Microsoft Yahei", "黑体", sans-serif;
@@ -18,7 +17,6 @@
                 position: relative;
             }
             .result-container{
-                height: 50%;
                 margin: 0 auto;
             }
             .result-container canvas{
@@ -31,16 +29,20 @@
                 width:50%;
                 line-height:32px;
             }
-            .pass-container,.surplus-container{
+            .pass-container{
                 top: 58%;
-            }
-            .surplus-container,.error-container{
-                left:50%;
-            }
-            .beat-container,.pass-container{
                 left:0;
             }
-            .error-container,.surplus-container{
+            .surplus-container{
+                top: 58%;
+                left:50%;
+            }
+            .beat-container{
+                left:0;
+                top: 83%;
+            }
+            .error-container{
+                left:50%;
                 top: 83%;
             }
         </style>
@@ -129,19 +131,22 @@
                     ctx.closePath();
                 });
             };
-
+            
+            var bw,bh,rate;
             if(orientation === 90 || orientation === -90){
-                var rate = innerWidth / innerHeight;
-                $('body').css({
-                    'height': rate * innerWidth + 'px',
-                    'width': innerWidth + 'px',
-                    // 'transform': 'rotate(90deg)',
-                    // '-webkit-transform': 'rotate(90deg)'
-                });
-                $('.result-container').css({
-                    'height': '50%'
-                });
+                rate = innerWidth / innerHeight;
+            }else if(orientation === 0 || orientation === 180){
+                rate = innerHeight / innerWidth;
             }
+            bh = rate * innerWidth;
+            bw = innerWidth;
+            $('body').css({
+                'height': bh + 'px',
+                'width': bw + 'px'
+            });
+            $('.result-container').css({
+                'height': '50%'
+            });
             $(window).on('orientationchange', function(){
                 location.reload();
             });
