@@ -102,22 +102,11 @@
                     // 'transform': 'rotate(90deg)',
                     // '-webkit-transform': 'rotate(90deg)'
                 });
+                $('.result-container').css({
+                    'height': '50%'
+                });
             }
             $(window).on('orientationchange', function(){
-                var rate = innerHeight / innerWidth;
-                if(orientation === 0 || orientation === 180){
-                    // $('body').css({
-                    //     'transform': 'rotate(0)',
-                    //     '-webkit-transform': 'rotate(0)'
-                    // });
-                }else if(orientation === 90 || orientation === -90){
-                    $('body').css({
-                        'height': rate * innerWidth + 'px',
-                        'width': innerWidth + 'px',
-                        // 'transform': 'rotate(90deg)',
-                        // '-webkit-transform': 'rotate(90deg)'
-                    });
-                }
                 location.reload();
             });
         });
