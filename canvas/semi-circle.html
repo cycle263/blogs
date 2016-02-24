@@ -93,7 +93,6 @@
                 });
             };
 
-            $('.result-container').annular();
             if(orientation === 90 || orientation === -90){
                 var rate = innerWidth / innerHeight;
                 $('body').css({
@@ -102,13 +101,15 @@
                     // 'transform': 'rotate(90deg)',
                     // '-webkit-transform': 'rotate(90deg)'
                 });
-                $('.result-container').css({
-                    'height': '50%'
-                });
+                // $('.result-container').css({
+                //     'height': '50%'
+                // });
             }
             $(window).on('orientationchange', function(){
                 location.reload();
             });
+            
+            $('.result-container').annular();
         });
         </script>
     </body>
