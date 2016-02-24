@@ -93,6 +93,18 @@
             };
 
             $('.result-container').annular();
+            if(orientation === 90 || orientation === -90){
+                $('body').css({
+                    'transform': 'rotate(90deg)',
+                    '-webkit-transform': 'rotate(90deg)'
+                });
+            }
+            // $('body').on('orientationchange', function(){
+            //     $(this).css({
+            //         'transform': 'rotate(0)',
+            //         '-webkit-transform': 'rotate(0)'
+            //     });
+            // });
         });
         </script>
     </body>
