@@ -451,7 +451,7 @@
                     var pageIndex = $(this).closest('.section').attr('pageIndex') - 0;
                     $('.menu-content li').eq(pageIndex - 1).addClass('checked');
                 }
-                var type = me.siblings('.section-title').text();
+                var type = me.parent().siblings('.section-title').text();
                 if(type !== '多选题'){
                     me.siblings('.checked').removeClass('checked');
                     me.addClass('checked');
