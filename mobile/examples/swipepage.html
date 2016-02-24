@@ -408,6 +408,17 @@
         <script src="https://os.alipayobjects.com/rmsportal/sqqPVSDyvPlQsya.js"></script>
         <script type="text/javascript">
         $(function(){
+            Zepto.Cookie = {
+            	set: function(name,value,expHour,domain,path){
+            		document.cookie = name+"="+encodeURIComponent(value==undefined?"":value)+(expHour?"; expires="+new Date(new Date().getTime()+(expHour-0)*3600000):"")+"; domain="+(domain?domain:document.domain)+"; path="+(path?path:"/");
+            	},
+            	get: function(name){
+            		return document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"))==null ? null : decodeURIComponent(RegExp.$2);
+            	},
+            	remove: function(name){
+            		if(this.get(name) != null) this.set(name,null,-1);
+            	}
+            };
             //题卡滚动
             var startY = 0, total = 0, count = 100;
             $('.btn-record span').text('0/' + count);
