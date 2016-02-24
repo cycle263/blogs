@@ -99,12 +99,14 @@
                     '-webkit-transform': 'rotate(90deg)'
                 });
             }
-            // $('body').on('orientationchange', function(){
-            //     $(this).css({
-            //         'transform': 'rotate(0)',
-            //         '-webkit-transform': 'rotate(0)'
-            //     });
-            // });
+            $('body').on('orientationchange', function(){
+                if(orientation === 0 || orientation === 180){
+                    $(this).css({
+                        'transform': 'rotate(0)',
+                        '-webkit-transform': 'rotate(0)'
+                    });
+                }
+            });
         });
         </script>
     </body>
