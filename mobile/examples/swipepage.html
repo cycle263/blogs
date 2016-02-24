@@ -456,7 +456,7 @@
                     me.siblings('.checked').removeClass('checked');
                     me.addClass('checked');
                 }else{
-                    me.addClass('checked');
+                    me.hasClass('checked') ? me.removeClass('checked') : me.addClass('checked');
                 }
                 
                 //TODO
