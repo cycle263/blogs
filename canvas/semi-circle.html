@@ -26,10 +26,47 @@
                 top: 20%;
             }
             
+            .four-box{
+                position:absolute;
+                width:50%;
+                line-height:32px;
+            }
+            .pass-container,.surplus-container{
+                top: 58%;
+            }
+            .surplus-container,.error-container{
+                left:50%;
+            }
+            .beat-container,.pass-container{
+                left:0;
+            }
+            .error-container,.surplus-container{
+                top: 83%;
+            }
         </style>
     </head>
     <body>
         <div count="1" highest="90" class="result-container">47|100</div>
+        <!--是否通过-->
+        <div class="four-box pass-container">
+            <div class="box-title">通过</div>
+            <div class="box-detail">测试结果(60/100)</div>
+        </div>
+        <!--剩余考试-->
+        <div class="four-box surplus-container">
+            <div class="box-title"><span>0</span>次</div>
+            <div class="box-detail">剩余考试次数</div>
+        </div>
+        <!--击败比率-->
+        <div class="four-box beat-container">
+            <div class="box-title"><span>0</span>%</div>
+            <div class="box-detail">打败学员比例</div>
+        </div>
+        <!--错误率-->
+        <div class="four-box error-container">
+            <div class="box-title"><span>0</span>%</div>
+            <div class="box-detail">错误率</div>
+        </div>
         <script src="https://os.alipayobjects.com/rmsportal/vJiWrkscXQXdURo.js"></script>
         <script type="text/javascript">
         $(function(){
