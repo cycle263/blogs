@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         <title>swipe page</title>
-        <link rel="stylesheet" href="../../stylesheets/reset.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="https://os.alipayobjects.com/rmsportal/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
         <style media="screen">
             html, body{
                 height:100%;
@@ -22,13 +22,14 @@
                 margin: 0 auto;
             }
             .result-container canvas{
-                margin-top:10%;
+                position: relative;
+                top: 20%;
             }
         </style>
     </head>
     <body>
         <div count="1" highest="90" class="result-container">47|100</div>
-        <script src="../libs/zepto.min.js"></script>
+        <script src="https://os.alipayobjects.com/rmsportal/vJiWrkscXQXdURo.js"></script>
         <script type="text/javascript">
         $(function(){
             $.fn.annular = function(){
@@ -52,7 +53,7 @@
                         color = '#FFF';
 
                     if(num === undefined || status === undefined) return;
-                    
+
                     content = '已考'+me.attr("count")+'次，最高得分'+me.attr("highest")+'分';
                     numText = num + '';
                     rate = num / tempArr[1];
@@ -77,19 +78,16 @@
                     ctx.closePath();
 
                     ctx.beginPath();
-                    var size = 18;
-                    ctx.font = size + "px 微软雅黑";
+                    ctx.font = "0.9em 微软雅黑";
                     ctx.fillStyle = "#A1DDE0";
-                    
-                    ctx.fillText(copywrite, w / 2 - ctx.measureText(copywrite).width / 2, size * 2.5);
+
+                    ctx.fillText(copywrite, w / 2 - ctx.measureText(copywrite).width / 2, h * 0.2);
                     ctx.save();
-                    size = 80;
-                    ctx.font = size + "px 微软雅黑";
+                    ctx.font = "4em 微软雅黑";
                     ctx.fillStyle = "#FFFFFF";
                     ctx.fillText(numText, w / 2 - ctx.measureText(numText).width / 2, h / 2);
                     ctx.restore();
-                    size = 18;
-                    ctx.fillText(content, w / 2 - ctx.measureText(content).width / 2, h - size * 2.5);
+                    ctx.fillText(content, w / 2 - ctx.measureText(content).width / 2, h * 0.7);
                     ctx.closePath();
                 });
             };
