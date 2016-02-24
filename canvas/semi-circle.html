@@ -99,14 +99,14 @@
                     '-webkit-transform': 'rotate(90deg)'
                 });
             }
-            $('body').on('orientationchange', function(){
+            $(window).on('orientationchange', function(){
                 if(orientation === 0 || orientation === 180){
-                    $(this).css({
+                    $('body').css({
                         'transform': 'rotate(0)',
                         '-webkit-transform': 'rotate(0)'
                     });
                 }else if(orientation === 90 || orientation === -90){
-                    $(this).css({
+                    $('body').css({
                         'transform': 'rotate(90deg)',
                         '-webkit-transform': 'rotate(90deg)'
                     });
