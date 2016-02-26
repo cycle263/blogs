@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!-- saved from url=(0114)http://cstraining.local.alipay.net/mobile/startExam.htm?examId=33286&paperId=280&trainingId=2450&isRepeatExam=true -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+    <meta charset="utf-8">
+    <meta name="wap-font-scale" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title></title>
+    <link rel="stylesheet" href="./startExam_files/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+        html,body{
+            height:100%;
+            font-size: 16px;
+            background-color:#fff;
+            overflow-x:hidden;
+            font-family: "微软雅黑", "Microsoft Yahei", "黑体", sans-serif;
+        }
+
+        .wp-inner{
+            height:100%;
+            box-sizing: border-box;
+            overflow-x:hidden;
+        }
+        .swipepage-wp{
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+        .swipepage-wp:after {
+            display: block;
+            content: ' ';
+            height: 0;
+            clear: both;
+        }
+        .swipepage-wp.anim{
+            -webkit-transition: all 500ms ease-out 0s;
+            transition: all 500ms ease-out 0s;
+        }
+        .swipepage-page{
+            display: block;
+            overflow-x: hidden;
+        }
+        .swipepage-dir-h {
+            float: left;
+        }
+        .section{
+            height: 100%;
+            text-align: center;
+            position:relative;
+        }
+
+        .btns{
+            height: 50px;
+            line-height: 50px;
+        }
+        .btns .btn{
+            font-size:18px;
+            background-color:#FFFFFF;
+            color:#ADADAD;
+            border: 1px solid #D2D2D2;
+            width: 160px;
+            height: 100%;
+            line-height: 100%;
+        }
+        .btn-submit{
+            float:left;
+        }
+        .btn-record{
+            float:right;
+        }
+        .btns .btn *{
+            vertical-align: middle;
+        }
+        .submit-icon{
+            margin-right:10px;
+        }
+        .record-icon{
+            margin-right:10px;
+        }
+
+        .section-title{
+            height:45px;
+            line-height:45px;
+            background-color:#141926;
+            color:#fff;
+            text-align:center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .section-title * {
+            width: 33%;
+            display: inline-block;
+        }
+        .section-title .reback{
+            font-size: 16px;
+            margin-left: 8px;
+            font-family: sans-serif;
+            color: #FFF;
+            text-decoration: none;
+            width: 30px;
+            float: left;
+        }
+        .section-title .countTime{
+            font: 16px arial normal;
+            width: 60px;
+            float: right;
+            margin-right: 12px;
+            line-height: 45px;
+        }
+        .section-title *:first-child {
+            text-align: left;
+        }
+
+        .section-title *:last-child {
+            text-align: right;
+        }
+        .menu-title{
+            background-color: #F5F5F9;
+            font-size: 14px;
+            color: #ADADAD;
+            height: 32px;
+            line-height: 32px;
+            text-align: left;
+            padding-left: 16px;
+        }
+        .menu-content{
+            padding-top: 8px;
+            text-align: left;
+            background-color:#FFFFFF;
+        }
+        .menu-content li{
+            list-style: none;
+            border-radius: 40px;
+            background-color: #FFFFFF;
+            border: 1px solid #D2D2D2;
+            color: #ADADAD;
+            display: inline-block;
+            height:32px;
+            line-height:32px;
+            width:32px;
+            margin-left: 12px;
+            margin-bottom:10px;
+            text-align: center;
+            cursor:pointer;
+        }
+        .menu-content li.checked{
+            border: 1px solid #01AAEE;
+            background-color:#01AAEE;
+            color: #FFFFFF;
+        }
+
+        .question-title,.question-answers,.btns{
+            overflow-x: hidden;
+        }
+        .question-title{
+            padding: 12px;
+            text-align: left;
+            line-height: 28px;
+        }
+        .question-num{
+            margin-right:3px;
+        }
+        .question-answers{
+            list-style:none;
+            text-align: left;
+            min-height: 200px;
+        }
+        .question-answers li{
+            line-height:25px;
+            cursor:pointer;
+            padding: 5px 12px;
+        }
+        .question-answers .question-answer-icon{
+            font-size:12px;
+            list-style: none;
+            border-radius: 22px;
+            border: 1px solid #ADADAD;
+            color: #ADADAD;
+            display: inline-block;
+            height:22px;
+            line-height:22px;
+            width:22px;
+            margin-right: 6px;
+            text-align: center;
+        }
+        .question-answers li.checked{
+            background-color:#01AAEE;
+            color: white;
+        }
+        .question-answers li.checked .question-answer-icon{
+            background-color: #FFFFFF;
+            border: 1px solid #01AAEE;
+            color: #01AAEE;
+        }
+
+        .mask,.submit-mask{
+            background-color:rgba(0, 0, 0, 0.6);
+            position:fixed;
+            top:0;
+            z-index: 999;
+            text-align:center;
+            width:100%;
+            height:100%;
+            color:#fff;
+            font: 18px 黑体;
+        }
+        .mask-con{
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            margin-top: -80px;
+            text-align: center;
+        }
+        .submit-dialog{
+            position:fixed;
+            top:50%;
+            width:90%;
+            margin-left:5%;
+            z-index: 1000;
+            height: 130px;
+            margin-top:-65px;
+            border-radius: 5px;
+            background-color: #FFF;
+        }
+        .dialog-content{
+            height: 50px;
+            line-height: 25px;
+            color: #333;
+            text-align: center;
+            padding: 16px;
+        }
+        .dialog-btns{
+            height: 50px;
+            line-height: 47px;
+            border-top: 1px solid #D9D9D9;
+        }
+        .dialog-btns span{
+            width: 49%;
+            display: inline-block;
+            text-align: center;
+            color: #01AAEE;
+        }
+        .dialog-btn-cancel{
+            border-left: 1px solid #D9D9D9;
+        }
+    </style>
+    <script type="text/javascript">
+    (function (doc, win, undefined) {
+            var docEl = doc.documentElement,
+                getDevice = function(){
+                    var obj = {};
+                    obj.width = docEl.clientWidth;
+                    obj.height = docEl.clientHeight;
+                    obj.rootSize = 16 * (docEl.clientWidth / 320);
+                    if(window.orientation) obj.landscape = orientation === 90 || orientation === -90;
+                    return obj;
+                };
+            win.deviceInfo = getDevice();
+        })(document, window);
+    </script>
+</head>
+<body>
+<input type="hidden" name="totalQuestions" value="5">
+<input type="hidden" name="countTime" value="444">
+<form action="http://cstraining.local.alipay.net/mobile/examResult.htm" id="examDetailForm" method="post" style="position: absolute; top: -1000px;">
+    <input type="hidden" name="userId" value="">
+    <input type="hidden" name="paperId" value="280">
+    <input type="hidden" name="tntInstId" value="CUSTOMER_TRAINING">
+    <input type="hidden" name="startTime" value="">
+    <input type="hidden" name="examId" value="33286">
+    <input type="hidden" name="trainingId" value="2450">
+    <input type="hidden" name="examMinutes" value="20">
+    <input type="hidden" name="questionResult">
+</form>
+<div class="wp-inner swipepage-wp" style="width: 1920px; transform: translate3d(0px, 0px, 0px);">
+    
+                        <div pageindex="1" class="section page1 swipepage-page swipepage-dir-h cur" style="width: 320px; height: 480px;">
+                <div class="section-title"><a class="reback" href="http://cstraining.local.alipay.net/mobile/learnTrainingPersonRecord.htm?id=2450">&lt;</a><span>单选题</span><span class="countTime">6:46</span></div>
+                <div class="question-title"><span class="question-num">1.</span><span class="question-text">单选1</span></div>
+                <ul class="question-answers" id="584" score="20" style="min-height: 333px;">
+                                                                        <li answer="A">
+                                <span class="question-answer-icon">A</span><span class="question-answer-text">选项1</span>
+                            </li>
+                                                                                                <li answer="B">
+                                <span class="question-answer-icon">B</span><span class="question-answer-text">选项内容</span>
+                            </li>
+                                                                                                <li answer="C" class="checked">
+                                <span class="question-answer-icon">C</span><span class="question-answer-text">选项内容</span>
+                            </li>
+                                                                                                <li answer="D">
+                                <span class="question-answer-icon">D</span><span class="question-answer-text">选项内容</span>
+                            </li>
+                                                            </ul>
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button" style="width: 160px;"><img src="./startExam_files/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button" style="width: 160px;"><img src="./startExam_files/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"><span>4/5</span></button>
+                </div>
+            </div>
+                    <div pageindex="2" class="section page2 swipepage-page swipepage-dir-h" style="width: 320px; height: 480px;">
+                <div class="section-title"><a class="reback" href="http://cstraining.local.alipay.net/mobile/learnTrainingPersonRecord.htm?id=2450">&lt;</a><span>单选题</span><span class="countTime">6:46</span></div>
+                <div class="question-title"><span class="question-num">2.</span><span class="question-text">单选2</span></div>
+                <ul class="question-answers" id="585" score="20" style="min-height: 333px;">
+                                                                        <li answer="A">
+                                <span class="question-answer-icon">A</span><span class="question-answer-text">选项内容</span>
+                            </li>
+                                                                                                <li answer="B">
+                                <span class="question-answer-icon">B</span><span class="question-answer-text">2</span>
+                            </li>
+                                                                                                <li answer="C">
+                                <span class="question-answer-icon">C</span><span class="question-answer-text">选项内容</span>
+                            </li>
+                                                                                                <li answer="D" class="checked">
+                                <span class="question-answer-icon">D</span><span class="question-answer-text">选项内容</span>
+                            </li>
+                                                            </ul>
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button" style="width: 160px;"><img src="./startExam_files/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button" style="width: 160px;"><img src="./startExam_files/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"><span>4/5</span></button>
+                </div>
+            </div>
+            
+        
+            
+                        <div pageindex="3" class="section page1 swipepage-page swipepage-dir-h" style="width: 320px; height: 480px;">
+                <div class="section-title"><a class="reback" href="http://cstraining.local.alipay.net/mobile/learnTrainingPersonRecord.htm?id=2450">&lt;</a><span>判断题</span><span class="countTime">6:46</span></div>
+                <div class="question-title"><span class="question-num">1.</span><span class="question-text">判断4</span></div>
+                <ul class="question-answers" id="589" score="20" style="min-height: 333px;">
+                                                                        <li answer="A">
+                                <span class="question-answer-icon">A</span><span class="question-answer-text">正确</span>
+                            </li>
+                                                                                                <li answer="B">
+                                <span class="question-answer-icon">B</span><span class="question-answer-text">错误</span>
+                            </li>
+                                                            </ul>
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button" style="width: 160px;"><img src="./startExam_files/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button" style="width: 160px;"><img src="./startExam_files/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"><span>4/5</span></button>
+                </div>
+            </div>
+                    <div pageindex="4" class="section page2 swipepage-page swipepage-dir-h" style="width: 320px; height: 480px;">
+                <div class="section-title"><a class="reback" href="http://cstraining.local.alipay.net/mobile/learnTrainingPersonRecord.htm?id=2450">&lt;</a><span>判断题</span><span class="countTime">6:46</span></div>
+                <div class="question-title"><span class="question-num">2.</span><span class="question-text">判断啊啊啊啊啊安安啊啊啊！！！！</span></div>
+                <ul class="question-answers" id="588" score="20" style="min-height: 333px;">
+                                                                        <li answer="A">
+                                <span class="question-answer-icon">A</span><span class="question-answer-text">正确</span>
+                            </li>
+                                                                                                <li answer="B" class="checked">
+                                <span class="question-answer-icon">B</span><span class="question-answer-text">错误</span>
+                            </li>
+                                                            </ul>
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button" style="width: 160px;"><img src="./startExam_files/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button" style="width: 160px;"><img src="./startExam_files/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"><span>4/5</span></button>
+                </div>
+            </div>
+                    <div pageindex="5" class="section page3 swipepage-page swipepage-dir-h" style="width: 320px; height: 480px;">
+                <div class="section-title"><a class="reback" href="http://cstraining.local.alipay.net/mobile/learnTrainingPersonRecord.htm?id=2450">&lt;</a><span>判断题</span><span class="countTime">6:46</span></div>
+                <div class="question-title"><span class="question-num">3.</span><span class="question-text">判断1</span></div>
+                <ul class="question-answers" id="586" score="20" style="min-height: 333px;">
+                                                                        <li answer="A">
+                                <span class="question-answer-icon">A</span><span class="question-answer-text">正确</span>
+                            </li>
+                                                                                                <li answer="B" class="checked">
+                                <span class="question-answer-icon">B</span><span class="question-answer-text">错误</span>
+                            </li>
+                                                            </ul>
+                <div class="btns">
+                    <button class="btn btn-submit" type="button" name="button" style="width: 160px;"><img src="./startExam_files/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"><span>交卷</span></button>
+                    <button class="btn btn-record" type="button" name="button" style="width: 160px;"><img src="./startExam_files/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"><span>4/5</span></button>
+                </div>
+            </div>
+            
+        <div class="section page6 swipepage-page swipepage-dir-h" style="width: 320px; height: 480px;">
+        <div class="section-title">题卡</div>
+        <div class="menu-box">
+                            <div class="menu-title">单选题</div>
+                <ul class="menu-content">
+                                            <li linkid="1" class="checked"><span class="menu-item-icon">1</span></li>
+                                            <li linkid="2" class="checked"><span class="menu-item-icon">2</span></li>
+                                    </ul>
+                                                    <div class="menu-title">判断题</div>
+                <ul class="menu-content">
+                                            <li linkid="3"><span class="menu-item-icon">1</span></li>
+                                            <li linkid="4" class="checked"><span class="menu-item-icon">2</span></li>
+                                            <li linkid="5" class="checked"><span class="menu-item-icon">3</span></li>
+                                    </ul>
+                    </div>
+    </div>
+</div>
+
+<!--左右滑动提示-->
+<div class="mask" style="display: none;"><div class="mask-con"><img width="120px" src="./startExam_files/geOZvLyXLZtiGrf.png"><br><span>左右滑动切换题目</span></div></div>
+
+<!--交卷提示框-->
+<div class="submit-dialog" style="display:none;">
+    <div class="dialog-content">
+        亲，你已经完成了<span class="finished"></span>道题，还有<span class="unfinished"></span>道题未完成，确定要交卷么？
+    </div>
+    <div class="dialog-btns">
+        <span class="dialog-btn-submit">任性交卷</span>
+        <span class="dialog-btn-cancel">继续答题</span>
+    </div>
+</div>
+<div class="submit-mask" style="display:none;"></div>
+
+<script src="./startExam_files/vJiWrkscXQXdURo.js"></script>
+<script src="./startExam_files/sqqPVSDyvPlQsya.js"></script>
+<script type="text/javascript">
+    $(function(){
+
+        var totalTime = $("input[name=countTime]").val();
+        var interTime = setInterval(function(){
+            totalTime--;
+            showTime(totalTime);
+            if(totalTime <= 0){
+                clearInterval(interTime);
+                postValues();
+                console.log('Examinations concluded');
+            }else if(totalTime == 5 * 60 || totalTime == 301){
+                console.log('最后五分钟答题时间！', 'warning');
+            }
+        }, 1000);
+
+        function showTime(totalTime) {
+            var m = Math.floor(totalTime/ 60), s = totalTime % 60, str='';
+            s = s >= 10 ? s : "0" + s;
+            str = m + ":" + s;
+                $(".countTime").html(str);
+        }
+        /*cookie操作*/
+        Zepto.Cookie = {
+            set: function(name,value,expHour,domain,path){
+                document.cookie = name+"="+encodeURIComponent(value==undefined?"":value)+(expHour?"; expires="+new Date(new Date().getTime()+(expHour-0)*3600000):"")+"; domain="+(domain?domain:document.domain)+"; path="+(path?path:"/");
+            },
+            get: function(name){
+                return document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"))==null ? null : decodeURIComponent(RegExp.$2);
+            },
+            remove: function(name){
+                if(this.get(name) != null) this.set(name,null,-1);
+            }
+        };
+        //题卡滚动
+        var startY = 0, total = 0, count = $("input[name=totalQuestions").val();
+        $('.btn-record span').text('0/' + count);
+        $('body').on('touchstart', function(e) {
+            startY = e.targetTouches[0].pageY;
+        });
+        $('body').on('touchend', function(e) {
+            var move = startY - e.changedTouches[0].pageY;
+            $('.section.cur')[0].scrollTop += move;
+        });
+
+        $('.wp-inner').swipepage({der: 0.16});
+        var initPage = function(){
+            $('.btns .btn').width(document.documentElement.clientWidth/2);    //定义按钮宽度
+            $('.question-answers').each(function(k, ele){           //考题页面内容高度
+                var me = $(this),
+                    otherH = 0;
+                me.siblings().each(function(){
+                    otherH += $(this).height();
+                });
+                me.css('min-height', (me.parent().height() - otherH) + 'px');
+            });
+        };
+        $(window).on('orientationchange', function(event){
+            initPage();
+        });
+        initPage();
+
+        //题卡页面跳转到题目页面
+        $('.section').last().on('click tap', '.menu-content li', function(e){
+            var linkId = $(this).attr('linkId') - 1;
+            if(linkId !== NaN && linkId >= 0) Zepto.fn.swipepage.moveTo(linkId, false);
+        });
+
+        //做完题后题卡进度更新
+        $('.question-answers li').on('click tap', function(e){
+            var me = $(this),
+                examId = $('input[name="examId"]').val(),
+                questionId = me.parent().attr('id');
+
+            if(!me.parent().find('.checked').length){
+                total++;
+                $('.btn-record span').text(total + '/' + count);
+                var pageIndex = $(this).closest('.section').attr('pageIndex') - 0;
+                $('.menu-content li').eq(pageIndex - 1).addClass('checked');
+            }
+            var type = me.parent().siblings('.section-title').text();
+            if(type !== '多选题'){
+                me.siblings('.checked').removeClass('checked');
+                me.addClass('checked');
+            }else{
+                me.hasClass('checked') ? me.removeClass('checked') : me.addClass('checked');
+            }
+
+            var qid = 'exam-' + examId + '-' + questionId,
+                answer = me.parent().find('li.checked').map(function(){if(this.getAttribute('answer'))return this.getAttribute('answer');}).toArray().join(',');
+            Zepto.Cookie.set(qid, answer, 24 * 30);
+            Zepto.Cookie.set('exam-' + examId, Math.round((total*100)/(count-0)), 24 * 30);
+        });
+
+        $('.question-answers').each(function(key, ele){
+            var me = $(this),
+                type = me.siblings('.section-title').text(),
+                qid = 'exam-' + $('input[name="examId"]').val() + '-' + me.attr('id'),
+                answer = Zepto.Cookie.get(qid);
+            if(answer !== null){
+                total ++;
+                var temp = answer.split(',');
+                me.find('li').each(function(){
+                    if(temp.indexOf($(this).attr('answer')) > -1){
+                        $(this).addClass('checked');
+                    }
+                });
+                var pageIndex = me.closest('.section').attr('pageIndex') - 0;
+                $('.menu-content li').eq(pageIndex - 1).addClass('checked');
+            }
+        });
+        $('.btn-record span').text(total + '/' + count);
+
+        //返回题卡页面
+        $('.btn-record').on('click tap', function(e){
+            Zepto.fn.swipepage.moveTo($('.section').length - 1, false);
+        });
+
+        //任性交卷提示
+        $('.btn-submit').on('click tap', function(e){
+            $('.submit-dialog,.submit-mask').show();
+            $('.dialog-content .finished').text(total);
+            $('.dialog-content .unfinished').text(count - total);
+        });
+        $('.dialog-btn-cancel').on('click tap', function(e){
+            $('.submit-dialog,.submit-mask').hide();
+        });
+        $('.dialog-btn-submit').on('click tap', function(e){
+            $('.submit-dialog,.submit-mask').hide();
+
+            postValues();
+            $('.question-answers').each(function(key, ele){
+                var me = $(this),
+                    qid = 'exam-' + $('input[name="examId"]').val() + '-' + me.attr('id');
+                Zepto.Cookie.remove(qid);
+            });
+        });
+
+        //遮罩层
+        $('.mask').on('click tap', function(){
+            $(this).hide();
+        });
+        setTimeout(function(){
+            $('.mask').hide();
+        }, 3000);
+
+        function postValues(){
+            var o = [], formObj = $('#examDetailForm').serializeArray(), postData = {};
+            $(".question-answers").each(function(){
+                var temp = {};
+                temp['answer'] = $(this).find('.checked').map(function(){if(this.getAttribute('answer'))return this.getAttribute('answer');}).toArray().join(',');
+                temp['id'] = $(this).closest('ul').attr('id');;
+                temp['score'] = $(this).closest('ul').attr('score');
+                o.push(temp);
+            });
+
+            $(formObj).each(function() {
+                postData[this.name] = this.value;
+            });
+            postData['questionResult'] = JSON.stringify(o);
+            console.log(postData);
+            $("input[name=questionResult]").val(JSON.stringify(o));
+            $('#examDetailForm').submit();
+        }
+    });
+</script>
+
+
+</body></html>
