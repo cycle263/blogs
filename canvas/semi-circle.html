@@ -180,7 +180,7 @@
                 });
             };
             
-            var bw,bh,rate;
+            var bw,bh,rate,contentH;
             if(window.orientation !== undefined){
                 if(orientation === 90 || orientation === -90){
                     rate = innerWidth / innerHeight;
@@ -194,8 +194,13 @@
             bw = innerWidth;
             $('body').css({
                 'height': bh + 'px',
+                'width': bw + 'px'
+            });
+            contentH = bh - 45 - 50;
+            $('#content').css({
+                'height': contentH + 'px',
                 'width': bw + 'px',
-                'background-size': bw + 'px ' + bh + 'px'
+                'background-size': bw + 'px ' + contentH + 'px'
             });
             $('.result-container').css({
                 'height': '50%'
