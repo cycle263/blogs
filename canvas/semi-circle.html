@@ -244,7 +244,7 @@
                 });
             };
             
-            var bw,bh,rate,contentH;
+            var bw,bh,rate,contentH, ori = innerWidth / innerHeight;
             if(window.orientation !== undefined){
                 if(orientation === 90 || orientation === -90){
                     rate = innerWidth / innerHeight;
@@ -252,7 +252,11 @@
                     rate = innerHeight / innerWidth;
                 }
             }else{
-                rate = innerHeight / innerWidth;
+                if(ori > 1){
+                    rate = innerWidth / innerHeight;
+                }else{
+                    rate = innerHeight / innerWidth;
+                }
             }
             bh = rate * innerWidth;
             bw = innerWidth;
