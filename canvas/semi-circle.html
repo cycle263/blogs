@@ -12,6 +12,9 @@
                 font-size: 16px;
                 background-color:#39B3C4;
                 font-family: "微软雅黑", "Microsoft Yahei", "黑体", sans-serif;
+                position: relative;
+            }
+            #content{
                 background: url('https://os.alipayobjects.com/rmsportal/lUwNYKjbMApzJSG.png') no-repeat;
                 background-size: cover;
                 position: relative;
@@ -55,29 +58,64 @@
                 left:50%;
                 top: 77%;
             }
+            
+            .exam-result-return {
+            	color: #FFFFFF;
+            	text-align: left;
+            	font-size:36px;
+            	height: 45px;
+                line-height: 45px;
+            }
+            .exam-result-return .return {
+                font-size: 18px;
+                margin-left: 5px;
+                font-family: sans-serif;
+            }
+            .exam-result-return .result{
+                font-size: 18px;
+                font-family: 黑体;
+            }
+            .exam-result-button{
+                height: 30px;
+                width: 30px;
+                display: inline-block;
+                border-radius: 30px;
+                line-height: 30px;
+            }
         </style>
     </head>
     <body>
-        <div count="1" highest="90" class="result-container">47|100</div>
-        <!--是否通过-->
-        <div class="four-box pass-container">
-            <div class="box-title">通过</div>
-            <div class="box-detail">测试结果(60/100)</div>
+        <div class="exam-result-return">
+            <span class="return"><</span>
+            <span class="result">测试结果</span>
+            <a class="exam-result-button" href="./trainingCenter.htm?finished=true">析</a>
         </div>
-        <!--剩余考试-->
-        <div class="four-box surplus-container">
-            <div class="box-title"><span>0</span>次</div>
-            <div class="box-detail">剩余考试次数</div>
+        <div id="content">
+            <div count="1" highest="90" class="result-container">47|100</div>
+            <!--是否通过-->
+            <div class="four-box pass-container">
+                <div class="box-title">通过</div>
+                <div class="box-detail">测试结果(60/100)</div>
+            </div>
+            <!--剩余考试-->
+            <div class="four-box surplus-container">
+                <div class="box-title"><span>0</span>次</div>
+                <div class="box-detail">剩余考试次数</div>
+            </div>
+            <!--击败比率-->
+            <div class="four-box beat-container">
+                <div class="box-title"><span>0</span>%</div>
+                <div class="box-detail">打败学员比例</div>
+            </div>
+            <!--错误率-->
+            <div class="four-box error-container">
+                <div class="box-title"><span>0</span>%</div>
+                <div class="box-detail">错误率</div>
+            </div>
         </div>
-        <!--击败比率-->
-        <div class="four-box beat-container">
-            <div class="box-title"><span>0</span>%</div>
-            <div class="box-detail">打败学员比例</div>
-        </div>
-        <!--错误率-->
-        <div class="four-box error-container">
-            <div class="box-title"><span>0</span>%</div>
-            <div class="box-detail">错误率</div>
+        <div id="btns-box">
+            <button class="btn btn-submit" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/mzCYdcbBCSwwgMf.png" height="60%" class="submit-icon"></img><span>返回首页</span></button>
+            <button class="btn btn-record" type="button" name="button"><img src="https://os.alipayobjects.com/rmsportal/KQlYcOVlGbLanRD.png" height="60%" class="record-icon"></img><span>重新考试</span></button>
         </div>
         <script src="https://os.alipayobjects.com/rmsportal/vJiWrkscXQXdURo.js"></script>
         <script type="text/javascript">
