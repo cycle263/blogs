@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="wap-font-scale" content="no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>蚂客学</title>
+    <link rel="stylesheet" href="https://os.alipayobjects.com/rmsportal/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+      .arc-rotate{
+        position:fixed;
+        top:50%;
+        margin-top:-100px;
+        width: 200px;
+        height: 200px;
+      }
+      .arc-rotate .loader{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 100px;
+        height: 100px;
+      }
+      .arc-rotate .loader > div {
+        position: absolute;
+        border: 2px solid;
+        border-color: transparent #FFF;
+        border-radius: 50%;
+        animation: load 1s infinite ease-in-out;
+      }
+      .arc-rotate .loader .arc-1 {
+        margin: 32% 0 0 32%;
+        width: 36%;
+        height: 36%;
+      }
+      .arc-rotate .loader .arc-2 {
+        margin: 40% 0 0 40%;
+        width: 20%;
+        height: 20%;
+        animation-direction: reverse;
+        animation-delay: -0.5s;
+      }
+      @keyframes load {
+        0% {
+          transform: rotate(0) scale(1);
+        }
+        50% {
+          transform: rotate(180deg) scale(0.6);
+        }
+        100% {
+          transform: rotate(360deg) scale(1);
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="arc-rotate">
+      <div class="loader">
+				<div class="arc-1"></div>
+				<div class="arc-2"></div>
+			</div>
+    </div>
+</body>
+</html>
