@@ -280,10 +280,7 @@
                 </div>
             </div>
         </div>
-        
-        <!--左右滑动提示-->
-        <div class="mask"><img width="50%" src="https://os.alipayobjects.com/rmsportal/geOZvLyXLZtiGrf.png"></img><br /><span>左右滑动切换题目</span></div>
-    
+
         <!--交卷提示框-->
         <div class="submit-dialog" style="display:none;">
             <div class="dialog-content">
@@ -305,7 +302,6 @@
                         obj.rootSize = 16 * (docEl.clientWidth / 320);
                         obj.remWidth = obj.width / obj.rootSize;
                         obj.remHeight = obj.height / obj.rootSize;
-                        obj.landscape = orientation === 90 || orientation === -90;
                         return obj;
                     };
                 win.deviceInfo = getDevice();
