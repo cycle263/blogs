@@ -14,15 +14,16 @@ $(function(){
                     carousel.cycle();
                 },
                 initEvent: function(){
+                    //下方指示器点击事件
                     carouselEle.on('click', '.carousel-indicators li', function(){
                         var n = $(this).data('slide-to') - 0,
                             i = $('.carousel-indicators .active', carouselEle).data('slide-to') - 0,
                             direction = n > i ? 'left' : 'right';
                         if(n !== i) carousel.goTo(i, n, direction);
-                        clearInterval(carousel.intervalNum);
-                        carousel.cycle();
+                        carousel.reCycle();
                     });
 
+                    //左右按钮点击事件
                     carouselEle.on('click', '.carousel-control', function(){
                         var i = $('.carousel-indicators .active', carouselEle).data('slide-to') - 0,
                             len = $('.carousel-indicators li', carouselEle).length - 0,
@@ -33,10 +34,17 @@ $(function(){
                             n = i <= 0 ? len - 1 : i - 1;
                         }
                         carousel.goTo(i, n, direction);
+                        carousel.reCycle();
+                    });
+
+                    //鼠标悬浮停止循环播放
+                    carouselEle.find('.carousel-inner').hover(function(){
                         clearInterval(carousel.intervalNum);
+                    }, function(){
                         carousel.cycle();
                     });
                 },
+                //兼容css3动画结束事件
                 whichTransitionEvent: function(){
                     var el = document.createElement('fakeelement');
                     var transitions = {
@@ -56,6 +64,10 @@ $(function(){
                         $('.carousel-control.right', carouselEle).trigger('click');
                     }, 1000 * setttings.intervalTime);
                 },
+                reCycle: function(){
+                    clearInterval(carousel.intervalNum);
+                    carousel.cycle();
+                },
                 goTo: function(index, next, direction){
                     var len = $('.carousel-indicators li', carouselEle).length - 0,
                         type = direction === 'right' ? 'prev' : 'next';
@@ -68,6 +80,7 @@ $(function(){
                     jQuery('.carousel-inner .active', carouselEle).addClass(direction);
                     jQuery('.carousel-inner .item', carouselEle).eq(next).addClass(direction).width();
 
+                    //清除动画class
                     jQuery('.carousel-inner .item.active', carouselEle).one(carousel.whichTransitionEvent(), function(){
                         jQuery('.carousel-inner .active', carouselEle).removeClass('active ' + direction);
                         jQuery('.carousel-inner .item', carouselEle).eq(next).removeClass(type + ' ' + direction).addClass('active');
