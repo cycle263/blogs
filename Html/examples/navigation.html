@@ -47,12 +47,13 @@
             position: relative;
             left: 0;
             top: 0;
+            z-index: 1;
         }
         .nav-content-right{
             display: none;
             width: 734px;
             position: absolute;
-            left: 224px;
+            left: 223px;
             top: 0;
             background-color: #fff;
             border: 1px solid #39a030;
@@ -65,6 +66,13 @@
         }
         .nav-items li{
             padding: 0 16px;
+        }
+        .nav-items li:hover{
+            background-color: #fff;
+            border-bottom: 1px solid #39a030;
+        }
+        .nav-items li:hover a{
+            color: #333;
         }
         .nav-items .item{
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -90,7 +98,7 @@
             margin-right: 0;
         }
         .nav-detail-items{
-            padding: 40px;
+            padding: 30px 40px;
             margin: 0;
         }
         .detail-item{
@@ -115,6 +123,7 @@
         </style>
     </head>
     <body>
+        <!-- 导航栏 -->
         <div class="nav-container">
             <a class="nav-title" href="">
                 <span class="nav-btn-icon"></span>
