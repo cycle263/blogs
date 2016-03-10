@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="gbk">
+        <title>navigation</title>
+        <style media="screen">
+        .nav-container{
+            position: relative;
+            height: 51px;
+            font-family: Arial, 'Hiragino Sans GB', 微软雅黑, Helvetica, sans-serif;
+        }
+        .nav-container a{
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-title{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 224px;
+            height: 52px;
+            background-color: #31a030;
+        }
+        .nav-btn-icon{
+            width: 18px;
+            height: 14px;
+            margin-left: 18px;
+            display: inline-block;
+            background: url('https://os.alipayobjects.com/rmsportal/kgRFfVGnBNOnVgh.png') no-repeat;
+        }
+        .nav-btn-text{
+            line-height: 54px;
+            font-size: 17px;
+        }
+
+        .nav-content{
+            position: absolute;
+            top: 52px;
+            left: 0;
+            width: 224px;
+            background-color: rgba(0,0,0,0.6);
+            transition: height .8s ease-in-out;
+        }
+        .nav-content-left{
+            display: inline-block;
+            width: 224px;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+        .nav-content-right{
+            display: none;
+            width: 734px;
+            position: absolute;
+            left: 224px;
+            top: 0;
+            background-color: #fff;
+            border: 1px solid #39a030;
+        }
+
+        .nav-items,.nav-detail-items{
+            list-style: none;
+            padding: 16px 0;
+            margin: 0;
+        }
+        .nav-items li{
+            padding: 0 16px;
+        }
+        .nav-items .item{
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 16px;
+        }
+        .nav-items li:last-child .item{
+            border-bottom: none;
+        }
+        .item-title{
+            line-height: 52px;
+            font-size: 15px;
+        }
+        .item-links{
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .item-links a{
+            margin-right: 9px;
+        }
+
+        .nav-content-right, .nav-content-right a{
+            color: #333;
+            margin-right: 0;
+        }
+        .nav-detail-items{
+            padding: 40px;
+            margin: 0;
+        }
+        .detail-item{
+            margin-bottom: 20px;
+        }
+        .detail-item .item-title{
+            font-size: 19px;
+            color: #39a030;
+        }
+        .detail-item .item-links{
+            font-size: 14px;
+            line-height: 30px;
+        }
+        .detail-item .item-links span{
+            padding: 0 10px;
+        }
+        .more img{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="nav-container">
+            <a class="nav-title" href="">
+                <span class="nav-btn-icon"></span>
+                <span class="nav-btn-text">全部课程</span>
+            </a>
+            <div class="nav-content">
+                <div class="nav-content-left">
+                    <ul class="nav-items">
+                        <li>
+                            <div class="item">
+                                <a class="item-title" href="#">IT互联网</a>
+                                <div class="item-links">
+                                    <a href="#">移动开发</a>
+                                    <a href="#">编程</a>
+                                    <a href="#">设计</a>
+                                    <a href="#">产品策划</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item">
+                                <a class="item-title" href="#">职能技能</a>
+                                <div class="item-links">
+                                    <a href="#">办件1</a>
+                                    <a href="#">办公2</a>
+                                    <a href="#">软件3</a>
+                                    <a href="#">办软4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item">
+                                <a class="item-title" href="#">职能技能</a>
+                                <div class="item-links">
+                                    <a href="#">办2件1</a>
+                                    <a href="#">办件2</a>
+                                    <a href="#">办公软3</a>
+                                    <a href="#">软件4</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-content-right">
+                    <ul class="nav-detail-items">
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">IT互联网1</a>
+                                <div class="item-links">
+                                    <a href="#">移动开发<span>/</span></a>
+                                    <a href="#">移动开发<span>/</span></a>
+                                    <a href="#">移动开发<span>/</span></a>
+                                    <a href="#">移动开发<span>/</span></a>
+                                    <a href="#">移动开发<span>/</span></a>
+                                    <a href="#">移动开发<span>/</span></a>
+                                    <a href="#">移动开发3<span>/</span></a>
+                                    <a href="#">移动开发4<span>/</span></a>
+                                    <a href="#">移动开发1<span>/</span></a>
+                                    <a href="#">移动开发2<span>/</span></a>
+                                    <a href="#">移动开发3<span>/</span></a>
+                                    <a href="#">移动开发4<span>/</span></a>
+                                    <a href="#">移动开发1<span>/</span></a>
+                                    <a href="#">移动开发2<span>/</span></a>
+                                    <a href="#">移动开发3<span>/</span></a>
+                                    <a href="#">移动开发4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">职能技能</a>
+                                <div class="item-links">
+                                    <a href="#">办公软件1<span>/</span></a>
+                                    <a href="#">办公软件2<span>/</span></a>
+                                    <a href="#">办公软件3<span>/</span></a>
+                                    <a href="#">办公软件4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">职能技能</a>
+                                <div class="item-links">
+                                    <a href="#">办公软件1<span>/</span></a>
+                                    <a href="#">办公软件2<span>/</span></a>
+                                    <a href="#">办公软件3<span>/</span></a>
+                                    <a href="#">办公软件4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="more">
+                            <a href="#">更多...
+                                <img src="http://nos.netease.com/edu-image/8F59299CC0954CA71D2D265B94DD8367.png?imageView&thumbnail=440y290&quality=100" alt="" />
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav-detail-items">
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">IT互联网2</a>
+                                <div class="item-links">
+                                    <a href="#">移动开发1<span>/</span></a>
+                                    <a href="#">移动开发2<span>/</span></a>
+                                    <a href="#">移动开发3<span>/</span></a>
+                                    <a href="#">移动开发4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">职能技能</a>
+                                <div class="item-links">
+                                    <a href="#">办公软件1<span>/</span></a>
+                                    <a href="#">办公软件2<span>/</span></a>
+                                    <a href="#">办公软件3<span>/</span></a>
+                                    <a href="#">办公软件4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">职能技能</a>
+                                <div class="item-links">
+                                    <a href="#">办公软件1<span>/</span></a>
+                                    <a href="#">办公软件2<span>/</span></a>
+                                    <a href="#">办公软件3<span>/</span></a>
+                                    <a href="#">办公软件4</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="nav-detail-items">
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">IT互联网3</a>
+                                <div class="item-links">
+                                    <a href="#">移动开发1<span>/</span></a>
+                                    <a href="#">移动开发2<span>/</span></a>
+                                    <a href="#">移动开发3<span>/</span></a>
+                                    <a href="#">移动开发4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">职能技能</a>
+                                <div class="item-links">
+                                    <a href="#">办公软件1<span>/</span></a>
+                                    <a href="#">办公软件2<span>/</span></a>
+                                    <a href="#">办公软件3<span>/</span></a>
+                                    <a href="#">办公软件4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="detail-item">
+                                <a class="item-title" href="#">职能技能</a>
+                                <div class="item-links">
+                                    <a href="#">办公软件1<span>/</span></a>
+                                    <a href="#">办公软件2<span>/</span></a>
+                                    <a href="#">办公软件3<span>/</span></a>
+                                    <a href="#">办公软件4</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var hoverState = false;
+
+                $('.nav-title').click(function(event){
+                    var h = $('.nav-content').height();
+                    if(h > 0){
+                        $('.nav-content').height(h);
+                        $('.nav-content').height(0);
+                        $('.nav-content-right').hide();
+                        $('.nav-detail-items').hide();
+                    }else{
+                        $('.nav-content').height($('.nav-content-left').height());
+                    }
+                    event.preventDefault();
+                });
+
+                $('.nav-items li').hover(function(){
+                    hoverState = false;
+                    var i = $('.nav-items li').index(this);
+                    $('.nav-content-right').show();
+                    $('.nav-detail-items').hide().eq(i).show();
+                });
+                $('.nav-items').on('mouseleave', function(){
+                    setTimeout(function(){
+                        if(!hoverState){
+                            $('.nav-content-right').hide();
+                            $('.nav-detail-items').hide();
+                        }
+                    }, 0);
+                });
+                $('.nav-content-right').hover(function(){
+                    hoverState = true;
+                }, function(){
+                    $('.nav-content-right').hide();
+                    $('.nav-detail-items').hide();
+                });
+            });
+        </script>
+    </body>
+</html>
