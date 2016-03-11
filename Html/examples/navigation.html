@@ -38,8 +38,9 @@
             top: 52px;
             left: 0;
             width: 224px;
+            opacity: 1;
             background-color: rgba(0,0,0,0.6);
-            transition: height .8s ease-in-out;
+            transition: opacity .8s ease-in-out;
         }
         .nav-content-left{
             display: inline-block;
@@ -301,14 +302,13 @@
                 var hoverState = false;
 
                 $('.nav-title').click(function(event){
-                    var h = $('.nav-content').height();
-                    if(h > 0){
-                        $('.nav-content').height(h);
-                        $('.nav-content').height(0);
+                    var o = $('.nav-content').css('opacity');
+                    if(o > 0){
+                        $('.nav-content').css('opacity', 0);
                         $('.nav-content-right').hide();
                         $('.nav-detail-items').hide();
                     }else{
-                        $('.nav-content').height($('.nav-content-left').height());
+                        $('.nav-content').css('opacity', 1);
                     }
                     event.preventDefault();
                 });
