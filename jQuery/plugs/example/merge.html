@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>navigation</title>
+        <style media="screen">
+        body{
+            overflow: hidden;
+            margin: 0;
+        }
+        .nav-car-container{
+            margin: 0 auto;
+            background-color: #000;
+        }
+        .nav-container{
+            position: relative;
+            height: 51px;
+            font-family: Arial, 'Hiragino Sans GB', 微软雅黑, Helvetica, sans-serif;
+        }
+        .nav-container a{
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-title{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 224px;
+            height: 52px;
+            background-color: #31a030;
+        }
+        .nav-btn-icon{
+            width: 18px;
+            height: 14px;
+            margin-left: 18px;
+            display: inline-block;
+            background: url('https://os.alipayobjects.com/rmsportal/kgRFfVGnBNOnVgh.png') no-repeat;
+        }
+        .nav-btn-text{
+            line-height: 54px;
+            font-size: 17px;
+        }
+
+        .nav-content{
+            position: absolute;
+            top: 52px;
+            left: 0;
+            width: 224px;
+            background-color: rgba(0,0,0,0.6);
+            transition: height .8s ease-in-out;
+        }
+        .nav-content-left{
+            display: inline-block;
+            width: 224px;
+            position: relative;
+            left: 0;
+            top: 0;
+            z-index: 2;
+        }
+        .nav-content-right{
+            display: none;
+            width: 734px;
+            position: absolute;
+            left: 223px;
+            top: 0;
+            z-index: 1;
+            background-color: #fff;
+            border: 1px solid #39a030;
+        }
+
+        .nav-items,.nav-detail-items{
+            list-style: none;
+            padding: 16px 0;
+            margin: 0;
+        }
+        .nav-items li{
+            padding: 0 16px;
+        }
+        .nav-items li:hover{
+            background-color: #fff;
+            border-bottom: 1px solid #39a030;
+        }
+        .nav-items li:hover a{
+            color: #333;
+        }
+        .nav-items .item{
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 16px;
+        }
+        .nav-items li:last-child .item{
+            border-bottom: none;
+        }
+        .item-title{
+            line-height: 52px;
+            font-size: 15px;
+        }
+        .item-links{
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .item-links a{
+            margin-right: 9px;
+        }
+
+        .nav-content-right, .nav-content-right a{
+            color: #333;
+            margin-right: 0;
+        }
+        .nav-detail-items{
+            padding: 30px 40px;
+            margin: 0;
+        }
+        .detail-item{
+            margin-bottom: 20px;
+        }
+        .detail-item .item-title{
+            font-size: 19px;
+            color: #39a030;
+        }
+        .detail-item .item-links{
+            font-size: 14px;
+            line-height: 30px;
+        }
+        .detail-item .item-links span{
+            padding: 0 10px;
+        }
+        .more img{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        #material-carousel{
+            min-width: 1200px;
+        }
+        .clearfix:before,
+        .clearfix:after{
+            display: table;
+            content: " ";
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        .carousel {
+            position: relative;
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            z-index: 15;
+            width: 60%;
+            padding-left: 0;
+            margin-left: -30%;
+            text-align: center;
+            list-style: none;
+        }
+        .carousel-indicators li {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 1px;
+            text-indent: -999px;
+            cursor: pointer;
+            background-color: #000\9;
+            background-color: rgba(0,0,0,0);
+            border: 1px solid #fff;
+            border-radius: 10px;
+        }
+        .carousel-indicators .active {
+            width: 12px;
+            height: 12px;
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .carousel-inner>.item {
+            position: relative;
+            display: none;
+            -webkit-transition: .6s ease-in-out left;
+            -o-transition: .6s ease-in-out left;
+            transition: .6s ease-in-out left;
+        }
+        @media all and (transform-3d), (-webkit-transform-3d) {
+        .carousel-inner > .item {
+            -webkit-transition: -webkit-transform .6s ease-in-out;
+            -o-transition:      -o-transform .6s ease-in-out;
+            transition:         transform .6s ease-in-out;
+
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+        }
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            line-height: 1;
+        }
+        .carousel-inner > .item.next,
+        .carousel-inner > .item.active.right {
+              left: 0;
+              -webkit-transform: translate3d(100%, 0, 0);
+                      transform: translate3d(100%, 0, 0);
+        }
+        .carousel-inner > .item.prev,
+        .carousel-inner > .item.active.left {
+              left: 0;
+              -webkit-transform: translate3d(-100%, 0, 0);
+                      transform: translate3d(-100%, 0, 0);
+        }
+        .carousel-inner > .item.next.left,
+        .carousel-inner > .item.prev.right,
+        .carousel-inner > .item.active {
+              left: 0;
+              -webkit-transform: translate3d(0, 0, 0);
+                      transform: translate3d(0, 0, 0);
+
+        }
+        .carousel-inner > .active,
+        .carousel-inner > .next,
+        .carousel-inner > .prev {
+            display: block;
+        }
+        .carousel-inner > .active {
+            left: 0;
+        }
+        .carousel-inner > .next,
+        .carousel-inner > .prev {
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .carousel-inner > .next {
+            left: 100%;
+        }
+        .carousel-inner > .prev {
+            left: -100%;
+        }
+        .carousel-inner > .next.left,
+        .carousel-inner > .prev.right {
+            left: 0;
+        }
+        .carousel-inner > .active.left {
+            left: -100%;
+        }
+        .carousel-inner > .active.right {
+            left: 100%;
+        }
+        @font-face {
+          font-family: 'Glyphicons Halflings';
+          src: url('http://getbootstrap.com/dist/fonts/glyphicons-halflings-regular.woff2') format('woff2');
+        }
+        .glyphicon {
+            position: relative;
+            top: 1px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .carousel-control {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 15%;
+          font-size: 20px;
+          color: #fff;
+          text-align: center;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+          background-color: rgba(0, 0, 0, 0);
+          filter: alpha(opacity=50);
+          opacity: .5;
+        }
+        .carousel-control.left {
+          background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
+          background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
+          background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
+          background-image:         linear-gradient(to right, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+          background-repeat: repeat-x;
+        }
+        .carousel-control.right {
+          right: 0;
+          left: auto;
+          background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
+          background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
+          background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .5)));
+          background-image:         linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+          background-repeat: repeat-x;
+        }
+        .carousel-control:hover,
+        .carousel-control:focus {
+          color: #fff;
+          text-decoration: none;
+          filter: alpha(opacity=90);
+          outline: 0;
+          opacity: .9;
+        }
+        .carousel-control .glyphicon-chevron-left,
+        .carousel-control .glyphicon-chevron-right {
+          position: absolute;
+          top: 50%;
+          z-index: 5;
+          display: inline-block;
+          margin-top: -10px;
+        }
+        .carousel-control .glyphicon-chevron-left {
+          left: 50%;
+          margin-left: -10px;
+        }
+        .carousel-control .glyphicon-chevron-right {
+          right: 50%;
+          margin-right: -10px;
+        }
+
+        .carousel-control:hover .glyphicon-chevron-right:before {
+            content: "\e080";
+        }
+        .carousel-control:hover .glyphicon-chevron-left:before {
+            content: "\e079";
+        }
+        </style>
+    </head>
+    <body>
+        <div class="nav-car-container">
+            <!-- 导航栏 -->
+            <div class="nav-container">
+                <a class="nav-title" href="">
+                    <span class="nav-btn-icon"></span>
+                    <span class="nav-btn-text">全部课程</span>
+                </a>
+                <div class="nav-content">
+                    <div class="nav-content-left">
+                        <ul class="nav-items">
+                            <li>
+                                <div class="item">
+                                    <a class="item-title" href="#">IT互联网</a>
+                                    <div class="item-links">
+                                        <a href="#">移动开发</a>
+                                        <a href="#">编程</a>
+                                        <a href="#">设计</a>
+                                        <a href="#">产品策划</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <a class="item-title" href="#">职能技能</a>
+                                    <div class="item-links">
+                                        <a href="#">办件1</a>
+                                        <a href="#">办公2</a>
+                                        <a href="#">软件3</a>
+                                        <a href="#">办软4</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <a class="item-title" href="#">职能技能</a>
+                                    <div class="item-links">
+                                        <a href="#">办2件1</a>
+                                        <a href="#">办件2</a>
+                                        <a href="#">办公软3</a>
+                                        <a href="#">软件4</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-content-right">
+                        <ul class="nav-detail-items">
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">IT互联网1</a>
+                                    <div class="item-links">
+                                        <a href="#">移动开发<span>/</span></a>
+                                        <a href="#">移动开发<span>/</span></a>
+                                        <a href="#">移动开发<span>/</span></a>
+                                        <a href="#">移动开发<span>/</span></a>
+                                        <a href="#">移动开发<span>/</span></a>
+                                        <a href="#">移动开发<span>/</span></a>
+                                        <a href="#">移动开发3<span>/</span></a>
+                                        <a href="#">移动开发4<span>/</span></a>
+                                        <a href="#">移动开发1<span>/</span></a>
+                                        <a href="#">移动开发2<span>/</span></a>
+                                        <a href="#">移动开发3<span>/</span></a>
+                                        <a href="#">移动开发4<span>/</span></a>
+                                        <a href="#">移动开发1<span>/</span></a>
+                                        <a href="#">移动开发2<span>/</span></a>
+                                        <a href="#">移动开发3<span>/</span></a>
+                                        <a href="#">移动开发4</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">职能技能</a>
+                                    <div class="item-links">
+                                        <a href="#">办公软件1<span>/</span></a>
+                                        <a href="#">办公软件2<span>/</span></a>
+                                        <a href="#">办公软件3<span>/</span></a>
+                                        <a href="#">办公软件4</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">职能技能</a>
+                                    <div class="item-links">
+                                        <a href="#">办公软件1<span>/</span></a>
+                                        <a href="#">办公软件2<span>/</span></a>
+                                        <a href="#">办公软件3<span>/</span></a>
+                                        <a href="#">办公软件4</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="more">
+                                <a href="#">更多...
+                                    <img src="http://nos.netease.com/edu-image/8F59299CC0954CA71D2D265B94DD8367.png?imageView&thumbnail=440y290&quality=100" alt="" />
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav-detail-items">
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">IT互联网2</a>
+                                    <div class="item-links">
+                                        <a href="#">移动开发1<span>/</span></a>
+                                        <a href="#">移动开发2<span>/</span></a>
+                                        <a href="#">移动开发3<span>/</span></a>
+                                        <a href="#">移动开发4</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">职能技能</a>
+                                    <div class="item-links">
+                                        <a href="#">办公软件1<span>/</span></a>
+                                        <a href="#">办公软件2<span>/</span></a>
+                                        <a href="#">办公软件3<span>/</span></a>
+                                        <a href="#">办公软件4</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">职能技能</a>
+                                    <div class="item-links">
+                                        <a href="#">办公软件1<span>/</span></a>
+                                        <a href="#">办公软件2<span>/</span></a>
+                                        <a href="#">办公软件3<span>/</span></a>
+                                        <a href="#">办公软件4</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul class="nav-detail-items">
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">IT互联网3</a>
+                                    <div class="item-links">
+                                        <a href="#">移动开发1<span>/</span></a>
+                                        <a href="#">移动开发2<span>/</span></a>
+                                        <a href="#">移动开发3<span>/</span></a>
+                                        <a href="#">移动开发4</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">职能技能</a>
+                                    <div class="item-links">
+                                        <a href="#">办公软件1<span>/</span></a>
+                                        <a href="#">办公软件2<span>/</span></a>
+                                        <a href="#">办公软件3<span>/</span></a>
+                                        <a href="#">办公软件4</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="detail-item">
+                                    <a class="item-title" href="#">职能技能</a>
+                                    <div class="item-links">
+                                        <a href="#">办公软件1<span>/</span></a>
+                                        <a href="#">办公软件2<span>/</span></a>
+                                        <a href="#">办公软件3<span>/</span></a>
+                                        <a href="#">办公软件4</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 轮播（Carousel） -->
+            <div id="material-carousel" class="carousel slide">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-slide-to="0" class="active"></li>
+                    <li data-slide-to="1"></li>
+                    <li data-slide-to="2"></li>
+                    <li data-slide-to="3"></li>
+                    <li data-slide-to="4"></li>
+                    <li data-slide-to="5"></li>
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img width="100%" src="https://os.alipayobjects.com/rmsportal/bLXGyvoBGugEFkC.jpg" alt="1 slide">
+                    </div>
+                    <div class="item">
+                        <img width="100%" src="https://os.alipayobjects.com/rmsportal/jrYTmMyyZNaNFad.jpg" alt="2 slide">
+                    </div>
+                    <div class="item">
+                        <img width="100%" src="https://os.alipayobjects.com/rmsportal/sBKMbaUBqyHuaPM.jpg" alt="3 slide">
+                    </div>
+                    <div class="item">
+                        <img width="100%" src="https://os.alipayobjects.com/rmsportal/zAtqYlLoDqFPsyZ.jpg" alt="4 slide">
+                    </div>
+                    <div class="item">
+                        <img width="100%" src="https://os.alipayobjects.com/rmsportal/EfFqlNEvpbrxXHK.jpg" alt="5 slide">
+                    </div>
+                    <div class="item">
+                        <img width="100%" src="https://os.alipayobjects.com/rmsportal/MjIZbGDvHAbwUOE.jpg" alt="6 slide">
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+            <!-- 轮播（Carousel） -->
+        </div>
+
+        <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+        <script type="text/javascript" src="https://os.alipayobjects.com/rmsportal/SLZwnRpgmtcIUsA.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var hoverState = false;
+
+                $('#material-carousel').carousel({intervalTime: 3});
+
+                $('.nav-title').click(function(event){
+                    var h = $('.nav-content').height();
+                    if(h > 0){
+                        $('.nav-content').height(h);
+                        $('.nav-content').height(0);
+                        $('.nav-content-right').hide();
+                        $('.nav-detail-items').hide();
+                    }else{
+                        $('.nav-content').height($('.nav-content-left').height());
+                    }
+                    event.preventDefault();
+                });
+
+                $('.nav-items li').hover(function(){
+                    hoverState = false;
+                    var i = $('.nav-items li').index(this);
+                    $('.nav-content-right').show();
+                    $('.nav-detail-items').hide().eq(i).show();
+                });
+                $('.nav-items').on('mouseleave', function(){
+                    setTimeout(function(){
+                        if(!hoverState){
+                            $('.nav-content-right').hide();
+                            $('.nav-detail-items').hide();
+                        }
+                    }, 0);
+                });
+                $('.nav-content-right').hover(function(){
+                    hoverState = true;
+                }, function(){
+                    $('.nav-content-right').hide();
+                    $('.nav-detail-items').hide();
+                });
+            });
+        </script>
+    </body>
+</html>
