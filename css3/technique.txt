@@ -20,3 +20,10 @@ white-space: normal | pre | nowrap
   pre: 换行和其他空白字符都将受到保护。这个值需要IE6+或者 !DOCTYPE 声明为 standards-compliant mode 支持。
     如果 !DOCTYPE 声明没有指定为 standards-compliant mode ，此属性可以使用，但是不会发生作用。结果等同normal。 
   nowrap: 强制在同一行内显示所有文本，直到文本结束或者遭遇 br 对象。参阅 noWrap 属性 
+
+
+2、当一个元素的 position 值为 absolute 或 fixed 的时候，会发生三件事：
+  1. 把该元素往 Z 轴方向移了一层，元素脱离了普通流，所以不再占据原来那层的空间，还会覆盖下层的元素。
+  2. 该元素将变为块级元素，相当于给该元素设置了 display: block;（给一个内联元素，如 <span> ，设置 absolute
+之后发现它可以设置宽高了）。
+  3. 如果该元素是块级元素，元素的宽度由原来的 width: 100%（占据一行），变为了 auto。
