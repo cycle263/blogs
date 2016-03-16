@@ -56,3 +56,22 @@ ol.slides > li {
 ol.slides li:after {
   content: "[" counter(slideNum) "]";
 }
+
+
+6、文本溢出省略的处理方法
+
+1)单行文本溢出
+.inline{
+  overflow:hidden;
+         white-space:nowrap;
+         text-overflow:ellipsis; 
+}
+2)多行文本溢出
+.foo{
+  display:-webkit-box!important;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  work-break:break-all;
+  -webkit-box-orient:vertical; /*方向*/
+  -webkit-line-clamp:4; /*显示多少行文本*/
+}
