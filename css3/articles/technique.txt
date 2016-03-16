@@ -1,0 +1,58 @@
+1、对空链接使用属性选择器
+
+当 <a> 中没有文本而 href 不为空的时候，显示其链接：
+a[href^="http"]:empty::before {
+  content: attr(href);
+}
+
+2、继承 box-sizing
+
+让 box-sizing 继承自 html ：
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+3、使用负的 nth-child 选取元素
+
+使用负的 nth-child 在 1 到 n 之间选择元素：
+li {
+  display: none;
+}
+/* 选择第1到3个元素并显示它们 */
+li:nth-child(-n+3) {
+  display: block;
+}
+当然，如果你了解 :not() 的话，还可以这么做：
+li:not(:nth-child(-n+3)) {
+  display: none;
+}
+
+4、CSS Filters  修改图片的颜色
+
+/* simple filter */
+.myElement {
+  -webkit-filter: blur(2px);
+}
+/* advanced filter */
+.myElement {
+  -webkit-filter: blur(2px) grayscale (.5) opacity(0.8) hue-rotate(120deg);
+}
+
+5、CSS Counters
+
+这个特性可以把一个 counter 加到元素中，通过 :before 或 :after ：
+/* initialize the counter */
+ol.slides {
+  counter-reset: slideNum;
+}
+/* increment the counter */
+ol.slides > li {
+  counter-increment: slideNum;
+}
+/* display the counter value */
+ol.slides li:after {
+  content: "[" counter(slideNum) "]";
+}
