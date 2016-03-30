@@ -305,19 +305,19 @@
                 //画底色圆形
                 ctx.clearRect(0, 0, w, h);
                 ctx.beginPath();
-                ctx.lineWidth = 12;
+                ctx.lineWidth = 6 * m;
                 ctx.lineCap = "round";
                 ctx.strokeStyle = "#379176";
-                ctx.arc(w / 2, h / 2, h / 2 * 0.45, Math.PI * 0.85, Math.PI * 0.15, false);
+                ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.85, Math.PI * 0.15, false);
                 ctx.stroke();
                 ctx.closePath();
 
                 //画进度圆形
                 ctx.beginPath();
                 ctx.strokeStyle = color;
-                ctx.lineWidth = 12;
+                ctx.lineWidth = 6 * m;
                 ctx.lineCap = "round";
-                ctx.arc(w / 2, h / 2, h / 2 * 0.45, Math.PI * 0.85, Math.PI * ((2 - (0.85- 0.15)) * rate + 0.85), false);
+                ctx.arc(w / 2, h / 2, h / 2 * 0.9, Math.PI * 0.85, Math.PI * ((2 - (0.85- 0.15)) * rate + 0.85), false);
                 ctx.stroke();
                 ctx.closePath();
 
