@@ -276,11 +276,12 @@
 <script type="text/javascript">
     $(function(){
         Zepto.fn.annular = function(){
-            var me = $(this),
+            var m = 4,  //放大倍数，解决高清屏幕下canvas字体模糊情况
+                me = $(this),
                 w = me.width(),
                 h = me.height(),
                 text = me.text();
-            $(this).html('<canvas class="annular" width="'+w*4+ '" height="'+h*0.8*4+'" style="width:'+w+'px;height:'+h*0.8+'px;">'+text+'</canvas');
+            $(this).html('<canvas class="annular" width="'+w*m+ '" height="'+h*0.8*m+'" style="width:'+w+'px;height:'+h*0.8+'px;">'+text+'</canvas');
             $('.annular', $(this)).each(function(){
                 var canvas = this,
                     w = canvas.width,
@@ -321,16 +322,16 @@
                 ctx.closePath();
 
                 ctx.beginPath();
-                ctx.font = "1.8em 微软雅黑";
+                ctx.font = 0.9 * m + "em 微软雅黑";
                 ctx.fillStyle = "#A1DDE0";
 
                 ctx.fillText(copywrite, w / 2 - ctx.measureText(copywrite).width / 2, h * 0.22);
                 ctx.save();
-                ctx.font = "8em 微软雅黑";
+                ctx.font = 4 * m + "8em 微软雅黑";
                 ctx.fillStyle = "#FFFFFF";
                 ctx.fillText(numText, w / 2 - ctx.measureText(numText).width / 2, h * 0.55);
                 ctx.restore();
-                ctx.font = "1.6em 微软雅黑";
+                ctx.font = 0.8 * m + "em 微软雅黑";
                 ctx.fillText(content, w / 2 - ctx.measureText(content).width / 2, h * 0.7);
                 ctx.closePath();
             });
