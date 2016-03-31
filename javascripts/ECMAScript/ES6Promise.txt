@@ -14,8 +14,8 @@
   第一个回调函数是Promise对象的状态变为Resolved时调用，第二个回调函数是Promise对象的状态变为Reject时调用。
   
 3、Promise.prototype.then()
-  作用是为Promise实例添加状态改变时的回调函数。then方法返回的是一个新的Promise实例。第一个回调函数完成以后，会将返回结果作为
-  参数，传入第二个回调函数。
+  作用是为Promise实例添加状态改变时的回调函数。then方法返回的是一个新的Promise实例。
+  第一个回调函数完成以后，会将返回结果作为参数，传入第二个回调函数(链式写法)。
   
 4、Promise.prototype.catch()
   Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。
