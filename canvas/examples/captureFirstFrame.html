@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>capture screen</title>
+</head>
+<body>
+    <video id="video" controls="controls">
+    <source src="http://www.w3schools.com/html/mov_bbb.mp4">
+    </video>
+    <div id="output"></div>
+    <script type="text/javascript">
+    (function(){
+        var video, output;
+        var scale = 1;
+        var initialize = function() {
+            output = document.getElementById("output");
+            video = document.getElementById("video");
+            video.addEventListener('loadeddata',captureImage);
+        };
+
+        var captureImage = function() {
+            var canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth * scale;
+            canvas.height = video.videoHeight * scale;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            output.appendChild(canvas);
+        };
+
+        initialize();
+    })();
+    </script>
+</body>
+</html>
