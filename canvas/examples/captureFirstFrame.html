@@ -18,7 +18,7 @@
             video = document.getElementById("video");
             video.addEventListener('loadeddata',captureImage);
         };
-        // canvas能获取第一帧，缺无法转换成图片，因为不同的域名下
+        // canvas能获取第一帧，缺无法转换成图片，因为不同的域名下, drawImage会污染canvas导致无法转换
         var captureImage = function() {
             var canvas = document.createElement("canvas");
             canvas.width = video.videoWidth * scale;
