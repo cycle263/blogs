@@ -1,0 +1,5 @@
+1、安装node, npm, react, webpack;
+2、npm init搭建目录和package.json；
+3、手动添加配置webpack.config.js；
+4、安装必要webpack相关组件和插件；
+5、webpack 运行，或者webpack -d --watch自动运行
