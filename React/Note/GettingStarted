@@ -1,5 +1,5 @@
 1、安装node, npm, react, webpack, http-server(本地服务器);
-2、npm init搭建目录和package.json；
+2、npm init搭建目录和package.json, 其中scripts中的本地服务器命令："start":"http-server -a localhost -p 8001"；
 3、手动添加配置webpack.config.js；
 4、安装必要webpack相关组件和插件；
 5、webpack 运行，或者webpack -d --watch自动运行
