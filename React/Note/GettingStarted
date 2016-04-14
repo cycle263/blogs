@@ -1,4 +1,4 @@
-1、安装node, npm, react, webpack;
+1、安装node, npm, react, webpack, http-server(本地服务器);
 2、npm init搭建目录和package.json；
 3、手动添加配置webpack.config.js；
 4、安装必要webpack相关组件和插件；
