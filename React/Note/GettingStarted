@@ -2,4 +2,26 @@
 2、npm init搭建目录和package.json, 其中scripts中的本地服务器命令："start":"http-server -a localhost -p 8001"；
 3、手动添加配置webpack.config.js；
 4、安装必要webpack相关组件和插件；
-5、webpack 运行，或者webpack -d --watch自动运行
+5、配置entry文件，如下案例：
+    import ReactDOM from 'react-dom';
+    import React from 'react';
+    import App from './component/App';
+    import {Router, Route, Link, hashHistory, IndexRoute, browserHistory} from 'react-router';
+    import createBrowserHistory from 'history/lib/createBrowserHistory';
+    import About from './component/about';
+    import Inbox from './component/inbox';
+    import Message from './component/message';
+    import Index from './component/index';
+    
+    ReactDOM.render((
+        <Router history={browserHistory}>   //hashHistory，browserHistory需要后端配合改造，否则刷新和直接输入自路由地址无法访问
+            <Route path="/" component={App}>
+                <IndexRoute component={Index} />
+                <Route path="about" component={About}></Route>
+                <Route path="inbox" component={Inbox}>
+                    <Route path="messages/:id" component={Message}></Route>
+                </Route>
+            </Route>
+        </Router>
+    ), document.getElementById('react-content'));
+6、webpack 运行，或者webpack -d --watch自动运行
