@@ -5,11 +5,16 @@
 * jQuery
   > [Do not need jQuery](https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README.md), Principle of jQuery
 
+```js
+// jQuery
+$('selector');
+
+// Native
+document.querySelectorAll('selector');
+```
+
 * Mobile dev
   > Debug, Hybrid App
-
-* css library
-  > Bootstrap, Antd ...
 
 * Angularjs
   > Angular 1.3, Angular 2 ...
@@ -18,33 +23,49 @@
   > React rounter, React diff
 
 * Modularity
+  > AMD, Commonjs
 
 * nodejs
 
 * ECMAScript6
+  > ES6
+
+* Debug
+  > Fiddler
 
 #### 2. Css
 
-* css3
+* css library
+  > Bootstrap, Antd ...
 
-* css
+* Css3
+  > Animation
 
 #### 3. Html5
 
 * canvas
+
 * svg
+
 * long-polling
+
 * pipeline
+
 * web worker
+
 * Server-Sent Event
-* localStorage
-* sessionStorage
+
+* localStorage vs sessionStorage
 
 #### 4.Others
 
 * git
+
 * grunt
+
 * velocity
+
 * gulp
+
 * webpack
 
