@@ -15,18 +15,22 @@ document.querySelectorAll('selector');
 ```
 
 * Mobile dev
+
   > Debug, Hybrid App
 
 * Angularjs
+
   > Angular 1.3, Angular 2 ...
 
 * Reactjs
+
   > React rounter, React diff
 
 * Modularity
+
   > AMD, Commonjs
 
-* nodejs
+* Nodejs
 
 * ECMAScript6
   > ES6
