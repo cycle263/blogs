@@ -3,8 +3,9 @@
 #### 1. Javascript
 
 * jQuery  
+
   > Do not need jQuery, Principle of jQuery
-***
+
 ```js
 // jQuery
 $('selector');
