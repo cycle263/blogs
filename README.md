@@ -1,29 +1,36 @@
-# The front-end information summary
+## The front-end information summary
 
-#### 1. javascript
+#### 1. Javascript
+
 * jQuery
-  > [Do not need jQuery](https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README.md), principle of jQuery
+  > [Do not need jQuery](https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README.md), Principle of jQuery
 
 * Mobile dev
-  > debug, Hybrid App
+  > Debug, Hybrid App
 
 * css library
   > Bootstrap, Antd ...
 
-* angularjs
-* reactjs
-* seajs
+* Angularjs
+  > Angular 1.3, Angular 2 ...
+
+* Reactjs
+  > React rounter, React diff
+
+* Modularity
+
 * nodejs
-* iojs
-* AtScript
-* TypeScript
+
 * ECMAScript6
 
-#### 2. css
+#### 2. Css
+
 * css3
+
 * css
 
-#### 3. html5
+#### 3. Html5
+
 * canvas
 * svg
 * long-polling
@@ -33,7 +40,8 @@
 * localStorage
 * sessionStorage
 
-#### 4. others
+#### 4.Others
+
 * git
 * grunt
 * velocity
