@@ -1,5 +1,8 @@
 # 各类信息总结
-## 1.javascript
+
+***
+
+#### 1.javascript
 * jQuery
 * jQuery mobile
 * bootstrap
@@ -12,11 +15,11 @@
 * TypeScript
 * ECMAScript6
 
-## 2.css
+#### 2.css
 * css3
 * css
 
-## 3.html5
+#### 3.html5
 * canvas
 * svg
 * long-polling
@@ -26,7 +29,7 @@
 * localStorage
 * sessionStorage
 
-## 4.others
+#### 4.others
 * git
 * grunt
 * velocity
