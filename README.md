@@ -4,6 +4,8 @@
 
 #### 1.javascript
 * jQuery
+  > Do not need jQuery, principle of jQuery
+
 * jQuery mobile
 * bootstrap
 * angularjs
