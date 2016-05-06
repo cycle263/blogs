@@ -2,11 +2,13 @@
 
 ***
 
-#### 1.javascript
+#### 1. javascript
 * jQuery
-  > Do not need jQuery, principle of jQuery
+  > [Do not need jQuery](https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README.md), principle of jQuery
 
 * jQuery mobile
+  > debug, Hybrid App
+
 * bootstrap
 * angularjs
 * reactjs
@@ -17,11 +19,11 @@
 * TypeScript
 * ECMAScript6
 
-#### 2.css
+#### 2. css
 * css3
 * css
 
-#### 3.html5
+#### 3. html5
 * canvas
 * svg
 * long-polling
@@ -31,7 +33,7 @@
 * localStorage
 * sessionStorage
 
-#### 4.others
+#### 4. others
 * git
 * grunt
 * velocity
