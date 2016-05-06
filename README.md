@@ -4,8 +4,14 @@
 
 * jQuery  
   > Do not need jQuery, Principle of jQuery
+***
+```js
+// jQuery
+$('selector');
 
-
+// Native
+document.querySelectorAll('selector');
+```
 
 * Mobile dev
   > Debug, Hybrid App
