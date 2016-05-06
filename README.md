@@ -3,7 +3,8 @@
 #### 1. Javascript
 
 * jQuery  
-  > [Do not need jQuery](https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README.md), Principle of jQuery
+  > [Do not need jQuery](https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README.md)  
+    Principle of jQuery
 
 ```js
 // jQuery
