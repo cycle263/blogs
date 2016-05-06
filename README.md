@@ -1,15 +1,15 @@
 # 各类信息总结
 
-***
-
 #### 1. javascript
 * jQuery
   > [Do not need jQuery](https://github.com/oneuijs/You-Dont-Need-jQuery/blob/master/README.md), principle of jQuery
 
-* jQuery mobile
+* Mobile dev
   > debug, Hybrid App
 
-* bootstrap
+* css library
+  > Bootstrap, Antd ...
+
 * angularjs
 * reactjs
 * seajs
