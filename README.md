@@ -1,4 +1,4 @@
-# 各类信息总结
+# The front-end information summary
 
 #### 1. javascript
 * jQuery
