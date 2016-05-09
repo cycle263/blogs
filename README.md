@@ -4,15 +4,21 @@
 
 * jQuery  
 
-  > Do not need jQuery, Principle of jQuery
+  > jQuery API,  Principle of jQuery
+  
+    ```js
+    jQuery.extend()
+    ```
 
-```js
-// jQuery
-$('selector');
+  > Do not need jQuery
 
-// Native
-document.querySelectorAll('selector');
-```
+    ```js
+    // jQuery
+    $('selector');
+    
+    // Native
+    document.querySelectorAll('selector');
+    ```
 
 * Mobile dev
 
