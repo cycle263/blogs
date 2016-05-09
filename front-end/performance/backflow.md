@@ -20,7 +20,7 @@
 offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、clientTop、clientLeft、clientWidth、clientHeight、
 getComputedStyle() (currentStyle in IE)。所以，在多次使用这些值时应进行缓存。
 
-优化措施：
+* 优化措施：
     + 1. 将多次改变样式属性的操作合并成一次操作。例如：多次样式变化使用增删class方式。
     + 2. 将需要多次重排的元素，position属性设为absolute或fixed，这样此元素就脱离了文档流，它的变化不会影响到其他元素。
     + 3. 在内存中多次操作节点，完成后再添加到文档中去。
