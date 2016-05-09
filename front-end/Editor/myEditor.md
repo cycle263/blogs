@@ -1,6 +1,15 @@
 * Atom
   
-  > 常用插件：atom-beautify、esformatter、file-icons、linter-jshint、minimap、react
+  > 常用插件
+
+	- atom-beautify
+	- atom-ternjs
+	- esformatter
+	- file-icons
+	- linter-jshint
+	- minimap
+	- react
+	- pigments
   
 * Sublime Text 3
   
