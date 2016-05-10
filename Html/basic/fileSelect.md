@@ -1,7 +1,11 @@
+```html
 <input type="file" id="input">
-获取到用户所选择的文件:  document.getElementById('input').files[0]
+```
+> 获取到用户所选择的文件:  document.getElementById('input').files[0]
 
 预览上传图片的方法：
+
+```js
 var dropbox = document.getElementById("dropbox"),
     preview = document.getElementById("preview");
 dropbox.addEventListener("dragenter", function(e){
@@ -20,7 +24,9 @@ dropbox.addEventListener("drop", function(e){
     var files = dt.files;
     handleFiles(files);
 }, false);
+```
 
+```js
 //方法1
 function handleFiles(files) {
   for (var i = 0; i < files.length; i++) {
@@ -63,7 +69,7 @@ function handleFiles(files) {
       preview.appendChild(img);
     }
 }
-
+```
 
 
 
