@@ -4,8 +4,8 @@
 
     * 选择合适的选择器：id和tag(调用javascript原生方法) > class(getElementByClassName) > 伪类和属性(querySelector和querySelectorAll)
     
-    选择器的父子关系：$parent.find('.child') > $('.child', $parent) >  $('.child', $('#parent')) > $parent.children('.child') >  $('#parent > .child') > $('#parent .child')。
-    > 总体原则：优先使用链式写法，其次缓存选择器变量
+    选择器的父子关系：$parent.find('.child') \> $('.child', $parent) \>  $('.child', $('#parent')) \> $parent.children('.child') \>$('#parent > .child') \> $('#parent .child')。
+    总体原则：优先使用链式写法，其次缓存选择器变量
 
     * 不要过度依赖jQuery，尽量使用原生javascript。例如：事件回调内的this对象；浏览器原生的innterHTML()方法比jQuery对象的html()更快。
 
