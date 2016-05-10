@@ -97,67 +97,75 @@
 
 * 7、CSS实现垂直水平居中
 
-方法1：
-.parent {
-  width:800px;
-  height:500px;
-  border:2px solid #000;
-  position:relative;
-}
- .child {
-  width:200px;
-  height:200px;
-  margin: auto;  
-  position: absolute;  
-  top: 0; left: 0; bottom: 0; right: 0; 
-  background-color: red;
-}
-方法2：
-.parent {
-  width:800px;
-  height:500px;
-  border:2px solid #000;
-  display:table-cell;
-  vertical-align:middle;
-  text-align: center;
-        }
-.child {
-  width:200px;
-  height:200px;
-  display:inline-block;
-  background-color: red;
-}
-方法3：
-.parent {
-  width:800px;
-  height:500px;
-  border:2px solid #000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-        }
-        .child {
-  width:200px;
-  height:200px;
-  background-color: red;
-        }
-方法4：
-.parent {
-            width:800px;
-            height:500px;
-            border:2px solid #000;
-            position:relative;
-        }
-        .child {
-            width:300px;
-            height:200px;
-            margin:auto;
-            position:absolute;
-            /*设定水平和垂直偏移父元素的50%，
-            再根据实际长度将子元素上左挪回一半大小*/
-            left:50%;
-            top:50%;
-            margin-left: -150px;
-            margin-top:-100px;
-            background-color: red;
-        }   
+  - 方法1：
+    ```
+    .parent {
+      width:800px;
+      height:500px;
+      border:2px solid #000;
+      position:relative;
+    }
+     .child {
+      width:200px;
+      height:200px;
+      margin: auto;  
+      position: absolute;  
+      top: 0; left: 0; bottom: 0; right: 0; 
+      background-color: red;
+    }
+    ```
+  - 方法2：
+  ```
+  .parent {
+    width:800px;
+    height:500px;
+    border:2px solid #000;
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+  }
+  .child {
+    width:200px;
+    height:200px;
+    display:inline-block;
+    background-color: red;
+  }
+  ```
+  - 方法3：
+  ```
+  .parent {
+    width:800px;
+    height:500px;
+    border:2px solid #000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .child {
+    width:200px;
+    height:200px;
+    background-color: red;
+  }
+  ```
+  - 方法4：
+  ```
+  .parent {
+    width:800px;
+    height:500px;
+    border:2px solid #000;
+    position:relative;
+  }
+  .child {
+    width:300px;
+    height:200px;
+    margin:auto;
+    position:absolute;
+    /*设定水平和垂直偏移父元素的50%，
+    再根据实际长度将子元素上左挪回一半大小*/
+    left:50%;
+    top:50%;
+    margin-left: -150px;
+    margin-top:-100px;
+    background-color: red;
+  }   
+  ```
