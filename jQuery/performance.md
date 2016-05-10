@@ -15,7 +15,7 @@
    + $('#parent > .child') 
    + $('#parent .child')。
 
-总体原则：优先使用链式写法，其次缓存选择器变量
+   总体原则：优先使用链式写法，其次缓存选择器变量
 
 * 不要过度依赖jQuery，尽量使用原生javascript。例如：事件回调内的this对象；浏览器原生的innterHTML()方法比jQuery对象的html()更快。
 
