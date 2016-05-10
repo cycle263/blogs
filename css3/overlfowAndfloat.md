@@ -26,7 +26,7 @@
         }
         ```
     
-    - ②. 使用 br标签和其自身的 html属性<br clear="all">；
+    - ②. 使用 br标签和其自身的 html属性<br clear="all">
     
     - ③. 父元素设置 overflow：hidden 或者 display:table；
     
