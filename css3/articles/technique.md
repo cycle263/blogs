@@ -1,4 +1,4 @@
-### css使用技巧
+## css使用技巧
 
 * 1、对空链接使用属性选择器
 
@@ -105,7 +105,7 @@
     border:2px solid #000;
     position:relative;
   }
-   .child {
+  .child {
     width:200px;
     height:200px;
     margin: auto;  
