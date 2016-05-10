@@ -97,23 +97,23 @@
 
 * 7、CSS实现垂直水平居中
 
-  - 方法1：
-    ```
-    .parent {
-      width:800px;
-      height:500px;
-      border:2px solid #000;
-      position:relative;
-    }
-     .child {
-      width:200px;
-      height:200px;
-      margin: auto;  
-      position: absolute;  
-      top: 0; left: 0; bottom: 0; right: 0; 
-      background-color: red;
-    }
-    ```
+  - 方法1:
+  ```
+  .parent {
+    width:800px;
+    height:500px;
+    border:2px solid #000;
+    position:relative;
+  }
+   .child {
+    width:200px;
+    height:200px;
+    margin: auto;  
+    position: absolute;  
+    top: 0; left: 0; bottom: 0; right: 0; 
+    background-color: red;
+  }
+  ```
   - 方法2：
   ```
   .parent {
