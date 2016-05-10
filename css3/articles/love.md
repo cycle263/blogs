@@ -1,5 +1,6 @@
-love hate
+## love hate
 
+```
 :link 与 :visited 在样式文件中的顺序可以随便放置。而focus， hover，active这几个，如果你设置的顺序不同，会直接影响样式的显示效果。
 
 :focus -> :hover -> :active
@@ -13,3 +14,4 @@ love hate
 :hover 代表的是光标悬浮某一元素时的样式，如果a元素已经获取焦点，当光标悬浮此链接时，会显示hover样式，hover样式会覆盖前面的focus样式, 前后顺序会直接覆盖。
 
 :active 代表元素被激活的样式，就是元素被按下时的样式，focus， hover，active三个之中排在后面的样式，会覆盖前面的样式。
+```
