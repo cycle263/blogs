@@ -11,14 +11,14 @@
   通过手机百度搜索打开的网页，可能会被百度主动转码，以去掉那些在手机上不能很好显示的页面功能。  
   不希望自己的站点被转码:
     - a. HTTP Response中显式声明Cache-control为no-siteapp。
-    - b. meta标签中显式声明Cache-control为no-siteapp，格式为：<meta http-equiv="Cache-Control" content="no-siteapp" />
+    - b. meta标签中显式声明Cache-control为no-siteapp，格式为：\<meta http-equiv="Cache-Control" content="no-siteapp" \/\>
 
-5、SEO优化部分</h5>
-  - 页面标题<title>标签: <title>your title</title></li>
-  - 页面关键词 keywords: <meta name="keywords" content="your keywords"></li>
-  - 页面描述内容 description: <meta name="description" content="your description"></li>
-  - 定义网页作者 author: <meta name="author" content="author,email address"></li>
-  - 定义网页搜索引擎索引方式: <meta name="robots" content="index,follow"></li>
+5、SEO优化部分
+  - 页面标题\<title\>标签: \<title\>your title\<\/title\>
+  - 页面关键词 keywords: \<meta name="keywords" content="your keywords"\>
+  - 页面描述内容 description: \<meta name="description" content="your description"\>
+  - 定义网页作者 author: \<meta name="author" content="author,email address"\>
+  - 定义网页搜索引擎索引方式: \<meta name="robots" content="index,follow"\>
 
-6、viewport属性</h5>
+6、viewport属性
 
