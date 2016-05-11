@@ -10,3 +10,4 @@
   + Infinity新标签页: 个性化新标签页面
   + JSONView: JSON文件页面格式化展示
   + Octotree: GitHub左侧目录树，方便快速打开
+  + Wappalyzer 分析网站使用的技术 它可以检测网页的 Web 服务器、JS 框架等等
