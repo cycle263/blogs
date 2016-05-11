@@ -18,16 +18,16 @@
   避免出现随意改变deferred状态的情况出现，jQuery提供了deferred.promise()方法。它的作用是，在原来的deferred对象上返回另一个
   deferred对象，后者只开放与改变执行状态无关的方法（比如done()方法和fail()方法），屏蔽与改变执行状态有关的方法（比如
   resolve()方法和reject()方法），从而使得执行状态不能被改变。  
-- （1)$.Deferred() 生成一个deferred对象。
-　- （2)deferred.done() 指定操作成功时的回调函数
-　- （3）deferred.fail() 指定操作失败时的回调函数
-　- （4）deferred.promise() 没有参数时，返回一个新的deferred对象，该对象的运行状态无法被改变；接受参数时，作用为在参数
+  + （1)$.Deferred() 生成一个deferred对象。
+　+ （2)deferred.done() 指定操作成功时的回调函数
+　+ （3）deferred.fail() 指定操作失败时的回调函数
+　+ （4）deferred.promise() 没有参数时，返回一个新的deferred对象，该对象的运行状态无法被改变；接受参数时，作用为在参数
 　　      对象上部署deferred接口。
-　- （5）deferred.resolve() 手动改变deferred对象的运行状态为"已完成"，从而立即触发done()方法。
-　- （6）deferred.reject() 这个方法与deferred.resolve()正好相反，调用后将deferred对象的运行状态变为"已失败"，从而立即触发
+　* （5）deferred.resolve() 手动改变deferred对象的运行状态为"已完成"，从而立即触发done()方法。
+　* （6）deferred.reject() 这个方法与deferred.resolve()正好相反，调用后将deferred对象的运行状态变为"已失败"，从而立即触发
 　　      fail()方法。
-　- （7）$.when()为多个操作指定回调函数。除了这些方法以外，deferred对象还有二个重要方法，上面的教程中没有涉及到。
-　- （8）deferred.then()有时为了省事，可以把done()和fail()合在一起写，这就是then()方法。
+　* （7）$.when()为多个操作指定回调函数。除了这些方法以外，deferred对象还有二个重要方法，上面的教程中没有涉及到。
+　* （8）deferred.then()有时为了省事，可以把done()和fail()合在一起写，这就是then()方法。
 　　    `$.when($.ajax( "/main.php" )).then(successFunc, failureFunc ); `
 如果then()有两个参数，那么第一个参数是done()方法的回调函数，第二个参数是fail()方法的回调方法。如果then()只有一个参数，那么等同于done()。  
 　- （9）deferred.always()用来指定回调函数的，不管调用的是deferred.resolve()还是deferred.reject()，最后总是执行。
