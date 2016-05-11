@@ -241,25 +241,25 @@
   cArray.splice(1,1);
   ```
 
-* 21.怎样添加、移除、移动、复制、创建和查找节点（原生JS，实在基础，没细写每一步）
+* 21.怎样添加、移除、移动、复制、创建和查找节点（原生JS，实在基础，没细写每一步）  
 
-  - 1）创建新节点
+  - 1）创建新节点  
   createDocumentFragment()    //创建一个DOM片段  
   createElement()   //创建一个具体的元素  
   createTextNode()   //创建一个文本节点  
   
-  - 2）添加、移除、替换、插入
+  - 2）添加、移除、替换、插入  
   appendChild()      //添加  
   removeChild()      //移除  
   replaceChild()      //替换  
   insertBefore()      //插入  
   
-  - 3）查找
+  - 3）查找  
   getElementsByTagName()    //通过标签名称  
   getElementsByName()     //通过元素的Name属性的值  
   getElementById()        //通过元素Id，唯一性  
 
-* 22.有这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
+* 22.有这样一个URL：`http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e`，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。  
 
   答案：  
   ```
@@ -274,46 +274,54 @@
   }
   ```
 
-23.正则表达式构造函数var reg=new RegExp(“xxx”)与正则表达字面量var reg=//有什么不同？匹配邮箱的正则表达式？
-答案：当使用RegExp()构造函数的时候，不仅需要转义引号（即\”表示”），并且还需要双反斜杠（即\\表示一个\）。使用正则表达字面量的效率更高。 
-邮箱的正则匹配：
-var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+* 23.正则表达式构造函数var reg=new RegExp(“xxx”)与正则表达字面量var reg=//有什么不同？匹配邮箱的正则表达式？  
+  答案：当使用RegExp()构造函数的时候，不仅需要转义引号（即\”表示”），并且还需要双反斜杠（即\\表示一个\）。使用正则表达字面量的效率更高。 
+  邮箱的正则匹配：
+  `var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;`
 
-24.看下面代码，给出输出结果。
-for(var i=1;i<=3;i++){
-  setTimeout(function(){
-      console.log(i);    
-  },0);  
-};
-答案：4 4 4。
+* 24.看下面代码，给出输出结果。
+  ```
+  for(var i=1;i<=3;i++){
+    setTimeout(function(){
+        console.log(i);    
+    },0);  
+  };
+  ```
+  答案：4 4 4。  
+  
+  原因：Javascript事件处理器在线程空闲之前不会运行。追问，如何让上述代码输出1 2 3？ 
+  
+  ```
+  for(var i=1;i<=3;i++){
+     setTimeout((function(a){  //改成立即执行函数
+         console.log(a);    
+     })(i),0);  
+  };
+  ```
 
-原因：Javascript事件处理器在线程空闲之前不会运行。追问，如何让上述代码输出1 2 3？
-for(var i=1;i<=3;i++){
-   setTimeout((function(a){  //改成立即执行函数
-       console.log(a);    
-   })(i),0);  
-};
- 
-1           //输出
-25.写一个function，清除字符串前后的空格。（兼容所有浏览器）
+* 25.写一个function，清除字符串前后的空格。（兼容所有浏览器）
 
-使用自带接口trim()，考虑兼容性：
-var result=[];
-function fn(n){  //典型的斐波那契数列
-   if(n==1){
-        return 1;
-   }else if(n==2){
-           return 1;
-   }else{
-        if(result[n]){
-                return result[n];
-        }else{
-                //argument.callee()表示fn()
-                result[n]=arguments.callee(n-1)+arguments.callee(n-2);
-                return result[n];
-        }
-   }
-}
+  使用自带接口trim()，考虑兼容性：
+  ```
+  var result=[];
+  function fn(n){  //典型的斐波那契数列
+     if(n==1){
+          return 1;
+     }else if(n==2){
+             return 1;
+     }else{
+          if(result[n]){
+                  return result[n];
+          }else{
+                  //argument.callee()表示fn()
+                  result[n]=arguments.callee(n-1)+arguments.callee(n-2);
+                  return result[n];
+          }
+     }
+  }
+  ```
+
+
 ## 中级Javascript：
 
 1.实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
