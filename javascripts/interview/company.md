@@ -12,6 +12,7 @@
     + 方法一.判断其是否具有“数组性质”，如slice()方法。可自己给该变量定义slice方法，故有时会失效
     + 方法二.obj instanceof Array 在某些IE版本中不正确
     + 方法三.方法一二皆有漏洞，在ECMA Script5中定义了新方法Array.isArray(), 保证其兼容性，最好的方法如下：
+    
       ```
       if(typeof Array.isArray==="undefined")
       {
