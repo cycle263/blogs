@@ -10,7 +10,7 @@
   Math.sign方法用来判断一个数到底是正数、负数、还是零。如果参数为正数，返回+1；参数为负数，返回-1；  
   参数为0，返回0；参数为NaN，返回NaN。  
   
-ES6在Math对象上还提供了许多新的数学方法。  
+  ES6在Math对象上还提供了许多新的数学方法。  
 
   - Math.acosh(x) 返回x的反双曲余弦（inverse hyperbolic cosine）
   - Math.asinh(x) 返回x的反双曲正弦（inverse hyperbolic sine）
