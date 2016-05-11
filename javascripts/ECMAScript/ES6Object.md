@@ -16,7 +16,7 @@
    [propKey]: true,
    ['a'+'bc']: 123
   };
-  ``
+  ```
   
 * 3、Object.is()  
 
