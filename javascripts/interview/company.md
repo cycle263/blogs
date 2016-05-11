@@ -324,48 +324,50 @@
 
 ## 中级Javascript：
 
-1.实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
+* 1.实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
 
-考察点1：对于基本数据类型和引用数据类型在内存中存放的是值还是指针这一区别是否清楚
-考察点2：是否知道如何判断一个变量是什么类型的
-考察点3：递归算法的设计
-// 方法一：
-Object.prototype.clone = function(){
-        var o = this.constructor === Array ? [] : {};
-        for(var e in this){
-                o[e] = typeof this[e] === "object" ? this[e].clone() : this[e];
-        }
-        return o;
-}
- 
-//方法二：
-  /**
-     * 克隆一个对象
-     * @param Obj
-     * @returns
-     */
-    function clone(Obj) {   
-        var buf;   
-        if (Obj instanceof Array) {   
-            buf = [];                    //创建一个空的数组 
-            var i = Obj.length;   
-            while (i--) {   
-                buf[i] = clone(Obj[i]);   
-            }   
-            return buf;    
-        }else if (Obj instanceof Object){   
-            buf = {};                   //创建一个空对象 
-            for (var k in Obj) {           //为这个对象添加新的属性 
-                buf[k] = clone(Obj[k]);   
-            }   
-            return buf;   
-        }else{                         //普通变量直接赋值
-            return Obj;   
-        }   
+  考察点1：对于基本数据类型和引用数据类型在内存中存放的是值还是指针这一区别是否清楚  
+  考察点2：是否知道如何判断一个变量是什么类型的  
+  考察点3：递归算法的设计 
+  ```
+  // 方法一：
+  Object.prototype.clone = function(){
+    var o = this.constructor === Array ? [] : {};
+    for(var e in this){
+      o[e] = typeof this[e] === "object" ? this[e].clone() : this[e];
     }
- 
+    return o;
+  }
+   
+  //方法二：
+  /**
+   * 克隆一个对象
+   * @param Obj
+   * @returns
+   */
+  function clone(Obj) {   
+      var buf;   
+      if (Obj instanceof Array) {   
+          buf = [];                    //创建一个空的数组 
+          var i = Obj.length;   
+          while (i--) {   
+              buf[i] = clone(Obj[i]);   
+          }   
+          return buf;    
+      }else if (Obj instanceof Object){   
+          buf = {};                   //创建一个空对象 
+          for (var k in Obj) {           //为这个对象添加新的属性 
+              buf[k] = clone(Obj[k]);   
+          }   
+          return buf;   
+      }else{                         //普通变量直接赋值
+          return Obj;   
+      }   
+  }
+  ```
 
-2.如何消除一个数组里面重复的元素？
+* 2.如何消除一个数组里面重复的元素？
+```
 var arr=[1,2,3,3,4,4,5,5,6,1,9,3,25,4];
         function deRepeat(){
             var newArr=[];
@@ -386,7 +388,9 @@ var arr=[1,2,3,3,4,4,5,5,6,1,9,3,25,4];
         }
         var newArr2=deRepeat(arr);
         alert(newArr2); //输出1,2,3,4,5,6,9,25
-3.小贤是一条可爱的小狗(Dog)，它的叫声很好听(wow)，每次看到主人的时候就会乖乖叫一声(yelp)。从这段描述可以得到以下对象：
+```
+
+* 3.小贤是一条可爱的小狗(Dog)，它的叫声很好听(wow)，每次看到主人的时候就会乖乖叫一声(yelp)。从这段描述可以得到以下对象：
 function Dog() {
        this.wow = function() {
                alert(’Wow’);
@@ -413,7 +417,7 @@ var dog = new Dog();
 dog.yelp();
 var madDog = new MadDog();
 madDog.yelp();
-4.下面这个ul，如何点击每一列的时候alert其index?（闭包）
+* 4.下面这个ul，如何点击每一列的时候alert其index?（闭包）
 <ul id=”test”>
 <li>这是第一条</li>
 <li>这是第二条</li>
@@ -441,7 +445,7 @@ for(var i=0;i<3;i++)
         }
     })(i);
 }
-5.编写一个JavaScript函数，输入指定类型的选择器(仅需支持id，class，tagName三种简单CSS选择器，无需兼容组合选择器)可以返回匹配的DOM节点，需考虑浏览器兼容性和性能。
+* 5.编写一个JavaScript函数，输入指定类型的选择器(仅需支持id，class，tagName三种简单CSS选择器，无需兼容组合选择器)可以返回匹配的DOM节点，需考虑浏览器兼容性和性能。
 
 /*** @param selector {String} 传入的CSS选择器。* @return {Array}*/
 
