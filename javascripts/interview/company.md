@@ -194,26 +194,31 @@
   
 * 17.foo = foo||bar ，这行代码是什么意思？为什么要这样写？  
 
-  答案：if(!foo) foo = bar; //如果foo存在，值不变，否则把bar的值赋给foo。
+  答案：if(!foo) foo = bar; //如果foo存在，值不变，否则把bar的值赋给foo。  
 
-短路表达式：作为”&&”和”||”操作符的操作数表达式，这些表达式在进行求值时，只要最终的结果已经可以确定是真或假，求值过程便告终止，这称之为短路求值。
+  短路表达式：作为”&&”和”||”操作符的操作数表达式，这些表达式在进行求值时，只要最终的结果已经可以确定是真或假，求值过程便告终止，这称之为短路求值。
 
-18.看下列代码，将会输出什么?(变量声明提升)
-var foo = 1;
-function(){
-    console.log(foo);
-    var foo = 2;
-    console.log(foo);
-}
-答案：输出undefined 和 2。上面代码相当于：
-var foo = 1;
-function(){
-    var foo;
-    console.log(foo); //undefined
-    foo = 2;
-    console.log(foo); // 2;   
-}
-函数声明与变量声明会被JavaScript引擎隐式地提升到当前作用域的顶部，但是只提升名称不会提升赋值部分。
+* 18.看下列代码，将会输出什么?(变量声明提升)
+  ```
+  var foo = 1;
+  function(){
+      console.log(foo);
+      var foo = 2;
+      console.log(foo);
+  }
+  ```
+  
+  答案：输出undefined 和 2。上面代码相当于：
+  ```
+  var foo = 1;
+  function(){
+      var foo;
+      console.log(foo); //undefined
+      foo = 2;
+      console.log(foo); // 2;   
+  }
+  ```
+  函数声明与变量声明会被JavaScript引擎隐式地提升到当前作用域的顶部，但是只提升名称不会提升赋值部分。
 
 19.用js实现随机选取10–100之间的10个数字，存入一个数组，并排序。
 var iArray = []; 
