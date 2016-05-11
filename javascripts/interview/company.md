@@ -367,84 +367,92 @@
   ```
 
 * 2.如何消除一个数组里面重复的元素？
-```
-var arr=[1,2,3,3,4,4,5,5,6,1,9,3,25,4];
-        function deRepeat(){
-            var newArr=[];
-            var obj={};
-            var index=0;
-            var l=arr.length;
-            for(var i=0;i<l;i++){
-                if(obj[arr[i]]==undefined)
-                  {
-                    obj[arr[i]]=1;
-                    newArr[index++]=arr[i];
-                  }
-                else if(obj[arr[i]]==1)
-                  continue;
-            }
-            return newArr;
- 
-        }
-        var newArr2=deRepeat(arr);
-        alert(newArr2); //输出1,2,3,4,5,6,9,25
-```
+  ```
+  var arr=[1,2,3,3,4,4,5,5,6,1,9,3,25,4];
+  function deRepeat(){
+    var newArr=[];
+    var obj={};
+    var index=0;
+    var l=arr.length;
+    for(var i=0;i<l;i++){
+      if(obj[arr[i]]==undefined){
+        obj[arr[i]]=1;
+        newArr[index++]=arr[i];
+      }else if(obj[arr[i]]==1)
+        continue;
+    }
+    return newArr;
+  }
+  var newArr2=deRepeat(arr);
+  alert(newArr2); //输出1,2,3,4,5,6,9,25
+  ```
 
 * 3.小贤是一条可爱的小狗(Dog)，它的叫声很好听(wow)，每次看到主人的时候就会乖乖叫一声(yelp)。从这段描述可以得到以下对象：
-function Dog() {
-       this.wow = function() {
-               alert(’Wow’);
-      }
-       this.yelp = function() {
-              this.wow();
-      }
-}
-小芒和小贤一样，原来也是一条可爱的小狗，可是突然有一天疯了(MadDog)，一看到人就会每隔半秒叫一声(wow)地不停叫唤(yelp)。请根据描述，按示例的形式用代码来实。（继承，原型，setInterval）
-
-答案：
-function MadDog() {
+  ```
+  function Dog() {
+   this.wow = function() {
+     alert(’Wow’);
+    }
+   this.yelp = function() {
+      this.wow();
+    }
+  }
+  ```
+  
+  小芒和小贤一样，原来也是一条可爱的小狗，可是突然有一天疯了(MadDog)，一看到人就会每隔半秒叫一声(wow)地不停叫唤(yelp)。请根据描述，按示例的形式用代码来实。（继承，原型，setInterval）
+  
+  答案：
+  ```
+  function MadDog() {
     this.yelp = function() {
-          var self = this;          
-          setInterval(function() {
-                self.wow();      
-          }, 500);
-      }
-}
-MadDog.prototype = new Dog();         
- 
-//for test
-var dog = new Dog();
-dog.yelp();
-var madDog = new MadDog();
-madDog.yelp();
+      var self = this;          
+      setInterval(function() {
+        self.wow();      
+      }, 500);
+    }
+  }
+  MadDog.prototype = new Dog();         
+   
+  //for test
+  var dog = new Dog();
+  dog.yelp();
+  var madDog = new MadDog();
+  madDog.yelp();
+  ```
+
 * 4.下面这个ul，如何点击每一列的时候alert其index?（闭包）
-<ul id=”test”>
-<li>这是第一条</li>
-<li>这是第二条</li>
-<li>这是第三条</li>
-</ul>
-答案：
-// 方法一：
-var lis=document.getElementById('2223').getElementsByTagName('li');
-for(var i=0;i<3;i++)
-{
-    lis[i].index=i;
-    lis[i].onclick=function(){
-        alert(this.index);
-    };
-}
- 
-//方法二：
-var lis=document.getElementById('2223').getElementsByTagName('li');
-for(var i=0;i<3;i++)
-{
-    lis[i].index=i;
-    lis[i].onclick=(function(a){
-        return function() {
-            alert(a);
-        }
-    })(i);
-}
+  ```
+  <ul id=”test”>
+    <li>这是第一条</li>
+    <li>这是第二条</li>
+    <li>这是第三条</li>
+  </ul>
+  ```
+  答案：
+  ```
+  // 方法一：
+  var lis=document.getElementById('2223').getElementsByTagName('li');
+  for(var i=0;i<3;i++)
+  {
+      lis[i].index=i;
+      lis[i].onclick=function(){
+          alert(this.index);
+      };
+  }
+   
+  //方法二：
+  var lis=document.getElementById('2223').getElementsByTagName('li');
+  for(var i=0;i<3;i++)
+  {
+      lis[i].index=i;
+      lis[i].onclick=(function(a){
+          return function() {
+              alert(a);
+          }
+      })(i);
+  }
+  ```
+  
 * 5.编写一个JavaScript函数，输入指定类型的选择器(仅需支持id，class，tagName三种简单CSS选择器，无需兼容组合选择器)可以返回匹配的DOM节点，需考虑浏览器兼容性和性能。
 
 /*** @param selector {String} 传入的CSS选择器。* @return {Array}*/
