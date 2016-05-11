@@ -37,7 +37,7 @@
   需要两个对象作为参数，第一个参数是目标对象，后面的参数都是源对象。只要有一个参数不是对象，就会抛出TypeError错误。  
   目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。  
   
-  -（1）为对象添加属性
+  - （1）为对象添加属性
   
     ```
     class Point {
@@ -47,8 +47,8 @@
     }
     ```
     
-  -（2）为对象添加方法
-  -（3）克隆对象
+  - （2）为对象添加方法
+  - （3）克隆对象
   
     ```
     function clone(origin) {
@@ -56,8 +56,8 @@
     }
     ```
     
-  -（4）合并多个对象
-  -（5）为属性指定默认值
+  - （4）合并多个对象
+  - （5）为属性指定默认值
   
 * 5、proto属性，Object.setPrototypeOf()，Object.getPrototypeOf()  
  
@@ -103,30 +103,30 @@
   
   Proxy支持的拦截操作一览。对于没有设置拦截的操作，则直接落在目标对象上，按照原先的方式产生结果。  
 
-  -（1）get(target, propKey, receiver)：拦截对象属性的读取，比如proxy.foo和proxy['foo']，返回类型不限。最后一个参数receiver可选，当target对象设置了propKey属性的get函数时，receiver对象会绑定get函数的this对象。
-  -（2）set(target, propKey, value, receiver)：拦截对象属性的设置，比如proxy.foo = v或proxy['foo'] = v，返回一个布尔值。
-  -（3）has(target, propKey)：拦截propKey in proxy的操作，返回一个布尔值。
-  -（4）deleteProperty(target, propKey) ：拦截delete proxy[propKey]的操作，返回一个布尔值。
-  -（5）enumerate(target)：拦截for (var x in proxy)，返回一个遍历器。
-  -（6）hasOwn(target, propKey)：拦截proxy.hasOwnProperty('foo')，返回一个布尔值。
-  -（7）ownKeys(target)：拦截Object.getOwnPropertyNames(proxy)、Object.getOwnPropertySymbols(proxy)、Object.keys(proxy)，返回一个数组。该方法返回对象所有自身的属性，而Object.keys()仅返回对象可遍历的属性。
-  -（8）getOwnPropertyDescriptor(target, propKey) ：拦截Object.getOwnPropertyDescriptor(proxy, propKey)，返回属性的描述对象。
-  -（9）defineProperty(target, propKey, propDesc)：拦截Object.defineProperty(proxy, propKey, propDesc）、Object.defineProperties(proxy, propDescs)，返回一个布尔值。
-  -（10）preventExtensions(target)：拦截Object.preventExtensions(proxy)，返回一个布尔值。
-  -（11）getPrototypeOf(target) ：拦截Object.getPrototypeOf(proxy)，返回一个对象。
-  -（12）isExtensible(target)：拦截Object.isExtensible(proxy)，返回一个布尔值。
-  -（13）setPrototypeOf(target, proto)：拦截Object.setPrototypeOf(proxy, proto)，返回一个布尔值。
+  - （1）get(target, propKey, receiver)：拦截对象属性的读取，比如proxy.foo和proxy['foo']，返回类型不限。最后一个参数receiver可选，当target对象设置了propKey属性的get函数时，receiver对象会绑定get函数的this对象。
+  - （2）set(target, propKey, value, receiver)：拦截对象属性的设置，比如proxy.foo = v或proxy['foo'] = v，返回一个布尔值。
+  - （3）has(target, propKey)：拦截propKey in proxy的操作，返回一个布尔值。
+  - （4）deleteProperty(target, propKey) ：拦截delete proxy[propKey]的操作，返回一个布尔值。
+  - （5）enumerate(target)：拦截for (var x in proxy)，返回一个遍历器。
+  - （6）hasOwn(target, propKey)：拦截proxy.hasOwnProperty('foo')，返回一个布尔值。
+  - （7）ownKeys(target)：拦截Object.getOwnPropertyNames(proxy)、Object.getOwnPropertySymbols(proxy)、Object.keys(proxy)，返回一个数组。该方法返回对象所有自身的属性，而Object.keys()仅返回对象可遍历的属性。
+  - （8）getOwnPropertyDescriptor(target, propKey) ：拦截Object.getOwnPropertyDescriptor(proxy, propKey)，返回属性的描述对象。
+  - （9）defineProperty(target, propKey, propDesc)：拦截Object.defineProperty(proxy, propKey, propDesc）、Object.defineProperties(proxy, propDescs)，返回一个布尔值。
+  - （10）preventExtensions(target)：拦截Object.preventExtensions(proxy)，返回一个布尔值。
+  - （11）getPrototypeOf(target) ：拦截Object.getPrototypeOf(proxy)，返回一个对象。
+  - （12）isExtensible(target)：拦截Object.isExtensible(proxy)，返回一个布尔值。
+  - （13）setPrototypeOf(target, proto)：拦截Object.setPrototypeOf(proxy, proto)，返回一个布尔值。
   如果目标对象是函数，那么还有两种额外操作可以拦截。
-  -（14）apply(target, object, args)：拦截Proxy实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
-  -（15）construct(target, args, proxy)：拦截Proxy实例作为构造函数调用的操作，比如new proxy(...args)。
+  - （14）apply(target, object, args)：拦截Proxy实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
+  - （15）construct(target, args, proxy)：拦截Proxy实例作为构造函数调用的操作，比如new proxy(...args)。
 
 * 9、Reflect  
 
   Reflect对象与Proxy对象一样，也是ES6为了操作对象而提供的新API。Reflect对象的设计目的有这样几个。  
-  -（1） 将Object对象的一些明显属于语言层面的方法，放到Reflect对象上。现阶段，某些方法同时在Object和Reflect对象上部署，未来的新  方法将只部署在Reflect对象上。
-  -（2） 修改某些Object方法的返回结果，让其变得更合理。比如，Object.defineProperty(obj, name, desc)在无法定义属性时，会抛出一个错误，而Reflect.defineProperty(obj, name, desc)则会返回false。
-  -（3） 让Object操作都变成函数行为。某些Object操作是命令式，比如name in obj和delete obj[name]，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为。
-  -（4）Reflect对象的方法与Proxy对象的方法一一对应，只要是Proxy对象的方法，就能在Reflect对象上找到对应的方法。这就让Proxy对象可以方便地调用对应的Reflect方法，完成默认行为，作为修改行为的基础。  
+  - （1） 将Object对象的一些明显属于语言层面的方法，放到Reflect对象上。现阶段，某些方法同时在Object和Reflect对象上部署，未来的新  方法将只部署在Reflect对象上。
+  - （2） 修改某些Object方法的返回结果，让其变得更合理。比如，Object.defineProperty(obj, name, desc)在无法定义属性时，会抛出一个错误，而Reflect.defineProperty(obj, name, desc)则会返回false。
+  - （3） 让Object操作都变成函数行为。某些Object操作是命令式，比如name in obj和delete obj[name]，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为。
+  - （4）Reflect对象的方法与Proxy对象的方法一一对应，只要是Proxy对象的方法，就能在Reflect对象上找到对应的方法。这就让Proxy对象可以方便地调用对应的Reflect方法，完成默认行为，作为修改行为的基础。  
   Reflect对象的方法大部分与Object对象的同名方法的作用都是相同的。
   
 * 10、Object.observe()，Object.unobserve()  
