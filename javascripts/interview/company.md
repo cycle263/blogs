@@ -1,24 +1,25 @@
-很多面试题是我自己面试BAT亲身经历碰到的。整理分享出来希望更多的前端er共同进步吧，不仅适用于求职者，对于巩固复习前端基础更是大有裨益。
-而更多的题目是我一路以来收集的，也有往年的，答案不确保一定正确，如有错误或有更好的解法，还请斧正。
 
-初级Javascript：
-1.JavaScript是一门什么样的语言，它有哪些特点？
-没有标准答案。
+## 初级Javascript：
 
-2.JavaScript的数据类型都有什么？
-基本数据类型：String,boolean,Number,Undefined, Null
-引用数据类型：Object(Array,Date,RegExp,Function)
+* 1.JavaScript是一门什么样的语言，它有哪些特点？  
+  没有标准答案。
 
-那么问题来了，如何判断某变量是否为数组数据类型？
-方法一.判断其是否具有“数组性质”，如slice()方法。可自己给该变量定义slice方法，故有时会失效
-方法二.obj instanceof Array 在某些IE版本中不正确
-方法三.方法一二皆有漏洞，在ECMA Script5中定义了新方法Array.isArray(), 保证其兼容性，最好的方法如下：
-if(typeof Array.isArray==="undefined")
-{
-  Array.isArray = function(arg){
-        return Object.prototype.toString.call(arg)==="[object Array]"
-    };  
-}
+* 2.JavaScript的数据类型都有什么？
+  - 基本数据类型：String,boolean,Number,Undefined, Null  
+  - 引用数据类型：Object(Array,Date,RegExp,Function)  
+
+  - 那么问题来了，如何判断某变量是否为数组数据类型？
+    + 方法一.判断其是否具有“数组性质”，如slice()方法。可自己给该变量定义slice方法，故有时会失效
+    + 方法二.obj instanceof Array 在某些IE版本中不正确
+    + 方法三.方法一二皆有漏洞，在ECMA Script5中定义了新方法Array.isArray(), 保证其兼容性，最好的方法如下：
+      ```
+      if(typeof Array.isArray==="undefined")
+      {
+        Array.isArray = function(arg){
+              return Object.prototype.toString.call(arg)==="[object Array]"
+          };  
+      }
+      ```
 
 3.已知ID的Input输入框，希望获取这个输入框的输入值，怎么做？(不使用第三方框架)
 document.getElementById(“ID”).value
@@ -273,7 +274,7 @@ function fn(n){  //典型的斐波那契数列
         }
    }
 }
-中级Javascript：
+## 中级Javascript：
 
 1.实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
 
