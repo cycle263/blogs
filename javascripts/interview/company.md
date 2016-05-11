@@ -724,6 +724,7 @@
   需要注意浏览器边界的情况  
 
 * 13. 首次访问tip提醒，在此访问不再提示  
+
   ```
   function setcookie(name,value,days){  //给cookie增加一个时间变量
   　　var exp = new Date(); 
