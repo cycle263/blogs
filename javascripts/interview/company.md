@@ -22,32 +22,39 @@
       }
       ```
 
-3.已知ID的Input输入框，希望获取这个输入框的输入值，怎么做？(不使用第三方框架)
-document.getElementById(“ID”).value
+* 3.已知ID的Input输入框，希望获取这个输入框的输入值，怎么做？(不使用第三方框架)  
+  ```
+  document.getElementById(“ID”).value
+  ```
 
-4.希望获取到页面中所有的checkbox怎么做？(不使用第三方框架)
-var domList = document.getElementsByTagName('input')
-var checkBoxList = [];
-var len = domList.length;　　//缓存到局部变量
-while (len--) {　　//使用while的效率会比for循环更高
-　　if (domList[len].type == 'checkbox') {
-    　　checkBoxList.push(domList[len]);
-　　}
-}
+* 4.希望获取到页面中所有的checkbox怎么做？(不使用第三方框架)  
+  ```
+  var domList = document.getElementsByTagName('input')
+  var checkBoxList = [];
+  var len = domList.length;　　//缓存到局部变量
+  while (len--) {　　//使用while的效率会比for循环更高
+  　　if (domList[len].type == 'checkbox') {
+      　　checkBoxList.push(domList[len]);
+  　　}
+  }
+  ```
 
-5.设置一个已知ID的DIV的html内容为xxxx，字体颜色设置为黑色(不使用第三方框架)
-var dom = document.getElementById(“ID”);
-dom.innerHTML = "xxxx";
-dom.style.color = "#000";
+* 5.设置一个已知ID的DIV的html内容为xxxx，字体颜色设置为黑色(不使用第三方框架)  
+  ```
+  var dom = document.getElementById(“ID”);
+  dom.innerHTML = "xxxx";
+  dom.style.color = "#000";
+  ```
+ 
+* 6.当一个DOM节点被点击时候，我们希望能够执行一个函数，应该怎么做？  
+   直接在DOM里绑定事件：<div onclick=”test()”></div>  
+   在JS里通过onclick绑定：xxx.onclick = test  
+   通过事件添加进行绑定：addEventListener(xxx, ‘click’, test)  
 
-6.当一个DOM节点被点击时候，我们希望能够执行一个函数，应该怎么做？
- 直接在DOM里绑定事件：<div onclick=”test()”></div>
- 在JS里通过onclick绑定：xxx.onclick = test
- 通过事件添加进行绑定：addEventListener(xxx, ‘click’, test)
-那么问题来了，Javascript的事件流模型都有什么？
-“事件冒泡”：事件开始由最具体的元素接受，然后逐级向上传播
-“事件捕捉”：事件由最不具体的节点先接收，然后逐级向下，一直到最具体的
-“DOM事件流”：三个阶段：事件捕捉，目标阶段，事件冒泡
+  - 那么问题来了，Javascript的事件流模型都有什么？
+    + “事件冒泡”：事件开始由最具体的元素接受，然后逐级向上传播
+    + “事件捕捉”：事件由最不具体的节点先接收，然后逐级向下，一直到最具体的
+    + “DOM事件流”：三个阶段：事件捕捉，目标阶段，事件冒泡
 
 7.什么是Ajax和JSON，它们的优缺点。
 Ajax是异步JavaScript和XML，用于在Web页面中实现异步数据交互。
