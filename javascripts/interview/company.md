@@ -220,53 +220,59 @@
   ```
   函数声明与变量声明会被JavaScript引擎隐式地提升到当前作用域的顶部，但是只提升名称不会提升赋值部分。
 
-19.用js实现随机选取10–100之间的10个数字，存入一个数组，并排序。
-var iArray = []; 
-funtion getRandom(istart, iend){
-        var iChoice = istart - iend +1;
-        return Math.floor(Math.random() * iChoice + istart;
-}
-for(var i=0; i<10; i++){
-        iArray.push(getRandom(10,100));
-}
-iArray.sort();
+* 19.用js实现随机选取10–100之间的10个数字，存入一个数组，并排序。
+  ```
+  var iArray = []; 
+  funtion getRandom(istart, iend){
+    var iChoice = istart - iend +1;
+    return Math.floor(Math.random() * iChoice + istart;
+  }
+  for(var i=0; i<10; i++){
+    iArray.push(getRandom(10,100));
+  }
+  iArray.sort();
+  ```
 
-20.把两个数组合并，并删除第二个元素。
-var array1 = ['a','b','c'];
-var bArray = ['d','e','f'];
-var cArray = array1.concat(bArray);
-cArray.splice(1,1);
+* 20.把两个数组合并，并删除第二个元素。
+  ```
+  var array1 = ['a','b','c'];
+  var bArray = ['d','e','f'];
+  var cArray = array1.concat(bArray);
+  cArray.splice(1,1);
+  ```
 
-21.怎样添加、移除、移动、复制、创建和查找节点（原生JS，实在基础，没细写每一步）
+* 21.怎样添加、移除、移动、复制、创建和查找节点（原生JS，实在基础，没细写每一步）
 
-1）创建新节点
-createDocumentFragment()    //创建一个DOM片段
-createElement()   //创建一个具体的元素
-createTextNode()   //创建一个文本节点
+  - 1）创建新节点
+  createDocumentFragment()    //创建一个DOM片段  
+  createElement()   //创建一个具体的元素  
+  createTextNode()   //创建一个文本节点  
+  
+  - 2）添加、移除、替换、插入
+  appendChild()      //添加  
+  removeChild()      //移除  
+  replaceChild()      //替换  
+  insertBefore()      //插入  
+  
+  - 3）查找
+  getElementsByTagName()    //通过标签名称  
+  getElementsByName()     //通过元素的Name属性的值  
+  getElementById()        //通过元素Id，唯一性  
 
-2）添加、移除、替换、插入
-appendChild()      //添加
-removeChild()      //移除
-replaceChild()      //替换
-insertBefore()      //插入
+* 22.有这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
 
-3）查找
-getElementsByTagName()    //通过标签名称
-getElementsByName()     //通过元素的Name属性的值
-getElementById()        //通过元素Id，唯一性
-
-22.有这样一个URL：http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。
-
-答案：
-function serilizeUrl(url) {
-    var result = {};
-    url = url.split("?")[1];
-    var map = url.split("&");
-    for(var i = 0, len = map.length; i < len; i++) {
-        result<script>jQuery(function($) {$("#google-maps-1").gMap({controls: false,scrollwheel: false,markers: [{address: "",icon: {image: "http://web.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/_colors/red/pin.png",iconsize: [32, 32],iconanchor: [16,27],infowindowanchor: [16, 27]}}],address: "",zoom: 15,icon: {image: "http://web.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/_colors/red/pin.png",iconsize: [32, 32],iconanchor: [16,27],infowindowanchor: [16, 27]}});});</script><div id="google-maps-1" class="google-maps" style="width: 100%; height: 200px;"></div>.split("=")[0]] = map[i].split("=")[1];
-    }
-    return result;
-}
+  答案：  
+  ```
+  function serilizeUrl(url) {
+      var result = {};
+      url = url.split("?")[1];
+      var map = url.split("&");
+      for(var i = 0, len = map.length; i < len; i++) {
+          result<script>jQuery(function($) {$("#google-maps-1").gMap({controls: false,scrollwheel: false,markers: [{address: "",icon: {image: "http://web.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/_colors/red/pin.png",iconsize: [32, 32],iconanchor: [16,27],infowindowanchor: [16, 27]}}],address: "",zoom: 15,icon: {image: "http://web.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/_colors/red/pin.png",iconsize: [32, 32],iconanchor: [16,27],infowindowanchor: [16, 27]}});});</script><div id="google-maps-1" class="google-maps" style="width: 100%; height: 200px;"></div>.split("=")[0]] = map[i].split("=")[1];
+      }
+      return result;
+  }
+  ```
 
 23.正则表达式构造函数var reg=new RegExp(“xxx”)与正则表达字面量var reg=//有什么不同？匹配邮箱的正则表达式？
 答案：当使用RegExp()构造函数的时候，不仅需要转义引号（即\”表示”），并且还需要双反斜杠（即\\表示一个\）。使用正则表达字面量的效率更高。 
