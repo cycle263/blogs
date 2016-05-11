@@ -455,325 +455,357 @@
   
 * 5.编写一个JavaScript函数，输入指定类型的选择器(仅需支持id，class，tagName三种简单CSS选择器，无需兼容组合选择器)可以返回匹配的DOM节点，需考虑浏览器兼容性和性能。
 
-/*** @param selector {String} 传入的CSS选择器。* @return {Array}*/
-
-答案：
-var query = function(selector) {
-                var reg = /^(#)?(\.)?(\w+)$/img;
-                var regResult = reg.exec(selector);
-                var result = [];
-                //如果是id选择器
-                if(regResult[1]) {
-                    if(regResult[3]) {
-                        if(typeof document.querySelector === "function") {
-                            result.push(document.querySelector(regResult[3]));
-                        }
-                        else {
-                            result.push(document.getElementById(regResult[3]));
-                        }
-                    }
-                }
-                //如果是class选择器
-                else if(regResult[2]) {
-                    if(regResult[3]) {
-                        if(typeof document.getElementsByClassName === 'function') {
-                            var doms = document.getElementsByClassName(regResult[3]);
-                            if(doms) {
-                                result = converToArray(doms);
-                            }
-                        }
-                        //如果不支持getElementsByClassName函数
-                        else {
-                            var allDoms = document.getElementsByTagName("*") ;
-                            for(var i = 0, len = allDoms.length; i < len; i++) {
-                                if(allDoms[i].className.search(new RegExp(regResult[2])) > -1) {
-                                    result.push(allDoms[i]);
-                                }
-                            }
-                        }
-                    }
-                }
-                //如果是标签选择器
-                else if(regResult[3]) {
-                    var doms = document.getElementsByTagName(regResult[3].toLowerCase());
-                    if(doms) {
-                        result = converToArray(doms);
-                    }
-                }
-                return result;
-            }
- 
-            function converToArray(nodes){
-                  var array = null;         
-                  try{        
-                        array = Array.prototype.slice.call(nodes,0);//针对非IE浏览器         
-                  }catch(ex){
-                      array = new Array();         
-                      for( var i = 0 ,len = nodes.length; i < len ; i++ ) { 
-                          array.push(nodes[i])         
-                      }         
-                  }      
-                  return array;
+  ```
+  /*** @param selector {String} 传入的CSS选择器。* @return {Array}*/
+  
+  答案：
+  var query = function(selector) {
+    var reg = /^(#)?(\.)?(\w+)$/img;
+    var regResult = reg.exec(selector);
+    var result = [];
+    //如果是id选择器
+    if(regResult[1]) {
+      if(regResult[3]) {
+        if(typeof document.querySelector === "function") {
+          result.push(document.querySelector(regResult[3]));
+        }
+        else {
+          result.push(document.getElementById(regResult[3]));
+        }
+      }
+    }
+    //如果是class选择器
+    else if(regResult[2]) {
+      if(regResult[3]) {
+        if(typeof document.getElementsByClassName === 'function') {
+          var doms = document.getElementsByClassName(regResult[3]);
+          if(doms) {
+            result = converToArray(doms);
           }
-6.请评价以下代码并给出改进意见。
-if(window.addEventListener){
-    var addListener = function(el,type,listener,useCapture){
-        el.addEventListener(type,listener,useCapture);
-  };
-}
-else if(document.all){
-    addListener = function(el,type,listener){
-        el.attachEvent("on"+type,function(){
-          listener.apply(el);
-      });
-   }  
-}
-评价：
-
-　不应该在if和else语句中声明addListener函数，应该先声明；
-　不需要使用window.addEventListener或document.all来进行检测浏览器，应该使用能力检测；
-　由于attachEvent在IE中有this指向问题，所以调用它时需要处理一下
-改进如下：
-function addEvent(elem, type, handler){
-　　if(elem.addEventListener){
-　　　　elem.addEventListener(type, handler, false);
-　　}else if(elem.attachEvent){
-　　　　elem['temp' + type + handler] = handler;
-　　　　elem[type + handler] = function(){
-　　　　elem['temp' + type + handler].apply(elem);
-　　};
-　　elem.attachEvent('on' + type, elem[type + handler]);　
-  }else{
-　　elem['on' + type] = handler;
-　　}
-}
-7.给String对象添加一个方法，传入一个string类型的参数，然后将string的每个字符间价格空格返回，例如：
-
-addSpace(“hello world”) // -> ‘h e l l o  w o r l d’
-
-String.prototype.spacify = function(){
-      return this.split('').join(' ');
-    };
-接着上述问题答案提问，1）直接在对象的原型上添加方法是否安全？尤其是在Object对象上。(这个我没能答出？希望知道的说一下。)　2）函数声明与函数表达式的区别？
-
-答案：在js中，解析器在向执行环境中加载数据时，对函数声明和函数表达式并非是一视同仁的，解析器会率先读取函数声明，并使其在执行任何代码之前可用（可以访问），至于函数表达式，则必须等到解析器执行到它所在的代码行，才会真正被解析执行。
-
-8.定义一个log方法，让它可以代理console.log的方法。
-
-可行的方法一：
-function log(msg)　{
-    console.log(msg);
-}
- 
-log("hello world!") // hello world!
-如果要传入多个参数呢？显然上面的方法不能满足要求，所以更好的方法是：
-
-function log(){
-    console.log.apply(console, arguments);
-};
-到此，追问apply和call方法的异同。
-
-答案：
-
-对于apply和call两者在作用上是相同的，即是调用一个对象的一个方法，以另一个对象替换当前对象。将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。
-
-但两者在参数上有区别的。对于第一个参数意义都一样，但对第二个参数： apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。 如 func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3]) 。
-
-9.在Javascript中什么是伪数组？如何将伪数组转化为标准数组？
-
-答案：
-
-伪数组（类数组）：无法直接调用数组方法或期望length属性有什么特殊的行为，但仍可以对真正数组遍历方法来遍历它们。典型的是函数的argument参数，还有像调用getElementsByTagName,document.childNodes之类的,它们都返回NodeList对象都属于伪数组。可以使用Array.prototype.slice.call(fakeArray)将数组转化为真正的Array对象。
-
-假设接第八题题干，我们要给每个log方法添加一个”(app)”前缀，比如’hello world!’ ->’(app)hello world!’。方法如下：
-function log(){
-      var args = Array.prototype.slice.call(arguments);  //为了使用unshift数组方法，将argument转化为真正的数组
-      args.unshift('(app)');
- 
-      console.log.apply(console, args);
-    };
-10.对作用域上下文和this的理解，看下列代码：
-var User = {
-  count: 1,
- 
-  getCount: function() {
-    return this.count;
-  }
-};
- 
-console.log(User.getCount());  // what?
- 
-var func = User.getCount;
-console.log(func());  // what?
-问两处console输出什么？为什么？
-
-答案是1和undefined。
-
-func是在winodw的上下文中被执行的，所以会访问不到count属性。
-
-继续追问，那么如何确保Uesr总是能访问到func的上下文，即正确返回1。正确的方法是使用Function.prototype.bind。兼容各个浏览器完整代码如下：
-Function.prototype.bind = Function.prototype.bind || function(context){
-   var self = this;
- 
-   return function(){
-      return self.apply(context, arguments);
-   };
-}
- 
-var func = User.getCount.bind(User);
-console.log(func());
-11.原生JS的window.onload与Jquery的$(document).ready(function(){})有什么不同？如何用原生JS实现Jq的ready方法？
-
-window.onload()方法是必须等到页面内包括图片的所有元素加载完毕后才能执行。
-
-$(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。
-/*
- * 传递函数给whenReady()
- * 当文档解析完毕且为操作准备就绪时，函数作为document的方法调用
- */
-var whenReady = (function() {               //这个函数返回whenReady()函数
-    var funcs = [];             //当获得事件时，要运行的函数
-    var ready = false;          //当触发事件处理程序时,切换为true
- 
-    //当文档就绪时,调用事件处理程序
-    function handler(e) {
-        if(ready) return;       //确保事件处理程序只完整运行一次
- 
-        //如果发生onreadystatechange事件，但其状态不是complete的话,那么文档尚未准备好
-        if(e.type === 'onreadystatechange' && document.readyState !== 'complete') {
-            return;
         }
- 
-        //运行所有注册函数
-        //注意每次都要计算funcs.length
-        //以防这些函数的调用可能会导致注册更多的函数
-        for(var i=0; i<funcs.length; i++) {
-            funcs[i].call(document);
-        }
-        //事件处理函数完整执行,切换ready状态, 并移除所有函数
-        ready = true;
-        funcs = null;
-    }
-    //为接收到的任何事件注册处理程序
-    if(document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', handler, false);
-        document.addEventListener('readystatechange', handler, false);            //IE9+
-        window.addEventListener('load', handler, false);
-    }else if(document.attachEvent) {
-        document.attachEvent('onreadystatechange', handler);
-        window.attachEvent('onload', handler);
-    }
-    //返回whenReady()函数
-    return function whenReady(fn) {
-        if(ready) { fn.call(document); }
-        else { funcs.push(fn); }
-    }
-})();
-如果上述代码十分难懂，下面这个简化版：
-function ready(fn){
-    if(document.addEventListener) {        //标准浏览器
-        document.addEventListener('DOMContentLoaded', function() {
-            //注销事件, 避免反复触发
-            document.removeEventListener('DOMContentLoaded',arguments.callee, false);
-            fn();            //执行函数
-        }, false);
-    }else if(document.attachEvent) {        //IE
-        document.attachEvent('onreadystatechange', function() {
-            if(document.readyState == 'complete') {
-                document.detachEvent('onreadystatechange', arguments.callee);
-                fn();        //函数执行
+        //如果不支持getElementsByClassName函数
+        else {
+          var allDoms = document.getElementsByTagName("*") ;
+          for(var i = 0, len = allDoms.length; i < len; i++) {
+            if(allDoms[i].className.search(new RegExp(regResult[2])) > -1) {
+              result.push(allDoms[i]);
             }
+          }
+        }
+      }
+    }
+    //如果是标签选择器
+    else if(regResult[3]) {
+      var doms = document.getElementsByTagName(regResult[3].toLowerCase());
+      if(doms) {
+        result = converToArray(doms);
+      }
+    }
+    return result;
+  }
+  
+  function converToArray(nodes){
+    var array = null;         
+    try{        
+      array = Array.prototype.slice.call(nodes,0);//针对非IE浏览器         
+    }catch(ex){
+      array = new Array();         
+      for( var i = 0 ,len = nodes.length; i < len ; i++ ) { 
+        array.push(nodes[i])         
+      }         
+    }      
+    return array;
+  }
+  ```
+
+* 6.请评价以下代码并给出改进意见。
+   ```
+  if(window.addEventListener){
+      var addListener = function(el,type,listener,useCapture){
+          el.addEventListener(type,listener,useCapture);
+    };
+  }
+  else if(document.all){
+      addListener = function(el,type,listener){
+          el.attachEvent("on"+type,function(){
+            listener.apply(el);
         });
+     }  
+  }
+  ```
+  评价：
+  
+  　不应该在if和else语句中声明addListener函数，应该先声明；  
+  　不需要使用window.addEventListener或document.all来进行检测浏览器，应该使用能力检测；  
+  　由于attachEvent在IE中有this指向问题，所以调用它时需要处理一下  
+  改进如下：  
+  ```
+  function addEvent(elem, type, handler){
+  　　if(elem.addEventListener){
+  　　　　elem.addEventListener(type, handler, false);
+  　　}else if(elem.attachEvent){
+  　　　　elem['temp' + type + handler] = handler;
+  　　　　elem[type + handler] = function(){
+  　　　　elem['temp' + type + handler].apply(elem);
+  　　};
+  　　elem.attachEvent('on' + type, elem[type + handler]);　
+    }else{
+  　　elem['on' + type] = handler;
+  　　}
+  }
+  ```
+
+* 7.给String对象添加一个方法，传入一个string类型的参数，然后将string的每个字符间价格空格返回，例如：
+  ```
+  addSpace(“hello world”) // -> ‘h e l l o  w o r l d’
+  
+  String.prototype.spacify = function(){
+    return this.split('').join(' ');
+  };
+  ```
+  接着上述问题答案提问
+  - 1）直接在对象的原型上添加方法是否安全？尤其是在Object对象上。(这个我没能答出？希望知道的说一下。)　
+  - 2）函数声明与函数表达式的区别？  
+  
+  答案：在js中，解析器在向执行环境中加载数据时，对函数声明和函数表达式并非是一视同仁的，解析器会率先读取函数声明，并使其在执行任何代码之前可用（可以访问），至于函数表达式，则必须等到解析器执行到它所在的代码行，才会真正被解析执行。
+
+* 8.定义一个log方法，让它可以代理console.log的方法。
+  
+  可行的方法一：
+  ```
+  function log(msg)　{
+      console.log(msg);
+  }
+   
+  log("hello world!") // hello world!
+  ```
+  如果要传入多个参数呢？显然上面的方法不能满足要求，所以更好的方法是：
+  ```
+  function log(){
+      console.log.apply(console, arguments);
+  };
+  ```
+  到此，追问apply和call方法的异同。
+  
+  答案：
+  
+  对于apply和call两者在作用上是相同的，即是调用一个对象的一个方法，以另一个对象替换当前对象。将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。  
+  
+  但两者在参数上有区别的。对于第一个参数意义都一样，但对第二个参数：   apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。 如 func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3]) 。
+
+* 9.在Javascript中什么是伪数组？如何将伪数组转化为标准数组？
+  
+  答案：
+  
+  伪数组（类数组）：无法直接调用数组方法或期望length属性有什么特殊的行为，但仍可以对真正数组遍历方法来遍历它们。典型的是函数的argument参数，还有像调用getElementsByTagName,document.childNodes之类的,它们都返回NodeList对象都属于伪数组。可以使用Array.prototype.slice.call(fakeArray)将数组转化为真正的Array对象。
+  
+  假设接第八题题干，我们要给每个log方法添加一个”(app)”前缀，比如`’hello world!’ ->’(app)hello world!’`。方法如下：
+  ```
+  function log(){
+    var args = Array.prototype.slice.call(arguments);  //为了使用unshift数组方法，将argument转化为真正的数组
+    args.unshift('(app)');
+
+    console.log.apply(console, args);
+  };
+  ```
+  
+* 10.对作用域上下文和this的理解，看下列代码：
+  ```
+  var User = {
+    count: 1,
+   
+    getCount: function() {
+      return this.count;
     }
-};
-12.（设计题）想实现一个对页面某个节点的拖曳？如何做？（使用原生JS）
+  };
+   
+  console.log(User.getCount());  // what?
+   
+  var func = User.getCount;
+  console.log(func());  // what?
+  ```
+  问两处console输出什么？为什么？
+  
+  答案是1和undefined。
+  
+  func是在winodw的上下文中被执行的，所以会访问不到count属性。
+  
+  继续追问，那么如何确保Uesr总是能访问到func的上下文，即正确返回1。正确的方法是使用Function.prototype.bind。兼容各个浏览器完整代码如下：
+  ```
+  Function.prototype.bind = Function.prototype.bind || function(context){
+     var self = this;
+   
+     return function(){
+        return self.apply(context, arguments);
+     };
+  }
+   
+  var func = User.getCount.bind(User);
+  console.log(func());
+  ```
 
-回答出概念即可，下面是几个要点
+* 11.原生JS的window.onload与Jquery的$(document).ready(function(){})有什么不同？如何用原生JS实现Jq的ready方法？
 
-给需要拖拽的节点绑定mousedown, mousemove, mouseup事件
-mousedown事件触发后，开始拖拽
-mousemove时，需要通过event.clientX和clientY获取拖拽位置，并实时更新位置
-mouseup时，拖拽结束
-需要注意浏览器边界的情况
-13.
-问题：首次访问tip提醒，在此访问不再提示
-function setcookie(name,value,days){  //给cookie增加一个时间变量
-　　var exp = new Date(); 
-　　exp.setTime(exp.getTime() + days*24*60*60*1000); //设置过期时间为days天
-　　document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
-} 
-function getCookie(name){
-　　var result = "";
-　　var myCookie = ""+document.cookie+";"; 
-　　var searchName = "+name+"=";
-　　var startOfCookie = myCookie.indexOf(searchName);
-　　var endOfCookie;
-　　if(satrtOfCookie != -1){
-　　　　startOfcookie += searchName.length;
-　　　　endOfCookie = myCookie.indexOf(";",startOfCookie);
-　　　　result = (myCookie.substring(startOfCookie,endOfCookie));
-　　}
-　　return result;
-}
-(function(){
-　　var oTips = document.getElementById('tips');//假设tips的id为tips
-　　var page = {
-　　check: function(){//检查tips的cookie是否存在并且允许显示
-　　　　var tips = getCookie('tips');
-　　　　if(!tips || tips == 'show') return true;//tips的cookie不存在
-　　　　if(tips == "never_show_again") return false;
-　　},
-　　hideTip: function(bNever){
-　　　　if(bNever) setcookie('tips', 'never_show_again', 365);
-　　　　oTips.style.display = "none";//隐藏
-　　},
-　　showTip: function(){
-　　oTips.style.display = "inline";//显示，假设tips为行级元素
-　　},
-　　init: function(){
-　　　　var _this = this;
-　　　　if(this.check()){
-　　　　_this.showTip();
-　　　　setcookie('tips', 'show', 1);
-　　}
-　　oTips.onclick = function(){
-　　　　_this.hideTip(true);
-　　};
-　　}
-　　};
-  page.init();
-})();
-14.说出以下函数的作用是？空白区域应该填写什么？
-//define 
-(function(window){
-    function fn(str){
-        this.str=str;
-    }
- 
-    fn.prototype.format = function(){
-        var arg = ______;
-        return this.str.replace(_____,function(a,b){
-             return arg[b]||"";
-      });
-    }
-    window.fn = fn;
-})(window);
- 
-//use
-(function(){
-    var t = new fn('<p><a href="{0}">{1}</a><span>{2}</span></p>');
-    console.log(t.format('http://www.alibaba.com','Alibaba','Welcome'));
-})();
-答案：访函数的作用是使用format函数将函数的参数替换掉{0}这样的内容，返回一个格式化后的结果：
+  window.onload()方法是必须等到页面内包括图片的所有元素加载完毕后才能执行。
+  
+  $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。
+  ```
+  /*
+   * 传递函数给whenReady()
+   * 当文档解析完毕且为操作准备就绪时，函数作为document的方法调用
+   */
+  var whenReady = (function() {               //这个函数返回whenReady()函数
+      var funcs = [];             //当获得事件时，要运行的函数
+      var ready = false;          //当触发事件处理程序时,切换为true
+   
+      //当文档就绪时,调用事件处理程序
+      function handler(e) {
+          if(ready) return;       //确保事件处理程序只完整运行一次
+   
+          //如果发生onreadystatechange事件，但其状态不是complete的话,那么文档尚未准备好
+          if(e.type === 'onreadystatechange' && document.readyState !== 'complete') {
+              return;
+          }
+   
+          //运行所有注册函数
+          //注意每次都要计算funcs.length
+          //以防这些函数的调用可能会导致注册更多的函数
+          for(var i=0; i<funcs.length; i++) {
+              funcs[i].call(document);
+          }
+          //事件处理函数完整执行,切换ready状态, 并移除所有函数
+          ready = true;
+          funcs = null;
+      }
+      //为接收到的任何事件注册处理程序
+      if(document.addEventListener) {
+          document.addEventListener('DOMContentLoaded', handler, false);
+          document.addEventListener('readystatechange', handler, false);            //IE9+
+          window.addEventListener('load', handler, false);
+      }else if(document.attachEvent) {
+          document.attachEvent('onreadystatechange', handler);
+          window.attachEvent('onload', handler);
+      }
+      //返回whenReady()函数
+      return function whenReady(fn) {
+          if(ready) { fn.call(document); }
+          else { funcs.push(fn); }
+      }
+  })();
+  ```
+  如果上述代码十分难懂，下面这个简化版：
+  ```
+  function ready(fn){
+      if(document.addEventListener) {        //标准浏览器
+          document.addEventListener('DOMContentLoaded', function() {
+              //注销事件, 避免反复触发
+              document.removeEventListener('DOMContentLoaded',arguments.callee, false);
+              fn();            //执行函数
+          }, false);
+      }else if(document.attachEvent) {        //IE
+          document.attachEvent('onreadystatechange', function() {
+              if(document.readyState == 'complete') {
+                  document.detachEvent('onreadystatechange', arguments.callee);
+                  fn();        //函数执行
+              }
+          });
+      }
+  };
+  ```
 
-第一个空是：arguments
+* 12.（设计题）想实现一个对页面某个节点的拖曳？如何做？（使用原生JS）
 
-第二个空是：/\{(\d+)\}/ig
+  回答出概念即可，下面是几个要点  
+  
+  给需要拖拽的节点绑定mousedown, mousemove, mouseup事件  
+  mousedown事件触发后，开始拖拽  
+  mousemove时，需要通过event.clientX和clientY获取拖拽位置，并实时更新位置  
+  mouseup时，拖拽结束  
+  需要注意浏览器边界的情况  
 
- 15.用面向对象的Javascript来介绍一下自己。（没答案哦亲，自己试试吧）
+* 13. 首次访问tip提醒，在此访问不再提示
+  ```
+  function setcookie(name,value,days){  //给cookie增加一个时间变量
+  　　var exp = new Date(); 
+  　　exp.setTime(exp.getTime() + days*24*60*60*1000); //设置过期时间为days天
+  　　document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString(); 
+  } 
+  function getCookie(name){
+  　　var result = "";
+  　　var myCookie = ""+document.cookie+";"; 
+  　　var searchName = "+name+"=";
+  　　var startOfCookie = myCookie.indexOf(searchName);
+  　　var endOfCookie;
+  　　if(satrtOfCookie != -1){
+  　　　　startOfcookie += searchName.length;
+  　　　　endOfCookie = myCookie.indexOf(";",startOfCookie);
+  　　　　result = (myCookie.substring(startOfCookie,endOfCookie));
+  　　}
+  　　return result;
+  }
+  (function(){
+  　　var oTips = document.getElementById('tips');//假设tips的id为tips
+  　　var page = {
+  　　check: function(){//检查tips的cookie是否存在并且允许显示
+  　　　　var tips = getCookie('tips');
+  　　　　if(!tips || tips == 'show') return true;//tips的cookie不存在
+  　　　　if(tips == "never_show_again") return false;
+  　　},
+  　　hideTip: function(bNever){
+  　　　　if(bNever) setcookie('tips', 'never_show_again', 365);
+  　　　　oTips.style.display = "none";//隐藏
+  　　},
+  　　showTip: function(){
+  　　oTips.style.display = "inline";//显示，假设tips为行级元素
+  　　},
+  　　init: function(){
+  　　　　var _this = this;
+  　　　　if(this.check()){
+  　　　　_this.showTip();
+  　　　　setcookie('tips', 'show', 1);
+  　　}
+  　　oTips.onclick = function(){
+  　　　　_this.hideTip(true);
+  　　};
+  　　}
+  　　};
+    page.init();
+  })();
+  ```
 
-答案： 对象或者Json都是不错的选择哦，
+* 14.说出以下函数的作用是？空白区域应该填写什么？
+  ```
+  //define 
+  (function(window){
+      function fn(str){
+          this.str=str;
+      }
+   
+      fn.prototype.format = function(){
+          var arg = ______;
+          return this.str.replace(_____,function(a,b){
+               return arg[b]||"";
+        });
+      }
+      window.fn = fn;
+  })(window);
+   
+  //use
+  (function(){
+      var t = new fn('<p><a href="{0}">{1}</a><span>{2}</span></p>');
+      console.log(t.format('http://www.alibaba.com','Alibaba','Welcome'));
+  })();
+  ```
+
+  答案：访函数的作用是使用format函数将函数的参数替换掉{0}这样的内容，返回一个格式化后的结果：
+  
+  第一个空是：arguments
+  
+  第二个空是：/\{(\d+)\}/ig
+
+* 15.用面向对象的Javascript来介绍一下自己。（没答案哦亲，自己试试吧）
+
+  答案： 对象或者Json都是不错的选择哦，
 
 
-
-问题知识点：作用域链、原型链、闭包、变量提升、Ajax跨域、冒泡和捕获、基本类型、性能优化
+* 问题知识点：作用域链、原型链、闭包、变量提升、Ajax跨域、冒泡和捕获、基本类型、性能优化
