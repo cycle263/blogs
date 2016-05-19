@@ -5,4 +5,13 @@
 * 2、 git branch   查看当前分支名称，后面加上 -r 参数查看所有分支
 
 * 3、 git branch branch_name   创建一个名称为branch_name的新分支
-  git checkout branch_name    切换到一个名称为branch_name的分支
+  git checkout branch_name    切换到一个名称为branch_name的分支，不存在此分支则会自动创建一个新的
+
+* 4、 git status    查看更改的分支及其分支下的文件
+
+* 5、 git add .     添加相关文件到git库管理
+
+* 6、 git commit -m "修改说明"    提交代码
+
+* 7、 git push -u origin branch_name    将当前改动提交到远程branch_name分支上
+
