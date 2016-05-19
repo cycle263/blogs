@@ -11,7 +11,7 @@
 
 * 5、 git add .     添加相关文件到git库管理
 
-* 6、 git commit -m "修改说明"    提交代码
+* 6、 git commit -n -m "修改说明"    提交代码, -n忽略检查
 
 * 7、 git push -u origin branch_name    将当前改动提交到远程branch_name分支上
 
