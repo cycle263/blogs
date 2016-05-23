@@ -24,6 +24,22 @@
     `git config --global user.name "用户名"`  
     `git config --global user.email "Email"`
 
+* git 克隆源码
+
   - 克隆代码  
     `git clone git@github.com:username/repository.git`  
     `git clone https://username:password@github.com/username/repository.git`
+
+* git 提交源码
+
+  - 添加改动到本地库  
+    `git add .` 或者 `git add -file`   file: 文件的完整路径名称  
+
+  - 查看改动状态
+    `git status`
+
+  - 提交改动
+    `git commit -m "message"`   message: 提交记录信息
+
+  - 同步到服务端
+    `git push`
