@@ -73,10 +73,10 @@
 * git
   
   ```cmd
-  git clone someobject.git
-  git add .
-  git commit -m "message"
-  git push
+  $ git clone someobject.git
+  $ git add .
+  $ git commit -m "message"
+  $ git push
   ```
 
 * grunt
