@@ -20,6 +20,6 @@
   
 * git 初始化配置
 
-  - 配置用户和email
+  - 配置用户和email  
     `git config --global user.name "用户名"`  
     `git config --global user.email "Email"`
