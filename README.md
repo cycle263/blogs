@@ -71,6 +71,13 @@
 #### 4.Others
 
 * git
+  
+  ```cmd
+  git clone someobject.git
+  git add .
+  git commit -m "message"
+  git push
+  ```
 
 * grunt
 
