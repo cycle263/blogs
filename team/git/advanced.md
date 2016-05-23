@@ -23,3 +23,7 @@
   - 配置用户和email  
     `git config --global user.name "用户名"`  
     `git config --global user.email "Email"`
+
+  - 克隆代码  
+    `git clone git@github.com:username/repository.git`  
+    `git clone https://username:password@github.com/username/repository.git`
