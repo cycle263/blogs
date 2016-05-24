@@ -27,6 +27,10 @@
 * Angularjs
 
   > Angular 1.3, Angular 2 ...
+  
+  - Angular 2
+    
+    `index.html --> boot --> app`
 
 * Reactjs
 
