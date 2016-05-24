@@ -42,5 +42,5 @@
     `git commit -m "message"`   message: 提交记录信息
 
   - 同步到服务端
-    `git push`
+    `git push`  指定了分支，可省略后面参数      
     `git push origin HEAD:<name-of-remote-branch>`
