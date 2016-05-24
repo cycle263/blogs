@@ -43,3 +43,4 @@
 
   - 同步到服务端
     `git push`
+    `git push origin HEAD:<name-of-remote-branch>`
