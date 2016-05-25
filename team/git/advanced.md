@@ -30,7 +30,7 @@
     `git clone git@github.com:username/repository.git`  
     `git clone https://username:password@github.com/username/repository.git`
 
-  - 抓取代码
+  - 抓取代码  
     `git fetch` 远端抓取代码  
     `git pull`  远程抓取并合并，相当于git fetch和git merge两步  
 
@@ -47,7 +47,8 @@
     可选参数 -a: 表示保护内容修改和增删
 
   - 同步到服务端
-    `git push`  指定了分支，可省略后面参数      
+    `git push`  指定了分支，可省略后面参数       
+      可选参数 -f: 表示强制覆盖  
     `git push origin HEAD:<name-of-remote-branch>`
 
 * git 合并代码
