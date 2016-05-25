@@ -34,29 +34,33 @@
     `git fetch` 远端抓取代码  
     `git pull`  远程抓取并合并，相当于git fetch和git merge两步  
 
-* git 提交源码
+* git 提交源码  
 
-  - 添加改动到本地库  
+  - 添加改动到本地库   
     `git add .` 或者 `git add -file`   file: 文件的完整路径名称  
 
-  - 查看改动状态
+  - 查看改动状态  
     `git status`
 
-  - 提交改动
+  - 提交改动  
     `git commit [-a] -m "message"`   message: 提交记录信息  
     可选参数 -a: 表示保护内容修改和增删
 
-  - 同步到服务端
+  - 同步到服务端  
     `git push`  指定了分支，可省略后面参数       
       可选参数 -f: 表示强制覆盖  
     `git push origin HEAD:<name-of-remote-branch>`
 
 * git 合并代码
 
-  - 合并任意分支的commitId
+  - 合并任意分支的commitId  
     `git merge commitId`  合并分支中某一提交记录
 
 * git 比较代码
 
-  - 比较分支的差异
+  - 比较分支的差异  
     `git diff master develop` 比较master分支和develop分支的差异
+
+  - 查看修改内容  
+    `git diff`  查看详细修改内容   
+    `git sho`   显示某次提交的内容  
