@@ -49,3 +49,8 @@
 
   - 合并任意分支的commitId
     `git merge commitId`  合并分支中某一提交记录
+
+* git 比较代码
+
+  - 比较分支的差异
+    `git diff master develop` 比较master分支和develop分支的差异
