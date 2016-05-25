@@ -32,7 +32,8 @@
 
   - 抓取代码  
     `git fetch` 远端抓取代码  
-    `git pull`  远程抓取并合并，相当于git fetch和git merge两步  
+    `git pull`  远程抓取并合并，相当于git fetch和git merge两步    
+    `git pull origin branch-name`   抓取指定分支代码
 
 * git 提交源码  
 
@@ -49,7 +50,8 @@
   - 同步到服务端  
     `git push`  指定了分支，可省略后面参数       
       可选参数 -f: 表示强制覆盖  
-    `git push origin HEAD:<name-of-remote-branch>`
+    `git push origin HEAD:<name-of-remote-branch>`  
+    `git push branchs branch-name`  
 
 * git 合并代码
 
@@ -69,3 +71,9 @@
 
   - 回滚提交
     `git reset <file>`  某个文件索引会回滚到最后一次提交， C → B
+
+* git 分支管理
+
+  - 新建分支  
+    `git branch branch-new-name`  切换分支，不存在就新建分支  
+    `git checkout -b new-name`  切换分支，不存在就新建分支  
