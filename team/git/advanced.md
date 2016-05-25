@@ -44,3 +44,8 @@
   - 同步到服务端
     `git push`  指定了分支，可省略后面参数      
     `git push origin HEAD:<name-of-remote-branch>`
+
+* git 合并代码
+
+  - 合并任意分支的commitId
+    `git merge commitId`  合并分支中某一提交记录
