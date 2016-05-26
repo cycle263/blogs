@@ -1,6 +1,6 @@
 # Git
 
-![](https://pic4.zhimg.com/7e27e33239eeee59001da23a23483ccb_b.png)
+![流程图](https://pic1.zhimg.com/0df9740f9b41522ab12c14dbbf6bbad4_b.png)
 
 * 一般开发者：
 
