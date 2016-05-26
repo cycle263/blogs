@@ -40,6 +40,7 @@
   | col 2 is      | centered      |   $12 |
   | zebra stripes | are neat      |    $1 |
 
-* 代码引入
+* 代码引入  
+
   \` 用两个表示当行的，或者两个tab    
   \`\`\` 用三个开头，三个结束表示成段的代码
