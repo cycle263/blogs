@@ -57,3 +57,15 @@
   - 3、直接安装npm包  
     
     > 先安装jquery, 然后直接引入`import $ from 'jquery';`
+
+* 部署上线
+  > 部署上线使用webpack的时候不需要一些dev-tools,dev-server和jshint校验等，因此需要单独的config文件  
+
+  * 复制config.js文件，命名为webpack.production.config.js，将其中的dev-tools,dev-server和jshint校验等删除。
+  * 在package.json中添加一个命令  
+    ```
+    "scripts": {
+      "build": "webpack --progress --profile --colors --config webpack.production.config.js"
+    }
+    ```
+  * 当要发布上线时，运行`npm run build`命令
