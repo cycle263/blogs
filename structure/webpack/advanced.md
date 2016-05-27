@@ -21,3 +21,39 @@
     }
   },
   ```
+
+* 加载第三方库
+ > jQuery不支持AMD和CommonJS格式，webpack提供几种方法支持引入插件
+
+  - 1、webpack.ProvidePlugin  
+  
+  ```
+  plugins: [{
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    })
+  }]
+  ```
+  
+  - 2、imports-loader  
+  
+  `npm install imports-loader --save-dev` 先安装这个loader  
+  然后在入口js中引入  
+  ```
+  //注意这种写法 我们把jQuery这个变量直接插入到plugin.js里面了
+  //相当于在这个文件的开始添加了 var jQuery = require('jquery');
+  import 'imports?jQuery=jquery!./plugin.js';
+  
+  //后面的代码一样
+  myPromise.then((number) => {
+    //call our jquery plugin!
+    $('p').greenify();
+  });
+  
+  ```
+  
+  - 3、直接安装npm包  
+    
+  > 先安装jquery, 然后直接引入`import $ from 'jquery';`
