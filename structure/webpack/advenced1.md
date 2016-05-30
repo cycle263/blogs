@@ -41,3 +41,11 @@
   ]
 
   ```
+
+* react 和 webpack
+
+  - React Component初始化的生命周期
+    ![初始化的生命周期]()
+
+  - Component当props属性发生变化以后的生命周期
+    ![当props属性发生变化以后的生命周期]()
