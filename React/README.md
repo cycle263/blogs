@@ -3,6 +3,48 @@
 * npm init  初始化package.json文件
  
 * package.json文件scripts中的增加命令： "start":"http-server -a localhost -p 8001"
+ 
+ ```
+ {
+  "name": "connect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -a localhost -p 8001",
+    "dev": "webpack --progress --profile --colors --watch",
+    "build": "webpack --progress --profile --colors",
+    "devStart": "webpack-dev-server --hot --inline"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.9.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "html-webpack-plugin": "^2.17.0",
+    "http-server": "^0.9.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-transform-catch-errors": "^1.0.2",
+    "react-transform-hmr": "^1.0.4",
+    "redbox-react": "^1.2.6",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^2.17.0",
+    "http-server": "^0.9.0",
+    "jquery": "^2.2.4",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  }
+}
+
+ ```
 
 * 增加webpack.config.js配置文件  
   ```
@@ -58,3 +100,4 @@
  };
 
   ```
+  
