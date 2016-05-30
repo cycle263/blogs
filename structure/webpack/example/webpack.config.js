@@ -22,6 +22,9 @@ module.exports = {
             exclude: /node_modules/
         }]
     },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
     plugins: [
         new HtmlwebpackPlugin({
             title: 'PC app',
