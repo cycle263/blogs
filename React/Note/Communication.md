@@ -42,4 +42,16 @@
   
   - 事件绑定和解绑可以分别放在componentDidMount和componentWillUnMount中。由于事件是全局的，最好保证在componentWillUnMount中解绑事件，否则，下一次初始化组件时事件可能会绑定多次。
 
-* 4、上下文 
+* 4、上下文 (context)
+
+  + 父辈组件中
+  
+    - childContextTypes 用于验证上下文的数据类型，这个属性是必须要有的，否则会报错。
+    
+    - getChildContex t用于指定子组件可直接访问的上下文数据。
+
+  + 子辈组件中
+    
+    - this.context.curItem 属性访问父辈组件可以之间访问的数据。
+    
+    - contextTypes中设置可访问数据的验证类型，否则this.context是访问不了。
