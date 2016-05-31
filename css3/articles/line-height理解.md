@@ -13,3 +13,5 @@
   - 如果一个标签既没有内容，又没有定义高度，那么它的高度由line-height决定。
   
   - 有内容的标签产生的高度并非文字撑开的，而是ling-height。
+  
+  - line-box并不会直接产生高度，而是其内的inline-box决定，哪个inline-box最高就是line-box高度
