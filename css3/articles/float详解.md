@@ -17,3 +17,31 @@
     float只所以会环绕，是因为它破坏了正常的inline boxes，高度也同时会塌陷。不过，浮动元素依然在正常的文档流当中。  
 
     
+* 高度塌陷
+
+  - 为什么会高度塌陷？
+  
+    含有浮动属性的元素破坏了inline-box, 进而破坏了line-box的高度，没有了高度自然塌陷
+
+  - 什么情况下回塌陷？
+  
+    当标签没有实际高度时会塌陷
+
+  - 如何解决高度塌陷？
+  
+    + 清除浮动
+      
+      清除浮动实际上就是清除浮动的破坏性，也就是解决高度塌陷的问题。  
+      
+      常用的几种方法：  
+
+        - 最后一个子元素后增加`<div style="clear:both;"></div>`  
+        
+        - overflow + zoom `.clearfix{overflow:hidden; zoom:1;}`  
+        
+        - after + zoom  
+          ```
+          .clearfix{zoom:1;}
+          .clearfix:after{display:block; content:'clear both'; clear:both; height:0; visibility:hidden;}
+          ```
+          
