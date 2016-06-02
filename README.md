@@ -72,7 +72,17 @@
 
 * localStorage vs sessionStorage
 
-#### 4.Others
+#### 4.web
+
+  * web标准化组织
+  
+    - [W3C](http://www.w3.org)  制定web的标准，包括HTML，CSS
+    
+    - [EMCA](http://www.ecma-international.org) 制定JavaScript的标准
+    
+    - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等 
+
+#### 5.Others
 
 * [git](team/git)
   
