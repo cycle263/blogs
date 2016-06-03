@@ -99,8 +99,10 @@
 
 * [gulp](structure/gulp/)
 
-* [webpack](structure/)
+* [webpack](structure/)  
   
+  webpack.config.js案例：  
+
   ```
   var path = require('path');
   var HtmlwebpackPlugin = require('html-webpack-plugin');
