@@ -29,6 +29,9 @@
     `git config --global user.name "用户名"`  
     `git config --global user.email "Email"`
 
+  - 查看所有的配置  
+    `git config --list`
+
 * git 克隆源码
 
   - 克隆代码  
