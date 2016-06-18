@@ -65,6 +65,8 @@
 
  * git 推送到远端
 
-    git push [remote-name] [branch-name]
+    git push [remote-name] [branch-name]   git push (远程仓库名) (分支名)  
 
-## git和svn的比较
+    git push [远程名] [本地分支]:[远程分支]  省略 [本地分支]，那就等于是在说“在这里提取空白然后把它变成[远程分支]”  
+
+
