@@ -83,6 +83,6 @@
 * git 分支管理
 
   - 新建分支  
-    `git branch branch-new-name`  切换分支，不存在就新建分支  
+    `git branch branch-new-name`  新建分支  
     `git checkout -b branch branchs/new-name`  切换分支，不存在就新建分支  
     `git checkout branchs/branch-name` 切换到本地分支branch-name
