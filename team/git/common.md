@@ -12,6 +12,7 @@
     ```
     git clone [url] new_directory  
     cd new_directory  
+    git checkout -b branch origin/new-name
     touch README.md  
     git add README.md  
     git commit -m "message"  

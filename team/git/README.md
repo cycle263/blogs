@@ -6,6 +6,7 @@
   git branch -r 参数查看远程所有分支
 
 * 3、 git branch branch_name   创建一个名称为branch_name的新分支  
+  git checkout -b branch origin/name  切换分支, 依赖远端origin库的name分支  
   git checkout branch_name    切换到一个名称为branch_name的分支  
   不存在此分支使用git checkout -b branch_name则会自动创建一个新的
 
