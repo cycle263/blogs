@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>调用window.name</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        (function(){
+            window.dataRequest = {
+                _doc: document,
+                cfg: {
+                    proxyUrl: 'proxy.html'
+                }
+            };
+
+            dataRequest.send = function(sUrl, fnCallBack){
+                if(!sUrl || typeof sUrl !== 'string'){
+                    return;
+                }
+
+                sUrl += (sUrl.indexOf('?') > 0 ? '&' : '?') + 'windowname=true';
+
+                var frame = this._doc.createElement('iframe'), state = 0, self = this;
+                this._doc.body.appendChild(frame);
+                frame.style.display = 'none';
+
+                var clear = function(){
+                    try{
+                        frame.contentWindow.document.write('');
+                        frame.contentWindow.close();
+                        self._doc.body.removeChild(frame);
+                    }catch(e){}
+                };
+
+                var getData = function(){
+                    try{
+                        var da = frame.contentWindow.name;
+                    }catch(e){}
+                    clear();
+                    if(fnCallBack && typeof fnCallBack === 'function'){
+                        fnCallBack(da);
+                    }
+                };
+
+                frame.addEventListener('load', function(){
+                    if(state === 1){
+                        getData();
+                    } else if(state === 0){
+                        state = 1;
+                        frame.contentWindow.location = self.cfg.proxyUrl;
+                    }
+                }, false);
+
+                frame.src = sUrl;
+            };
+            })();
+            
+            dataRequest.send("http://cycle263.github.io/blogs/javascripts/ajax/iframeDemo/nameExample.html", function(data){
+                alert(data);
+            });
+        </script>
+    </body>
+</html>
