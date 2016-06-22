@@ -1,6 +1,6 @@
 * Atom
-  
-  > 常用插件
+
+  > 常用插件  
 
 	- atom-beautify
 	- atom-ternjs
@@ -10,11 +10,23 @@
 	- minimap
 	- react
 	- pigments
-  
+    - git-plus
+    - jshint
+
 * Sublime Text 3
-  
-  ```js
-  {
+
+  > 常用插件  
+
+    - babel
+    - reactjs
+    - jshint
+    - jsxhint
+    
+
+  > 配置文件   
+
+    ```js
+    {
 	"auto_complete_triggers":
 	[
 		{
@@ -34,9 +46,9 @@
 	"soda_classic_tabs": true,
 	"soda_folder_icons": true,
 	"tab_size": 4,
-	"theme": "Soda Light.sublime-theme",
+	"theme": "Soda Light 3.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"update_check": false,
 	"word_wrap": true
-}
-```
+    }
+    ```
