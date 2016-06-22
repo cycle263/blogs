@@ -20,6 +20,9 @@
     - babel
     - reactjs
     - jshint
+    - markdown
+    - git
+    - emmet
     - jsxhint
     
 
