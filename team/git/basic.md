@@ -69,4 +69,10 @@
 
     git push [远程名] [本地分支]:[远程分支]  省略 [本地分支]，那就等于是在说“在这里提取空白然后把它变成[远程分支]”  
 
+ * git 免密码push
+
+    - window  credential.helper=store
+
+    - mac   ssh 公钥和私钥
+
 
