@@ -24,6 +24,20 @@
 
     - filename 输出的文件名称，多个入口时，可使用[name]替换，也可以加入[hash]
 
+    - path 绝对路径
+
+ * module.loaders
+
+    - test: 必须满足的条件
+
+    - exclude: 排除的条件，过滤的条件
+
+    - include: 必须包含的条件
+
+    - loader: 用 "!" 隔开多个loader
+
+    - loaders: []
+
 * resolve.extensions
 
     > 扩展名，import时可以不加的后缀名
