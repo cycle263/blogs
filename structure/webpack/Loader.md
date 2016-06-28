@@ -11,3 +11,8 @@
     - Loader支持同步和异步
 
     - Loader 运行在 node.js 环境中
+
+
+* 备注
+
+    - !符号用于分隔多个loader
