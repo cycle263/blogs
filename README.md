@@ -24,6 +24,12 @@
 
   > Debug, Hybrid App
 
+  - 自适应解决方案
+
+  - 移动端调试技巧
+
+  - 性能优化
+
 * Angularjs
 
   > Angular 1.3, Angular 2 ...
@@ -40,7 +46,7 @@
 
    `npm i react --save`   
 
-  - examples
+  - examples  
 
   ```
   var HelloMessage = React.createClass({
@@ -55,24 +61,44 @@
   );
   ```
 
-* Modularity
+* [Modularity](./structure)
 
-  > AMD, Commonjs
+  > AMD, CommonJS, CMD
+
+  - CommonJS: 模块通过 require 方法来同步加载所要依赖的其他模块，然后通过 exports 或 module.exports 来导出需要暴露的接口。
+
+  - AMD: 一个主要接口 define(id?, dependencies?, factory)，它要在声明模块的时候指定所有的依赖 dependencies，并且还要当做形参传到 factory 中，对于依赖的模块提前执行，依赖前置。
+
+  - CMD: 规范和 AMD 很相似，尽量保持简单，并与 CommonJS 和 Node.js 的 Modules 规范保持了很大的兼容性。
 
 * Nodejs
 
-* [ECMAScript6](javascripts/ECMAScript)
+* [ECMAScript6](javascripts/ECMAScript)  
+
   > ES6
 
-* [Debug](front-end/debug/)
-  > Fiddler
+  - ECMAScript发展历史
+
+  - ECMAScript6的实现进度  
+
+    [各浏览器实现进度查看](http://kangax.github.io/es5-compat-table/es6/)
+
+  - ES6的转码
+
+    + Babel转码器，配置文件.babelrc
+
+* [Debug](front-end/debug/)  
+
+  > Fiddler, Proxy, sourcemap
 
 #### 2. Css
 
-* css library
+* css library  
+
   > Bootstrap, Antd ...
 
-* Css3
+* Css3  
+
   > Animation
 
 #### 3. Html5
