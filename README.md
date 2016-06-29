@@ -5,7 +5,7 @@
 * [jQuery](./jQuery)
 
   > jQuery API,  Principle of jQuery
-  
+
     ```js
     jQuery.extend()
     ```
@@ -15,7 +15,7 @@
     ```js
     // jQuery
     $('selector');
-    
+
     // Native
     document.querySelectorAll('selector');
     ```
@@ -27,14 +27,33 @@
 * Angularjs
 
   > Angular 1.3, Angular 2 ...
-  
+
   - Angular 2
-    
+
     `index.html --> boot --> app`
 
 * [Reactjs](./React)
 
   > React rounter, React diff
+
+  - installation  
+
+   `npm i react --save`   
+
+  - examples
+
+  ```
+  var HelloMessage = React.createClass({
+    render: function() {
+      return <div>Hello {this.props.name}</div>;
+    }
+  });
+
+  ReactDOM.render(
+    <HelloMessage name="John" />,
+    document.getElementById('container')
+  );
+  ```
 
 * Modularity
 
@@ -75,17 +94,17 @@
 #### 4.web
 
   * web标准化组织
-  
+
     - [W3C](http://www.w3.org)  制定web的标准，包括HTML，CSS
-    
+
     - [EMCA](http://www.ecma-international.org) 制定JavaScript的标准
-    
-    - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等 
+
+    - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等
 
 #### 5.Others
 
 * [git](team/git)
-  
+
   ```cmd
   $ git clone someobject.git
   $ git add .
@@ -100,7 +119,7 @@
 * [gulp](structure/gulp/)
 
 * [webpack](structure/)  
-  
+
   webpack.config.js案例：  
 
   ```
@@ -111,7 +130,7 @@
   var APP_PATH = path.resolve(ROOT_PATH, 'src');
   var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
   var TEM_PATH = path.resolve(ROOT_PATH, 'templates');
-  
+
   module.exports = {
       entry: {
           app: "./src/entry.js",
@@ -150,4 +169,3 @@
   };
 
   ```
-
