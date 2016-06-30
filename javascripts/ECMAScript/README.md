@@ -159,7 +159,7 @@
     getFirstName(person);   //“Chalkley”
     ```
 
-* 省略号
+* 扩展运算符(省略号)
 
     ```
     var runners = ["Mary", "Andrew", "Craig", "Michael", "Kenneth", "Dave"];
