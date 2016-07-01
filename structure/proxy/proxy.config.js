@@ -27,6 +27,11 @@ module.exports = {
     data: [{name:'@Name'}],
   }),
 
+  //本地使用路径http://localhost:8989/package.json，
+  //会直接跳转到http://gitlab.alipay.net/smart-plat/ibench/blob/dev_20160630/package.json
+  // `/${npm_package_name}/${npm_package_version}`: `--public-path /${npm_package_name}/${npm_package_version}`,
+  '/package.json': 'http://gitlab.alipay.net/smart-plat/ibench/blob/dev_20160630/',
+
   // 通过自定义函数替换请求
   '/custom-func/:action': function(req, res) {
     // req 和 res 的设计类 express，http://expressjs.com/en/api.html
@@ -35,7 +40,7 @@ module.exports = {
     //   1. params
     //   2. query
     //   3. body
-    // 
+    //
     // res 有以下方法：
     //   1. set(object|key, value)
     //   2. type(json|html|text|png|...)

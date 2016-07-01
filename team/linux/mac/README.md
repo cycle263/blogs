@@ -15,3 +15,6 @@
     export NODE_PATH=/usr/local/lib/node_modules
     export PATH=$PATH:$M2:$NODE_PATH
     ```
+* 显示隐藏文件
+
+    `defaults write com.apple.finder AppleShowAllFiles  YES`
