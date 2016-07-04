@@ -32,6 +32,20 @@ module.exports = {
   // `/${npm_package_name}/${npm_package_version}`: `--public-path /${npm_package_name}/${npm_package_version}`,
   '/package.json': 'http://gitlab.alipay.net/smart-plat/ibench/blob/dev_20160630/',
 
+  //http://gitlab.alipay.net/smart-plat/ibench/blob/dev_20160630/index.html
+    '*/index.html':  function(req, res) {
+        res.json({
+            success: true,
+            data: [{name: req.query}, {other: req.query}],
+        });
+    },
+    
+    'GET */config.html':  '/index.html',
+
+    'GET */dist/index.js':  '/dist/index.js',
+
+    'GET */dist/common.js':  '/dist/common.js',
+
   // 通过自定义函数替换请求
   '/custom-func/:action': function(req, res) {
     // req 和 res 的设计类 express，http://expressjs.com/en/api.html
