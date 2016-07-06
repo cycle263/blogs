@@ -91,6 +91,8 @@
 
   > Fiddler, Proxy, sourcemap
 
+    - dora(dora-plugin-proxy)
+
 #### 2. Css
 
 * css library  
@@ -100,7 +102,7 @@
     - 行内元素 vs 块元素
 
     |   行内元素              |   块元素         |
-    |   ----                 |  ----          |
+    |   -----------          |  ---------      |
     |   水平排列              |   垂直排列       |
     |   不能包含块元素         | 能包含块元素     |
     |宽高无效，内外边距上下无效  |有效             |
@@ -127,9 +129,17 @@
 
 * localStorage vs sessionStorage
 
+    - 储存时间的不同(sessionStorage浏览器关闭自动删除，localStorage长期存在)
+
+    - 储存的容量不同
+
 * import vs link
 
-    - 加载的时间不同(link同时加载)、加载的内容范围不同(@import只能加载css)、兼容范围不同(link无兼容问题，import-css2.1)
+    - 加载的时间不同(link同时加载)
+
+    - 加载的内容范围不同(@import只能加载css)
+
+    - 兼容范围不同(link无兼容问题，import-css2.1)
 
 #### 4.web
 
@@ -141,7 +151,7 @@
 
     - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等
 
-#### 5.Others
+#### 5.Others(打包、模块化...)
 
 * [git](team/git)
 
