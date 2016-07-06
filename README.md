@@ -97,11 +97,21 @@
 
   > Bootstrap, Antd ...
 
+    - 行内元素 vs 块元素
+
+    |   行内元素              |   块元素         |
+    |   ----                 |  ----          |
+    |   水平排列              |   垂直排列       |
+    |   不能包含块元素         | 能包含块元素     |
+    |宽高无效，内外边距上下无效  |有效             |
+
 * Css3  
 
   > Animation
 
 #### 3. Html5
+
+    > DOCTYPE用于告知浏览器的解析器用什么文档标准解析这个文档。
 
 * [canvas](canvas)
 
@@ -116,6 +126,10 @@
 * Server-Sent Event
 
 * localStorage vs sessionStorage
+
+* import vs link
+
+    - 加载的时间不同(link同时加载)、加载的内容范围不同(@import只能加载css)、兼容范围不同(link无兼容问题，import-css2.1)
 
 #### 4.web
 
