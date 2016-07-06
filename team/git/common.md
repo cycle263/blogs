@@ -5,6 +5,8 @@
     ```
     git config --global user.name "name"
     git config --global user.email "name@email.com"
+    git config --global credential.helper store
+    git config --global push.default simple
     ```
 
 * git 创建repository  

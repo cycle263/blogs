@@ -39,12 +39,18 @@ module.exports = {
             data: [{name: req.query}, {other: req.query}],
         });
     },
-    
+
     'GET */config.html':  '/index.html',
 
     'GET */dist/index.js':  '/dist/index.js',
 
     'GET */dist/common.js':  '/dist/common.js',
+
+    'GET */ibench/*/common.js': '/ibench/common.js',
+
+    'GET */ibench/*/index.css': '/ibench/index.css',
+
+    'GET */ibench/*/common.css': '/ibench/common.css',
 
   // 通过自定义函数替换请求
   '/custom-func/:action': function(req, res) {
