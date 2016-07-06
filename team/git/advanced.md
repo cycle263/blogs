@@ -86,3 +86,10 @@
     `git branch branch-new-name`  新建分支  
     `git checkout -b branch origin/new-name`  切换分支，新建一个branch的本地分支，并且依赖于远端origin库的new_name分支，不存在就新建分支  
     git checkout -b [分支名] [远程名]/[分支名]  
+
+  - 跟踪分支(依赖分支)
+    `git checkout --trach origin/develop`
+
+  - 删除分支
+    `git push origin :develop` 删除远端分支develop
+    `git checkout -d/-D develop` 删除本地分支develop

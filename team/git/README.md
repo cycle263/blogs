@@ -1,5 +1,7 @@
 # 常用的命令
 
+    > Git command
+
 * 1、 git clone git@github.domain.com:project.git   克隆仓库代码到本地
 
 * 2、 git branch   查看本地分支，并标注当前分支  
@@ -17,3 +19,10 @@
 * 6、 git commit -n -m "修改说明"    提交代码, -n忽略检查
 
 * 7、 git push origin branch_name    将当前改动提交到远程branch_name分支上
+
+
+### 备注
+
+* -r 一般指远端，远端分支前面一般带有库默认名origin
+
+* -d 一般指删除，大写D强制删除
