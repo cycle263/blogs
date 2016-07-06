@@ -53,6 +53,7 @@
 
   - 提交改动  
     `git commit [-a] -m "message"`   message: 提交记录信息  
+    `git commit -am "message"`      相当于`git add .` + commitgit
     可选参数 -a: 表示保护内容修改和增删
 
   - 同步到服务端  
@@ -88,8 +89,10 @@
     git checkout -b [分支名] [远程名]/[分支名]  
 
   - 跟踪分支(依赖分支)
-    `git checkout --trach origin/develop`
+    `git checkout --trach develop origin/develop`      新建一个tracking指向远端develop
+    `git branch --set-upstream-to=origin/<branch> develop`  将已经存在的分支指向远端，push/pull不用指向远端了，直接连接指定的远端分支
 
   - 删除分支
     `git push origin :develop` 删除远端分支develop
     `git checkout -d/-D develop` 删除本地分支develop
+    `git checkout -d/-D -r origin/develop` 删除一个tracking的远端branch, 并未push
