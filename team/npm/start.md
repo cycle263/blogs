@@ -17,3 +17,7 @@
 - 卸载  
 
     * npm uninstall 卸载
+
+- 查看所有的modules
+
+    * npm list [module] 显示所有模块的信息(版本号)
