@@ -24,3 +24,7 @@
  * rebase的风险
 
     一旦分支中的提交对象发布到公共仓库，就千万不要对该分支进行衍合操作。
+
+* 选择一次commit合并
+
+    `git cherry-pick [commit]`  选择一个commit，合并进当前分支

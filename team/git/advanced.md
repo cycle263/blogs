@@ -79,7 +79,19 @@
 * git 撤销操作
 
   - 回滚提交
-    `git reset <file>`  某个文件索引会回滚到最后一次提交， C → B
+    `git reset <file>`  某个文件索引会回滚到最后一次提交， C → B, 也即是重置暂存区的指定文件，与上一次commit保持一致，但工作区不变  
+
+    `git reset --hard [commit]`  重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致  
+
+    `git reset [commit]`  重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变  
+
+    `git checkout .`  恢复暂存区的所有文件到工作区  
+
+    `git checkout [commit] [file]`  恢复某个commit的指定文件到暂存区和工作区  
+
+    `git checkout [file]`  恢复暂存区的指定文件到工作区  
+
+    `git reset --hard`  重置暂存区与工作区，与上一次commit保持一致  
 
 * git 分支管理
 
@@ -91,6 +103,7 @@
   - 跟踪分支(依赖分支)
     `git checkout --trach develop origin/develop`      新建一个tracking指向远端develop
     `git branch --set-upstream-to=origin/<branch> develop`  将已经存在的分支指向远端，push/pull不用指向远端了，直接连接指定的远端分支
+    或者 `git branch --set-upstream develop origin/develop`
 
   - 删除分支
     `git push origin :develop` 删除远端分支develop

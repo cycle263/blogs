@@ -14,16 +14,16 @@
 
 * 4、 git status    查看更改的分支及其分支下的文件
 
-* 5、 git add .     添加相关文件到git库管理
+* 5、 git add .     添加相关文件到git库管理, -p同一文件分次提交, [file/dir]多个空格分隔
 
-* 6、 git commit -n -m "修改说明"    提交代码, -n忽略检查
+* 6、 git commit -n -m "修改说明"    提交代码, -n忽略检查, -v提交时比较信息, [file/dir]多个空格分隔,                              --amend使用一次新的commit替代上一次提交  
 
 * 7、 git push origin branch_name    将当前改动提交到远程branch_name分支上
 
 
 ### 备注
 
-* -r 一般指远端，远端分支前面一般带有远端库默认名origin
+* -r 一般指远端，远端分支前面一般带有远端主机默认名origin(clone的时候默认命名)
 
 * -d 一般指删除，大写D强制删除
 

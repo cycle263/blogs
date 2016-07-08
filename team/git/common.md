@@ -24,7 +24,7 @@
 * 已存在目录下创建  
 
     ```
-    git init  
+    git init  //在当前目录新建一个Git代码库
     git remote add origin [url]
     git add .
     git commit -m "m"
