@@ -1,6 +1,6 @@
 ## The front-end information summary
 
-#### 1. [Javascript](./javascripts)
+#### 1. [Javascript - 框架、ES6](./javascripts)
 
 * [jQuery](./jQuery)
 
@@ -103,7 +103,7 @@
 
     - dora(dora-plugin-proxy)
 
-#### 2. Css
+#### 2. Css(css库和css3)
 
 * css library  
 
