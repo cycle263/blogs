@@ -93,6 +93,8 @@
 
     `git reset --hard`  重置暂存区与工作区，与上一次commit保持一致  
 
+    `git reset --hard origin/master`     重置暂存区和工作区，与远端master保持一致，包括版本号
+
 * git 分支管理
 
   - 新建分支  
