@@ -63,11 +63,11 @@
 
     // 创建一个指向b的Uint8视图，开始于字节2，直到缓冲区的末尾
     var v2 = new Uint8Array(b, 2);
-    v2.length   //8
+    v2.length   //8-2=6
 
     // 创建一个指向b的Int16视图，开始于字节2，长度为2
     var v3 = new Int16Array(b, 2, 2);
-    v3.length   //4
+    v3.length   //4-2=2
     ```
 
     #### 构造函数有多种用法
