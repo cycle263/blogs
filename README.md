@@ -145,19 +145,19 @@
 
     - WEB主线程:  
 
-    1.通过 worker = new Worker( url ) 加载一个JS文件来创建一个worker，同时返回一个worker实例。  
+        1.通过 worker = new Worker( url ) 加载一个JS文件来创建一个worker，同时返回一个worker实例。  
 
-    2.通过worker.postMessage( data ) 方法来向worker发送数据。  
+        2.通过worker.postMessage( data ) 方法来向worker发送数据。  
 
-    3.绑定worker.onmessage方法来接收worker发送过来的数据。   
+        3.绑定worker.onmessage方法来接收worker发送过来的数据。   
 
-    4.可以使用 worker.terminate() 来终止一个worker的执行。  
+        4.可以使用 worker.terminate() 来终止一个worker的执行。  
 
     - worker新线程：  
 
-    1.通过postMessage( data ) 方法来向主线程发送数据。  
+        1.通过postMessage( data ) 方法来向主线程发送数据。  
 
-    2.绑定onmessage方法来接收主线程发送过来的数据。  
+        2.绑定onmessage方法来接收主线程发送过来的数据。  
 
 * WebSocket
 
