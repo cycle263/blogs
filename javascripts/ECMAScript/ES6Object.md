@@ -6,7 +6,7 @@
   // 等同于
   function f( x, y ) {return { x: x, y: y };}
   ```
-  
+
 * 2、属性名表达式  
 
   JavaScript语言定义对象的属性，有两种方法。  
@@ -17,28 +17,28 @@
     ['a'+'bc']: 123
   };
   ```
-  
+
 * 3、Object.is()  
 
   Object.is()用来比较两个值是否严格相等。它与严格比较运算符（===）的行为基本一致，不同之处只有两个：一是+0不等于-0，
   二是NaN等于自身。  
-  
+
   ```
   +0 === -0 //true
   NaN === NaN // false
-  
+
   Object.is(+0, -0) // false
   Object.is(NaN, NaN) // true
   ```
-  
-* 4、Object.assign()  
+
+* 4、Object.assign(target, source1, source2)  
 
   Object.assign方法用来将源对象（source）的所有可枚举属性，复制到目标对象（target）。  
   需要两个对象作为参数，第一个参数是目标对象，后面的参数都是源对象。只要有一个参数不是对象，就会抛出TypeError错误。  
-  目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。  
-  
+  目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性(source2覆盖source1)。  
+
   - （1）为对象添加属性
-  
+
     ```
     class Point {
       constructor(x, y) {
@@ -46,25 +46,25 @@
       }
     }
     ```
-    
+
   - （2）为对象添加方法
   - （3）克隆对象
-  
+
     ```
     function clone(origin) {
       return Object.assign({}, origin);
     }
     ```
-    
+
   - （4）合并多个对象
   - （5）为属性指定默认值
-  
+
 * 5、proto属性，Object.setPrototypeOf()，Object.getPrototypeOf()  
- 
+
   proto属性，用来读取或设置当前对象的prototype对象。  
   Object.setPrototypeOf方法的作用与proto相同，用来设置一个对象的prototype对象。它是ES6正式推荐的设置原型对象的方法。  
   setPrototypeOf方法配套，用于读取一个对象的prototype对象。  
-  
+
 * 6、Symbol  独一无二  
 
   - (1). ES6引入了一种新的原始数据类型Symbol，表示独一无二的ID。通过Symbol函数生成。Symbol函数前不能使用new命令，否则会报错。
@@ -100,7 +100,7 @@
   作为构造函数，Proxy接受两个参数。第一个参数是所要代理的目标对象，即如果没有Proxy的介入，操作原来要访问的就是这个对象；  
   第二个参数是一个设置对象，对于每一个被代理的操作，需要提供一个对应的处理函数，该函数将拦截对应的操作。  
   注意，要使得Proxy起作用，必须针对Proxy实例进行操作，而不是针对目标对象进行操作。  
-  
+
   Proxy支持的拦截操作一览。对于没有设置拦截的操作，则直接落在目标对象上，按照原先的方式产生结果。  
 
   - （1）get(target, propKey, receiver)：拦截对象属性的读取，比如proxy.foo和proxy['foo']，返回类型不限。最后一个参数receiver可选，当target对象设置了propKey属性的get函数时，receiver对象会绑定get函数的this对象。
@@ -120,6 +120,19 @@
   - （14）apply(target, object, args)：拦截Proxy实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
   - （15）construct(target, args, proxy)：拦截Proxy实例作为构造函数调用的操作，比如new proxy(...args)。
 
+    ```
+    let target = {
+        foo: "Welcome, foo"
+    }
+    let proxy = new Proxy(target, {
+        get (receiver, name) {
+            return name in receiver ? receiver[name] : `Hello, ${name}`
+        }
+    })
+    proxy.foo   === "Welcome, foo"
+    proxy.world === "Hello, world"
+    ```
+
 * 9、Reflect  
 
   Reflect对象与Proxy对象一样，也是ES6为了操作对象而提供的新API。Reflect对象的设计目的有这样几个。  
@@ -128,14 +141,14 @@
   - （3） 让Object操作都变成函数行为。某些Object操作是命令式，比如name in obj和delete obj[name]，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为。
   - （4）Reflect对象的方法与Proxy对象的方法一一对应，只要是Proxy对象的方法，就能在Reflect对象上找到对应的方法。这就让Proxy对象可以方便地调用对应的Reflect方法，完成默认行为，作为修改行为的基础。  
   Reflect对象的方法大部分与Object对象的同名方法的作用都是相同的。
-  
+
 * 10、Object.observe()，Object.unobserve()  
 
   Object.observe方法用来监听对象（以及数组）的变化。一旦监听对象发生变化，就会触发回调函数。  
   Object.observe方法接受两个参数，第一个参数是监听的对象，第二个函数是一个回调函数。  
   Object.observe方法还可以接受第三个参数，用来指定监听的事件种类。  
   Object.unobserve方法用来取消监听。  
-  
+
   Object.observe方法目前共支持监听六种变化。  
   - add：添加属性
   - update：属性值的变化

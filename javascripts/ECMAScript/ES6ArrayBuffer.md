@@ -31,7 +31,30 @@
 
 * DataView视图
 
-    > DataView视图的创建，需要提供ArrayBuffer对象实例作为参数。
+    > DataView视图的创建，需要提供ArrayBuffer对象实例作为参数。 DataView视图提供更多操作选项，而且支持设定字节序。   
+
+    DataView视图 vs TypedArray视图  
+
+    TypedArray视图，是用来向网卡、声卡之类的本机设备传送数据，使用本机的字节序, 不可自行设定。  
+
+    DataView视图的设计目的，是用来处理网络设备传来的数据，所以大端字节序或小端字节序是可以自行设定的。  
+
+    - DataView实例提供8个方法读取内存：
+
+        + getInt8：读取1个字节，返回一个8位整数。
+        + getUint8：读取1个字节，返回一个无符号的8位整数。
+        + getInt16：读取2个字节，返回一个16位整数。
+        + getUint16：读取2个字节，返回一个无符号的16位整数。
+        + getInt32：读取4个字节，返回一个32位整数。
+        + getUint32：读取4个字节，返回一个无符号的32位整数。
+        + getFloat32：读取4个字节，返回一个32位浮点数。
+        + getFloat64：读取8个字节，返回一个64位浮点数。  
+
+    如果一次读取两个或两个以上字节，就必须明确数据的存储方式，到底是小端字节序还是大端字节序。默认情况下，DataView的get方法使用大端字节序解读数据，如果需要使用小端字节序解读，必须在get方法的第二个参数指定true。  
+
+    - DataView实例提供8个方法写入内存：(get => set)  
+
+    第一个参数是字节序号，表示从哪个字节开始写入，第二个参数为写入的数据。对于那些写入两个或两个以上字节的方法，需要指定第三个参数，false或者undefined表示使用大端字节序写入，true表示使用小端字节序写入。
 
 * TypedArray视图
 
@@ -39,13 +62,13 @@
 
     - Int8Array：8位有符号整数，长度1个字节。
     - Uint8Array：8位无符号整数，长度1个字节。
-    - Uint8ClampedArray：8位无符号整数，长度1个字节，溢出处理不同。
+    - Uint8ClampedArray：8位无符号整数，长度1个字节，溢出处理不同。正向溢出时都返回255，负向溢出都返回0。
     - Int16Array：16位有符号整数，长度2个字节。
     - Uint16Array：16位无符号整数，长度2个字节。
     - Int32Array：32位有符号整数，长度4个字节。
     - Uint32Array：32位无符号整数，长度4个字节。
     - Float32Array：32位浮点数，长度4个字节。
-    - Float64Array：64位浮点数，长度8个字节。  
+    - Float64Array：64位浮点数，长度8个字节。     
 
     普通数组与TypedArray数组的差异：  
     - TypedArray数组的所有成员，都是同一种类型。
@@ -72,15 +95,17 @@
 
     #### 构造函数有多种用法
 
-    1、视图的构造函数可以接受三个参数：
+    1、TypedArray(buffer, byteOffset=0, length?)  
+
+    视图的构造函数可以接受三个参数：  
 
     - 第一个参数（必需）：视图对应的底层ArrayBuffer对象。
     - 第二个参数（可选）：视图开始的字节序号，默认从0开始。
     - 第三个参数（可选）：视图包含的数据个数，默认直到本段内存区域结束。
 
-    2、TypedArray(length)   
+    2、TypedArray(length)    
 
-    视图还可以不通过ArrayBuffer对象，直接分配内存而生成。  
+    视图还可以不通过ArrayBuffer对象，直接分配内存而生成, length指成员长度，也就是字符长度，而非字节长度，一个字符长度占两个字节长度。  
 
     3、TypedArray(typedArray)   
 
@@ -89,6 +114,33 @@
     4、TypedArray(array)   
 
     构造函数的参数也可以是一个普通数组，然后直接生成TypedArray实例。  
+
+    #### TypedArray的原型方法(普通数组的操作方法和属性，对TypedArray数组完全适用)  
+
+    - TypedArray.prototype.buffer 返回整段内存区域对应的ArrayBuffer对象,该属性为只读属性。
+    - TypedArray.prototype.byteLength 返回TypedArray数组占据的内存长度，单位为字节(只读)。
+    - TypedArray.prototype.byteOffset 返回TypedArray数组从底层ArrayBuffer对象的哪个字节开始(只读).
+    - TypedArray.prototype.length 表示TypedArray数组含有多少个成员.
+    - TypedArray.prototype.set() 用于复制数组（普通数组或TypedArray数组），也就是将一段内容完全复制到另一段内存。
+    - TypedArray.prototype.subarray(start_index[, end_index]) 对于TypedArray数组的一部分，再建立一个新的视图。
+    - TypedArray.prototype.slice() 返回一个指定位置的新的TypedArray实例, 支持倒数(负数).
+
+    #### TypedArray的静态方法  
+
+    - TypedArray.of() 用于将参数转为一个TypedArray实例。
+    - TypedArray.from() 接受一个可遍历的数据结构（比如数组）作为参数，返回一个基于这个结构的TypedArray实例。方法还可以将一种TypedArray实例，转为另一种。方法还可以接受一个函数，作为第二个参数，用来对每个元素进行遍历，功能类似map方法。
+
+    #### 复合视图  
+
+    由于视图的构造函数可以指定起始位置和长度，所以在同一段内存之中，可以依次存放不同类型的数据，这叫做“复合视图”。  
+
+    ```
+    var buffer = new ArrayBuffer(24);
+
+    var idView = new Uint32Array(buffer, 0, 1); //字节0到字节3：1个32位无符号整数
+    var usernameView = new Uint8Array(buffer, 4, 16);   //字节4到字节19：16个8位整数
+    var amountDueView = new Float32Array(buffer, 20, 1); //字节20到字节23：1个32位浮点数
+    ```
 
 * 字节序
 
@@ -141,6 +193,132 @@
           throw new Error('Unknown endianness');
       }
     }
+
+    或者
+
+    var littleEndian = (function() {
+      var buffer = new ArrayBuffer(2);
+      new DataView(buffer).setInt16(0, 256, true);
+      return new Int16Array(buffer)[0] === 256;
+    })();       //true，就是小端字节序
     ```
 
     总之，与普通数组相比，TypedArray数组的最大优点就是可以直接操作内存，不需要数据类型转换，所以速度快得多。
+
+
+* ArrayBuffer与字符串的互相转换
+
+    ArrayBuffer转为字符串，或者字符串转为ArrayBuffer，有一个前提，即字符串的编码方法是确定的。假定字符串采用UTF-16编码（JavaScript的内部编码方式），可以自己编写转换函数。
+
+    ```
+    // ArrayBuffer转为字符串，参数为ArrayBuffer对象
+    function ab2str(buf) {
+      return String.fromCharCode.apply(null, new Uint16Array(buf));
+    }
+
+    // 字符串转为ArrayBuffer对象，参数为字符串
+    function str2ab(str) {
+      var buf = new ArrayBuffer(str.length * 2); // 每个字符占用2个字节
+      var bufView = new Uint16Array(buf);
+      for (var i = 0, strLen = str.length; i < strLen; i++) {
+        bufView[i] = str.charCodeAt(i);
+      }
+      return buf;
+    }
+    ```
+
+* 视图溢出
+
+    不同的视图类型，所能容纳的数值范围是确定的。超出这个范围，就会出现溢出。
+
+    - 正向溢出(overflow)：当输入值大于当前数据类型的最大值，结果等于当前数据类型的最小值加上余值，再减去1。
+
+    - 负向溢出(underflow)：当输入值小于当前数据类型的最小值，结果等于当前数据类型的最大值减去余值，再加上1。
+
+    ```
+    var uint8 = new Uint8Array(1);
+
+    uint8[0] = 256;
+    uint8[0] // 0
+
+    uint8[0] = -1;
+    uint8[0] // 255
+
+    var int8 = new Int8Array(1);
+
+    int8[0] = 128;
+    int8[0] // -128
+
+    int8[0] = -129;
+    int8[0] // 127
+    ```
+
+
+## 二进制数组的应用  
+
+* ajax(xhr.response + xhr.responseType)
+
+    XMLHttpRequest第二版XHR2允许服务器返回二进制数据，这时分成两种情况。如果明确知道返回的二进制数据类型，可以把返回类型（responseType）设为arraybuffer；如果不知道，就设为blob。  
+
+* canvas(ctx.getImageData)  
+
+    针对Canvas元素的专有类型Uint8ClampedArray。这个视图类型的特点，就是专门针对颜色，把每个字节解读为无符号的8位整数，即只能取值0～255，而且发生运算的时候自动过滤高位溢出。这为图像处理带来了巨大的方便。
+
+* WebSocket(socket.binaryType)
+
+    WebSocket可以通过ArrayBuffer，发送或接收二进制数据。
+
+* Fetch API
+
+    Fetch API取回的数据，就是ArrayBuffer对象。
+
+* File API
+
+    ```
+    (function(){
+        var fileInput = document.getElementById('fileInput');
+        fileInput.addEventListener('change', function(){
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+            reader.readAsArrayBuffer(file);
+            reader.onload = function () {
+                var arrayBuffer = reader.result;
+                var v = new Uint8Array(arrayBuffer);
+                // Uint8Array.from(v, function(v, k){
+                //     console.log(v, k);
+                // });
+
+                var datav = new DataView(arrayBuffer);
+                var bitmap = {};    //位图文件映射
+
+                //具体处理图像数据时，先处理bmp的文件头
+                bitmap.fileheader = {};
+                bitmap.fileheader.bfType = datav.getUint16(0, true);
+                bitmap.fileheader.bfSize = datav.getUint32(2, true);
+                bitmap.fileheader.bfReserved1 = datav.getUint16(6, true);
+                bitmap.fileheader.bfReserved2 = datav.getUint16(8, true);
+                bitmap.fileheader.bfOffBits = datav.getUint32(10, true);
+
+                //接着处理图像元信息部分
+                bitmap.infoheader = {};
+                bitmap.infoheader.biSize = datav.getUint32(14, true);
+                bitmap.infoheader.biWidth = datav.getUint32(18, true);
+                bitmap.infoheader.biHeight = datav.getUint32(22, true);
+                bitmap.infoheader.biPlanes = datav.getUint16(26, true);
+                bitmap.infoheader.biBitCount = datav.getUint16(28, true);
+                bitmap.infoheader.biCompression = datav.getUint32(30, true);
+                bitmap.infoheader.biSizeImage = datav.getUint32(34, true);
+                bitmap.infoheader.biXPelsPerMeter = datav.getUint32(38, true);
+                bitmap.infoheader.biYPelsPerMeter = datav.getUint32(42, true);
+                bitmap.infoheader.biClrUsed = datav.getUint32(46, true);
+                bitmap.infoheader.biClrImportant = datav.getUint32(50, true);
+
+                //最后处理图像本身的像素信息
+                var start = bitmap.fileheader.bfOffBits;
+                bitmap.pixels = new Uint8Array(arrayBuffer, start);
+
+                console.log(bitmap);
+            };
+        }, false);           
+    })();
+    ```
