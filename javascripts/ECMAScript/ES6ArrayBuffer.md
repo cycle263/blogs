@@ -92,4 +92,55 @@
 
 * 字节序
 
-    > 字节序指的是数值在内存中的表示方式。
+    > 字节序指的是数值在内存中的表示方式。  
+
+    由于x86体系的计算机都采用小端字节序（little endian），相对重要的字节排在后面的内存地址，相对不重要字节排在前面的内存地址，所以就得到了上面的结果。  
+
+    比如，一个占据四个字节的16进制数0x12345678，决定其大小的最重要的字节是“12”，最不重要的是“78”。小端字节序将最不重要的字节排在前面，储存顺序就是78563412；大端字节序则完全相反，将最重要的字节排在前面，储存顺序就是12345678。目前，所有个人电脑几乎都是小端字节序，所以TypedArray数组内部也采用小端字节序读写数据，或者更准确的说，按照本机操作系统设定的字节序读写数据。   
+
+    这并不意味大端字节序不重要，事实上，很多网络设备和特定的操作系统采用的是大端字节序。这就带来一个严重的问题：如果一段数据是大端字节序，TypedArray数组将无法正确解析，因为它只能处理小端字节序！为了解决这个问题，JavaScript引入DataView对象，可以设定字节序，下文会详细介绍。  
+
+    ```
+    // 假定某段buffer包含如下字节 [0x02, 0x01, 0x03, 0x07]
+    var buffer = new ArrayBuffer(4);
+    var v1 = new Uint8Array(buffer);
+    v1[0] = 2;
+    v1[1] = 1;
+    v1[2] = 3;
+    v1[3] = 7;
+
+    var uInt16View = new Uint16Array(buffer);
+
+    // 计算机采用小端字节序
+    // 所以头两个字节等于258
+    if (uInt16View[0] === 258) {        //258=0x0102;
+      console.log('OK'); // "OK"
+    }
+
+    // 赋值运算
+    uInt16View[0] = 255;    // 字节变为[0xFF, 0x00, 0x03, 0x07]
+    uInt16View[0] = 0xff05; // 字节变为[0x05, 0xFF, 0x03, 0x07]
+    uInt16View[1] = 0x0210; // 字节变为[0x05, 0xFF, 0x10, 0x02]
+    ```
+
+    下面的函数可以用来判断，当前视图是小端字节序，还是大端字节序。  
+
+    ```
+    const BIG_ENDIAN = Symbol('BIG_ENDIAN');
+    const LITTLE_ENDIAN = Symbol('LITTLE_ENDIAN');
+
+    function getPlatformEndianness() {
+      let arr32 = Uint32Array.of(0x12345678);
+      let arr8 = new Uint8Array(arr32.buffer);
+      switch ((arr8[0]*0x1000000) + (arr8[1]*0x10000) + (arr8[2]*0x100) + (arr8[3])) {
+        case 0x12345678:
+          return BIG_ENDIAN;
+        case 0x78563412:
+          return LITTLE_ENDIAN;
+        default:
+          throw new Error('Unknown endianness');
+      }
+    }
+    ```
+
+    总之，与普通数组相比，TypedArray数组的最大优点就是可以直接操作内存，不需要数据类型转换，所以速度快得多。
