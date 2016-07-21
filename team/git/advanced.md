@@ -76,6 +76,9 @@
     `git diff`  查看详细修改内容   
     `git show`   显示某次提交的内容  
 
+  - 比较缓存区和上次提交差异  
+    `git diff --cached`     比较上次提交和git add后的缓存的文件差距
+
 * git 撤销操作
 
   - 回滚提交

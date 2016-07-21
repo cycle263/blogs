@@ -14,7 +14,7 @@
 
     勾选enable map local，charles就可以按照规则，把请求的对应目录（或文件）换成本地的目录（或文件）
 
-    如果需要抓取https，则需要勾选Enable SSL proxying，添加想要的域名和端口
+    如果需要抓取https，则需要勾选Enable SSL proxying，添加想要的域名和端口,否则代理not working
 
     备注：弹出的编辑窗里不用挨个填，把整个网址输到host，会自动帮你把网址解析成host、path、query等部分  
 
