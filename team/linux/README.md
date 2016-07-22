@@ -34,6 +34,12 @@
 
     - grep: 强大的文件搜索工具
 
+    - whereis: 只能用于程序名的搜索
+
+    - locate: find -name的另一种写法，但要比后者快得多，因为其不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb）
+
+    - which: 在PATH变量指定的路径中搜索某个系统命令的为止，并且返回第一个搜索结果
+
     ```
     grep foo /etc/passwd
     返回在password文件中所有的含有foo的行

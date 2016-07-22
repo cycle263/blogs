@@ -59,6 +59,25 @@
   Array.protypeto.includes方法返回一个布尔值，表示某个数组是否包含给定的值。该方法属于ES7。第二个参数表示搜索的起始位置，
   默认为0, 可以为负数。
 
+  ```
+  if (typeof Array.prototype.reduce != "function") {
+      Array.prototype.reduce = function (callback, initialValue ) {
+         var previous = initialValue, k = 0, length = this.length;
+         if (typeof initialValue === "undefined") {
+            previous = this[0];
+            k = 1;
+         }
+
+        if (typeof callback === "function") {
+          for (k; k < length; k++) {
+             this.hasOwnProperty(k) && (previous = callback(previous, this[k], k, this));
+          }
+        }
+        return previous;
+      };
+    }
+  ```
+
 * 7、数组推导  
 
   ES6提供简洁写法，允许直接通过现有数组生成新数组，这被称为数组推导（array comprehension）。  

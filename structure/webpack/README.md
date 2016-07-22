@@ -13,3 +13,8 @@ webpack简单点来说就就是一个配置文件，所有的魔力都是在这�
 * `webpack -p`  对打包文件进行压缩，提供production, --optimize-minimize --optimize-occurence-order的简写
 * `webpack -d`  提供source map，方便调试，--debug --devtool sourcemap --output-pathinfo的简写
 * `webpack -w`  watch文件，实时进行打包更新
+
+
+## webpack API
+
+* require.context(directory, useSubdirectories = false, regExp = /^\.\//), useSubdirectories-子目录

@@ -61,3 +61,15 @@
     git tag $1
     git push origin $1
     ```
+
+* 手动合并解决冲突
+
+    ```
+    git fetch origin
+    git checkout -b shopLite origin/shopLite
+
+    git checkout master
+    git merge --no-ff shopLite
+
+    git push origin master
+    ```

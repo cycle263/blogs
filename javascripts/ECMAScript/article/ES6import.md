@@ -1,0 +1,17 @@
+## 模块机制
+
+* import路径
+
+    - import Fetch from 'fetch.io';  从项目下的node_modules下找
+
+    - import Fetch from './fetch.io';   从当前目录下找
+
+    - import Fetch from '../fetch.io';   从父级目录下找
+
+    - import Fetch from '/fetch.io';    从根目录下找
+
+* node模块机制
+
+    ![require加载机制](images/require.png)
+
+    - require文件搜索
