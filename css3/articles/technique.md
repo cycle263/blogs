@@ -28,7 +28,7 @@
   li {
     display: none;
   }
-  
+
   /* 选择第1到3个元素并显示它们 */
   li:nth-child(-n+3) {
     display: block;
@@ -79,17 +79,17 @@
   .inline{
     overflow:hidden;
     white-space:nowrap;
-    text-overflow:ellipsis; 
+    text-overflow:ellipsis;
   }
   ```
-  
+
   - 2)多行文本溢出
   ```
   .foo{
     display:-webkit-box!important;
     overflow:hidden;
     text-overflow:ellipsis;
-    work-break:break-all;
+    word-break:break-all;
     -webkit-box-orient:vertical; /*方向*/
     -webkit-line-clamp:4; /*显示多少行文本*/
   }

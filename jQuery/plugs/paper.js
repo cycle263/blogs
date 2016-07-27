@@ -24,6 +24,7 @@ jQuery.fn.extend({
         }
 
         opts = jQuery.extend({
+            "isInitQuery": false,       //初始化是否查询数据
             "currentForm": "body",      //格式： "jQuery(#myForm)" -- 同一页面多个分页组件必传
             "method": "GET",            //默认请求方法
             "currentPage": 0,           //当前页数
@@ -31,7 +32,9 @@ jQuery.fn.extend({
             "maxPageNum": 8,            //默认每批最大页面数
             "firstPageNum": 1,          //默认第一个页码数
             "itemsCount": 0,            //总条数
-            "pagesCount": 0             //总页数
+            "pagesCount": 0,            //总页数
+            "showCountInfo": true,      //展示数据统计信息
+            "showGoBtn": true,          //展示跳转按钮
         }, opts);
 
         var container = this,
@@ -40,23 +43,23 @@ jQuery.fn.extend({
                 jQuery.extend(opts, {"itemsCount": res.itemsCount, "pagesCount": res.pagesCount});
                 var pagesCount = opts.pagesCount - 0,
                     currentPage = opts.currentPage - 0,
-                    str = '<div class="m-pager">'
-                    +'<span>共计<i class="m-itemsCount">'+opts.itemsCount+'</i>条，一共<i class="m-pagesCount">'+pagesCount+'</i>页</span>';
+                    str = opts.showCountInfo ? '<div class="m-pager">'
+                    +'<span>共计<i class="m-itemsCount">'+opts.itemsCount+'</i>条，一共<i class="m-pagesCount">'+pagesCount+'</i>页</span>' : '<div class="m-pager">';
 
                 if(pagesCount){
                     if(currentPage > pagesCount || currentPage < 0 || !jQuery.isNumeric(currentPage)){
-                        alert('无此页数据！');
+                        console.error('无此页数据！');
                         return;
                     }
                     str += '<div class="m-page-right"><ul class="m-pager-list">';
-                    str += renderFirstPage();
                     str += renderPrevPages();
                     str += renderPageNum();
                     str += renderNextPages();
-                    str += renderLastPage();
                     str += "</ul>";
-                    str += '<span class="m-page-skip"><input class="m-page-num" type="text" /><button class="m-page-btn">跳转</button></span>'
-                        +'</div></div>';
+                    if(opts.showCountInfo){
+                        str += '<span class="m-page-skip"><input class="m-page-num" type="text" /><button class="button m-page-btn">Go</button></span>';
+                    }
+                    str += '</div></div>';
                 }
                 container.html(str);
             },
@@ -68,7 +71,7 @@ jQuery.fn.extend({
                     difference = pCount - i + 1,
                     maxNum = opts.maxPageNum - 0;
                 if(!pCount){
-                    alert('No data...');
+                    console.error('No data...');
                 }else{
                     pageNums = difference > maxNum ? maxNum : difference;
                     for(var num = 1; num <= pageNums; i++,num++){
@@ -78,45 +81,24 @@ jQuery.fn.extend({
                 return str;
             },
 
-            renderFirstPage = function(){
+            renderPrevPages = function(){
                 var curPage = opts.currentPage - 0;
                 if(curPage !== 1){
-                    return '<li class="m-first-pager"><a>First</a></li>';
-                }
-                return '';
-            },
-
-            renderPrevPages = function(){
-                var curPage = opts.currentPage - 0,
-                    maxNum = opts.maxPageNum - 0;
-                if(curPage > maxNum){
-                    return '<li class="m-prev-pager"><a>Prev</a></li>';
+                    return '<li class="m-first-pager"><a>First</a></li><li class="m-prev-pager"><a>Prev</a></li>';
                 }
                 return '';
             },
 
             renderNextPages = function(){
                 var pCount = opts.pagesCount - 0,
-                    firstNum = opts.firstPageNum - 0,
-                    difference = pCount - firstNum,
-                    maxNum = opts.maxPageNum - 0
                     curPage = opts.currentPage - 0;
-                if(curPage !== pCount && difference > maxNum){
-                    return '<li class="m-next-pager"><a>Next</a></li>';
+                if(curPage !== pCount){
+                    return '<li class="m-next-pager"><a>Next</a></li><li class="m-last-pager"><a>Last</a></li>';
                 }
                 return '';
             },
 
-            renderLastPage = function(){
-                var curPage = opts.currentPage - 0,
-                    pagesCount = opts.pagesCount - 0;
-                if(curPage !== pagesCount){
-                    return '<li class="m-last-pager"><a>Last</a></li>';
-                }
-                return '';
-            },
-
-            initEvents = function(){                
+            initEvents = function(){
                 //查询按钮点击事件
                 form.on("click", ".pager-query", function(event){
                     event.preventDefault();
@@ -127,7 +109,7 @@ jQuery.fn.extend({
                 //数字按钮点击事件
                 form.on("click", ".m-pager-list li:not('.m-prev-pager,.m-next-pager')", function(event){
                     event.preventDefault();
-                    opts.currentPage = jQuery(this).find('.pager-num').attr('page-num') - 0;                    
+                    opts.currentPage = jQuery(this).find('.pager-num').attr('page-num') - 0;
                     pagerRequest();
                 });
 
@@ -146,12 +128,25 @@ jQuery.fn.extend({
                 //翻批次按钮点击事件
                 form.on("click", ".m-prev-pager, .m-next-pager", function(event){
                     event.preventDefault();
+                    var eles = $('.pager-num'),
+                        f = eles.first().text() - 0,
+                        l = eles.last().text() - 0,
+                        maxNum = opts.maxPageNum - 0,
+                        pCount = opts.pagesCount - 0;
+
                     if(jQuery(this).hasClass("m-next-pager")){
-                        opts.currentPage = form.find('.m-pager-list li:not(".m-next-pager") .pager-num').last().attr('page-num') - 0 + 1;
+                        opts.currentPage = form.find('.m-pager-list .active .pager-num').attr('page-num') - 0 + 1;
                     }else{
-                        opts.currentPage = form.find('.m-pager-list li:not(".m-prev-pager") .pager-num').first().attr('page-num') - opts.maxPageNum;
+                        opts.currentPage = form.find('.m-pager-list .active  .pager-num').attr('page-num') - 1;
                     }
-                    opts.firstPageNum = opts.currentPage - 0;     
+                    if(opts.currentPage !== pCount && opts.currentPage !== 1){
+                        if(opts.currentPage === l){
+                            opts.firstPageNum = opts.currentPage - 0;
+                        }else if(opts.currentPage === f){
+                            var temp =  opts.currentPage - (maxNum - 1);
+                            opts.firstPageNum = temp > 0 ? temp : opts.firstPageNum;
+                        }
+                    }
                     pagerRequest();
                 });
 
@@ -162,9 +157,9 @@ jQuery.fn.extend({
 
                     updateFirstPageNum();
                     if(!jQuery.isNumeric(opts.currentPage) || opts.currentPage <= 0){
-                        alert('无此页数据！');
+                        console.error('无此页数据！');
                         return;
-                    }               
+                    }
                     pagerRequest();
                 });
             },
@@ -178,31 +173,35 @@ jQuery.fn.extend({
             },
 
             pagerRequest = function(){
-                jQuery.extend(opts, jQuery.serializeObject(form));                
+                jQuery.extend(opts, jQuery.serializeObject(form));
                 jQuery.support.cors = true;     //兼容IE
                 jQuery.ajax({
                     type: opts.method,
                     url: url,
                     data: jQuery.objectFilter(opts, function(value, key){
-                        var notMust = {'currentForm': false, 'method': false, 'itemsCount': false, 'pagesCount': false};
+                        var notMust = {'currentForm': false, 'method': false, 'itemsCount': false, 'pagesCount': false, 'isInitQuery': false, 'firstPageNum': false, 'maxPageNum': false, 'showCountInfo': false, 'showGoBtn': false};
                         if(!(key in notMust)){
                             return true;
                         }
                         return false;
                     }),
                     success: function(res, text, xhr){
-                        renderPager(res, text, xhr);
                         callback(res, text, xhr);
+                        renderPager(res, text, xhr);
                     },
                     error: function(jqXHR, textStatus, errorThrown){
-                        alert('network error: ' + textStatus);
+                        console.error('network error: ' + textStatus);
                         throw new Error(errorThrown);
                     }
                 });
             };
 
         initEvents();
-    }    
+        if(opts.isInitQuery){
+            opts.currentPage = 1;
+            pagerRequest();
+        }
+    }
 });
 
 //序列化成json对象
@@ -236,13 +235,15 @@ jQuery.extend({
 
 /*
  * 样式
-.m-pager{position: relative;font-family:"Microsoft YaHei", "微软雅黑",Georgia;}
+.m-pager{position: relative;font-family:"Microsoft YaHei", "微软雅黑",Georgia;min-height:32px;margin: 8px;}
 .m-page-right{position: absolute;right: 20px;top:0;}
 .m-pager-list{display: inline-block;margin:0;}
-.m-pager-list li{display: inline-block;list-style:none;border: 1px solid #ddd; padding:4px 14px;cursor: pointer;}
+.m-pager-list li{display: inline-block;list-style:none;border: 1px solid #ddd; padding:4px 10px;cursor: pointer;border-radius: 6px;}
 .m-pager-list .active{background-color: #6cb5f4;color: #fff;border-color: #6cb5f4;}
-.m-pager-list li:hover{background-color: #ccc;}
+.m-pager-list .active a{color: #fff;}
+.m-pager-list li:hover{background-color: #ddd;}
 .m-page-num{width:40px;margin:0 5px;padding: 1px;}
+.m-page-btn{}
  */
 
 /*
