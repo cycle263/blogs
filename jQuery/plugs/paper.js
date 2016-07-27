@@ -100,21 +100,21 @@ jQuery.fn.extend({
 
             initEvents = function(){
                 //查询按钮点击事件
-                form.on("click", ".pager-query", function(event){
+                form.off("click", ".pager-query").on("click", ".pager-query", function(event){
                     event.preventDefault();
                     opts.currentPage = 1;
                     pagerRequest();
                 });
 
                 //数字按钮点击事件
-                form.on("click", ".m-pager-list li:not('.m-prev-pager,.m-next-pager')", function(event){
+                form.off("click", ".m-pager-list li:not('.m-prev-pager,.m-next-pager')").on("click", ".m-pager-list li:not('.m-prev-pager,.m-next-pager')", function(event){
                     event.preventDefault();
                     opts.currentPage = jQuery(this).find('.pager-num').attr('page-num') - 0;
                     pagerRequest();
                 });
 
                 //首页末页事件
-                form.on("click", ".m-first-pager, .m-last-pager", function(event){
+                form.off("click", ".m-first-pager, .m-last-pager").on("click", ".m-first-pager, .m-last-pager", function(event){
                     event.preventDefault();
                     if(jQuery(this).hasClass("m-first-pager")){
                         opts.currentPage = 1;
@@ -126,7 +126,7 @@ jQuery.fn.extend({
                 });
 
                 //翻批次按钮点击事件
-                form.on("click", ".m-prev-pager, .m-next-pager", function(event){
+                form.off("click", ".m-prev-pager, .m-next-pager").on("click", ".m-prev-pager, .m-next-pager", function(event){
                     event.preventDefault();
                     var eles = $('.pager-num'),
                         f = eles.first().text() - 0,
@@ -151,7 +151,7 @@ jQuery.fn.extend({
                 });
 
                 //跳转按钮点击事件
-                form.on("click", ".m-pager .m-page-btn", function(event){
+                form.off("click", ".m-pager .m-page-btn").on("click", ".m-pager .m-page-btn", function(event){
                     event.preventDefault();
                     opts.currentPage = jQuery(this).siblings('.m-page-num').val() - 0;
 
@@ -201,6 +201,9 @@ jQuery.fn.extend({
             opts.currentPage = 1;
             pagerRequest();
         }
+        this.refreshPager = pagerRequest;
+
+        return this;
     }
 });
 
