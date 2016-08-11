@@ -25,3 +25,7 @@
 * 其他
 
     Falcor类似GraphQL，GraphQL和Falcor是对REST的JSON的进化发展，GraphQL是一种嵌套的有层次的JSON
+
+* 流程
+
+  action => model => async props => render => event => action

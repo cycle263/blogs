@@ -75,7 +75,9 @@ jQuery.fn.extend({
                 }else{
                     pageNums = difference > maxNum ? maxNum : difference;
                     for(var num = 1; num <= pageNums; i++,num++){
-                        str += '<li class="' + (curPage === i ? 'active' : '') +'"><a class="pager-num" page-num="'+i+'">'+i+'</a></li>';
+                        if(i > 0) {
+                          str += '<li class="m-pager-num ' + (curPage === i ? 'active' : '') +'"><a class="pager-num" page-num="'+i+'">'+i+'</a></li>';
+                        }
                     }
                 }
                 return str;
@@ -98,6 +100,21 @@ jQuery.fn.extend({
                 return '';
             },
 
+            // 渲染loading
+            renderLoading = function(hide) {
+              var body = $('body');
+              if(hide) {
+                if(body.contains('.loading-container')){
+                  body.remove('.loading-container');
+                }
+              } else {
+                var str = '<div class="loading-container"><div class="paper-loading">数据加载中...</div></div>';
+                if(!body.contains('.loading-container')){
+                  body.append(str);
+                }
+              }
+            },
+
             initEvents = function(){
                 //查询按钮点击事件
                 form.off("click", ".pager-query").on("click", ".pager-query", function(event){
@@ -107,7 +124,7 @@ jQuery.fn.extend({
                 });
 
                 //数字按钮点击事件
-                form.off("click", ".m-pager-list li:not('.m-prev-pager,.m-next-pager')").on("click", ".m-pager-list li:not('.m-prev-pager,.m-next-pager')", function(event){
+                form.off("click", ".m-pager-list .m-pager-num").on("click", ".m-pager-list .m-pager-num')", function(event){
                     event.preventDefault();
                     opts.currentPage = jQuery(this).find('.pager-num').attr('page-num') - 0;
                     pagerRequest();
@@ -247,6 +264,82 @@ jQuery.extend({
 .m-pager-list li:hover{background-color: #ddd;}
 .m-page-num{width:40px;margin:0 5px;padding: 1px;}
 .m-page-btn{}
+ */
+
+ /*
+  * loading样式
+.loading-container{
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-color:rgba(0,0,0,.4);
+  top:0;
+  left:0;
+  z-index: 9999;
+}
+.paper-loading {
+  font-size: 10px;
+  position:absolute;
+  top:50%;
+  margin-top:-5.5em;
+  margin: 5em auto;
+  text-indent: -9999em;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  position: relative;
+  -webkit-animation: loadAnimation 1.4s infinite linear;
+  animation: loadAnimation 1.4s infinite linear;
+}
+.paper-loading:before {
+  width: 50%;
+  height: 50%;
+  background: #FFF;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.paper-loading:after {
+  background: #0dcecb;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes loadAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes loadAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
  */
 
 /*
