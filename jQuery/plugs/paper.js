@@ -186,7 +186,8 @@ jQuery.fn.extend({
                     maxNum = opts.maxPageNum - 0,
                     batchs = Math.floor(curPage / maxNum);
                 batchs = curPage % maxNum === 0 ? batchs - 1 : batchs;
-                opts.firstPageNum = batchs * maxNum + 1;
+                var temp = batchs * maxNum + 1;
+                opts.firstPageNum = temp > 0 ? temp : 1;
             },
 
             pagerRequest = function(){
