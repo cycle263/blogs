@@ -11,6 +11,12 @@
     require("../file.js");
     exports.doStuff = function() {};
     module.exports = someValue;
+
+
+    exports = function fn(){}; // outputs "@routes {}"
+    exports.fn = function fn(){}; // outputs "@routes { fn: [Function: fn] }"
+    module.exports = function fn(){}; // outputs "@routes function fn(){}"
+    module.exports.fn = function fn(){}; // outputs "@routes { fn: [Function: fn] }"
     ```
 
   缺点： 同步的模块加载方式不适合在浏览器环境中，同步意味着阻塞加载，浏览器资源是异步加载的  
@@ -50,5 +56,6 @@
   ```
   import "jquery";
   export function doStuff() {}
+  export default doSomething
   module "localModule" {}
   ```
