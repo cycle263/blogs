@@ -14,7 +14,7 @@
 
     - middleware: redux 提供中间件的方式，完成一些 flux 流程的自定义控制，同时形成其插件体系
 
-* redux三个原则
+* redux的原则
 
     - 单一的store
 
@@ -23,5 +23,3 @@
     - state 只读
 
         state 包含的应用数据不能随意修改，修改数据的唯一方式是 dispatch action，action 描述要修改的信息.
-
-    - 
