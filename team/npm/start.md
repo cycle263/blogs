@@ -14,6 +14,10 @@
 
     * npm i -D [module] i: install, -D:--save-dev,
 
+- 更新 和 搜索
+
+    `npm update [module]` v `npm search [module]`
+
 - 卸载  
 
     * npm uninstall 卸载
@@ -21,3 +25,7 @@
 - 查看所有的modules
 
     * npm list [module] 显示所有模块的信息(版本号)
+
+- publish 和 unpublish(--force)
+
+  发布和取消发布到npm
