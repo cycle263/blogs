@@ -1,8 +1,8 @@
 ## npm scripts -- CLI Commands
 
-* scripts参数
+* scripts
 
-    - npm_package_name, npm_package_version
+    - 参数：npm_package_name, npm_package_version(环境变量中以"npm_config_"开头的都被解释为配置选项)
 
 * main  包的入口文件
 
@@ -13,6 +13,8 @@
         "port": "8080"
     }
     ```
+
+    优先级：命令行 > 环境变量 > 用户配置文件 > 全局配置 > 内置配置文件 > 默认配置  
 
 * engines  
 

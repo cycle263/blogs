@@ -1,6 +1,8 @@
 ## git常用步骤
 
-* git config 配置  
+* git config 配置   
+
+    全局配置，所有的git目录下都会加上此配置，`git config user.email`则只会新增本git目录下的一条config  
 
     ```
     git config --global user.name "name"

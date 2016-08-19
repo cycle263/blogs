@@ -25,7 +25,7 @@
 
 * git 初始化配置
 
-  - 配置用户和email  
+  - 配置用户和email(全局配置，影响所有的git项目，不加--global则只影响本git项目)  
     `git config --global user.name "用户名"`  
     `git config --global user.email "Email"`
 

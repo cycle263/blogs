@@ -12,7 +12,7 @@
 
 * git push origin [tagname]     推送一个标签到远端
 
-* 删除tag
+* 删除tag(master权限)
 
     `git push origin --delete tag <tagname>`  
     `git push origin :<tagname>`  
