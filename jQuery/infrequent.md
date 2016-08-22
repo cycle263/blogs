@@ -12,11 +12,11 @@ KeyboardEvent、CustomEvent、Event。
 
 * 5、prop和attr分别何时使用？
   > 在有些浏览器，只用写disabled就能生效，有些则需要写disabled="disabled"，使用attr来获取则会出现问题。
-  attributes表示文档中DOM状态信息，而properties表示元素的动态状态(js对象)信息，因此jQuery在1.6版之后提供了prop。
+  attributes表示文档中DOM状态信息, 是HTML属性值，而properties表示元素的动态状态(js对象)信息，是DOM接口，存取由DOM规范定义，跟HTML上的属性不一定是对应的，因此jQuery在1.6版之后提供了prop。
   - ①.只用添加属性名称就生效的使用prop；
   - ②.只存在true/false的属性应该使用prop(checked、disabled、selected...);
   - ③.其他情况尽可能使用attr,当然获取value等除外
-  
+
 * 6、获取所有的表单域jQuery(':input'), 其中包括select、textarea等。
 
 * 7、jQuery.extend 和 jQuery.fn.extend
@@ -32,7 +32,7 @@ KeyboardEvent、CustomEvent、Event。
 * 9、获取元素下的子元素的index方法：
   - Array.prototype.indexOf.call(this.parentElement.children, this);
   - Array.prototype.slice.call(htmlCollection)//htmlCollection快速转换为array
-  
+
 * 10、jQuery常见数组操作
   - $.each(array, [callback]) 遍历
   - $.grep(array, callback, [invert])使用过滤函数过滤数组元素(第三个参数为true或false,对过滤函数返回值取反)
@@ -41,4 +41,3 @@ KeyboardEvent、CustomEvent、Event。
   - $.unique(array)过滤数组中重复元素
   - $.makeArray(obj) 将类数组对象转换为数组
   - $(dom).toArray()将所有DOM元素恢复成数组
-
