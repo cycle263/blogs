@@ -129,6 +129,16 @@
 
 * svg
 
+  - svg vs canvas
+
+  | svg | canvas |  
+  | --- | ------ |  
+  | 使用 XML 描述 2D 图形的语言 | 通过 JavaScript 来绘制 2D 图形 |  
+  | SVG 对象的属性发生变化，浏览器能自动重绘图形 | 不会 |  
+  | 基于XML，可为每个元素附加事件 | 基于像素，不支持子元素事件 |  
+  | 矢量图(自由缩放) | 位图(放大失真) |  
+  | 适合复杂度高的大型渲染应用(地图) | 适合图像密集的游戏，或者频繁重绘的应用 |
+
 * long-polling
 
     > 用AJAX的long-polling来模拟WebSocket. 但是需要很高的并发量。
@@ -192,6 +202,8 @@
     - [EMCA](http://www.ecma-international.org) 制定JavaScript的标准
 
     - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等
+
+  * http协议(http2)
 
 #### 5.Others(打包、模块化...)
 
