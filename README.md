@@ -179,6 +179,20 @@
 
 * Server-Sent Event
 
+  > 浏览器向服务器发送一个HTTP请求，然后服务器不断单向地向浏览器推送“信息”（message）。
+
+  ```
+  new EventSource(url);
+  ```
+
+  - SSE vs WS
+
+  | Server-Sent Events | WebSocket |
+  | ------------------ | --------- |
+  | 单向通信，服务端推送  | 双向通信    |
+  | 基于http，支持性好   | 新的协议    |
+  | 简单，轻量，断线重连  | 较复杂，重连需额外部署 |
+
 * localStorage vs sessionStorage
 
     - 储存时间的不同(sessionStorage浏览器关闭自动删除，localStorage长期存在)
