@@ -40,7 +40,7 @@
 
 * 5、Promise.all()  
 
-  Promise.all方法用于将多个Promise实例，包装成一个新的Promise实例。有一个被rejected，新的promise的状态就变成rejected。  
+  Promise.all方法用于将多个Promise实例，包装成一个新的Promise实例。有一个被rejected，新的promise的状态就变成rejected。 then回调参数为array 
 
     ```
     function fetchAsync (url, timeout, onData, onError) {

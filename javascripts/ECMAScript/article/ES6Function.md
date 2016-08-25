@@ -53,6 +53,13 @@
   foo::bar(...arguments);
   i// 等同于
   bar.apply(foo, arguments);
+  var promise = new Promise( ... );
+  promise.then(this::function(){
+    // ...
+  });
+  promise.then(function(){
+    // ...
+  }.bind(this));
   ```
 
 * 6、尾调用  
