@@ -15,17 +15,55 @@
 - svg元素
 
   * rect元素 - 矩形
-
   * circle元素 - 圆形
-
   * ellipse元素 - 椭圆
-
   * line元素 - 直线
-
   * polyline - 折线
-
   * polygon - 多边形
-
   * path - 路径
-
     + 移动画笔指令M，画直线指令：L，H，V，闭合指令Z
+  * g - 形状组
+
+* 插入SVG文件
+
+  可以用在img、object、embed、iframe等标签，以及CSS的background-image属性。
+
+  ```
+  <img src="circle.svg">
+  <object id="object" data="circle.svg" type="image/svg+xml"></object>
+  <embed id="embed" src="icon.svg" type="image/svg+xml">
+  <iframe id="iframe" src="icon.svg"></iframe>
+  ```
+
+* 操作svg DOM
+
+  使用img标签插入SVG文件，则无法获取SVG DOM。使用object、iframe、embed标签，可以获取SVG DOM。
+
+  ```
+  var svgObject = document.getElementById("object").contentDocument;
+  var svgIframe = document.getElementById("iframe").contentDocument;
+  var svgEmbed = document.getElementById("embed").getSVGDocument();
+  ```
+
+* 读取svg源码
+
+  svg文件就是一个XML代码的文本文件，因此可以通过读取XML代码的方式，读取svg源码。
+
+  ```
+  (new XMLSerializer()).serializeToString(document.querySelector('.mysvg'));
+  ```
+
+* svg转换成canvas
+
+  ```
+  var img = new Image(),
+    svg = new Blob([svgString], {type: "image/svg+xml;charset=utf-8"}),
+    url = URL.createObjectURL(svg);
+
+  img.onload = function() {
+  	var canvas = document.getElementById("canvas"),
+  	  ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+  };
+  img.src = url;
+  ```
