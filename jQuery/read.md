@@ -1,9 +1,9 @@
 ### 阅读心得
 
 * 使用data缓存数据(名称为小写)
-    - 原生javascript：element.dataset获取或设置，对象先进行字符串化（JSON.stringify），可在DOM结构中查看到“data-*”的属性值
+    - 原生javascript：element.dataset获取或设置，对象先进行字符串化（JSON.stringify），可在DOM结构中查看到“data-\*”的属性值
     - 三种方式，以object保存则可以直接赋值和读取，以json字符串方式赋值，直接需解析获取
-    - Query: $.data(ele, data ,key),ele为javascript元素对象，将会把DOM属性中data-*值也保存到jQuery.cache中(后续js增加的除外)，而$(ele).data()不会，jQuery的两种方式都会保存在jQuery.cache中
+    - Query: $.data(ele, data ,key),ele为javascript元素对象，将会把DOM属性中data-\*值也保存到jQuery.cache中(后续js增加的除外)，而$(ele).data()不会，jQuery的两种方式都会保存在jQuery.cache中
 
 * jQuery(document).ready VS window.onload</h3>
     - window.onload是在网页中的所有元素（包括关联的资源文件：图片、样式等）完全加载后才会执行，并且只会执行一次；等价于jQuery(window).load
@@ -24,7 +24,6 @@
 
 * jQuery.fn.each vs jQuery.each
     - jQuery.fn.each内部也通过调用静态方法jQuery.each方法来实现。each会遍历jQuery对象，并在每个元素上执行回调函数。回调函数也是在当前元素的上下文语境中出发，也即是this指向当前元素。
-                
+
 * jQuery.pushStack
     - jQuery.pushStack是核心方法之一，它创建了一个新的空jQuery对象，然后把DOM集合放入这个对象，并保留对当前jQuery对象的引用。
-
