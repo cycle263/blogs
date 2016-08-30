@@ -1,103 +1,86 @@
-#React
+## React
 
-* npm init  初始化package.json文件
- 
-* package.json文件scripts中的增加命令： "start":"http-server -a localhost -p 8001"
- 
- ```
- {
-  "name": "connect",
-  "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -a localhost -p 8001",
-    "dev": "webpack --progress --profile --colors --watch",
-    "build": "webpack --progress --profile --colors",
-    "devStart": "webpack-dev-server --hot --inline"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "babel-core": "^6.9.0",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-react-transform": "^2.0.2",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-react-hmre": "^1.1.1",
-    "html-webpack-plugin": "^2.17.0",
-    "http-server": "^0.9.0",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0",
-    "react-transform-catch-errors": "^1.0.2",
-    "react-transform-hmr": "^1.0.4",
-    "redbox-react": "^1.2.6",
-    "webpack-dev-server": "^1.14.1"
-  },
-  "devDependencies": {
-    "html-webpack-plugin": "^2.17.0",
-    "http-server": "^0.9.0",
-    "jquery": "^2.2.4",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+* Element
+
+  React.createElement(element, props[, children]),Element 是 createClass 的实例
+
+* createClass
+
+  React.createClass({ ... })
+
+* Component
+
+  从 React 0.13 开始，可以使用 ES6 Class 代替 React.createClass, class HelloMessage extends React.Component { ... }
+
+  - 区别
+
+    + getInitialState取消，可以在构造函数中定义，如下：
+
+      ```
+      => ES 6
+
+      constructor(props) {
+        super(props);
+        this.state = {};
+      }
+
+      或者 => ES 7
+
+      constructor(props) {
+        super(props);
+      }
+
+      state = {}
+      ```
+
+    + 静态设置改变
+
+      ```
+      // 属性类型
+      propTypes: {}
+
+      => ES 6
+
+      MyComponent.propTypes = {}
+
+      或者 => ES 7
+
+      static propTypes = {}
+      ```
+
+      ```
+      // 获取属性默认值
+      getDefaultProps: function(){ return {...} }
+
+      => ES 6
+
+      MyComponent.defaultProps = {}
+
+      或者 => ES 7
+
+      static defaultProps = {}
+      ```
+
+    + 绑定this作用域
+
+      除了render方法都需要自己绑定指向当前Element的this对象, 以下几种方式：
+
+        - =>箭头函数声明方式可以自动绑定(onClick={() => this.tick()})
+
+        - 亦或者在构造函数中绑定(this.tick = this.tick.bind(this);)
+
+        - 亦或者在事件定义时绑定（onClick={this.click.bind(this)}）
+
+* Factory
+
+  简化了 React.createElement 的调用语法
+
+  ```
+  var div = React.createFactory('div');
+  var root = div({ className: 'my-div' });
+
+  // Factory函数原理
+  function createFactory(type) {
+    return React.createElement.bind(null, type);
   }
-}
-
- ```
-
-* 增加webpack.config.js配置文件  
   ```
-  var path = require('path');
- var HtmlwebpackPlugin = require('html-webpack-plugin');
- //定义了一些文件夹的路径
- var ROOT_PATH = path.resolve(__dirname);
- var APP_PATH = path.resolve(ROOT_PATH, 'src');
- var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
- var TEM_PATH = path.resolve(ROOT_PATH, 'templates');
- 
- module.exports = {
-     entry: {
-         app: "./src/entry.js",
-         mobile: path.resolve(APP_PATH, 'entry.js')
-     },
-     output: {
-         path: BUILD_PATH,
-         filename: "[name].[hash].js"
-     },
-     module: {
-         loaders: [{
-             test: /\.js|jsx$/,
-             loaders: ['babel?presets[]=es2015&presets[]=react'],
-             exclude: /node_modules/
-         }]
-     },
-     devServer: {
-         historyApiFallback: true,
-         hot: true,
-         inline: true,
-         progress: true
-     },
-     resolve: {
-         extensions: ['', '.js', '.jsx']
-     },
-     plugins: [
-         new HtmlwebpackPlugin({
-             title: 'PC app',
-             template: path.resolve(TEM_PATH, 'index.html'),
-             filename: 'index.html',
-             chunks: ['app'],
-             inject: 'body'
-         }),
-         new HtmlwebpackPlugin({
-             title: 'Mobile app',
-             template: path.resolve(TEM_PATH, 'mobile.html'),
-             filename: 'mobile.html',
-             chunks: ['mobile'],
-             inject: 'body'
-         })
-     ]
- };
-
-  ```
-  
