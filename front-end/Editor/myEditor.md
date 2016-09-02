@@ -24,6 +24,7 @@
     - git
     - emmet
     - jsxhint
+    - Seti_UI
     
 
   > 配置文件   
