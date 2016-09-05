@@ -14,7 +14,7 @@
 
   - 区别
 
-    + getInitialState取消，可以在构造函数中定义，如下：
+    + getInitialState() 取消，可以在构造函数中定义，如下：
 
       ```
       => ES 6
