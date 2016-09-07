@@ -41,7 +41,7 @@
 
 - npm update <package> -g: 可以把全局安装的对应命令行程序更新至最新版。
 
-- npm cache clear: 可以清空NPM本地缓存，用于对付使用相同版本号发布新版本代码的人。
+- npm cache clear|clean: 可以清空NPM本地缓存，用于对付使用相同版本号发布新版本代码的人。
 
 - npm unpublish <package>@<version>: 可以撤销发布自己发布过的某个版本代码。
 
@@ -49,6 +49,6 @@
 
 - npm init: 会引导你创建一个package.json文件，包括名称、版本、作者这些信息等
 
-- npm [info|view] packageName: 列出模块所有的信息
+- npm [info|view|show|v] packageName: 列出模块所有的信息
 
-- npm npm [info|view] packageName versions: 列出模块所有的版本号信息
+- npm npm [info|view|show|v] packageName versions: 列出模块所有的版本号信息

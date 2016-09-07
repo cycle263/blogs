@@ -6,6 +6,8 @@
 
     * npm install  安装所有的依赖
 
+    * npm install --force[-f]  强制重新安装
+
     * npm install -g [module]  全局安装，整个系统都可以访问
 
     * npm install [module]  安装在当前目录下
@@ -16,13 +18,15 @@
 
 - 更新 和 搜索
 
-    `npm update [module]` v `npm search [module]`
+    更新: `npm update [module]`   
+
+    搜索: `npm search [module]`  
 
 - 卸载  
 
     * npm uninstall 卸载
 
-- 查看所有的modules
+- 查看所有已经安装的modules
 
     * npm list [module] 显示所有模块的信息(版本号)
 
