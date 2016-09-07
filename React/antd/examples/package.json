@@ -1,0 +1,45 @@
+{
+  "name": "csoperationmng",
+  "version": "1.0.0",
+  "private": true,
+  "entry": {
+    "interventionStrategy": "./src/entry/interventionStrategy.js"
+  },
+  "dependencies": {
+    "antd": "^1.4.1",
+    "atool-build": "0.7.x",
+    "babel-plugin-antd": "0.4.x",
+    "es3ify-loader": "^0.2.0",
+    "jquery": "^3.0.0",
+    "react": "15.1.x",
+    "react-dom": "15.1.x"
+  },
+  "devDependencies": {
+    "dora": "0.3.x",
+    "dora-plugin-webpack": "0.6.x",
+    "dora-plugin-hmr": "0.5.x",
+    "dora-plugin-livereload": "0.3.x",
+    "dora-plugin-proxy": "0.6.x",
+    "eslint": "2.x",
+    "eslint-config-airbnb": "6.x",
+    "eslint-plugin-react": "4.x",
+    "pre-commit": "1.x",
+    "babel-eslint": "^6.0.0"
+  },
+  "homepage": "http://gitlab.alipay-inc.com/workbench/csoperationmng.git",
+  "repository": {
+    "type": "git",
+    "url": "git+http://gitlab.alipay-inc.com/workbench/csoperationmng.git"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "dora -p 8001 --plugins webpack,hmr,proxy,livereload?enableJs=false",
+    "lint": "eslint --ext .js,.jsx src",
+    "compress": "atool-build -o ./dist/${npm_package_family}/${npm_package_name}/${npm_package_version} --no-compress",
+    "build": "atool-build -o ./dist/${npm_package_family}/${npm_package_name}/${npm_package_version}",
+    "sourcemap": "atool-build -o ./dist/${npm_package_family}/${npm_package_name}/${npm_package_version} --devtool sourcemap"
+  }
+}
