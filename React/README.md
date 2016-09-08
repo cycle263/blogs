@@ -71,6 +71,16 @@
 
         - 亦或者在事件定义时绑定（onClick={this.click.bind(this)}）
 
+    + 事件处理函数传参
+
+      - `onClick={this.viewMore.bind(this, attributeId)}`
+
+      - `onClick={(event)=>this.viewMore(attributeId, event)}`
+
+      - `onClick={this.viewMore.bind(this)}  viewMore(event) {}`
+
+      - `onClick={this.viewMore}  constructor() {this.viewMore=this.viewMore.bind(this);}`
+
 * Factory
 
   简化了 React.createElement 的调用语法
