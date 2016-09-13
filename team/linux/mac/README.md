@@ -18,3 +18,7 @@
 * 显示隐藏文件
 
     `defaults write com.apple.finder AppleShowAllFiles  YES`
+
+* 强制关闭进程
+
+  alt + command + esc
