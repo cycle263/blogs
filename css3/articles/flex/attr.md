@@ -41,3 +41,8 @@
   - flex none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
 
   - align-self [auto | flex-start | flex-end | center | baseline | stretch] 让单个item有与其他item不一样的对齐方式，可覆盖align-items属性，默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+
+
+* 备注
+
+  - flex item 宽度指定

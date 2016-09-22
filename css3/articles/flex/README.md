@@ -18,7 +18,7 @@
   .grid-cell.col-9 { flex: 0 0 75%;}
   .grid-cell.col-10{ flex: 0 0 83.33333%;}
   .grid-cell.col-11{ flex: 0 0 91.66667%;}
-  .grid-cell.col-11{ flex: 0 0 100%;}
+  .grid-cell.col-12{ flex: 0 0 100%;}
 
   .grid.grid-top      { align-items: flex-start; }
   .grid.grid-middle   { align-items: center; }
