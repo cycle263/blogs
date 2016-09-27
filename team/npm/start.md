@@ -18,7 +18,7 @@
 
 - 更新 和 搜索
 
-    更新: `npm update [module]`   
+    更新: `npm update [module]@version`   
 
     搜索: `npm search [module]`  
 

@@ -51,4 +51,4 @@
 
 - npm [info|view|show|v] packageName: 列出模块所有的信息
 
-- npm npm [info|view|show|v] packageName versions: 列出模块所有的版本号信息
+- npm [info|view|show|v] packageName versions: 列出模块所有的版本号信息
