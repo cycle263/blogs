@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>basic example</title>
+  <meta charset="utf-8">
+  <title>basic example</title>
 </head>
 <body>
-<script src="http://cdnjs.gtimg.com/cdnjs/libs/jquery/1.9.1/jquery.js"></script>
+  <script>
+    var start = Date.now();
+  </script>
+  <script src="http://cdnjs.gtimg.com/cdnjs/libs/jquery/1.9.1/jquery.js"></script>
+  <script type="text/javascript" src="./qrcodeJS.js"></script>
+  <script type="text/javascript" src="./qrcode.js"></script>
 
-
-<script type="text/javascript" src="./qrcodeJS.js"></script>
-<script type="text/javascript" src="./qrcode.js"></script>
-
-<div id="qrcode"></div>
-<p>Render in table</p>
-<div id="qrcodeTable"></div>
-<p>Render in canvas</p>
-<div id="qrcodeCanvas"></div>
-<script defer>
-    jQuery('#qrcode').qrcode(utf16to8("汾儿"));
-    jQuery('#qrcodeTable').qrcode({
-        render  : "table",
-        text    : "http://jetienne.com"
-    });
-    jQuery('#qrcodeCanvas').qrcode({
-        text    : "http://jetienne.com"
-    });
-    function utf16to8(str) {  //支持中文
+  <div id="qrcode"></div>
+  <p>Render in table</p>
+  <div id="qrcodeTable"></div>
+  <p>Render in canvas</p>
+  <div id="qrcodeCanvas"></div>
+  <script defer>
+      jQuery('#qrcode').qrcode(utf16to8("汾儿"));
+      jQuery('#qrcodeTable').qrcode({
+        render: "table",
+        text: "http://jetienne.com"
+      });
+      jQuery('#qrcodeCanvas').qrcode({
+        text: "http://jetienne.com"
+      });
+      function utf16to8(str) {  //支持中文
         var out, i, len, c;
         out = "";
         len = str.length;
         for(i = 0; i < len; i++) {
-            c = str.charCodeAt(i);
-            if ((c >= 0x0001) && (c <= 0x007F)) {
-                out += str.charAt(i);
-            } else if (c > 0x07FF) {
-                out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
-                out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
-                out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
-            } else {
-                out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
-                out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
-            }
+          c = str.charCodeAt(i);
+          if ((c >= 0x0001) && (c <= 0x007F)) {
+            out += str.charAt(i);
+          } else if (c > 0x07FF) {
+            out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+            out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
+            out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+          } else {
+            out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
+            out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+          }
         }
         return out;
-    }
-</script>
-
+      }
+  </script>
 </body>
 </html>
