@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script>
+    console.time('首屏');
+  </script>
   <meta charset="utf-8">
   <title>basic example</title>
 </head>
 <body>
-  <script>
-    var start = Date.now();
-  </script>
-  <script src="http://cdnjs.gtimg.com/cdnjs/libs/jquery/1.9.1/jquery.js"></script>
-  <script type="text/javascript" src="./qrcodeJS.js"></script>
-  <script type="text/javascript" src="./qrcode.js"></script>
-
   <div id="qrcode"></div>
   <p>Render in table</p>
   <div id="qrcodeTable"></div>
   <p>Render in canvas</p>
   <div id="qrcodeCanvas"></div>
-  <script defer>
+
+  <script src="http://cdnjs.gtimg.com/cdnjs/libs/jquery/1.9.1/jquery.js"></script>
+  <script type="text/javascript" src="./qrcodeJS.js"></script>
+  <script type="text/javascript" src="./qrcode.js"></script>
+
+  <script>
       jQuery('#qrcode').qrcode(utf16to8("汾儿"));
       jQuery('#qrcodeTable').qrcode({
         render: "table",
@@ -45,6 +46,9 @@
         }
         return out;
       }
+  </script>
+  <script>
+    console.timeEnd('首屏');
   </script>
 </body>
 </html>
