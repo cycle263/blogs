@@ -39,6 +39,6 @@
 
 ## 加分技能
 
-* canvas、svg区别和各自特点
+* canvas、svg区别和各自特点，数据量大运算复杂，谁性能更好？
 
-* d3、echart、highchart、highstock、EaselJS，如何技术选型？
+* d3.js、echart(canvas)、highchart(svg)、highstock、EaselJS，如何技术选型？
