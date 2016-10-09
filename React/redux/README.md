@@ -20,11 +20,11 @@
 
     - 单一的store
 
-        区别于 flux 模式中可以有多个 state，整个应用的数据以树状结构存放在一个 state 对象中。
+      区别于 flux 模式中可以有多个 state，整个应用的数据以树状结构存放在一个 state 对象中。
 
     - state 只读
 
-        state 包含的应用数据不能随意修改，修改数据的唯一方式是 dispatch action，action 描述要修改的信息.
+      state 包含的应用数据不能随意修改，修改数据的唯一方式是 dispatch action，action 描述要修改的信息.
 
 
 * 比较react
