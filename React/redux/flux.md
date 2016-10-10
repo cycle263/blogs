@@ -1,5 +1,7 @@
 ## flux开发思维
 
+  > (state, action) => state
+
 ![flux流程](./images/flux.png)
 
 * Flux 提供了一种非常清晰的方式来存储和更新应用状态，并且只会在必要的时候才触发页面渲染。Flux 致力于应用的全局状态管理。
