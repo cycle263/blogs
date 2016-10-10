@@ -54,7 +54,7 @@
 
   - 提交改动  
     `git commit [-a] -m "message"`   message: 提交记录信息  
-    `git commit -am "message"`      相当于`git add .` + commitgit
+    `git commit -am "message"`      相当于`git add .` + commit
     可选参数 -a: 表示保护内容修改和增删
 
   - 同步到服务端  
