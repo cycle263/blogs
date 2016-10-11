@@ -4,6 +4,15 @@
 
   备注：确保临时的canvas大小适合，过大的canvas复制到较小的画布时会带来多余的性能。
 
+  ```
+  myEntity.offscreenCanvas = document.createElement("canvas");
+  myEntity.offscreenCanvas.width = myEntity.width;
+  myEntity.offscreenCanvas.height = myEntity.height;
+  myEntity.offscreenContext = myEntity.offscreenCanvas.getContext("2d");
+
+  myEntity.render(myEntity.offscreenContext);
+  ```
+
 * 用一个长的指令集载入将绘图状态机载入，然后全部写入到video缓冲区，这样会更有效率。例如：画一条复杂的路径时，将所有的点放到路径中会比单独的绘制各个部分要高效的。
 
   备注：当然也有例外的情况，若欲绘制的对象的部件中含有小的边界框（垂直的线条或者水平的线条），单独的渲染这些线条会更加有效。

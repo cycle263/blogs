@@ -49,11 +49,11 @@
             ctx.restore();
 
             ctx.restore();
-              
+
             ctx.beginPath();
             ctx.arc(width/2,height/2,earthRotateR,0,Math.PI*2,false); // Earth orbit
             ctx.stroke();
-             
+
             ctx.drawImage(sun,0,0,width,height);
 
             window.requestAnimationFrame(draw);
@@ -61,6 +61,7 @@
 
         init();
     })(window, undefined);
+    // [代码来源](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Advanced_animations)
     </script>
 </body>
 </html>

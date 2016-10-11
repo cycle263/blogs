@@ -1,3 +1,5 @@
+[代码来源](https://developer.mozilla.org/zh-CN/docs/Using_files_from_web_applications)
+
 ```html
 <input type="file" id="input">
 ```
@@ -7,22 +9,22 @@
 
 ```js
 var dropbox = document.getElementById("dropbox"),
-    preview = document.getElementById("preview");
+  preview = document.getElementById("preview");
 dropbox.addEventListener("dragenter", function(e){
-    e.stopPropagation();
-    e.preventDefault();
+  e.stopPropagation();
+  e.preventDefault();
 }, false);
 dropbox.addEventListener("dragover", function(e){
-    e.stopPropagation();
-    e.preventDefault();
+  e.stopPropagation();
+  e.preventDefault();
 }, false);
 dropbox.addEventListener("drop", function(e){
-    e.stopPropagation();
-    e.preventDefault();
+  e.stopPropagation();
+  e.preventDefault();
 
-    var dt = e.dataTransfer;
-    var files = dt.files;
-    handleFiles(files);
+  var dt = e.dataTransfer;
+  var files = dt.files;
+  handleFiles(files);
 }, false);
 ```
 
@@ -70,6 +72,3 @@ function handleFiles(files) {
     }
 }
 ```
-
-
-
