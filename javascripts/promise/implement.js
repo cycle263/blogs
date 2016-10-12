@@ -19,7 +19,7 @@ function Promise(executor){
 
   };
 
-  try {     //  执行executor可能出现异常
+  try {                       //  执行executor可能出现异常
     executor(resolve, reject);
   } catch(e) {
     reject(e);
@@ -46,6 +46,12 @@ var reject = function(reason){
       self.onRejectedCallback[i](reason);
     }
   }
+};
+
+// =========>
+
+Promise.prototype.then = function(onResolved, onRejected){
+
 };
 
 // =========>
