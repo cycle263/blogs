@@ -28,3 +28,14 @@
 * 选择一次commit合并
 
     `git cherry-pick [commit]`  选择一个commit，合并进当前分支
+
+
+## merge合并代码
+
+  - git checkout master - 将本地分支切换至master
+  - git pull origin master - 从远端master拉取最新代码
+  - git checkout branches/test - 再次将本地分支切换至新创建的test
+  - git merge master - 从master合并最新代码至test分支
+  - git diff - 查看合并冲突文件，并手动解决
+  - 提交代码（add、commit、push）
+  - gitlab上创建MERGE REQUEST，等待owner审核
