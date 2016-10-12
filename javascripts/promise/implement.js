@@ -51,6 +51,9 @@ var reject = function(reason){
 // =========>
 
 Promise.prototype.then = function(onResolved, onRejected){
+  var self = this;
+  var promise2;
+
 
 };
 
