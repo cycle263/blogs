@@ -54,7 +54,26 @@ Promise.prototype.then = function(onResolved, onRejected){
   var self = this;
   var promise2;
 
-  onRejected
+  onResolved = typeof onResolved === 'function' ? onResolved : function(v){};
+  onRejected = typeof onRejected === 'function' ? onRejected : function(v){};
+
+  if(self.status === 'resolve'){
+    return promise2 = new Promise(function(resolve, reject){
+
+    })
+  }
+
+  if(self.status === 'reject'){
+    return promise2 = new Promise(function(resolve, reject){
+
+    })
+  }
+
+  if(self.status === 'pending'){
+    return promise2 = new Promise(function(resolve, reject){
+
+    })
+  }
 };
 
 // =========>
