@@ -59,21 +59,67 @@ Promise.prototype.then = function(onResolved, onRejected){
 
   if(self.status === 'resolve'){
     return promise2 = new Promise(function(resolve, reject){
-
-    })
+      try {
+        var p = onResolved(self.data);
+        if(p instanceof Promise){   // 如果返回一个Promise
+          p.then(resolve, reject);
+        }
+        resolve(p);   // 否则，以它的返回值做为promise2的结果
+      } catch(e){
+        reject(e);    // 如果出错，以捕获到的错误做为promise2的结果
+      }
+    });
   }
 
   if(self.status === 'reject'){
     return promise2 = new Promise(function(resolve, reject){
-
-    })
+      try {
+        var p = onRejected(self.data);
+        if(p instanceof Promise){   // 如果返回一个Promise
+          p.then(resolve, reject);
+        }
+      } catch(e){
+        reject(e);
+      }
+    });
   }
 
   if(self.status === 'pending'){
-    return promise2 = new Promise(function(resolve, reject){
+    self.onResolvedCallback.push(function(value){
+      try {
+        var p = onResolved(self.data);
+        if(p instanceof Promise){   // 如果返回一个Promise
+          p.then(resolve, reject);
+        }
+      } catch(e){
+        reject(e);    // 如果出错，以捕获到的错误做为promise2的结果
+      }
+    });
 
-    })
+    self.onRejectedCallback.push(function(reason){
+      try {
+        var p = onRejected(self.data);
+        if(p instanceof Promise){   // 如果返回一个Promise
+          p.then(resolve, reject);
+        }
+      } catch(e){
+        reject(e);
+      }
+    });
   }
 };
 
+Promise.prototype.catch = function(){
+  return this.then(null, onRejected);
+};
+
 // =========>
+
+Promise.deferred = Promise.defer = function(){
+  var dfd = {};
+  dfd.promise = new Promise(function(resolve, reject){
+    dfd.resolve = resolve;
+    dfd.reject = reject;
+  });
+  return dtd;
+};
