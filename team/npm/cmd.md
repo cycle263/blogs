@@ -56,4 +56,6 @@
 
 * 镜像设置
 
-  用户名目录下的.npmrc文件，增加配置项register = https://register.npm.taobao.org
+  `//registry.npmjs.org/:_authToken=0d118812-7b93-4169-936b-e7c0521c77b6`
+
+  用户名目录下的.npmrc文件，修改配置项registry = https://registry.npm.taobao.org/
