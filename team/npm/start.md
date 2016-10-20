@@ -33,3 +33,11 @@
 - publish 和 unpublish(--force)
 
   发布和取消发布到npm
+
+- brew安装
+
+  ```
+  brew uninstall node
+  sudo rm -rf /usr/local/lib/node_modules   // imac
+  brew install node
+  ```
