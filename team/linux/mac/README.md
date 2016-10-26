@@ -4,7 +4,7 @@
 
 * 环境变量配置
 
-    vi ~/.bash_profile
+    vi ~/.bash_profile 或者 ~/.zshrc
 
     ```
     export M2=/usr/local/Cellar/maven2/2.2.1/bin
