@@ -4,7 +4,7 @@
     <meta name="wap-font-scale" content="no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-    <title>蚂客学</title>
+    <title>loading</title>
     <link rel="stylesheet" href="https://os.alipayobjects.com/rmsportal/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
     <style media="screen">
     	html,body{
@@ -13,14 +13,14 @@
     	}
       .arc-rotate{
         position: fixed;
-	    top: 50%;
-	    left: 50%;
-	    margin-top: -100px;
-	    width: 200px;
-	    height: 200px;
-	    text-align: center;
-	    margin-left: -100px;
-	    color:#ADADAD;
+  	    top: 50%;
+  	    left: 50%;
+  	    margin-top: -100px;
+  	    width: 200px;
+  	    height: 200px;
+  	    text-align: center;
+  	    margin-left: -100px;
+  	    color:#ADADAD;
 	     font-family: 微软雅黑;
       }
       .arc-rotate .loader{
@@ -52,6 +52,19 @@
         animation-direction: reverse;
         animation-delay: -0.5s;
       }
+      .container::after{
+        content: '';
+        clear: both;
+      }
+      .item{
+        display: inline-block;
+        border: 1px solid gray;
+        width: 40px;
+        height: 30px;
+      }
+      .left{
+        float: left;
+      }
       @keyframes load {
         0% {
           transform: rotate(0) scale(1);
@@ -66,12 +79,44 @@
     </style>
 </head>
 <body>
-    <div class="arc-rotate">
-      <div class="loader">
-		<div class="arc-1"></div>
-		<div class="arc-2"></div>
-		加载中...
-	</div>
+  <div class="arc-rotate">
+    <div class="loader">
+  		<div class="arc-1"></div>
+  		<div class="arc-2"></div>
+  		加载中...
     </div>
+  </div>
+
+  <canvas style="display: inline-block;" width="600" height="300" id="canvas">
+    你的浏览器居然不支持Canvas!赶快换一个吧!
+  </canvas>
+
+  <textarea name="name" style="line-height: 20px;box-sizing: border-box;" rows="8" cols="40"></textarea>
+
+  <div class="container">
+    <div class="item left"></div>
+    <div class="item left"></div>
+  </div>
+  <script type="text/javascript">
+    (function(){
+      var canvas = document.getElementById("canvas"),
+        arc = document.querySelector('.arc-rotate'),
+        tarea = document.querySelector('[name="name"]'),
+        context = canvas.getContext("2d"),
+        img = new Image();
+      img.onload = function(){
+        context.drawImage(img,0,0);
+      };
+      img.src = "../images/selector.jpg";
+      document.body.append(img);
+
+      arc.style.display = 'none';
+
+      tarea.addEventListener('keypress', function(){
+        this.style.paddingTop = (this.offsetHeight - parseInt(this.style.lineHeight))/2 + 'px';
+        this.style.height = '166px';
+      }, false);
+    })();
+  </script>
 </body>
 </html>
