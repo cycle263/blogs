@@ -2,7 +2,7 @@
 
 * name, version, description, homepage, author, contributors, repository, keywords
 
-* scripts
+* scripts 构建命令
 
     - 参数：npm_package_name, npm_package_version(环境变量中以"npm_config_"开头的都被解释为配置选项)
 
