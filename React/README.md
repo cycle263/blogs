@@ -1,5 +1,7 @@
 ## React
 
+  > 一个组件的渲染函数就是一个基于 state 和 props 的纯函数，state 是自己的，props 是外面来的，任何东西变了就重新渲染一遍.
+
 * Element
 
   React.createElement(element, props[, children]),Element 是 createClass 的实例
