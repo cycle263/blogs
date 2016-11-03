@@ -225,7 +225,7 @@
 
   * http协议(http2)
 
-#### 5.Others(打包、模块化...)
+#### 5.Others(构建打包、模块化解决方案)
 
 * [git](team/git)
 
