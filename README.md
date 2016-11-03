@@ -7,7 +7,11 @@
   > jQuery API,  Principle of jQuery
 
     ```js
-    jQuery.extend()
+    jQuery.fn.myPlugin = function(){}   // jquery plugins
+    jQuery.myPlugin = function(){}
+    jQuery.extend({
+      myPlugin: function(){}
+    })
     ```
 
   > Do not need jQuery
@@ -40,7 +44,7 @@
 
 * [Reactjs](./React)
 
-  > React rounter, React diff
+  > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
   - installation  
 

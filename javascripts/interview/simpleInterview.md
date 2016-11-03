@@ -4,13 +4,13 @@
 
 * react的生命周期？组件之间的数据通信？数据模型(redux、flux、reselect)？react适合什么类型的项目工程
 
-  > 一个组件的渲染函数就是一个基于 state 和 props 的纯函数，state 是自己的，props 是外面来的，任何东西变了就重新渲染一遍.
+  > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
 * 在浏览器中输入url到页面内容全部显示？html文档解析过程？
 
   > 从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 
-* ES6有哪些新特性？ babel转换的实现原理？实现promise? aynsc和await
+* ES6有哪些新特性？ babel转码的实现原理？实现promise? aynsc和await
 
 ----
 
@@ -18,7 +18,7 @@
 
 * 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？BFC? 布局方式？(弹性，流，瀑布...)
 
-* 闭包的理解？this对象？原型链？作用域？变量提升？Ajax跨域？冒泡和捕获？性能优化？IIFE?
+* 闭包的理解？this对象？原型链？作用域？变量提升？Ajax跨域？冒泡和捕获？性能优化？IIFE(http协议标准、json标准)?
 
 * javascript中不可以直接使用【下标方式】修改字符串内容？  
 
