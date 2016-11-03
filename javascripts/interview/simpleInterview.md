@@ -10,7 +10,7 @@
 
   > 从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 
-* ES6有哪些新特性？ babel？ webpack的实现原理？实现promise? aynsc和await
+* ES6有哪些新特性？ babel转换的实现原理？实现promise? aynsc和await
 
 ----
 
@@ -34,13 +34,13 @@
 
 * 对jquery和html5有一点了解，瞬间暴露了题主的水平。首先应该说熟练使用jquery和相关类库
 
-* d3.js、echart(canvas)、highchart(svg)、highstock、EaselJS、flv.js，如何技术选型？
+* d3.js、echart(canvas)、highchart(svg)、highstock、EaselJS、flv.js，如何技术选型？各自优缺点
 
 * 常用的设计模式，例如工厂模式，享元模式，单例模式，流行的mvc，mvvc，mv*架构模式
 
 * 比较风靡的前端框架react, angular2, vue, backbone等
 
-* 对前端工程进行流程化开发，对前端GUI软件编译合并打包，nginx的combo
+* 对前端工程进行流程化开发，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，nginx的combo技术
 
 ----
 
