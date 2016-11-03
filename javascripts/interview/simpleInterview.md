@@ -36,9 +36,9 @@
 
 * d3.js、echart(canvas)、highchart(svg)、highstock、EaselJS、flv.js，如何技术选型？
 
-* 接下来说会使用常用的设计模式，例如工厂模式，享元模式，单例模式
+* 常用的设计模式，例如工厂模式，享元模式，单例模式，流行的mvc，mvvc，mv*架构模式
 
-* 还有了解流行的mvc，mvvc，mv*架构模式，知道react,angular,backbone等框架,嗯还会用搭建node环境，
+* 比较风靡的前端框架react, angular2, vue, backbone等
 
 * 对前端工程进行流程化开发，对前端GUI软件编译合并打包，nginx的combo
 
@@ -46,9 +46,9 @@
 
 ## 其他加分技能
 
-* 高使用率的无缝发布，发布顺序？
+* 超级uv的无缝发布部署，相关文件的先后发布顺序？
 
-* 函数式编程，多媒体经验
+* 函数式编程，多媒体前端经验，网络协议，http2等
 
 * 最后擅长一门后端，如nodejs, php, java等，了解关系型数据库和非关系型数据库
 
