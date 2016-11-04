@@ -1,14 +1,13 @@
 * 1、josnp（jQuery，js script），但是无法实现post请求  
 
-* 2、window.postMessage, otherWindow.postMessage(message, targetOrigin)，相应的web worker(new Worker("*.js"))通用可以调用  
+* 2、window.postMessage, otherWindow.postMessage(message, targetOrigin)，相应的web worker(new Worker("\*.js"))通用可以调用  
   案例：  http://jsfiddle.net/qfym4epd/2/  
-  
+
 * 3、隐藏的form，target 指向一个隐藏的 iframe，然后调 form 的 submit，服务端返回的结果会刷到 iframe 里。  
 
-* 4、服务器端直接设置header内容：Access-Control-Allow-Origin：*, Access-Control-Allow-Credentials: true  
+* 4、服务器端直接设置header内容：Access-Control-Allow-Origin：\*, Access-Control-Allow-Credentials: true  
 
-* 5、利用Apache转发路由（不是跳转），Win上有WAMP，Linux上有LAMP；且Apache的转发设置起来非常简单方便。开发时甚至可以直接把转发配置
-为客户端到VS或Eclipse，方便调试；线后把转发切换成客户端到Apache自身或IIS或Tomcat或WebLogic或Nginx等等。  
+* 5、利用Apache转发路由（不是跳转），Win上有WAMP，Linux上有LAMP；且Apache的转发设置起来非常简单方便。开发时甚至可以直接把转发配置为客户端到VS或Eclipse，方便调试；线后把转发切换成客户端到Apache自身或IIS或Tomcat或WebLogic或Nginx等等。  
 
 * 6、用nginx把B网站的数据url反向代理。  
 
