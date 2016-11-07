@@ -27,3 +27,9 @@
 * 使用纯函数来执行修改
 
   为了描述 action 如何改变 state tree ，你需要编写 reducers。
+
+
+## redux之connect
+
+
+## 
