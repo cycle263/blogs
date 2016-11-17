@@ -57,7 +57,7 @@
 * 9、快速获取URL查询字符串
 	```
 	$.urlParam = function(name[, url]){
-		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url || window.location.href);
+		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url || window.location.href) || '';
 		return results[1] || 0;
 	}
 	```
