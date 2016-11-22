@@ -21,3 +21,5 @@ var $jsonp = function(src, opts){
 
     document.getElementsByTagName('head')[0].appendChild(script);
 };
+
+// script脚本没有同源策略

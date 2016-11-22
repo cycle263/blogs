@@ -1,4 +1,4 @@
-* 1、josnp（jQuery，js script），但是无法实现post请求  
+* 1、jsonp（jQuery，js script），但是无法实现post请求，jsonp实际上download的一段script脚本，包含中一个全局函数，函数的参数就是服务端传递的json数据。
 
 * 2、window.postMessage, otherWindow.postMessage(message, targetOrigin)，相应的web worker(new Worker("\*.js"))通用可以调用  
   案例：  http://jsfiddle.net/qfym4epd/2/  
