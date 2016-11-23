@@ -15,8 +15,11 @@
         var btn = document.querySelector('button'),
           input = document.querySelector('input'),
           out = document.querySelector('.out'),
+          encodingToGBK = function(){};
+          
+        if (document.readyState === 'complete' || document.readyState !== 'loading') {
           encodingToGBK = document.querySelector('iframe').contentWindow.encoding;
-
+        }
         btn.addEventListener('click', function(){
           out.innerHtml = encodingToGBK(input.value);
         });
