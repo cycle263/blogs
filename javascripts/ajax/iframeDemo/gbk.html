@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="gbk">
+    <script>
+      window.encoding = function(str){
+        //利用a元素的href属性来encode
+        var a = document.createElement("a");
+        a.href = "/?q=" + str;
+        var url = a.href; //这里读取的时候会自动编码
+        a.href = "/?q=";
+        return url.replace(a.href, "");
+      };
+    </script>
+  </head>
+</html>
