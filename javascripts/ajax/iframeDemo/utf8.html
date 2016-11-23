@@ -2,11 +2,25 @@
 <html>
   <head>
     <meta charset="gbk">
+  </head>
+  <body>
+    <input type="text" name="name" value="">
+    <button type="button" name="button">转码为GBK</button>
+    <p class="out">
+
+    </p>
     <script>
       (function(window, undefined){
-        console.log(document.iframe);
+        var btn = document.querySelector('button'),
+          input = document.querySelector('input'),
+          out = document.querySelector('.out'),
+          encodingToGBK = document.querySelector('iframe').contentWindow.encoding;
+
+        btn.addEventListener('click', function(){
+          out.innerHtml = encodingToGBK(input.value);
+        });
       })(window);
     </script>
     <iframe src="./gbk.html" frameborder="0"></iframe>
-  </head>
+  </body>
 </html>
