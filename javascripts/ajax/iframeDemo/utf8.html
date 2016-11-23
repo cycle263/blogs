@@ -18,9 +18,9 @@
           out = document.querySelector('.out'),
           encodingToGBK = function(){};
 
-        iframe.onload(function(){
+        iframe.onload = function(){
           encodingToGBK = iframe.contentWindow.encoding;
-        });
+        };
         btn.addEventListener('click', function(){
           out.innerHtml = encodingToGBK(input.value);
         });
