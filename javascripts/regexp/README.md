@@ -25,4 +25,11 @@ String.prototype.replace方法的第二个参数可以使用美元符号$，用�
       return $1 + $2 + $3 + prices[$2] + $4;
     }
   );
+
+  editorContent.replace(
+    /<img .* (width=".*") (height=".*")\/>/g,
+    function(match, $1, $2, $3, $4){
+      return match.replace($1,'').replace($2,'')
+    }
+  );
   ```
