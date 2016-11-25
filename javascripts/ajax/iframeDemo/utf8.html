@@ -11,6 +11,7 @@
     </p>
     <iframe src="./gbk.html" frameborder="0"></iframe>
     <script>
+      // 访问地址 http://cycle263.github.io/blogs/javascripts/ajax/iframeDemo/utf8.html
       (function(window, undefined){
         var btn = document.querySelector('button'),
           input = document.querySelector('input'),
@@ -22,7 +23,7 @@
           encodingToGBK = iframe.contentWindow.encoding;
         };
         btn.addEventListener('click', function(){
-          out.innerHtml = encodingToGBK(input.value);
+          out.innerHTML = encodingToGBK(input.value);
         });
       })(window);
     </script>
