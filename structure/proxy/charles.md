@@ -40,3 +40,10 @@
 
 
 * Throttle Setting(网络延迟设置)
+
+
+## charles代理手机
+
+* wifi代理设置
+
+  wifi --> `cycle263`进入高级设置 -->

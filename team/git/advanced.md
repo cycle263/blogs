@@ -99,6 +99,12 @@
 
     `git reset --hard origin/master`     重置暂存区和工作区，与远端master保持一致，包括版本号
 
+  - 暂存数据
+
+    `git stash`  暂存工作区代码到本地栈
+
+    `git stash apply ${0}`  恢复栈内最近暂存的数据到工作区
+
 * git 分支管理
 
   - 新建分支  
