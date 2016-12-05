@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>paste</title>
+  </head>
+  <body>
+    <textarea id="mytest">
+    </textarea>
+    <script type="text/javascript">
+      document.getElementById("mytest").addEventListener("paste", function(ClipboardEvent){
+        console.log(ClipboardEvent, ClipboardEvent.clipboardData.getData('text'));
+      }, false);
+    </script>
+  </body>
+</html>
