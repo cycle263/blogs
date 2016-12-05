@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>read</title>
+  </head>
+  <body>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript">
+    (function(){
+      function readLocalFile(file, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', file, true);
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState === 4) {
+            if(xhr.status === 200 || xhr.status === 0) {
+              callback(xhr.responseText);
+            }
+          }
+        }
+        xhr.send(null);
+      }
+
+      readLocalFile('file:///Users/cycle263/other/github/javascripts/ajax/examples/test.json', function(){
+        console.log(arguments);
+      });
+    })();
+
+    $(function(){
+      $.get('file:///Users/cycle263/other/github/javascripts/ajax/examples/test.json', function(){
+        console.log(arguments);
+      });
+    });
+    </script>
+  </body>
+</html>
