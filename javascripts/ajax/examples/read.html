@@ -21,13 +21,13 @@
         xhr.send(null);
       }
 
-      readLocalFile('file:///Users/cycle263/other/github/javascripts/ajax/examples/test.json', function(){
+      readLocalFile('./test.json', function(){
         console.log(arguments);
       });
     })();
 
     $(function(){
-      $.get('file:///Users/cycle263/other/github/javascripts/ajax/examples/test.json', function(){
+      $.get('./test.json', function(){
         console.log(arguments);
       });
     });
