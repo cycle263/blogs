@@ -19,6 +19,22 @@
       var files = evt.dataTransfer.files; // FileList object.
 
   }
+
+  // 直接读取本地文件
+  function readLocalFile(file, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', file, true);
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState === 4) {
+        if(xhr.status === 200 || xhr.status === 0) {
+          callback(xhr.responseText);
+        }
+      }
+    }
+    xhr.send(null);
+  }
+
+  // readLocalFile('file:///C:/your/path/to/file.txt');
   ```
 
 * file对象属性
@@ -30,5 +46,5 @@
    - type：文件的MIME类型，如果分辨不出类型，则为空字符串，该属性只读。
 
    - lastModified：文件的上次修改时间，格式为时间戳。
-   
+
    - lastModifiedDate：文件的上次修改时间，格式为Date对象实例。
