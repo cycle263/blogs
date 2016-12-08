@@ -7,3 +7,9 @@
 * babel并不能直接打包CommonJS代码，浏览器上允许CommonJS代码需要Webpack之类打包
 
 * run build报错未找到fetch.io(import Fetch from 'fetch.io';)模块，原因install有问题，重新install一次
+
+* import导入文件时，使用文件路径按需加载
+
+  `import { concat, sortBy } from 'lodash';  // 加载整个loadsh`
+
+  `import concat from 'lodash/concat';import sortBy from 'lodash/sortBy';   // 只加载loadsh目录下的这两个文件`
