@@ -5,7 +5,7 @@
 
 - 2、快捷键操作
 
-  * ctrl+shift+o搜寻sources里的函数名称，
+  * ctrl+shift+o （cmd+shift+o）搜寻sources里的函数名称，
 
   * Ctrl + D (Cmd + D) 选择下一个匹配的匹配项
 
