@@ -34,7 +34,7 @@
 
 * 对jquery和html5有一点了解，瞬间暴露了题主的水平。首先应该说熟练使用jquery和相关类库
 
-* d3.js、echart(canvas)、highchart(svg)、highstock、EaselJS、flv.js，如何技术选型？各自优缺点
+* d3.js、echart(canvas)、highchart(svg)、Three.js、highstock、EaselJS、flv.js，如何技术选型？各自优缺点
 
 * 常用的设计模式，例如工厂模式，享元模式，单例模式，流行的mvc，mvvc，mv*架构模式
 
