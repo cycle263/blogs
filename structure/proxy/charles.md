@@ -46,4 +46,14 @@
 
 * wifi代理设置
 
-  wifi --> `cycle263`进入高级设置 -->
+  - wifi -> `cycle263`进入高级设置 -> http代理 -> 手动192.168.1.4:8888  
+
+* https代理设置
+
+  - Charles Help -> SSL Proxying -> Install Charles Root Certificate on a Mobile Device
+
+  - 手机端访问弹出框的提示地址`chls.pro/ssl`，出现证书安装页面，点击安装
+
+  - Charles Proxy -> SSL Proxying Settings... -> 勾选Enable SSL Proxying -> Add 需要代理的地址和端口
+
+    `as.alipayobjects.com:443`
