@@ -13,9 +13,14 @@
         <input type="text" name="username" id="username" value="">
         <label for="password">Password</label>
         <input type="password" name="password" id="password" value="">
-        <textarea contenteditable= true name="name" rows="8" cols="40"></textarea>
+        <textarea contenteditable= true name="name" rows="20" cols="40"></textarea>
       </fieldset>
       <button type="submit" class="hidden">submit</button>
     </form>
+    <script type="text/javascript">
+      document.querySelector('textarea').addEventListener('paste', function(){
+        console.log(arguments);
+      });
+    </script>
   </body>
 </html>
