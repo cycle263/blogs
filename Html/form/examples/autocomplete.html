@@ -18,12 +18,13 @@
       <button type="submit" class="hidden">submit</button>
     </form>
 
-    <div id="imgDiv"  style="border: 1px solid darkblue">
-      CTRL+V即可实现粘贴
+    <div id="imgDiv"  style="border: 1px solid darkblue; min-height:120px;">
+      CTRL+V
     </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
     <script type="text/javascript">
       document.querySelector('textarea').addEventListener('paste', function(){
-        console.log(arguments);   // 无法读取粘贴板内的文件
+        console.log(arguments);   // 锟睫凤拷锟斤拷取粘锟斤拷锟斤拷锟节碉拷锟侥硷拷
       });
 
         function  doPaste() {
