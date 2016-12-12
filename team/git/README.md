@@ -16,9 +16,10 @@
 
 * 5、 git add .     添加相关文件到git库管理, -p同一文件分次提交, [file/dir]多个空格分隔
 
-* 6、 git commit -n -m "修改说明"    提交代码, -n忽略检查, -v提交时比较信息, [file/dir]多个空格分隔,                              --amend使用一次新的commit替代上一次提交 , --verbose会列出diff的结果 
+* 6、 git commit -n -m "修改说明"    提交代码, -n忽略检查, -v提交时比较信息, [file/dir]多个空格分隔,                              --amend使用一次新的commit替代上一次提交 , --verbose会列出diff的结果
 
 * 7、 git push origin branch_name    将当前改动提交到远程branch_name分支上
+  git push -u origin branch_name    将当前改动提交到远程branch_name分支上
 
 
 ### 备注
