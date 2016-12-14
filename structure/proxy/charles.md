@@ -28,6 +28,8 @@
 
     Rewrite功能很强大的，包括header的增删改和param的增删改，还有body修改等。
 
+    ![rewrite](../images/rewrite.png)
+
 * Map Remote
 
     类似于map local, 只是替换成另外一个网址。
@@ -40,6 +42,7 @@
 
 
 * Throttle Setting(网络延迟设置)
+
 
 
 ## charles代理手机
