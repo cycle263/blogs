@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+Field1: <input type="text" id="field1" value="Hello World!"><br>
+Field2: <input type="text" id="field2"><br><br>
+
+<button onclick="copyText()">复制文本</button>
+<script>
+function copyText(){
+  document.getElementById("field2").value=document.getElementById("field1").value;
+}
+</script>
+<button onclick="copyText()">复制文本</button>
+<script>
+function copyText(){
+  document.getElementById("field2").value=document.getElementById("field1").value;
+}
+</script>
+<button onclick="copyText()">复制文本</button>
+<script>
+function copyText(){
+  document.getElementById("field2").value=document.getElementById("field1").value;
+}
+</script>
+<button onclick="copyText("{{key}}")">复制文本</button>
+<script>
+function checkclick(key){
+  var filename = key.split('/');
+  window.open('');
+}
+</script>
+
+<p>当按钮被单击时触发函数。此函数把文本从 Field1 复制到 Field2 中。</p>
+
+</body>
+
+        {% for key,value in filechangerecord.items %}
+         <div>
+             <td>{{key}}</td>
+             <td>{{value}}</td>
+             <button type="button" onclick="checkclick("{{key}}")">查看</button>
+         </div>
+         {% endfor %}
+         <script language="javascript">
+         function checkclick(key){
+             var filename = key.split("/"),
+              len = filename.length;
+             window.open("http://172.16.1.16:8000/recordContenr?filename="+filename[len-1]);
+         }
+         </script>
+</html>
