@@ -8,7 +8,9 @@
 
 * createClass
 
-  React.createClass({ ... })
+  React.createClass({ ... })  
+
+  class MyComponent extends React.Component { ... }
 
 * Component
 
