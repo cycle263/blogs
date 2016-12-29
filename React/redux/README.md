@@ -33,7 +33,7 @@
   a. 需要回调通知state (等同于回调参数) -> action  
 
   b. 需要根据回调处理 (等同于父级方法) -> reducer  
-  
+
   c. 需要state (等同于总状态) -> store  
 
   - React有props和state: props意味着父级分发下来的属性，state意味着组件内部可以自行管理的状态，并且整个React没有数据向上回溯的能力，也就是说数据只能单向向下分发，或者自行内部消化。
@@ -47,3 +47,49 @@
 * 高阶组件
 
   - 由原始组件创造一个新的组件并且扩展它的行为。
+
+
+  ```
+  // MyComponent 是纯的 UI 组件
+  <div className="index">
+    <p>{this.props.text}</p>
+    <input
+      defaultValue={this.props.name}
+      onChange={this.props.onChange}
+    />
+  </div>
+
+
+  const App = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MyComponent);
+
+  // mapStateToProps: 定义 UI 组件参数与 State 之间的映射
+  // mapDispatchToProps：定义 UI 组件与 Action 之间的映射
+
+  function reducer(state = {
+    text: '你好，访问者',
+    name: '访问者'
+  }, action) {
+    switch (action.type) {
+      case 'change':
+        return {
+          name: action.payload,
+          text: '你好，' + action.payload
+        };
+    }
+  }
+
+  const store = createStore(reducer);
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.body.appendChild(document.createElement('div'))
+  );
+
+  // Store由 Redux 提供的createStore方法生成，该方法接受reducer作为参数。
+  // 为了把Store传入组件，必须使用 Redux 提供的Provider组件在应用的最外面，包裹一层。
+  ```
