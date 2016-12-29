@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>flex</title>
+    <style media="screen">
+      body {
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        display: -webkit-flex;
+        width: 100%;
+        padding: 20px 0;
+        flex-wrap: nowrap;
+        -webkit-flex-wrap:nowrap;
+        justify-content: space-around;
+        -webkit-justify-content: space-around;
+        background-color: white;
+      }
+      div button {
+        margin: 0 10px;
+        width: 100%;
+        display: inline-block;
+        outline: 0 none;
+        padding: 0;
+        text-align: center;
+        font-size: 36px;
+        height: 86px;
+        line-height: 86px;
+        border-radius: 16px;
+        color: #fff;
+        background-color: #108ee9;
+        border: 1px solid #108ee9;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button type="button" name="button">上一题</button>
+      <button type="button" name="button">10/10</button>
+      <button type="button" name="button">提交试卷</button>
+    </div>
+  </body>
+</html>
