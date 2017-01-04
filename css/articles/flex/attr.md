@@ -32,9 +32,9 @@
 
   - order [<integer>] 排列顺序，默认 0, 数值越小，排列越靠前
 
-  - flex-grow [<number>] 放大比例，默认 0,即如果存在剩余空间，也不放大.
+  - flex-grow [<number>] 放大比例，默认1, 即如果存在剩余空间，该元素按照权重比例放大。剩余参照此值
 
-  - flex-shrink 项目的缩小比例，默认为1，即如果空间不足，该item将缩小
+  - flex-shrink 项目的缩小比例，默认为1，即如果空间不足，该item将缩小。溢出参照此值
 
   - flex-basis [<length> | auto; /* default auto \*/] 分配多余空间之前，项目占据的 main size, 默认auto
 
