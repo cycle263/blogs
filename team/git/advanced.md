@@ -112,6 +112,10 @@
     `git checkout -b branch origin/new-name`  切换分支，新建一个branch的本地分支，并且依赖于远端origin库的new_name分支，不存在就新建分支  
     git checkout -b [分支名] [远程名]/[分支名]  
 
+  - 切换分支
+    `git checkout branch-name`  切换到已经存在的分支
+    `git checkout -b branch origin/new-name`  新建本地分支并映射到对应的远端分支
+
   - 跟踪分支(依赖分支)
     `git checkout --trach develop origin/develop`      新建一个tracking指向远端develop
     `git branch --set-upstream-to=origin/<branch> [develop]`  将已经存在的分支指向远端，push/pull不用指向远端了，直接连接指定的远端分支
