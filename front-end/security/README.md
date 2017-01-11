@@ -41,3 +41,19 @@
     - Encrypted Token Pattern： 对 token 进行加密
 
     - Custom Header： 使用自定义请求头部，这个方式依赖于同源策略。其中最适合的自定义头部便是： "X-Requested-With: XMLHttpRequest"
+
+
+* noreferer
+
+  从一个网站点击链接进入另一个页面时，浏览器会在header里加上Referer值，来标识这次访问的来源页面, 但是这种标识有可能会泄漏用户的隐私。基于HTML标准，可以在a标签内使用rel="noreferrer"来达到这一目的。提供跨浏览器支持的更好的办法是使用一个第三方的库noreferrer.js，它可以自动识别浏览器并选择最优方案。
+
+  其他方案
+  ```
+  function open_without_referrer(link){
+    document.body.appendChild(document.createElement('iframe')).src='javascript:"<script>top.location.replace(\''+link+'\')<\/script>"';
+  }
+
+  function open_new_window(full_link){
+    window.open('javascript:window.name;', '<script>location.replace("'+full_link+'")<\/script>');
+  }
+  ```
