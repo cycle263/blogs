@@ -16,7 +16,7 @@
         this.each(function() {
             // get element text
             var $this = $(this);
-            var text = $this.attr('title');
+            var text = $this.html();
             var origText = text;
             var origLength = origText.length;
             var origHeight = $this.height();
