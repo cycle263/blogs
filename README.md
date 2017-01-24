@@ -151,30 +151,6 @@
 
     > 定时发送ajax请求，但是需要服务器有很快的处理速度和资源。
 
-* Web Worker
-
-    > Web Workers 是 HTML5 提供的一个javascript多线程解决方案.  
-
-    Web Worker的基本原理就是在当前javascript的主线程中，使用Worker类加载一个javascript文件来开辟一个新的线程，起到互不阻塞执行的效果，并且提供主线程和新线程之间数据交换的接口：postMessage，onmessage。    
-
-    - WEB主线程:  
-
-        1.通过 worker = new Worker( url ) 加载一个JS文件来创建一个worker，同时返回一个worker实例。  
-
-        2.通过worker.postMessage( data ) 方法来向worker发送数据。  
-
-        3.绑定worker.onmessage方法来接收worker发送过来的数据。   
-
-        4.可以使用 worker.terminate() 来终止一个worker的执行。  
-
-    - worker新线程：  
-
-        1.通过postMessage( data ) 方法来向主线程发送数据。  
-
-        2.绑定onmessage方法来接收主线程发送过来的数据。  
-
-    - 全局对象
-
 * WebSocket
 
     > Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说.跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充.  
@@ -198,6 +174,31 @@
   | 单向通信，服务端推送  | 双向通信    |
   | 基于http，支持性好   | 新的协议    |
   | 简单，轻量，断线重连  | 较复杂，重连需额外部署 |
+
+
+* Web Worker
+
+    > Web Workers 是 HTML5 提供的一个javascript多线程解决方案.  
+
+    Web Worker的基本原理就是在当前javascript的主线程中，使用Worker类加载一个javascript文件来开辟一个新的线程，起到互不阻塞执行的效果，并且提供主线程和新线程之间数据交换的接口：postMessage，onmessage。    
+
+    - WEB主线程:  
+
+        1.通过 worker = new Worker( url ) 加载一个JS文件来创建一个worker，同时返回一个worker实例。  
+
+        2.通过worker.postMessage( data ) 方法来向worker发送数据。  
+
+        3.绑定worker.onmessage方法来接收worker发送过来的数据。   
+
+        4.可以使用 worker.terminate() 来终止一个worker的执行。  
+
+    - worker新线程：  
+
+        1.通过postMessage( data ) 方法来向主线程发送数据。  
+
+        2.绑定onmessage方法来接收主线程发送过来的数据。  
+
+    - 全局对象
 
 * localStorage vs sessionStorage
 
