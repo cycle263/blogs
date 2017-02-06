@@ -22,7 +22,21 @@
   * polygon - 多边形
   * path - 路径
     + 移动画笔指令M，画直线指令：L，H，V，闭合指令Z
-  * g - 形状组
+
+  * g - 形状组，可以被子元素继承，但是没有X，Y属性
+  * svg 根元素，可以相互嵌套
+  * def 用于定义在SVG中可重用的元素，def元素不会直接展示出来，可以通过use元素来引用
+  * use 通过它来复用def元素，也包括<g>、<symbol>元素，使用<use xlink: href="#id"/>即可调用
+  * text 可以用它来实现word中的那种“艺术字”
+  * image 可以在SVG中嵌套对应的图片，并可以在图片上和周围做对应的处理
+
+_ svg样式
+
+  * 轮廓 stroke
+
+  * 填充 fill
+
+  * 变换 transform
 
 * 插入SVG文件
 
