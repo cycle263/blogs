@@ -40,3 +40,8 @@
       `S x2 y2, x y (or s dx2 dy2, dx dy)`
 
   * 弧形
+
+    弧形可以视为圆形或椭圆形的一部分。弧形命令A的前两个参数分别是x轴半径和y轴半径，弧形命令A的第三个参数表示弧形的旋转情况。参数是large-arc-flag（角度大小） 和sweep-flag（弧线方向），large-arc-flag决定弧线是大于还是小于180度，0表示小角度弧，1表示大角度弧。sweep-flag表示弧线的方向，0表示从起点到终点沿逆时针画弧，1表示从起点到终点沿顺时针画弧。
+
+    `A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+    a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy`
