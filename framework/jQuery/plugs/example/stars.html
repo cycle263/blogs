@@ -3,10 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>stars</title>
+    <style media="screen">
+      .c-star{display: inline-block;width: 20px; height: 20px;margin-right: 8px;}
+    </style>
   </head>
   <body>
-    <div class="c-stars">
-      <span class="c-star"></span>
-    </div>
+    <div class="c-stars" name="grade"></div>
   </body>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <script type="text/javascript" src="../scripts/jQuery.Cstars.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      $('.c-stars').Cstars();
+    });
+  </script>
 </html>
