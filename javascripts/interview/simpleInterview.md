@@ -1,19 +1,18 @@
 ## 全局考察
 
 * commonJS和AMD规范区别？和ES6的模块有什么不同？（ [Detail](../../structure/README.md) ）
-* react的生命周期？组件之间的数据通信？数据模型(redux、flux、reselect)？react适合什么类型的项目工程
+* react生命周期？组件之间通信？数据模型(redux、flux、reselect)？react适合什么项目? 虚拟DOM和diff算法原理(按需更新)？
   > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
 * 在浏览器中输入url到页面内容全部显示？html文档解析过程？
   > 从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 
 * ES6有哪些新特性？ babel转码的实现原理？实现promise? aynsc和await
-* js垃圾回收：标记清除和引用计数
 
 ## 前端技术具体考察点
 
 * 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？BFC? 布局方式？iframe的优缺点？
-* 闭包的理解？this对象？原型链？作用域？变量提升？Ajax跨域？冒泡和捕获? new操作? IIFE(http协议标准、json标准)?
+* 闭包的理解？this对象？原型链？作用域？变量提升？Ajax跨域？冒泡和捕获? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数
 * canvas、svg区别和各自特点，数据量大运算复杂，谁性能更好？
   > Canvas提供的功能更原始，适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，功能更完善，适合静态图片展示，高保真文档查看和打印的应用场景。
 
@@ -27,7 +26,7 @@
 * 比较风靡的前端框架react, angular2, vue, backbone等，常见的模板引擎jade、velocity等
 * 对前端工程进行流程化开发，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，nginx的combo技术
   > 相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案  
-  
+
 * d3.js、echart(canvas)、highchart(svg)、Three.js、highstock、EaselJS、flv.js，如何技术选型？各自优缺点
 
 ## 其他加分技能
