@@ -32,4 +32,6 @@
 ## redux之connect
 
 
-## 
+## redux流向
+
+  ![redux流向](./images/redux-detail.jpg)
