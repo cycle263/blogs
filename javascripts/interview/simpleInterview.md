@@ -3,7 +3,7 @@
 * react生命周期？组件之间通信？数据模型(redux、flux、reselect)？react适合什么项目? 虚拟DOM和diff算法原理(按需更新)？
   > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
-* 在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post
+* 在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志)
   > 从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 
 * ES6有哪些新特性？ babel转码的实现原理？实现promise? aynsc和await
@@ -21,7 +21,7 @@
 ## 框架类库和工程化
 
 * 前端优化：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存，图片服务器，减少DOM操作，模块化
-* 常用的设计模式，例如工厂模式，享元模式，单例模式，流行的mvc，mvvc，mv*架构模式
+* 常用的设计模式，例如工厂模式，享元模式，单例模式，流行的mvc，mvvc，mv*架构模式，REST API vs GraphQL(Apollo-请求多组数据)
 * 比较风靡的前端框架react, angular2, vue, backbone等，常见的模板引擎jade、velocity等
 * 可视化：d3.js、echart(canvas)、highchart(svg)、Three.js(基于D3)、highstock、EaselJS、flv.js，如何技术选型？优缺点
 * 对前端工程进行流程化开发，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，nginx的combo技术
