@@ -27,10 +27,18 @@
 
 * js动态添加script的src地址：
 
-  - html含有script元素，但没有src属性，可以动态添加src地址，并且download对应的资源下来；
+  - html含有script元素，但没有src属性，js动态添加src地址，并且download对应的资源下来；
 
-  - html含有script元素，并有src属性，动态添加src地址不能download对应的资源；
+  - html含有script元素，并有src属性，js动态添加src地址不能download对应的资源；
 
   - js动态创建script元素，则可以多次download动态资源
 
   - iframe和img元素则可以多次添加src地址，并多次download资源
+
+* Get vs Post
+
+  - Post 比 Get安全一点点，Get会显示在浏览器地址和历史记录，并且会保存到web服务器日志里，但二者都是明文传送，因此被抓包的话，二者都不安全
+
+  - Get更加方便手动输入使用
+
+  - 可以重复的请求用Get(查), 不可重复的用Post(增删改)
