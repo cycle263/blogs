@@ -33,6 +33,9 @@
   - 查看所有的配置  
     `git config --list`
 
+  - push提示log中有不符合规定的邮箱
+    撤销不符合规定的commitid，或者还原后重新commit，方能push到远端
+
 * git 克隆源码
 
   - 克隆代码  
