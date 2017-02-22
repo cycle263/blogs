@@ -57,7 +57,7 @@ jQuery.fn.extend({
                     str += renderNextPages();
                     str += "</ul>";
                     if(opts.showGoBtn){
-                        str += '<span class="m-page-skip"><input class="m-page-num" type="text" /><button class="button m-page-btn">Go</button></span>';
+                        str += '<span class="m-page-skip"><input class="m-page-num" type="text" /><button type="button" class="button m-page-btn">Go</button></span>';
                     }
                     str += '</div></div>';
                 }
