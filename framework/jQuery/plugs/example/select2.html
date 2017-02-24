@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="http://cstraining-d1444.alipay.net/select2/css/select2.min.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+      .materialSelect2{width: 200px;}
+    </style>
+  </head>
+  <body>
+    <select class="materialSelect2" multiple="multiple" data-placeholder="选择多个资料" data-allow-clear="true">
+      <option value="123" selected="selected">123</option>
+    </select>
+
+    <script src="http://cstraining-d1444.alipay.net/js/jquery-1.8.1.min.js"></script>
+    <script src="http://cstraining-d1444.alipay.net/select2/js/select2.min.js"></script>
+    <script src="http://cstraining-d1444.alipay.net/select2/js/i18n/zh-CN.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        var materialSelect2 = $(".materialSelect2").select2({
+          ajax: {
+              url: "./queryMaterialList.json",
+              cache: true,
+              delay: 250,
+              data: function (params) {
+                  return {
+                      start: 0,
+                      limit: 20,
+                      pageIndex: 0,
+                      meterialNameOption: encodeURIComponent(params.term)
+                  };
+              },
+              processResults: function (data) {
+                  return {
+                      results: data.data.map(function(item){
+                        item.text = item.name;
+                        return item;
+                      })
+                  };
+              }
+          },
+          templateResult: function (data) {
+              if (data.id === '') {
+                  return '请选择资料';
+              }
+              return data.name || data.text;
+          },
+          templateSelection: function (data) {
+              return data.name || data.text;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
