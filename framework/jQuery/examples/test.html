@@ -14,18 +14,18 @@
       .content li{
         display: inline-block;
         list-style: none;
-        padding: 4px 0px 4px 16px;
+        padding: 2px 0px 2px 16px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        margin: 3px 8px;
+        margin: 3px 6px;
         background-color: #eee;
         white-space: nowrap;
       }
       .content li .close{
         display: inline-block;
-        height: 32px;
+        height: 24px;
         width: 24px;
-        line-height: 32px;
+        line-height: 24px;
         text-align: center;
         color: #999;
         cursor: pointer;
@@ -100,8 +100,7 @@
     $("input[name='q']").focus();
 
     $('body').on('keyup', '.content .input', function(){
-      requestData();
-      $('.insert-items').show();
+      requestData($(this).val(), './queryLabelsByName.json', '.insert-items');
     });
 
     $('body').click(function(){
@@ -124,16 +123,17 @@
     });
 
     $('.insert-items').on('click', 'li', function(){
+      if($(this).hasClass('selected')) return;
       $('.content .input').replaceWith($(this.outerHTML).append('<span class="close">x</span>'));
       $('.insert-items').hide();
     });
 
-    function requestData(){
+    function requestData(name, url, container){
       $('.insert-items').html('loading...');
       currentRequest = jQuery.ajax({
-        url: './queryLabelsByName.json',
+        url: url,
         type: 'POST',
-        data: {},
+        data: {name: name},
         beforeSend: function()    {
           if(currentRequest != null) {
             currentRequest.abort();
@@ -152,9 +152,9 @@
                   selected = 'selected';
                 }
               }
-              str += '<li class="' + selected + '" data-id="' + item.id + '">' + item.name + '</li>';
+              str += '<li class="' + selected + '" data-id="' + item.id + '">' + (item.name || item.text) + '</li>';
             }
-            $('.insert-items').html(str);
+            $(container).html(str).show();
           }
         }
       });
