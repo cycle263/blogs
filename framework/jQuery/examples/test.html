@@ -90,19 +90,17 @@
 
 
   <ul class="insert-items" style="display: none;">
-    <li>这是前面部分</li>
-    <li>
-      这是段落部分，中心内容段落
-    </li>
-    <li>这是结尾部分</li>
+
   </ul>
 </div>
 
 <script type="text/javascript">
   $(document).ready(function () {
+    var currentRequest = null;
     $("input[name='q']").focus();
 
     $('body').on('keyup', '.content .input', function(){
+      requestData();
       $('.insert-items').show();
     });
 
@@ -126,21 +124,29 @@
       $('.insert-items').hide();
     });
 
-    var currentRequest = jQuery.ajax({
-      url: './queryLabelsByName.json',
-      type: 'POST',
-      data: {},
-      beforeSend: function()    {
-        if(currentRequest != null) {
-          currentRequest.abort();
+    function requestData(){
+      $('.insert-items').html('loading...');
+      currentRequest = jQuery.ajax({
+        url: './queryLabelsByName.json',
+        type: 'POST',
+        data: {},
+        beforeSend: function()    {
+          if(currentRequest != null) {
+            currentRequest.abort();
+          }
+        },
+        success: function(res) {
+          if(res) {
+            var str = '';
+            for(var i = 0, l = res.length; i < l; i++){
+              var item = res[i];
+              str += '<li data-id="' + item.id + '">' + item.name + '</li>';
+            }
+            $('.insert-items').html(str);
+          }
         }
-      },
-      success: function(res) {
-        if(res.success) {
-
-        }
-      }
-    });
+      });
+    }
   });
 </script>
 </body>
