@@ -104,6 +104,10 @@
       $('.insert-items').show();
     });
 
+    $('body').click(function(){
+      $('.insert-items').hide();
+    });
+
     $('body').on('click', '.content li:not(.input),.content', function(event){
       event.stopPropagation();
       $('.content .input').remove();
@@ -119,7 +123,7 @@
       $(this).parent().remove();
     });
 
-    $('.insert-items li').click(function(){
+    $('.insert-items').on('click', 'li', function(){
       $('.content .input').replaceWith($(this.outerHTML).append('<span class="close">x</span>'));
       $('.insert-items').hide();
     });
