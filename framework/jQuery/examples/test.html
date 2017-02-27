@@ -1,22 +1,147 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>jquery聚焦文本框 - 计划 - 博客园</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <title>jquery聚焦文本框 - 计划</title>
+    <style media="screen">
+      .content {
+        width: 240px;
+        padding: 8px 2px;
+        margin: 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: auto;
+      }
+      .content li{
+        display: inline-block;
+        list-style: none;
+        padding: 4px 0px 4px 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 3px 8px;
+        background-color: #eee;
+        white-space: nowrap;
+      }
+      .content li .close{
+        display: inline-block;
+        height: 32px;
+        width: 24px;
+        line-height: 32px;
+        text-align: center;
+        color: #999;
+        cursor: pointer;
+      }
+      .content li.input{
+        padding: 0;
+        outline: none;
+        border: none;
+      }
+      .content li.input input{
+        outline: none;
+      }
+      .hidden-input {
+        border: none;
+        width: 32px;
+        padding: 6px;
+        height: 32px;
+        display: inline-block;
+      }
+      .insert-items {
+        max-width: 280px;
+        position: absolute;
+        top: 75px;
+        z-index: 9;
+        background: #fff;
+        border: 1px solid #aaa;
+        box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.11);
+        border-radius: 3px;
+        overflow: hidden;
+        padding: 4px;
+      }
+      .insert-items li {
+        cursor: pointer;
+        float: left;
+        padding: 2px 16px;
+        border: 1px solid #bbb;
+        border-radius: 3px;
+        margin: 4px;
+        list-style: none;
+        line-height: 24px;
+      }
+      .insert-items li.selected {
+        background-color: #64b6ff;
+        color: #fff;
+      }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
 </head>
 <body>
 <form action="http://www.google.com.hk" id="cse-search-box">
-      <div>
-        <input type="hidden" name="cx" value="partner-pub-7740261255677392:7064996710" />
-        <input type="hidden" name="ie" value="UTF-8" />
-        <!--文本框--><input type="text" name="q" size="25" />
-        <input type="submit" name="sa" value="&#x641c;&#x7d22;" />
-      </div>
-    </form>
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-7740261255677392:7064996710" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <!--文本框--><input type="text" name="q" size="25" />
+    <input type="submit" name="sa" value="&#x641c;&#x7d22;" />
+  </div>
+</form>
+<div class="" style="position:relative;">
+  <ul class="content" contenteditable="true">
+
+  </ul>
+
+
+  <ul class="insert-items" style="display: none;">
+    <li>这是前面部分</li>
+    <li>
+      这是段落部分，中心内容段落
+    </li>
+    <li>这是结尾部分</li>
+  </ul>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function () {
     $("input[name='q']").focus();
-  })</script>
+
+    $('body').on('keyup', '.content .input', function(){
+      $('.insert-items').show();
+    });
+
+    $('body').on('click', '.content li:not(.input),.content', function(event){
+      event.stopPropagation();
+      $('.content .input').remove();
+      if($(this).hasClass('content')){
+        $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
+      } else {
+        $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter(this).find('input').focus();
+      }
+    });
+
+    $('body').on('click', '.content .close', function(event){
+      event.stopPropagation();
+      $(this).parent().remove();
+    });
+
+    $('.insert-items li').click(function(){
+      $('.content .input').replaceWith($(this.outerHTML).append('<span class="close">x</span>'));
+      $('.insert-items').hide();
+    });
+
+    var currentRequest = jQuery.ajax({
+      url: './queryLabelsByName.json',
+      type: 'POST',
+      data: {},
+      beforeSend: function()    {
+        if(currentRequest != null) {
+          currentRequest.abort();
+        }
+      },
+      success: function(res) {
+        if(res.success) {
+
+        }
+      }
+    });
+  });
+</script>
 </body>
 </html>
