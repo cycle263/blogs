@@ -4,7 +4,7 @@
     <title>jquery聚焦文本框 - 计划</title>
     <style media="screen">
       .content {
-        width: 240px;
+        width: 280px;
         padding: 8px 2px;
         margin: 0;
         border: 1px solid #ccc;
@@ -141,10 +141,18 @@
         },
         success: function(res) {
           if(res) {
-            var str = '';
+            var str = '',
+              selectedItem = $('.content li').map(function(k, ele){
+                return $(ele).data('id');
+              }).toArray();
             for(var i = 0, l = res.length; i < l; i++){
-              var item = res[i];
-              str += '<li data-id="' + item.id + '">' + item.name + '</li>';
+              var item = res[i], selected = '';
+              for(var j = 0, len = selectedItem.length; j < len; j++){
+                if(item.id === selectedItem[j]){
+                  selected = 'selected';
+                }
+              }
+              str += '<li class="' + selected + '" data-id="' + item.id + '">' + item.name + '</li>';
             }
             $('.insert-items').html(str);
           }
