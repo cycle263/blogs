@@ -5,6 +5,7 @@
     <style media="screen">
       .content {
         width: 280px;
+        max-height: 300px;
         padding: 8px 2px;
         margin: 0;
         border: 1px solid #ccc;
@@ -47,7 +48,8 @@
         display: inline-block;
       }
       .insert-items {
-        max-width: 280px;
+        width: 280px;
+        max-height: 300px;
         position: absolute;
         top: 75px;
         z-index: 9;
@@ -56,20 +58,21 @@
         box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.11);
         border-radius: 3px;
         overflow: hidden;
-        padding: 4px;
+        padding: 2px;
         margin: 0;
         overflow: auto;
       }
       .insert-items li {
         cursor: pointer;
-        float: left;
         padding: 2px 16px;
-        border: 1px solid #bbb;
         border-radius: 3px;
-        margin: 4px;
+        margin: 4px 0;
         list-style: none;
         line-height: 24px;
         white-space: nowrap;
+      }
+      .insert-items li:hover{
+        background-color: #ddd;
       }
       .insert-items li.selected {
         background-color: #64b6ff;
