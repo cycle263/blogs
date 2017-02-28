@@ -140,6 +140,11 @@
         $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter($(this).parent()).find('input').focus();
       }
     });
+    $('body').on('click', '.c-select li:not(.input)', function(event){
+      event.stopPropagation();
+      $('.c-select .input').remove();
+      $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter(this).find('input').focus();
+    });
 
     $('body').on('click', '.c-select .close', function(event){
       event.stopPropagation();
