@@ -3,7 +3,7 @@
 <head>
     <title>自定义下拉框</title>
     <style media="screen">
-      .content {
+      .c-select {
         width: 280px;
         max-height: 300px;
         min-height: 36px;
@@ -13,7 +13,7 @@
         border-radius: 5px;
         overflow: auto;
       }
-      .content li{
+      .c-select li{
         display: inline-block;
         position: relative;
         list-style: none;
@@ -26,7 +26,7 @@
         font-size: 14px;
         white-space: nowrap;
       }
-      .content li .before{
+      .c-select li .before{
         display: inline-block;
         position: absolute;
         width: 12px;
@@ -34,7 +34,7 @@
         top: 0;
         left: -13px;
       }
-      .content li .close{
+      .c-select li .close{
         display: inline-block;
         height: 24px;
         width: 24px;
@@ -43,13 +43,13 @@
         color: #999;
         cursor: pointer;
       }
-      .content li.input{
+      .c-select li.input{
         padding: 0;
         outline: none;
         border: none;
         margin: 0;
       }
-      .content li.input input{
+      .c-select li.input input{
         outline: none;
         font-size: 13px;
       }
@@ -60,7 +60,7 @@
         height: 32px;
         display: inline-block;
       }
-      .insert-items {
+      .select-items {
         width: 280px;
         max-height: 300px;
         position: absolute;
@@ -75,17 +75,17 @@
         margin: 0;
         overflow: auto;
       }
-      .insert-items li {
+      .select-items li {
         cursor: pointer;
         padding: 4px 16px;
         list-style: none;
         line-height: 24px;
         white-space: nowrap;
       }
-      .insert-items li:hover{
+      .select-items li:hover{
         background-color: #ddd;
       }
-      .insert-items li.selected {
+      .select-items li.selected {
         background-color: #64b6ff;
         color: #fff;
       }
@@ -95,11 +95,11 @@
 <body>
 
 <div class="" style="position:relative;">
-  <ul class="content" contenteditable="true">
+  <ul class="c-select" contenteditable="true">
 
   </ul>
 
-  <ul class="insert-items" style="display: none;">
+  <ul class="select-items" style="display: none;">
 
   </ul>
 </div>
@@ -109,21 +109,21 @@
     var currentRequest = null;
     $("input[name='q']").focus();
 
-    $('body').on('keyup', '.content .input input', function(){
+    $('body').on('keyup', '.c-select .input input', function(){
       var me = $(this),
         t = me.val();
       me.css('width', (t.length * 13 + 12) + 'px');
-      requestData(t, './queryLabelsByName.json', '.insert-items');
+      requestData(t, './queryLabelsByName.json', '.select-items');
     });
 
     $('body').click(function(){
-      $('.content .input').remove();
-      $('.insert-items').hide();
+      $('.c-select .input').remove();
+      $('.select-items').hide();
     });
 
-    $('body').on('click', '.content li:not(.input) .before,.content', function(event){
+    $('body').on('click', '.c-select li:not(.input) .before,.c-select', function(event){
       event.stopPropagation();
-      $('.content .input').remove();
+      $('.c-select .input').remove();
       if($(this).hasClass('content')){
         $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
       } else {
@@ -131,19 +131,19 @@
       }
     });
 
-    $('body').on('click', '.content .close', function(event){
+    $('body').on('click', '.c-select .close', function(event){
       event.stopPropagation();
       $(this).parent().remove();
     });
 
-    $('.insert-items').on('click', 'li', function(){
+    $('.select-items').on('click', 'li', function(){
       if($(this).hasClass('selected')) return;
-      $('.content .input').replaceWith($(this.outerHTML).append('<span class="close">x</span><span class="before"></span>'));
-      $('.insert-items').hide();
+      $('.c-select .input').replaceWith($(this.outerHTML).append('<span class="close">x</span><span class="before"></span>'));
+      $('.select-items').hide();
     });
 
     function requestData(name, url, container){
-      $('.insert-items').html('loading...');
+      $(container).html('loading...');
       currentRequest = jQuery.ajax({
         url: url,
         type: 'POST',
@@ -156,7 +156,7 @@
         success: function(res) {
           if(res) {
             var str = '',
-              selectedItem = $('.content li').map(function(k, ele){
+              selectedItem = $('.c-select li').map(function(k, ele){
                 return $(ele).data('id');
               }).toArray();
             for(var i = 0, l = res.length; i < l; i++){
@@ -168,7 +168,7 @@
               }
               str += '<li class="' + selected + '" data-id="' + item.id + '">' + (item.name || item.text) + '</li>';
             }
-            $(container).html(str).show().css('top', $(container).prev()[0].clientHeight + 1);
+            $(container).html(str).show().css({'top', $(container).prev()[0].clientHeight + 1, 'width', $('.c-select').width()});
           }
         }
       });
