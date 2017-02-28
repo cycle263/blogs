@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>jquery聚焦文本框 - 计划</title>
+    <title>自定义下拉框</title>
     <style media="screen">
       .content {
         width: 280px;
@@ -23,14 +23,16 @@
         margin: 3px 6px;
         background-color: #e4e4e4;
         color: #666;
-        font-size: 13px;
+        font-size: 14px;
         white-space: nowrap;
       }
-      .content li::before{
-        content: '';
-      }
-      .content li::after{
-        content: '';
+      .content li .before{
+        display: inline-block;
+        position: absolute;
+        width: 14px;
+        height: 28px;
+        top: 0;
+        left: -14px;
       }
       .content li .close{
         display: inline-block;
@@ -117,13 +119,13 @@
       $('.insert-items').hide();
     });
 
-    $('body').on('click', '.content li:not(.input),.content', function(event){
+    $('body').on('click', '.content li:not(.input) .before,.content', function(event){
       event.stopPropagation();
       $('.content .input').remove();
       if($(this).hasClass('content')){
         $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
       } else {
-        $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter(this).find('input').focus();
+        $('<li class="input"><input class="hidden-input" type="text" /></li>').insertBefore(this).find('input').focus();
       }
     });
 
@@ -134,7 +136,7 @@
 
     $('.insert-items').on('click', 'li', function(){
       if($(this).hasClass('selected')) return;
-      $('.content .input').replaceWith($(this.outerHTML).append('<span class="close">x</span>'));
+      $('.content .input').replaceWith($(this.outerHTML).append('<span class="close">x</span><span class="before"></span>'));
       $('.insert-items').hide();
     });
 
