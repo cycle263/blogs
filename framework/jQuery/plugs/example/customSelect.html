@@ -77,9 +77,7 @@
       }
       .insert-items li {
         cursor: pointer;
-        padding: 2px 16px;
-        border-radius: 3px;
-        margin: 4px 0;
+        padding: 4px 16px;
         list-style: none;
         line-height: 24px;
         white-space: nowrap;
@@ -111,7 +109,7 @@
     var currentRequest = null;
     $("input[name='q']").focus();
 
-    $('body').on('keyup', '.content .input', function(){
+    $('body').on('keyup', '.content .input input', function(){
       var me = $(this),
         t = me.val();
       me.css('width', (t.length * 13 + 12) + 'px');
