@@ -125,7 +125,7 @@
       if($(this).hasClass('content')){
         $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
       } else {
-        $('<li class="input"><input class="hidden-input" type="text" /></li>').insertBefore(this).find('input').focus();
+        $('<li class="input"><input class="hidden-input" type="text" /></li>').insertBefore($(this).parent()).find('input').focus();
       }
     });
 
