@@ -6,7 +6,8 @@
       .content {
         width: 280px;
         max-height: 300px;
-        padding: 8px 2px;
+        min-height: 36px;
+        padding: 4px 2px;
         margin: 0;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -14,6 +15,7 @@
       }
       .content li{
         display: inline-block;
+        position: relative;
         list-style: none;
         padding: 2px 0px 2px 16px;
         border: 1px solid #ccc;
@@ -21,7 +23,14 @@
         margin: 3px 6px;
         background-color: #e4e4e4;
         color: #666;
+        font-size: 13px;
         white-space: nowrap;
+      }
+      .content li::before{
+        content: '';
+      }
+      .content li::after{
+        content: '';
       }
       .content li .close{
         display: inline-block;
@@ -39,6 +48,7 @@
       }
       .content li.input input{
         outline: none;
+        font-size: 13px;
       }
       .hidden-input {
         border: none;
