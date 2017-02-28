@@ -28,13 +28,18 @@
         font-size: 14px;
         white-space: nowrap;
       }
-      .c-select li .before{
+      .c-select li .before, .c-select li .after{
         display: inline-block;
         position: absolute;
-        width: 12px;
+        width: 6px;
         height: 28px;
         top: 0;
+      }
+      .c-select li .before{
         left: -13px;
+      }
+      .c-select li .after{
+        right: -13px;
       }
       .c-select li .close{
         display: inline-block;
@@ -140,7 +145,7 @@
 
     $('.select-items').on('click', 'li', function(){
       if($(this).hasClass('selected')) return;
-      $('.c-select .input').replaceWith($(this.outerHTML).append('<span class="close">x</span><span class="before"></span>'));
+      $('.c-select .input').replaceWith($(this.outerHTML).append('<span class="close">x</span><span class="before"></span><span class="after"></span>'));
       $('.select-items').hide();
     });
 
