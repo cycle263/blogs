@@ -18,11 +18,11 @@
         position: relative;
         list-style: none;
         padding: 2px 0px 2px 16px;
-        border: 1px solid #ccc;
+        border: 1px solid #aaa;
         border-radius: 5px;
         margin: 3px 9px;
-        background-color: #e4e4e4;
-        color: #666;
+        background-color: #ddd;
+        color: #555;
         font-size: 14px;
         white-space: nowrap;
       }
@@ -67,8 +67,8 @@
         top: 75px;
         z-index: 9;
         background: #fff;
-        border: 1px solid #aaa;
-        box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.11);
+        border: 1px solid #999;
+        box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
         border-radius: 3px;
         overflow: hidden;
         padding: 2px;
@@ -114,7 +114,6 @@
         t = me.val();
       me.css('width', (t.length * 13 + 12) + 'px');
       requestData(t, './queryLabelsByName.json', '.insert-items');
-
     });
 
     $('body').click(function(){
