@@ -128,13 +128,15 @@
       $('.select-items').hide();
     });
 
-    $('body').on('click', '.c-select li:not(.input) .before,.c-select', function(event){
+    $('body').on('click', '.c-select li .before,.c-select li .after,.c-select', function(event){
       event.stopPropagation();
       $('.c-select .input').remove();
       if($(this).hasClass('c-select')){
         $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
-      } else {
+      } else if($(this).hasClass('before')){
         $('<li class="input"><input class="hidden-input" type="text" /></li>').insertBefore($(this).parent()).find('input').focus();
+      } else if($(this).hasClass('after')){
+        $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter($(this).parent()).find('input').focus();
       }
     });
 
