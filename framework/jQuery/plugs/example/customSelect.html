@@ -124,7 +124,7 @@
     $('body').on('click', '.c-select li:not(.input) .before,.c-select', function(event){
       event.stopPropagation();
       $('.c-select .input').remove();
-      if($(this).hasClass('content')){
+      if($(this).hasClass('c-select')){
         $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
       } else {
         $('<li class="input"><input class="hidden-input" type="text" /></li>').insertBefore($(this).parent()).find('input').focus();
