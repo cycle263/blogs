@@ -20,7 +20,7 @@
         padding: 2px 0px 2px 16px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        margin: 3px 6px;
+        margin: 3px 9px;
         background-color: #e4e4e4;
         color: #666;
         font-size: 14px;
@@ -29,10 +29,10 @@
       .content li .before{
         display: inline-block;
         position: absolute;
-        width: 14px;
+        width: 18px;
         height: 28px;
         top: 0;
-        left: -14px;
+        left: -19px;
       }
       .content li .close{
         display: inline-block;
@@ -47,6 +47,7 @@
         padding: 0;
         outline: none;
         border: none;
+        margin: 0;
       }
       .content li.input input{
         outline: none;
@@ -111,7 +112,11 @@
     $("input[name='q']").focus();
 
     $('body').on('keyup', '.content .input', function(){
-      requestData($(this).val(), './queryLabelsByName.json', '.insert-items');
+      var me = $(this),
+        t = me.val();
+      me.css('width', (t.length * 13 + 12) + 'px');
+      requestData(t, './queryLabelsByName.json', '.insert-items');
+
     });
 
     $('body').click(function(){
