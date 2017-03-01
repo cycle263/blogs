@@ -101,7 +101,7 @@
 </head>
 <body>
 
-<div class="" style="position:relative;">
+<div class="" style="position:relative;top: 100px;left: 100px;background-color: #eee;">
   <ul class="c-select" contenteditable="true">
 
   </ul>
@@ -133,8 +133,8 @@
       event.stopPropagation();
       $('.c-select .input').remove();
       if($(this).hasClass('c-select')){
-        var mx = event.offsetLeft,
-          my = event.offsetTop,
+        var mx = event.offsetX,
+          my = event.offsetY,
           targetEle = null;
         $(this).find('li').each(function(k,ele){
           var ex = ele.offsetLeft,
