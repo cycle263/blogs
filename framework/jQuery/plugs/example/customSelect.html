@@ -117,11 +117,14 @@
     var currentRequest = null;
     $("input[name='q']").focus();
 
-    $('body').on('keyup', '.c-select .input input', function(){
+    $('body').on('keyup', '.c-select .input input', function(){    
       var me = $(this),
         t = me.val();
       me.css('width', (t.length * 13 + 12) + 'px');
       requestData(t, './queryLabelsByName.json', '.select-items');
+    });
+    $('body').on('click', '.c-select .input input', function(event){
+      event.stopPropagation();
     });
 
     $('body').click(function(){
