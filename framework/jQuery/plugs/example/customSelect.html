@@ -133,7 +133,23 @@
       event.stopPropagation();
       $('.c-select .input').remove();
       if($(this).hasClass('c-select')){
-        $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
+        var mx = event.offsetLeft,
+          my = event.offsetTop,
+          targetEle = null;
+        $(this).find('li').each(function(k,ele){
+          var ex = ele.offsetLeft,
+            ey = ele.offsetTop,
+            ew = ele.offsetWidth,
+            eh = ele.offsetHeight;
+          if(my >= ey && my <= ey + eh){
+            targetEle = ele;
+          }
+        });
+        if(targetEle !== null){
+          $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter(targetEle).find('input').focus();
+        }else{
+          $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
+        }
       } else if($(this).hasClass('before')){
         $('<li class="input"><input class="hidden-input" type="text" /></li>').insertBefore($(this).parent()).find('input').focus();
       } else if($(this).hasClass('after')){
