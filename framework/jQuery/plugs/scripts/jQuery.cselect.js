@@ -68,10 +68,17 @@
           select.find('.input').remove();
           items.hide();
         });
-        container.on('click', '.c-select span', function(){
+        select.on('click', '.c-select .before,.c-select .after', function(event){
           console.log(this);
+          event.stopPropagation();
+          select.find('.input').remove();
+          if($(this).hasClass('before')){
+            $(inputStr).insertBefore($(this).parent()).find('input').focus();
+          } else if($(this).hasClass('after')){
+            $(inputStr).insertAfter($(this).parent()).find('input').focus();
+          }
         });
-        container.on('click', '.c-select .before,.c-select .after,.c-select', function(event){
+        container.on('click', '.c-select', function(event){
           event.stopPropagation();
           select.find('.input').remove();
           if($(this).hasClass('c-select')){
@@ -92,10 +99,6 @@
             }else{
               $(inputStr).appendTo(this).find('input').focus();
             }
-          } else if($(this).hasClass('before')){
-            $(inputStr).insertBefore($(this).parent()).find('input').focus();
-          } else if($(this).hasClass('after')){
-            $(inputStr).insertAfter($(this).parent()).find('input').focus();
           }
         });
         select.on('click', 'li:not(.input)', function(event){
