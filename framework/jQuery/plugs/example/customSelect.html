@@ -136,7 +136,7 @@
       $('.select-items').hide();
     });
 
-    $('body').on('click', '.c-select li .before,.c-select li .after,.c-select', function(event){
+    $('body').on('click', '.c-select .before,.c-select .after,.c-select', function(event){
       event.stopPropagation();
       $('.c-select .input').remove();
       if($(this).hasClass('c-select')){
