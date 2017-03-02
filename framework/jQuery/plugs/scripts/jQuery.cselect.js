@@ -40,10 +40,10 @@
                   }
                   str += '<li class="' + selected + '" data-id="' + item.id + '">' + (item.name || item.text || "") + '</li>';
                 }
-                items.html(str).css({'top': select.clientHeight + 1, 'width': select.width()}).show();
+                items.html(str).css({'top': select[0].clientHeight + 1, 'width': select.width()}).show();
                 currentRequest = null;
               }else {
-                items.html('搜索为空').css({'top': select.clientHeight + 1, 'width': select.width()}).show();
+                items.html('搜索为空').css({'top': select[0].clientHeight + 1, 'width': select.width()}).show();
               }
             }
           });
@@ -106,9 +106,10 @@
           $(this).parent().remove();
         });
 
-        items.on('click', 'li', function(){
+        items.on('click', 'li', function(event){
+          event.stopPropagation();
           if($(this).hasClass('selected')) return;
-          select.find('input').replaceWith($(this.outerHTML).append(innerStr));
+          select.find('.input').replaceWith($(this.outerHTML).append(innerStr));
           items.hide();
         });
       };
