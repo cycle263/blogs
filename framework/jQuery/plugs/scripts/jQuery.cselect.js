@@ -68,7 +68,7 @@
           select.find('.input').remove();
           items.hide();
         });
-        container.on('click', '.c-select .before,.c-select .after', function(event){
+        select.on('click', '.before, .after', function(event){
           console.log(this);
           event.stopPropagation();
           select.find('.input').remove();
