@@ -10,8 +10,8 @@
 
     this.each(function(key, ele){
       var select = $(ele),
-        parent = select.parent(),
-        items = parent.find('.select-items'),
+        container = select.parent(),
+        items = container.find('.select-items'),
         currentRequest = null,
         inputStr = '<li class="input"><input class="hidden-input" type="text" /></li>',
         innerStr = '<span class="close">x</span><span class="before"></span><span class="after"></span>',
@@ -68,7 +68,7 @@
           select.find('.input').remove();
           items.hide();
         });
-        parent.on('click', '.c-select .before,.c-select .after,.c-select', function(event){
+        container.on('click', '.c-select .before,.c-select .after,.c-select', function(event){
           event.stopPropagation();
           select.find('.input').remove();
           if($(this).hasClass('c-select')){
