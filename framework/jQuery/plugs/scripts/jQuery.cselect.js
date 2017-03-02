@@ -55,13 +55,13 @@
       };
 
       var initEvent = function(){
-        select.on('keyup', '.c-select .input input', function(){
+        select.on('keyup', '.input input', function(){
           var me = $(this),
             t = me.val();
           me.css('width', (t.length * 13 + 12) + 'px');
           requestData(t);
         });
-        select.on('click', '.c-select .input input', function(event){
+        select.on('click', '.input input', function(event){
           event.stopPropagation();
         });
 
