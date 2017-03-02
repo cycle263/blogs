@@ -69,7 +69,6 @@
           items.hide();
         });
         select.on('click', '.before, .after', function(event){
-          console.log(this);
           event.stopPropagation();
           select.find('.input').remove();
           if($(this).hasClass('before')){
@@ -101,7 +100,7 @@
             }
           }
         });
-        container.on('click', '.c-select li:not(.input)', function(event){
+        select.on('click', 'li:not(.input)', function(event){
           event.stopPropagation();
           select.find('.input').remove();
           $(inputStr).insertAfter(this).find('input').focus();
