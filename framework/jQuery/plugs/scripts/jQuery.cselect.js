@@ -66,12 +66,12 @@
         });
 
         $('body').click(function(){
-          select.find('input').remove();
+          select.find('.input').remove();
           items.hide();
         });
         parent.on('click', '.c-select .before,.c-select .after,.c-select', function(event){
           event.stopPropagation();
-          select.find('input').remove();
+          select.find('.input').remove();
           if($(this).hasClass('c-select')){
             var mx = event.offsetX,
               my = event.offsetY,
@@ -98,7 +98,7 @@
         });
         select.on('click', 'li:not(.input)', function(event){
           event.stopPropagation();
-          select.find('input').remove();
+          select.find('.input').remove();
           $(inputStr).insertAfter(this).find('input').focus();
         });
 
