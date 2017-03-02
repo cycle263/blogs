@@ -20,7 +20,7 @@
           currentRequest = jQuery.ajax({
             url: opts.url,
             type: opts.method,
-            data: jQuery.extend(opts.data, {name: encodeURIComponent(name)}),
+            data: jQuery.extend(opts.data, {meterialNameOption: encodeURIComponent(name)}),
             beforeSend: function()    {
               if(currentRequest != null) {
                 currentRequest.abort();
