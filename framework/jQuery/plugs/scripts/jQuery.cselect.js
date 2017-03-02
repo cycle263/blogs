@@ -3,11 +3,10 @@
 
     // default option
     var defaults = {
-      url: '',
       method: 'POST'
     };
 
-    $.extend(opts, defaults);
+    opts = $.extend(defaults, opts);
 
     this.each(function(key, ele){
       var select = $(ele),
@@ -18,7 +17,7 @@
         innerStr = '<span class="close">x</span><span class="before"></span><span class="after"></span>',
         requestData = function(name){
           currentRequest = jQuery.ajax({
-            url: opts.url,
+            url: opts.url || '',
             type: opts.method,
             data: jQuery.extend(opts.data, {meterialNameOption: encodeURIComponent(name)}),
             beforeSend: function()    {
