@@ -125,7 +125,7 @@
       var me = $(this),
         t = me.val();
       me.css('width', (t.length * 13 + 12) + 'px');
-      requestData(t, './queryLabelsByName.json', '.select-items');
+      requestData(t, './queryMaterialList.json', '.select-items');
     });
     $('body').on('click', '.c-select .input input', function(event){
       event.stopPropagation();
