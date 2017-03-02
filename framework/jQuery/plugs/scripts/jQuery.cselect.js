@@ -43,9 +43,9 @@
                 }
                 items.html(str).css({'top': select.clientHeight + 1, 'width': select.width()}).show();
                 currentRequest = null;
+              }else {
+                items.html('搜索为空').css({'top': select.clientHeight + 1, 'width': select.width()}).show();
               }
-            } else {
-              items.html('搜索为空').css({'top': select.clientHeight + 1, 'width': select.width()}).show();
             }
           });
         };
