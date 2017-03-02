@@ -68,7 +68,10 @@
           select.find('.input').remove();
           items.hide();
         });
-        $('body').on('click', '.c-select .before,.c-select .after,.c-select', function(event){
+        container.on('click', '.c-select span', function(){
+          console.log(this);
+        });
+        container.on('click', '.c-select .before,.c-select .after,.c-select', function(event){
           event.stopPropagation();
           select.find('.input').remove();
           if($(this).hasClass('c-select')){
