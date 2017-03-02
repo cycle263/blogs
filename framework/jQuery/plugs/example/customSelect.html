@@ -112,101 +112,106 @@
 </div>
 
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="../scripts/jQuery.cselect.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
-    var currentRequest = null;
-    $("input[name='q']").focus();
-
-    $('body').on('keyup', '.c-select .input input', function(){    
-      var me = $(this),
-        t = me.val();
-      me.css('width', (t.length * 13 + 12) + 'px');
-      requestData(t, './queryLabelsByName.json', '.select-items');
-    });
-    $('body').on('click', '.c-select .input input', function(event){
-      event.stopPropagation();
-    });
-
-    $('body').click(function(){
-      $('.c-select .input').remove();
-      $('.select-items').hide();
-    });
-
-    $('body').on('click', '.c-select li .before,.c-select li .after,.c-select', function(event){
-      event.stopPropagation();
-      $('.c-select .input').remove();
-      if($(this).hasClass('c-select')){
-        var mx = event.offsetX,
-          my = event.offsetY,
-          targetEle = null;
-        $(this).find('li').each(function(k,ele){
-          var ex = ele.offsetLeft,
-            ey = ele.offsetTop,
-            ew = ele.offsetWidth,
-            eh = ele.offsetHeight;
-          if(my >= ey && my <= ey + eh){
-            targetEle = ele;
-          }
-        });
-        if(targetEle !== null){
-          $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter(targetEle).find('input').focus();
-        }else{
-          $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
-        }
-      } else if($(this).hasClass('before')){
-        $('<li class="input"><input class="hidden-input" type="text" /></li>').insertBefore($(this).parent()).find('input').focus();
-      } else if($(this).hasClass('after')){
-        $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter($(this).parent()).find('input').focus();
-      }
-    });
-    $('body').on('click', '.c-select li:not(.input)', function(event){
-      event.stopPropagation();
-      $('.c-select .input').remove();
-      $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter(this).find('input').focus();
-    });
-
-    $('body').on('click', '.c-select .close', function(event){
-      event.stopPropagation();
-      $(this).parent().remove();
-    });
-
-    $('.select-items').on('click', 'li', function(){
-      if($(this).hasClass('selected')) return;
-      $('.c-select .input').replaceWith($(this.outerHTML).append('<span class="close">x</span><span class="before"></span><span class="after"></span>'));
-      $('.select-items').hide();
-    });
-
-    function requestData(name, url, container){
-      $(container).html('loading...');
-      currentRequest = jQuery.ajax({
-        url: url,
-        type: 'POST',
-        data: {name: name},
-        beforeSend: function()    {
-          if(currentRequest != null) {
-            currentRequest.abort();
-          }
-        },
-        success: function(res) {
-          if(res) {
-            var str = '',
-              selectedItem = $('.c-select li').map(function(k, ele){
-                return $(ele).data('id');
-              }).toArray();
-            for(var i = 0, l = res.length; i < l; i++){
-              var item = res[i], selected = '';
-              for(var j = 0, len = selectedItem.length; j < len; j++){
-                if(item.id === selectedItem[j]){
-                  selected = 'selected';
-                }
-              }
-              str += '<li class="' + selected + '" data-id="' + item.id + '">' + (item.name || item.text) + '</li>';
-            }
-            $(container).html(str).show().css({'top': $(container).prev()[0].clientHeight + 1, 'width': $('.c-select').width()});
-          }
-        }
-      });
-    }
+    $('.c-select').cselect({url:'./queryMaterialList.json', data: {
+      limit: 20,
+      pageIndex: 0,
+      meterialNameOption: encodeURIComponent($('.c-select li .input input').val())
+    }});
+    // var currentRequest = null;
+    //
+    // $('body').on('keyup', '.c-select .input input', function(){
+    //   var me = $(this),
+    //     t = me.val();
+    //   me.css('width', (t.length * 13 + 12) + 'px');
+    //   requestData(t, './queryLabelsByName.json', '.select-items');
+    // });
+    // $('body').on('click', '.c-select .input input', function(event){
+    //   event.stopPropagation();
+    // });
+    //
+    // $('body').click(function(){
+    //   $('.c-select .input').remove();
+    //   $('.select-items').hide();
+    // });
+    //
+    // $('body').on('click', '.c-select li .before,.c-select li .after,.c-select', function(event){
+    //   event.stopPropagation();
+    //   $('.c-select .input').remove();
+    //   if($(this).hasClass('c-select')){
+    //     var mx = event.offsetX,
+    //       my = event.offsetY,
+    //       targetEle = null;
+    //     $(this).find('li').each(function(k,ele){
+    //       var ex = ele.offsetLeft,
+    //         ey = ele.offsetTop,
+    //         ew = ele.offsetWidth,
+    //         eh = ele.offsetHeight;
+    //       if(my >= ey && my <= ey + eh){
+    //         targetEle = ele;
+    //       }
+    //     });
+    //     if(targetEle !== null){
+    //       $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter(targetEle).find('input').focus();
+    //     }else{
+    //       $('<li class="input"><input class="hidden-input" type="text" /></li>').appendTo(this).find('input').focus();
+    //     }
+    //   } else if($(this).hasClass('before')){
+    //     $('<li class="input"><input class="hidden-input" type="text" /></li>').insertBefore($(this).parent()).find('input').focus();
+    //   } else if($(this).hasClass('after')){
+    //     $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter($(this).parent()).find('input').focus();
+    //   }
+    // });
+    // $('body').on('click', '.c-select li:not(.input)', function(event){
+    //   event.stopPropagation();
+    //   $('.c-select .input').remove();
+    //   $('<li class="input"><input class="hidden-input" type="text" /></li>').insertAfter(this).find('input').focus();
+    // });
+    //
+    // $('body').on('click', '.c-select .close', function(event){
+    //   event.stopPropagation();
+    //   $(this).parent().remove();
+    // });
+    //
+    // $('.select-items').on('click', 'li', function(){
+    //   if($(this).hasClass('selected')) return;
+    //   $('.c-select .input').replaceWith($(this.outerHTML).append('<span class="close">x</span><span class="before"></span><span class="after"></span>'));
+    //   $('.select-items').hide();
+    // });
+    //
+    // function requestData(name, url, container){
+    //   $(container).html('loading...');
+    //   currentRequest = jQuery.ajax({
+    //     url: url,
+    //     type: 'POST',
+    //     data: {name: name},
+    //     beforeSend: function()    {
+    //       if(currentRequest != null) {
+    //         currentRequest.abort();
+    //       }
+    //     },
+    //     success: function(res) {
+    //       if(res) {
+    //         var str = '',
+    //           selectedItem = $('.c-select li').map(function(k, ele){
+    //             return $(ele).data('id');
+    //           }).toArray();
+    //         for(var i = 0, l = res.length; i < l; i++){
+    //           var item = res[i], selected = '';
+    //           for(var j = 0, len = selectedItem.length; j < len; j++){
+    //             if(item.id === selectedItem[j]){
+    //               selected = 'selected';
+    //             }
+    //           }
+    //           str += '<li class="' + selected + '" data-id="' + item.id + '">' + (item.name || item.text) + '</li>';
+    //         }
+    //         $(container).html(str).show().css({'top': $(container).prev()[0].clientHeight + 1, 'width': $('.c-select').width()});
+    //       }
+    //     }
+    //   });
+    // }
   });
 </script>
 </body>
