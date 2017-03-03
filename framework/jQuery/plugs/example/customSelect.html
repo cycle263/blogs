@@ -102,7 +102,7 @@
 <body>
 
 <div class="" style="position:relative;">
-  <ul class="c-select" contenteditable="true">
+  <ul class="c-select" id="myselect" contenteditable="true">
 
   </ul>
 
@@ -119,7 +119,7 @@
       limit: 20,
       pageIndex: 0
     }});
-    console.log(cselect.renderSelect);
+    console.log($('#myselect')[0].renderSelect);
     // var currentRequest = null;
     //
     // $('body').on('keyup', '.c-select .input input', function(){
