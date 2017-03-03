@@ -26,13 +26,14 @@
               }
             },
             success: function(res) {
-              if(res) {
+              if(res.success) {
                 var str = '',
+                  data = res.data,
                   selectedItem = select.find('li').map(function(k, ele){
                     return $(ele).data('id');
                   }).toArray();
-                for(var i = 0, l = res.length; i < l; i++){
-                  var item = res[i], selected = '';
+                for(var i = 0, l = data.length; i < l; i++){
+                  var item = data[i], selected = '';
                   for(var j = 0, len = selectedItem.length; j < len; j++){
                     if(item.id === selectedItem[j]){
                       selected = 'selected';
@@ -49,8 +50,11 @@
           });
         };
 
-      var initHtml = function(){
-
+      var renderSelect = function(data){
+        data = data || [];
+        data.forEach(function(item){
+          select.html('<li data-id="' + item.id + '">' + innerStr + '</li>');
+        });
       };
 
       var initEvent = function(){
@@ -119,8 +123,8 @@
         });
       };
 
-      initHtml();
       initEvent();
+      ele.renderSelect = renderSelect;
     });
     return this;
   };
