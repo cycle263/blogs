@@ -124,7 +124,7 @@
       };
 
       initEvent();
-      ele.renderSelect = renderSelect;
+      $(ele).renderSelect = renderSelect;
     });
     return this;
   };
