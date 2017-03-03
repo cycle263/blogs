@@ -115,7 +115,7 @@
 <script type="text/javascript" src="../scripts/jQuery.cselect.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
-    $('.c-select').cselect({url:'./queryMaterialList.json', data: {
+    var cselect = $('.c-select').cselect({url:'./queryMaterialList.json', data: {
       limit: 20,
       pageIndex: 0
     }});
