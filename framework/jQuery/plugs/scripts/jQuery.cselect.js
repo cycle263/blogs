@@ -53,7 +53,7 @@
       var renderSelect = function(data){
         data = data || [];
         data.forEach(function(item){
-          select.html('<li data-id="' + item.id + '">' + innerStr + '</li>');
+          select.html('<li data-id="' + item.id + '">' + (item.name || item.text || "") + innerStr + '</li>');
         });
       };
 
@@ -124,7 +124,7 @@
       };
 
       initEvent();
-      ele.renderSelect = renderSelect;
+      $(ele).renderSelect = renderSelect;
     });
     return this;
   };
