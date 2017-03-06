@@ -123,7 +123,11 @@
         });
 
         // 拖动已选中项的位置
-        select.on('drag', 'li:not(.input)', function(event){
+        select.on('mousedown', 'li:not(.input)', function(event){
+          console.log(event);
+          event.stopPropagation();
+        });
+        select.on('mousemove', 'li:not(.input)', function(event){
           console.log(event);
           event.stopPropagation();
         });
