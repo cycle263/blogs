@@ -130,8 +130,8 @@
               return {
                   x: event.clientX + docEle.scrollLeft,
                   y: event.clientY + docEle.scrollTop,
-                  left: $(target).css('left'),
-                  top: $(target).css('top'),
+                  left: target.css('left'),
+                  top: target.css('top'),
               };
           },
           _updateMousedownData = function(p){
@@ -141,8 +141,8 @@
               mousedown.top = parseInt(p.top, 10);
           },
           _updateRectangle = function(target){
-              var p = _getPagePosition();
-              $(target).css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
+              var p = _getPagePosition(dragging);
+              target.css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
           },
           _updateSelect = function(target){
             var tele = null,
@@ -167,29 +167,24 @@
             if(tele !== null){
               $(target).insertAfter(tele);
             }
-            $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving').attr('draggable', false);;
+            $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');;
           };
         select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
-          $(this).addClass('moving').attr('draggable', true);
+          $(this).addClass('moving');
           dragging = $(this);
-          _updateMousedownData(_getPagePosition(this));
+          _updateMousedownData(_getPagePosition(dragging));
         });
         select.on('mousemove', 'li:not(.input)', function(event){
           event.stopPropagation();
           if(dragging !== null){
-            // _updateRectangle(this);
+            _updateRectangle(dragging);
           }
         });
-        select.on('mouseup', 'li:not(.input)', function(event){
-          event.stopPropagation();
-          _updateSelect(this);
-          dragging = null;
-        });
-        select.on('mouseleave', function(event){
+        $(docEle).on('mouseup', function(event){
           event.stopPropagation();
           if(dragging === null) return;
-          _updateSelect(dragging);
+          _updateSelect(dragging[0]);
           dragging = null;
         });
 
