@@ -121,10 +121,11 @@
             }
           }
         });
-        select.on('click', 'li:not(.input)', function(event){
+
+        // 拖动已选中项的位置
+        select.on('drag', 'li:not(.input)', function(event){
+          console.log(event);
           event.stopPropagation();
-          select.find('.input').remove();
-          $(inputStr).insertAfter(this).find('input').focus();
         });
 
         // 删除已选项
