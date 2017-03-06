@@ -124,11 +124,15 @@
 
         // 拖动已选中项的位置
         select.on('mousedown', 'li:not(.input)', function(event){
-          console.log(event);
+          console.log(event, 'mousedown');
           event.stopPropagation();
         });
         select.on('mousemove', 'li:not(.input)', function(event){
-          console.log(event);
+          console.log(event, 'mousemove');
+          event.stopPropagation();
+        });
+        select.on('mouseup', 'li:not(.input)', function(event){
+          console.log(event, 'mouseup');
           event.stopPropagation();
         });
 
