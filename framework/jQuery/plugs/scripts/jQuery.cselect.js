@@ -151,16 +151,20 @@
               ty = target.offsetTop;
             select.find('li:not(.input)').each(function(k, ele){
               if(ele === target)return;
-              var ex = ele.offsetLeft,
+              var tele = null,
+                ex = ele.offsetLeft,
                 ey = ele.offsetTop,
                 ew = ele.offsetWidth,
                 eh = ele.offsetHeight;
               if(my + ty >= ey && my + ty <= ey + eh){
                 if(mx + tx >= ex && mx + tx <= ex + ew/2){
                   $(target).insertBefore(ele);
-                }else if(mx + tx < ex + ew && mx + tx > ex + ew/2){
-                  $(target).insertAfter(ele);
+                }else if(mx + tx > ex + ew/2){
+                  tele = ele;
                 }
+              }
+              if(tele !== null){
+                $(target).insertAfter(tele);
               }
             });
             $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');
