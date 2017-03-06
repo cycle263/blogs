@@ -181,6 +181,11 @@
           _updateSelect(this);
           dragging = false;
         });
+        select.on('mouseout', 'li:not(.input)', function(event){
+          event.stopPropagation();
+          _updateSelect(this);
+          dragging = false;
+        });
 
         // 删除已选项
         select.on('click', '.close', function(event){
