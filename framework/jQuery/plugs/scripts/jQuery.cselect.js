@@ -162,7 +162,7 @@
                 }else if(mx + tx > ex + ew/2){
                   tele = ele;
                 }
-              }            
+              }
             });
             if(tele !== null){
               $(target).insertAfter(tele);
@@ -242,6 +242,7 @@
 }
 .c-select li.moving{
   cursor: move;
+  z-index: 9;
 }
 .c-select li .before, .c-select li .after{
   display: inline-block;
