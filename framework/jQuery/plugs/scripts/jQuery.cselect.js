@@ -125,7 +125,8 @@
         // 拖动已选中项的位置
         var dragging = false,
           mousedown = {},
-          _getPagePosition = function(){
+          docEle = document.body,
+          _getPagePosition = function(target){
               return {
                   x: event.clientX + docEle.scrollLeft,
                   y: event.clientY + docEle.scrollTop,
@@ -139,7 +140,7 @@
               mousedown.left = parseInt(p.left, 10);
               mousedown.top = parseInt(p.top, 10);
           },
-          _updateRectangle = function(){
+          _updateRectangle = function(target){
               var p = _getPagePosition();
               target.css('left', p.x - mousedown.x + mousedown.left + 'px');
               target.css('top', p.y - mousedown.y + mousedown.top + 'px');
@@ -148,12 +149,12 @@
           event.stopPropagation();
           $(this).addClass('moving');
           dragging = true;
-          _updateMousedownData(_getPagePosition());
+          _updateMousedownData(_getPagePosition(this));
         });
         select.on('mousemove', 'li:not(.input)', function(event){
           event.stopPropagation();
           if(dragging === true){
-            _updateRectangle();
+            _updateRectangle(this);
           }
         });
         select.on('mouseup', 'li:not(.input)', function(event){
