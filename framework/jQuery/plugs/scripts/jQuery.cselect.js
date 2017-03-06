@@ -146,16 +146,18 @@
           },
           _updateSelect = function(target){
             var mx = event.offsetX,
-              my = event.offsetY;
+              my = event.offsetY,
+              tx = $(target).offsetLeft,
+              ty = $(target).offsetTop;
             select.find('li:not(.input)').each(function(k, ele){
               var ex = ele.offsetLeft,
                 ey = ele.offsetTop,
                 ew = ele.offsetWidth,
                 eh = ele.offsetHeight;
-              if(my >= ey && my <= ey + eh){
-                if(mx >= ex && mx <= ex + ew/2){
+              if(my + ty >= ey && my + ty <= ey + eh){
+                if(mx + tx >= ex && mx + tx <= ex + ew/2){
                   $(target).insertBefore(ele);
-                }else if(mx < ex + ew && mx > ex + ew/2){
+                }else if(mx + tx < ex + ew && mx + tx > ex + ew/2){
                   $(target).insertAfter(ele);
                 }
               }
