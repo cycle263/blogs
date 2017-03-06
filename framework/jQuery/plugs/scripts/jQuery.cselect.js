@@ -145,14 +145,14 @@
               $(target).css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
           },
           _updateSelect = function(target){
-            var mx = event.offsetX,
+            var tele = null,
+              mx = event.offsetX,
               my = event.offsetY,
               tx = target.offsetLeft,
               ty = target.offsetTop;
             select.find('li:not(.input)').each(function(k, ele){
               if(ele === target)return;
-              var tele = null,
-                ex = ele.offsetLeft,
+              var ex = ele.offsetLeft,
                 ey = ele.offsetTop,
                 ew = ele.offsetWidth,
                 eh = ele.offsetHeight;
