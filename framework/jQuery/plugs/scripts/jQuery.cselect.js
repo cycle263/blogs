@@ -14,42 +14,54 @@
         items = container.find('.select-items'),
         currentRequest = null,
         inputStr = '<li class="input"><input class="hidden-input" type="text" /></li>',
-        innerStr = '<span class="close">x</span><span class="before"></span><span class="after"></span>',
-        requestData = function(name){
-          currentRequest = jQuery.ajax({
-            url: opts.url || '',
-            type: opts.method,
-            data: jQuery.extend(opts.data, {meterialNameOption: encodeURIComponent(name)}),
-            beforeSend: function()    {
-              if(currentRequest != null) {
-                currentRequest.abort();
-              }
-            },
-            success: function(res) {
-              if(res.success) {
-                var str = '',
-                  data = res.data,
-                  selectedItem = select.find('li').map(function(k, ele){
-                    return $(ele).data('id');
-                  }).toArray();
-                for(var i = 0, l = data.length; i < l; i++){
-                  var item = data[i], selected = '';
-                  for(var j = 0, len = selectedItem.length; j < len; j++){
-                    if(item.id === selectedItem[j]){
-                      selected = 'selected';
-                    }
-                  }
-                  str += '<li class="' + selected + '" data-id="' + item.id + '">' + (item.name || item.text || "") + '</li>';
-                }
-                items.html(str).css({'top': select[0].clientHeight + 1, 'width': select.width()}).show();
-                currentRequest = null;
-              }else {
-                items.html('搜索为空').css({'top': select[0].clientHeight + 1, 'width': select.width()}).show();
-              }
-            }
-          });
-        };
+        innerStr = '<span class="close">x</span><span class="before"></span><span class="after"></span>';
 
+      // 异步获取数据
+      var requestData = function(name){
+        currentRequest = jQuery.ajax({
+          url: opts.url || '',
+          type: opts.method,
+          data: jQuery.extend(opts.data, {meterialNameOption: encodeURIComponent(name)}),
+          beforeSend: function()    {
+            if(currentRequest != null) {
+              currentRequest.abort();
+            }
+          },
+          success: function(res) {
+            if(res.success) {
+              renderItems(res.data);
+              currentRequest = null;
+            } else {
+              items.html('搜索为空').css({'top': select[0].clientHeight + 1, 'width': select.width()}).show();
+            }
+          }
+        });
+      };
+
+      // 渲染待选项的html
+      var renderItems = function(data){
+        if(Object.prototype.toString.call(data).slice(8,-1) !== "Array"){
+          throw TypeError('Parameter is not an array');
+          return;
+        }
+
+        var str = data.length ? '数据为空' : '',
+          selectedItem = select.find('li').map(function(k, ele){
+            return $(ele).data('id');
+          }).toArray();
+        for(var i = 0, l = data.length; i < l; i++){
+          var item = data[i], selected = '';
+          for(var j = 0, len = selectedItem.length; j < len; j++){
+            if(item.id === selectedItem[j]){
+              selected = 'selected';
+            }
+          }
+          str += '<li class="' + selected + '" data-id="' + item.id + '">' + (item.name || item.text || "") + '</li>';
+        }
+        items.html(str).css({'top': select[0].clientHeight + 1, 'width': select.width()}).show();
+      };
+
+      // 渲染下拉框默认值
       var renderSelect = function(data){
         data = data || [];
         var str = '';
@@ -60,6 +72,7 @@
       };
 
       var initEvent = function(){
+        // 键盘输入事件
         select.on('keyup', '.input input', function(){
           var me = $(this),
             t = me.val();
@@ -74,6 +87,8 @@
           select.find('.input').remove();
           items.hide();
         });
+
+        // 任意位置插入选项
         select.on('click', '.before, .after', function(event){
           event.stopPropagation();
           select.find('.input').remove();
@@ -112,11 +127,13 @@
           $(inputStr).insertAfter(this).find('input').focus();
         });
 
+        // 删除已选项
         select.on('click', '.close', function(event){
           event.stopPropagation();
           $(this).parent().remove();
         });
 
+        // 选中待选项
         items.on('click', 'li', function(event){
           event.stopPropagation();
           if($(this).hasClass('selected')) return;
