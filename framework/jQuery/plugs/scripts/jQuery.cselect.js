@@ -167,7 +167,7 @@
             if(tele !== null){
               $(target).insertAfter(tele);
             }
-            $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');
+            $(target).animate({'left': '0px', 'top': '0px'}).removeClass('moving');
           };
         select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
