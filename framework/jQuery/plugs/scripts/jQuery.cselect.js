@@ -229,8 +229,6 @@
   white-space: nowrap;
 }
 .c-select li.moving{
-  position: absolute;
-  z-index: 1;
   cursor: move;
 }
 .c-select li .before, .c-select li .after{
