@@ -186,7 +186,7 @@
           _updateSelect(this);
           dragging = null;
         });
-        select.on('mouseout', function(event){
+        select.on('mouseleave', function(event){
           event.stopPropagation();
           if(dragging === null) return;
           _updateSelect(dragging);
