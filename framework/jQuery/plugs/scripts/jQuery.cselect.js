@@ -144,9 +144,13 @@
               var p = _getPagePosition();
               $(target).css('left', p.x - mousedown.x + mousedown.left + 'px');
               $(target).css('top', p.y - mousedown.y + mousedown.top + 'px');
+          },
+          _updateSelect = function(target){
+
           };
         select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
+          if(dragging) return;
           $(this).addClass('moving');
           dragging = true;
           _updateMousedownData(_getPagePosition(this));
@@ -159,6 +163,7 @@
         });
         select.on('mouseup', 'li:not(.input)', function(event){
           event.stopPropagation();
+          _updateSelect(this);
           $(this).removeClass('moving');
           dragging = false;
         });
@@ -212,6 +217,7 @@
 .c-select li.moving{
   position: absolute;
   z-index: 1;
+  cursor: move;
 }
 .c-select li .before, .c-select li .after{
   display: inline-block;
