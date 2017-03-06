@@ -45,7 +45,7 @@
           return;
         }
 
-        var str = data.length ? '数据为空' : '',
+        var str = data.length ? '' : '数据为空',
           selectedItem = select.find('li').map(function(k, ele){
             return $(ele).data('id');
           }).toArray();
