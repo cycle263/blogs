@@ -162,11 +162,11 @@
                 }else if(mx + tx > ex + ew/2){
                   tele = ele;
                 }
-              }
-              if(tele !== null){
-                $(target).insertAfter(tele);
-              }
+              }            
             });
+            if(tele !== null){
+              $(target).insertAfter(tele);
+            }
             $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');
           };
         select.on('mousedown', 'li:not(.input)', function(event){
