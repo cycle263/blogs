@@ -123,17 +123,43 @@
         });
 
         // 拖动已选中项的位置
+        var dragging = false,
+          mousedown = {},
+          _getPagePosition = function(){
+              return {
+                  x: event.clientX + docEle.scrollLeft,
+                  y: event.clientY + docEle.scrollTop,
+                  left: $(target).css('left'),
+                  top: $(target).css('top'),
+              };
+          },
+          _updateMousedownData = function(p){
+              mousedown.x = p.x;
+              mousedown.y = p.y;
+              mousedown.left = parseInt(p.left, 10);
+              mousedown.top = parseInt(p.top, 10);
+          },
+          _updateRectangle = function(){
+              var p = _getPagePosition();
+              target.css('left', p.x - mousedown.x + mousedown.left + 'px');
+              target.css('top', p.y - mousedown.y + mousedown.top + 'px');
+          };
         select.on('mousedown', 'li:not(.input)', function(event){
-          console.log(event, 'mousedown');
           event.stopPropagation();
+          $(this).addClass('moving');
+          dragging = true;
+          _updateMousedownData(_getPagePosition());
         });
         select.on('mousemove', 'li:not(.input)', function(event){
-          console.log(event, 'mousemove');
           event.stopPropagation();
+          if(dragging === true){
+            _updateRectangle();
+          }
         });
         select.on('mouseup', 'li:not(.input)', function(event){
-          console.log(event, 'mouseup');
           event.stopPropagation();
+          $(this).removeClass('moving');
+          dragging = false;
         });
 
         // 删除已选项
@@ -181,6 +207,10 @@
   color: #555;
   font-size: 14px;
   white-space: nowrap;
+}
+.c-select li.moving{
+  position: absolute;
+  z-index: 1;
 }
 .c-select li .before, .c-select li .after{
   display: inline-block;
