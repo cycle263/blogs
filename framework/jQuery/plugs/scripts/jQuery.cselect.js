@@ -52,9 +52,11 @@
 
       var renderSelect = function(data){
         data = data || [];
+        var str = '';
         data.forEach(function(item){
-          select.html('<li data-id="' + item.id + '">' + (item.name || item.text || "") + innerStr + '</li>');
+          str += '<li data-id="' + item.id + '">' + (item.name || item.text || "") + innerStr + '</li>';
         });
+        select.html(str);
       };
 
       var initEvent = function(){
