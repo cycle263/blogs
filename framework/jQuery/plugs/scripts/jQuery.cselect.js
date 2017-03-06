@@ -123,7 +123,7 @@
         });
 
         // 拖动已选中项的位置
-        var dragging = false,
+        var dragging = null,
           mousedown = {},
           docEle = document.body,
           _getPagePosition = function(target){
@@ -167,24 +167,24 @@
         select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
           $(this).addClass('moving');
-          dragging = true;
+          dragging = $(this);
           _updateMousedownData(_getPagePosition(this));
         });
         select.on('mousemove', 'li:not(.input)', function(event){
           event.stopPropagation();
-          if(dragging === true){
+          if(dragging !== null){
             _updateRectangle(this);
           }
         });
         select.on('mouseup', 'li:not(.input)', function(event){
           event.stopPropagation();
           _updateSelect(this);
-          dragging = false;
+          dragging = null;
         });
-        select.on('mouseout', 'li:not(.input)', function(event){
+        select.on('mouseout', function(event){
           event.stopPropagation();
           _updateSelect(this);
-          dragging = false;
+          dragging = null;
         });
 
         // 删除已选项
