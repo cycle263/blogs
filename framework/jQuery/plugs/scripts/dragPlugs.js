@@ -20,8 +20,8 @@ jQuery.fn.extend({
             },
             _updateRectangle = function(){
                 var p = _getPagePosition();
-                target.css('left', p.x - mousedown.x + mousedown.left + 'px');
-                target.css('top', p.y - mousedown.y + mousedown.top + 'px');
+                $(target).css('left', p.x - mousedown.x + mousedown.left + 'px');
+                $(target).css('top', p.y - mousedown.y + mousedown.top + 'px');
                 console.log(p.x - mousedown.x + mousedown.left + 'px', p.y - mousedown.y + mousedown.top + 'px');
             };
 
@@ -33,13 +33,13 @@ jQuery.fn.extend({
         });
         this.on('mousemove', function(event){
             event.preventDefault();
-            if(dragging === true){                   
+            if(dragging === true){
                 _updateRectangle();
             }
         });
         $(docEle).on('mouseup', function(event){
             event.preventDefault();
-            dragging = false;                 
+            dragging = false;
         });
     }
 });
