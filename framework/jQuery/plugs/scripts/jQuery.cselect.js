@@ -183,7 +183,7 @@
         });
         select.on('mouseout', function(event){
           event.stopPropagation();
-          _updateSelect(this);
+          _updateSelect(dragging);
           dragging = null;
         });
 
