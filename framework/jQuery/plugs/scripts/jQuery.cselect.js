@@ -150,6 +150,7 @@
               tx = target.offsetLeft,
               ty = target.offsetTop;
             select.find('li:not(.input)').each(function(k, ele){
+              if(ele === target)return;
               var ex = ele.offsetLeft,
                 ey = ele.offsetTop,
                 ew = ele.offsetWidth,
