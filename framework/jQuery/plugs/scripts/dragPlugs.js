@@ -20,8 +20,7 @@ jQuery.fn.extend({
             },
             _updateRectangle = function(){
                 var p = _getPagePosition();
-                $(target).css('left', p.x - mousedown.x + mousedown.left + 'px');
-                $(target).css('top', p.y - mousedown.y + mousedown.top + 'px');
+                $(target).css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
                 console.log(p.x - mousedown.x + mousedown.left + 'px', p.y - mousedown.y + mousedown.top + 'px');
             };
 

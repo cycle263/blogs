@@ -105,7 +105,7 @@
             var mx = event.offsetX,
               my = event.offsetY,
               targetEle = null;
-            $(this).find('li').each(function(k,ele){
+            $(this).find('li').each(function(k, ele){
               var ex = ele.offsetLeft,
                 ey = ele.offsetTop,
                 ew = ele.offsetWidth,
@@ -142,11 +142,25 @@
           },
           _updateRectangle = function(target){
               var p = _getPagePosition();
-              $(target).css('left', p.x - mousedown.x + mousedown.left + 'px');
-              $(target).css('top', p.y - mousedown.y + mousedown.top + 'px');
+              $(target).css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
           },
           _updateSelect = function(target){
-
+            var mx = event.offsetX,
+              my = event.offsetY;
+            select.find('li:not(.input)').each(function(k, ele){
+              var ex = ele.offsetLeft,
+                ey = ele.offsetTop,
+                ew = ele.offsetWidth,
+                eh = ele.offsetHeight;
+              if(my >= ey && my <= ey + eh){
+                if(mx >= ex && mx <= ex + ew/2){
+                  $(target).insertBefore(ele);
+                }else if(mx < ex + ew && mx > ex + ew/2){
+                  $(target).insertAfter(ele);
+                }
+              }
+            });
+            $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');
           };
         select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
@@ -164,7 +178,6 @@
         select.on('mouseup', 'li:not(.input)', function(event){
           event.stopPropagation();
           _updateSelect(this);
-          $(this).removeClass('moving');
           dragging = false;
         });
 
@@ -192,7 +205,8 @@
 
 /*
 .c-select {
-  width: 280px;
+  position: relative;
+  width: 360px;
   max-height: 300px;
   min-height: 36px;
   padding: 4px 2px;
