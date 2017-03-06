@@ -147,8 +147,8 @@
           _updateSelect = function(target){
             var mx = event.offsetX,
               my = event.offsetY,
-              tx = $(target).offsetLeft,
-              ty = $(target).offsetTop;
+              tx = target.offsetLeft,
+              ty = target.offsetTop;
             select.find('li:not(.input)').each(function(k, ele){
               var ex = ele.offsetLeft,
                 ey = ele.offsetTop,
