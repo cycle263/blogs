@@ -142,8 +142,8 @@
           },
           _updateRectangle = function(target){
               var p = _getPagePosition();
-              target.css('left', p.x - mousedown.x + mousedown.left + 'px');
-              target.css('top', p.y - mousedown.y + mousedown.top + 'px');
+              $(target).css('left', p.x - mousedown.x + mousedown.left + 'px');
+              $(target).css('top', p.y - mousedown.y + mousedown.top + 'px');
           };
         select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
