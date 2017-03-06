@@ -28,7 +28,7 @@
             }
           },
           success: function(res) {
-            if(res.success) {
+            if(res.success || res.total) {
               renderItems(res.data);
               currentRequest = null;
             } else {
