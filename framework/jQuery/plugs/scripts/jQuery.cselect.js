@@ -164,7 +164,6 @@
           };
         select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
-          if(dragging) return;
           $(this).addClass('moving');
           dragging = true;
           _updateMousedownData(_getPagePosition(this));
