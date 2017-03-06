@@ -156,7 +156,7 @@
                 ey = ele.offsetTop,
                 ew = ele.offsetWidth,
                 eh = ele.offsetHeight;
-              if(my + ty >= ey && my + ty <= ey + eh){
+              if(my + ty >= ey - 4 && my + ty <= ey + eh + 4){
                 if(mx + tx >= ex && mx + tx <= ex + ew/2){
                   $(target).insertBefore(ele);
                 }else if(mx + tx > ex + ew/2){
@@ -167,18 +167,18 @@
             if(tele !== null){
               $(target).insertAfter(tele);
             }
-            $(target).animate({'left': '0px', 'top': '0px'}).removeClass('moving');
+            $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving').attr('draggable', false);;
           };
         select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
-          $(this).addClass('moving');
+          $(this).addClass('moving').attr('draggable', true);
           dragging = $(this);
           _updateMousedownData(_getPagePosition(this));
         });
         select.on('mousemove', 'li:not(.input)', function(event){
           event.stopPropagation();
           if(dragging !== null){
-            _updateRectangle(this);
+            // _updateRectangle(this);
           }
         });
         select.on('mouseup', 'li:not(.input)', function(event){
