@@ -17,24 +17,24 @@
   需要存储注册过的所有监听器，`this.$$watchers = [];  //$$约定为私有变量`
 
   ```
-  Scope.prototype.$watch = function(watchFn, listenerFn) {
+  Scope.prototype.$watch = function(watchFn, listenerFn, valueEq) {
     var watcher = {
       watchFn: watchFn,
-      listenerFn: listenerFn || function(){}
+      listenerFn: listenerFn || function(){},
+      valueEq: !!valueEq  // true基于值的检查，flase引用检查
     };
     this.$$watchers.push(watcher);
   };
 
   Scope.prototype.$digest = function() {
-    var self = this;
-    this.$$watchers.forEach(function(watcher) {
-      var newValue = watcher.watchFn(self);
-      var oldValue = watcher.last;
-      if (newValue !== oldValue) {
-        watcher.listenerFn(newValue, oldValue, self);
+    var dirty;
+    var ttl = 10;
+    do {
+      dirty = this.$$digestOnce();
+      if (dirty && !(ttl--)) {
+        throw "10 digest iterations reached";
       }
-      watcher.last = newValue;
-    });  
+    } while (dirty);
   };
 
   Scope.prototype.$$digestOnce = function(){
@@ -50,5 +50,15 @@
       watcher.last = newValue;
     });
     return dirty;
+  };
+
+  Scope.prototype.$$areEqual = function(newValue, oldValue, valueEq) {
+    if (valueEq) {
+      return _.isEqual(newValue, oldValue);
+    } else {
+      return newValue === oldValue ||
+        (typeof newValue === 'number' && typeof oldValue === 'number' &&
+         isNaN(newValue) && isNaN(oldValue));
+    }
   };
   ```
