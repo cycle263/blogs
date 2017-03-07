@@ -7,7 +7,7 @@
   > 从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 
 * ES6有哪些新特性？ babel转码的实现原理？实现promise? aynsc和await
-* commonJS和AMD规范区别？和ES6的模块有什么不同？（ [Detail](../../structure/README.md) ）
+* commonJS和AMD规范区别？和ES6的模块有什么不同？（[Detail](../../structure/README.md)）
 
 ## 前端技术具体考察点
 
@@ -17,7 +17,7 @@
 * canvas、svg区别和各自特点，分别适合什么场景？
   > Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
 
-* javascript中不可以直接使用【下标方式】修改字符串内容？ (不可以，原因使用下标访问时，只是临时创建的array对象。)
+* javascript中不可以直接使用【下标方式】修改字符串内容？不可以，原因使用下标访问时，只是临时创建的array对象
 
 ## 框架类库和工程化
 
