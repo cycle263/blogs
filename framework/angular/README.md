@@ -36,4 +36,19 @@
       watcher.last = newValue;
     });  
   };
+
+  Scope.prototype.$$digestOnce = function(){
+    var self = this;
+    var dirty;
+    this.$$watcher.forEach(function(watcher){
+      var newValue = watcher.watchFn(self);
+      var oldValue = watcher.last;
+      if (newValue !== oldValue) {
+        watcher.listenerFn(newValue, oldValue, self);
+        dirty = true;
+      }
+      watcher.last = newValue;
+    });
+    return dirty;
+  };
   ```
