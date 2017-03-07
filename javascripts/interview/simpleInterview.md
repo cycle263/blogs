@@ -13,6 +13,7 @@
 
 * 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？BFC? 布局方式？iframe的优缺点？重构和回流？css3动画？
 * 闭包的理解？this对象？原型链？作用域？变量提升？Ajax跨域？websocket?(推送数据) webworker?(后台运行) storage? 冒泡和捕获? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数
+* jQuery的事件绑定方式？
 * canvas、svg区别和各自特点，分别适合什么场景？
   > Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
 
@@ -22,7 +23,7 @@
 
 * 前端优化：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存，图片服务器，减少DOM操作，模块化
 * 常用的设计模式，例如工厂模式，享元模式，单例模式，流行的mvc，mvvc，mv*架构模式，REST API vs GraphQL(Apollo-请求多组数据)
-* 比较风靡的前端框架react, angular2, vue, backbone等，常见的模板引擎jade、velocity等
+* 比较风靡的前端框架react, angular(脏检查机制、双向绑定), vue, backbone等，常见的模板引擎jade、velocity等
 * 可视化：d3.js、echart(canvas)、highchart(svg)、Three.js(基于D3)、highstock、EaselJS、flv.js，如何技术选型？优缺点
 * 对前端工程进行流程化开发，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，nginx的combo技术
   > 相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案  
