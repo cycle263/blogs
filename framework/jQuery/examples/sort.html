@@ -7,11 +7,17 @@
       .sort-table {
         width: 100%;
         border-collapse: collapse;
+        position: absolute;
+        top: 100px;
       }
       .sort-table td, .sort-table th{
         border: 1px solid #aaa;
         line-height: 24px;
         padding: 3px 16px;
+      }
+      .sort-table tbody tr.moving{
+        cursor: move;
+        z-index: 9;
       }
       .sort-table thead th{
         cursor: pointer;
@@ -30,27 +36,27 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr draggable="true">
           <td>1</td>
           <td>支付宝</td>
           <td>支付宝在线支付系统</td>
         </tr>
-        <tr>
+        <tr draggable="true">
           <td>2</td>
           <td>微信</td>
           <td>微信在线支付系统</td>
         </tr>
-        <tr>
+        <tr draggable="true">
           <td>3</td>
           <td>银联</td>
           <td>银联在线支付系统</td>
         </tr>
-        <tr>
+        <tr draggable="true">
           <td>4</td>
           <td>Apple</td>
           <td>Apple在线支付系统</td>
         </tr>
-        <tr>
+        <tr draggable="true">
           <td>5</td>
           <td>财付通</td>
           <td>财付通在线支付系统</td>
@@ -68,6 +74,31 @@
             return $(a).find('td').eq(index).text().toUpperCase().localeCompare($(b).find('td').eq(index).text().toUpperCase())
           }));
         });
+
+        // 拖动顺序
+        var tbody = $('table tbody'),
+          _updatePosition = function(target){
+            var py = $(target).parents('table')[0].offsetTop + $(target).parents('tbody')[0].offsetTop,
+              cy = event.clientY + document.body.scrollTop;
+
+            console.log(py, cy);
+            tbody.find('tr').each(function(k, ele){
+              if(ele === target)return;
+              var ey = ele.offsetTop,
+                ty = py + ey,
+                eh = ele.offsetHeight;
+              if(cy >= ty && cy <= ty + eh/2){
+                $(target).insertBefore(ele);
+              }else if(cy > ty + eh/2 && cy < ty + eh){
+                $(target).insertAfter(ele);
+              }
+            });
+          };
+
+        tbody.on('dragend', 'tr', function(event){
+          _updatePosition(this);
+        });
+        tbody.find('tr').attr('draggable', true);
       });
     </script>
   </body>
