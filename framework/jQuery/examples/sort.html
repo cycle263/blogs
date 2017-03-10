@@ -76,27 +76,27 @@
         });
 
         // 拖动顺序
-        var tbody = $('table tbody'),
-          _updatePosition = function(target){
-            var py = $(target).parents('table')[0].offsetTop + $(target).parents('tbody')[0].offsetTop,
-              cy = event.clientY + document.body.scrollTop;
+        var tbody = $('table tbody');
+        var _updatePosition = function(target){
+            var cy = event.clientY + document.body.scrollTop - target.offsetHeight;
 
             tbody.find('tr').each(function(k, ele){
               if(ele === target)return;
-              var ey = ele.offsetTop,
-                ty = py + ey,
+              var ey = $(ele).offset().top,
                 eh = ele.offsetHeight;
-              if(cy >= ty && cy <= ty + eh/2){
+
+              if(cy >= ey && cy <= ey + eh/2){
                 $(target).insertBefore(ele);
-              }else if(cy > ty + eh/2 && cy < ty + eh){
+              }else if(cy > ey + eh/2 && cy < ey + eh){
                 $(target).insertAfter(ele);
               }
             });
           };
 
-        tbody.on('dragend', 'tr', function(event){
+        tbody.on('dragend', 'tr', function(){
           _updatePosition(this);
         });
+
         tbody.find('tr').attr('draggable', true);
       });
     </script>
