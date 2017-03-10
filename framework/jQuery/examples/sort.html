@@ -12,7 +12,7 @@
       }
       .sort-table td, .sort-table th{
         border: 1px solid #aaa;
-        line-height: 24px;
+        line-height: 164px;
         padding: 3px 16px;
       }
       .sort-table tbody tr.moving{
@@ -81,7 +81,6 @@
             var py = $(target).parents('table')[0].offsetTop + $(target).parents('tbody')[0].offsetTop,
               cy = event.clientY + document.body.scrollTop;
 
-            console.log(py, cy);
             tbody.find('tr').each(function(k, ele){
               if(ele === target)return;
               var ey = ele.offsetTop,

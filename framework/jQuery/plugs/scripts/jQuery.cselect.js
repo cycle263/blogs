@@ -125,22 +125,22 @@
           mousedown = {},
           docEle = document.body,
           _getPagePosition = function(target){
-              return {
-                  x: event.clientX + select[0].scrollLeft,
-                  y: event.clientY + select[0].scrollTop,
-                  left: target.css('left'),
-                  top: target.css('top'),
-              };
+            return {
+              x: event.clientX + select[0].scrollLeft,
+              y: event.clientY + select[0].scrollTop,
+              left: target.css('left'),
+              top: target.css('top'),
+            };
           },
           _updateMousedownData = function(p){
-              mousedown.x = p.x;
-              mousedown.y = p.y;
-              mousedown.left = parseInt(p.left, 10);
-              mousedown.top = parseInt(p.top, 10);
+            mousedown.x = p.x;
+            mousedown.y = p.y;
+            mousedown.left = parseInt(p.left, 10);
+            mousedown.top = parseInt(p.top, 10);
           },
           _updateRectangle = function(target){
-              var p = _getPagePosition(dragging);
-              target.css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
+            var p = _getPagePosition(dragging);
+            target.css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
           },
           _updateSelect = function(target){
             var tele = null,
