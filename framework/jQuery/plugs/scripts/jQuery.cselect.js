@@ -214,7 +214,7 @@
 .c-select {
   position: relative;
   width: 360px;
-  max-height: 300px;
+  max-height: 200px;
   min-height: 36px;
   padding: 4px 2px;
   margin: 0;
