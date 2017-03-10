@@ -128,8 +128,8 @@
           docEle = document.body,
           _getPagePosition = function(target){
               return {
-                  x: event.clientX + docEle.scrollLeft,
-                  y: event.clientY + docEle.scrollTop,
+                  x: event.clientX + select[0].scrollLeft,
+                  y: event.clientY + select[0].scrollTop,
                   left: target.css('left'),
                   top: target.css('top'),
               };
