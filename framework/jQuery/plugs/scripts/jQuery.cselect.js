@@ -102,15 +102,13 @@
           event.stopPropagation();
           select.find('.input').remove();
           if($(this).hasClass('c-select')){
-            var mx = event.offsetX,
-              my = event.offsetY,
+            var my = event.offsetY,
+              oy = select[0].scrollTop,
               targetEle = null;
             $(this).find('li').each(function(k, ele){
-              var ex = ele.offsetLeft,
-                ey = ele.offsetTop,
-                ew = ele.offsetWidth,
+              var ey = ele.offsetTop,
                 eh = ele.offsetHeight;
-              if(my >= ey && my <= ey + eh){
+              if(my + oy >= ey && my + oy <= ey + eh){
                 targetEle = ele;
               }
             });
