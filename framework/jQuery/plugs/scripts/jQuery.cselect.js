@@ -108,7 +108,7 @@
             $(this).find('li').each(function(k, ele){
               var ey = ele.offsetTop,
                 eh = ele.offsetHeight;
-              if(my + oy >= ey && my + oy <= ey + eh){
+              if(my + oy >= ey - 4 && my + oy <= ey + eh + 4){
                 targetEle = ele;
               }
             });
