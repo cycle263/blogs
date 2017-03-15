@@ -41,3 +41,8 @@ KeyboardEvent、CustomEvent、Event。
   - $.unique(array)过滤数组中重复元素
   - $.makeArray(obj) 将类数组对象转换为数组
   - $(dom).toArray()将所有DOM元素恢复成数组
+
+* 11、jQuery转义html
+
+  - jQuery.parseHTML转换成text节点。
+  - $('<span />', {html: content}).text()转换成text

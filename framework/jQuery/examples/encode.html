@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>encode</title>
+  </head>
+  <body>
+    <p id="test"></p>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(function(){
+        var content = "在《驴得水》之前，相信很多人跟我一样，根本不认识这么一个女演员，放在女神扎堆的娱乐圈，她不算漂亮，可她的表演确是给让人放心的，从陌生到熟悉，从喜爱到怜悯，层层递进，收放自如，看来女演员不一定非得靠颜值才能让观众记住啊。&lt;/p&gt;&lt;p style=&quot;margin-top: 0px; margin-bottom: 25px; text-align: justify; word-break: break-word;&quot;&gt;电影最后还是给我们留了一点希望，一群&ldquo;品行不端&rdquo;的人却也有可爱之处，到最后也没有&ldquo;发展农村教育事业&rdquo;的初衷，这个主题也是跟我们现下的农村教育有契合点的，现在，农村教师资源流失严重，加强农村教师待遇，吸引更多的教师扎根农村是当前阶段刻不容缓的任务，我们或许能从这部电影中得到一点启示。这就是电影或小品带给我们的最大功效吧：笑过，感动过，最后还是要收拾精神走下去。&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/2149340-0f895a2115668d35.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; class=&quot;imagebubble-image&quot;/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;";
+
+        // $('#test').html($.parseHTML(content)[0].data);
+        $('#test').html($('<span />', {html: content}).text());
+      });
+    </script>
+  </body>
+</html>
