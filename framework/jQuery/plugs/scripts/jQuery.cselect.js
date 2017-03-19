@@ -193,11 +193,19 @@
         });
 
         // 选中待选项
+        var cacheEle = null;
         items.on('click', 'li', function(event){
           event.stopPropagation();
+          var tempIndex = -1;
           if($(this).hasClass('selected')) return;
-          select.find('.input').replaceWith($(this.outerHTML).append(innerStr));
-          items.hide();
+          if(select.find('.input').length){
+            tempIndex = select.find('.input').index();
+            select.find('.input').replaceWith($(this.outerHTML).append(innerStr));
+            cacheEle = select.find('li').eq(tempIndex);
+          }else{
+            cacheEle = ($(this.outerHTML).append(innerStr)).insertAfter(cacheEle);
+          }
+          $(this).addClass('selected');
         });
       };
 
