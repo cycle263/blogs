@@ -22,3 +22,5 @@
 * 强制关闭进程
 
   alt + command + esc
+
+* iterm2 登录远端服务器，有警告地址映射不匹配，可删除对应的~/.ssh/known_hosts文件的公钥匹配记录
