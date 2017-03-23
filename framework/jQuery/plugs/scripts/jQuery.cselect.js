@@ -18,6 +18,7 @@
 
       // 异步获取数据
       var requestData = function(name){
+        items.html('数据加载中...').css({'top': select[0].clientHeight + 1, 'width': select.width()}).show();
         currentRequest = jQuery.ajax({
           url: opts.url || '',
           type: opts.method,
@@ -125,22 +126,22 @@
           mousedown = {},
           docEle = document.body,
           _getPagePosition = function(target){
-            return {
-              x: event.clientX + select[0].scrollLeft,
-              y: event.clientY + select[0].scrollTop,
-              left: target.css('left'),
-              top: target.css('top'),
-            };
+              return {
+                  x: event.clientX + docEle.scrollLeft,
+                  y: event.clientY + docEle.scrollTop,
+                  left: target.css('left'),
+                  top: target.css('top'),
+              };
           },
           _updateMousedownData = function(p){
-            mousedown.x = p.x;
-            mousedown.y = p.y;
-            mousedown.left = parseInt(p.left, 10);
-            mousedown.top = parseInt(p.top, 10);
+              mousedown.x = p.x;
+              mousedown.y = p.y;
+              mousedown.left = parseInt(p.left, 10);
+              mousedown.top = parseInt(p.top, 10);
           },
           _updateRectangle = function(target){
-            var p = _getPagePosition(dragging);
-            target.css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
+              var p = _getPagePosition(dragging);
+              target.css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
           },
           _updateSelect = function(target){
             var tele = null,
@@ -154,6 +155,7 @@
                 ey = ele.offsetTop,
                 ew = ele.offsetWidth,
                 eh = ele.offsetHeight;
+
               if(my + ty >= ey - 4 && my + ty <= ey + eh + 4){
                 if(mx + tx >= ex && mx + tx <= ex + ew/2){
                   $(target).insertBefore(ele);
@@ -191,6 +193,10 @@
           event.stopPropagation();
           $(this).parent().remove();
         });
+        select.on('mousedown', '.close', function(event){
+          event.stopPropagation();
+          $(this).parent().remove();
+        });
 
         // 选中待选项
         var cacheEle = null;
@@ -215,6 +221,7 @@
     return this;
   };
 })(jQuery);
+
 
 /*
 .c-select {
@@ -244,6 +251,8 @@
 .c-select li.moving{
   cursor: move;
   z-index: 9;
+  opacity: .8;
+  color: #999;
 }
 .c-select li .before, .c-select li .after{
   display: inline-block;
