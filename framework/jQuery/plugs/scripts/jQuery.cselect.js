@@ -145,16 +145,25 @@
           },
           _updateSelect = function(target){
             var tele = null,
-              mx = event.offsetX,
+              lis = select.find('li:not(.input)'),
+              mx = event.offsetX,   // 鼠标相对目标元素偏移
               my = event.offsetY,
-              tx = target.offsetLeft,
+              tx = target.offsetLeft, // 目标元素相对offsetParent的偏移
               ty = target.offsetTop;
-            select.find('li:not(.input)').each(function(k, ele){
+            lis.each(function(k, ele){
               if(ele === target)return;
               var ex = ele.offsetLeft,
                 ey = ele.offsetTop,
                 ew = ele.offsetWidth,
                 eh = ele.offsetHeight;
+
+              if(k === 0 && my + ty >= ey){
+                $(target).insertBefore(ele);
+                return;
+              } else if(k === (lis.length - 1) && my >= ey + eh){
+                $(target).insertAfter(ele);
+                return;
+              }
 
               if(my + ty >= ey - 4 && my + ty <= ey + eh + 4){
                 if(mx + tx >= ex && mx + tx <= ex + ew/2){
