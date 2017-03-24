@@ -85,6 +85,14 @@
               var ey = $(ele).offset().top,
                 eh = ele.offsetHeight;
 
+              if(k === 0 && cy <= ey){
+                $(target).insertBefore(ele);
+                return;
+              } else if(k === (tbody.find('tr').length - 1) && cy >= ey + eh){
+                $(target).insertAfter(ele);
+                return;
+              }
+
               if(cy >= ey && cy <= ey + eh/2){
                 $(target).insertBefore(ele);
               }else if(cy > ey + eh/2 && cy < ey + eh){
