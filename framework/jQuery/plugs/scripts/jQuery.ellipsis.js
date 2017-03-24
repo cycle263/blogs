@@ -1,5 +1,13 @@
 /*! jQuery ellipsis - v1.1.1 - 2016-12-28
 * Copyright (c) 2016 cycle263; Licensed MIT */
+
+/**************************
+$(this).parent().ellipsis({
+  row: 2,
+  char: '',
+  callback: function(img){}
+});
+****************************/
 (function($) {
     $.fn.ellipsis = function(options) {
 
@@ -16,6 +24,7 @@
         this.each(function() {
             // get element text
             var $this = $(this);
+            var $img = $this.find('img').first();   // handle img
             var text = $this.html();
             var origText = text;
             var origLength = origText.length;
@@ -58,7 +67,7 @@
 
             $this.html(text);
 
-            options.callback.call(this);
+            options.callback.call(this, $img);
         });
 
         return this;

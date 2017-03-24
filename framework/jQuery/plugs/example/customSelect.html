@@ -35,6 +35,10 @@
         opacity: .8;
         color: #999;
       }
+      .c-select li:not(.moving){
+        transition: all .6s ease-in-out;
+      }
+      .ghost{opacity:.2;}
       .c-select li .before, .c-select li .after{
         display: inline-block;
         position: absolute;
@@ -108,7 +112,7 @@
 </head>
 <body>
 
-<div class="" style="position:relative;">
+<div class="" style="position:relative;top: 100px;left: 100px;">
   <ul class="c-select" id="myselect" contenteditable="true">
 
   </ul>
@@ -116,12 +120,16 @@
   <ul class="select-items" style="display: none;">
 
   </ul>
+
+
 </div>
 
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
 <script type="text/javascript" src="../scripts/jQuery.cselect.js"></script>
+<script type="text/javascript" src="../scripts/jQuery.sortable.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
+    // sortable('#myselect1',{placeholder: '<li class="ghost">占着茅坑</li>' });
     var cselect = $('.c-select').cselect({url:'./queryMaterialList.json', data: {
       limit: 20,
       pageIndex: 0

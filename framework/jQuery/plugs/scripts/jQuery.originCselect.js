@@ -3,10 +3,7 @@
 
     // default option
     var defaults = {
-      method: 'POST',
-      dragElement: null,
-      targetElement: null,
-      prevTarget: null
+      method: 'POST'
     };
 
     opts = $.extend(defaults, opts);
@@ -70,7 +67,7 @@
         data = data || [];
         var str = '';
         data.forEach(function(item){
-          str += '<li draggable="true" data-id="' + item.id + '">' + (item.name || item.text || "") + innerStr + '</li>';
+          str += '<li data-id="' + item.id + '">' + (item.name || item.text || "") + innerStr + '</li>';
         });
         select.html(str);
       };
@@ -124,95 +121,79 @@
           }
         });
 
-        // 拖动已选中项的位置 'dragstart', 'dragend', 'dragover', 'dragenter', 'drop'
-        var docEle = document.body,
-          _debounce = function(fn, delay, context) {
-            var timer = null
+        // 拖动已选中项的位置
+        var dragging = null,
+          mousedown = {},
+          docEle = document.body,
+          _getPagePosition = function(target){
+              return {
+                  x: event.clientX + docEle.scrollLeft,
+                  y: event.clientY + docEle.scrollTop,
+                  left: target.css('left'),
+                  top: target.css('top'),
+              };
+          },
+          _updateMousedownData = function(p){
+              mousedown.x = p.x;
+              mousedown.y = p.y;
+              mousedown.left = parseInt(p.left, 10);
+              mousedown.top = parseInt(p.top, 10);
+          },
+          _updateRectangle = function(target){
+              var p = _getPagePosition(dragging);
+              target.css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
+          },
+          _updateSelect = function(target){
+            var tele = null,
+              mx = event.offsetX,
+              my = event.offsetY,
+              tx = target.offsetLeft,
+              ty = target.offsetTop;
+            select.find('li:not(.input)').each(function(k, ele){
+              if(ele === target)return;
+              var ex = ele.offsetLeft,
+                ey = ele.offsetTop,
+                ew = ele.offsetWidth,
+                eh = ele.offsetHeight;
 
-            if (delay === 0) {
-              return fn
-            }
-            return function () {
-              var eContext = context || this
-              var args = arguments
-              clearTimeout(timer)
-              timer = setTimeout(function () {
-                fn.apply(eContext, args)
-              }, delay)
-            }
-          },
-          _insertBeforeEle = function(isMoving, ele, target){
-            if(isMoving){
-              if(!$('li.ghost').length){
-                $(target).clone().addClass('ghost').css({'left': '0px', 'top': '0px'}).removeClass('moving').insertBefore(ele);
-                opts.prevTarget = ele;
-              }else{
-                if(ele === opts.prevTarget) return;
-                $('li.ghost').remove();
-                $(target).clone().addClass('ghost').css({'left': '0px', 'top': '0px'}).removeClass('moving').insertBefore(ele);
+              if(my + ty >= ey - 4 && my + ty <= ey + eh + 4){
+                if(mx + tx >= ex && mx + tx <= ex + ew/2){
+                  $(target).insertBefore(ele);
+                }else if(mx + tx > ex + ew/2){
+                  tele = ele;
+                }
               }
-            }else{
-              $('li.ghost').remove();
-              $(target).insertBefore(ele);
+            });
+            if(tele !== null){
+              $(target).insertAfter(tele);
             }
-          },
-          _insertAfterEle = function(isMoving, ele, target){
-            if(isMoving){
-              if(!$('li.ghost').length){
-                $(target).clone().addClass('ghost').css({'left': '0px', 'top': '0px'}).removeClass('moving').insertAfter(ele);
-                opts.prevTarget = ele;
-              }else{
-                if(ele === opts.prevTarget) return;
-                $('li.ghost').remove();
-                $(target).clone().addClass('ghost').css({'left': '0px', 'top': '0px'}).removeClass('moving').insertAfter(ele);
-              }
-            }else{
-              $('li.ghost').remove();
-              $(target).insertAfter(ele);
-            }
-          },
-          _updateSelect = function(isMoving){
-            var dragtarget = opts.dragElement;
-            var toTarget = opts.targetElement;
-            var px = event.pageX;
-            var py = event.pageY;
-            var o = $(toTarget).offset();
-            var ex = o.left,
-              ey = o.top,
-              ew = toTarget.offsetWidth,
-              eh = toTarget.offsetHeight;
-
-            if(py >= ey && py <= ey + eh + 3){
-              if(px >= ex && px <= ex + ew/2 + 8){
-                _insertBeforeEle(isMoving, toTarget, dragtarget);
-              }else if(px > ex + ew/2){
-                _insertAfterEle(isMoving, toTarget, dragtarget);
-              }
-            }
+            $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');
           };
-        select.on('dragstart', 'li:not(.input)', function(){
+        select.on('mousedown', 'li:not(.input)', function(event){
           event.stopPropagation();
-          opts.dragElement = this;
-          event.dataTransfer.dropEffect = "move";
+          $(this).addClass('moving');
+          dragging = $(this);
+          _updateMousedownData(_getPagePosition(dragging));
         });
-        select.on('dragenter', 'li:not(.input)', function(){
+        select.on('mousemove', 'li:not(.input)', function(event){
           event.stopPropagation();
-          if(this === opts.dragElement) return;
-          opts.targetElement = this;
-          _updateSelect(true);
+          if(dragging !== null){
+            _updateRectangle(dragging);
+          }
         });
-        select.on('dragend', 'li:not(.input)', function(){
+        $(docEle).on('mouseup', function(event){
           event.stopPropagation();
-          _updateSelect();
-          console.log(event.pageY, event.pageX, $(opts.targetElement).offset());
+          if(dragging === null) return;
+          _updateSelect(dragging[0]);
+          dragging = null;
         });
 
         // 删除已选项
-        select.on('click', '.close', function(){
+        select.on('click', '.close', function(event){
           event.stopPropagation();
           $(this).parent().remove();
         });
-        select.on('mousedown', '.close', function(){
+        select.on('mousedown', '.close', function(event){
           event.stopPropagation();
           $(this).parent().remove();
         });
@@ -240,106 +221,3 @@
     return this;
   };
 })(jQuery);
-
-
-/*
-.c-select {
-  position: relative;
-  width: 360px;
-  max-height: 200px;
-  min-height: 36px;
-  padding: 4px 2px;
-  margin: 0;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  overflow: auto;
-}
-.c-select li{
-  display: inline-block;
-  position: relative;
-  list-style: none;
-  padding: 2px 0px 2px 16px;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  margin: 3px 8px;
-  background-color: #e4e4e4;
-  color: #555;
-  font-size: 14px;
-  white-space: nowrap;
-}
-.c-select li.moving{
-  cursor: move;
-  z-index: 9;
-  opacity: .8;
-  color: #999;
-}
-.c-select li .before, .c-select li .after{
-  display: inline-block;
-  position: absolute;
-  width: 8px;
-  height: 24px;
-  top: 0;
-}
-.c-select li .before{
-  left: -9px;
-}
-.c-select li .after{
-  right: -9px;
-}
-.c-select li .close{
-  display: inline-block;
-  height: 20px;
-  width: 24px;
-  line-height: 20px;
-  text-align: center;
-  color: #999;
-  cursor: pointer;
-}
-.c-select li.input{
-  padding: 0;
-  outline: none;
-  border: none;
-  margin: 0;
-}
-.c-select li.input input{
-  outline: none;
-  font-size: 13px;
-}
-.hidden-input {
-  border: none;
-  width: 24px;
-  padding: 6px;
-  height: 32px;
-  display: inline-block;
-}
-.select-items {
-  width: 280px;
-  max-height: 300px;
-  position: absolute;
-  top: 75px;
-  z-index: 9;
-  background: #fff;
-  color: #666;
-  border: 1px solid #999;
-  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  overflow: hidden;
-  padding: 2px;
-  margin: 0;
-  overflow: auto;
-}
-.select-items li {
-  cursor: pointer;
-  padding: 4px 16px;
-  list-style: none;
-  line-height: 24px;
-  white-space: nowrap;
-}
-.select-items li:hover{
-  background-color: #5897fb;
-  color: #fff;
-}
-.select-items li.selected {
-  background-color: #ddd;
-}
-*/
