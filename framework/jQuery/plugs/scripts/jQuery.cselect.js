@@ -273,6 +273,24 @@
   opacity: .8;
   color: #999;
 }
+.c-select li.insertAfter, .c-select li.insertBefore{
+  border: 1px solid red;
+}
+.c-select li.insertAfter::after, .c-select li.insertBefore::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 25px;
+  background-color: #999;
+  opacity: .7;
+}
+.c-select li.insertAfter::after{
+  right: 0;
+}
+.c-select li.insertBefore::before{
+  left: 0;
+}
 .c-select li .before, .c-select li .after{
   display: inline-block;
   position: absolute;
@@ -301,6 +319,7 @@
   border: none;
   margin: 0;
 }
+.ghost{opacity:.8;}
 .c-select li.input input{
   outline: none;
   font-size: 13px;

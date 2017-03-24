@@ -124,6 +124,7 @@
         // 拖动已选中项的位置
         var dragging = null,
           mousedown = {},
+          originTarget = null,
           docEle = document.body,
           _getPagePosition = function(target){
               return {
@@ -143,7 +144,7 @@
               var p = _getPagePosition(dragging);
               target.css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
           },
-          _updateSelect = function(target){
+          _updateSelect = function(target, isMoving){
             var tele = null,
               mx = event.offsetX,
               my = event.offsetY,
@@ -158,35 +159,52 @@
 
               if(my + ty >= ey - 4 && my + ty <= ey + eh + 4){
                 if(mx + tx >= ex && mx + tx <= ex + ew/2){
-                  $(target).insertBefore(ele);
+                  if(!isMoving){
+                    $(target).insertBefore(ele);
+                    $(ele).removeClass('insertBefore');
+                  } else {
+                    if(originTarget !== ele){
+                      $(originTarget).removeClass('insertBefore');
+                      originTarget = $(ele).addClass('insertBefore')[0];
+                    }
+                  }
                 }else if(mx + tx > ex + ew/2){
                   tele = ele;
                 }
               }
             });
             if(tele !== null){
-              $(target).insertAfter(tele);
+              if(!isMoving){
+                $(target).insertAfter(tele);
+                $(tele).removeClass('insertAfter');
+              } else {
+                if(originTarget !== tele){
+                  $(originTarget).removeClass('insertAfter');
+                  originTarget = $(tele).addClass('insertAfter')[0];
+                }
+              }
             }
-            $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');
+            isMoving || $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');
           };
-        select.on('mousedown', 'li:not(.input)', function(event){
-          event.stopPropagation();
-          $(this).addClass('moving');
-          dragging = $(this);
-          _updateMousedownData(_getPagePosition(dragging));
-        });
-        select.on('mousemove', 'li:not(.input)', function(event){
-          event.stopPropagation();
-          if(dragging !== null){
-            _updateRectangle(dragging);
-          }
-        });
-        $(docEle).on('mouseup', function(event){
-          event.stopPropagation();
-          if(dragging === null) return;
-          _updateSelect(dragging[0]);
-          dragging = null;
-        });
+        // select.on('mousedown', 'li:not(.input)', function(event){
+        //   event.stopPropagation();
+        //   $(this).addClass('moving');
+        //   dragging = $(this);
+        //   _updateMousedownData(_getPagePosition(dragging));
+        // });
+        // select.on('mousemove', 'li:not(.input)', function(event){
+        //   event.stopPropagation();
+        //   if(dragging !== null){
+        //     _updateRectangle(dragging);
+        //     _updateSelect(dragging[0], true);
+        //   }
+        // });
+        // $(docEle).on('mouseup', function(event){
+        //   event.stopPropagation();
+        //   if(dragging === null) return;
+        //   _updateSelect(dragging[0]);
+        //   dragging = null;
+        // });
 
         // 删除已选项
         select.on('click', '.close', function(event){
