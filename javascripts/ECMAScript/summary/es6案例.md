@@ -59,6 +59,7 @@
 
     var str = "foo";
     var chars = [ ...str ]; // [ "f", "o", "o" ]
+    const { test = [], v1 = {} } = obj.data;
     ```
 
 * 模板字符串
