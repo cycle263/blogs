@@ -127,6 +127,22 @@ jQuery.fn.extend({
                 form.off("click", ".m-pager-list .m-pager-num").on("click", ".m-pager-list .m-pager-num')", function(event){
                     event.preventDefault();
                     opts.currentPage = jQuery(this).find('.pager-num').attr('page-num') - 0;
+                    var eles = $('.pager-num'),
+                      f = eles.first().text() - 0,
+                      l = eles.last().text() - 0,
+                      maxNum = opts.maxPageNum - 0,
+                      pCount = opts.pagesCount - 0;
+                    if(opts.currentPage !== pCount && opts.currentPage !== 1){
+                        if(opts.currentPage === l){
+                            opts.firstPageNum = opts.currentPage - 0;
+                        }else if(opts.currentPage === f){
+                          var temp =  opts.currentPage - (maxNum - 1);
+                          opts.firstPageNum = temp > 0 ? temp : opts.firstPageNum;
+                        }else if(opts.firstPageNum > opts.currentPage){
+                          var temp =  opts.currentPage - (maxNum - 1);
+                          opts.firstPageNum = temp > 0 ? temp : 1;
+                        }
+                    }
                     pagerRequest();
                 });
 
@@ -162,6 +178,9 @@ jQuery.fn.extend({
                         }else if(opts.currentPage === f){
                             var temp =  opts.currentPage - (maxNum - 1);
                             opts.firstPageNum = temp > 0 ? temp : opts.firstPageNum;
+                        }else if(opts.firstPageNum > opts.currentPage){
+                          var temp =  opts.currentPage - (maxNum - 1);
+                          opts.firstPageNum = temp > 0 ? temp : 1;
                         }
                     }
                     pagerRequest();

@@ -31,7 +31,7 @@
 
 
 ## merge合并代码
-
+  `git pull --rebase origin master`
   - git checkout master - 将本地分支切换至master
   - git pull origin master - 从远端master拉取最新代码
   - git checkout branches/test - 再次将本地分支切换至新创建的test
