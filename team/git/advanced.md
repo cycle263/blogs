@@ -122,7 +122,7 @@
   - 跟踪分支(依赖分支)
     `git checkout --trach develop origin/develop`      新建一个tracking指向远端develop
     `git branch --set-upstream-to=origin/<branch> [develop]`  将已经存在的分支指向远端，push/pull不用指向远端了，直接连接指定的远端分支
-    或者 `git branch --set-upstream develop origin/develop`
+    或者 `git branch --set-upstream develop origin/develop  git branch --set-upstream master origin/master`
 
   - 删除分支
     `git push origin :develop` 删除远端分支develop
