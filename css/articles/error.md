@@ -14,3 +14,7 @@
   -webkit-box-orient: vertical;
   ```
   在text为空的情况下，无法编辑，甚至无法聚焦于元素
+
+* z-index详解
+
+  可以应用z-index属性：定位的元素（relative、absolute、fixed）
