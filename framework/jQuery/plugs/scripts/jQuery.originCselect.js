@@ -98,6 +98,7 @@
           } else if($(this).hasClass('after')){
             $(inputStr).insertAfter($(this).parent()).find('input').focus();
           }
+          requestData('');
         });
         container.on('click', '.c-select', function(event){
           event.stopPropagation();
@@ -118,6 +119,7 @@
             }else{
               $(inputStr).appendTo(this).find('input').focus();
             }
+            requestData('');
           }
         });
 
