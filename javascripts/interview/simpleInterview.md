@@ -21,7 +21,7 @@
 * 前端优化：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存，图片服务器，减少DOM操作，模块化
 * 常用的设计模式，例如工厂模式，享元模式，单例模式，流行的mvc，mvvc，mv*架构模式，REST API vs GraphQL(Apollo-请求多组数据)
 * 比较风靡的前端框架react, angular(脏检查机制、双向绑定, $digest), vue, backbone等，常见的模板引擎jade、velocity等
-* angular数据绑定机制？不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？ng-click中能写js原生对象方法？
+* angular数据绑定机制？不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？(track by $index)ng-click中能写js原生对象方法吗？factory、service、provider什么关系？
 * 可视化：d3.js、echart(canvas)、highchart(svg)、Three.js(基于D3)、highstock、EaselJS、flv.js，如何技术选型？优缺点
 * 对前端工程进行流程化开发，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，nginx的combo技术
   > 相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案  
