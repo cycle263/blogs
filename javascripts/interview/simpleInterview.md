@@ -1,5 +1,4 @@
 ## 全局考察
-
 * react生命周期？组件之间通信？数据模型(redux、flux、reselect)？react适合什么项目? 虚拟DOM和diff算法原理(按需更新)？
   > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。setState做了什么
 
@@ -10,7 +9,6 @@
 * commonJS和AMD规范区别？和ES6的模块有什么不同？（[Detail](../../structure/README.md)）
 
 ## 前端技术具体考察点
-
 * 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？BFC? 布局方式？iframe的优缺点？重构和回流？css3动画？
 * 闭包的理解？this对象？原型链？作用域？变量声明提升？Ajax跨域？websocket?(推送数据) webworker?(后台运行) storage? 冒泡和捕获? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数
 * jQuery的事件绑定方式？$(window).load > $.fn.ready = DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器
@@ -20,16 +18,15 @@
 * javascript中不可以直接使用【下标方式】修改字符串内容？不可以，原因使用下标访问时，只是临时创建的array对象
 
 ## 框架类库和工程化
-
 * 前端优化：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存，图片服务器，减少DOM操作，模块化
 * 常用的设计模式，例如工厂模式，享元模式，单例模式，流行的mvc，mvvc，mv*架构模式，REST API vs GraphQL(Apollo-请求多组数据)
-* 比较风靡的前端框架react, angular(脏检查机制、双向绑定), vue, backbone等，常见的模板引擎jade、velocity等
+* 比较风靡的前端框架react, angular(脏检查机制、双向绑定, $digest), vue, backbone等，常见的模板引擎jade、velocity等
+* angular数据绑定机制？不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？ng-click中能写js原生对象方法？
 * 可视化：d3.js、echart(canvas)、highchart(svg)、Three.js(基于D3)、highstock、EaselJS、flv.js，如何技术选型？优缺点
 * 对前端工程进行流程化开发，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，nginx的combo技术
   > 相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案  
 
 ## 其他加分技能
-
 * 前端安全：sql注入? XSS(跨站脚本攻击->输入特殊字符转义过滤)? CSRF(跨站请求伪造->表单增加hash值，POST更新)？同源策略？
 * 无缝发布部署，相关文件的先后发布顺序，灰度部署，平稳升级，错误监控和分析，安全性监控？自动化测试？
 * 擅长一门后端，如nodejs，关系型数据库和非关系型数据库，函数式编程，栈和队列、堆，多媒体前端经验，网络协议，http2等
