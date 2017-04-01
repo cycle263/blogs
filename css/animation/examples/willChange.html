@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>will-change</title>
+    <style media="screen">
+      #box{display: flex; justify-content: space-around;list-style: none;margin: 32px auto;width: 600px;}
+      #box li{width: 80px;height: 40px;line-height: 40px;text-align: center;border: 1px solid #aaa; background-color: #019bf0;color: #fff;border-radius: 4px;will-change: opacity, transform;}
+      #btn {display: block;padding: 8px 16px;border-radius: 4px;background-color: #fff;border: 1px solid #999;margin: 32px auto;cursor: pointer;outline: none;}
+    </style>
+  </head>
+  <body>
+    <ul id="box">
+      <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li>
+    </ul>
+    <div>
+      <button id="btn" type="button" name="button">hide</button>
+    </div>
+    <script type="text/javascript">
+      (function(window, undefined){
+        var list = document.querySelectorAll('#box li'),
+          btn = document.querySelector('#btn'),
+          handleMotion = function(t){
+            var fineness = 0.05,
+              hideStr = 's;transform: translateX(-10px);opacity: 0;',
+              showStr = 's;transform: translateX(0px);opacity: 1;',
+              transiStr = 'transition:all 0.6s ease-in-out ';
+
+            list.forEach(function(item, k){
+              item.style.cssText = transiStr + (fineness * k) + (t ? hideStr : showStr);
+            });
+
+            setTimeout(function(){
+              list.forEach(function(item, k){
+                item.style.cssText = transiStr + (fineness * k) + (t ? showStr : hideStr);
+              });
+            });
+          };
+
+        btn.addEventListener('click', function(){
+          var t = this.innerText;
+          handleMotion(t === 'show');
+          this.innerText = t === 'show' ? 'hide' : 'show';
+        });
+
+        handleMotion(true);
+      })(window);
+    </script>
+  </body>
+</html>
