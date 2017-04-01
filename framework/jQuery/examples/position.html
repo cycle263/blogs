@@ -64,12 +64,12 @@
         body.on('click', 'li', function(){
           var offset = $(this).offset();
 
-          // 鼠标的位置(pageX) = 鼠标的偏移(offsetX) + 目标元素的偏移(offset().left) + 目标元素的边框值(clientLeft)
+          // 鼠标的位置(pageX) = 鼠标的偏移(offsetX) + 目标元素的偏移(offset().left) + 目标元素的边框值(clientLeft) = 鼠标的clientX + 滚动scrollLeft
           console.log('click鼠标的位置信息, X:' + event.pageX, 'Y:' + event.pageY);
           console.log('click鼠标的偏移信息, X:' + event.offsetX, 'Y:' + event.offsetY);
           console.log('click鼠标的位置信息目标元素的位置信息, X:' + offset.left, 'Y:' + offset.top);
-          console.log(event.pageX, event.offsetX + offset.left + this.clientLeft);
-          console.log(event.pageY, event.offsetY + offset.top + this.clientTop);
+          console.log('pageX: ' + event.pageX, '相加：' + (event.offsetX + offset.left + this.clientLeft));
+          console.log('pageY: ' + event.pageY, '相加：' + (event.offsetY + offset.top + this.clientTop));
         });
 
         body.on('dragend', 'li', function(){
