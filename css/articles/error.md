@@ -19,6 +19,8 @@
 
   可以应用z-index属性：定位的元素（relative、absolute、fixed）
 
-* transition
+* 多个css3属性值写法
 
   多个transition属性之间用逗号隔开，并且是完整的属性加时间等，`transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;`
+
+  多个transform属性之间用空格隔开，`transform: translateX(-40px) scale(0);`

@@ -188,25 +188,25 @@
             }
             isMoving || $(target).css({'left': '0px', 'top': '0px'}).removeClass('moving');
           };
-        // select.on('mousedown', 'li:not(.input)', function(event){
-        //   event.stopPropagation();
-        //   $(this).addClass('moving');
-        //   dragging = $(this);
-        //   _updateMousedownData(_getPagePosition(dragging));
-        // });
-        // select.on('mousemove', 'li:not(.input)', function(event){
-        //   event.stopPropagation();
-        //   if(dragging !== null){
-        //     _updateRectangle(dragging);
-        //     _updateSelect(dragging[0], true);
-        //   }
-        // });
-        // $(docEle).on('mouseup', function(event){
-        //   event.stopPropagation();
-        //   if(dragging === null) return;
-        //   _updateSelect(dragging[0]);
-        //   dragging = null;
-        // });
+        select.on('mousedown', 'li:not(.input)', function(event){
+          event.stopPropagation();
+          $(this).addClass('moving');
+          dragging = $(this);
+          _updateMousedownData(_getPagePosition(dragging));
+        });
+        select.on('mousemove', 'li:not(.input)', function(event){
+          event.stopPropagation();
+          if(dragging !== null){
+            _updateRectangle(dragging);
+            _updateSelect(dragging[0], true);
+          }
+        });
+        $(docEle).on('mouseup', function(event){
+          event.stopPropagation();
+          if(dragging === null) return;
+          _updateSelect(dragging[0]);
+          dragging = null;
+        });
 
         // 删除已选项
         select.on('click', '.close', function(event){
