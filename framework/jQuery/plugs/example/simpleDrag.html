@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>drag</title>
+    <style media="screen">
+    #box{list-style: none;position: relative;margin: 32px auto;width: 400px;padding-left: 0;height: 400px;border: 1px solid #aaa; overflow: auto;}
+    #box li{width: 364px;height: 40px;margin: 16px;line-height: 40px;text-align: center;border: 1px solid #aaa; background-color: #019bf0;color: #fff;border-radius: 4px;will-change: opacity, transform;}
+    .moving{cursor: move;z-index: 99999;}
+    </style>
+  </head>
+  <body>
+    <ul id="box">
+      <li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li>
+    </ul>
+
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(function(){
+      // 拖动已选中项的位置
+      var dragging = null,
+        mousedown = {},
+        docEle = document.body,
+        _getPagePosition = function(target){
+          return {
+            x: event.clientX + docEle.scrollLeft,
+            y: event.clientY + docEle.scrollTop,
+            left: target.css('left'),
+            top: target.css('top'),
+          };
+        },
+        _initListPosition = function(list){
+          list.each(function(k, ele){
+            var op = {
+              top: ele.offsetTop,
+              left: ele.offsetLeft
+            };
+            $(ele).css(op).data('op', op);
+          });
+          list.css({position: 'absolute', margin: 0});
+        },
+        _restorePosition = function(ele){
+          var op = Object.assign($(ele).data('op'), {transition: 'all .6s'});
+          $(ele).css(op);
+        },
+        _updateMousedownData = function(p){
+          mousedown.x = p.x;
+          mousedown.y = p.y;
+          mousedown.left = parseInt(p.left, 10);
+          mousedown.top = parseInt(p.top, 10);
+        },
+        _updateRectangle = function(target){
+          var p = _getPagePosition(dragging);
+          target.css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
+        },
+        _isInElement = function(event, ele){
+          var px = event.pageX,
+            py = event.pageY,
+            mx = event.offsetX,
+            my = event.offsetY,
+            offset = ele.offset(),
+            ex = offset.left,
+            ey = offset.top,
+            ew = ele[0].clientWidth,
+            eh = ele[0].clientHeight,
+            eb = ele[0].clientTop;
+          if(px >= mx + ex + eb && px <= mx + ex + eb + ew && py >= my + ey + eb && py <= my + ey + eb + eh){
+            return true;
+          }
+          return false;
+        },
+        _updateSelect = function(target){
+          $('#box li').each(function(k, ele){
+            if(ele === target[0]) return;
+            if(_isInElement(event, $(ele))){
+              var op1 = $(ele).data('op'),
+                op2 = target.data('op');
+              target.data('op', op1);
+              $(ele).data('op', op2).css(op2);
+              console.log('update position');
+            }
+          });
+        };
+
+      $('#box').on('mousedown', 'li', function(event){
+        event.stopPropagation();
+        $(this).addClass('moving');
+        dragging = $(this);
+        _initListPosition($('#box li'));
+        _updateMousedownData(_getPagePosition(dragging));
+      });
+      $('#box').on('mousemove', 'li', function(event){
+        event.stopPropagation();
+        if(dragging !== null){
+          _updateRectangle(dragging);
+          _updateSelect(dragging);
+        }
+      });
+      $(docEle).on('mouseup', function(event){
+        event.stopPropagation();
+        if(dragging === null) return;
+        dragging.removeClass('moving').css(dragging.data('op'));
+        dragging = null;
+      });
+    });
+    </script>
+  </body>
+</html>
