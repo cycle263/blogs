@@ -5,8 +5,8 @@
     <title>drag</title>
     <style media="screen">
     #box{list-style: none;position: relative;margin: 32px auto;width: 400px;padding-left: 0;height: 400px;border: 1px solid #aaa; overflow: auto;}
-    #box li{width: 364px;height: 40px;margin: 16px;line-height: 40px;text-align: center;border: 1px solid #aaa; background-color: #019bf0;color: #fff;border-radius: 4px;will-change: opacity, transform;}
-    .moving{cursor: move;z-index: 99999;}
+    #box li{width: 364px;height: 60px;margin: 16px;line-height: 60px;text-align: center;border: 1px solid #aaa; background-color: #019bf0;color: #fff;border-radius: 4px;will-change: opacity, transform;}
+    .moving{cursor: move;z-index: 99999;background-color: #0188ff;}
     </style>
   </head>
   <body>
@@ -19,6 +19,7 @@
     $(function(){
       // 拖动已选中项的位置
       var dragging = null,
+        enterEle = null,
         mousedown = {},
         docEle = document.body,
         _getPagePosition = function(target){
@@ -37,7 +38,7 @@
             };
             $(ele).css(op).data('op', op);
           });
-          list.css({position: 'absolute', margin: 0});
+          list.css({position: 'absolute', margin: 0, transition: 'none'});
         },
         _restorePosition = function(ele){
           var op = Object.assign($(ele).data('op'), {transition: 'all .6s'});
@@ -58,13 +59,15 @@
             py = event.pageY,
             mx = event.offsetX,
             my = event.offsetY,
+            tw = event.target.clientWidth,
+            th = event.target.clientHeight,
             offset = ele.offset(),
             ex = offset.left,
             ey = offset.top,
             ew = ele[0].clientWidth,
             eh = ele[0].clientHeight,
             eb = ele[0].clientTop;
-          if(px >= mx + ex + eb && px <= mx + ex + eb + ew && py >= my + ey + eb && py <= my + ey + eb + eh){
+          if(px + tw >= mx + ex + eb && px <= mx + ex + eb + ew && py >= my + ey + eb && py <= my + ey + eb + eh){
             return true;
           }
           return false;
@@ -73,10 +76,12 @@
           $('#box li').each(function(k, ele){
             if(ele === target[0]) return;
             if(_isInElement(event, $(ele))){
+              if(enterEle === ele) return;
               var op1 = $(ele).data('op'),
                 op2 = target.data('op');
               target.data('op', op1);
-              $(ele).data('op', op2).css(op2);
+              $(ele).data('op', op2).css(Object.assign(op2, {transition: 'all .6s'}));
+              enterEle = ele;
               console.log('update position');
             }
           });
@@ -99,7 +104,8 @@
       $(docEle).on('mouseup', function(event){
         event.stopPropagation();
         if(dragging === null) return;
-        dragging.removeClass('moving').css(dragging.data('op'));
+        dragging.removeClass('moving');
+        _restorePosition(dragging);
         dragging = null;
       });
     });
