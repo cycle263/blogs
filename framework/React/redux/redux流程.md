@@ -2,6 +2,8 @@
 
   component -> action -> reducer -> state 的单向数据流转
 
+  Action Creator => action => store.dispatch(action) => reducer(state, action) => 原 state state = nextState
+
   ![常见前端流程图](./images/redux.png)
 
 * url
@@ -28,6 +30,15 @@
 
   为了描述 action 如何改变 state tree ，你需要编写 reducers。
 
+## store的四大函数
+
+  * getState 获取整个state
+
+  * dispatch(action)  触发state修改
+
+  * subscribe(listener) 订阅监听
+
+  * replaceReducer(nextReducer)
 
 ## redux之connect
 

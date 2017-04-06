@@ -10,11 +10,38 @@
 
 * redux几个概念
 
-    - store: 应用数据的存储中心
+    - store: 应用数据的存储中心，由 Redux 的 createStore(reducer) 生成
 
-    - action: 应用数据的改变的描述
+    - state: 通过 store.getState() 获取，本质上一般是一个存储着整个应用状态的对象
 
-    - reducer: 决定应用数据新状态的函数，接收应用之前的状态和一个 action 返回数据的新状态，reducer作为一个函数，可以根据web应用之前的状态（previousState）和交互行为（通过flux中提到的action来表征），决定web应用的下一状态（newState），从而实现state端的数据更新处理。
+    - action: 应用数据的改变的描述, 本质上是一个包含 type 属性的普通对象，由 Action Creator (函数) 产生，改变 state 必须 dispatch 一个 action
+
+    - reducer: 决定应用数据新状态的函数，接收应用之前的状态和一个 action 返回数据的新状态，reducer作为一个函数，可以根据web应用之前的状态（previousState）和交互行为（通过flux中提到的action来表征），决定web应用的下一状态（newState），从而实现state端的数据更新处理。本质上是根据 action.type 来更新 state 并返回 nextState 的函数，“更新” 并不是指 reducer 可以直接对 state 进行修改。Redux 规定，须先复制一份 state，在副本 nextState 上进行修改操作
+
+    ```
+    /** 本代码块记为 code-7 **/
+    var initState = {
+      counter: 0,
+      todos: []
+    }
+
+    function reducer(state, action) {
+      // ※ 应用的初始状态是在第一次执行 reducer 时设置的 ※
+      if (!state) state = initState
+
+      switch (action.type) {
+        case 'ADD_TODO':
+          var nextState = _.cloneDeep(state) // 用到了 lodash 的深克隆
+          nextState.todos.push(action.payload)
+          return nextState
+
+        default:
+        // 由于 nextState 会把原 state 整个替换掉
+        // 若无修改，必须返回原 state（否则就是 undefined）
+          return state
+      }
+    }
+    ```
 
     - middleware: redux 提供中间件的方式，完成一些 flux 流程的自定义控制，同时形成其插件体系
 

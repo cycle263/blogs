@@ -32,7 +32,7 @@
     <!--文本框--><input type="text" name="q" size="25" />
     <input type="submit" name="sa" value="&#x641c;&#x7d22;" />
   </div>
-  <img src="../../../../myProject/images/kk.gif" >
+  <!--<img src="../../../../myProject/images/kk.gif" > -->
 </form>
 <div class="" style="position:relative;">
   <ul class="content" contenteditable="true">
@@ -46,7 +46,7 @@
 <div class="signature" contenteditable="" title=""></div>
 
 <div>
-  <img src="https://zos.alipayobjects.com/rmsportal/KvGsQXDHLoLiTIE.png" alt="" />
+  <img id="myimg" src="https://zos.alipayobjects.com/rmsportal/KvGsQXDHLoLiTIE1x.png" alt="" />
   <div>
     标题
   </div>
@@ -60,6 +60,28 @@
       $(this).addClass('editabled').scrollTop(9999);
     });
   });
+
+  window.onerror = function (msg, url, lineNo, columnNo, error) {
+    var string = msg.toLowerCase();
+    var substring = "script error";
+    if (string.indexOf(substring) > -1){
+        alert('Script Error: See Browser Console for Detail');
+    } else {
+        var message = [
+            'Message: ' + msg,
+            'URL: ' + url,
+            'Line: ' + lineNo,
+            'Column: ' + columnNo,
+            'Error object: ' + JSON.stringify(error)
+        ].join(' - ');
+
+        alert(message);
+    }
+
+    return false;
+  };
+
+  // test();
 </script>
 </body>
 </html>
