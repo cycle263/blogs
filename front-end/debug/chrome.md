@@ -42,3 +42,14 @@
   通过 Workspace，你可以把本地服务器的资源映射为硬盘上的文件，实现调试 JS 和 CSS 的同时自动保存文件。  
 
   「Add folder to workspace」 --> 「Map to file system resource...」, 具体的文件映射规则可以到 Devtools > Settings > Workspace 中设置。  
+
+* 5、Sinppets功能
+
+  Sources下面的左侧的Sinppets代码片段按钮，可以保存一些调试或测试代码小片段
+
+
+## chrome 调试生僻知识点
+
+* 1、Content scripts: 指的是Chrome拓展注入在网页中的脚本。比如安装了一个叫 JSONView的Chrome拓展
+
+* 2、
