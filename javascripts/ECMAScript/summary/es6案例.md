@@ -60,6 +60,9 @@
     var str = "foo";
     var chars = [ ...str ]; // [ "f", "o", "o" ]
     const { test = [], v1 = {} } = obj.data;
+    const { test: foo } = baz;  =>  var foo = baz.test
+
+    var {foo, bar: baz} = {foo: 0, bar: 1} => var foo = 0; var baz = 1;
     ```
 
 * 模板字符串
