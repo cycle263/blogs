@@ -86,7 +86,7 @@
 
         ECMAScript 5 写法：
         ```
-        get([ "http://example.com/foo?bar=", "&quux=", "" ],bar + baz, quux);
+        get(["http://example.com/foo?bar=", "&quux=", ""], bar + baz, quux);
         ```
 
     - 字符串访问
