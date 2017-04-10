@@ -46,3 +46,7 @@ KeyboardEvent、CustomEvent、Event。
 
   - jQuery.parseHTML转换成text节点。
   - $('<span />', {html: content}).text()转换成text
+
+* 12、extend
+
+  `$.extend(isDeep, {}, obj)` isDeep, 是否深度copy

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>immutable</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcss.com/immutable/4.0.0-rc.2/immutable.js"></script>
+    <script type="text/javascript">
+    (function(){
+      Immutable.fromJS({a:1, b:2, c:3}).map(function(value, key) {
+       /* do some thing */
+       console.log(value, key);
+     });
+
+     var o = Immutable.fromJS({a:[{a1:1}, {b:[{t:1}]}, {c1:2}], b:2, c:3});
+     o1 = o.setIn(['a', 1, 'b', 0, 't'], 100);
+     o2 = o.updateIn(['a', 1, 'b', 0, 't'], function(e){ return e * 100; }); // t * 100
+     console.log(o1.equals(o2));
+    })();
+    </script>
+  </body>
+</html>
