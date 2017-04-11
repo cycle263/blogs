@@ -28,7 +28,10 @@ module.exports =  {
     loaders: [{
       test: /\.js[x]?$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      loader: 'babel-loader',
+      query: {
+        presets: ['es2015', 'stage-0', 'react']
+      }
     },  {
       test: /\.less$/,
       loaders:['style-loader', 'css-loader','less-loader']
