@@ -1,15 +1,15 @@
 // 惰性加载图片，随滚动加载
-(function (root, factory) {
+(function (global, factory) {
   if (typeof define === 'function' && define.amd) {
     define(function() {
-      return factory(root);
+      return factory(global);
     });
   } else if (typeof exports === 'object') {
     module.exports = factory;
   } else {
-    root.asyncimg = factory(root);
+    global.asyncimg = factory(global);
   }
-})(this, function (root) {
+})(this, function (global) {
   'use strict';
 
   var asyncimg = {};
@@ -56,11 +56,11 @@
     callback = opts.callback || callback;
     asyncimg.render();
     if (document.addEventListener) {
-      root.addEventListener('scroll', debounceOrThrottle, false);
-      root.addEventListener('load', debounceOrThrottle, false);
+      global.addEventListener('scroll', debounceOrThrottle, false);
+      global.addEventListener('load', debounceOrThrottle, false);
     } else {
-      root.attachEvent('onscroll', debounceOrThrottle);
-      root.attachEvent('onload', debounceOrThrottle);
+      global.attachEvent('onscroll', debounceOrThrottle);
+      global.attachEvent('onload', debounceOrThrottle);
     }
   };
 
@@ -71,8 +71,8 @@
     var view = {
       l: 0 - offset.l,
       t: 0 - offset.t,
-      b: (root.innerHeight || document.documentElement.clientHeight) + offset.b,
-      r: (root.innerWidth || document.documentElement.clientWidth) + offset.r
+      b: (global.innerHeight || document.documentElement.clientHeight) + offset.b,
+      r: (global.innerWidth || document.documentElement.clientWidth) + offset.r
     };
     for (var i = 0; i < length; i++) {
       elem = nodes[i];
@@ -110,9 +110,9 @@
 
   asyncimg.detach = function () {
     if (document.removeEventListener) {
-      root.removeEventListener('scroll', debounceOrThrottle);
+      global.removeEventListener('scroll', debounceOrThrottle);
     } else {
-      root.detachEvent('onscroll', debounceOrThrottle);
+      global.detachEvent('onscroll', debounceOrThrottle);
     }
     clearTimeout(poll);
   };
