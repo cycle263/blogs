@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test PubSubJS</title>
+    <style media="screen">
+      button{padding: 8px 16px;border-radius: 4px;background-color: #fff;border: 1px solid #bbb;cursor: pointer;margin-right: 16px;}
+    </style>
+  </head>
+  <body>
+    <button id="publish-thing">Test hello</button>
+    <button id="publish-other">Test other</button>
+    <button id="clear-all">Clear other</button>
+    <p id="publish-content1"></p>
+    <p id="publish-content2"></p>
+
+    <script src="../scripts/pubsubSimple.js"></script>
+    <script type="text/javascript">
+    window.onload = function(){
+      var btn = document.getElementById('publish-thing'),
+        otherbtn = document.getElementById('publish-other'),
+        clearAllbtn = document.getElementById('clear-all'),
+        content1 = document.getElementById('publish-content1'),
+        content2 = document.getElementById('publish-content2');
+      PubSub.subscribe( 'hello-world', function( topic, data ){
+        content1.innerHTML = 'hello world received at parent1 - ' + data;
+        console.log(data, '========= 11111111 ========');
+      });
+      PubSub.subscribe( 'hello-world', function( topic, data ){
+        content2.innerHTML = 'hello world received at parent2 - ' + data;
+        console.log(data, '========= 22222222 ========');
+      });
+
+      PubSub.subscribe( 'other', function( topic, data ){
+        console.log(data, '========= other ========');
+      });
+      PubSub.subscribe( 'other.hello-world', function( topic, data ){
+        console.log(data, '========= hello-world + other ========');
+      });
+      btn.onclick = function(){
+        PubSub.publish( 'hello-world', 'from button in parent document' );
+      };
+      otherbtn.onclick = function(){
+        PubSub.publish( 'other.hello-world', '另外一个pubsub' );
+      };
+      clearAllbtn.onclick = function(){
+        PubSub.unSubscribe('other');
+      };
+    };
+    </script>
+  </body>
+</html>

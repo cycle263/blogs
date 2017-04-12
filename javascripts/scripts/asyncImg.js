@@ -1,9 +1,7 @@
 // 惰性加载图片，随滚动加载
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(function() {
-      return factory(global);
-    });
+    define(function() { return factory(global); });
   } else if (typeof exports === 'object') {
     module.exports = factory;
   } else {
