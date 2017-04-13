@@ -3,7 +3,7 @@
   if(typeof define === 'function' && define.amd){
     define(function(){ return factory(global); });
   }else if(typeof exports === 'object'){
-    module.exports = factory;
+    module.exports = factory(global);
   }else {
     global.PubSub = factory(global);
   }
