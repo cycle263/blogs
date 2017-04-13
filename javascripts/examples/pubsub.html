@@ -10,7 +10,7 @@
   <body>
     <button id="publish-thing">Test hello</button>
     <button id="publish-other">Test other</button>
-    <button id="clear-all">Clear other</button>
+    <button id="clear-all">Clear hello 2</button>
     <p id="publish-content1"></p>
     <p id="publish-content2"></p>
 
@@ -22,30 +22,31 @@
         clearAllbtn = document.getElementById('clear-all'),
         content1 = document.getElementById('publish-content1'),
         content2 = document.getElementById('publish-content2');
-      PubSub.subscribe( 'hello-world', function( topic, data ){
+      var token1 = PubSub.subscribe( 'hello-world', function( topic, data ){
         content1.innerHTML = 'hello world received at parent1 - ' + data;
         console.log(data, '========= 11111111 ========');
       });
-      PubSub.subscribe( 'hello-world', function( topic, data ){
+      var token2 = PubSub.subscribe( 'hello-world', function( topic, data ){
         content2.innerHTML = 'hello world received at parent2 - ' + data;
         console.log(data, '========= 22222222 ========');
       });
 
-      PubSub.subscribe( 'other', function( topic, data ){
+      var token3 = PubSub.subscribe( 'other', function( topic, data ){
         console.log(data, '========= other ========');
       });
-      PubSub.subscribe( 'other.hello-world', function( topic, data ){
+      var token4 = PubSub.subscribe( 'other.something', function( topic, data ){
         console.log(data, '========= hello-world + other ========');
       });
       btn.onclick = function(){
         PubSub.publish( 'hello-world', 'from button in parent document' );
       };
       otherbtn.onclick = function(){
-        PubSub.publish( 'other.hello-world', '另外一个pubsub' );
+        PubSub.publish( 'other.something', '两层订阅' );
       };
       clearAllbtn.onclick = function(){
-        PubSub.unSubscribe('other');
+        PubSub.unSubscribe('hello-world', token2);
       };
+      console.log(token1, token2, token3, token4);
     };
     </script>
   </body>

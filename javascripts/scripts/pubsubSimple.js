@@ -22,6 +22,11 @@
   		return false;
   	};
 
+  /**
+   *  return subscription token
+	 *  @param { func } subscription function
+	 *	@param { ticket } subscription type
+	 */
   PubSub.subscribe = function(ticket, func){
     if(typeof func !== 'function'){
       return false;
@@ -34,6 +39,7 @@
     return token;
   };
 
+  // puslish subscription
   PubSub.publish = function(ticket, data){
     if(!ticket || typeof ticket !== 'string'){
       console.warn('Subscription does not exist');
@@ -63,22 +69,42 @@
 		}
   };
 
-  PubSub.unSubscribe = function(ticket){
-    return PubSub.clearSubscribe(ticket);
+  // cancel single subscription
+  PubSub.unSubscribe = function(ticket, token){
+    return PubSub.cancelSubscribe(ticket, token);
   };
 
+  // cancel single subscription
+  PubSub.cancelSubscribe = function(ticket, token){
+    if(!ticket || typeof ticket !== 'string'){
+      console.warn('Subscription does not exist');
+      return;
+    }
+    if(!token || typeof token !== 'string' || token.indexOf('uid_') !== 0){
+      console.log('Token does not exist');
+      PubSub.clearSubscribe(ticket);
+    }
+    if(ticket in tickets && tickets.hasOwnProperty(ticket) && token in tickets[ticket] && tickets[ticket].hasOwnProperty(token)){
+      delete tickets[ticket][token];
+      return true;
+    }
+    return false;
+  };
+
+  // clear single subscription
   PubSub.clearSubscribe = function(ticket){
     if(!ticket || typeof ticket !== 'string'){
       console.warn('Subscription does not exist');
       return;
     }
-    if(ticket in tickets){
+    if(ticket in tickets && tickets.hasOwnProperty(ticket)){
       delete tickets[ticket];
       return true;
     }
     return false;
   };
 
+  // clear all subscriptions
   PubSub.clearAllSubscribe = function(){
     tickets = {};
     return true;
