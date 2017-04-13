@@ -11,6 +11,7 @@
   'use strict';
 
   var tickets = {},
+    initUid = -1,
     PubSub = {},
     hasKeys = function(obj){
   		var key;
@@ -34,7 +35,7 @@
     if(!tickets.hasOwnProperty(ticket)){
       tickets[ticket] = {};
     }
-    var token = 'uid_' + Date.now().toString() + Math.random().toString().substr(2, 8);
+    var token = 'uid_' + Date.now().toString().substr(11) + Math.random().toString().substr(2, 2) + (++initUid);
     tickets[ticket][token] = func;
     return token;
   };
@@ -50,11 +51,11 @@
       subscribers = tickets[ticket];
     if(!subscribers || typeof subscribers !== 'object'){
       console.warn('The function of subscription does not exist');
-      return;
-    }
-    for(key in subscribers){
-      if(subscribers.hasOwnProperty(key) && typeof subscribers[key] === 'function'){
-        subscribers[key](ticket, data);
+    } else {
+      for(key in subscribers){
+        if(subscribers.hasOwnProperty(key) && typeof subscribers[key] === 'function'){
+          subscribers[key](ticket, data);
+        }
       }
     }
     while(position !== -1){

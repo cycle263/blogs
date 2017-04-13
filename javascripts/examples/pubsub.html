@@ -10,7 +10,7 @@
   <body>
     <button id="publish-thing">Test hello</button>
     <button id="publish-other">Test other</button>
-    <button id="clear-all">Clear hello 2</button>
+    <button id="clear-all">Clear other.something</button>
     <p id="publish-content1"></p>
     <p id="publish-content2"></p>
 
@@ -35,16 +35,16 @@
         console.log(data, '========= other ========');
       });
       var token4 = PubSub.subscribe( 'other.something', function( topic, data ){
-        console.log(data, '========= hello-world + other ========');
+        console.log(data, '========= other.something ========');
       });
       btn.onclick = function(){
         PubSub.publish( 'hello-world', 'from button in parent document' );
       };
       otherbtn.onclick = function(){
-        PubSub.publish( 'other.something', '两层订阅' );
+        PubSub.publish( 'other.something', '两层订阅数据，' );
       };
       clearAllbtn.onclick = function(){
-        PubSub.unSubscribe('hello-world', token2);
+        PubSub.unSubscribe('other.something');
       };
       console.log(token1, token2, token3, token4);
     };
