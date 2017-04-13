@@ -69,9 +69,7 @@ Promise.prototype.then = function(onResolved, onRejected){
         reject(e);    // 如果出错，以捕获到的错误做为promise2的结果
       }
     });
-  }
-
-  if(self.status === 'reject'){
+  }else if(self.status === 'reject'){
     return promise2 = new Promise(function(resolve, reject){
       try {
         var p = onRejected(self.data);
@@ -82,9 +80,7 @@ Promise.prototype.then = function(onResolved, onRejected){
         reject(e);
       }
     });
-  }
-
-  if(self.status === 'pending'){
+  }else if(self.status === 'pending'){
     self.onResolvedCallback.push(function(value){
       try {
         var p = onResolved(self.data);
