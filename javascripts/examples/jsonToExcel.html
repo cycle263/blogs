@@ -1,0 +1,338 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#wwo').click(function(){
+                var data = {
+                  "title":[
+                    {"value":"集团", "type":"ROW_HEADER_HEADER", "datatype":"string"},
+                    {"value":"日期", "type":"ROW_HEADER_HEADER", "datatype":"string"}
+                  ],
+                  "data":[
+                    {"value":"好好", "type":"ROW_HEADER"},
+                    {"value":"2015-08-24", "type":"ROW_HEADER"}
+                  ]};
+                if(data == '')
+                    return;
+                JSONToExcelConvertor(data.data, "Report", data.title);
+            });
+        });
+
+        function JSONToExcelConvertor(JSONData, FileName, ShowLabel) {
+            //先转化json
+            var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+            var excel = '<table>';
+
+            //设置表头
+            var row = "<tr>";
+            for (var i = 0, l = ShowLabel.length; i < l; i++) {
+                row += "<td>" + ShowLabel[i].value + '</td>';
+            }
+
+            //换行
+            excel += row + "</tr>";
+
+            //设置数据
+            for (var i = 0; i < arrData.length; i++) {
+                var row = "<tr>";
+                for (var index in arrData[i]) {
+                    var value = arrData[i][index].value === "." ? "" : arrData[i][index].value;
+                    row += '<td>' + value + '</td>';
+                }
+                excel += row + "</tr>";
+            }
+            excel += "</table>";
+
+            var excelFile = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>";
+            excelFile += '<meta http-equiv="content-type" content="application/vnd.ms-excel; charset=UTF-8">';
+            excelFile += '<meta http-equiv="content-type" content="application/vnd.ms-excel';
+            excelFile += '; charset=UTF-8">';
+            excelFile += "<head>";
+            excelFile += "<!--[if gte mso 9]>";
+            excelFile += "<xml>";
+            excelFile += "<x:ExcelWorkbook>";
+            excelFile += "<x:ExcelWorksheets>";
+            excelFile += "<x:ExcelWorksheet>";
+            excelFile += "<x:Name>";
+            excelFile += "{worksheet}";
+            excelFile += "</x:Name>";
+            excelFile += "<x:WorksheetOptions>";
+            excelFile += "<x:DisplayGridlines/>";
+            excelFile += "</x:WorksheetOptions>";
+            excelFile += "</x:ExcelWorksheet>";
+            excelFile += "</x:ExcelWorksheets>";
+            excelFile += "</x:ExcelWorkbook>";
+            excelFile += "</xml>";
+            excelFile += "<![endif]-->";
+            excelFile += "</head>";
+            excelFile += "<body>";
+            excelFile += excel;
+            excelFile += "</body>";
+            excelFile += "</html>";
+
+            var uri = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(excelFile);
+            var link = document.createElement("a");
+            link.href = uri;
+            link.style = "visibility:hidden";
+            link.download = FileName + ".xls";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+          var arrData = typeof JSONData !== 'object' ? JSON.parse(JSONData) : JSONData;
+          var CSV = '';
+          if (ShowLabel) {
+              var row = "";
+              for (var index in arrData[0]) {
+                  row += index + ',';
+              }
+              row = row.slice(0, -1);
+              CSV += row + '\r\n';
+          }
+          for (var i = 0; i < arrData.length; i++) {
+              var row = "";
+              for (var index in arrData[i]) {
+                  var arrValue = arrData[i][index] == null ? "" : '="' + arrData[i][index] + '"';
+                  row += arrValue + ',';
+              }
+              row.slice(0, row.length - 1);
+              CSV += row + '\r\n';
+          }
+          if (CSV == '') {
+              growl.error("Invalid data");
+              return;
+          }
+
+          //Generate a file name
+          var fileName = "MyReport_";
+          //this will remove the blank-spaces from the title and replace it with an underscore
+          fileName  = ReportTitle.replace(/ /g, "_");
+
+          //Initialize file format you want csv or xls
+          var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+          //this trick will generate a temp <a /> tag
+          var link = document.createElement("a");
+          link.href = uri;
+
+          //set the visibility hidden so it will not effect on your web-layout
+          link.style = "visibility:hidden";
+          link.download = fileName + ".csv";
+
+          //this part will append the anchor tag and remove it after automatic click
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      }
+
+      var alldata = {"value":{"activeSheetIndex":0,"allEmbeddedObjects":[],"allPictures":[],"backupFlag":false,"bytes":"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AQ8ACAIQAAQAAAABAP8AAAAAAAABDwAIAhAABQAAAA8A/wAAAAAAAAEPAAgCEAAGAAAADwD/AAAAAAAAAQ8A/QAKAAAAAAAXAAAAAAD9AAoAAQAAABcAAQAAAP0ACgACAAAAFwACAAAA/QAKAAMAAAAXAAMAAAD9AAoABAAAABcABAAAAP0ACgAFAAAAFQAFAAAA/QAKAAUAAQAVAAYAAAD9AAoABQACABUABwAAAP0ACgAFAAMAFQAIAAAA/QAKAAUABAAVAAkAAAD9AAoABQAFABUACgAAAP0ACgAFAAYAFQALAAAA/QAKAAUABwAVAAwAAAD9AAoABQAIABUADQAAAP0ACgAFAAkAFQAOAAAA/QAKAAUACgAVAA8AAAD9AAoABQALABUAEAAAAP0ACgAFAAwAFQARAAAA/QAKAAUADQAVABIAAAD9AAoABQAOABUAEwAAAP0ACgAGAAAAFgAUAAAA/QAKAAYAAQAWABUAAAD9AAoABgACABYAFgAAAP0ACgAGAAMAFgAUAAAA/QAKAAYABAAWABcAAAD9AAoABgAFABYAGAAAAP0ACgAGAAYAFgAZAAAA/QAKAAYABwAWABoAAAD9AAoABgAIABYAGwAAAP0ACgAGAAkAFgAcAAAA/QAKAAYACgAWAB0AAAD9AAoABgALABYAHgAAAP0ACgAGAAwAFgAUAAAA/QAKAAYADQAWABQAAAD9AAoABgAOABYAHwAAANcAEgB2AgAAeAAOAA4ADgAOAA4A0gA+AhIAtgYAAAAAQAAAAAAAAAAAAAAAHQAPAAMAAAAAAAABAAAAAAAAAAoAAAA=","creationHelper":{},"customPalette":{},"displayedTab":0,"documentSummaryInformation":null,"firstVisibleTab":0,"forceFormulaRecalculation":false,"hidden":false,"missingCellPolicy":{"id":1},"numCellStyles":24,"numberOfFonts":7,"numberOfNames":0,"numberOfSheets":1,"rootDirectory":null,"selectedTab":0,"summaryInformation":null,"writeProtected":false},"success":true};
+    </script>
+</head>
+<body>
+    <input type="button" id="wwo" value="导出" />
+    <script type="text/javascript">
+    var Base64 = {
+    // private property
+    _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+
+    // public method for encoding
+    encode : function (input) {
+        var output = "";
+        var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+        var i = 0;
+
+        input = Base64._utf8_encode(input);
+
+        while (i < input.length) {
+
+            chr1 = input.charCodeAt(i++);
+            chr2 = input.charCodeAt(i++);
+            chr3 = input.charCodeAt(i++);
+
+            enc1 = chr1 >> 2;
+            enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+            enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+            enc4 = chr3 & 63;
+
+            if (isNaN(chr2)) {
+                enc3 = enc4 = 64;
+            } else if (isNaN(chr3)) {
+                enc4 = 64;
+            }
+
+            output = output +
+            this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) +
+            this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+        }
+        return output;
+    },
+
+    // public method for decoding
+    decode : function (input) {
+        var output = "";
+        var chr1, chr2, chr3;
+        var enc1, enc2, enc3, enc4;
+        var i = 0;
+
+        input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+        while (i < input.length) {
+
+            enc1 = this._keyStr.indexOf(input.charAt(i++));
+            enc2 = this._keyStr.indexOf(input.charAt(i++));
+            enc3 = this._keyStr.indexOf(input.charAt(i++));
+            enc4 = this._keyStr.indexOf(input.charAt(i++));
+
+            chr1 = (enc1 << 2) | (enc2 >> 4);
+            chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+            chr3 = ((enc3 & 3) << 6) | enc4;
+
+            output = output + String.fromCharCode(chr1);
+
+            if (enc3 != 64) {
+                output = output + String.fromCharCode(chr2);
+            }
+            if (enc4 != 64) {
+                output = output + String.fromCharCode(chr3);
+            }
+
+        }
+        output = Base64._utf8_decode(output);
+        return output;
+    },
+
+    // private method for UTF-8 encoding
+    _utf8_encode : function (string) {
+        string = string.replace(/\r\n/g,"\n");
+        var utftext = "";
+
+        for (var n = 0; n < string.length; n++) {
+
+            var c = string.charCodeAt(n);
+
+            if (c < 128) {
+                utftext += String.fromCharCode(c);
+            }
+            else if((c > 127) && (c < 2048)) {
+                utftext += String.fromCharCode((c >> 6) | 192);
+                utftext += String.fromCharCode((c & 63) | 128);
+            }
+            else {
+                utftext += String.fromCharCode((c >> 12) | 224);
+                utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+                utftext += String.fromCharCode((c & 63) | 128);
+            }
+        }
+        return utftext;
+    },
+
+    // private method for UTF-8 decoding
+    _utf8_decode : function (utftext) {
+        var string = "";
+        var i = 0;
+        var c = c1 = c2 = 0;
+
+        while ( i < utftext.length ) {
+
+            c = utftext.charCodeAt(i);
+
+            if (c < 128) {
+                string += String.fromCharCode(c);
+                i++;
+            }
+            else if((c > 191) && (c < 224)) {
+                c2 = utftext.charCodeAt(i+1);
+                string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+                i += 2;
+            }
+            else {
+                c2 = utftext.charCodeAt(i+1);
+                c3 = utftext.charCodeAt(i+2);
+                string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+                i += 3;
+            }
+        }
+        return string;
+    }
+  };
+
+  var dedate = Base64._utf8_decode(alldata.value.bytes);
+
+      var reader = new FileReader(),
+        link = document.createElement("a");
+
+        reader.onload = function(){
+          link.href = result ;
+          link.style = "visibility:hidden";
+          link.download = "test.csv";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        };
+
+        var dataUrl = 'data:application/vnd.ms-excel;charset=utf-8,' + ';base64,' + atob(alldata.value.bytes);
+
+
+        function b64toBlob(b64Data, contentType, sliceSize) {
+          contentType = contentType || '';
+          sliceSize = sliceSize || 512;
+
+          var byteCharacters = atob(b64Data);
+          var byteArrays = [];
+
+          for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+              byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
+          }
+
+          var blob = new Blob(byteArrays, {type: contentType});
+          return blob;
+        }
+
+        //调用
+        var blob = b64toBlob(alldata.value.bytes, 'application/vnd.ms-excel');
+        var blobUrl = URL.createObjectURL(blob);
+
+      // reader.readAsDataURL(atob(alldata.value.bytes));
+      //  URL.createObjectURL(atob(alldata.value.bytes));
+
+      $.ajax({
+        url: 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&choe=UTF-8&chld=L|4&chl=test',
+        type: "POST",
+        dataType: "binary",
+        contentType: 'data/json',
+        processData: false,
+        success: function(result){
+          console.log(result);
+      	  // do something with binary data
+        }
+      });
+
+      var xhr = new XMLHttpRequest();
+    	xhr.onload = function() {
+    		var objectURL = URL.createObjectURL(this.response),
+    			link = document.createElement("a");
+    		link.href = objectURL;
+        link.download = "test.xls";
+    		link.onload = function(e) {
+    			window.URL.revokeObjectURL(this.href);
+    		};
+    		document.body.appendChild(link) ;
+    	} ;
+    	xhr.open("POST", '');
+    	xhr.responseType = "blob";
+    	// xhr.send({});
+    </script>
+</body>
+</html>
