@@ -10,7 +10,7 @@
       <button type="submit" name="button">Submit</button>
     </form>
 
-    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.2/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
       (function(global, undefined){
         $('input').on('change', function(e){
@@ -29,6 +29,22 @@
             }
           });
         });
+
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            var objectURL = URL.createObjectURL(this.response),
+                link = document.createElement("a");
+            link.href = objectURL;
+            link.download = "test.png";
+            link.innerText = 'download png';
+            link.onload = function(e) {
+                window.URL.revokeObjectURL(this.href);
+            };
+            document.body.appendChild(link) ;
+        } ;
+        xhr.open("get", 'http://s1.95171.cn/b/img/xms_mobile.v807112724.png');
+        xhr.responseType = "blob";
+        xhr.send(null);
       })(window);
     </script>
   </body>
