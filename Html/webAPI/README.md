@@ -16,6 +16,6 @@
 
   - text/plain，以纯文本形式进行编码
 
-* html5 download属性
+* html5 download属性（兼容性不佳，IE和Safari不支持）
 
   > a标签包含download属性，则直接下载该资源，文件名为download指定的文件名称
