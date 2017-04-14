@@ -16,6 +16,9 @@
         $('input').on('change', function(e){
           var f = new FormData();
           f.append('file', this.files[0]);
+          $.post('test.html', f, function(){
+            console.log(arguments);
+          });
         });
       })(window);
     </script>
