@@ -15,3 +15,7 @@
   - application/x- www-form-urlencoded，默认值，表单以键值对方式提交，key-value
 
   - text/plain，以纯文本形式进行编码
+
+* html5 download属性
+
+  > a标签包含download属性，则直接下载该资源，文件名为download指定的文件名称

@@ -78,6 +78,11 @@ function load_binary_resource(url) {
   ```
   var reader = new FileReader();
   reader.readAsDataURL(myBytes);
+  reader.onload = function(){
+    var img = document.createElement("img");
+    img.src = this.result ;
+    document.body.appendChild(img) ;
+  };
 
   或者
 
