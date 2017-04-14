@@ -275,35 +275,6 @@
 
         var dataUrl = 'data:application/vnd.ms-excel;charset=utf-8,' + ';base64,' + atob(alldata.value.bytes);
 
-
-        function b64toBlob(b64Data, contentType, sliceSize) {
-          contentType = contentType || '';
-          sliceSize = sliceSize || 512;
-
-          var byteCharacters = atob(b64Data);
-          var byteArrays = [];
-
-          for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-            var byteNumbers = new Array(slice.length);
-            for (var i = 0; i < slice.length; i++) {
-              byteNumbers[i] = slice.charCodeAt(i);
-            }
-
-            var byteArray = new Uint8Array(byteNumbers);
-
-            byteArrays.push(byteArray);
-          }
-
-          var blob = new Blob(byteArrays, {type: contentType});
-          return blob;
-        }
-
-        //调用
-        var blob = b64toBlob(alldata.value.bytes, 'application/vnd.ms-excel');
-        var blobUrl = URL.createObjectURL(blob);
-
       // reader.readAsDataURL(atob(alldata.value.bytes));
       //  URL.createObjectURL(atob(alldata.value.bytes));
 

@@ -72,3 +72,15 @@ function load_binary_resource(url) {
     return req.responseText;
 }
 ```
+
+* 处理二进制流
+
+  ```
+  var reader = new FileReader();
+  reader.readAsDataURL(myBytes);
+
+  或者
+
+  var href = URL.createObjectURL(myBytes);
+  // after load
+  URL.revokeObjectURL(href);
