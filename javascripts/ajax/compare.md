@@ -8,6 +8,8 @@
 - xhr2
   * FormData，用键值对key-value方式模拟表单提交，并且可以一步上传二进制文件。
 
+    FormData提交格式的每个数据分三部分:
+
   * Blob
 
   * File

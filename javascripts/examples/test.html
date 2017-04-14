@@ -15,7 +15,7 @@
       (function(global, undefined){
         $('input').on('change', function(e){
           var f = new FormData();
-          f.append('file', this);
+          f.append('file', this.files[0]);
         });
       })(window);
     </script>
