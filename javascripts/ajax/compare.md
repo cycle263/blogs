@@ -18,7 +18,9 @@
 
       + 传输内容
 
-  * Blob
+  * Blob，BLOB (binary large object)，表示二进制大对象。
+
+    > 一个Blob对象就是一个包含有只读原始数据的类文件对象。Blob对象中的数据并不一定得是JavaScript中的原生形式。File接口基于Blob, 继承了Blob的功能，并且扩展支持了用户计算机上的本地文件。创建Blob对象的方法有几种，可以调用Blob构造函数，还可以使用一个已有Blob对象上的slice()方法切出另一个Blob对象，还可以调用canvas对象上的toBlob方法。
 
   * File
 

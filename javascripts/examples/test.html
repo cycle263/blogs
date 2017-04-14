@@ -16,8 +16,17 @@
         $('input').on('change', function(e){
           var f = new FormData();
           f.append('file', this.files[0]);
-          $.post('test.html', {data: f}, function(){
-            console.log(arguments);
+          $.ajax({
+            url: 'test.html',
+            type: 'POST',
+            data: f,
+            dataType: 'JSON',
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(res){
+              console.log(res);
+            }
           });
         });
       })(window);
