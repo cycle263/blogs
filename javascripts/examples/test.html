@@ -5,7 +5,7 @@
     <title>test</title>
   </head>
   <body>
-    <form class="" method="post">
+    <form class="" action="test.html" method="post" enctype="multipart/form-data">
       <input type="file" name="name" value="">
       <button type="submit" name="button">Submit</button>
     </form>
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       (function(global, undefined){
         $('input').on('change', function(e){
-          console.log(this.files);
+          $('form').submit();
         });
       })(window);
     </script>
