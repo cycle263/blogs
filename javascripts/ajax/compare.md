@@ -56,6 +56,7 @@
     ```
     var xhr = new XMLHttpRequest();    
     xhr.open("get", "some.png", true);
+    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=GBK');
     xhr.responseType = "blob";
     xhr.onload = function() {
         if (this.status == 200) {
@@ -74,5 +75,7 @@
     注意点：*blob方式跟ajax同样存在跨域的问题*
 
   * File
+
+    > 表示我们使用file控件(<input type="file">)选择的FileList对象，或者是使用拖拽操作搞出的DataTransfer对象。
 
   * ArrayBuffer

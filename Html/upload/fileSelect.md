@@ -43,8 +43,8 @@ function handleFiles(files) {
     img.width = "200";
     img.classList.add("obj");
     img.file = file;
-    // 假设 "preview" 是将要展示图片的 div
-    preview.appendChild(img);
+    // document.body可以替换成想要预览的元素区域
+    document.body.appendChild(img);
 
     var reader = new FileReader();
     reader.onload = (function(aImg) {
