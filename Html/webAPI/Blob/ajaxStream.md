@@ -49,6 +49,7 @@ oReq.onload = function(oEvent) {
     // ...
 };
 oReq.send();
+
 或者
 
 var oReq = new XMLHttpRequest();

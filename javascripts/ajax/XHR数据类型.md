@@ -78,4 +78,36 @@
 
     > 表示我们使用file控件(<input type="file">)选择的FileList对象，或者是使用拖拽操作搞出的DataTransfer对象。
 
+    - name 文件对象的名称，File.name
+
+    - size 该Blob对象所包含数据的字节大小，Blob.size
+
+    - type 该Blob对象所包含数据的MIME类型，Blob.type
+
   * ArrayBuffer
+
+    > ArrayBuffer表示二进制数据的原始缓冲区，该缓冲区用于存储各种类型化数组的数据，也就是二进制数据通用的固定长度容器。
+
+    - vs Blob
+
+      ArrayBuffer就是缓冲出来的打死不动的二进制对象，如 0101 1000 1101之类的，并且是不可以读写的二进制对象，需要借助类型化数组或DataView对象来解释原始缓冲区数据；
+
+      Blob可以append ArrayBuffer的数据，可以列举为更加高级的二进制大对象。
+
+      ```
+      // 创建一个8字节的ArrayBuffer  
+      var b = new ArrayBuffer(8);  
+
+      // 创建一个指向b的视图v1，采用Int32类型，开始于默认的字节索引0，直到缓冲区的末尾  
+      var v1 = new Int32Array(b);  
+
+      // 创建一个指向b的视图v2，采用Uint8类型，开始于字节索引2，直到缓冲区的末尾  
+      var v2 = new Uint8Array(b, 2);  
+
+      // 创建一个指向b的视图v3，采用Int16类型，开始于字节索引2，长度为2  
+      var v3 = new Int16Array(b, 2, 2);  
+      ```
+      ![arraybuffer](../images/buffer.png)
+
+      命名都是：基本类型+位数+Array。我们都知道一个字节是8位的，所以8位的数组中每个元素就占一个字节。同理可知64位的数组每个元素占8个字节。就拿Int8Array来说，它是8位的整数。8位可以表示28=256个数字。而Int是有符号的，所以Int8Array的元素可以表示-128到127的整数。而Uint8Array的元素是无符号的，同理可知它可以表示0-255的整数。
+　　   由于这些数组是使用线性储存，因此它们是定长的，无法给数组添加元素。超出索引的赋值不会报错，也不会生效。
