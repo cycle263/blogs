@@ -2,10 +2,12 @@
 (function(global, factory){
   if(typeof define === 'function' && define.amd){
     define(function(){ return factory(global); });
-  }else if(typeof exports === 'object'){
+  }else if(typeof exports === 'object' && typeof module === 'object'){
     module.exports = factory(global);
-  }else {
-    global.PubSub = factory(global);
+  }else if(typeof exports === 'object'){
+    exports["PubSub"] = factory(global);
+  }else{
+    global["PubSub"] = factory(global);
   }
 })(this, function(global){
   'use strict';
