@@ -77,6 +77,21 @@
     }, (err) => {
         console.log(`error: ${err}`)
     })
+
+    or
+
+    var p1 = Promise.resolve(3);
+    var p2 = Promise.resolve((function(){
+    	setTimeout(console.log, 0, 'test' + arguments);
+    	return 'test';
+    })());
+    var p3 = new Promise(function(resolve, reject) {
+      setTimeout(resolve, 100, "foo");
+    });
+
+    Promise.all([p1, p2, p3]).then(function(values) {
+      console.log(values);  // [3, "test", "foo"]
+    });
     ```
 
 * 6、Promise.race()  
@@ -86,6 +101,8 @@
 * 7、Promise.resolve()  
 
   将现有对象转为Promise对象，Promise.resolve方法就起到这个作用，且它的状态为Resolved。
+
+  `Promise.resolve('test'); \\ return promise实例`
 
 * 8、Promise.reject()  
 
