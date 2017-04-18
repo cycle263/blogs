@@ -5,14 +5,20 @@
     <title>test PubSubJS</title>
     <style media="screen">
       button{padding: 8px 16px;border-radius: 4px;background-color: #fff;border: 1px solid #bbb;cursor: pointer;margin-right: 16px;}
+      p{margin: 0;line-height: 36px;color: #333;}
+      .container{overflow: hidden;padding: 0 16px;background-color: #aaa;margin: 16px 0;}
     </style>
   </head>
   <body>
-    <button id="publish-thing">Test hello</button>
-    <button id="publish-other">Test other</button>
-    <button id="clear-all">Clear other.something</button>
-    <p id="publish-content1"></p>
-    <p id="publish-content2"></p>
+    <button id="publish-thing">Publish hello</button>
+    <button id="publish-other">Publish other</button>
+    <button id="clear-all">Clear other.something (取消子级订阅)</button>
+    <div class="container">
+      <p id="publish-content1"></p>
+      <p id="publish-content2"></p>
+      <p id="publish-content3"></p>
+      <p id="publish-content4"></p>
+    </div>
 
     <script src="../scripts/pubsubSimple.js"></script>
     <script type="text/javascript">
@@ -21,32 +27,38 @@
         otherbtn = document.getElementById('publish-other'),
         clearAllbtn = document.getElementById('clear-all'),
         content1 = document.getElementById('publish-content1'),
-        content2 = document.getElementById('publish-content2');
+        content2 = document.getElementById('publish-content2'),
+        content3 = document.getElementById('publish-content3'),
+        content4 = document.getElementById('publish-content4');
       var token1 = PubSub.subscribe( 'hello-world', function( topic, data ){
-        content1.innerHTML = 'hello world received at parent1 - ' + data;
+        content1.innerHTML = 'hello world received, 数据data: ' + data;
         console.log(data, '========= 11111111 ========');
       });
       var token2 = PubSub.subscribe( 'hello-world', function( topic, data ){
-        content2.innerHTML = 'hello world received at parent2 - ' + data;
+        content2.innerHTML = 'hello world received, 数据data: ' + data;
         console.log(data, '========= 22222222 ========');
       });
 
       var token3 = PubSub.subscribe( 'other', function( topic, data ){
-        console.log(data, '========= other ========');
+        content3.innerHTML = 'other (父级订阅), 数据data: ' + data;
+        console.log(data, '========= other (父级订阅) ========');
       });
       var token4 = PubSub.subscribe( 'other.something', function( topic, data ){
-        console.log(data, '========= other.something ========');
+        content4.innerHTML = 'other.something (子级订阅), 数据data: ' + data;
+        console.log(data, '========= other.something (子级订阅) ========');
       });
       btn.onclick = function(){
-        PubSub.publish( 'hello-world', 'from button in parent document' );
+        PubSub.publish( 'hello-world', '我是传递的data' );
       };
       otherbtn.onclick = function(){
-        PubSub.publish( 'other.something', '两层订阅数据，' );
+        PubSub.publish( 'other.something', '两级订阅数据' );
       };
       clearAllbtn.onclick = function(){
         PubSub.unSubscribe('other.something');
+        content3.innerHTML = '';
+        content4.innerHTML = '';
       };
-      console.log(token1, token2, token3, token4);
+      console.log('所有token: ', token1, token2, token3, token4);
     };
     </script>
   </body>
