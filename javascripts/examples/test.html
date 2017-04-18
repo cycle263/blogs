@@ -49,6 +49,11 @@
         xhr.open("get", 'http://s1.95171.cn/b/img/xms_mobile.v807112724.png');
         xhr.responseType = "blob";
         xhr.send(null);
+
+        // promise
+        Promise.resolve($.getJSON('./test.json', r => {
+          console.log(r);
+        }));
       })(window);
     </script>
   </body>
