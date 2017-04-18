@@ -44,9 +44,10 @@
 
   // puslish subscription
   PubSub.publish = function(ticket, data){
+    var result = false;
     if(!ticket || typeof ticket !== 'string'){
       console.warn('Subscription does not exist');
-      return;
+      return result;
     }
 
     var position = ticket.lastIndexOf('.'), key,
@@ -57,6 +58,7 @@
       for(key in subscribers){
         if(subscribers.hasOwnProperty(key) && typeof subscribers[key] === 'function'){
           subscribers[key](ticket, data);
+          result = true;
         }
       }
     }
@@ -67,9 +69,11 @@
       for(key in subscriber){
         if(subscriber.hasOwnProperty(key) && typeof subscriber[key] === 'function'){
           subscriber[key](ticket, data);
+          result = true;
         }
       }
 		}
+    return result;
   };
 
   // cancel single subscription
