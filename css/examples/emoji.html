@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>emoji</title>
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  </head>
+  <body>
+    <p>
+      Unicode 只是规定了 Emoji 的码点和含义，并没有规定它的样式。举例来说，码点U+1F600表示一张微笑的脸，但是这张脸长什么样，则由各个系统自己实现。
+    </p>
+    <p>（1）最简单的方法当然是复制/粘贴，你可以到 <a href="http://getemoji.com" target="_blank">getEmoji.com</a> 选中一个 Emoji 贴在自己的文档即可。</p>
+
+    <p>（3）JavaScript 输入 Emoji，可以使用 <a href="https://www.npmjs.com/package/node-emoji" target="_blank">node-emoji</a> 这个库。</p>
+
+    <p>&#x1F468;&zwj;&#x1F469;&zwj;&#x1F467;</p>
+    <p>&#128512;</p>
+
+    <i class="em em-baby"></i>
+
+    <p id="js-test">
+
+    </p>
+    <script type="text/javascript">
+      (function(){
+        var p = document.getElementById('js-test');
+        p.innerHTML = '&#128512;'
+        p.innerText = p.innerText + ' - &#128512;';
+      })();
+    </script>
+  </body>
+</html>
