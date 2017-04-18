@@ -31,8 +31,24 @@
 
 * 3、Promise.prototype.then()  
 
-  作用是为Promise实例添加状态改变时的回调函数。then方法返回的是一个新的Promise实例。  
-  第一个回调函数完成以后，会将返回结果作为参数，传入第二个回调函数(链式写法)。  
+  作用是为Promise实例添加状态改变时的回调函数。then方法返回的是一个新的Promise实例。第一个回调函数完成以后，会将返回结果作为参数，传入第二个回调函数(链式写法)。  
+
+  ```
+  // then(resolveHandler, rejectHandler) 这种形式时，rejectHandler 并不会捕获由 resolveHandler 引发的异常。而catch(errorHandler) 这种形式可以处理到所有异常。
+  somePromise().then(function(){
+
+  }, function(err){
+
+  })
+
+  // 不完全等同于
+
+  somePromise().then(function(){
+
+  }).catch(function(err){
+
+  });
+  ```
 
 * 4、Promise.prototype.catch()  
 
@@ -40,7 +56,7 @@
 
 * 5、Promise.all()  
 
-  Promise.all方法用于将多个Promise实例，包装成一个新的Promise实例。有一个被rejected，新的promise的状态就变成rejected。 then回调参数为array 
+  Promise.all方法用于将多个Promise实例，包装成一个新的Promise实例。有一个被rejected，新的promise的状态就变成rejected。 then回调参数为array
 
     ```
     function fetchAsync (url, timeout, onData, onError) {
