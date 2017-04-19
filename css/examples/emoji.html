@@ -4,6 +4,24 @@
     <meta charset="utf-8">
     <title>emoji</title>
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <style media="screen">
+      .js-emoji{
+        width: 280px;
+        height: 120px;
+        overflow: auto;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        padding: 4px 8px;
+      }
+      .js-emoji i{
+        margin-right: 8px;
+        cursor: pointer;
+        font-style: normal;
+      }
+      .js-emoji i:hover{
+        background-color: #f9f9f9;
+      }
+    </style>
   </head>
   <body>
     <p>
@@ -21,11 +39,31 @@
     <p id="js-test">
 
     </p>
+    <textarea name="js-emoji-input" rows="8" cols="40"></textarea>
+    <div class="js-emoji" style="display:none;">
+
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
       (function(){
         var p = document.getElementById('js-test');
         p.innerHTML = '&#128512;'
         p.innerText = p.innerText + ' - &#128512;';
+
+        $('[name="js-emoji-input"]').focus(function(){
+          var prefix = '&#x1F', initialValue = 599, result = [];
+          while(initialValue++ < 640){
+            var temp = initialValue + '';
+            temp = temp.length === 1 ? ('00' + temp) : temp.length === 2 ? ('0' + temp) : temp;
+            result.push(prefix + temp);
+          }
+          $('.js-emoji').html('<i>'+result.join('</i><i>')+'</i>').show();
+
+          $('.js-emoji').on('click', 'i', function(){
+            var originValue = $('[name="js-emoji-input"]').val();
+            $('[name="js-emoji-input"]').val(originValue + this.innerHTML);
+          });
+        });
       })();
     </script>
   </body>
