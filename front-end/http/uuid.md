@@ -3,7 +3,8 @@ UUID的目的，是让分布式系统中的所有元素，都能有唯一的辨�
 UUID是由一组32位数的16进制数字所构成，是故UUID理论上的总数为1632=2128，约等于3.4 x 1038。也就是说若每纳秒产生1兆个UUID，要花100亿年才会将所有UUID用完。
 
 ```
-var guid = function(len, radix) {
+// @radix 或位运算基数
+var guid = function(len, radix) {		
 	var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
 	var uuid = [], i;
 	radix = radix || chars.length;
