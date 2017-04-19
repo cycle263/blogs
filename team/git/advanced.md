@@ -64,7 +64,7 @@
     `git push`  指定了分支，可省略后面参数       
       可选参数 -f: 表示强制覆盖  
     `git push origin HEAD:<name-of-remote-branch>`  
-    `git push origin branch-name`  
+    `git push origin branch-name`  不存在的远端分支：`git push origin localBranch:remoteBranch`
 
 * git 合并代码
 
