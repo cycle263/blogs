@@ -26,7 +26,7 @@ var guid = function(len, radix) {
 	return uuid.join('');
 };
 ```
-
+or
 ```
 function uuid(len, timeLen){
 	var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -44,4 +44,45 @@ function uuid(len, timeLen){
 	}
 	return result;
 }
+```
+or
+```
+function uuid(){
+	var crypto = window.crypto || window.msCrypto; // for IE 11
+	if (crypto && crypto.getRandomValues) {
+	  var rnds8 = new Uint8Array(16);
+	  rng = function whatwgRNG() {
+	    crypto.getRandomValues(rnds8);
+	    return rnds8;
+	  };
+	} else {
+	  var  rnds = new Array(16);
+	  rng = function() {
+	    for (var i = 0, r; i < 16; i++) {
+	      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+	      rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+	    }
+	    return rnds;
+	  };
+	}
+	return rng();
+}
+
+function bytesToUuid(buf, offset) {
+  var i = offset || 0;
+	var byteToHex = [];
+	for (var j = 0; j < 256; ++j) {
+	  byteToHex[j] = (j + 0x100).toString(16).substr(1);
+	}
+  var bth = byteToHex;
+  return  bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]]
+					+ '-' + bth[buf[i++]] + bth[buf[i++]]
+					+ '-' + bth[buf[i++]] + bth[buf[i++]]
+					+ '-' + bth[buf[i++]] + bth[buf[i++]]
+					+ '-' + bth[buf[i++]] + bth[buf[i++]]
+					+ bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]];
+}
+
+// use
+bytesToUuid(uuid())		// 48cf628e-f3e7-0cb1-6f58-dd309c874e9f
 ```
