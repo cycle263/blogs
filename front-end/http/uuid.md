@@ -26,3 +26,22 @@ var guid = function(len, radix) {
 	return uuid.join('');
 };
 ```
+
+```
+function uuid(len, timeLen){
+	var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	len = len || 36;
+	timeLen = timeLen || 12;
+	timeLen = timeLen > len ? len / 2 : timeLen;
+	var rLen = len - timeLen, result = '';
+	var time = Date.now();
+	for(var i = 0; i < timeLen; ++i){
+		result += chars.charAt(Math.floor(time % timeLen));
+		time = time / 3;
+	}
+	for(var j = 0; j < rLen; ++j){
+		result += chars.charAt(Math.floor(Math.random() * chars.length));
+	}
+	return result;
+}
+```
