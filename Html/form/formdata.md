@@ -1,5 +1,7 @@
 ## formdata
 
+  > XMLHttpRequest Level 2添加了一个新的接口FormData.利用FormData对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send()方法来异步的提交这个"表单".比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件.
+
 * FormData对象会自动将form中的表单值也包含进去，包括文件内容也会被编码之后包含进去。将文件内容自动序列化成字符串（相当于readAsBinaryString的手动拼接字符串）
 
 * 如果要处理文件的二进制流，则需要调用ArrayBuffer来处理二进制，完了再倒腾成Blob，再倒腾成FormData。
@@ -25,7 +27,7 @@
 
 * append
 
-  > 通过append(key, value)来添加数据，如果指定的key不存在则会新增一条数据，如果key存在，则添加到数据的末尾
+  > 通过append(key, value[, fileName])来添加数据，如果指定的key不存在则会新增一条数据，如果key存在，则添加到数据的末尾。参数fileName(可选)，指定文件的文件名, 当value参数被指定为一个Blob对象或者一个File对象时, 该文件名会被发送到服务器上, 对于Blob对象来说, 这个值默认为"blob".
 
   ```
   formData.append("k1", "v1");
@@ -54,7 +56,7 @@
 
   > 通过delete(key)，来删除数据，key也会被删除，has方法判断为false
 
-* entries / values
+* entries / values / keys
 
   > 通过entries()来获取一个迭代器，然后遍历所有的数据.
 
