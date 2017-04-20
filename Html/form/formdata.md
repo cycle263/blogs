@@ -68,14 +68,14 @@
   var i = formData.entries();
 
   i.next(); // {done:false, value:["k1", "v1"]}
-  i.next(); // {done:fase, value:["k1", "v2"]}
-  i.next(); // {done:fase, value:["k2", "v1"]}
+  i.next(); // {done:false, value:["k1", "v2"]}
+  i.next(); // {done:false, value:["k2", "v1"]}
   i.next(); // {done:true, value:undefined}
 
   var j = formData.values();
 
-  j.next(); // {done:false, value:["k1", "v1"]}
-  j.next(); // {done:fase, value:["k1", "v2"]}
-  j.next(); // {done:fase, value:["k2", "v1"]}
-  j.next(); // {done:true, value:undefined}
+  console.log(j.next()); // {done:false, value: "v1"}
+  console.log(j.next()); // {done:false, value: "v2"}
+  console.log(j.next()); // {done:false, value: "v1"}
+  console.log(j.next()); // {done:true, value:undefined}
   ```

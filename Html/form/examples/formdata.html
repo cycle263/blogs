@@ -18,16 +18,23 @@
         var i = formData.entries();
 
         console.log(i.next()); // {done:false, value:["k1", "v1"]}
-        console.log(i.next()); // {done:fase, value:["k1", "v2"]}
-        console.log(i.next()); // {done:fase, value:["k2", "v1"]}
+        console.log(i.next()); // {done:false, value:["k1", "v2"]}
+        console.log(i.next()); // {done:false, value:["k2", "v1"]}
         console.log(i.next()); // {done:true, value:undefined}
 
         var j = formData.values();
 
-        console.log(j.next()); // {done:false, value:["k1", "v1"]}
-        console.log(j.next()); // {done:fase, value:["k1", "v2"]}
-        console.log(j.next()); // {done:fase, value:["k2", "v1"]}
+        console.log(j.next()); // {done:false, value: "v1"}
+        console.log(j.next()); // {done:false, value: "v2"}
+        console.log(j.next()); // {done:false, value: "v1"}
         console.log(j.next()); // {done:true, value:undefined}
+
+        var k = formData.keys();
+
+        console.log(k.next()); // {done:false, value: "k1"}
+        console.log(k.next()); // {done:false, value: "k1"}
+        console.log(k.next()); // {done:false, value: "k1"}
+        console.log(k.next()); // {done:true, value:undefined}
       })(window);
     </script>
   </body>
