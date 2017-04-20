@@ -12,7 +12,7 @@
 
     FormData提交格式的每个数据分三部分:
 
-      + 分界线(boundary), 二进制大文件的分界线，chrome使用“——WebKitFormBoundary”加16位随机Base64位编码的字符串作为分隔边界。
+      + 分界线(boundary), 二进制大文件的分界线，chrome使用“——WebKitFormBoundary”加16位随机Base64位编码的字符串作为分隔边界
 
       + 内容配置信息
 
