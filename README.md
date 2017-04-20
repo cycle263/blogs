@@ -1,5 +1,7 @@
 ## The front-end information summary
 
+[![Build Status](https://travis-ci.org/alizain/ulid.svg?branch=master)](https://travis-ci.org/alizain/ulid) [![codecov](https://codecov.io/gh/alizain/ulid/branch/master/graph/badge.svg)](https://codecov.io/gh/alizain/ulid)
+
 #### 1. [Javascript - 框架、ES6](./javascripts)
 
 * [jQuery](./jQuery)

@@ -10,11 +10,11 @@ function _arrayBufferToBase64( buffer ) {
 }
 
 or
-
+// arrayBuffer to Base64
 var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)));
 
 or ES6
-
+// arrayBuffer to Base64
 let base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
 
 
@@ -23,6 +23,7 @@ function ab2str(buf) {
   return String.fromCharCode.apply(null, new Uint16Array(buf));
 }
 
+// string to arrayBuffer
 function str2ab(str) {
   var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
   var bufView = new Uint16Array(buf);
@@ -32,19 +33,73 @@ function str2ab(str) {
   return buf;
 }
 
+// string to blob
+function str2ab(str){
+  var byteNumbers = new Array(str.length);
+  for (var i = 0; i < str.length; i++) {
+      byteNumbers[i] = str.charCodeAt(i);
+  }
+	return new Blob(byteNumbers, {type: 'image/png');
+}
+
 // ArrayBuffer to Uint8
 var buffer = new ArrayBuffer(32);
 var blob = new Blob([buffer]);       // 注意必须包裹[]
 
 
-// dataURL转换为Blob对象
+// dataURL（base64）转换为Blob对象
 function dataURLtoBlob(dataurl) {
-    var arr = dataurl.split(‘,‘), mime = arr[0].match(/:(.*?);/)[1],
-    bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    var arr = dataurl.split(‘,‘),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
     while(n--){
         u8arr[n] = bstr.charCodeAt(n);
     }
-    return new Blob([u8arr], {type:mime});
+    return new Blob([u8arr], {type: mime});
 }
 //test:
 var blob = dataURLtoBlob(‘data:text/plain;base64,YWFhYWFhYQ==‘);
+
+// dataURL（base64）转换为Blob对象
+function b64toBlob(b64Data, contentType, sliceSize) {
+  contentType = contentType || '';
+  sliceSize = sliceSize || 512;
+
+  var byteCharacters = atob(b64Data);
+  var byteArrays = [];
+
+  for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    var slice = byteCharacters.slice(offset, offset + sliceSize);
+    var byteNumbers = new Array(slice.length);
+    for (var i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+    var byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+
+  var blob = new Blob(byteArrays, {type: contentType});
+  return blob;
+}
+
+// Blob对象 to dataURL-base64
+function blobToDataURL(blob, callback) {
+    var fr = new FileReader();
+    fr.onload = function (e) { callback(e.target.result); }
+    fr.readAsDataURL(blob);
+}
+
+// blob to file
+function blobToFile(theBlob, fileName){
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    theBlob.lastModifiedDate = new Date();
+    theBlob.name = fileName;
+    return theBlob;
+}
+
+or
+
+// blob to file
+var file = new File([myBlob], "name");

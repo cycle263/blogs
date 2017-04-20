@@ -4,7 +4,7 @@
 
   - 生成Blob对象的方法
 
-    + Blob构造函数，new Blob(Array[, typeObject])
+    + Blob构造函数，new Blob(Array[, typeObject]), typeObject是个对象，例如：{type: 'image/png'}
 
       ```
       // 生成了一个超级链接，点击后提示下载文本文件hello-world.txt，文件内容为“Hello World”。
