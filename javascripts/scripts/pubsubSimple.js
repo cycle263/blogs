@@ -1,11 +1,11 @@
 // create by cycle263
 (function(global, factory){
-  if(typeof define === 'function' && define.amd){
+  if(typeof define === 'function' && define.amd){   // AMD
     define(function(){ return factory(global); });
-  }else if(typeof exports === 'object' && typeof module === 'object'){
+  }else if(typeof exports === 'object' && typeof module === 'object'){  // commonJS
     module.exports = factory(global);
-  }else if(typeof exports === 'object'){
-    exports["PubSub"] = factory(global);
+  }else if(typeof export === 'object'){
+    export["PubSub"] = factory(global);
   }else{
     global["PubSub"] = factory(global);
   }

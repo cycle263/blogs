@@ -76,11 +76,11 @@ function bytesToUuid(buf, offset) {
 	}
   var bth = byteToHex;
   return  bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]]
-					+ '-' + bth[buf[i++]] + bth[buf[i++]]
-					+ '-' + bth[buf[i++]] + bth[buf[i++]]
-					+ '-' + bth[buf[i++]] + bth[buf[i++]]
-					+ '-' + bth[buf[i++]] + bth[buf[i++]]
-					+ bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]];
+		+ '-' + bth[buf[i++]] + bth[buf[i++]]
+		+ '-' + bth[buf[i++]] + bth[buf[i++]]
+		+ '-' + bth[buf[i++]] + bth[buf[i++]]
+		+ '-' + bth[buf[i++]] + bth[buf[i++]]
+		+ bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]] + bth[buf[i++]];
 }
 
 // use
