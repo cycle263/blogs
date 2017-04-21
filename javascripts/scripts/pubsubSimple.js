@@ -4,8 +4,8 @@
     define(function(){ return factory(global); });
   }else if(typeof exports === 'object' && typeof module === 'object'){  // commonJS
     module.exports = factory(global);
-  }else if(typeof export === 'object'){
-    export["PubSub"] = factory(global);
+  }else if(typeof exports === 'object'){
+    exports["PubSub"] = factory(global);
   }else{
     global["PubSub"] = factory(global);
   }
