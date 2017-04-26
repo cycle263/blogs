@@ -8,9 +8,9 @@
 * commonJS和AMD规范区别？和ES6的模块有什么不同？（[Detail](../../structure/README.md)）
 
 ## 前端技术具体考察点
-* 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？BFC? 布局方式？iframe的优缺点？重构和回流？css3动画？
-* 字面量式函数和声明式函数的区分？原型继承vs类继承？(灵活，接口，抽象类)闭包的理解？this对象？原型链？作用域？变量声明提升？Ajax跨域？websocket vs http?(有并集) webworker?(后台运行) storage? 冒泡和捕获? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？++i vs i++? setTimeout里面运行的函数的作用域this指向? 异步编程(执行栈、消息队列)？
-* jQuery的事件绑定方式(on vs bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)
+* 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？BFC? 布局方式？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？重构和回流？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)?
+* 字面量式函数和声明式函数的区分？原型继承vs类继承？(灵活，接口，抽象类) 闭包的理解、优缺点？this对象？原型链？作用域？变量声明提升？Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？websocket vs http?(有并集) webworker?(后台运行) storage? 冒泡和捕获? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？++i vs i++? setTimeout里面运行的函数的作用域this指向? 异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？
+* jQuery的事件绑定方式(on vs bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(dom属性attribute和js属性property)？.get() vs [] vs eq() - jq ?
 * javascript中不可以直接使用【下标方式】修改字符串内容？不可以，原因使用下标访问时，只是临时创建的array对象
 * canvas、svg区别和各自特点，分别适合什么场景？
   Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
@@ -29,5 +29,5 @@
 * 前端安全：sql注入? XSS(跨站脚本攻击->输入特殊字符转义过滤)? CSRF(跨站请求伪造->表单增加hash值，POST更新)？同源策略？
 * 无缝发布部署，相关文件的先后发布顺序，灰度部署，平稳升级，错误监控和分析，安全性监控？自动化测试？
 * 擅长一门后端，如nodejs，关系型数据库和非关系型数据库，函数式编程，栈和队列区别、堆，多媒体前端经验，网络协议，http2等
-* 做过什么提高开发效率的工作？(包括团队)？如何降低项目的后期的维护成本？前端人员如何提高运营人员更强的支持力度？
+* 做过什么提高开发效率的工作？(包括团队)？如何降低项目的后期的维护成本？前端人员如何提高运营人员更强的支持力度？比较难的技术问题?
 * 有没有做过开源项目？有没有blog和github项目？最近在学什么？接下来半年打算学习什么？每天花多长时间学习？
