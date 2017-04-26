@@ -1,7 +1,5 @@
 ## 异步编程方式
 
-
-
 * 回调
 
   典型的有事件回调，ajax回调
@@ -170,12 +168,12 @@
       }
       return this;
   };
-  var event = new PubSub;//构造PubSub实例
+  var event = new PubSub(); // 构造PubSub实例
   event.subscribe('list', function(msg) {
       console.log(msg);
   });
   event.publish('list', {data: ['one,', 'two']});
-  //Object {data: Array[2]}
+  // Object {data: Array[2]}
   ```
 
 * Generator
