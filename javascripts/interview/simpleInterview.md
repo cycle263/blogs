@@ -3,7 +3,8 @@
   一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。setState做了什么(存入pending队列，判断是否处于batch update)
 * 在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志)  
   从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
-* ES6有哪些新特性？ES6 module可否做到按需加载？(stage3: dynamic import) babel转码的实现原理？实现promise? aynsc和await
+* ES6有哪些新特性？ES6 module可否做到按需加载？(stage3: dynamic import) ？箭头函数的作用域？babel转码的实现原理？
+  实现promise? aynsc和await
 * commonJS和AMD规范区别？和ES6的模块有什么不同？（[Detail](../../structure/README.md)）
 
 ## 前端技术具体考察点
