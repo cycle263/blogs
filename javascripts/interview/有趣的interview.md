@@ -58,3 +58,10 @@ function bar() {
 }
 bar();
 console.log(foo);
+
+// foo.x = foo = {n:2}; => foo.x = (foo = {n:2});  执行foo.x = foo时，两个foo指向不同的内存地址
+var foo = {n:1};
+var bar = foo;
+foo.x = foo = {n:2};
+console.log(foo.x);
+console.log(bar.x);
