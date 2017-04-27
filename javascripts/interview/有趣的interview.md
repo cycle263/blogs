@@ -48,3 +48,13 @@ function test() {
   }
 }
 test();
+
+// 1   ：foo提升到函数内容最前面，相当于定义了局部变量foo
+var foo = 1;
+function bar() {
+   foo = 10;
+   return;
+   function foo() {}
+}
+bar();
+console.log(foo);
