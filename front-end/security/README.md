@@ -1,6 +1,6 @@
 ## security
 
-* xss( Cross Site Script, 跨站脚本攻击)
+* xss ( Cross Site Script, 跨站脚本攻击)
 
   XSS 就是攻击者在 Web 页面中插入恶意脚本，当用户浏览页面时，促使脚本执行，从而达到攻击目的。XSS 的特点就是想尽一切办法在目标网站上执行第三方脚本。解决办法：
 
@@ -10,7 +10,7 @@
 
     - 设置 HTTP Header： "X-XSS-Protection: 1"
 
-* sql injection(SQL注入)
+* sql injection (SQL注入)
 
   SQL 注入，就是通过客户端的输入把 SQL 命令注入到一个应用的数据库中，从而得以执行恶意 SQL 语句。解决办法：
 
@@ -26,7 +26,7 @@
 
   DoS 攻击就是通过大量恶意流量占用带宽和计算资源以达到瘫痪对方网络的目的。
 
-* CSRF(Cross Site Request Forgery, 跨站请求伪造)
+* CSRF (Cross Site Request Forgery, 跨站请求伪造)
 
   CSRF 就是网站 A 对用户建立信任关系后，在网站 B 上利用这种信任关系，跨站点向网站 A 发起一些伪造的用户操作请求，以达到攻击的目的。解决方法：
 

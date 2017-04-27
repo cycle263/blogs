@@ -13,10 +13,23 @@ new Promise(function executor(resolve) {
 });
 console.log(5);
 
-
 // 0 1 2 3 4, 立即执行函数会立即执行
 for (var i = 0; i < 5; i++) {
   setTimeout((function(i) {
     console.log(i);
   })(i), i * 1000);
 }
+
+// setTimeout vs setInterval
+setTimeout(function(){       
+  // 代码块
+ setTimeout(arguments.callee, 10);
+}, 100);
+setInterval(function(){
+  // 代码块
+}, 100);
+
+// 声明提升
+var foo=function(){  console.log(1); }
+function foo(){  console.log(2); }
+foo();  //结果为1
