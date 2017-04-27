@@ -33,3 +33,18 @@ setInterval(function(){
 var foo=function(){  console.log(1); }
 function foo(){  console.log(2); }
 foo();  //结果为1
+
+// undefined、2、undefined
+function test() {
+  console.log(a);
+  console.log(foo());
+  console.log(bar);
+  var a = 1;
+  function foo(){     
+    return 2;   
+  }
+  var bar = function(){
+    return 3;
+  }
+}
+test();
