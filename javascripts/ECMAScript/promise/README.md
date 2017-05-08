@@ -1,5 +1,17 @@
 ## Promise标准
 
+```
+var promise = new Promise(function(resolve, reject) {
+  // 异步操作的代码
+
+  if (/* 异步操作成功 */){
+    resolve(value);
+  } else {
+    reject(error);
+  }
+});
+```
+
 * then方法返回一个新的Promise
 
 * 不同的Promise的实现可以相互调用
