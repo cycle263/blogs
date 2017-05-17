@@ -4,7 +4,7 @@
 * 在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志)  
   从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 * ES6有哪些新特性？ES6 module可否做到按需加载？(stage3: dynamic import) ？箭头函数的作用域？babel转码的实现原理？
-  实现promise? aynsc和await
+  实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await
 * commonJS和AMD规范区别？和ES6的模块有什么不同？（[Detail](../../structure/README.md)）
 
 ## 前端技术具体考察点
@@ -12,7 +12,7 @@
 * 字面量式函数和声明式函数的区分？原型继承vs类继承？(灵活，接口，抽象类) 闭包的理解、优缺点？this对象？原型链？作用域？变量声明提升？Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？websocket vs http?(有并集) webworker?(后台运行) storage? 冒泡和捕获? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？++i vs i++? setTimeout里面运行的函数的作用域this指向? 异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？Function.prototype.call vs apply？
 * 事件委托的原理？jQuery的事件绑定方式(on vs bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ?
 * javascript中不可以直接使用【下标方式】修改字符串内容？不可以，原因使用下标访问时，只是临时创建的array对象
-* canvas、svg区别和各自特点，分别适合什么场景？
+* canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？
   Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
 
 ## 框架类库和工程化
