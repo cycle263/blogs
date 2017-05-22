@@ -17,3 +17,5 @@
     - 3）对于xml，可以使用#SXML($xml)
 
     - 4）屏蔽转义，可以使用#SLITERAL()。不建议使用SLITERAL宏（存心XSS风险），若需要支持富文本输出，请采用#SHTML宏，若需要支持URL格式输出，采用#SURL宏, 若需要支持js输出，采用#SJS宏。详细见：XSS危害及修复
+
+* list的get方法：不能直接在get方法中进行参数运算，如：$list.get($velocityCount - 1), 应该将运算结果赋值给变量
