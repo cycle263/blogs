@@ -2,7 +2,7 @@
 
 * 脏检查机制
 
-  > Angular 在 scope 模型上设置了一个监听队列，用来监听数据变化并更新 view 。每次绑定一个东西到 view 上时 AngularJS 就会往 $watch 队列里插入一条 $watch，用来检测它监视的 model 里是否有变化的东西。当浏览器接收到可以被 angular context 处理的事件时，$digest 循环就会触发，遍历所有的 $watch，最后更新 dom。
+  > Angular在scope模型上设置了一个监听队列，用来监听数据变化并更新view 。每次绑定一个东西到view上时AngularJS就会往$watch队列里插入一条$watch，用来检测它监视的model里是否有变化的东西。当浏览器接收到可以被angular context处理的事件时，$digest循环就会触发，遍历所有的$watch，最后更新dom。
 
   ng只有在指定事件触发后，才进入$digest cycle：
 
