@@ -218,19 +218,6 @@ String.prototype.len=function(){return this.replace([^\x00-\xff]/g,"aa").length;
 
 6.引用：\num 对所获取的第num个匹配的引用。
 例如，'(.)\1\1' 匹配AAA型。'(.)(.)\2\1' 匹配ABBA型。view plaincopy to clipboardprint?
-正则表达式保留字
-^ (carat)
-. (period)
-[ (left bracket}
-$ (dollar sign)
-( (left parenthesis)
-) (right parenthesis)
-| (pipe)
-* (asterisk)
-+ (plus symbol)
-? (question mark)
-{ (left curly bracket, or left brace)
-\ backslash
 
 正则表达式保留字
 ^ (carat)
@@ -245,24 +232,12 @@ $ (dollar sign)
 ? (question mark)
 { (left curly bracket, or left brace)
 \ backslash view plaincopy to clipboardprint?
-构造 匹配于
 
 构造 匹配于 view plaincopy to clipboardprint?
-字符
-x 字符 x
-\\ 反斜线字符
-\0n 八进制值的字符0n (0 <= n <= 7)
-\0nn 八进制值的字符 0nn (0 <= n <= 7)
-\0mnn 八进制值的字符0mnn 0mnn (0 <= m <= 3, 0 <= n <= 7)
-\xhh 十六进制值的字符0xhh
-\uhhhh 十六进制值的字符0xhhhh
-\t 制表符('\u0009')
-\n 换行符 ('\u000A')
-\r 回车符 ('\u000D')
-\f 换页符 ('\u000C')
-\a 响铃符 ('\u0007')
-\e 转义符 ('\u001B')
-\cx T对应于x的控制字符 x
+
+数字
+0xffff 65535  -- 十六进制数字
+0o11  9  --- 八进制数字
 
 字符
 x 字符 x
