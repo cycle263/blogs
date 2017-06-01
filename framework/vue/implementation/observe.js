@@ -8,14 +8,16 @@ function observe(data){
     if(typeof value === 'object')
       observe(value);
     Object.defineProperty(data, k, {
-      enumerable: true,     // 可枚举
-      configurable: false,  // 不能再define
+      enumerable: true,     // 可枚举此属性
+      configurable: true,   // 可以再次define
       get: function() {
         return value;
       },
       set: function(newVal) {
+        if(value === newVal) return;
         console.log('Data has changed, new value: ' + newVal);
         value = newVal;
+        Pubsub.publish();
       }
     });
   });
