@@ -1,6 +1,5 @@
 ## 岗位考察
-* react生命周期？组件之间通信？数据模型(redux、flux、reselect)？react适合什么项目? **虚拟DOM和diff算法原理(按需更新，分层比较)？**  
-  一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。setState做了什么(存入pending队列，判断是否处于batch update)
+* react生命周期？组件之间通信？数据模型(redux、flux、reselect)？react适合什么项目? **虚拟DOM和diff算法原理(按需更新，分层比较)？**  一个基于state和props的组件渲染函数，state是自己的，props是外面引入的，变化就重新渲染。setState实现(存入pending队列，判断是否处于batch update，为何不是实时的？)
 * 在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志)  
   从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 * ES6有哪些新特性？ES6 module可否做到按需加载？(stage3: dynamic import) ？箭头函数的作用域？babel转码的实现原理？
