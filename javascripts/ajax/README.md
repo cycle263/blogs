@@ -6,6 +6,10 @@
 
   jQuery.ajax 中 contentType 设置为 false 是为了避免 JQuery 对其操作，从而失去分界符，而使服务器不能正常解析文件。
 
+  "multipart/form-data", 可以上传文件，传二进制流等
+
+  "text/plain", 表单数据中的空格转换为 "+" 加号，但不对特殊字符编码。
+
 * ajax预检请求
 
   非简单请求是那种对服务器有特殊要求的请求，比如请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为"预检"请求（preflight）。  
