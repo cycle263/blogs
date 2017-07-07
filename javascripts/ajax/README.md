@@ -1,6 +1,6 @@
 ## 常见知识点
 
-* contentType
+* contentType（表单提交，在form元素中修改enctype属性）
 
   默认值： "application/x-www-form-urlencoded", 表单键值对
 
