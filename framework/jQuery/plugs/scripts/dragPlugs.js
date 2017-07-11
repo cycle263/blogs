@@ -20,15 +20,14 @@ jQuery.fn.extend({
             },
             _updateRectangle = function(){
                 var p = _getPagePosition();
-                $(target).css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px'});
-                console.log(p.x - mousedown.x + mousedown.left + 'px', p.y - mousedown.y + mousedown.top + 'px');
+                $(target).css({'left': p.x - mousedown.x + mousedown.left + 'px', 'top': p.y - mousedown.y + mousedown.top + 'px', 'cursor': 'move'});
+                // console.log(p.x - mousedown.x + mousedown.left + 'px', p.y - mousedown.y + mousedown.top + 'px');
             };
 
         this.on('mousedown', function(event){
-            event.preventDefault();
             _updateMousedownData(_getPagePosition());
             dragging = true;
-            console.log(mousedown);
+            // console.log(mousedown);
         });
         this.on('mousemove', function(event){
             event.preventDefault();
@@ -39,6 +38,7 @@ jQuery.fn.extend({
         $(docEle).on('mouseup', function(event){
             event.preventDefault();
             dragging = false;
+            $(target).css({'cursor': 'default'});
         });
     }
 });
