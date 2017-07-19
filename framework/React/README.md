@@ -23,9 +23,10 @@
       ```
       => ES 6
 
-      constructor(props) {
-        super(props);
-        this.state = {};
+      getInitialState() {
+        return {
+
+        }
       }
 
       或者 => ES 7
@@ -63,6 +64,21 @@
       或者 => ES 7
 
       static defaultProps = {}
+
+      ```
+
+    + props格式验证
+
+      ```
+      => ES 6
+      propTypes: {
+        data: React.PropTypes.array.isRequired
+      }
+
+      => ES 7
+      MyComponent.propTypes = {
+        data: React.PropTypes.array.isRequired
+      }
       ```
 
     + 绑定this作用域
