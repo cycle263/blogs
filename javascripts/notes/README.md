@@ -1,16 +1,62 @@
-## ÖªÊ¶µã
+## çŸ¥è¯†ç‚¹
 
-* ÏàµÈ²Ù×÷·û ==
+* ç›¸ç­‰æ“ä½œç¬¦ ==
 
-  ÔÚ×ª»»²»Í¬µÄÊı¾İÀàĞÍÊ±£¬ÏàµÈºÍ²»ÏàµÈ²Ù×÷·û×ñÑ­ÏÂÁĞ»ù±¾¹æÔò£º
+  åœ¨è½¬æ¢ä¸åŒçš„æ•°æ®ç±»å‹æ—¶ï¼Œç›¸ç­‰å’Œä¸ç›¸ç­‰æ“ä½œç¬¦éµå¾ªä¸‹åˆ—åŸºæœ¬è§„åˆ™ï¼š
 
-  - 1. Èç¹ûÓĞÒ»¸ö²Ù×÷ÊıÊÇ²¼¶ûÖµ£¬ÔòÔÚ±È½ÏÏàµÈĞÔÖ®Ç°ÏÈ½«Æä×ª»»ÎªÊıÖµ¡ª¡ªfalse×ª»»Îª0£¬¶øtrue×ª»»Îª1£»
+  - 1. å¦‚æœæœ‰ä¸€ä¸ªæ“ä½œæ•°æ˜¯å¸ƒå°”å€¼ï¼Œåˆ™åœ¨æ¯”è¾ƒç›¸ç­‰æ€§ä¹‹å‰å…ˆå°†å…¶è½¬æ¢ä¸ºæ•°å€¼â€”â€”falseè½¬æ¢ä¸º0ï¼Œè€Œtrueè½¬æ¢ä¸º1ï¼›
 
-  - 2. Èç¹ûÒ»¸ö²Ù×÷ÊıÊÇ×Ö·û´®£¬ÁíÒ»¸ö²Ù×÷ÊıÊÇÊıÖµ£¬ÔÚ±È½ÏÏàµÈĞÔÖ®Ç°ÏÈ½«×Ö·û´®×ª»»ÎªÊıÖµ£»
+  - 2. å¦‚æœä¸€ä¸ªæ“ä½œæ•°æ˜¯å­—ç¬¦ä¸²ï¼Œå¦ä¸€ä¸ªæ“ä½œæ•°æ˜¯æ•°å€¼ï¼Œåœ¨æ¯”è¾ƒç›¸ç­‰æ€§ä¹‹å‰å…ˆå°†å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ•°å€¼ï¼›
 
-  - 3. Èç¹ûÒ»¸ö²Ù×÷ÊıÊÇ¶ÔÏó£¬ÁíÒ»¸ö²Ù×÷Êı²»ÊÇ£¬Ôòµ÷ÓÃ¶ÔÏóµÄvalueOf()·½·¨£¬ÓÃµÃµ½µÄ»ù±¾ÀàĞÍÖµ°´ÕÕÇ°ÃæµÄ¹æÔò½øĞĞ±È½Ï£»
+  - 3. å¦‚æœä¸€ä¸ªæ“ä½œæ•°æ˜¯å¯¹è±¡ï¼Œå¦ä¸€ä¸ªæ“ä½œæ•°ä¸æ˜¯ï¼Œåˆ™è°ƒç”¨å¯¹è±¡çš„valueOf()æ–¹æ³•ï¼Œç”¨å¾—åˆ°çš„åŸºæœ¬ç±»å‹å€¼æŒ‰ç…§å‰é¢çš„è§„åˆ™è¿›è¡Œæ¯”è¾ƒï¼›
 
   ```
   'true' === true // false
-  // true ==> 1, 'true' ==> Number('true') ==> NaN  // NaNÓëÈÎºÎÖµ¶¼²»ÏàµÈ£¬°üÀ¨NaN±¾Éí¡£
+  // true ==> 1, 'true' ==> Number('true') ==> NaN  // NaNä¸ä»»ä½•å€¼éƒ½ä¸ç›¸ç­‰ï¼ŒåŒ…æ‹¬NaNæœ¬èº«ã€‚
   ```
+
+
+* clone vs deepclone
+
+```
+// method 1
+var deepClone = function (obj) {
+    var _tmp,result;
+    _tmp = JSON.stringify(obj);
+    result = JSON.parse(_tmp);
+    return result;
+}
+
+// method 2
+var deepClone = function fnDeepClone(obj){
+  var result = typeof obj.splice === 'function'?[]:{},
+  key;
+  if (obj && typeof obj === 'object'){
+    for (key in obj ){
+      if (obj[key] && typeof obj[key] === 'object'){
+        result[key] = fnDeepClone(obj[key]); //å±æ€§å€¼ä¸ºobjectï¼Œé€’å½’è°ƒç”¨deepClone
+      }else{
+        result[key] = obj[key]; //å±æ€§å€¼ä¸ä¸ºobjectï¼Œç›´æ¥å¤åˆ¶å‚æ•°å¯¹è±¡çš„æ¯ä¸€ä¸ªé”®/å€¼
+      }
+    }
+    return result;
+  }
+  return obj;
+}
+
+// method 3
+var deepClone = function (o){
+  var copy = Object.create( Object.getPrototypeOf(o) );
+  var propNames = Object.getOwnPropertyNames(o);
+
+  propNames.forEach(function(name){    
+    var desc = Object.getOwnPropertyDescriptor(o, name);   
+    Object.defineProperty(copy, name, desc);        
+  });
+
+  return copy;
+}
+
+// method 4
+loadsh.deepclone
+```
