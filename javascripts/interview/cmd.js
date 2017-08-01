@@ -5,3 +5,7 @@ $$('.js-header-wrapper,.pagehead,.js-zeroclipboard-container,.commit-tease,.file
 $$('.entry-content')[0].style.padding = '0px';
 $$('.new-discussion-timeline')[0].style.width = '100%';
 $$('.file')[0].style.margin = '0';
+$$('.markdown-body h2').forEach(function(ele){
+  ele.style.padding = '0px';
+  ele.style.marginTop = '8px';
+});
