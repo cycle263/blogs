@@ -27,3 +27,13 @@
     arr.join();      //默认用逗号切割
     arr.join(",")    //逗号切割，参数可省略
     ```
+
+* 数组去重
+
+  ```
+    [...new Set([1,2,3,1,'a',1,'a'])]   // ES6
+
+    [1,2,3,1,'a',1,'a'].filter(function(ele,index,array){   // ES5
+        return index===array.indexOf(ele)
+    })
+  ```
