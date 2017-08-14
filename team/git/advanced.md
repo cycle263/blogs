@@ -108,6 +108,8 @@
 
     `git stash apply ${0}`  恢复栈内最近暂存的数据到工作区
 
+    `git stash pop` 恢复最近暂存
+
 * git 分支管理
 
   - 新建分支  
