@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>copy</title>
+    <style media="screen">
+      input{width: 300px; line-height: 20px;border-radius: 4px;border: 1px solid #ccc;outline: none;}
+    </style>
+  </head>
+  <body>
+    <p>
+      <button class="js-textareacopybtn" style="vertical-align:top;">Copy Textarea</button>
+      <input class="js-copytextarea" value="Hello I am some text, this is a test! accesskey" />
+    </p>
+
+    <script type="text/javascript">
+    (function(window){
+      var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
+
+      copyTextareaBtn.addEventListener('click', function(event) {
+        var copyTextarea = document.querySelector('.js-copytextarea');
+        copyTextarea.select();    // support input textarea
+
+        try {
+          var successful = document.execCommand('copy');
+          var msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Copying text command was ' + msg);
+        } catch (err) {
+          console.log('Oops, unable to copy');
+        }
+      });
+    })(window);
+    </script>
+  </body>
+</html>
