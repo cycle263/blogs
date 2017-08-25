@@ -58,7 +58,7 @@
     xhr.open("get", "some.png", true);
     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=GBK');
     xhr.responseType = "blob";
-    xhr.onload = function() {
+    xhr.onreadystatechange = function() {
         if (this.status == 200) {
             var blob = this.response;  // this.response也就是请求的返回就是Blob对象
             var img = document.createElement("img");
