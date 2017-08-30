@@ -1,7 +1,14 @@
 ## react
 
-* ���ʵ��һ�������������ļ�����
+* 如何实现一个搜索高亮的文件树？
 
-* ���ҳ��loading״̬��error״̬����ʾ��
+* 解决页面loading状态和error状态的显示？
 
-* redux������Ż�action��store����дЧ�ʣ�
+* redux中如何优化action到store的书写效率？
+
+
+## JavaScript
+
+* jsonp的实现？
+
+* 实现bind函数？
