@@ -131,4 +131,38 @@ var bar = foo;
 foo.x = foo = {n:2};
 console.log(foo.x);
 console.log(bar.x);
+
+
+
+/******************** 引用类型 *********************/
+// 写出打印的结果，ECMAScript中的所有参数传递的都是值，不可能通过引用传递参数。函数内部对参数的修改都不会影响到实参的值。内部变量x和变量y只是互换了引用地址，和函数外部变量obj1与obj2没有关系。
+function swap(x, y){
+  var temp = x;
+  x = y;
+  y = temp;  
+}
+
+var a = 1
+var b = 2
+swap(a, b)
+console.log(a) //输出什么
+console.log(b) //输出什么
+
+var obj1 = {name: 'jirengu'}
+var obj2 = {age: 2}
+swap(obj1, obj2)
+console.log(obj1)  //输出什么
+console.log(obj2)  //输出什么
+
+function swap(x, y){
+  x.name = '111';
+  y.age = 3;
+}
+
+
+var obj3 = {name: 'jirengu'}
+var obj4 = {age: 2}
+swap(obj3, obj4)
+console.log(obj3)  //输出什么
+console.log(obj4)  //输出什么
 ```
