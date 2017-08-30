@@ -1,3 +1,4 @@
+```
 // 写出打印的结果
 function swap(x, y){
   var temp = x;
@@ -66,3 +67,4 @@ new Promise(function executor(resolve) {
   console.log(4);
 });
 console.log(5);
+```

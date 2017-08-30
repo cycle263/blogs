@@ -1,4 +1,4 @@
-
+```
 /******************** promise *********************/
 // 2 3 5 4 1, Promise里面的函数是直接执行, then应当会放到当前tick的最后，但是还是在当前tick中。
 setTimeout(function() {
@@ -131,3 +131,4 @@ var bar = foo;
 foo.x = foo = {n:2};
 console.log(foo.x);
 console.log(bar.x);
+```
