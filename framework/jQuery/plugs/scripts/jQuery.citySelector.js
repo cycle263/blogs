@@ -81,5 +81,8 @@ $.fn.CitySelector = function(){
     $('.selected-citys').on('click', '.close', function(){
       $(this).closest('li').remove();
     });
+    $('.selected-citys').click(function(){
+      $('.province, .city').show();
+    });
   }
 };
