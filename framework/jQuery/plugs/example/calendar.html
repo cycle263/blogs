@@ -6,18 +6,19 @@
     <style media="screen">
       .calendar-selector{margin: 8px auto;width: 154px;}
       .calendar-selector > * {line-height: 24px;display: inline-block;}
-      .calendar-selector span{margin: 0 8px;cursor: pointer;vertical-align: bottom;}
+      .calendar-selector span{padding: 0 8px;cursor: pointer;vertical-align: bottom;background-color: #f9f9f9;}
       .calendar-selector p{text-align: center;width: 100px;font-size: 14px; margin: 0;}
 
       .date-table{font-family: Georgia;border-collapse: collapse;margin: 0 auto;}
       .date-table tr>td,.date-table tr>th{border: 1px solid #797979;height: 75px;width: 141px;}
+      .date-table tr>td:hover{background-color: #f0f0f0;}
       .date-table tr>th{background-color: #D7D7D7;height: 36px;}
       .date-table tr .disabled, .date-table tr .disabled a{background-color: #F2F2F2;color: #B3A1A1;cursor: not-allowed;}
       .date-table .date-container{height: 75px;width: 141px;position: relative;}
       .date-table .today .date-container{background-color: #eee;}
       .date-container .date{position: absolute;top: 8px;left: 8px;}
       .date-container a{right: 8px;bottom: 8px;position: absolute;  text-decoration: none;color: #0099FF;font-size: 13px;}
-      .date-container a:hover{color: #ccc;}
+      .date-container a:hover{color: #aaa;}
     </style>
   </head>
   <body>
@@ -29,6 +30,7 @@
     <script src="../scripts/jQuery.calendar.js"></script>
     <script type="text/javascript">
     $(function(){
+      var test = [{day: 2, name: 'test1', link: 'http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'}, {day: 9, name: 'test2', link: 'http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'}, {day: 22, name: 'test3', link: 'http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'}]
       var d = new Date();
       var gy = d.getFullYear();
       var gm = (d.getMonth() + 1);
@@ -37,11 +39,11 @@
         if($(this).hasClass('next')){
           gy = gm === 12 ? gy + 1 : gy;
           gm = gm === 12 ? 1 : gm + 1;
-        }else{      
+        }else{
           gy = gm === 1 ? gy - 1 : gy;
           gm = gm === 1 ? 12 : gm - 1;
         }
-        $('.calendar-container').calendar('' + gy + gm);
+        $('.calendar-container').calendar('' + gy + gm, test);
         $('.calendar-selector p').html('' + gy + '年' + gm + '月');
       });
     });
