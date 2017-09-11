@@ -145,16 +145,18 @@ function swap(x, y){
 var a = 1
 var b = 2
 swap(a, b)
-console.log(a) //输出什么
-console.log(b) //输出什么
+console.log(a) //输出什么   1
+console.log(b) //输出什么   2
 
 var obj1 = {name: 'jirengu'}
 var obj2 = {age: 2}
 swap(obj1, obj2)
-console.log(obj1)  //输出什么
-console.log(obj2)  //输出什么
+console.log(obj1)  //输出什么   {name: 'jirengu'}
+console.log(obj2)  //输出什么   {age: 2}
 
-function swap(x, y){
+
+
+function swapone(x, y){
   x.name = '111';
   y.age = 3;
 }
@@ -162,7 +164,7 @@ function swap(x, y){
 
 var obj3 = {name: 'jirengu'}
 var obj4 = {age: 2}
-swap(obj3, obj4)
-console.log(obj3)  //输出什么
-console.log(obj4)  //输出什么
+swapone(obj3, obj4)
+console.log(obj3)  //输出什么   {name: '111'}
+console.log(obj4)  //输出什么   {age: 3}
 ```
