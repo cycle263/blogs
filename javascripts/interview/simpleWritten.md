@@ -1,5 +1,5 @@
 ```
-// Ğ´³ö´òÓ¡µÄ½á¹ûºÍÀíÓÉ
+// å†™å‡ºæ‰“å°çš„ç»“æœå’Œç†ç”±
 function swap(x, y){
   var temp = x;
   x = y;
@@ -9,14 +9,14 @@ function swap(x, y){
 var a = 1;
 var b = 2;
 swap(a, b);
-console.log(a); //Êä³öÊ²Ã´
-console.log(b); //Êä³öÊ²Ã´
+console.log(a); //è¾“å‡ºä»€ä¹ˆ
+console.log(b); //è¾“å‡ºä»€ä¹ˆ
 
 var obj1 = {name: 'jirengu'};
 var obj2 = {age: 2};
 swap(obj1, obj2);
-console.log(obj1);  //Êä³öÊ²Ã´
-console.log(obj2);  //Êä³öÊ²Ã´
+console.log(obj1);  //è¾“å‡ºä»€ä¹ˆ
+console.log(obj2);  //è¾“å‡ºä»€ä¹ˆ
 
 
 
@@ -25,7 +25,7 @@ console.log(obj2);  //Êä³öÊ²Ã´
 
 
 
-// Ğ´³ö´òÓ¡µÄË³ĞòºÍÀíÓÉ
+// å†™å‡ºæ‰“å°çš„é¡ºåºå’Œç†ç”±
 setTimeout(function() {
   console.log(1);
 }, 0);
