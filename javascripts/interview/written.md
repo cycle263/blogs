@@ -1,5 +1,5 @@
 ```
-// 写出打印的结果
+// 写出打印的结果和理由
 function swap(x, y){
   var temp = x;
   x = y;
@@ -22,7 +22,7 @@ console.log(obj2)  //输出什么
 
 
 
-// 写出打印的结果
+// 写出打印的结果和理由
 var a = 1;
 
 function fn(){
@@ -53,7 +53,7 @@ console.log(a);
 
 
 
-// 写出打印的结果
+// 写出打印的顺序和理由
 setTimeout(function() {
   console.log(1)
 }, 0);
