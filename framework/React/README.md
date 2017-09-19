@@ -114,3 +114,7 @@
     return React.createElement.bind(null, type);
   }
   ```
+
+* 函数组件 vs 类组件
+
+  ![比较写法](./images/functioncompoent.png)
