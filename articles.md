@@ -1,3 +1,3 @@
 ## Articles
 
-[粗略的面试题简要](./javascripts/interview/simpleInterview)
+[绮楃暐鐨勯潰璇曢绠�瑕乚(./javascripts/interview/simpleInterview)
