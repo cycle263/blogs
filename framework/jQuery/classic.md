@@ -16,10 +16,10 @@
 	- jQuery.ajaxSend, 请求发送之前
 	- jQuery.ajaxStart，jQuery请求前的全局方法，可以用在展示loadding，避免重复提交等。例如showLoading()
 	- jQuery.ajaxStop，jQuery请求完全结束方法。
-	- jQuery.ajaxComplete, 
+	- jQuery.ajaxComplete,
 	- jQuery.stop,
 	- jQuery.ajaxSuccess
-	
+
 	- 备注：0.UNSENT、1.OPENED、2.HEADERS_RECEIVED、3.LOADING、4.DONE、
 
 * 3、deferred对象的总结
@@ -58,6 +58,6 @@
 	```
 	$.urlParam = function(name[, url]){
 		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url || window.location.href) || '';
-		return results[1] || 0;
+		return results[1] || '';
 	}
 	```
