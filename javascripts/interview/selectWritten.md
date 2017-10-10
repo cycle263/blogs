@@ -52,8 +52,8 @@
 
 ## 判断题
 
-* 1、`var str = '123';str[2]=4;console.log(str === '124' || str === 124); //打印结果为true`    wrong
+* 1、`var str = '123';str[2]=4;console.log(str === '124' || str === 124); //打印结果为true`    ×
 
-* 2、webpack打包最基本的实现方式，是将所有的模块代码放到一个数组里，通过数组ID来引用不同的模块，对吗？     right
+* 2、webpack打包最基本的实现方式，是将所有的模块代码放到一个数组里，通过数组ID来引用不同的模块，对吗？     √
 
-* 3、react中，只要是父组件的render被调用，在render中被渲染的子组件就会经历更新的过程。不管父组件传给子组件的props有没有改变，都会触发子组件的componentWillReceiveProps函数被调用，对吗？    wrong
+* 3、react中，只要是父组件的render被调用，在render中被渲染的子组件就会经历更新的过程。不管父组件传给子组件的props有没有改变，都会触发子组件的componentWillReceiveProps函数被调用，对吗？    ×
