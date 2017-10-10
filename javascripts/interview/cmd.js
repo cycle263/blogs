@@ -19,3 +19,6 @@ $$('.markdown-body h2').forEach(function(ele){
 $$('#footer_wrap,#header_wrap').forEach(function(ele){
   ele.parentNode.removeChild(ele);
 });
+$$('#main_content')[0].style.maxWidth = '900px';
+$$('#main_content')[0].style.paddingTop = '0px';
+$$('body')[0].style.fontSize = '15px';
