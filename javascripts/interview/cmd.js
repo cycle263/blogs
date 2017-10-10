@@ -9,3 +9,13 @@ $$('.markdown-body h2').forEach(function(ele){
   ele.style.padding = '0px';
   ele.style.marginTop = '8px';
 });
+
+
+
+
+
+
+// md文件打印样式
+$$('#footer_wrap,#header_wrap').forEach(function(ele){
+  ele.parentNode.removeChild(ele);
+});
