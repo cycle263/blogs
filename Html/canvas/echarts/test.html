@@ -143,6 +143,7 @@
 
         myChart.on('click', function (params) {
             console.log(params.name, params);
+            window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
         });
 
     </script>
