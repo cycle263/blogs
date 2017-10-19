@@ -2,7 +2,7 @@
 * react生命周期？组件之间通信(订阅发布)？数据模型(redux、flux、reselect)？无状态函数组件? react适合什么项目? **虚拟DOM和diff算法原理(按需更新，分层比较)？**  一个基于state和props的组件渲染函数，state是自己的，props是外面引入的，变化就重新渲染。setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步?)？类组件和函数式组件选择？循环组件需要用key?)
 * 在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志，参数容量限制)  
   从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
-* ES6有哪些新特性？ES6 module可否做到按需加载？(stage3: dynamic import) ？箭头函数的作用域(是否有arguments,是否有自身的this对象)？babel转码的实现原理？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await
+* ES6有哪些新特性？ES6 module可否做到按需加载？(stage3: dynamic import) ？箭头函数的作用域(是否有arguments,是否有自身的this对象)？babel转码的实现原理？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await？let vs const vs var?
 * commonJS和AMD规范区别？和ES6的模块有什么不同？（[Detail](../../structure/README.md)）
 
 ## 前端技术具体考察点
