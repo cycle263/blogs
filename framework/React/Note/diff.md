@@ -18,9 +18,9 @@
 
   - 如果是同一类型的组件，按照原策略继续比较 virtual DOM tree。
 
-  - 如果不是，则将该组件判断为 dirty component，从而替换整个组件下的所有子节点。
+  - 如果不是，则将该组件判断为dirty component，从而替换整个组件下的所有子节点。
 
-  - 对于同一类型的组件，有可能其 Virtual DOM 没有任何变化，如果能够确切的知道这点那可以节省大量的 diff 运算时间，因此 React 允许用户通过 shouldComponentUpdate() 来判断该组件是否需要进行 diff。
+  - 对于同一类型的组件，有可能其Virtual DOM没有任何变化，如果能够确切的知道这点那可以节省大量的diff运算时间，因此React允许用户通过 shouldComponentUpdate()来判断该组件是否需要进行 diff。
 
 * element diff
 

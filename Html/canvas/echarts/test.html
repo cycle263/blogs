@@ -93,7 +93,7 @@
         </table>
     </div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="height:300px;width:900px;margin:0 auto;"></div>
+    <div id="main" style="height:390px;width:900px;margin:0 auto;"></div>
 
 
 
@@ -108,6 +108,10 @@
         var option = {
             title : {
                 text: '各部门人均学习积分'
+            },
+            grid:{
+              x:40,
+              x2:20
             },
             tooltip : {
                 trigger: 'axis'
@@ -128,13 +132,7 @@
                   }
                 },
                 barMaxWidth: 40,
-                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-                markPoint : {
-                    data : [
-                        {type : 'max', name: '最大值'},
-                        {type : 'min', name: '最小值'}
-                    ]
-                }
+                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
             }]
         };
 

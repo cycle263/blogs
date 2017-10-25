@@ -1,48 +1,48 @@
 ## 单选题
 
-* 1、容器中包含若干浮动元素？以下方式不能清除浮动的是？
+* 1、容器中包含若干浮动元素？以下方式不能清除浮动的是？（d）
 
   - a. 容器元素闭合标签前添加额外元素并设置样式clear: both
   - b. 父元素触发块级格式化上下文
   - c. 设置容器元素伪元素样式clear: both;
   - d. 设置容器元素样式clear:both;
 
-* 2、以下哪个不是XMLHttpRequest的readyState状态值？
+* 2、以下哪个不是XMLHttpRequest的readyState状态值？（d）
 
   - a. UNSENT
   - b. OPENED
   - c. HEADERS_RECEIVED
   - d. LOADED
 
-* 3、react中无状态函数组件不存在的特性是？
+* 3、react中无状态函数组件不存在的特性是？（c）
 
   - a. 组件不会被实例化
   - b. 组件不能访问this对象
   - c. 组件可以访问生命周期的方法
   - d. 组件无法访问生命周期的方法
 
-* 4、以下哪项不是let、var和const的区别？
+* 4、以下哪项不是let、var和const的区别？（b）
 
   - a. let命令不存在变量提升
   - b. let方式声明的变量不可以修改
   - c. let方式声明的变量在声明之前调用会报错
   - d. const声明的变量只可以在声明时赋值，不可随意修改
 
-* 5、以下对于箭头函数的理解错误的是？
+* 5、以下对于箭头函数的理解错误的是？（d）
 
   - a. 箭头函数不属于普通的 function，所以没有独立的上下文
   - b. 函数对象中的call、apply、bind三个方法，无法"覆盖"箭头函数中的this值
   - c. 箭头函数没有普通函数有的隐藏arguments对象。
   - d. 箭头函数能当作generators使用
 
-* 6、以下哪项对apply、call和bind的理解不正确？
+* 6、以下哪项对apply、call和bind的理解不正确？（b）
 
   - a. call、apply是修改函数的作用域（修改this指向），并且立即执行
   - b. bind是返回了一个新的函数，并且立即执行
   - c. apply和call的区别是apply接受数组作为参数，而call是接受逗号分隔的无限多个参数列表
   - d. 三者都可以把一个函数应用到其他对象上
 
-* 7、以下对js事件中的target和currentTarget理解错误的是？
+* 7、以下对js事件中的target和currentTarget理解错误的是？（d）
 
   - a. target在事件流的目标阶段
   - b. currentTarget在事件流的捕获，目标及冒泡阶段

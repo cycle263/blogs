@@ -1,5 +1,5 @@
 ## 岗位考察
-* react生命周期？组件之间通信(订阅发布)？数据模型(redux、flux、reselect)？无状态函数组件? react适合什么项目? **虚拟DOM和diff算法原理(按需更新，分层比较)？**  一个基于state和props的组件渲染函数，state是自己的，props是外面引入的，变化就重新渲染。setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步?)？类组件和函数式组件选择？循环组件需要用key?)
+* react生命周期？组件之间通信(订阅发布)？数据模型(redux、flux、reselect)？无状态函数组件? react适合什么项目? **虚拟DOM和diff算法原理(按需更新，分层比较)？**  一个基于state和props的组件渲染函数，state是自己的，props是外面引入的，变化就重新渲染。setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步?)？)类组件和函数式组件选择？循环组件需要用key?react事件和原生事件区别？shouldComponentUpdate什么场景适用？如何保持父子组件之间的松耦合？
 * 在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志，参数容量限制)  
   从上至下，从外至内。url -> 域名解析 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 * ES6有哪些新特性？ES6 module可否做到按需加载？(stage3: dynamic import) ？箭头函数的作用域(是否有arguments,是否有自身的this对象)？babel转码的实现原理？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await？let vs const vs var?
@@ -7,7 +7,7 @@
 
 ## 前端技术具体考察点
 * **CSS** 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？**BFC(块级格式化上下文)?css像素和设备像素区别？** 布局方式？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？重构和回流、重绘(重新计算元素的几何大小和位置)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)?
-* 字面量式函数和声明式函数的区分？defer vs async? 原型继承vs类继承？(灵活，接口，抽象类) 闭包的理解、优缺点？this对象？原型链？作用域？**变量声明提升？FormData提交的数据分为哪几部分?** Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？websocket vs http?(有并集) webworker?(后台运行) storage? **冒泡和捕获?** bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？++i vs i++? **setTimeout里面运行的函数的作用域this指向?** 异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？Function.prototype.call vs apply？
+* 字面量式函数和声明式函数的区分？defer vs async? 原型继承vs类继承？(灵活，接口，抽象类) 闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？**变量声明提升？FormData提交的数据分为哪几部分?** Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？websocket vs http?(有并集) webworker?(后台运行) storage? **冒泡和捕获?** bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？++i vs i++? **setTimeout里面运行的函数的作用域this指向?** 异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？Function.prototype.call vs apply？
 * **事件代理的原理？** jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ?
 * **js中不可以直接使用【下标方式】修改字符串内容？** 不可以，原因使用下标访问时，只是临时创建的array对象
 * canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？
