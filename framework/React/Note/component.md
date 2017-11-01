@@ -48,3 +48,7 @@ const Contacts = React.createClass({
   }
 });
 ```
+
+## createClass vs extends React.Component
+
+  * 通过extends方式生成的组件，没有createClass中对getInitialState及getDefaultProps的显示管理
