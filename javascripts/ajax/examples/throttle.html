@@ -17,17 +17,17 @@
       }
     </style>
   </head>
-    <button id="myBtn" type="button" data-tid="1" name="button">throttle 1</button>
+    <button id="myBtn" type="button" name="button">throttle</button>
   <body>
     <script type="text/javascript">
       (function(window){
-        document.getElementById('myBtn').addEventListener('click', function(){
-          var me = this,
-            n = me.dataset.tid - 0;
+        document.getElementById('myBtn').addEventListener('click', function(){      
+          var me = this;
+          if(me.tid) return;
           clearTimeout(me.tid);
         	me.tid = setTimeout(function(){
-        		me.innerText = 'throttle ' + (++n);
-            me.dataset.tid = n;
+            console.log(Date.now());
+            me.tid = 0;
         	}, 200);
         }, false);
       })(window)
