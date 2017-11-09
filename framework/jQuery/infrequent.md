@@ -10,7 +10,8 @@ KeyboardEvent、CustomEvent、Event。
 
 * 4、元素ownerDocument即包含该元素的document元素。
 
-* 5、prop和attr分别何时使用？
+* 5、prop和attr分别何时使用？ prop vs attr
+  attributes 是 HTML 元素（标签）的属性，而 properties 是 DOM 对象的属性。
   > 在有些浏览器，只用写disabled就能生效，有些则需要写disabled="disabled"，使用attr来获取则会出现问题。
   attributes表示文档中DOM状态信息, 是HTML属性值，而properties表示元素的动态状态(js对象)信息，是DOM接口，存取由DOM规范定义，跟HTML上的属性不一定是对应的，因此jQuery在1.6版之后提供了prop。
   - ①.只用添加属性名称就生效的使用prop；
