@@ -1,4 +1,4 @@
-## vue vs react
+## vue vs angularjs vs react
 
 * vue
 

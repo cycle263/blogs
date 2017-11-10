@@ -10,6 +10,8 @@
 
   "text/plain", 表单数据中的空格转换为 "+" 加号，但不对特殊字符编码。
 
+  "application/json", JSON方式请求
+
 * ajax预检请求
 
   非简单请求是那种对服务器有特殊要求的请求，比如请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为"预检"请求（preflight）。  
