@@ -5,3 +5,10 @@
 [简易笔试题](./javascripts/interview/simpleWritten)
 
 [笔试选择题](./javascripts/interview/selectWritten)
+
+
+## javascript
+
+[js线程](./javascripts/async/thread)
+
+[js原型](./javascripts/Effective/prototype)
