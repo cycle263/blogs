@@ -66,6 +66,7 @@
     git push [remote-name] [branch-name]   git push (远程仓库名) (分支名)  
 
     git push [远程名] [本地分支]:[远程分支]  省略 [本地分支]，那就等于是在说“在这里提取空白然后把它变成[远程分支]”  
+    git push origin master, 报错如下：`error: src refspec master does not match any.  ` 解决方案---> git push origin HAED:master，原因：缺少README.md文件，或者git show-ref查看
 
  * git 免密码push
 

@@ -36,4 +36,19 @@
     [1,2,3,1,'a',1,'a'].filter(function(ele,index,array){   // ES5
         return index===array.indexOf(ele)
     })
+
+    //数组去重 --- 性能较好，能区分hash值
+    function unique(arr){
+      var newArr = [],
+          hash = {};
+      for(var i = 0, l = arr.length; i < l; i++){
+        var item = arr[i],
+            key = Object.prototype.toString.call(item).slice(8, -1) + JSON.stringify(item);
+          if(hash[key] !== 1){
+            newArr.push(item);
+            hash[key] = 1;
+          }
+      }
+      return newArr;
+    }
   ```

@@ -87,7 +87,7 @@
 
         - =>箭头函数声明方式可以自动绑定(onClick={() => this.tick()})
 
-        - 亦或者在构造函数中绑定(this.tick = this.tick.bind(this);)
+        - 亦或者在构造函数中绑定(this.tick = this.tick.bind(this);)  -- 一次绑定随处可用
 
         - 亦或者在事件定义时绑定（onClick={this.click.bind(this)}）
 
