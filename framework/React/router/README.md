@@ -10,4 +10,10 @@
 
   - history:
 
+* 分类
+    - BrowserRouter  使用了HTML5的history API来记录你的路由历史
+
+    - HashRouter  使用URL(window.location.hash)的hash部分来记录
+    
+    - MemoryRouter node环境下的history，存储在memory中
   
