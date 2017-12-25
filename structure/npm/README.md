@@ -1,0 +1,1 @@
+npm脚本都存放在package.json文件里的scripts字段里
