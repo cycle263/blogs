@@ -17,7 +17,7 @@
 * 管理远程主机
 
     `git remote add <主机名> <网址>`             新增主机  
-    `git remote rm <主机名>`                    删除主机  
+    `git remote rm/remove <主机名>`                    删除主机  
     `git remote rename <原主机名> <新主机名>`     重命名主机  
 
 * 远程主机代码更新
