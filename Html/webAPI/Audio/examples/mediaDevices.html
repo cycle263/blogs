@@ -7,25 +7,27 @@
   <body>
     <input id="recordBtn" type="button" value="Record" />
     <input id="stopBtn" type="button" value="Stop" />
-    <audio src="">
-
-    </audio>
+    <audio id="recordAudio"></audio>
 
     <script type="text/javascript">
+      // 纯html5 api
       (function(window){
+        window.URL = window.URL || window.webkitURL;
+        navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
         var recordBtn = document.querySelector('#recordBtn');
         var stopBtn = document.querySelector('#stopBtn');
+        var audio = document.querySelector('#recordAudio');
+
         recordBtn.addEventListener('click', function(){
-          var p = window.navigator.mediaDevices.getUserMedia({audio: true});
-          p.then(function(mediaStream){
-            var audio = document.querySelector('audio');
-            audio.src = window.URL.createObjectURL(mediaStream);
-            audio.onloadedmetadata = function(e){
-              console.log(e);
-            };
+          navigator.mediaDevices.getUserMedia({audio: true})
+          .then(function(mediaStream){
+            recordBtn.mediaStream = mediaStream;
           }).catch(function(err){
             console.error(err);
           });
+        });
+        stopBtn.addEventListener('click', function(){
+          audio.src = window.URL.createObjectURL(recordBtn.mediaStream);
         });
       })(window);
     </script>
