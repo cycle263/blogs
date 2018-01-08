@@ -26,7 +26,7 @@
             var context = new AudioContext();
             var mediaStreamSource = context.createMediaStreamSource(mediaStream);   // 媒体流音频源
             audioRecorder = new Recorder(mediaStreamSource);
-            audioRecorder.recorder();
+            audioRecorder.record();
           }).catch(function(err){
             console.error(err);
           });
