@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MediaDevices</title>
+  </head>
+  <body>
+    <input id="recordBtn" type="button" value="Record" />
+    <input id="stopBtn" type="button" value="Stop" />
+    <audio src="">
+
+    </audio>
+
+    <script type="text/javascript">
+      (function(window){
+        var recordBtn = document.querySelector('#recordBtn');
+        var stopBtn = document.querySelector('#stopBtn');
+        recordBtn.addEventListener('click', function(){
+          var p = window.navigator.mediaDevices.getUserMedia({audio: true});
+          p.then(function(mediaStream){
+            var audio = document.querySelector('audio');
+            audio.src = window.URL.createObjectURL(mediaStream);
+            audio.onloadedmetadata = function(e){
+              console.log(e);
+            };
+          }).catch(function(err){
+            console.error(err);
+          });
+        });
+      })(window);
+    </script>
+  </body>
+</html>
