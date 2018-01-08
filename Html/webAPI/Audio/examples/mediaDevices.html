@@ -17,17 +17,24 @@
         var recordBtn = document.querySelector('#recordBtn');
         var stopBtn = document.querySelector('#stopBtn');
         var audio = document.querySelector('#recordAudio');
+        var audioRecorder = null;
 
         recordBtn.addEventListener('click', function(){
           navigator.mediaDevices.getUserMedia({audio: true})
           .then(function(mediaStream){
-            recordBtn.mediaStream = mediaStream;
+            var context = new AudioContext();
+            var mediaStreamSource = context.createMediaStreamSource(mediaStream);
+            audioRecorder = new Recorder(mediaStreamSource);
+            audioRecorder.recorder();
           }).catch(function(err){
             console.error(err);
           });
         });
         stopBtn.addEventListener('click', function(){
-          audio.src = window.URL.createObjectURL(recordBtn.mediaStream);
+          audioRecorder.stop();
+          audioRecorder.exportWAV(function(s){
+            audio.src = window.URL.createObjectURL(s);
+          });
         });
       })(window);
     </script>
