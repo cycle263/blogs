@@ -9,6 +9,7 @@
     <input id="stopBtn" type="button" value="Stop and play" />
     <audio id="recordAudio" autoplay="true"></audio>
 
+    <script src="../../scripts/recorder.js" type="text/javascript"></script>
     <script type="text/javascript">
       // 纯html5 api
       (function(window){
@@ -23,7 +24,7 @@
           navigator.mediaDevices.getUserMedia({audio: true})
           .then(function(mediaStream){
             var context = new AudioContext();
-            var mediaStreamSource = context.createMediaStreamSource(mediaStream);
+            var mediaStreamSource = context.createMediaStreamSource(mediaStream);   // 媒体流音频源
             audioRecorder = new Recorder(mediaStreamSource);
             audioRecorder.recorder();
           }).catch(function(err){
@@ -32,8 +33,8 @@
         });
         stopBtn.addEventListener('click', function(){
           audioRecorder.stop();
-          audioRecorder.exportWAV(function(s){
-            audio.src = window.URL.createObjectURL(s);
+          audioRecorder.exportWAV(function(stream){
+            audio.src = window.URL.createObjectURL(stream);
           });
         });
       })(window);
