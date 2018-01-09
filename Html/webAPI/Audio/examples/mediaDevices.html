@@ -31,13 +31,13 @@
         var audio = document.querySelector('#recordAudio');
         var gif = document.querySelector('#record-gif');
         var audioRecorder = null;
+        var audioContext = new AudioContext();
 
         recordBtn.addEventListener('mousedown', function(){
           gif.style.visibility = 'visible';
           navigator.mediaDevices.getUserMedia({audio: true})
           .then(function(mediaStream){
-            var context = new AudioContext();
-            var mediaStreamSource = context.createMediaStreamSource(mediaStream);   // 媒体流音频源
+            var mediaStreamSource = audioContext.createMediaStreamSource(mediaStream);   // 媒体流音频源
             audioRecorder = new Recorder(mediaStreamSource);
             audioRecorder.record();
           }).catch(function(err){
