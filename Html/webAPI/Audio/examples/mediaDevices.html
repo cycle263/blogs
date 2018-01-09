@@ -32,10 +32,10 @@
         var gif = document.querySelector('#record-gif');
         var audioRecorder = null;
         var audioContext = new AudioContext();
-        var uploadAudio = function(url, blob, callback){
-          if(!url || !blob) return;
+        var uploadAudio = function(url, audioBlob, callback){
+          if(!url || !audioBlob) return;
           var fd = new FormData();
-          fd.append("audioData", blob);
+          fd.append("audioData", audioBlob);
           var xhr = new XMLHttpRequest();
           xhr.upload.addEventListener("progress", function (e) {
               console.log(e.loaded * 100 / e.total);
@@ -61,9 +61,9 @@
         recordBtn.addEventListener('mouseup', function(){
           gif.style.visibility = 'hidden';
           audioRecorder.stop();
-          audioRecorder.exportWAV(function(blob){
-            audio.src = window.URL.createObjectURL(blob);
-            uploadAudio('//jsonplaceholder.typicode.com/posts/', blob)
+          audioRecorder.exportWAV(function(audioBlob){
+            audio.src = window.URL.createObjectURL(audioBlob);
+            uploadAudio('//jsonplaceholder.typicode.com/posts/', audioBlob)
           });
         });
       })(window);
