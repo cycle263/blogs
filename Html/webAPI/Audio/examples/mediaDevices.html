@@ -34,11 +34,12 @@
         var audioContext = new AudioContext();
         var uploadAudio = function(url, audioBlob, callback){
           if(!url || !audioBlob) return;
+          console.log('blog size: ', audioBlob.size / 1024 + 'k');
           var fd = new FormData();
           fd.append("audioData", audioBlob);
           var xhr = new XMLHttpRequest();
           xhr.upload.addEventListener("progress", function (e) {
-              console.log(e.loaded * 100 / e.total);
+              console.log('上传完成了：' + e.loaded * 100 / e.total + '%');
           }, false);
           xhr.addEventListener("load", function (e) {
               alert('上传成功！');
