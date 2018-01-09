@@ -3,11 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>MediaDevices</title>
+    <style media="screen">
+      .record-block{text-align: center;background-color: #1b1b1b;padding: 32px 16px;min-height: 427px;}
+      .record-block img{width: 800px;height:400px;visibility: hidden;}
+      .button{padding: 4px 16px;border-radius: 4px;margin-right: 16px;}
+    </style>
   </head>
   <body>
-    <input id="recordBtn" type="button" value="Record" />
-    <input id="stopBtn" type="button" value="Stop and play" />
-    <audio id="recordAudio" autoplay="true"></audio>
+    <div class="record-block">
+      <img id="record-gif" src="../../../../framework/React/images/siri.gif" />
+      <div>
+        <button id="recordBtn" class="button">Record</button>
+        <audio id="recordAudio" autoplay="true"></audio>
+      </div>
+    </div>
 
     <script src="../../scripts/recorder.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -16,11 +25,12 @@
         window.URL = window.URL || window.webkitURL;
         navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
         var recordBtn = document.querySelector('#recordBtn');
-        var stopBtn = document.querySelector('#stopBtn');
         var audio = document.querySelector('#recordAudio');
+        var gif = document.querySelector('#record-gif');
         var audioRecorder = null;
 
-        recordBtn.addEventListener('click', function(){
+        recordBtn.addEventListener('mousedown', function(){
+          gif.style.visibility = 'visible';
           navigator.mediaDevices.getUserMedia({audio: true})
           .then(function(mediaStream){
             var context = new AudioContext();
@@ -31,7 +41,8 @@
             console.error(err);
           });
         });
-        stopBtn.addEventListener('click', function(){
+        recordBtn.addEventListener('mouseup', function(){
+          gif.style.visibility = 'hidden';
           audioRecorder.stop();
           audioRecorder.exportWAV(function(stream){
             audio.src = window.URL.createObjectURL(stream);
