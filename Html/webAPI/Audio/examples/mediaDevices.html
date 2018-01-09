@@ -32,13 +32,27 @@
         var gif = document.querySelector('#record-gif');
         var audioRecorder = null;
         var audioContext = new AudioContext();
+        var uploadAudio = function(url, blob, callback){
+          if(!url || !blob) return;
+          var fd = new FormData();
+          fd.append("audioData", blob);
+          var xhr = new XMLHttpRequest();
+          xhr.upload.addEventListener("progress", function (e) {
+              console.log(e.loaded * 100 / e.total);
+          }, false);
+          xhr.addEventListener("load", function (e) {
+              alert('上传成功！');
+          }, false);
+          xhr.open("POST", url);
+          xhr.send(fd);
+        }
 
         recordBtn.addEventListener('mousedown', function(){
           gif.style.visibility = 'visible';
           navigator.mediaDevices.getUserMedia({audio: true})
           .then(function(mediaStream){
             var mediaStreamSource = audioContext.createMediaStreamSource(mediaStream);   // 媒体流音频源
-            audioRecorder = new Recorder(mediaStreamSource);
+            audioRecorder = new Recorder(mediaStreamSource, {numChannels: 1, sampleRate: 16 * 1024});    // numChannels=1为单声道，sampleRate：采样率
             audioRecorder.record();
           }).catch(function(err){
             console.error(err);
@@ -47,8 +61,9 @@
         recordBtn.addEventListener('mouseup', function(){
           gif.style.visibility = 'hidden';
           audioRecorder.stop();
-          audioRecorder.exportWAV(function(stream){
-            audio.src = window.URL.createObjectURL(stream);
+          audioRecorder.exportWAV(function(blob){
+            audio.src = window.URL.createObjectURL(blob);
+            uploadAudio('//jsonplaceholder.typicode.com/posts/', blob)
           });
         });
       })(window);

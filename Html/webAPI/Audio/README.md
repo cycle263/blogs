@@ -11,3 +11,15 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
     ```
 
 参考：[MDN - MediaDevices](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia)
+
+* TTS(Text To Speech)
+
+  ```
+  var msg = new SpeechSynthesisUtterance('吃葡萄不吐葡萄皮，不吃葡萄倒吐葡萄皮！');
+  msg.lang = 'zh';   // 中文
+  msg.rate = 1;   // 语速
+  msg.voice = speechSynthesis.getVoices().filter(function(voice) {
+  return voice.name == 'Whisper';   // 轻声
+  })[0];
+  speechSynthesis.speak(msg);
+  ```
