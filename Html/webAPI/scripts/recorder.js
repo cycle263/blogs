@@ -175,12 +175,12 @@ var Recorder = exports.Recorder = (function () {
                 return result;
             }
 
-            function compress(samples){
+            function compress(){
                 var data = new Float32Array(recLength);
                 var offset = 0;
-                for (var i = 0; i < samples.length; i++) {
-                    data.set(samples[i], offset);
-                    offset += samples[i].length;
+                for (var i = 0; i < recBuffers.length; i++) {
+                    data.set(recBuffers[i], offset);
+                    offset += recBuffers[i].length;
                 }
                 var compression = parseInt(sampleRate / cfgRate);    //计算压缩率 
                 var length = data.length / compression;
