@@ -166,7 +166,7 @@
                         function interleave(inputL, inputR) {
                             var result = new Float32Array(inputL.length);
                             for (var i = 0; i < inputL.length; ++i)
-                                result[i] = 0.5 * (inputL[i] + inputR[i]);
+                                result[i] = (inputL[i] + inputR[i]);
                             return result;
                         }
 
