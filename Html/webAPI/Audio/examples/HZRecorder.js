@@ -132,7 +132,7 @@
         this.download = function (filename) {
             var url = window.URL.createObjectURL(this.getBlob());
             var download = filename || 'audio.wav';
-            return `<a class="audio-download" href="${url}" download="${download}"><img src="../../../images/download.png" alt="download" /></a>`;
+            document.body.insertAdjacentHTML('beforeend', `<a class="audio-download" href="${url}" download="${download}"><img src="../../../images/download.png" alt="download" /></a>`);
         };
 
         //音频采集
