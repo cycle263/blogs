@@ -118,6 +118,7 @@ var Recorder = exports.Recorder = (function () {
                     buffers.push(mergeBuffers(recBuffers[channel], recLength));
                 }
                 var interleaved = undefined;
+                console.log(numChannels === 2);
                 if (numChannels === 2) {
                     interleaved = interleave(buffers[0], buffers[1]);
                 } else {
