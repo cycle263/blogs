@@ -140,7 +140,7 @@
                             var buffers = [];
                             for (var channel = 0; channel < numChannels; channel++){
                                 var buffer = mergeBuffers(recBuffers[channel], recLength);
-                                buffer = interpolateArray(buffer, desiredSamplingRate, sampleRate);
+                                buffer = interpolateArray(buffer, cfgRate, sampleRate);
                                 buffers.push(buffer);
                             }
                             sampleRate = cfgRate;
