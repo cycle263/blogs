@@ -44,6 +44,7 @@ var Recorder = exports.Recorder = (function () {
         this.config = {
             bufferLen: 4096,
             numChannels: 2,
+            sampleBits: 16,
             mimeType: 'audio/wav'
         };
         this.recording = false;
@@ -103,6 +104,7 @@ var Recorder = exports.Recorder = (function () {
                 sampleRate = config.sampleRate;
                 numChannels = config.numChannels;
                 cfgRate = config.cfgRate;
+                sampleBits = config.sampleBits;
                 initBuffers();
                 console.log(config);
             }
@@ -273,6 +275,7 @@ var Recorder = exports.Recorder = (function () {
                 sampleRate: this.context.sampleRate,
                 numChannels: this.config.numChannels,
                 cfgRate: this.config.sampleRate,
+                sampleBits: this.config.sampleBits,
             }
         });
 
