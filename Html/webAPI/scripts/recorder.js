@@ -102,7 +102,9 @@ var Recorder = exports.Recorder = (function () {
             function init(config) {
                 sampleRate = config.sampleRate;
                 numChannels = config.numChannels;
+                cfgRate = config.cfgRate;
                 initBuffers();
+                console.log(config);
             }
 
             function record(inputBuffer) {
@@ -118,11 +120,10 @@ var Recorder = exports.Recorder = (function () {
                     buffers.push(mergeBuffers(recBuffers[channel], recLength));
                 }
                 var interleaved = undefined;
-                console.log(numChannels === 2);
                 if (numChannels === 2) {
                     interleaved = interleave(buffers[0], buffers[1]);
                 } else {
-                    interleaved = buffers[0];
+                    interleaved = interleave(buffers[0]);
                 }            
                 var dataview = encodeWAV(interleaved);
                 var audioBlob = new Blob([dataview], { type: type });
@@ -161,7 +162,9 @@ var Recorder = exports.Recorder = (function () {
             }
 
             function interleave(inputL, inputR) {
-                var length = inputL.length + inputR.length;
+                console.log(sampleRate, this);
+                var compression = sampleRate / cfgRate;    //计算压缩率 
+                var length = inputR ? inputL.length + inputR.length : inputL.length;
                 var result = new Float32Array(length);
 
                 var index = 0,
@@ -169,8 +172,8 @@ var Recorder = exports.Recorder = (function () {
 
                 while (index < length) {
                     result[index++] = inputL[inputIndex];
-                    result[index++] = inputR[inputIndex];
-                    inputIndex++;
+                    if (inputR) result[index++] = inputR[inputIndex];
+                    inputIndex += compression;
                 }
                 return result;
             }
@@ -229,7 +232,8 @@ var Recorder = exports.Recorder = (function () {
             command: 'init',
             config: {
                 sampleRate: this.context.sampleRate,
-                numChannels: this.config.numChannels
+                numChannels: this.config.numChannels,
+                cfgRate: this.config.sampleRate,
             }
         });
 
