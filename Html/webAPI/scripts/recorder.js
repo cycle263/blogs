@@ -272,10 +272,10 @@ var Recorder = exports.Recorder = (function () {
         this.worker.postMessage({
             command: 'init',
             config: {
-                sampleRate: this.context.sampleRate,
-                numChannels: this.config.numChannels,
+                sampleRate: this.context.sampleRate,    // 采样率
+                numChannels: this.config.numChannels,   // 单双声道
                 cfgRate: this.config.sampleRate,
-                sampleBits: this.config.sampleBits,
+                sampleBits: this.config.sampleBits,     // 采样数据位数
             }
         });
 
