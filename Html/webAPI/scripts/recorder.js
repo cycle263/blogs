@@ -208,7 +208,7 @@ var Recorder = exports.Recorder = (function () {
             }
 
             function encodeWAV(samples) {
-                var bytes = this.compress(samples);
+                var bytes = this.compress();
                 var dataLength = bytes.length;
                 var buffer = new ArrayBuffer(44 + dataLength);
                 var data = new DataView(buffer);
