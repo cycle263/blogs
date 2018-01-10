@@ -79,7 +79,7 @@
             audioRecorder.stop();
             audioRecorder.exportWAV(function (audioBlob) {
               var blobUrl = window.URL.createObjectURL(audioBlob);
-              // audio.src = blobUrl;   // 录音回放
+              audio.src = blobUrl;   // 录音回放
               uploadAudio('//jsonplaceholder.typicode.com/posts/', audioBlob);
 
               // Test Download
