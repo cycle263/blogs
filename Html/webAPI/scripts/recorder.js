@@ -103,7 +103,7 @@ var Recorder = exports.Recorder = (function () {
                 sampleRate = config.sampleRate;
                 numChannels = config.numChannels;
                 initBuffers();
-                console.log(_this, config);
+                console.log(this, config);
             }
 
             function record(inputBuffer) {
