@@ -10,7 +10,7 @@
         <input onclick="startRecording()" type="button" value="录音" />
         <input onclick="stopRecording()" type="button" value="停止" />
         <input onclick="playRecording()" type="button" value="播放" />
-        <input onclick="uploadAudio()" type="button" value="提交" />
+        <input onclick="downloadAudio()" type="button" value="下载" />
     </div>
 
     <script type="text/javascript" src="HZRecorder.js"></script>
@@ -37,24 +37,8 @@
             recorder.play(audio);
         }
 
-        function uploadAudio() {
-            recorder.upload("Handler1.ashx", function (state, e) {
-                switch (state) {
-                    case 'uploading':
-                        //var percentComplete = Math.round(e.loaded * 100 / e.total) + '%';
-                        break;
-                    case 'ok':
-                        //alert(e.target.responseText);
-                        alert("上传成功");
-                        break;
-                    case 'error':
-                        alert("上传失败");
-                        break;
-                    case 'cancel':
-                        alert("上传被取消");
-                        break;
-                }
-            });
+        function downloadAudio() {
+            recorder.download();
         }
 
     </script>

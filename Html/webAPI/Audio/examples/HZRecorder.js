@@ -129,27 +129,11 @@
         }
 
         //上传
-        this.upload = function (url, callback) {
-            var fd = new FormData();
-            fd.append("audioData", this.getBlob());
-            var xhr = new XMLHttpRequest();
-            if (callback) {
-                xhr.upload.addEventListener("progress", function (e) {
-                    callback('uploading', e);
-                }, false);
-                xhr.addEventListener("load", function (e) {
-                    callback('ok', e);
-                }, false);
-                xhr.addEventListener("error", function (e) {
-                    callback('error', e);
-                }, false);
-                xhr.addEventListener("abort", function (e) {
-                    callback('cancel', e);
-                }, false);
-            }
-            xhr.open("POST", url);
-            xhr.send(fd);
-        }
+        this.download = function (filename) {
+            var url = window.URL.createObjectURL(this.getBlob());
+            var download = filename || 'audio.wav';
+            return `<a class="audio-download" href="${url}" download="${download}"><img src="../../../images/download.png" alt="download" /></a>`;
+        };
 
         //音频采集
         recorder.onaudioprocess = function (e) {
