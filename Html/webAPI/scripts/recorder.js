@@ -217,7 +217,7 @@ var Recorder = exports.Recorder = (function () {
                 /* data chunk identifier */
                 writeString(view, 36, 'data');
                 /* data chunk length */
-                view.setUint32(40, samples.length, true);
+                view.setUint32(40, samples.length * 2, true);
 
                 floatTo16BitPCM(view, 44, samples);
 
