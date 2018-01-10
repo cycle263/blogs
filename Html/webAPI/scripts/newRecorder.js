@@ -45,6 +45,7 @@
 
                     this.config = {
                         bufferLen: 4096,
+                        cfgRate: 16000,
                         numChannels: 2,
                         mimeType: 'audio/wav'
                     };
@@ -104,6 +105,7 @@
                         function init(config) {
                             sampleRate = config.sampleRate;
                             numChannels = config.numChannels;
+                            cfgRate = config.cfgRate;
                             initBuffers();
                         }
 
@@ -112,6 +114,32 @@
                                 recBuffers[channel].push(inputBuffer[channel]);
                             }
                             recLength += inputBuffer[0].length;
+                        }
+
+                        function downsampleBuffer(buffer, rate) {
+                            if (rate == sampleRate) {
+                                return buffer;
+                            }
+                            if (rate > sampleRate) {
+                                throw "downsampling rate show be smaller than original sample rate";
+                            }
+                            var sampleRateRatio = sampleRate / rate;
+                            var newLength = Math.round(buffer.length / sampleRateRatio);
+                            var result = new Float32Array(newLength);
+                            var offsetResult = 0;
+                            var offsetBuffer = 0;
+                            while (offsetResult < result.length) {
+                                var nextOffsetBuffer = Math.round((offsetResult + 1) * sampleRateRatio);
+                                var accum = 0, count = 0;
+                                for (var i = offsetBuffer; i < nextOffsetBuffer && i < buffer.length; i++) {
+                                    accum += buffer[i];
+                                    count++;
+                                }
+                                result[offsetResult] = accum / count;
+                                offsetResult++;
+                                offsetBuffer = nextOffsetBuffer;
+                            }
+                            return result;
                         }
 
                         function exportWAV(type) {
@@ -125,7 +153,8 @@
                             } else {
                                 interleaved = buffers[0];
                             }
-                            var dataview = encodeWAV(interleaved);
+                            var downsampledBuffer = downsampleBuffer(interleaved, cfgRate);
+                            var dataview = encodeWAV(downsampledBuffer);
                             var audioBlob = new Blob([dataview], { type: type });
 
                             self.postMessage({ command: 'exportWAV', data: audioBlob });
@@ -230,7 +259,8 @@
                         command: 'init',
                         config: {
                             sampleRate: this.context.sampleRate,
-                            numChannels: this.config.numChannels
+                            numChannels: this.config.numChannels,
+                            cfgRate: this.config.sampleRate,
                         }
                     });
 
