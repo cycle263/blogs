@@ -78,7 +78,7 @@
             audio.src = window.URL.createObjectURL(audioBlob);          
             uploadAudio('//jsonplaceholder.typicode.com/posts/', audioBlob);
             // Download
-            Recorder.forceDownload('audio.wav', audioBlob)
+            Recorder.forceDownload(audioBlob, 'audio.wav');
           });
         });
       })(window);
