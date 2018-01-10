@@ -164,9 +164,17 @@
                         }
 
                         function interleave(inputL, inputR) {
-                            var result = new Float32Array(inputL.length);
-                            for (var i = 0; i < inputL.length; ++i)
-                                result[i] = (inputL[i] + inputR[i]);
+                            var length = inputL.length + inputR.length;
+                            var result = new Float32Array(length);
+
+                            var index = 0,
+                                inputIndex = 0;
+
+                            while (index < length) {
+                                result[index++] = inputL[inputIndex];
+                                result[index++] = inputR[inputIndex];
+                                inputIndex++;
+                            }
                             return result;
                         }
 
