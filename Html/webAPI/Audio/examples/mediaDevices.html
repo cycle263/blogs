@@ -15,7 +15,8 @@
       #record-gif{width: 800px;height:160px;visibility: hidden;position: absolute;left:50%;bottom: 0;margin-left: -400px;z-index: 9;}
       #recordBtn{width: 96px;height: 96px;border-radius: 48px;outline: none;position: relative;z-index: 11;background-image: url('../../../images/timg.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;}
       #recordBtn:hover{background-image: url(../../../images/timg1.jpeg);}
-      .audio-download, .audio-icon img{width: 20px;height: 20px;vertical-align: middle;margin-right: 8px;}
+      .audio-download, .audio-icon > img{width: 20px;height: 20px;vertical-align: middle;cursor: pointer;}
+      .audio-icon > img{margin-right: 8px;}
     </style>
   </head>
   <body>
@@ -72,7 +73,7 @@
             audioRecorder.stop();
             audioRecorder.exportWAV(function (audioBlob) {
               var blobUrl = window.URL.createObjectURL(audioBlob);
-              audio.src = blobUrl;
+              // audio.src = blobUrl;   // 录音回放
               uploadAudio('//jsonplaceholder.typicode.com/posts/', audioBlob);
 
               // Test Download
