@@ -125,8 +125,7 @@ var Recorder = exports.Recorder = (function () {
                 } else {
                     interleaved = interleave(buffers[0]);
                 }            
-                var dataview = encodeWAV(interleaved);
-                var audioBlob = new Blob([dataview], { type: type });
+                var audioBlob = encodeWAV(interleaved);
 
                 self.postMessage({ command: 'exportWAV', data: audioBlob });
             }
@@ -162,8 +161,6 @@ var Recorder = exports.Recorder = (function () {
             }
 
             function interleave(inputL, inputR) {
-                console.log(sampleRate, this);
-                var compression = sampleRate / cfgRate;    //计算压缩率 
                 var length = inputR ? inputL.length + inputR.length : inputL.length;
                 var result = new Float32Array(length);
 
@@ -173,7 +170,26 @@ var Recorder = exports.Recorder = (function () {
                 while (index < length) {
                     result[index++] = inputL[inputIndex];
                     if (inputR) result[index++] = inputR[inputIndex];
-                    inputIndex += compression;
+                    inputIndex ++;
+                }
+                return result;
+            }
+
+            function compress(samples){
+                var data = new Float32Array(recLength);
+                var offset = 0;
+                for (var i = 0; i < samples.length; i++) {
+                    data.set(samples[i], offset);
+                    offset += samples[i].length;
+                }
+                var compression = parseInt(sampleRate / cfgRate);    //计算压缩率 
+                var length = data.length / compression;
+                var result = new Float32Array(length);
+                var index = 0, j = 0;
+                while (index < length) {
+                    result[index] = data[j];
+                    j += compression;
+                    index++;
                 }
                 return result;
             }
@@ -192,39 +208,62 @@ var Recorder = exports.Recorder = (function () {
             }
 
             function encodeWAV(samples) {
-                var buffer = new ArrayBuffer(44 + samples.length * 2);
-                var view = new DataView(buffer);
+                var bytes = this.compress(samples);
+                var dataLength = bytes.length;
+                var buffer = new ArrayBuffer(44 + dataLength);
+                var data = new DataView(buffer);
 
-                /* RIFF identifier */
-                writeString(view, 0, 'RIFF');
-                /* RIFF chunk length */
-                view.setUint32(4, 36 + samples.length * 2, true);
-                /* RIFF type */
-                writeString(view, 8, 'WAVE');
-                /* format chunk identifier */
-                writeString(view, 12, 'fmt ');
-                /* format chunk length */
-                view.setUint32(16, 16, true);
-                /* sample format (raw) */
-                view.setUint16(20, 1, true);
-                /* channel count */
-                view.setUint16(22, numChannels, true);
-                /* sample rate */
-                view.setUint32(24, sampleRate, true);
-                /* byte rate (sample rate * block align) */
-                view.setUint32(28, sampleRate * 4, true);
-                /* block align (channel count * bytes per sample) */
-                view.setUint16(32, numChannels * 2, true);
-                /* bits per sample */
-                view.setUint16(34, 16, true);
-                /* data chunk identifier */
-                writeString(view, 36, 'data');
-                /* data chunk length */
-                view.setUint32(40, samples.length * 2, true);
+                var channelCount = 1;//单声道
+                var offset = 0;
 
-                floatTo16BitPCM(view, 44, samples);
+                var writeString = function (str) {
+                    for (var i = 0; i < str.length; i++) {
+                        data.setUint8(offset + i, str.charCodeAt(i));
+                    }
+                }
 
-                return view;
+                // 资源交换文件标识符 
+                writeString('RIFF'); offset += 4;
+                // 下个地址开始到文件尾总字节数,即文件大小-8 
+                data.setUint32(offset, 36 + dataLength, true); offset += 4;
+                // WAV文件标志
+                writeString('WAVE'); offset += 4;
+                // 波形格式标志 
+                writeString('fmt '); offset += 4;
+                // 过滤字节,一般为 0x10 = 16 
+                data.setUint32(offset, 16, true); offset += 4;
+                // 格式类别 (PCM形式采样数据) 
+                data.setUint16(offset, 1, true); offset += 2;
+                // 通道数 
+                data.setUint16(offset, channelCount, true); offset += 2;
+                // 采样率,每秒样本数,表示每个通道的播放速度 
+                data.setUint32(offset, sampleRate, true); offset += 4;
+                // 波形数据传输率 (每秒平均字节数) 单声道×每秒数据位数×每样本数据位/8 
+                data.setUint32(offset, channelCount * sampleRate * (sampleBits / 8), true); offset += 4;
+                // 快数据调整数 采样一次占用字节数 单声道×每样本的数据位数/8 
+                data.setUint16(offset, channelCount * (sampleBits / 8), true); offset += 2;
+                // 每样本数据位数 
+                data.setUint16(offset, sampleBits, true); offset += 2;
+                // 数据标识符 
+                writeString('data'); offset += 4;
+                // 采样数据总数,即数据总大小-44 
+                data.setUint32(offset, dataLength, true); offset += 4;
+                // 写入采样数据 
+                if (sampleBits === 8) {
+                    for (var i = 0; i < bytes.length; i++ , offset++) {
+                        var s = Math.max(-1, Math.min(1, bytes[i]));
+                        var val = s < 0 ? s * 0x8000 : s * 0x7FFF;
+                        val = parseInt(255 / (65535 / (val + 32768)));
+                        data.setInt8(offset, val, true);
+                    }
+                } else {
+                    for (var i = 0; i < bytes.length; i++ , offset += 2) {
+                        var s = Math.max(-1, Math.min(1, bytes[i]));
+                        data.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+                    }
+                }
+
+                return new Blob([data], { type: 'audio/wav' });
             }
         }, self);
 
