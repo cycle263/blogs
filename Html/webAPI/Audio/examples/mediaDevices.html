@@ -35,7 +35,6 @@
     </div>
 
     <script src="../../scripts/newRecorder.js" type="text/javascript"></script>
-    <script src="../../scripts/resampler.js" type="text/javascript"></script>
     <script type="text/javascript">
       // 纯html5 api
       (function(window){
@@ -47,7 +46,6 @@
         var contents = document.querySelector('#contents');
         var audioRecorder = null;
         var audioContext = new AudioContext();
-        window.resampler = new Resampler(48000, 16000, 1, 4096);
 
         // 上传语音
         var uploadAudio = function(url, audioBlob, callback){
