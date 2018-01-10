@@ -6,7 +6,7 @@
     var HZRecorder = function (stream, config) {
         config = config || {};
         config.sampleBits = config.sampleBits || 8;      //采样数位 8, 16
-        config.sampleRate = config.sampleRate || (48000 / 3);   //采样率(1/6 48000)
+        config.sampleRate = config.sampleRate || (48000 / 3);   //采样率(1/3 48000)
 
         var context = new (window.webkitAudioContext || window.AudioContext)();
         var audioInput = context.createMediaStreamSource(stream);

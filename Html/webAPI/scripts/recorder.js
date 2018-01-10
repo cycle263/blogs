@@ -106,7 +106,6 @@ var Recorder = exports.Recorder = (function () {
                 cfgRate = config.cfgRate;
                 sampleBits = config.sampleBits;
                 initBuffers();
-                console.log(config);
             }
 
             function record(inputBuffer) {
@@ -211,7 +210,7 @@ var Recorder = exports.Recorder = (function () {
 
             function encodeWAV(samples) {
                 var bytes = this.compress();
-                var dataLength = bytes.length;
+                var dataLength = bytes.length * (sampleBits / 8);
                 var buffer = new ArrayBuffer(44 + dataLength);
                 var data = new DataView(buffer);
 
@@ -251,6 +250,7 @@ var Recorder = exports.Recorder = (function () {
                 // 采样数据总数,即数据总大小-44 
                 data.setUint32(offset, dataLength, true); offset += 4;
                 // 写入采样数据 
+                console.log(offset, bytes, data);
                 if (sampleBits === 8) {
                     for (var i = 0; i < bytes.length; i++ , offset++) {
                         var s = Math.max(-1, Math.min(1, bytes[i]));
