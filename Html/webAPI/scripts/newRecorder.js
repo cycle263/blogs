@@ -127,7 +127,7 @@
                             } else {
                                 interleaved = buffers[0];
                             }
-                            var dataview = encodeLowWAV(interleaved);
+                            var dataview = encodeWAV(interleaved);
                             var audioBlob = new Blob([dataview], { type: type });
 
                             self.postMessage({ command: 'exportWAV', data: audioBlob });
@@ -189,31 +189,6 @@
                             for (var i = 0; i < string.length; i++) {
                                 view.setUint8(offset + i, string.charCodeAt(i));
                             }
-                        }
-
-                        function encodeLowWAV(samples) {
-                            var block_align   = (numChannels * 16) / 8
-                            ,   byte_rate     = sampleRate * block_align
-                            ,   data_size     = (samples.length * 16) / 8
-                            ,   buffer        = new ArrayBuffer(44 + data_size)
-                            ,   view          = new DataView(buffer);
-
-                            writeString( view, 0, 'RIFF' );
-                            view.setUint32( 4, 32 + data_size, true ); //!!!
-                            writeString( view, 8, 'WAVE' );
-                            writeString( view, 12, 'fmt' );
-                            view.setUint32( 16, 16, true );
-                            view.setUint16( 20, 1, true );
-                            view.setUint16( 22, numChannels, true );
-                            view.setUint32( 24, sampleRate, true );
-                            view.setUint32( 28, byte_rate, true );
-                            view.setUint16( 32, block_align, true );
-                            view.setUint16( 34, 16, true );
-                            writeString( view, 36, 'data' );
-                            view.setUint32( 40, data_size, true ); //!!!
-                            floatTo16BitPCM( view, 44, samples );
-
-                            return view;
                         }
 
                         function encodeWAV(samples) {
