@@ -116,32 +116,6 @@
                             recLength += inputBuffer[0].length;
                         }
 
-                        function downsampleBuffer(buffer, rate) {
-                            if (rate == sampleRate) {
-                                return buffer;
-                            }
-                            if (rate > sampleRate) {
-                                throw "downsampling rate show be smaller than original sample rate";
-                            }
-                            var sampleRateRatio = sampleRate / rate;
-                            var newLength = Math.round(buffer.length / sampleRateRatio);
-                            var result = new Float32Array(newLength);
-                            var offsetResult = 0;
-                            var offsetBuffer = 0;
-                            while (offsetResult < result.length) {
-                                var nextOffsetBuffer = Math.round((offsetResult + 1) * sampleRateRatio);
-                                var accum = 0, count = 0;
-                                for (var i = offsetBuffer; i < nextOffsetBuffer && i < buffer.length; i++) {
-                                    accum += buffer[i];
-                                    count++;
-                                }
-                                result[offsetResult] = accum / count;
-                                offsetResult++;
-                                offsetBuffer = nextOffsetBuffer;
-                            }
-                            return result;
-                        }
-
                         function exportWAV(type) {
                             var buffers = [];
                             for (var channel = 0; channel < numChannels; channel++) {
@@ -153,8 +127,7 @@
                             } else {
                                 interleaved = buffers[0];
                             }
-                            var downsampledBuffer = downsampleBuffer(interleaved, cfgRate);
-                            var dataview = encodeWAV(downsampledBuffer);
+                            var dataview = encodeWAV(interleaved);
                             var audioBlob = new Blob([dataview], { type: type });
 
                             self.postMessage({ command: 'exportWAV', data: audioBlob });
@@ -191,17 +164,9 @@
                         }
 
                         function interleave(inputL, inputR) {
-                            var length = inputL.length + inputR.length;
-                            var result = new Float32Array(length);
-
-                            var index = 0,
-                                inputIndex = 0;
-
-                            while (index < length) {
-                                result[index++] = inputL[inputIndex];
-                                result[index++] = inputR[inputIndex];
-                                inputIndex++;
-                            }
+                            var result = new Float32Array(inputL.length);
+                            for (var i = 0; i < inputL.length; ++i)
+                                result[i] = 0.5 * (inputL[i] + inputR[i]);
                             return result;
                         }
 
