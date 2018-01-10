@@ -103,7 +103,6 @@ var Recorder = exports.Recorder = (function () {
                 sampleRate = config.sampleRate;
                 numChannels = config.numChannels;
                 initBuffers();
-                console.log('init...');
             }
 
             function record(inputBuffer) {
@@ -209,7 +208,7 @@ var Recorder = exports.Recorder = (function () {
                 /* sample rate */
                 view.setUint32(24, sampleRate, true);
                 /* byte rate (sample rate * block align) */
-                view.setUint32(28, sampleRate * 4, true);
+                view.setUint32(28, sampleRate * numChannels * 2, true);
                 /* block align (channel count * bytes per sample) */
                 view.setUint16(32, numChannels * 2, true);
                 /* bits per sample */
@@ -217,7 +216,7 @@ var Recorder = exports.Recorder = (function () {
                 /* data chunk identifier */
                 writeString(view, 36, 'data');
                 /* data chunk length */
-                view.setUint32(40, samples.length * 2, true);
+                view.setUint32(40, samples.length, true);
 
                 floatTo16BitPCM(view, 44, samples);
 
