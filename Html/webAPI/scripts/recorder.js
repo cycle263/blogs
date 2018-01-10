@@ -80,6 +80,7 @@ var Recorder = exports.Recorder = (function () {
                 numChannels = undefined;
 
             self.onmessage = function (e) {
+                console.log(e, _this);
                 switch (e.data.command) {
                     case 'init':
                         init(e.data.config);
@@ -103,7 +104,7 @@ var Recorder = exports.Recorder = (function () {
                 sampleRate = config.sampleRate;
                 numChannels = config.numChannels;
                 initBuffers();
-                console.log(this, config);
+                console.log(config);
             }
 
             function record(inputBuffer) {
