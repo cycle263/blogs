@@ -103,6 +103,7 @@ var Recorder = exports.Recorder = (function () {
                 sampleRate = config.sampleRate;
                 numChannels = config.numChannels;
                 initBuffers();
+                console.log(config);
             }
 
             function record(inputBuffer) {
@@ -227,10 +228,11 @@ var Recorder = exports.Recorder = (function () {
         this.worker.postMessage({
             command: 'init',
             config: {
-                sampleRate: this.context.sampleRate,
+                sampleRate: this.config.sampleRate,
                 numChannels: this.config.numChannels
             }
         });
+        console.log(this);
 
         this.worker.onmessage = function (e) {
             var cb = _this.callbacks[e.data.command].pop();
