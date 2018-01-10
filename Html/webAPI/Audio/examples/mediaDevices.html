@@ -75,8 +75,10 @@
           gif.style.visibility = 'hidden';
           audioRecorder.stop();
           audioRecorder.exportWAV(function(audioBlob){
-            audio.src = window.URL.createObjectURL(audioBlob);
-            uploadAudio('//jsonplaceholder.typicode.com/posts/', audioBlob)
+            audio.src = window.URL.createObjectURL(audioBlob);          
+            uploadAudio('//jsonplaceholder.typicode.com/posts/', audioBlob);
+            // Download
+            Recorder.forceDownload('audio.wav', audioBlob)
           });
         });
       })(window);
