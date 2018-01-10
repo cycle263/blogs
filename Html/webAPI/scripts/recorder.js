@@ -228,7 +228,7 @@ var Recorder = exports.Recorder = (function () {
         this.worker.postMessage({
             command: 'init',
             config: {
-                sampleRate: this.config.sampleRate,
+                sampleRate: this.context.sampleRate,
                 numChannels: this.config.numChannels
             }
         });
