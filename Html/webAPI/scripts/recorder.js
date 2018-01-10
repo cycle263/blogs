@@ -103,7 +103,6 @@ var Recorder = exports.Recorder = (function () {
                 sampleRate = config.sampleRate;
                 numChannels = config.numChannels;
                 initBuffers();
-                console.log(config);
             }
 
             function record(inputBuffer) {
@@ -111,6 +110,33 @@ var Recorder = exports.Recorder = (function () {
                     recBuffers[channel].push(inputBuffer[channel]);
                 }
                 recLength += inputBuffer[0].length;
+            }
+
+            function downsampleBuffer(buffer, rate) {
+                console.log(rate, sampleRate);
+                if (rate == sampleRate) {
+                    return buffer;
+                }
+                if (rate > sampleRate) {
+                    throw "downsampling rate show be smaller than original sample rate";
+                }
+                var sampleRateRatio = sampleRate / rate;
+                var newLength = Math.round(buffer.length / sampleRateRatio);
+                var result = new Float32Array(newLength);
+                var offsetResult = 0;
+                var offsetBuffer = 0;
+                while (offsetResult < result.length) {
+                    var nextOffsetBuffer = Math.round((offsetResult + 1) * sampleRateRatio);
+                    var accum = 0, count = 0;
+                    for (var i = offsetBuffer; i < nextOffsetBuffer && i < buffer.length; i++) {
+                        accum += buffer[i];
+                        count++;
+                    }
+                    result[offsetResult] = accum / count;
+                    offsetResult++;
+                    offsetBuffer = nextOffsetBuffer;
+                }
+                return result;
             }
 
             function exportWAV(type) {
@@ -124,6 +150,7 @@ var Recorder = exports.Recorder = (function () {
                 } else {
                     interleaved = buffers[0];
                 }
+                downsampleBuffer(interleaved, 8000);
                 var dataview = encodeWAV(interleaved);
                 var audioBlob = new Blob([dataview], { type: type });
 
@@ -228,11 +255,10 @@ var Recorder = exports.Recorder = (function () {
         this.worker.postMessage({
             command: 'init',
             config: {
-                sampleRate: this.config.sampleRate,
+                sampleRate: this.context.sampleRate,
                 numChannels: this.config.numChannels
             }
         });
-        console.log(this);
 
         this.worker.onmessage = function (e) {
             var cb = _this.callbacks[e.data.command].pop();
