@@ -46,6 +46,8 @@
         var contents = document.querySelector('#contents');
         var audioRecorder = null;
         var audioContext = new AudioContext();
+
+        // 上传语音
         var uploadAudio = function(url, audioBlob, callback){
           if(!url || !audioBlob) return;
           console.log('blog size: ', Math.ceil(audioBlob.size / 1024) + 'k');
@@ -63,10 +65,14 @@
           xhr.open("POST", url);
           xhr.send(fd);
         };
+
+        // 下载语音
         var downloadAudio = function(blobUrl, filename){
           var download = filename || 'audio.wav';
           return `<a class="audio-download" href="${blobUrl}" download="${download}"><img src="../../../images/download.png" alt="download" /></a>`;
         };
+
+        // 录制完语音后的事件处理
         var handleRecordEnd = function(){
           gif.style.visibility = 'hidden';
           if(audioRecorder && audioRecorder.recording){
@@ -82,6 +88,7 @@
           }
         }
 
+        // 按下按钮开始录制
         recordBtn.addEventListener('mousedown', function(){
           gif.style.visibility = 'visible';
           navigator.mediaDevices.getUserMedia({audio: true})
