@@ -116,11 +116,34 @@
                             recLength += inputBuffer[0].length;
                         }
 
+                        // for changing the sampling rate, data,
+                        function interpolateArray(data, newSampleRate, oldSampleRate) {
+                            var fitCount = Math.round(data.length*(newSampleRate/oldSampleRate));
+                            var newData = new Array();
+                            var springFactor = new Number((data.length - 1) / (fitCount - 1));
+                            newData[0] = data[0]; // for new allocation
+                            for ( var i = 1; i < fitCount - 1; i++) {
+                            var tmp = i * springFactor;
+                            var before = new Number(Math.floor(tmp)).toFixed();
+                            var after = new Number(Math.ceil(tmp)).toFixed();
+                            var atPoint = tmp - before;
+                            newData[i] = this.linearInterpolate(data[before], data[after], atPoint);
+                            }
+                            newData[fitCount - 1] = data[data.length - 1]; // for new allocation
+                            return newData;
+                        };
+                        function linearInterpolate(before, after, atPoint) {
+                            return before + (after - before) * atPoint;
+                        };
+
                         function exportWAV(type) {
                             var buffers = [];
-                            for (var channel = 0; channel < numChannels; channel++) {
-                                buffers.push(mergeBuffers(recBuffers[channel], recLength));
+                            for (var channel = 0; channel < numChannels; channel++){
+                                var buffer = mergeBuffers(recBuffers[channel], recLength);
+                                buffer = interpolateArray(buffer, desiredSamplingRate, sampleRate);
+                                buffers.push(buffer);
                             }
+                            sampleRate = cfgRate;
                             var interleaved = undefined;
                             if (numChannels === 2) {
                                 interleaved = interleave(buffers[0], buffers[1]);
