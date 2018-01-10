@@ -80,7 +80,7 @@ var Recorder = exports.Recorder = (function () {
                 numChannels = undefined;
 
             self.onmessage = function (e) {
-                console.log(e, _this);
+                console.log(e, this);
                 switch (e.data.command) {
                     case 'init':
                         init(e.data.config);
