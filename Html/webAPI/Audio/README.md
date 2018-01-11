@@ -23,3 +23,7 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
   })[0];
   speechSynthesis.speak(msg);
   ```
+
+* wav文件格式说明
+
+  [wav文件格式说明](./images/wav.jpg)

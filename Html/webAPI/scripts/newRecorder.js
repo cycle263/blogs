@@ -1,3 +1,4 @@
+// 可自定义采样率和采样位数，中文注释
 (function (f) { if (typeof exports === "object" && typeof module !== "undefined") { module.exports = f() } else if (typeof define === "function" && define.amd) { define([], f) } else { var g; if (typeof window !== "undefined") { g = window } else if (typeof global !== "undefined") { g = global } else if (typeof self !== "undefined") { g = self } else { g = this } g.Recorder = f() } })(function () {
     var define, module, exports; return (function e(t, n, r) { function s(o, u) { if (!n[o]) { if (!t[o]) { var a = typeof require == "function" && require; if (!u && a) return a(o, !0); if (i) return i(o, !0); var f = new Error("Cannot find module '" + o + "'"); throw f.code = "MODULE_NOT_FOUND", f } var l = n[o] = { exports: {} }; t[o][0].call(l.exports, function (e) { var n = t[o][1][e]; return s(n ? n : e) }, l, l.exports, e, t, n, r) } return n[o].exports } var i = typeof require == "function" && require; for (var o = 0; o < r.length; o++)s(r[o]); return s })({
         1: [function (require, module, exports) {
@@ -116,18 +117,18 @@
                             recLength += inputBuffer[0].length;
                         }
 
-                        // for changing the sampling rate, data,
+                        // 修改采样率和采样数据
                         function interpolateArray(data, newSampleRate, oldSampleRate) {
                             var fitCount = Math.round(data.length*(newSampleRate/oldSampleRate));
                             var newData = new Array();
                             var springFactor = new Number((data.length - 1) / (fitCount - 1));
                             newData[0] = data[0]; // for new allocation
                             for ( var i = 1; i < fitCount - 1; i++) {
-                            var tmp = i * springFactor;
-                            var before = new Number(Math.floor(tmp)).toFixed();
-                            var after = new Number(Math.ceil(tmp)).toFixed();
-                            var atPoint = tmp - before;
-                            newData[i] = this.linearInterpolate(data[before], data[after], atPoint);
+                                var tmp = i * springFactor;
+                                var before = new Number(Math.floor(tmp)).toFixed();
+                                var after = new Number(Math.ceil(tmp)).toFixed();
+                                var atPoint = tmp - before;
+                                newData[i] = this.linearInterpolate(data[before], data[after], atPoint);
                             }
                             newData[fitCount - 1] = data[data.length - 1]; // for new allocation
                             return newData;
@@ -218,31 +219,31 @@
                             var buffer = new ArrayBuffer(44 + samples.length * 2);
                             var view = new DataView(buffer);
 
-                            /* RIFF identifier */
+                            /* RIFF 标志 */
                             writeString(view, 0, 'RIFF');
-                            /* RIFF chunk length */
+                            /* RIFF 文件长度 */
                             view.setUint32(4, 36 + samples.length * 2, true);
-                            /* RIFF type */
+                            /* WAVE 标志 */
                             writeString(view, 8, 'WAVE');
-                            /* format chunk identifier */
+                            /* fmt 格式化块标志 */
                             writeString(view, 12, 'fmt ');
-                            /* format chunk length */
+                            /* 格式化块长度 */
                             view.setUint32(16, 16, true);
-                            /* sample format (raw) */
+                            /* 采样格式类别，1为PCM形式的声音数据 */
                             view.setUint16(20, 1, true);
-                            /* channel count */
+                            /* 通道数，1为单声道，2为双声道 */
                             view.setUint16(22, numChannels, true);
-                            /* sample rate */
+                            /* 采样率，表示每个通道的播放速度，即每秒数据位数 */
                             view.setUint32(24, sampleRate, true);
-                            /* byte rate (sample rate * block align) */
+                            /* 音频数据传送速率 (采样率 * 通道数 * 每采样数据位数 / 8（1字节8位)) */
                             view.setUint32(28, sampleRate * numChannels * 2, true);
-                            /* block align (channel count * bytes per sample) */
+                            /* 数据块调整数 (通道数 * 每采样数据位数 / 8（1字节8位)) */
                             view.setUint16(32, numChannels * 2, true);
-                            /* bits per sample */
+                            /* 每个采样数据位数，多声道样本大小一样，一般为8或者16 */
                             view.setUint16(34, 16, true);
-                            /* data chunk identifier */
+                            /* 数据块标记data */
                             writeString(view, 36, 'data');
-                            /* data chunk length */
+                            /* 语音数据的长度 */
                             view.setUint32(40, samples.length * 2, true);
 
                             floatTo16BitPCM(view, 44, samples);
