@@ -216,7 +216,7 @@
                         }
 
                         function encodeWAV(samples) {
-                            var sampleBit = 16;         // 默认采样数据位数，不建议修改
+                            var sampleBit = 16;         // 默认采样数据位数，不建议修改, 噪音大
                             var bitRatio = sampleBit / 8;
                             var buffer = new ArrayBuffer(44 + samples.length * bitRatio);
                             var view = new DataView(buffer);
