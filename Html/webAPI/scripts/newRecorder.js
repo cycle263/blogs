@@ -211,15 +211,6 @@
                             }
                         }
 
-                        function floatTo8BitPCM(output, offset, input) {
-                            for (var i = 0; i < input.length; i++ , offset++) {    // 这里只能加1了
-                                var s = Math.max(-1, Math.min(1, input[i]));
-                                var val = s < 0 ? s * 0x8000 : s * 0x7FFF;
-                                val = parseInt(255 / (65535 / (val + 32768)));     // 转换的代码, 就是按比例转换
-                                output.setInt8(offset, val, true);
-                            }
-                        }
-
                         function writeString(view, offset, string) {
                             for (var i = 0; i < string.length; i++) {
                                 view.setUint8(offset + i, string.charCodeAt(i));
@@ -258,11 +249,7 @@
                             /* 语音数据的长度 */
                             view.setUint32(40, samples.length * bitRatio, true);
 
-                            if (sampleBit === 16) {
-                                floatTo16BitPCM(view, 44, samples);
-                            } else {
-                                floatTo8BitPCM(view, 44, samples);
-                            }
+                            floatTo16BitPCM(view, 44, samples);
 
                             return view;
                         }
