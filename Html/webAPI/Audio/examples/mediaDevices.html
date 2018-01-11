@@ -94,7 +94,7 @@
           navigator.mediaDevices.getUserMedia({audio: true})
           .then(function(mediaStream){
             var mediaStreamSource = audioContext.createMediaStreamSource(mediaStream);   // 媒体流音频源
-            audioRecorder = new Recorder(mediaStreamSource, {numChannels: 1, sampleRate: 16 * 1000, sampleBit: 8});    // numChannels=1为单声道，sampleRate：采样率
+            audioRecorder = new Recorder(mediaStreamSource, {numChannels: 1, sampleRate: 16 * 1000});    // numChannels=1为单声道，sampleRate：采样率
             audioRecorder.record();
           }).catch(function(err){
             switch (error.code || error.name) {

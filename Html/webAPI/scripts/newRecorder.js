@@ -47,7 +47,6 @@
                     this.config = {
                         bufferLen: 4096,
                         cfgRate: 16000,
-                        sampleBit: 16,
                         numChannels: 2,
                         mimeType: 'audio/wav'
                     };
@@ -108,7 +107,6 @@
                             sampleRate = config.sampleRate;
                             numChannels = config.numChannels;
                             cfgRate = config.cfgRate;
-                            sampleBit = config.sampleBit;
                             initBuffers();
                         }
 
@@ -218,6 +216,7 @@
                         }
 
                         function encodeWAV(samples) {
+                            var sampleBit = 16;         // 默认采样数据位数，不建议修改
                             var bitRatio = sampleBit / 8;
                             var buffer = new ArrayBuffer(44 + samples.length * bitRatio);
                             var view = new DataView(buffer);
@@ -261,7 +260,6 @@
                             sampleRate: this.context.sampleRate,
                             numChannels: this.config.numChannels,
                             cfgRate: this.config.sampleRate,
-                            sampleBit: this.config.sampleBit,
                         }
                     });
 
