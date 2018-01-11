@@ -97,7 +97,27 @@
             audioRecorder = new Recorder(mediaStreamSource, {numChannels: 1, sampleRate: 16 * 1000});    // numChannels=1为单声道，sampleRate：采样率
             audioRecorder.record();
           }).catch(function(err){
-            console.error(err);
+            switch (error.code || error.name) {
+              case 'PERMISSION_DENIED':
+              case 'PermissionDeniedError':
+                if(window.location.protocol === 'http'){
+                  alert('网络环境不安全，推荐使用https');
+                } else {
+                  alert('用户拒绝提供录音权限');
+                }
+                break;
+              case 'NOT_SUPPORTED_ERROR':
+              case 'NotSupportedError':
+                alert('浏览器不支持硬件设备。');
+                break;
+              case 'MANDATORY_UNSATISFIED_ERROR':
+              case 'MandatoryUnsatisfiedError':
+                alert('无法发现指定的硬件设备。');
+                break;
+              default:
+                alert('无法打开麦克风，异常信息:' + (error.code || error.name));
+                break;
+            }
           });
         });
         recordBtn.addEventListener('mouseup', function(){

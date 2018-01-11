@@ -47,6 +47,7 @@
                     this.config = {
                         bufferLen: 4096,
                         cfgRate: 16000,
+                        sampleBit: 16,
                         numChannels: 2,
                         mimeType: 'audio/wav'
                     };
@@ -107,6 +108,7 @@
                             sampleRate = config.sampleRate;
                             numChannels = config.numChannels;
                             cfgRate = config.cfgRate;
+                            sampleBit = config.sampleBit;
                             initBuffers();
                         }
 
@@ -209,6 +211,15 @@
                             }
                         }
 
+                        function floatTo8BitPCM(output, offset, input) {
+                            for (var i = 0; i < input.length; i++ , offset++) {    // 这里只能加1了
+                                var s = Math.max(-1, Math.min(1, input[i]));
+                                var val = s < 0 ? s * 0x8000 : s * 0x7FFF;
+                                val = parseInt(255 / (65535 / (val + 32768)));     // 转换的代码, 就是按比例转换
+                                output.setInt8(offset, val, true);
+                            }
+                        }
+
                         function writeString(view, offset, string) {
                             for (var i = 0; i < string.length; i++) {
                                 view.setUint8(offset + i, string.charCodeAt(i));
@@ -216,13 +227,14 @@
                         }
 
                         function encodeWAV(samples) {
-                            var buffer = new ArrayBuffer(44 + samples.length * 2);
+                            var bitRatio = sampleBit / 8;
+                            var buffer = new ArrayBuffer(44 + samples.length * bitRatio);
                             var view = new DataView(buffer);
 
                             /* RIFF 标志 */
                             writeString(view, 0, 'RIFF');
                             /* RIFF 文件长度 */
-                            view.setUint32(4, 36 + samples.length * 2, true);
+                            view.setUint32(4, 36 + samples.length * bitRatio, true);
                             /* WAVE 标志 */
                             writeString(view, 8, 'WAVE');
                             /* fmt 格式化块标志 */
@@ -236,17 +248,21 @@
                             /* 采样率，表示每个通道的播放速度，即每秒数据位数 */
                             view.setUint32(24, sampleRate, true);
                             /* 音频数据传送速率 (采样率 * 通道数 * 每采样数据位数 / 8（1字节8位)) */
-                            view.setUint32(28, sampleRate * numChannels * 2, true);
+                            view.setUint32(28, sampleRate * numChannels * bitRatio, true);
                             /* 数据块调整数 (通道数 * 每采样数据位数 / 8（1字节8位)) */
-                            view.setUint16(32, numChannels * 2, true);
+                            view.setUint16(32, numChannels * bitRatio, true);
                             /* 每个采样数据位数，多声道样本大小一样，一般为8或者16 */
                             view.setUint16(34, 16, true);
                             /* 数据块标记data */
                             writeString(view, 36, 'data');
                             /* 语音数据的长度 */
-                            view.setUint32(40, samples.length * 2, true);
+                            view.setUint32(40, samples.length * bitRatio, true);
 
-                            floatTo16BitPCM(view, 44, samples);
+                            if (sampleBit === 16) {
+                                floatTo16BitPCM(view, 44, samples);
+                            } else {
+                                floatTo8BitPCM(view, 44, samples);
+                            }
 
                             return view;
                         }
@@ -258,6 +274,7 @@
                             sampleRate: this.context.sampleRate,
                             numChannels: this.config.numChannels,
                             cfgRate: this.config.sampleRate,
+                            sampleBit: this.config.sampleBit,
                         }
                     });
 
