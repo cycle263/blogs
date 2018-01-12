@@ -35,3 +35,17 @@
     `git push --all origin`  将本地的所有分支都推送到远程主机  
     `git push --force origin`  强行覆盖远程主机上更新的版本
     `git push origin --tags`    push默认不推送标签，除非加上--tags
+
+* 新增github项目
+
+    ```
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git remote add origin https://github.com/cycle263/recordAudio.git
+    git push -u origin master
+
+    // push an existing repository from the command line
+    git remote add origin https://github.com/cycle263/recordAudio.git
+    git push -u origin master
+    ```
