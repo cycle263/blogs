@@ -96,7 +96,7 @@
             var mediaStreamSource = audioContext.createMediaStreamSource(mediaStream);   // 媒体流音频源
             audioRecorder = new Recorder(mediaStreamSource, {numChannels: 1, sampleRate: 16 * 1000});    // numChannels=1为单声道，sampleRate：采样率
             audioRecorder.record();
-          }).catch(function(err){
+          }).catch(function(error){
             switch (error.code || error.name) {
               case 'PERMISSION_DENIED':
               case 'PermissionDeniedError':
