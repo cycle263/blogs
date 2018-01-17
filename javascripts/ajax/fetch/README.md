@@ -8,5 +8,5 @@ fetch(fetchurl, {
 })
 ```
 
-[fetch body type](../../fetch.png)
+![fetch body type](../../fetch.png)
 
