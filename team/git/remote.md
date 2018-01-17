@@ -45,6 +45,10 @@
     git remote add origin https://github.com/cycle263/recordAudio.git
     git push -u origin master
 
+    // set-upstream-to
+    git branch --set-upstream-to=origin/cycle cycle
+    git push/pull
+
     // push an existing repository from the command line
     git remote add origin https://github.com/cycle263/recordAudio.git
     git push -u origin master

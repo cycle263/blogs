@@ -29,7 +29,7 @@
       url: '',
       data: formdata,
       processData: false, // 不处理数据，避免异常
-      contentType: false  // 不设置内容类型，用默认的表单类型
+      contentType: false  // 不设置内容类型，用默认的表单类型，会自动加上boundary
     })
     ```
 
