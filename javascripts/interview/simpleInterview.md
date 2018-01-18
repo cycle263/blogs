@@ -11,7 +11,7 @@
 * **事件代理的原理？** jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ?
 * **js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？** 不可以，原因使用下标访问时，只是临时创建的array对象
 * canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
-* **<u>ES6有哪些新特性？ ？箭头函数的作用域(是否有arguments,是否有自身的this对象和上下文, call能否覆盖箭头函数this)？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await？let vs const vs var?<、u>** babel转码的实现原理？ES6 module可否做到按需加载？(stage3: dynamic import)
+* **<u>ES6有哪些新特性？ ？箭头函数的作用域(是否有arguments,是否有自身的this对象和上下文, call能否覆盖箭头函数this)？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await？let vs const vs var?</u>** babel转码的实现原理？ES6 module可否做到按需加载？(stage3: dynamic import)
 * commonJS和AMD规范区别？和ES6的模块有什么不同？
 
 ## 框架类库
