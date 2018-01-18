@@ -13,7 +13,7 @@
       #contents .answer{text-align: left;}
       .operate-block{width: 100%;position: absolute;bottom: 36px;left: 0;padding: 32px 16px;z-index: 2;}
       #record-gif{width: 800px;height:160px;visibility: hidden;position: absolute;left:50%;bottom: 0;margin-left: -400px;z-index: 9;}
-      #recordBtn{width: 96px;height: 96px;border-radius: 48px;outline: none;position: relative;z-index: 11;background-image: url('../../../images/timg.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;}
+      #recordBtn{width: 96px;height: 96px;cursor: pointer;border-radius: 48px;outline: none;position: relative;z-index: 11;background-image: url('../../../images/timg.jpeg');background-size: contain;background-position: center;background-repeat: no-repeat;}
       #recordBtn:hover{background-image: url(../../../images/timg1.jpeg);}
       .audio-download, .audio-icon > img{width: 20px;height: 20px;vertical-align: middle;cursor: pointer;}
       .audio-icon > img{margin-right: 8px;}
@@ -97,7 +97,7 @@
             audioRecorder = new Recorder(mediaStreamSource, {numChannels: 1, sampleRate: 16 * 1000});    // numChannels=1为单声道，sampleRate：采样率
             audioRecorder.record();
           }).catch(function(error){
-            switch (error.code || error.name) {
+            switch (error.name || error.code) {
               case 'PERMISSION_DENIED':
               case 'PermissionDeniedError':
                 if(window.location.protocol === 'http'){
@@ -115,7 +115,7 @@
                 alert('无法发现指定的硬件设备。');
                 break;
               default:
-                alert('无法打开麦克风，异常信息:' + (error.code || error.name));
+                alert('无法打开麦克风，异常信息:' + (error.code +', error name: '+ error.name));
                 break;
             }
           });
