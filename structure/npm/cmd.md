@@ -63,6 +63,14 @@
 * 优质的镜像地址
 
     ```
-    http://registry.npm.alibaba-inc.com
-    https://registry.npm.taobao.org/
+    alibaba -- http://registry.npm.alibaba-inc.com
+    npm ---- https://registry.npmjs.org/
+    cnpm --- http://r.cnpmjs.org/
+    taobao - http://registry.npm.taobao.org/
+    edunpm - http://registry.enpmjs.org/
+    eu ----- http://registry.npmjs.eu/
+    au ----- http://registry.npmjs.org.au/
+    sl ----- http://npm.strongloop.com/
+    nj ----- https://registry.nodejitsu.com/
+    pt ----- http://registry.npmjs.pt/
     ```
