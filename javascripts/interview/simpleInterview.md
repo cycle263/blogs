@@ -6,8 +6,8 @@
 * 无缝发布部署，相关文件的先后发布顺序，灰度发布(全量发布)，<u>错误监控和分析</u>，安全性监控？自动化测试框架（mocha）？
 
 ## 前端基础
-* **CSS** 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？**BFC(块级格式化上下文)?css像素和设备像素区别？ 布局方式？**重构和回流、重绘(重新计算元素的几何大小和位置)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)?
-* 字面量式函数和声明式函数的区分？defer vs async? 原型继承vs类继承？(灵活，接口，抽象类) **<u>闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分?冒泡和捕获?setTimeout里面运行的函数的作用域this指向?++i vs i++?</u>** Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？websocket vs http?(有并集) webworker?(后台运行) storage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？
+* **CSS** 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？**BFC(块级格式化上下文)?css像素和设备像素区别？ 布局方式？**重构和回流、重绘(重新计算元素的几何大小和位置)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)?渐进增强和优雅降级?什么是 FOUC (无样式内容闪烁)？你如何来避免 FOUC？
+* 字面量式函数和声明式函数的区分？script defer vs async? 原型继承vs类继承？(灵活，接口，抽象类) **<u>闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分?冒泡和捕获?setTimeout里面运行的函数的作用域this指向?++i vs i++?</u>** Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？websocket vs http?(有并集) webworker?(后台运行) storage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？
 * **事件代理的原理？** jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ?
 * **js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？** 不可以，原因使用下标访问时，只是临时创建的array对象
 * canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
@@ -22,8 +22,8 @@
 
 
 ## 前端工程化
-* 常见的前端优化措施：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存，图片服务器，减少DOM操作，模块化
-* ~~组件划分粒度？~~ 对前端工程进行流程化开发，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，nginx的combo技术，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案  
+* 常见的前端优化措施：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存资源缓存，图片服务器，减少DOM操作，模块化等
+* ~~组件划分粒度？版本控制系统(svn、git)?~~ 对前端工程进行流程化开发，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，nginx的combo技术，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案  
 * **<u>前端缓存？组件化/模块化，组件化诉求复用(更多关注UI)，模块化诉求解耦(关注数据和功能封装)，组件接口设计，理想的前端开发和部署流程</u>**
 
 ## 加分技能
