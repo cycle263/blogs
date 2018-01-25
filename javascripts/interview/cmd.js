@@ -1,4 +1,4 @@
-// interview 打印样式调试
+// interview 源码文件打印样式调试
 $$('.js-header-wrapper,.pagehead,.js-zeroclipboard-container,.commit-tease,.file-header,.site-footer-container,.footer').forEach(function(ele){
   ele.parentNode.removeChild(ele);
 });
