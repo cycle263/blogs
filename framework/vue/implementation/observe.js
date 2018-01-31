@@ -8,8 +8,8 @@ function observe(data){
     if(typeof value === 'object')
       observe(value);
     Object.defineProperty(data, k, {
-      enumerable: true,     // 可枚举此属性
-      configurable: true,   // 可以再次define
+      enumerable: true,
+      configurable: true,
       get: function() {
         return value;
       },
