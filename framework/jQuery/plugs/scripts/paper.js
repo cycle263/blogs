@@ -25,7 +25,7 @@ jQuery.fn.extend({
 
         opts = jQuery.extend({
             "isInitQuery": false,       //初始化是否查询数据
-            "currentForm": "body",      //格式： "jQuery(#myForm)" -- 同一页面多个分页组件必传
+            "currentForm": null,      //格式： "opts.currentForm or jQuery(#myForm)" -- 同一页面多个分页组件必传
             "method": "GET",            //默认请求方法
             "currentPage": 0,           //当前页数
             "pageSize": 10,             //默认每页显示条数
@@ -38,7 +38,7 @@ jQuery.fn.extend({
         }, opts);
 
         var container = this,
-            form = jQuery(opts.currentForm),
+            form = opts.currentForm ? jQuery(opts.currentForm) : container,     // 未定义currentForm使用container区分多分页组件
             renderPager = function(res, text, xhr){
                 jQuery.extend(opts, {"itemsCount": res.itemsCount, "pagesCount": res.pagesCount});
                 var pagesCount = opts.pagesCount - 0,
