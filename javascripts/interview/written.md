@@ -68,3 +68,18 @@ new Promise(function executor(resolve) {
 });
 console.log(5);
 ```
+
+
+// 写出打印的结果和理由
+```
+function foo() {
+	var a = 2;
+	this.bar();
+}
+
+function bar() {
+	console.log( this.a );
+}
+
+foo(); //undefined
+```

@@ -16,8 +16,7 @@
   Array.from(arrayLike, x => x * x);   // 等同于  
   Array.from(arrayLike).map(x => x * x);  
 
-  Array.from()的一个应用是，将字符串转为数组，然后返回字符串的长度。这样可以避免JavaScript将大于\uFFFF的Unicode字符，
-  算作两个字符的bug。  
+  Array.from()的一个应用是，将字符串转为数组，然后返回字符串的长度。这样可以避免JavaScript将大于\uFFFF的Unicode字符，算作两个字符的bug。  
   ```
   function countSymbols(string) {
     return Array.from(string).length;
@@ -35,8 +34,7 @@
 
 * 3、数组实例的find()和findIndex()  
 
-  find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值
-  为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。  
+  find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。  
   find方法的回调函数可以接受三个参数，依次为当前的值、当前的位置和原数组。  
   findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。  
   两个方法都可以接受第二个参数，用来绑定回调函数的this对象。  
@@ -56,8 +54,7 @@
 
 * 6、数组实例的includes()  
 
-  Array.protypeto.includes方法返回一个布尔值，表示某个数组是否包含给定的值。该方法属于ES7。第二个参数表示搜索的起始位置，
-  默认为0, 可以为负数。
+  Array.protypeto.includes方法返回一个布尔值，表示某个数组是否包含给定的值。该方法属于ES7。第二个参数表示搜索的起始位置，默认为0, 可以为负数。
 
   ```
   if (typeof Array.prototype.reduce != "function") {

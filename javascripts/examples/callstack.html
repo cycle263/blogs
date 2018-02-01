@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title> Test call stack</title>
+    </head>
+    <body>
+        <script>
+        (function(){
+            // fisrt
+            var test1 = function(){
+                console.log('test1');   // debugger
+            };
+            var test2 = function () {
+                console.log('test2');
+                test1();
+            };
+            var test3 = function () {
+                console.log('test3');
+                test2();
+            };
+
+            test3();
+
+
+
+            // other
+            function foo() {
+                console.log(this.a);
+            }
+
+            var obj = {
+                a: 2,
+                foo: foo
+            };
+
+            var bar = obj.foo; // 函数引用！
+
+            var a = "oops, global"; // `a` 也是一个全局对象的属性
+
+            bar(); // "oops, global"
+
+        })();    
+        </script>
+        <pre>
+            <code>
+                // js call stack
+                test1 (callstack.html:9) 
+                test2 (callstack.html:13)       // call site 调用点，决定this对象指向，context
+                test3 (callstack.html:17) 
+                (anonymous) (callstack.html:20) 
+                (anonymous) (callstack.html:21)
+
+
+                // other
+                foo (callstack.html:27)
+                (anonymous) (callstack.html:39) 
+                (anonymous) (callstack.html:41)
+            </code>
+        </pre>
+    </body>
+</html>
