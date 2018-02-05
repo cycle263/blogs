@@ -10,17 +10,47 @@
 
     + enumerable: 当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中( for...in 循环和 Object.keys() 中)。默认为false。
 
+      `Object.getOwnPropertyDescriptor(Math, 'PI')`
+
+      四种操作会忽略enumerable为false的属性, 只拷贝对象自身的可枚举的属性：
+      1、for ... in
+      2、Object.keys()
+      3、JSON.stringify()
+      4、Object.assign()
+
   - 数据描述符同时具有以下可选键值:
 
     + value: 该属性对应的值。可以是任何有效的JavaScript值（数值，对象，函数等）。默认为undefined。
 
     + writable：当且仅当该属性的writable为true时，该属性才能被赋值运算符改变。默认为false。
 
-  - 存取描述符同时具有以下可选键值:
+  - 存取描述符(存取器)同时具有以下可选键值:
 
     + get: 给属性提供getter的方法，如果没有getter则为undefined。该方法返回值被用作属性值。默认为undefined。
 
     + set: 给属性提供setter的方法，如果没有setter则为undefined。该方法将接受唯一参数，并将该参数的新值分配给该属性。默认为 undefined。
+
+    ```
+    var myObject = {
+      // 为 `a` 定义 getter
+      get a() {
+        return this._a_;
+      },
+      // 为 `a` 定义 setter
+      set a(val) {
+        this._a_ = val * 2;
+      }
+    };
+
+    Object.defineProperty(myObject, "a", {
+      get() {
+        return this._a_;
+      },
+      set(val) {
+        this._a_ = val * 2;
+      }
+    });
+    ```
 
 
   ```

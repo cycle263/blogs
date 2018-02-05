@@ -15,8 +15,13 @@
   // true ==> 1, 'true' ==> Number('true') ==> NaN  // NaN与任何值都不相等，包括NaN本身。
   ```
 
+* hasOwnProperty vs in操作符
 
-* clone vs deepclone
+  + in 操作符会检查属性是否存在于对象中，或者是否存在于 [[Prototype]] 链对象中
+
+  + hasOwnProperty(..) 仅仅检查 myObject 是否拥有属性，但不会查询 [[Prototype]] 链对象
+
+* clone vs deepclone(拷贝和深度拷贝)
 
 ```
 // method 1

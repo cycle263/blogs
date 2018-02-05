@@ -19,3 +19,7 @@
 
   1、JSON大法
     `var newObj = JSON.parse( JSON.stringify( someObj ) );`
+
+  2、Object.assign
+
+  3、递归大法
