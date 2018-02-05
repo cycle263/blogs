@@ -1,3 +1,5 @@
+> 一个 浅（shallow） 还是一个 深（deep） 拷贝.
+
 ## JavaScript基本数据类型
 
   * 简单数据类型
@@ -7,3 +9,13 @@
   * 复杂数据类型
 
     > 对象(Object)
+
+      内建对象：String、Number、Boolean、Object、Function、Array、Date、RegExp、Error
+
+## clone分类
+
+
+## 常见clone方法
+
+  1、JSON大法
+    `var newObj = JSON.parse( JSON.stringify( someObj ) );`
