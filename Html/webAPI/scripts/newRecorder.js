@@ -115,6 +115,7 @@
                                 recBuffers[channel].push(inputBuffer[channel]);
                             }
                             recLength += inputBuffer[0].length;
+                            console.log(inputBuffer);
                         }
 
                         // 修改采样率和采样数据
@@ -160,7 +161,9 @@
                         function getBuffer() {
                             var buffers = [];
                             for (var channel = 0; channel < numChannels; channel++) {
-                                buffers.push(mergeBuffers(recBuffers[channel], recLength));
+                                var buffer = mergeBuffers(recBuffers[channel], recLength);
+                                buffer = interpolateArray(buffer, cfgRate, sampleRate);
+                                buffers.push(buffer);
                             }
                             self.postMessage({ command: 'getBuffer', data: buffers });
                         }
