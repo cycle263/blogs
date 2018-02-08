@@ -20,11 +20,6 @@ console.log(obj2);  //输出什么
 
 
 
-
-
-
-
-
 // 写出打印的顺序和理由
 setTimeout(function() {
   console.log(1);
@@ -40,3 +35,46 @@ new Promise(function executor(resolve) {
 });
 console.log(5);
 ```
+
+
+// 写出打印的结果和理由
+```
+function foo() {
+	var a = 2;
+	this.bar();
+}
+
+function bar() {
+	console.log( this.a );
+}
+
+foo(); //undefined
+```
+
+
+// 写出打印的结果和理由
+var a = 1;
+
+function fn(){
+  console.log(a);
+  var a = 5;
+  console.log(a);  
+  a++;
+  var a;
+  fn3();
+  fn2();
+  console.log(a);
+
+  function fn2(){
+    console.log(a);
+    a = 20;
+  }
+}
+
+function fn3(){
+  console.log(a)
+  a = 200;
+}
+
+fn();
+console.log(a);
