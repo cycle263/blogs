@@ -62,3 +62,8 @@
     }
   });
   ```
+
+
+### 案例
+
+* [stars](./examples/stars.html)
