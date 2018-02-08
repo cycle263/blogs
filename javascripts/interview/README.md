@@ -8,6 +8,14 @@
 
 * [简单笔试代码输出题](simpleWritten)
 
+* [常规面试题](common-interview)
+
+* [常规H5面试题](h5)
+
+* [常规公司面试题](company)
+
+* [有趣的代码题](fun-interview)
+
 ## 外部链接
 
 * 1、[2014年最新web前端开发面试题](http://www.phperz.com/article/14/0925/25668.html#jshttp://www.w3cfuns.com/article-5598http://weibo.com/p/23041887ca447d0102vpk4)
@@ -21,4 +29,6 @@
 * 5、[前端工程师面试问题列表](http://blog.jobbole.com/29269/)
 
 * 6、[40道html5面试题](http://blog.jobbole.com/78346/)
+
+## [返回首页](../../)
 
