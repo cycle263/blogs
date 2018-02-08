@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/alizain/ulid.svg?branch=master)](https://travis-ci.org/alizain/ulid) [![codecov](https://codecov.io/gh/alizain/ulid/branch/master/graph/badge.svg)](https://codecov.io/gh/alizain/ulid)
 
-#### 1. [Javascript - 框架、ES6](./javascripts)
+### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./javascripts/ECMAScript)
 
-* [jQuery](./jQuery)
+* [jQuery](./framework/jQuery)
 
   > jQuery API,  Principle of jQuery
 
@@ -16,7 +16,7 @@
     })
     ```
 
-  > Do not need jQuery
+  > [Do not need jQuery](https://github.com/nefe/You-Dont-Need-jQuery)
 
     ```js
     // jQuery
@@ -26,17 +26,7 @@
     document.querySelectorAll('selector');
     ```
 
-* Mobile dev
-
-  > Debug, Hybrid App
-
-  - 自适应解决方案
-
-  - 移动端调试技巧
-
-  - 性能优化
-
-* Angularjs
+* [Angularjs](./framework/angular)
 
   > Angular 1.3, Angular 2 ...
 
@@ -48,7 +38,7 @@
 
     `指定事件触发后，才进入$digest cycle，$digest ttl默认为10`
 
-* [Reactjs](./React)
+* [Reactjs](./framework/React)
 
   > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
@@ -81,7 +71,7 @@
 
   - CMD: 规范和 AMD 很相似，尽量保持简单，并与 CommonJS 和 Node.js 的 Modules 规范保持了很大的兼容性。
 
-* Blob vs ArrayBuffer vs TypeArray
+* [Blob vs ArrayBuffer vs TypeArray](./Html/webAPI)
 
   > 二进制数组是JavaScript操作二进制数据的一个接口。(ArrayBuffer对象、TypedArray视图和DataView视图)。三者之间的关系可以理解为：Blob <-> ArrayBuffer <-> TypeArray <—> Array
 
@@ -115,7 +105,7 @@
 
     - dora(dora-plugin-proxy)
 
-#### 2. Css(css库和css3)
+### 2. [Css(css库和css3)](./css)
 
 * css library  
 
@@ -133,7 +123,7 @@
 
   > Animation
 
-#### 3. Html5
+### 3. Html5
 
     > DOCTYPE用于告知浏览器的解析器用什么文档标准解析这个文档。
 
@@ -159,7 +149,7 @@
 
     > 定时发送ajax请求，但是需要服务器有很快的处理速度和资源。轮询又分为长轮询和短轮询，长轮询则是客户端发起请求，服务端有数据更新则响应，没有则sleep挂起循环，直到有新数据才响应；短轮询则不分是非有数据更新，都直接响应。
 
-* WebSocket
+* [WebSocket](./front-end/http/websocket)
 
     > Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说.跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充。Web Socket 连接不是基于 HTTP 传输的，它是一种 HTML 5 为 Web 定制的全双工通讯协议，没有“请求 - 响应”的概念，浏览器与服务器完全平等，连接一旦建立就一直开放，双方可随时向对方发送任意数据，没有推拉之分。  
 
@@ -222,7 +212,7 @@
 
     - 兼容范围不同(link无兼容问题，import-css2.1)
 
-#### 4.web
+### 4.web
 
   * web标准化组织
 
@@ -234,7 +224,17 @@
 
   * http协议(http2)
 
-#### 5.Others(构建打包、模块化解决方案)
+### 5.Others(构建打包、模块化解决方案)
+
+* Mobile dev
+
+  > Debug, Hybrid App
+
+  - 自适应解决方案
+
+  - 移动端调试技巧
+
+  - 性能优化
 
 * [git](team/git)
 
@@ -263,7 +263,7 @@
     + 更改提醒（gulp-notify）
     + 清除文件（del）
 
-* [webpack](structure/)  
+* [webpack](structure/webpack)  
 
 
 备注说明: 若代码和图片有侵权，联系必删
