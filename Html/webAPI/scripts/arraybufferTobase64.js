@@ -39,7 +39,7 @@ function str2ab(str){
   for (var i = 0; i < str.length; i++) {
       byteNumbers[i] = str.charCodeAt(i);
   }
-	return new Blob(byteNumbers, {type: 'image/png');
+	return new Blob(byteNumbers, {type: 'image/png'});
 }
 
 // ArrayBuffer to Uint8
@@ -60,7 +60,7 @@ function dataURLtoBlob(dataurl) {
     return new Blob([u8arr], {type: mime});
 }
 //test:
-var blob = dataURLtoBlob(‘data:text/plain;base64,YWFhYWFhYQ==‘);
+var blob = dataURLtoBlob('data:text/plain;base64,YWFhYWFhYQ==');
 
 // dataURL（base64）转换为Blob对象
 function b64toBlob(b64Data, contentType, sliceSize) {
@@ -83,6 +83,14 @@ function b64toBlob(b64Data, contentType, sliceSize) {
   var blob = new Blob(byteArrays, {type: contentType});
   return blob;
 }
+
+// blob to arraybuffer
+var blob = new Blob(); // blob是要转换的blob
+var fr = new FileReader();
+fr.onload = function () {
+  var result = this.result; // result是转换后的结果
+}
+fr.readAsArrayBuffer(blob);
 
 // Blob对象 to dataURL-base64
 function blobToDataURL(blob, callback) {
