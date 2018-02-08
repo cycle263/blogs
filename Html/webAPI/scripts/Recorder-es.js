@@ -46,12 +46,12 @@ export class Recorder {
             for (var channel = 0; channel < this.config.numChannels; channel++) {
                 buffer.push(e.inputBuffer.getChannelData(channel));
             }
+
+            var newBuffer = interpolateArray(buffer, this.config.cfgRate, this.context.sampleRate);
             this.worker.postMessage({
                 command: 'record',
                 buffer: buffer
             });
-            var newBuffer = interpolateArray(buffer, this.config.cfgRate, this.context.sampleRate);
-            console.log(buffer, newBuffer);
             this.socket.emit('with-binary', newBuffer);
         };
 
@@ -261,7 +261,7 @@ export class Recorder {
     }
 
 
-    record(socket) {
+    start(socket) {
         this.recording = true;
         this.socket = socket;
     }
@@ -296,14 +296,14 @@ export class Recorder {
         });
     }
 
-    static forceDownload(blob, filename) {
+    static forceDownload(blob, filename, container) {
         let url = (window.URL || window.webkitURL).createObjectURL(blob);
         let link = window.document.createElement('a');
         link.href = url;
         link.download = filename || 'output.wav';
-        let click = document.createEvent("Event");
-        click.initEvent("click", true, true);
-        link.dispatchEvent(click);
+        link.text = filename ? 'download ' + filename : 'download output.wav';
+        let c = container || document.body;
+        c.append && c.append(link);
     }
 }
 
