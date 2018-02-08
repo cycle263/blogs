@@ -46,7 +46,7 @@
     git push -u origin master
 
     // set-upstream-to
-    git branch --set-upstream-to=origin/cycle cycle
+    git branch --set-upstream-to=origin/master master
     git push/pull
 
     // push an existing repository from the command line
