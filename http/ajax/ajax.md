@@ -17,6 +17,3 @@
   + 3、对搜索引擎支持不够，不利于爬虫工具的数据收集
 
 
-## cors跨域详细总结
-
-[详解](http://www.ruanyifeng.com/blog/2016/04/cors.html)
