@@ -1,6 +1,5 @@
 ## Front-end knowledge summary
 
-[![Build Status](https://travis-ci.org/alizain/ulid.svg?branch=master)](https://travis-ci.org/alizain/ulid) [![codecov](https://codecov.io/gh/alizain/ulid/branch/master/graph/badge.svg)](https://codecov.io/gh/alizain/ulid)
 
 ### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./javascripts/ECMAScript)
 
@@ -189,7 +188,7 @@
 
     - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等
 
-  * http协议(http2)
+  * [http协议(http2)](http)
 
   * long-polling
 
@@ -199,7 +198,7 @@
 
       > 定时发送ajax请求，但是需要服务器有很快的处理速度和资源。轮询又分为长轮询和短轮询，长轮询则是客户端发起请求，服务端有数据更新则响应，没有则sleep挂起循环，直到有新数据才响应；短轮询则不分是非有数据更新，都直接响应。
 
-  * [WebSocket](./front-end/http/websocket)
+  * [WebSocket](./http/websocket)
 
       > Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说.跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充。Web Socket 连接不是基于 HTTP 传输的，它是一种 HTML 5 为 Web 定制的全双工通讯协议，没有“请求 - 响应”的概念，浏览器与服务器完全平等，连接一旦建立就一直开放，双方可随时向对方发送任意数据，没有推拉之分。  
 

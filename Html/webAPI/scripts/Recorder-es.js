@@ -1,6 +1,6 @@
 import InlineWorker from 'inline-worker';
 
-// 修改采样率和采样数据
+// 修改采样率和采样数据(校优)
 const interpolateArray = (data, newSampleRate, oldSampleRate) => {
     var fitCount = Math.round(data.length * (newSampleRate / oldSampleRate));
     var newData = new Array();
@@ -96,7 +96,7 @@ export class Recorder {
                 initBuffers();
             }
 
-            // 修改采样率和修正采样数据
+            // 修改采样率和修正采样数据(校优)
             var interpolateArray = (data, newSampleRate, oldSampleRate) => {
                 var fitCount = Math.round(data.length * (newSampleRate / oldSampleRate));
                 var newData = new Array();
