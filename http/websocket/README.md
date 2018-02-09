@@ -16,14 +16,14 @@ ws最大的优势：在于服务器和客户端可以在给定的时间范围内
     - 5: upgrade  polling or websoket
     - 6: noop  等待
 
-    + **example:**
+* **example:**
 
-        client connects through new transport
+    client connects through new transport
 
-        client sends 2probe
+    client sends 2probe
 
-        server receives and sends 3probe
+    server receives and sends 3probe
 
-        client receives and sends 5
-        
-        server flushes and closes old transport and switches to new.
+    client receives and sends 5
+    
+    server flushes and closes old transport and switches to new.
