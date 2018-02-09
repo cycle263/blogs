@@ -4,5 +4,7 @@
 
   `escape("全部分类").replace(/%u/g, '\\u')`    // escape接口已废弃
 
+* 中文 to utf-8
 
-  
+  `encodeURI`
+
