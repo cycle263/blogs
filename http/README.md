@@ -8,8 +8,10 @@
 
 * [websocket](websocket)
 
+* [ajax - xhrHttpRequest](ajax)
 
 * 其他
+
     - [unicode vs utf-8](unicode)
 
     - [uuid](uuid)
