@@ -1,5 +1,9 @@
 * 1、jsonp（jQuery，js script），jsonp(json数据的包装)实际上download的一段script脚本，包含中一个全局函数的调用，函数的参数就是服务端传递的json数据，但是无法实现post请求，async参数无效。
 
+ > 是一种非正式传输协议，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据。基本原理为script脚本没有同源策略，实际上是src属性不受同源策略影响，也就是说img,script,iframe元素
+
+  原理: script、img、iframe等元素并不需要遵守同源策略。[jsonp的简单实现](jsonp)
+
 * 2、window.postMessage, otherWindow.postMessage(message, targetOrigin)，相应的web worker(new Worker("\*.js"))通用可以调用  
   案例：  http://jsfiddle.net/qfym4epd/2/  
 
@@ -17,7 +21,7 @@
 
 * 6、用nginx把B网站的数据url反向代理。  
 
-* 7、window.name + iframe
+* 7、window.name + iframe  [具体实现方案](windowName)
 
   window.name 的美妙之处：name 值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的name值（2MB）。通过在 iframe中加载一个资源，该目标页面将设置frame的name属性。此name属性值可被获取到，以访问 Web 服务发送的信息。但name属性仅对相同域名的frame可访问。这意味着为了访问name属性，当远程Web服务页面被加载后，必须导航frame回到原始域(改变src值为原始域的代理页面)。
   同源策略依旧防止其他 frame 访问 name 属性。一旦 name 属性获得，销毁 frame 。  

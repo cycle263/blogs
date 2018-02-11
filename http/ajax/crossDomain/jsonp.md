@@ -1,52 +1,33 @@
-(function(){
-    var dataRequest = {
-        _doc: document,
-        cfg: {
-            proxyUrl: 'proxy.html'
-        }
-    };
+### jsonp的实现方案
 
-    dataRequest.send = function(sUrl, fnCallBack){
-        if(!sUrl || typeof sUrl !== 'string'){
-            return;
-        }
 
-        sUrl += (sUrl.indexOf('?') > 0 ? '&' : '?') + 'windowname=true';
+```
+var $jsonp = function(src, opts){
+    var callback_name = opts.callbackName || 'callback',
+        on_success = opts.onSuccess || function(){},
+        on_timeout = opts.onTimeout || function(){},
+        timeout = opts.timeout || 10; // sec
 
-        var frame = this._doc.createElement('iframe'), state = 0, self = this;
-        this._doc.body.appendChild(frame);
-        frame.style.display = 'none';
+    var timeout_trigger = window.setTimeout(function(){
+        window[callback_name] = function(){};
+        on_timeout();
+    }, timeout * 1000);
 
-        var clear = function(){
-            try{
-                frame.contentWindow.document.write('');
-                frame.contentWindow.close();
-                self._doc.body.removeChild(frame);
-            }catch(e){}
-        };
+    window[callback_name] = function(data){
+        window.clearTimeout(timeout_trigger);
+        on_success(data);
+    }
 
-        var getData = function(){
-            try{
-                var da = frame.contentWindow.name;
-            }catch(e){}
-            clear();
-            if(fnCallBack && typeof fnCallBack === 'function'){
-                fnCallBack(da);
-            }
-        };
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = src;
 
-        frame.addEventListener('load', function(){
-            if(state === 1){
-                getData();
-            } else if(state === 0){
-                state = 1;
-                frame.contentWindow.location = self.cfg.proxyUrl;
-            }
-        }, false);
+    document.getElementsByTagName('head')[0].appendChild(script);
+};
 
-        frame.src = sUrl;
-    };
-})();
+// 是一种非正式传输协议，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据。基本原理为script脚本没有同源策略，实际上是src属性不受同源策略影响，也就是说img,script,iframe元素
+
 
 
 // method 2
@@ -86,3 +67,4 @@ function proxy (url, callback) {
 proxy('http://127.0.0.1/bop/test.html', function(data){
     console.log(data);
 });
+```

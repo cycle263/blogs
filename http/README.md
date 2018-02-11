@@ -4,14 +4,14 @@
 
 * [HTTP协议详解](httpProtocol)
 
-* [http2](http2) 相比http1.1
+* [Http2](http2) 相比http1.1
 
-* [websocket](websocket)
+* [Websocket](websocket)详解
 
-* [ajax - xhrHttpRequest](ajax)
+* [Ajax - xhrHttpRequest](ajax)的总结
 
 * 其他
 
-    - [unicode vs utf-8](unicode)
+    - [Unicode vs Utf-8](unicode)对比详解
 
-    - [uuid](uuid)
+    - [Uuid](uuid)的生成方法
