@@ -1,3 +1,14 @@
+## Unicode vs GBK vs Utf-8
+
+  > unicode，gbk和大五码就是编码的值，并且三者不兼容，而utf-8,uft-16之类就是这个值的表现形式.uft-8转换成GBK，必须先转成成Unicode，再转GBK。
+
+## [ASCII、Unicode](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
+
+  * ASCII
+    > 八个二进制位就可以组合出256种状态，这被称为一个字节（byte）, 也就是一个字节都可以表示256个字符。上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为 ASCII 码，一直沿用至今。
+
+    ASCII 码一共规定了128个字符的编码，比如空格SPACE是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的一位统一规定为0。
+
 ## escape vs encodeURI(unicode vs utf-8)
 
   * escape
