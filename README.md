@@ -5,7 +5,7 @@
 
   * [jQuery](./framework/jQuery)
 
-    > jQuery API,  Principle of jQuery
+    jQuery API,  Principle of jQuery
 
       ```js
       jQuery.fn.myPlugin = function(){}   // jquery plugins
@@ -15,7 +15,7 @@
       })
       ```
 
-    > [Do not need jQuery](https://github.com/nefe/You-Dont-Need-jQuery)
+    [Do not need jQuery](https://github.com/nefe/You-Dont-Need-jQuery)
 
       ```js
       // jQuery
@@ -27,7 +27,7 @@
 
   * [Angularjs](./framework/angular)
 
-    > Angular 1.3, Angular 2 ...
+    Angular 1.3, Angular 2 ...
 
     - Angular 2
 
@@ -62,7 +62,7 @@
 
   * [Modularity](./structure)
 
-    > AMD, CommonJS, CMD
+    AMD, CommonJS, CMD
 
     - CommonJS: 模块通过 require 方法来同步加载所要依赖的其他模块，然后通过 exports 或 module.exports 来导出需要暴露的接口。
 
@@ -108,7 +108,7 @@
 
   * css library  
 
-    > Bootstrap, Antd ...
+    Bootstrap, Antd ...
 
       - 行内元素 vs 块元素
 
@@ -120,11 +120,11 @@
 
   * Css3  
 
-    > Animation
+    Animation
 
 ### 3. Html5
 
-    > DOCTYPE用于告知浏览器的解析器用什么文档标准解析这个文档。
+  DOCTYPE用于告知浏览器的解析器用什么文档标准解析这个文档。
 
   * [canvas](canvas)
 
@@ -178,7 +178,7 @@
 
       - 兼容范围不同(link无兼容问题，import-css2.1)
 
-### 4.Web和Http
+### 4. Web和Http
 
   * web标准化组织
 
@@ -192,23 +192,23 @@
 
   * long-polling
 
-    > 用AJAX的long-polling来模拟WebSocket. 但是需要很高的并发量。其实，就是服务端响应了新数据也不断开连接，继续等待下一份新数据响应，除非超过一定的时限才会断开连接。
+    用AJAX的long-polling来模拟WebSocket. 但是需要很高的并发量。其实，就是服务端响应了新数据也不断开连接，继续等待下一份新数据响应，除非超过一定的时限才会断开连接。
 
   * ajax轮询
 
-      > 定时发送ajax请求，但是需要服务器有很快的处理速度和资源。轮询又分为长轮询和短轮询，长轮询则是客户端发起请求，服务端有数据更新则响应，没有则sleep挂起循环，直到有新数据才响应；短轮询则不分是非有数据更新，都直接响应。
+    定时发送ajax请求，但是需要服务器有很快的处理速度和资源。轮询又分为长轮询和短轮询，长轮询则是客户端发起请求，服务端有数据更新则响应，没有则sleep挂起循环，直到有新数据才响应；短轮询则不分是非有数据更新，都直接响应。
 
   * [WebSocket](./http/websocket)
 
-      > Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说.跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充。Web Socket 连接不是基于 HTTP 传输的，它是一种 HTML 5 为 Web 定制的全双工通讯协议，没有“请求 - 响应”的概念，浏览器与服务器完全平等，连接一旦建立就一直开放，双方可随时向对方发送任意数据，没有推拉之分。  
+    Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说.跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充。Web Socket 连接不是基于 HTTP 传输的，它是一种 HTML 5 为 Web 定制的全双工通讯协议，没有“请求 - 响应”的概念，浏览器与服务器完全平等，连接一旦建立就一直开放，双方可随时向对方发送任意数据，没有推拉之分。  
 
-      ws最大的优势：在于服务器和客户端可以在给定的时间范围内的任意时刻，相互推送信息，并且允许跨域通信。  
+    ws最大的优势：在于服务器和客户端可以在给定的时间范围内的任意时刻，相互推送信息，并且允许跨域通信。  
 
-      目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议。  
+    目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议。  
 
   * Server-Sent Event
 
-    > 浏览器向服务器发送一个HTTP请求，然后服务器不断单向地向浏览器推送“信息”（message）。
+    浏览器向服务器发送一个HTTP请求，然后服务器不断单向地向浏览器推送“信息”（message）。
 
     ```
     new EventSource(url);
@@ -224,11 +224,11 @@
 
 
 
-### 5.Others(构建打包、模块化解决方案)
+### 5. Others(构建打包、模块化解决方案)
 
   * Mobile dev
 
-    > Debug, Hybrid App
+    Debug, Hybrid App
 
     - 自适应解决方案
 
