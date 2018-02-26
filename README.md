@@ -45,8 +45,7 @@
 
     `npm i react --save`   
 
-    - examples  
-
+    - get start example  
     ```
     var HelloMessage = React.createClass({
       render: function() {
@@ -58,6 +57,24 @@
       <HelloMessage name="John" />,
       document.getElementById('container')
     );
+    ```
+
+    - 将props转换成自己的state
+    ```
+    class Child extends Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                someThings: props.someThings
+            };
+        }
+        componentWillReceiveProps(nextProps) {
+            this.setState({someThings: nextProps.someThings});
+        }
+        render() {
+            return <div>{this.state.someThings}</div>
+        }
+    }
     ```
 
   * [Modularity](./structure)

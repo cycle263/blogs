@@ -3,7 +3,7 @@
 * 1、安装node, npm, react, webpack, http-server(本地服务器);
 
 * 2、npm init搭建目录和package.json, 其中scripts中的本地服务器命令：
-        > "start":"http-server -a localhost -p 8001"；
+    `"start":"http-server -a localhost -p 8001"`
 
 * 3、手动添加配置webpack.config.js, 案例如下：
     ```js
