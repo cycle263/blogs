@@ -62,3 +62,15 @@
 * websocket
 
 * http2 2015年，HTTP/2 发布，它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了，下一个新版本将是 HTTP/3。
+
+* https vs http
+
+  - HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。
+
+  - HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。
+
+  - HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。
+
+  - HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题。
+
+  ![https vs http](./images/https.png)
