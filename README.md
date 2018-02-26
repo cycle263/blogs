@@ -61,7 +61,7 @@
     ```
 
     - 将props转换成自己的state
-    
+
     ```
     class Child extends Component {
         constructor(props) {
@@ -208,14 +208,12 @@
     - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等
 
   * [Http协议(Http2)](http)
+    
+    是基于 TCP/IP 协议的应用层协议。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。
 
-  * long-polling
+  * [ajax轮询](http/轮询)
 
-    用AJAX的long-polling来模拟WebSocket. 但是需要很高的并发量。其实，就是服务端响应了新数据也不断开连接，继续等待下一份新数据响应，除非超过一定的时限才会断开连接。
-
-  * ajax轮询
-
-    定时发送ajax请求，但是需要服务器有很快的处理速度和资源。轮询又分为长轮询和短轮询，长轮询则是客户端发起请求，服务端有数据更新则响应，没有则sleep挂起循环，直到有新数据才响应；短轮询则不分是非有数据更新，都直接响应。
+    定时发送ajax请求，但是需要服务器有很快的处理速度和资源。轮询又分为长轮询和短轮询，长轮询则是客户端发起请求，服务端有数据更新则响应，没有则sleep挂起循环，直到有新数据才响应，除非超过一定的时限才会断开连接；短轮询则不分是非有数据更新，都直接响应。用长轮询（long polling）来模拟WebSocket，需要很高的并发量。
 
   * [WebSocket](./http/websocket)
 
