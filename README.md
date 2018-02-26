@@ -46,6 +46,7 @@
     `npm i react --save`   
 
     - get start example  
+
     ```
     var HelloMessage = React.createClass({
       render: function() {
@@ -60,6 +61,7 @@
     ```
 
     - 将props转换成自己的state
+    
     ```
     class Child extends Component {
         constructor(props) {
