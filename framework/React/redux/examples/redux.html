@@ -33,19 +33,19 @@ function reducer(state, action) {
 var store = Redux.createStore(reducer);
 
 console.log( store.getState() ); // { counter: 0 }
-$('body').append('<p>store.getState(): '+ store.getState()+'</p>')
+$('body').append('<p>store.getState(): '+ JSON.stringify(store.getState()) +'</p>')
 
 store.dispatch(inc());
 console.log( store.getState() ); // { counter: 1 }
-$('body').append('<p>store.getState(): ' + store.getState() + '</p>')
+$('body').append('<p>store.getState(): ' + JSON.stringify(store.getState()) + '</p>')
 
 store.dispatch(inc());
 console.log( store.getState() ); // { counter: 2 }
-$('body').append('<p>store.getState(): '+ store.getState()+'</p>')
+$('body').append('<p>store.getState(): '+ JSON.stringify(store.getState()) +'</p>')
 
 store.dispatch(dec());
 console.log( store.getState() ); // { counter: 1 }
-$('body').append('<p>store.getState(): '+ store.getState()+'</p>')
+$('body').append('<p>store.getState(): '+ JSON.stringify(store.getState()) +'</p>')
 </script>
 </body>
 </html>
