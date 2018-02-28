@@ -1,9 +1,4 @@
----
-layout: default
----
-
 ## Front-end knowledge summary
-
 
 ### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./javascripts/ECMAScript)
 
