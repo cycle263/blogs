@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 ## Front-end knowledge summary
 
 
