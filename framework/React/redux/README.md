@@ -20,6 +20,16 @@
 
   - middleware: redux 提供中间件的方式，完成一些 flux 流程的自定义控制，同时形成其插件体系
 
+* 流程图
+
+  component -> action -> reducer -> state 的单向数据流转
+
+  Action Creator => action => store.dispatch(action) => reducer(state, action) => 原 state state = nextState
+
+  ![常见redux流程图](./images/redux.png)
+
+  ![redux流程比较图](./images/reduxCompare.jpg)
+
 * 适合场景
 
   - 某个组件的状态，需要共享
@@ -83,8 +93,9 @@
         };
     }
   }
+  const initState = {};
 
-  const store = createStore(reducer);
+  const store = createStore(reducer, initState);
 
   ReactDOM.render(
     <Provider store={store}>
