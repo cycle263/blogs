@@ -1,6 +1,6 @@
 ## [redux](http://cn.redux.js.org/index.html)
 
-  > Redux 是为 Javascript 应用而生的可预估的状态容器.应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action，一个描述发生什么的对象。为了描述 action 如何改变 state 树，你需要编写 reducers。
+  > Redux 是为 Javascript 应用而生的可预估的状态容器.应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action，一个描述发生什么的对象。为了描述 action 如何改变 state 树，你需要编写 reducers。[redux运行案例](./examples/redux.html)
 
 * redux几个重要概念
 
@@ -19,6 +19,8 @@
   - 纯函数: Reducer 函数最重要的特征是，它是一个纯函数。也就是说，只要是同样的输入，必定得到同样的输出。
 
   - middleware: redux 提供中间件的方式，完成一些 flux 流程的自定义控制，同时形成其插件体系
+
+    [中间件案例](./examples/middle.html)
 
 * 流程图
 
@@ -139,3 +141,11 @@
   // Store由 Redux 提供的createStore方法生成，该方法接受reducer作为参数。
   // 为了把Store传入组件，必须使用 Redux 提供的Provider组件在应用的最外面，包裹一层。
   ```
+
+## 其他相关
+
+* [flux](flux)
+
+* [react-redux](react-redux)
+
+* [redux组件设计](reduxComponent)
