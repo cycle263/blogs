@@ -31,11 +31,11 @@
 
     - Angular 2
 
-      `index.html --> boot --> app`
+      index.html --> boot --> app
 
     - 脏检查机制
 
-      `指定事件触发后，才进入$digest cycle，$digest ttl默认为10`
+      指定事件触发后，才进入$digest cycle，$digest ttl默认为10
 
   * [Reactjs](./framework/React)
 
@@ -43,22 +43,22 @@
 
     - installation  
 
-    `npm i react --save`   
+      `npm i react --save`   
 
     - get start example  
 
-    ```
-    var HelloMessage = React.createClass({
-      render: function() {
-        return <div>Hello {this.props.name}</div>;
-      }
-    });
+      ```
+      var HelloMessage = React.createClass({
+        render: function() {
+          return <div>Hello {this.props.name}</div>;
+        }
+      });
 
-    ReactDOM.render(
-      <HelloMessage name="John" />,
-      document.getElementById('container')
-    );
-    ```
+      ReactDOM.render(
+        <HelloMessage name="John" />,
+        document.getElementById('container')
+      );
+      ```
 
     - 将props转换成自己的state
 
