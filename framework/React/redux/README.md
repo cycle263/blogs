@@ -2,8 +2,6 @@
 
   > Redux 是为 Javascript 应用而生的可预估的状态容器.应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action，一个描述发生什么的对象。为了描述 action 如何改变 state 树，你需要编写 reducers。
 
-    ![reducer](./images/reducer.png)
-
 * redux几个重要概念
 
   - store: 应用数据的存储中心，整个应用只能有一个 Store。由 Redux 的 createStore(reducer) 生成
@@ -31,6 +29,8 @@
   - 一个组件需要改变全局状态
 
   - 一个组件需要改变另一个组件的状态
+
+  ![reducer](./images/reducer.png)
 
 ## 比较react
 
