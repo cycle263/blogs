@@ -36,6 +36,6 @@
 
 * 其他
 
-    - [Unicode vs Utf-8](unicode)对比详解
+    - [Unicode vs Utf-8 vs ASCII](unicode)对比详解
 
     - [Uuid](uuid)的生成方法
