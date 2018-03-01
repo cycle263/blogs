@@ -144,8 +144,8 @@
 
 ## 其他相关
 
-* [flux](flux)
+* [flux](flux) 状态管理标准
 
-* [react-redux](react-redux)
+* [react-redux](react-redux) React专用状态管理库
 
 * [redux组件设计](reduxComponent)
