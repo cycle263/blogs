@@ -36,7 +36,7 @@
 
       指定事件触发后，才进入$digest cycle，$digest ttl默认为10
 
-  * [Reactjs](./framework/React)
+  * [Reactjs](./framework/React)、[Redux](./framework/React/redux)、[React-redux](./framework/React/redux/react-redux)
 
     > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
