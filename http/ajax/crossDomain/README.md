@@ -2,6 +2,8 @@
 
 > 不同域名，不同端口，不同协议，不同子域名，都属于跨域，实际上，跨域是存在于xmlhttprequest，普通的http协议不存在跨域问题，XHR是同源策略的拥簇者。
 
+  [浏览器同源策略](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)
+
 
 ## cors跨域详细总结
 
