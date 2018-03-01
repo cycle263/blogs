@@ -8,11 +8,16 @@
 
   * [ajax轮询分类及案例](轮询)
 
-
-### 其他知识
+### 其他请求方式
 
   * [fetch](fetch)
 
   * [axios](https://github.com/axios/axios)
 
     Promise based HTTP client for the browser and node.js
+
+### 相关知识点
+
+  * [iframe](iframe)
+
+  * [cookie](cookie)
