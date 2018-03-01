@@ -1,6 +1,6 @@
 ## flux开发思维
 
-  > (state, action) => state
+  > Flux 是一种架构思想，专门解决软件的结构问题。(state, action) => state
 
 ![flux流程](./images/flux.png)
 
