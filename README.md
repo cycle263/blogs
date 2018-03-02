@@ -254,7 +254,7 @@
 
   * [git](team/git)
 
-    ```cmd
+    ```git
     $ git clone someobject.git
     $ git add .
     $ git commit -m "message"
