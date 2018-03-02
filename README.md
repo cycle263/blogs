@@ -61,7 +61,7 @@
 
     - 将props转换成自己的state
 
-      ```js
+      ```jsx
       class Child extends Component {
           constructor(props) {
               super(props);
