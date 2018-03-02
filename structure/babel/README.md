@@ -10,15 +10,17 @@
 
     - react 需要编译jsx，需要预先加载"react"模块
 
-    - stage-0 对ES7一些提案的支持，Babel通过插件的方式引入，让Babel可以编译ES7代码
+    - stage-0 - Strawman（展示阶段） 对ES7一些提案的支持，Babel通过插件的方式引入，让Babel可以编译ES7代码
 
       `transform-do-expressions、transform-function-bind`
 
-    - stage-1
+    - stage-1 - Proposal（征求意见阶段）
 
-    - stage-2
+    - stage-2 - Draft（草案阶段）
 
-    - stage-3
+    - stage-3 - Candidate（候选人阶段）
+
+    - Stage 4 - Finished（定案阶段）
 
     ```
     {
