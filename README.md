@@ -140,6 +140,30 @@
 
     Animation
 
+  * 常见宽高值(chrome)
+
+    window.innerHeight: viewport height, 浏览器的视窗高度(html文档内容展示区域，包括水平滚动条，不包括书签等调试器区域)。
+
+    window.outerHeight: 浏览器高度，包括页签头、地址栏、书签和状态栏等。
+
+    ![FirefoxInnerVsOuterHeight2](./css/images/FirefoxInnerVsOuterHeight2.png)
+
+    window.screen.height: 显示器屏幕高度。
+
+    window.screen.availHeight: 浏览器窗口在屏幕上可占用的最大高度。
+
+    element.clientHeight: 元素的内部高度，包括内边距，不包括滚动条、边框、外边距和边框。
+
+    element.clientTop: 元素顶部边框的宽度，包括滚动条，不包括内外边距。
+
+    element.scrollHeight: 元素内容的高度，包括溢出的视图高度。没有滚动条情况下，scrollHeight值与元素视图填充所有内容所需要的最小值clientHeight相同。
+
+    element.scrollTop 元素的内容垂直滚动的像素数。没有产生垂直方向的滚动条，那么scrollTop值为0。
+
+    HTMLElement.offsetHeight: 元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。
+
+    HTMLElement.offsetTop: 元素相对于其 offsetParent 元素的顶部的距离。
+
 ### 3. Html5
 
   DOCTYPE用于告知浏览器的解析器用什么文档标准解析这个文档。

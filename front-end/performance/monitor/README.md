@@ -15,3 +15,7 @@
 * HTTP请求时间；
 
 * HTTP响应时间；
+
+## 页面加载时间计算
+
+* performance.timing
