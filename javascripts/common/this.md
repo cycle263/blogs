@@ -10,7 +10,7 @@
 
         独立函数调用，默认绑定this，这种 this 规则是在没有其他规则适用时的默认规则。
 
-        ```
+        ```js
         function func() { console.log(this); }      // window object
         func();
         ```
@@ -19,7 +19,7 @@
 
         调用点是否有一个环境对象（context object）,当一个方法引用存在一个环境对象时，隐含绑定规则会说：是这个对象应当被用于这个函数调用的 this 绑定，并且只有对象属性引用链的最后一层是影响调用点的。
 
-        ```
+        ```js
         function foo() {
             console.log( this.a );
         }
@@ -38,7 +38,7 @@
 
         当一个隐含绑定丢失了它的绑定，这通常意味着它会退回到默认绑定， 根据 strict mode 的状态，其结果不是全局对象就是 undefined。参数传递仅仅是一种隐含的赋值，而且因为我们在传递一个函数，它是一个隐含的引用赋值，最终隐含会丢失。
 
-        ```
+        ```js
         function foo() {
             console.log( this.a );
         }

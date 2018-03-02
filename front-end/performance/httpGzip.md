@@ -3,7 +3,7 @@
 请求头来指定浏览器可以接收压缩的输出。
 当服务器发送回生成的内容时，Content-Encoding 头向浏览器说明压缩内容所用的格式。Content-Encoding 和 Transfer-Encoding 头 —— 
 在 HTTP 头中没有指定内容的长度。
-```
+```json
 Content-Encoding: gzip
 Transfer-Encoding: chunked
 ```

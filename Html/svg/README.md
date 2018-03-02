@@ -42,7 +42,7 @@ _ svg样式
 
   可以用在img、object、embed、iframe等标签，以及CSS的background-image属性。
 
-  ```
+  ```html
   <img src="circle.svg">
   <object id="object" data="circle.svg" type="image/svg+xml"></object>
   <embed id="embed" src="icon.svg" type="image/svg+xml">
@@ -53,7 +53,7 @@ _ svg样式
 
   使用img标签插入SVG文件，则无法获取SVG DOM。使用object、iframe、embed标签，可以获取SVG DOM。
 
-  ```
+  ```js
   var svgObject = document.getElementById("object").contentDocument;
   var svgIframe = document.getElementById("iframe").contentDocument;
   var svgEmbed = document.getElementById("embed").getSVGDocument();
@@ -63,13 +63,13 @@ _ svg样式
 
   svg文件就是一个XML代码的文本文件，因此可以通过读取XML代码的方式，读取svg源码。
 
-  ```
+  ```js
   (new XMLSerializer()).serializeToString(document.querySelector('.mysvg'));
   ```
 
 * svg转换成canvas
 
-  ```
+  ```js
   var img = new Image(),
     svg = new Blob([svgString], {type: "image/svg+xml;charset=utf-8"}),
     url = URL.createObjectURL(svg);

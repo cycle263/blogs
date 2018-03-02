@@ -6,7 +6,7 @@
 
 * 多行溢出省略号
 
-  ```
+  ```css
   // 兼容性一般，需要兼容性好的，只能用js处理了
   overflow: hidden;
   word-break: break-all;

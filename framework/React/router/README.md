@@ -1,7 +1,7 @@
 ## router
 
 ![路由流程](./images/router.jpg)
-```
+```react
 import React from 'react';
 import { render, findDOMNode } from 'react-dom';
 import { Router, Route, Link, IndexRoute, Redirect } from 'react-router';

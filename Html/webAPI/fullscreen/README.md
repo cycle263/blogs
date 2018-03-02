@@ -4,7 +4,7 @@
 
 * 打开全屏
 
-  ```
+  ```js
   function launchFullscreen(element) {
     if(element.requestFullscreen) {
       element.requestFullscreen();
@@ -23,7 +23,7 @@
 
   备注：Firefox自动为该节点增加一条CSS规则，将该元素放大至全屏状态，width: 100%; height: 100%，而Chrome则是将该节点放在屏幕的中央，保持原来大小，其他部分变黑。
 
-  ```
+  ```css
   :-webkit-full-screen #myvideo {
     width: 100%;
     height: 100%;
@@ -32,7 +32,7 @@
 
 * 退出全屏
 
-  ```
+  ```js
   function exitFullscreen() {
     if (document.exitFullscreen) {
       document.exitFullscreen();
@@ -54,7 +54,7 @@
 
     fullscreenElement属性返回正处于全屏状态的Element节点，如果当前没有节点处于全屏状态，则返回null。
 
-    ```
+    ```js
     document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
     ```
 
@@ -62,7 +62,7 @@
 
     fullscreenEnabled属性返回一个布尔值，表示当前文档是否可以切换到全屏状态。
 
-    ```
+    ```js
     document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled
     ```
 
@@ -76,7 +76,7 @@
 
   全屏状态下，大多数浏览器的CSS支持:full-screen伪类，只有IE11支持:fullscreen伪类。
 
-  ```
+  ```css
   :-webkit-full-screen {
     /* properties */
   }

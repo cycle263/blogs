@@ -20,7 +20,7 @@
 
       + 传输内容
 
-    ```
+    ```js
     var formdata = new FormData();
     formdata.append('key', 'value');
     // ...
@@ -53,7 +53,7 @@
 
     Blob对象的方法slice，可以实现文件的分隔，传递三个参数 start：开始索引，end：结束索引，contentType：新的Blob对象的MIME类型。
 
-    ```
+    ```js
     var xhr = new XMLHttpRequest();    
     xhr.open("get", "some.png", true);
     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded; charset=GBK');
@@ -94,7 +94,7 @@
 
       Blob可以append ArrayBuffer的数据，可以列举为更加高级的二进制大对象。
 
-      ```
+      ```js
       // 创建一个8字节的ArrayBuffer  
       var b = new ArrayBuffer(8);  
 

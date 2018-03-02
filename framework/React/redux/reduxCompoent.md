@@ -24,7 +24,7 @@
 
   - Redux (Flux) 都建议在保存 State 数据的时候，应该尽可能地遵循范式，避免嵌套数据结构。如果出现了嵌套的对象，那么尽量通过 ID 来引用（未必从1开始）。范式化的存储也利于后面讲到的 Reducer 局部化，便于将大的 Reducer 分割为一系列小的 Reducers。
 
-  ```
+  ```json
   [{
     id: 1,
     title: 'Some Article',

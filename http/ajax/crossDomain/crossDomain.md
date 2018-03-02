@@ -27,7 +27,7 @@
   同源策略依旧防止其他 frame 访问 name 属性。一旦 name 属性获得，销毁 frame 。  
   案例：http://jsfiddle.net/com7s4rb/  
 
-  ```
+  ```html
   // a.html
   <!DOCTYPE html>
   <html lang="en">

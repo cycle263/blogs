@@ -29,7 +29,7 @@
     ```
     
 * 4、安装必要webpack相关组件和插件；
-    ```
+    ```json
     "devDependencies": {
         "babel-preset-es2015": "^6.6.0",
         "babel-preset-react": "^6.5.0",
@@ -38,7 +38,7 @@
      }
      ```
 * 5、配置entry文件，如下案例：
-    ```
+    ```react
     import ReactDOM from 'react-dom';
     import React from 'react';
     import App from './component/App';

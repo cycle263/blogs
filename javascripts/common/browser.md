@@ -4,7 +4,7 @@ var agent = navigator.userAgent.toLowerCase(),
   /**
    * @property {boolean} ie 检测当前浏览器是否为IE
    * @example
-   * ```javascript
+   * ```js
    * if ( UE.browser.ie ) {
    *     console.log( '当前浏览器是IE' );
    * }
@@ -15,7 +15,7 @@ var agent = navigator.userAgent.toLowerCase(),
   /**
    * @property {boolean} opera 检测当前浏览器是否为Opera
    * @example
-   * ```javascript
+   * ```js
    * if ( UE.browser.opera ) {
    *     console.log( '当前浏览器是Opera' );
    * }
@@ -26,7 +26,7 @@ var agent = navigator.userAgent.toLowerCase(),
   /**
    * @property {boolean} webkit 检测当前浏览器是否是webkit内核的浏览器
    * @example
-   * ```javascript
+   * ```js
    * if ( UE.browser.webkit ) {
    *     console.log( '当前浏览器是webkit内核浏览器' );
    * }
@@ -37,7 +37,7 @@ var agent = navigator.userAgent.toLowerCase(),
   /**
    * @property {boolean} mac 检测当前浏览器是否是运行在mac平台下
    * @example
-   * ```javascript
+   * ```js
    * if ( UE.browser.mac ) {
    *     console.log( '当前浏览器运行在mac平台下' );
    * }
@@ -48,7 +48,7 @@ var agent = navigator.userAgent.toLowerCase(),
   /**
    * @property {boolean} quirks 检测当前浏览器是否处于“怪异模式”下
    * @example
-   * ```javascript
+   * ```js
    * if ( UE.browser.quirks ) {
    *     console.log( '当前浏览器运行处于“怪异模式”' );
    * }

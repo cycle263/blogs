@@ -5,7 +5,7 @@
 
 * HTML特殊字符的饭转义
 
-  ```
+  ```js
   // HTML特殊字符反转义(&amp; => &, &copy; => ©, &nbsp; => 空格 )
 	function HTMLDecode(text) {
 		var temp = document.createElement("div");

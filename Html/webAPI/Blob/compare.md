@@ -14,7 +14,7 @@
 
   
 * websocket接受arraybuffer
-    ```
+    ```js
     /* websocket的情况下二进制流的获取 */
     var url = 'ws://127.0.0.1:8080';
     var ws = new WebSocket(url);
@@ -25,7 +25,7 @@
     ```
 
 * blob <-> arraybuffer
-    ```
+    ```js
     var blob = new Blob(); // blob是要转换的blob
     var fr = new FileReader();
     fr.onload = function(){
@@ -38,13 +38,13 @@
     ```
 
 * arraybuffer <-> Uint8
-    ```
+    ```js
     var u8 = new Uint8Array(arraybuffer);
     var buffer = u8.buffer;
     ```
 
 * array -> arraybuffer
-    ```
+    ```js
     var arr = [0x15,0xFF,0x01,0x00,0x34,0xAB,0x11];
     var u8 = new Uint8Array(arr);
     var ab = u8.buffer;

@@ -4,7 +4,7 @@
 
   ![flex](./images/flex.png)
 
-  ```
+  ```css
   .grid { display: flex; }
   .grid-cell { flex:1 }
   .grid-cell.col-1 { flex: 0 0 8.33333%; }

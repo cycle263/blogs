@@ -1,5 +1,5 @@
 * 1、全选复选框联动(jQuery版本)
-	```
+	```js
 	var $checkboxs = $("[name=items]:checkbox"),
 	    $checkAll = $("$checkAll");
 	$checkboxs.click(function(){
@@ -55,7 +55,7 @@
 	分别代表：选择文本开始位置，结束位置，选择方向。
 
 * 9、快速获取URL查询字符串
-	```
+	```js
 	$.urlParam = function(name[, url]){
 		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url || window.location.href) || '';
 		return results[1] || '';

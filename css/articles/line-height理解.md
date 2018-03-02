@@ -21,7 +21,7 @@
 
   > 指定了每个行内框的垂直对齐方式，和line-height有着不可告人的秘密...
 
-  ```
+  ```css
   /* 关键字值 */
   vertical-align: baseline;
   vertical-align: sub;

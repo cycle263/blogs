@@ -42,7 +42,7 @@
 
   - 一个组件需要改变另一个组件的状态
 
-  ```
+  ```react
   const Counter = ({ value, onIncrement, onDecrement }) => (
     <div>
     <h1>{value}</h1>
@@ -96,7 +96,7 @@
 
   - 由原始组件创造一个新的组件并且扩展它的行为。
 
-  ```
+  ```react
   // MyComponent 是纯的 UI 组件
   <div className="index">
     <p>{this.props.text}</p>

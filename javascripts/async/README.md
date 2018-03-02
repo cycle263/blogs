@@ -6,7 +6,7 @@
 
 * Promise
 
-  ```
+  ```js
   function defer() {
     var tasks = [],
       progresses = [],
@@ -150,7 +150,7 @@
 
 * 发布订阅
 
-  ```
+  ```js
   var PubSub = function(){
       this.handlers = {};
   };

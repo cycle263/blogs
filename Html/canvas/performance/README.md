@@ -4,7 +4,7 @@
 
   备注：确保临时的canvas大小适合，过大的canvas复制到较小的画布时会带来多余的性能。
 
-  ```
+  ```js
   myEntity.offscreenCanvas = document.createElement("canvas");
   myEntity.offscreenCanvas.width = myEntity.width;
   myEntity.offscreenCanvas.height = myEntity.height;
@@ -23,7 +23,7 @@
 
 * 使用多个渲染层来制作复杂的图形，也就是利用元素的透明度来渲染多个canvas层。例如：背景canvas
 
-  ```
+  ```html
   <canvas id="bg" width="640" height="480" style="position: absolute; z-index: 0"></canvas>  
   <canvas id="fg" width="640" height="480" style="position: absolute; z-index: 1"></canvas>  
   ```
@@ -32,7 +32,7 @@
 
 * 绘制非整数坐标，canvas会自动使用抗锯齿失真以达到边缘平滑；假如平滑的效果非必须，尽量使用整数坐标，以此大大提高运行性能
 
-  ```
+  ```js
   // With a bitwise or.  
   rounded = (0.5 + somenum) | 0;  
   // A double bitwise not.  

@@ -21,7 +21,7 @@
 
   - onerror方法：读取出错时触发。
 
-    ```
+    ```js
     var reader = new FileReader();
     reader.onerror = errorHandler;
 
@@ -49,7 +49,7 @@
 
   - onprogress方法：读取过程中周期性触发。
 
-    ```
+    ```js
     var reader = new FileReader();
     reader.onprogress = updateProgress;
 
@@ -66,7 +66,7 @@
     ```
 
 
-  ```
+  ```js
   // 让canvas显示剪贴板中的图片
   document.onpaste = function(e){
     e.preventDefault();

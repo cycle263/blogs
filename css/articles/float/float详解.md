@@ -40,7 +40,7 @@
         - overflow + zoom `.clearfix{overflow:hidden; zoom:1;}`  
 
         - after + zoom  
-          ```
+          ```css
           .clearfix{zoom:1;}
           .clearfix:after{display:block; content:'clear both'; clear:both; height:0; visibility:hidden;}
           ```

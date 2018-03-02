@@ -1,6 +1,6 @@
 ### jsonp的实现方案
 
-```
+```js
 var $jsonp = function(src, opts){
     var callback_name = opts.callbackName || 'callback',
         on_success = opts.onSuccess || function(){},

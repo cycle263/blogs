@@ -14,9 +14,9 @@
 
   Object.defineProperties中的setter/getter实现属性变化监控watcher，IE低版本可以用 `Object.__defineGetter__ / Object.__defineSetter__ `替换。
 
-  ```
+  ```html
   <button ng-click="val=val+1">increase 1</button>
-
+  ```
   1. 按下按钮
   2. 浏览器接收到一个事件，进入到 angular context
   3. $digest 循环开始执行，查询每个 $watch 是否变化
@@ -24,13 +24,12 @@
   5. 新的 $digest 循环未检测到变化
   6. 浏览器拿回控制器，更新 $scope.val 新值对应的 dom
 
-  ```
-
+  
 * $watch和$digest
 
   需要存储注册过的所有监听器，`this.$$watchers = [];  //$$约定为私有变量`
 
-  ```
+  ```js
   Scope.prototype.$watch = function(watchFn, listenerFn, valueEq) {
     var watcher = {
       watchFn: watchFn,

@@ -1,6 +1,6 @@
 ### windowName方式解决跨域问题
 
-```
+```js
 (function(){
     var dataRequest = {
         _doc: document,

@@ -4,7 +4,7 @@
 
   > FileList对象针对表单的file控件。
 
-  ```
+  ```js
   // 当用户选取文件后，就可以读取该文件
   var selected_file = document.getElementById('input').files[0];
 

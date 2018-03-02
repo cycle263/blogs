@@ -1,7 +1,7 @@
 ## ajax二进制
 
 * 发送二进制数据
-```
+```js
 var oReq = new XMLHttpRequest();
 oReq.open("POST", url, true);
 oReq.onload = function (oEvent) {
@@ -24,7 +24,7 @@ xhr.send(myArray);
 
 * 接收二进制数据
 
-```
+```js
 var oReq = new XMLHttpRequest();
 oReq.open("GET", "/myfile.png", true);
 oReq.responseType = "arraybuffer";
@@ -40,7 +40,7 @@ oReq.onload = function (oEvent) {
 oReq.send(null);
 ```
 当然，如上设置只能是文本类型，如果是Blob类型，那么如下即可
-```
+```js
 var oReq = new XMLHttpRequest();
 oReq.open("GET", "/myfile.png", true);
 oReq.responseType = "arraybuffer";
@@ -62,7 +62,7 @@ oReq.onload = function(oEvent) {
 oReq.send();
 ```
 如果你使用的是旧版本的浏览器，那么加载二进制可以如下
-```
+```js
 function load_binary_resource(url) {
     var req = new XMLHttpRequest();
     req.open('GET', url, false);
@@ -76,7 +76,7 @@ function load_binary_resource(url) {
 
 * 处理二进制流
 
-  ```
+  ```js
   var reader = new FileReader();
   reader.readAsDataURL(myBytes);
   reader.onload = function(){
@@ -90,3 +90,4 @@ function load_binary_resource(url) {
   var href = URL.createObjectURL(myBytes);
   // after load
   URL.revokeObjectURL(href);
+  ```

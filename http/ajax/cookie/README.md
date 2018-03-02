@@ -9,7 +9,7 @@ cors跨域请求，可加上这个option `xhrFields: { withCredentials: true }, 
 * 1、获取的所有cookie: document.cookie.  
 
   Cookie是一个键值对形式的字符串。只能用这个方法一次赋值或更新一个cookie。  
-  ```
+  ```js
   example: document.cookie = "someCookieName=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
   ```
 

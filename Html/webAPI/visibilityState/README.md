@@ -12,7 +12,7 @@
 
   当页面的可见状态发生变化时，会触发VisibilityChange事件（带有浏览器前缀）。
 
-  ```
+  ```js
   document.addEventListener("visibilitychange", function() {
     console.log( document.visibilityState );
   });

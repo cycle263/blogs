@@ -15,40 +15,40 @@
 
 * String to Array  
 
-  ```
+  ```js
   var str = 'test1,test2,test3';
   str.split();      //默认用空字符串切割
   str.split(",")    //逗号切割，参数不可省略
   ```
 
 * Array to String
-    ```
-    var arr = [12, 34, 56];
-    arr.join();      //默认用逗号切割
-    arr.join(",")    //逗号切割，参数可省略
-    ```
+  ```js
+  var arr = [12, 34, 56];
+  arr.join();      //默认用逗号切割
+  arr.join(",")    //逗号切割，参数可省略
+  ```
 
 * 数组去重
 
-  ```
-    [...new Set([1,2,3,1,'a',1,'a'])]   // ES6
+  ```js
+  [...new Set([1,2,3,1,'a',1,'a'])]   // ES6
 
-    [1,2,3,1,'a',1,'a'].filter(function(ele,index,array){   // ES5
-        return index===array.indexOf(ele)
-    })
+  [1,2,3,1,'a',1,'a'].filter(function(ele,index,array){   // ES5
+      return index===array.indexOf(ele)
+  })
 
-    //数组去重 --- 性能较好，能区分hash值
-    function unique(arr){
-      var newArr = [],
-          hash = {};
-      for(var i = 0, l = arr.length; i < l; i++){
-        var item = arr[i],
-            key = Object.prototype.toString.call(item).slice(8, -1) + JSON.stringify(item);
-          if(hash[key] !== 1){
-            newArr.push(item);
-            hash[key] = 1;
-          }
-      }
-      return newArr;
+  //数组去重 --- 性能较好，能区分hash值
+  function unique(arr){
+    var newArr = [],
+        hash = {};
+    for(var i = 0, l = arr.length; i < l; i++){
+      var item = arr[i],
+          key = Object.prototype.toString.call(item).slice(8, -1) + JSON.stringify(item);
+        if(hash[key] !== 1){
+          newArr.push(item);
+          hash[key] = 1;
+        }
     }
+    return newArr;
+  }
   ```
