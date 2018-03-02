@@ -305,6 +305,10 @@
 
   * [webpack](structure/webpack)  
 
+  * [markdown](team/Markdown) 常用语法
+
+  * 常见[shell命令](team/linux)
+
   * [Unicode vs Utf-8 vs ASCII](./http/unicode)对比详解
 
   * [interview](javascripts/interview)
