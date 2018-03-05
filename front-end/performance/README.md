@@ -28,3 +28,6 @@
 * cache-control: max-age，最大缓存化
 
 * visibility load: 可视区加载，非可视区空白或者loading
+
+
+## [性能和错误监控](monitor)

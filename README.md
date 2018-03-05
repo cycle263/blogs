@@ -246,7 +246,7 @@
 
     目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议。  
 
-  * 请求优化
+  * [请求优化](front-end/performance)
 
     - cookie free: 静态资源不同域名，最好CDN，避免发送多余的cookie信息。
 
