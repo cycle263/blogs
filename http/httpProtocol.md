@@ -30,6 +30,12 @@
 
 * HTTP响应头
 
+  - cache-control
+
+    + no-cache: 强制向源服务器再次验证，响应中包含no-cache，那么缓存服务器则不能对资源进行缓存。
+
+    + max-age: 响应的最大Age值（s）
+
   - Access-Control-Allow-Origin：指定一个允许向该服务器提交请求的URI，所有域用星号表示
 
     `Access-Control-Allow-Origin: http://mozilla.com`

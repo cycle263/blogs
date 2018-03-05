@@ -15,4 +15,16 @@
 ![chrome请求资源优先级](../images/load.jpg)
 
 
-## 首屏优化
+## 请求优化
+
+* cookie free: 静态资源不同域名，最好CDN，避免发送多余的cookie信息。
+
+* domain hash: 多个域名加大浏览器的并发量，推荐控制在2-4个，否则DNS解析的消耗得不偿失。
+
+* css sprites: 合并icon和图片资源，减少资源总请求数。
+
+* minify、compress、combine: 合并压缩，减少资源大小。
+
+* cache-control: max-age，最大缓存化
+
+* visibility load: 可视区加载，非可视区空白或者loading
