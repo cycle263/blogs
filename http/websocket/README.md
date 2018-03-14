@@ -39,7 +39,7 @@ ws最大的优势：在于服务器和客户端可以在给定的时间范围内
     - Application data： y Byte。 在”Extension data”之后，占据了帧的剩余部分。
     
     - Payload data： (x + y) Byte。”extension data” 后接 “application data”。
-    
+
 * **example:**
 
     client connects through new transport
