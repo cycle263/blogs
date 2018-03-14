@@ -16,6 +16,30 @@ ws最大的优势：在于服务器和客户端可以在给定的时间范围内
     - 5: upgrade  polling or websoket
     - 6: noop  等待
 
+* 数据成帧
+
+    WebSocket 使用了自定义的二进制分帧格式，把每个应用消息切分成一或多个帧，发送到目的地之后再组装起来，等到接收到完整的消息后再通知接收端。基本的成帧协议定义了帧类型有操作码、有效载荷的长度，指定位置的Extension data和Application data，统称为Payload data，保留了一些特殊位和操作码供后期扩展。在打开握手完成后，终端发送一个关闭帧之前的任何时间里，数据帧可能由客户端或服务器的任何一方发送。具体的帧格式如下所示：
+
+    ![websocket](../images/websocket.png)
+
+    - FIN： 1 bit 。表示此帧是否是消息的最后帧，第一帧也可能是最后帧。
+    
+    - RSV1，RSV2，RSV3： 各1 bit 。必须是0，除非协商了扩展定义了非0的意义。
+    
+    - opcode：4 bit。表示被传输帧的类型：x0 表示一个后续帧；x1 表示一个文本帧；x2 表示一个二进制帧；x3-7 为以后的非控制帧保留；x8 表示一个连接关闭；x9 表示一个ping；xA 表示一个pong；xB-F 为以后的控制帧保留。
+    
+    - Mask： 1 bit。表示净荷是否有掩码（只适用于客户端发送给服务器的消息）。
+    
+    - Payload length： 7 bit, 7 + 16 bit, 7 + 64 bit。 净荷长度由可变长度字段表示： 如果是 0~125，就是净荷长度；如果是 126，则接下来 2 字节表示的 16 位无符号整数才是这一帧的长度； 如果是 127，则接下来 8 字节表示的 64 位无符号整数才是这一帧的长度。
+    
+    - Masking-key：0或4 Byte。 用于给净荷加掩护，客户端到服务器标记。
+    
+    - Extension data： x Byte。默认为0 Byte，除非协商了扩展。
+    
+    - Application data： y Byte。 在”Extension data”之后，占据了帧的剩余部分。
+    
+    - Payload data： (x + y) Byte。”extension data” 后接 “application data”。
+    
 * **example:**
 
     client connects through new transport
