@@ -6,7 +6,7 @@ ws最大的优势：在于服务器和客户端可以在给定的时间范围内
 
 目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议[Engine.IO protocol](https://github.com/socketio/engine.io-protocol)。  
 
-* 发送包类型：
+* **发送包类型：**
 
     - 0: open  transport is opened(传输打开)
     - 1: close
@@ -16,7 +16,7 @@ ws最大的优势：在于服务器和客户端可以在给定的时间范围内
     - 5: upgrade  polling or websoket
     - 6: noop  等待
 
-* 数据成帧
+* **数据成帧**
 
     WebSocket 使用了自定义的二进制分帧格式，把每个应用消息切分成一或多个帧，发送到目的地之后再组装起来，等到接收到完整的消息后再通知接收端。基本的成帧协议定义了帧类型有操作码、有效载荷的长度，指定位置的Extension data和Application data，统称为Payload data，保留了一些特殊位和操作码供后期扩展。在打开握手完成后，终端发送一个关闭帧之前的任何时间里，数据帧可能由客户端或服务器的任何一方发送。具体的帧格式如下所示：
 
@@ -40,11 +40,11 @@ ws最大的优势：在于服务器和客户端可以在给定的时间范围内
     
     - Payload data： (x + y) Byte。”extension data” 后接 “application data”。
 
-* 生成(封装)数据帧
+* **生成(封装)数据帧**
 
     待续...
 
-* 解析数据帧
+* **解析数据帧**
 
     ```js
     function decodeDataFrame(e) {
