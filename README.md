@@ -104,8 +104,6 @@
 
   * [ECMAScript6](javascripts/ECMAScript)  
 
-    > ES6
-
     - ECMAScript发展历史
 
     - ECMAScript6的实现进度  
@@ -118,59 +116,61 @@
 
   * [Debug](front-end/debug/)  
 
-    > Fiddler, Proxy, sourcemap
+    - Fiddler, Proxy, sourcemap
 
-      - dora(dora-plugin-proxy)
+    - dora(dora-plugin-proxy)
 
 ### 2. [Css(css库和css3)](./css)
 
   * css library  
 
-    Bootstrap, Antd ...
+    Bootstrap, Antd Design, material design...
 
-      - 行内元素 vs 块元素
+  * 样式常识
 
-      |   行内元素              |   块元素         |
-      |   -----------          |  ---------      |
-      |   水平排列              |   垂直排列       |
-      |   不能包含块元素         | 能包含块元素     |
-      |宽高无效，内外边距上下无效  |有效             |
+    - 行内元素 vs 块元素
+
+    |   行内元素              |   块元素         |
+    |   -----------          |  ---------      |
+    |   水平排列              |   垂直排列       |
+    |   不能包含块元素         | 能包含块元素     |
+    |宽高无效，内外边距上下无效  |有效             |
+
+    - 常见宽高值(chrome)
+
+      window.innerHeight: viewport height, 浏览器的视窗高度(html文档内容展示区域，包括水平滚动条，不包括书签等调试器区域)。
+
+      window.outerHeight: 浏览器高度，包括页签头、地址栏、书签和状态栏等。
+
+      ![FirefoxInnerVsOuterHeight2](./css/images/FirefoxInnerVsOuterHeight2.png)
+
+      window.screen.height: 显示器屏幕高度。
+
+      window.screen.availHeight: 浏览器窗口在屏幕上可占用的最大高度。
+
+      element.clientHeight: 元素的内部高度，包括内边距，不包括滚动条、边框、外边距和边框。
+
+      element.clientTop: 元素顶部边框的宽度，包括滚动条，不包括内外边距。
+
+      element.scrollHeight: 元素内容的高度，包括溢出的视图高度。没有滚动条情况下，scrollHeight值与元素视图填充所有内容所需要的最小值clientHeight相同。
+
+      element.scrollTop 元素的内容垂直滚动的像素数。没有产生垂直方向的滚动条，那么scrollTop值为0。
+
+      HTMLElement.offsetHeight: 元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。
+
+      HTMLElement.offsetTop: 元素相对于其 offsetParent 元素的顶部的距离。
 
   * Css3  
 
     Animation
 
-  * 常见宽高值(chrome)
-
-    window.innerHeight: viewport height, 浏览器的视窗高度(html文档内容展示区域，包括水平滚动条，不包括书签等调试器区域)。
-
-    window.outerHeight: 浏览器高度，包括页签头、地址栏、书签和状态栏等。
-
-    ![FirefoxInnerVsOuterHeight2](./css/images/FirefoxInnerVsOuterHeight2.png)
-
-    window.screen.height: 显示器屏幕高度。
-
-    window.screen.availHeight: 浏览器窗口在屏幕上可占用的最大高度。
-
-    element.clientHeight: 元素的内部高度，包括内边距，不包括滚动条、边框、外边距和边框。
-
-    element.clientTop: 元素顶部边框的宽度，包括滚动条，不包括内外边距。
-
-    element.scrollHeight: 元素内容的高度，包括溢出的视图高度。没有滚动条情况下，scrollHeight值与元素视图填充所有内容所需要的最小值clientHeight相同。
-
-    element.scrollTop 元素的内容垂直滚动的像素数。没有产生垂直方向的滚动条，那么scrollTop值为0。
-
-    HTMLElement.offsetHeight: 元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。
-
-    HTMLElement.offsetTop: 元素相对于其 offsetParent 元素的顶部的距离。
-
 ### 3. Html5
 
   DOCTYPE用于告知浏览器的解析器用什么文档标准解析这个文档。
 
-  * [canvas](canvas)
+  * [canvas](canvas) 画布
 
-  * svg
+  * [svg](https://developer.mozilla.org/en-US/docs/SVG)、 [WebGL(3D)](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
 
     - svg vs canvas
 
@@ -184,41 +184,41 @@
 
   * Web Worker
 
-      > Web Workers 是 HTML5 提供的一个javascript多线程解决方案.  
+    > Web Workers 是 HTML5 提供的一个javascript多线程解决方案.  
 
-      Web Worker的基本原理就是在当前javascript的主线程中，使用Worker类加载一个javascript文件来开辟一个新的线程，起到互不阻塞执行的效果，并且提供主线程和新线程之间数据交换的接口：postMessage，onmessage。    
+    Web Worker的基本原理就是在当前javascript的主线程中，使用Worker类加载一个javascript文件来开辟一个新的线程，起到互不阻塞执行的效果，并且提供主线程和新线程之间数据交换的接口：postMessage，onmessage。    
 
-      - WEB主线程:  
+    - WEB主线程:  
 
-          1.通过 worker = new Worker( url ) 加载一个JS文件来创建一个worker，同时返回一个worker实例。  
+      1.通过 worker = new Worker( url ) 加载一个JS文件来创建一个worker，同时返回一个worker实例  
 
-          2.通过worker.postMessage( data ) 方法来向worker发送数据。  
+      2.通过worker.postMessage( data ) 方法来向worker发送数据。  
 
-          3.绑定worker.onmessage方法来接收worker发送过来的数据。   
+      3.绑定worker.onmessage方法来接收worker发送过来的数据。   
 
-          4.可以使用 worker.terminate() 来终止一个worker的执行。  
+      4.可以使用 worker.terminate() 来终止一个worker的执行。  
 
-      - worker新线程：  
+    - worker新线程：  
 
-          1.通过postMessage( data ) 方法来向主线程发送数据。  
+        1.通过postMessage( data ) 方法来向主线程发送数据。  
 
-          2.绑定onmessage方法来接收主线程发送过来的数据。  
+        2.绑定onmessage方法来接收主线程发送过来的数据。  
 
-      - 全局对象
+    - 全局对象
 
   * localStorage vs sessionStorage
 
-      - 储存时间的不同(sessionStorage浏览器关闭自动删除，localStorage长期存在)
+    - 储存时间的不同(sessionStorage浏览器关闭自动删除，localStorage长期存在)
 
-      - 储存的容量不同
+    - 储存的容量不同
 
   * import vs link
 
-      - 加载的时间不同(link同时加载)
+    - 加载的时间不同(link同时加载)
 
-      - 加载的内容范围不同(@import只能加载css)
+    - 加载的内容范围不同(@import只能加载css)
 
-      - 兼容范围不同(link无兼容问题，import-css2.1)
+    - 兼容范围不同(link无兼容问题，import-css2.1)
 
 ### 4. Web和Http
 
@@ -275,8 +275,6 @@
     | 单向通信，服务端推送  | 双向通信    |
     | 基于http，支持性好   | 新的协议    |
     | 简单，轻量，断线重连  | 较复杂，重连需额外部署 |
-
-
 
 ### 5. Others(构建打包、模块化解决方案)
 
