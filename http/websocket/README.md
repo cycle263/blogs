@@ -78,7 +78,7 @@ ws最大的优势：在于服务器和客户端可以在给定的时间范围内
         frame.PayloadData = s;
         //返回数据帧
         return frame;
-    };   既然有了解析程序，那么我们就可以把上面实例服务器端的onmessage方法修改一下   
+    };
     function onmessage(e){
         e = decodeDataFrame(e); //解析数据帧
         console.log(e); //把数据帧输出到控制台
