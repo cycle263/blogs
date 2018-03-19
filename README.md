@@ -2,7 +2,7 @@
 
 ### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./javascripts/ECMAScript)
 
-  * [jQuery](./framework/jQuery)
+  * **[jQuery](./framework/jQuery)**
 
     jQuery API,  Principle of jQuery
 
@@ -24,7 +24,7 @@
       document.querySelectorAll('selector');
       ```
 
-  * [Angularjs](./framework/angular)
+  * **[Angularjs](./framework/angular)**
 
     Angular 1.3, Angular 2 ...
 
@@ -36,7 +36,7 @@
 
       指定事件触发后，才进入$digest cycle，$digest ttl默认为10
 
-  * [Reactjs](./framework/React)、[Redux](./framework/React/redux)、[React-redux](./framework/React/redux/react-redux)
+  * **[Reactjs](./framework/React)、[Redux](./framework/React/redux)、[React-redux](./framework/React/redux/react-redux)**
 
     > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
@@ -78,7 +78,7 @@
       }
       ```
 
-  * [Modularity](./structure)
+  * **[Modularity](./structure)**
 
     AMD, CommonJS, CMD
 
@@ -88,7 +88,7 @@
 
     - CMD: 规范和 AMD 很相似，尽量保持简单，并与 CommonJS 和 Node.js 的 Modules 规范保持了很大的兼容性。
 
-  * [Blob vs ArrayBuffer vs TypeArray](./Html/webAPI)
+  * **[Blob vs ArrayBuffer vs TypeArray](./Html/webAPI)**
 
     > 二进制数组是JavaScript操作二进制数据的一个接口。(ArrayBuffer对象、TypedArray视图和DataView视图)。三者之间的关系可以理解为：Blob <-> ArrayBuffer <-> TypeArray <—> Array
 
@@ -102,7 +102,7 @@
 
     简单说，ArrayBuffer对象代表原始的二进制数据，TypedArray视图用来读写简单类型的二进制数据，DataView视图用来读写复杂类型的二进制数据。
 
-  * [ECMAScript6](javascripts/ECMAScript)  
+  * **[ECMAScript6](javascripts/ECMAScript)**
 
     - ECMAScript发展历史
 
@@ -114,7 +114,7 @@
 
       + Babel转码器，配置文件.babelrc
 
-  * [Debug](front-end/debug/)  
+  * **[Debug](front-end/debug/)**  
 
     - Fiddler, Proxy, sourcemap
 
@@ -122,11 +122,11 @@
 
 ### 2. [Css(css库和css3)](./css)
 
-  * css library  
+  * **css library**  
 
     Bootstrap, Antd Design, material design...
 
-  * 样式常识
+  * **样式常识**
 
     - 行内元素 vs 块元素
 
@@ -160,7 +160,7 @@
 
       HTMLElement.offsetTop: 元素相对于其 offsetParent 元素的顶部的距离。
 
-  * Css3  
+  * **Css3** 
 
     Animation
 
@@ -168,9 +168,9 @@
 
   DOCTYPE用于告知浏览器的解析器用什么文档标准解析这个文档。
 
-  * [canvas](canvas) 画布
+  * **[canvas](canvas) 画布**
 
-  * [svg](https://developer.mozilla.org/en-US/docs/SVG)、 [WebGL(3D)](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)
+  * **[svg](https://developer.mozilla.org/en-US/docs/SVG)、 [WebGL(3D)](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)**
 
     - svg vs canvas
 
@@ -182,9 +182,9 @@
     | 矢量图(自由缩放) | 位图(放大失真) |  
     | 适合复杂度高的大型渲染应用(地图) | 适合图像密集的游戏，或者频繁重绘的应用 |
 
-  * [语音识别](./Html/webAPI/Audio)
+  * **[语音识别](./Html/webAPI/Audio)**
 
-  * Web Worker
+  * **Web Worker**
 
     > Web Workers 是 HTML5 提供的一个javascript多线程解决方案.  
 
@@ -208,13 +208,13 @@
 
     - 全局对象
 
-  * localStorage vs sessionStorage
+  * **localStorage vs sessionStorage**
 
     - 储存时间的不同(sessionStorage浏览器关闭自动删除，localStorage长期存在)
 
     - 储存的容量不同
 
-  * import vs link
+  * **import vs link**
 
     - 加载的时间不同(link同时加载)
 
@@ -224,7 +224,7 @@
 
 ### 4. Web和Http
 
-  * web标准化组织
+  * **web标准化组织**
 
     - [W3C](http://www.w3.org)  制定web的标准，包括HTML，CSS
 
@@ -232,15 +232,15 @@
 
     - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等
 
-  * [Http协议(Http2)](http)
+  * **[Http协议(Http2)](http)**
     
     是基于 TCP/IP 协议的应用层协议。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。
 
-  * [ajax轮询](http/ajax/轮询)
+  * **[ajax轮询](http/ajax/轮询)**
 
     定时发送ajax请求，但是需要服务器有很快的处理速度和资源。轮询又分为长轮询和短轮询，长轮询则是客户端发起请求，服务端有数据更新则响应，没有则sleep挂起循环，直到有新数据才响应，除非超过一定的时限才会断开连接；短轮询则不分是非有数据更新，都直接响应。用长轮询（long polling）来模拟WebSocket，需要很高的并发量。
 
-  * [WebSocket](./http/websocket)
+  * **[WebSocket](./http/websocket)**
 
     Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说.跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充。Web Socket 连接不是基于 HTTP 传输的，它是一种 HTML 5 为 Web 定制的全双工通讯协议，没有“请求 - 响应”的概念，浏览器与服务器完全平等，连接一旦建立就一直开放，双方可随时向对方发送任意数据，没有推拉之分。  
 
@@ -248,7 +248,7 @@
 
     目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议。  
 
-  * [请求优化](front-end/performance)
+  * **[请求优化](front-end/performance)**
 
     - cookie free: 静态资源不同域名，最好CDN，避免发送多余的cookie信息。
 
@@ -262,7 +262,7 @@
 
     - visibility load: 可视区加载，非可视区空白或者loading
 
-  * Server-Sent Event
+  * **Server-Sent Event**
 
     浏览器向服务器发送一个HTTP请求，然后服务器不断单向地向浏览器推送“信息”（message）。
 
@@ -280,7 +280,7 @@
 
 ### 5. Others(构建打包、模块化解决方案)
 
-  * Mobile dev
+  * **Mobile dev**
 
     Debug, Hybrid App
 
@@ -290,7 +290,7 @@
 
     - 性能优化
 
-  * [git](team/git)
+  * **[git](team/git)**
 
     ```git
     $ git clone someobject.git
@@ -299,9 +299,9 @@
     $ git push
     ```
 
-  * grunt
+  * **grunt**
 
-  * [gulp](structure/gulp/)
+  * **[gulp](structure/gulp/)**
 
       gulp插件：  
 
@@ -317,15 +317,15 @@
       + 更改提醒（gulp-notify）
       + 清除文件（del）
 
-  * [webpack](structure/webpack)  
+  * **[webpack](structure/webpack)**  
 
-  * [markdown](team/Markdown) 常用语法
+  * **[markdown](team/Markdown) 常用语法**
 
-  * 常见[shell命令](team/linux)
+  * **常见[shell命令](team/linux)**
 
-  * [Unicode vs Utf-8 vs ASCII](./http/unicode)对比详解
+  * **[Unicode vs Utf-8 vs ASCII](./http/unicode)对比详解**
 
-  * [interview](javascripts/interview)
+  * **[interview](javascripts/interview)**
 
 
 备注说明: 若代码和图片有侵权，联系必删
