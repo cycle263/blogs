@@ -32,7 +32,7 @@
 
       index.html --> boot --> app
 
-    - 脏检查机制
+    - **[脏检查机制]()**
 
       指定事件触发后，才进入$digest cycle，$digest ttl默认为10
 

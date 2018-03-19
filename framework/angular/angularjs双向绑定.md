@@ -1,5 +1,23 @@
 ## 双向绑定
 
-* 监听对象属性的变化
+    > 【数据层】 <--> 【视图层】
 
-* 可以输入元素上添加change事件，动态修改对象属性
+* **实现的几种方式**
+
+    - 手动绑定：通过在数据对象上定义存取器方法（getter, setter）, 手动调用set和get方法，改变数据后厨房视图层变化，以视图驱动数据变化的场景主要应用于input、select、textarea等交互元素；当UI层变化时，通过监听dom的change，keypress，keyup等事件来触发事件改变数据层的数据。
+
+    - 脏检查机制：angular对常用的dom事件，xhr事件等做了封装，在里面触发进入angular的digest流程，在digest流程里面，会从rootscope开始遍历，检查所有的watcher。
+
+     ng只有在指定事件触发后，才进入$digest cycle：
+
+        - DOM事件，譬如用户输入文本，点击按钮等。(ng-click)
+        - XHR响应事件 ($http)
+        - 浏览器Location变更事件 ($location)
+        - Timer事件($timeout, $interval)
+        - 执行$digest()或$apply()
+
+    $digest循环会持续运行直到model不再发生变化，或者$digest循环的次数达到了10次。
+
+    - 数据劫持：使用Object.defineProperty对数据对象做属性get和set的监听，当有数据读取和赋值操作时则调用节点的指令，这样使用最通用的=等号赋值就可以了
+
+
