@@ -1,4 +1,4 @@
-## ECMAScript 6
+## [ECMAScript 6](./ES6)
 
 * 字面对象  
 

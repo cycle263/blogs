@@ -5,6 +5,7 @@
  * rebase原理
 
     `git checkout develop`, `git rebase master` develop分支提交变化打成系列文件补丁，在master分支上合并成一个新的提交对象。   
+
  * rebase和merge区别
 
     - rebase是按照每行的修改次序重演一遍修改，而merge是把最终结果合在一起。  
@@ -35,7 +36,7 @@
   - git checkout master - 将本地分支切换至master
   - git pull origin master - 从远端master拉取最新代码
   - git checkout branches/test - 再次将本地分支切换至新创建的test
-  - git merge master - 从master合并最新代码至test分支
+  - git merge master - 将master最新代码合并至test分支
   - git diff - 查看合并冲突文件，并手动解决
   - 提交代码（add、commit、push）
   - gitlab上创建MERGE REQUEST，等待owner审核

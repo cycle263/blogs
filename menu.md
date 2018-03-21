@@ -16,8 +16,6 @@
     - [ES6特性详解](./javascripts/ECMAScript)
     - [ES6函数详解](./javascripts/ECMAScript/ES6Function)
     - [ES6 ArrayBuffer详解](./javascripts/ECMAScript/ES6ArrayBuffer)
-    - ES 7
-    - ES 8
 
 * 前端工程
     - webpack

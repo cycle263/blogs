@@ -132,3 +132,6 @@
     `git push origin :develop` 删除远端分支develop
     `git checkout -d/-D develop` 删除本地分支develop
     `git checkout -d/-D -r origin/develop` 删除一个tracking的远端branch, 并未push
+
+  - 查看HEAD指向分支
+    `cat .git/HEAD`

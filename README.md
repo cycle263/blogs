@@ -104,9 +104,7 @@
 
     简单说，ArrayBuffer对象代表原始的二进制数据，TypedArray视图用来读写简单类型的二进制数据，DataView视图用来读写复杂类型的二进制数据。
 
-  * **[ECMAScript6](javascripts/ECMAScript)**
-
-    - ECMAScript发展历史
+  * **ECMAScript6**
 
     - ECMAScript6的实现进度  
 
@@ -120,7 +118,7 @@
 
   * **[Debug](front-end/debug/)**  
 
-    - Fiddler, Proxy, sourcemap
+    - Fiddler, Proxy, sourcemap, Charles
 
     - dora(dora-plugin-proxy)
 
@@ -307,19 +305,19 @@
 
   * **[gulp](structure/gulp/)**
 
-      gulp插件：  
+    gulp插件：  
 
-      + sass的编译（gulp-ruby-sass）
-      + 自动添加css前缀（gulp-autoprefixer）
-      + 压缩css（gulp-minify-css）
-      + js代码校验（gulp-jshint）
-      + 合并js文件（gulp-concat）
-      + 压缩js代码（gulp-uglify）
-      + 压缩图片（gulp-imagemin）
-      + 自动刷新页面（gulp-livereload）
-      + 图片缓存，只有图片替换了才压缩（gulp-cache）
-      + 更改提醒（gulp-notify）
-      + 清除文件（del）
+    + sass的编译（gulp-ruby-sass）
+    + 自动添加css前缀（gulp-autoprefixer）
+    + 压缩css（gulp-minify-css）
+    + js代码校验（gulp-jshint）
+    + 合并js文件（gulp-concat）
+    + 压缩js代码（gulp-uglify）
+    + 压缩图片（gulp-imagemin）
+    + 自动刷新页面（gulp-livereload）
+    + 图片缓存，只有图片替换了才压缩（gulp-cache）
+    + 更改提醒（gulp-notify）
+    + 清除文件（del）
 
   * **[webpack](structure/webpack)**  
 
