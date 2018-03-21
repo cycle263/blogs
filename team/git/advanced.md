@@ -30,7 +30,7 @@
     `git config --global user.name "用户名"`  
     `git config --global user.email "Email"`
     `git config --local user.email "Email"`   // 修改本项目的email配置
-    example: git config --global user.email cycle263@163.com
+    `git config --global push.default simple`     // 修改全局配置中push的默认方式
 
   - 查看所有的配置  
     `git config --list`
@@ -65,7 +65,7 @@
   - 同步到服务端  
     `git push`  指定了分支，可省略后面参数       
       可选参数 -f: 表示强制覆盖  
-    `git push origin HEAD:<name-of-remote-branch>`  
+    `git push origin HEAD:<name-of-remote-branch>` 或者 `git push origin lbranch-1:refs/rbranch-1`  // 将当前分支推送到源存储库中的远程引用匹配主机。 这种形式方便推送当前分支，而不考虑其本地名称。
     `git push origin branch-name`  不存在的远端分支：`git push origin localBranch:remoteBranch`
 
 * git 合并代码
@@ -89,27 +89,18 @@
 
   - 回滚提交
     `git reset <file>`  某个文件索引会回滚到最后一次提交， C → B, 也即是重置暂存区的指定文件，与上一次commit保持一致，但工作区不变  
-
     `git reset --hard [commit]`  重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致  
-
     `git reset [commit]`  重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变  
-
     `git checkout .`  恢复暂存区的所有文件到工作区  
-
     `git checkout [commit] [file]`  恢复某个commit的指定文件到暂存区和工作区  
-
     `git checkout [file]`  恢复暂存区的指定文件到工作区  
-
     `git reset --hard`  重置暂存区与工作区，与上一次commit保持一致  
-
     `git reset --hard origin/master`     重置暂存区和工作区，与远端master保持一致，包括版本号
 
   - 暂存数据 -- (暂存本地修改，工作区还原到上次提交)
 
     `git stash`  暂存工作区代码到本地栈
-
     `git stash apply ${0}`  恢复栈内最近暂存的数据到工作区
-
     `git stash pop` 恢复最近暂存
 
 * git 分支管理
@@ -135,20 +126,17 @@
     `git checkout -d/-D -r origin/develop` 删除一个tracking的远端branch, 并未push
 
   - 查看HEAD指向分支
-    `cat .git/HEAD`
+    `cat .git/HEAD` 或者 `git show-ref`
 
 ## git文件的三种状态
 
  * 已修改(modified)  
-
     已经修改了工作区的某些文件。  
 
  * 已暂存(staged)  
-
     已经执行了add操作，但还没有提交，只是暂存在提交清单里。  
 
  * 已提交(commited)  
-
     已经提交到本地仓库里，但还没push到远端仓库。  
 
   ![git状态](./images/Git-status.png)
@@ -156,23 +144,18 @@
 ## git config --global push.default详解
 
   * 1.nothing
-
     不推送任何东西并有错误提示，除非明确指定分支引用规格。强制使用分支引用规格来避免可能潜在的错误。
 
   * 2.current
-
     推送当前分支到接收端名字相同的分支。  
 
   * 3.upstream
-
     推送当前分支到上游@{upstream}。这个模式只适用于推送到与拉取数据相同的仓库，比如中央工作仓库流程模式。
 
   * 4.simple
-
     在中央仓库工作流程模式下，拒绝推送到上游与本地分支名字不同的分支。也就是只有本地分支名和上游分支名字一致才可以推送，就算是推送到不是拉取数据的远程仓库，只要名字相同也是可以的。在GIT 2.0中，simple将会是push.default的默认值。simple只会推送本地当前分支。
 
   *  5.matching
-
     推送本地仓库和远程仓库所有名字相同的分支。这是git当前版本的缺省值。
 
   *  配置push.default的命令如下：

@@ -38,7 +38,7 @@
     git config --global user.name "name"
     git config --global user.email "name@email.com"
     git config --global credential.helper store
-    git config --global push.default simple
+    git config --global push.default simple   // 配置推送方式：只推送当前分支到名字相同的远端
     ```
 
 * git 创建repository  
@@ -172,3 +172,4 @@
     或者  
     `git config --global push.default simple`  
 
+[git参照文档](https://www.yiibai.com/git)
