@@ -1,3 +1,5 @@
+## ES 6函数
+
 * 1、函数参数的默认值
 
   ```
@@ -103,7 +105,7 @@
   ```
   递归本质上是一种循环操作。纯粹的函数式编程语言没有循环操作命令，所有的循环都用递归实现。
 
-  * 9、调用栈(call-stack) vs 调用点(call-site) vs 调用帧(call-frame)
+* 9、调用栈(call-stack) vs 调用点(call-site) vs 调用帧(call-frame)
   ```
   function baz() {
       // 调用栈是: `baz`
