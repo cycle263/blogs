@@ -1,7 +1,5 @@
 # 常用的命令
 
-    > Git command
-
 * 1、 git clone git@github.domain.com:project.git   克隆仓库代码到本地
 
 * 2、 git branch   查看本地分支，并标注当前分支  
@@ -25,13 +23,9 @@
 ### 备注
 
 * -r 一般指远端，远端分支前面一般带有远端主机默认名origin(clone的时候默认命名)
-
 * -d 一般指删除，大写D强制删除
-
 * -a 一般指全部
-
 * -u 也就是--set-upstream，代表的是更新默认推送的地方
-
 * origin 仅仅是一个名字，git push origin master, 可在拉代码的时候命名为其他的
 
 ## git常用步骤
@@ -111,9 +105,6 @@
 
     git push origin master
     ```
-
-
-## git背后原理
 
 ## git文件的三种状态
 
