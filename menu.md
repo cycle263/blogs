@@ -32,5 +32,6 @@
 * 其他
     - [Unicode、ASCII和utf-8等编码如何区分？](./http/unicode)
     - [markdown入门基础](./team/Markdown)
+    - [面试知识点概要](./javascripts/interview/simpleInterview)
 
 * [返回首页](./)
