@@ -20,6 +20,11 @@
 * 前端工程
     - webpack
     - gulp、grunt
+    - [git入门](./team/git)
+    - [git进阶详解](./team/git/advanced)
+    - [git之rebase与merge区别？](./team/git/rebase)
+    - [git之tag详解](./team/git/tags)
+    - [git之远端管理](./team/git/remote)
 
 * 网络基础
     - [websocket入门](./http/websocket)
