@@ -1,4 +1,4 @@
-## [ECMAScript 6](./ES6)
+## ECMAScript 6
 
 * 字面对象  
 
@@ -170,3 +170,5 @@
 
     getLosers(...runners);
     ```
+
+* [ECMAScript 6 更多详解](./ES6)

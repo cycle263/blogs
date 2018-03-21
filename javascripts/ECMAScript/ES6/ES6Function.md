@@ -59,7 +59,7 @@
   - （3）不可以使用arguments对象，该对象在函数体内不存在。可以考虑...rest参数代替
   - （4）箭头函数没有独立的上下文context。
 
-  [箭头函数参考链接](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+  [参考链接](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
   
 * **5、函数绑定**  
 
