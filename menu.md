@@ -34,4 +34,11 @@
 
     - 
 
+* 网络基础
+
+    - [websocket入门](./http/websocket)
+
 * 其他
+
+    - [Unicode、ASCII和utf-8等编码如何区分？](./http/unicode)
+    - [markdown入门基础](./team/Markdown)
