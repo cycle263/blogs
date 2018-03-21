@@ -1,4 +1,4 @@
-# 常用的命令
+# 入门的基本命令
 
 * 1、 git clone git@github.domain.com:project.git   克隆仓库代码到本地
 

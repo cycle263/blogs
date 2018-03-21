@@ -1,4 +1,4 @@
-# Git
+## Git详解
 
 ![流程图](./images/git.png)
 
