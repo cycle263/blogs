@@ -116,6 +116,8 @@
 
       + Babel转码器，配置文件.babelrc
 
+    - [ES6特性详解](./javascripts/ECMAScript)
+
   * **[Debug](front-end/debug/)**  
 
     - Fiddler, Proxy, sourcemap
