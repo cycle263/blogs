@@ -1,4 +1,4 @@
-## Git详解
+## Git流程详解
 
 ![流程图](./images/git.png)
 
@@ -22,6 +22,7 @@
 
 ![详细流程图](./images/git-detail.png)
 
+## git 命令详解
 
 * git 初始化配置
 
@@ -135,3 +136,45 @@
 
   - 查看HEAD指向分支
     `cat .git/HEAD`
+
+## git文件的三种状态
+
+ * 已修改(modified)  
+
+    已经修改了工作区的某些文件。  
+
+ * 已暂存(staged)  
+
+    已经执行了add操作，但还没有提交，只是暂存在提交清单里。  
+
+ * 已提交(commited)  
+
+    已经提交到本地仓库里，但还没push到远端仓库。  
+
+  ![git状态](./images/Git-status.png)
+
+## git config --global push.default详解
+
+  * 1.nothing
+
+    不推送任何东西并有错误提示，除非明确指定分支引用规格。强制使用分支引用规格来避免可能潜在的错误。
+
+  * 2.current
+
+    推送当前分支到接收端名字相同的分支。  
+
+  * 3.upstream
+
+    推送当前分支到上游@{upstream}。这个模式只适用于推送到与拉取数据相同的仓库，比如中央工作仓库流程模式。
+
+  * 4.simple
+
+    在中央仓库工作流程模式下，拒绝推送到上游与本地分支名字不同的分支。也就是只有本地分支名和上游分支名字一致才可以推送，就算是推送到不是拉取数据的远程仓库，只要名字相同也是可以的。在GIT 2.0中，simple将会是push.default的默认值。simple只会推送本地当前分支。
+
+  *  5.matching
+
+    推送本地仓库和远程仓库所有名字相同的分支。这是git当前版本的缺省值。
+
+  *  配置push.default的命令如下：
+
+    `git config --global push.default simple`
