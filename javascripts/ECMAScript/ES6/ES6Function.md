@@ -108,28 +108,28 @@
 * 9、调用栈(call-stack) vs 调用点(call-site) vs 调用帧(call-frame)
   ```
   function baz() {
-      // 调用栈是: `baz`
+      // 调用栈是: baz
       // 我们的调用点是 global scope（全局作用域）
 
       console.log( "baz" );
-      bar(); // <-- `bar` 的调用点
+      bar(); // <-- bar 的调用点
   }
 
   function bar() {
-      // 调用栈是: `baz` -> `bar`
-      // 我们的调用点位于 `baz`
+      // 调用栈是: baz -> bar
+      // 我们的调用点位于 baz
 
       console.log( "bar" );
-      foo(); // <-- `foo` 的 call-site
+      foo(); // <-- foo 的 call-site
   }
 
   function foo() {
-      // 调用栈是: `baz` -> `bar` -> `foo`
-      // 我们的调用点位于 `bar`
+      // 调用栈是: baz -> bar -> foo
+      // 我们的调用点位于 bar
 
       console.log( "foo" );
   }
 
-  baz(); // <-- `baz` 的调用点
+  baz(); // <-- baz 的调用点
 
   ```
