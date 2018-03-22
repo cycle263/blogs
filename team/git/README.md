@@ -129,6 +129,7 @@
 
     git log     最近几次提交的记录信息  
     git log -p   最近几次提交的记录详情(包含内容)  
+    git log -p [path/filename]   某文件最近几次提交的记录详情(包含diff内容)  
     git log -1   最近一次的提交记录信息  
     git log --stat   最近几次的提交统计信息(行数)  
     git log --follow [file]   显示某个文件的版本历史，包括文件改名  
