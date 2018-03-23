@@ -4,9 +4,8 @@
 * 字面量式函数和声明式函数的区分？script defer vs async? 原型继承vs类继承？(灵活，接口，抽象类) **<u>闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分?file文件转换成arrayBuffer或者Blob?冒泡和捕获?setTimeout里面运行的函数的作用域this指向?++i vs i++?websocket vs http?(有并集)</u>** Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？ webworker?(后台运行) storage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？
 * **事件代理的原理？** jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ?
 * **js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？** 不可以，原因使用下标访问时，只是临时创建的array对象
+* **<u>ES6有哪些新特性？ ？箭头函数的作用域(是否有arguments,是否有自身的this对象和上下文, call能否覆盖箭头函数this)？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await？let vs const vs var?</u>** babel转码的实现原理？ES6 module可否做到按需加载？(stage3: dynamic import) commonJS和AMD规范区别？和ES6的模块有什么不同？
 * canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
-* **<u>ES6有哪些新特性？ ？箭头函数的作用域(是否有arguments,是否有自身的this对象和上下文, call能否覆盖箭头函数this)？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await？let vs const vs var?</u>** babel转码的实现原理？ES6 module可否做到按需加载？(stage3: dynamic import)
-* commonJS和AMD规范区别？和ES6的模块有什么不同？
 
 ## 框架类库
 * react生命周期？数据模型(redux、flux、reselect)-什么场景适用？无状态函数组件? react适合什么项目? **组件之间通信(订阅发布)？虚拟DOM和diff算法原理(按需更新，分层比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步?)？)类组件和函数式组件选择？循环组件需要用key?react合成事件和js原生事件区别？shouldComponentUpdate什么场景适用？pure-component优势？如何保持父子组件之间的松耦合？组件数属性传递(context)？**  一个基于state和props的组件渲染函数，state是自己的，props是外面引入的，变化就重新渲染。
