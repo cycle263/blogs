@@ -4,6 +4,8 @@
 
 ### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./ECMAScript)
 
+  * [context vs scope](./javascripts/notes/context)
+
   * **[jQuery](./framework/jQuery)**
 
     jQuery API,  Principle of jQuery
