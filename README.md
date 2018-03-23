@@ -2,7 +2,7 @@
 
 [总目录](./menu)
 
-### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./javascripts/ECMAScript)
+### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./ECMAScript)
 
   * **[jQuery](./framework/jQuery)**
 
@@ -114,7 +114,7 @@
 
       + Babel转码器，配置文件.babelrc
 
-    - [ES6特性详解](./javascripts/ECMAScript)
+    - [ES6特性详解](./ECMAScript)
 
   * **[Debug](front-end/debug/)**  
 
@@ -327,7 +327,7 @@
 
   * **[Unicode vs Utf-8 vs ASCII](./http/unicode)对比详解**
 
-  * **[interview](javascripts/interview)**
+  * **[interview](team/interview)**
 
 
 备注说明: 若代码和图片有侵权，联系必删
