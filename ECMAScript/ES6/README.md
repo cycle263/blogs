@@ -4,3 +4,4 @@
 * [ES 6函数详解](./ES6Function)
 * [ES6 ArrayBuffer详解](./ES6ArrayBuffer)
 * [ES6 Module深入理解](./ES6Module)
+* [ES6 Module加载原理](./ES6import)
