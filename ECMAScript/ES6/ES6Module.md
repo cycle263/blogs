@@ -33,7 +33,9 @@
     // 导入"singapore"并将它导出的内容全部导出
     export * from "singapore";
 
-    //这些导入内容再重新导出的方法不会在作用域中绑定你导入的内容。如果你打算用world-foods.js中的Tea来写一些代码，可别用这种方法导入模块，你会发现当前模块作用域中根本找不到Tea。
+    // 这些导入内容再重新导出的方法不会在作用域中绑定你导入的内容。
+    // 如果你打算用world-foods.js中的Tea来写一些代码，可别用这种方法导入模块，
+    // 你会发现当前模块作用域中根本找不到Tea。
 
     export let _ = function () {};           // 导出 _ 对象
     export function lodash () {};            // 导出 lodash 函数
