@@ -19,7 +19,7 @@
 
 * **ArrayBuffer对象**
 
-> ArrayBuffer对象代表储存二进制数据的一段内存，它不能直接读写，只能通过视图（TypedArray视图和DataView视图)来读写，视图的作用是以指定格式解读二进制数据。ArrayBuffer是一个构造函数，可以分配一段可以存放数据的连续内存区域。
+ArrayBuffer对象代表储存二进制数据的一段内存，它不能直接读写，只能通过视图（TypedArray视图和DataView视图)来读写，视图的作用是以指定格式解读二进制数据。ArrayBuffer是一个构造函数，可以分配一段可以存放数据的连续内存区域。
 
 ```js
 var buf = new ArrayBuffer(32);
@@ -54,7 +54,7 @@ dataView.getUint8(0) // 0
 
     第一个参数是字节序号，表示从哪个字节开始写入，第二个参数为写入的数据。对于那些写入两个或两个以上字节的方法，需要指定第三个参数，false或者undefined表示使用大端字节序写入，true表示使用小端字节序写入。
 
-* TypedArray视图
+* **TypedArray视图**
 
     TypedArray视图的构造函数，除了接受ArrayBuffer实例作为参数，还可以接受普通数组作为参数，直接分配内存生成底层的ArrayBuffer实例，并同时完成对这段内存的赋值。
 
@@ -68,7 +68,7 @@ dataView.getUint8(0) // 0
     - Float32Array：32位浮点数，长度4个字节。
     - Float64Array：64位浮点数，长度8个字节。     
 
-    普通数组与TypedArray数组的差异：  
+    **普通数组与TypedArray数组的差异：**  
     - TypedArray数组的所有成员，都是同一种类型。
     - TypedArray数组的成员是连续的，不会有空位。
     - TypedArray数组成员的默认值为0。比如，new Array(10)返回一个普通数组，里面没有任何成员，只是10个空位；new Uint8Array(10)返回一个TypedArray数组，里面10个成员都是0。
@@ -91,7 +91,7 @@ var v3 = new Int16Array(b, 2, 2);
 v3.length   //4-2=2
 ```
 
-### 构造函数有多种用法
+## 构造函数有多种用法
 
 * 1、TypedArray(buffer, byteOffset=0, length?)  
 
