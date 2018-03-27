@@ -18,6 +18,7 @@
     - [ES6 ArrayBuffer详解](./ECMAScript/ES6/ES6ArrayBuffer)
     - [ES6 Module深入理解](./ECMAScript/ES6/ES6Module)
     - [ES6 Module加载原理](./ECMAScript/ES6/ES6import)
+    - [ES6 Class详解](./ECMAScript/ES6/ES6Class)
 
 * 前端工程
     - webpack
