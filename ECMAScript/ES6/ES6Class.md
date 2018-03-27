@@ -39,9 +39,33 @@ Point.prototype.toString = function () {
 
   - 类的内部所有定义的方法，都是不可枚举的（enumerable）
 
+  - 与ES5一样，类的所有实例共享一个原型对象  
+
+  ```js
+  var p1 = new Point(2,3);
+  var p2 = new Point(3,2);
+
+  p1.__proto__ === p2.__proto__
+  //true
+  ```
+
+  - 可以通过实例的__proto__属性为Class添加方法，这样会改变Class的原始定义，影响到所有实例。因此，必须谨慎使用，不推荐这样的写法
+
+  - name属性总是返回紧跟在class关键字后面的类名。
+
+* **Class表达式**
+
+  ```es6
+  const MyClass = class Me {
+    getClassName() {
+      return Me.name;
+    }
+  };
+  ```
+
 * **super关键字**
 
-  ```
+  ```es6
   class B extends A {
     constructor(){
       super()
