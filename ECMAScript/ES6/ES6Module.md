@@ -21,20 +21,25 @@
 
     - 可以用一种统一的方式将其它模块中的内容聚合在一起导出.
 
-        ```
-        // world-foods.js - 来自世界各地的好东西
+    ```js
+    // world-foods.js - 来自世界各地的好东西
 
-        // 导入"sri-lanka"并将它导出的内容的一部分重新导出
-        export {Tea, Cinnamon} from "sri-lanka";
+    // 导入"sri-lanka"并将它导出的内容的一部分重新导出
+    export {Tea, Cinnamon} from "sri-lanka";
 
-        // 导入"equatorial-guinea"并将它导出的内容的一部分重新导出
-        export {Coffee, Cocoa} from "equatorial-guinea";
+    // 导入"equatorial-guinea"并将它导出的内容的一部分重新导出
+    export {Coffee, Cocoa} from "equatorial-guinea";
 
-        // 导入"singapore"并将它导出的内容全部导出
-        export * from "singapore";
+    // 导入"singapore"并将它导出的内容全部导出
+    export * from "singapore";
 
-        //这些导入内容再重新导出的方法不会在作用域中绑定你导入的内容。如果你打算用world-foods.js中的Tea来写一些代码，可别用这种方法导入模块，你会发现当前模块作用域中根本找不到Tea。
-        ```
+    //这些导入内容再重新导出的方法不会在作用域中绑定你导入的内容。如果你打算用world-foods.js中的Tea来写一些代码，可别用这种方法导入模块，你会发现当前模块作用域中根本找不到Tea。
+
+    export let _ = function () {};           // 导出 _ 对象
+    export function lodash () {};            // 导出 lodash 函数
+    export default function (x) {return x};  // 导出匿名函数并设为默认导出对象
+    export { _, lodash as default };         // 一次导出多个对象
+    ```
 
 * import
 
@@ -42,7 +47,13 @@
 
     -  import 的模块名只能是字符串常量。(ECMA-262 15.2.2)
 
-    - 导入的力度可以根据需求来决定。`import {each, map} from "lodash";` 或者 `import _ from "lodash";`
+    ```js
+    import * as _ from 'src/lodash';           // 引入外部文件所有对象
+    import { each, map } from 'src/lodash';    // 引入外部文件部分对象
+    import _ from 'src/lodash';                // 引入外部文件默认导出对象
+    import _, { each, map } from 'src/lodash'; // 同时引入默认导出对象和部分对象
+    import 'src/lodash';                       // 只加载外部文件，但啥都不引入
+    ```
 
 
 * JS引擎运行模块的步骤
@@ -56,3 +67,15 @@
     - 如果你的代码中有import {cake} from "paleo"这样的语句，而此时“paleo”模块并没有导出任何“cake”，你就会触发一个错误。这实在是太糟糕了，你都快要运行模块中的代码了，都是cake惹的祸！
 
     - 运行时：最终，在每一个新加载的模块体内执行所有语句。此时，导入的过程就已经结束了，所以当执行到达有一行import声明的代码的时候……什么都没发生！
+
+
+## 其他模块写法
+
+* CommonJS
+
+    ```js
+    require("module");
+    require("../file.js");
+    exports.doStuff = function() {};
+    module.exports = someValue;
+    ```
