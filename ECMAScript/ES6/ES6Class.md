@@ -1,4 +1,4 @@
-## 类
+## ES6 类
 
 * **曾经的构造函数**
 
@@ -55,20 +55,38 @@ Point.prototype.toString = function () {
 
 * **Class表达式**
 
+  可以写出立即执行的Class。
+
   ```es6
   const MyClass = class Me {
     getClassName() {
       return Me.name;
     }
   };
+
+  let inst = new MyClass();
+  inst.getClassName() // Me
+  MyClass.name  // Me
+  Me.name // ReferenceError: Me is not defined
+
+  const MyClass = class Me { ... }('name');
   ```
 
-* **super关键字**
+* **Class的继承**
+
+  Class之间可以通过extends关键字实现继承，这比ES5的通过修改原型链实现继承，要清晰和方便很多。
 
   ```es6
-  class B extends A {
-    constructor(){
-      super()
+  class ColorPoint extends Point {
+    constructor(x, y, color) {
+      super(x, y); // 调用父类的constructor(x, y)，继承父类的this对象
+      this.color = color;
+    }
+
+    toString() {
+      return this.color + ' ' + super.toString(); // 调用父类的toString()
     }
   }
   ```
+
+* **类的prototype属性和__proto__属性**
