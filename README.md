@@ -4,7 +4,7 @@
 
 ### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./ECMAScript)
 
-  * [context vs scope](./javascripts/notes/context)
+  * **[context vs scope](./javascripts/depth/context)**
 
   * **[jQuery](./framework/jQuery)**
 
