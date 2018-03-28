@@ -16,7 +16,7 @@
 * **Class基本语法**  
   基本上，ES6的class可以看作只是一个语法糖，它的绝大部分功能，ES5都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。ES6的类，完全可以看作构造函数的另一种写法，其实，类的数据类型就是函数，类本身就指向构造函数。
 
-  ```es6
+  ```js
   // 定义类
   class Point {
     constructor(x, y) {   // 构造方法
@@ -56,7 +56,7 @@
 
   可以写出立即执行的Class。
 
-  ```es6
+  ```js
   const MyClass = class Me {
     getClassName() {
       return Me.name;
@@ -75,7 +75,7 @@
 
   Class之间可以通过extends关键字实现继承，这比ES5的通过修改原型链实现继承，要清晰和方便很多。
 
-  ```es6
+  ```js
   class ColorPoint extends Point {
     constructor(x, y, color) {
       super(x, y); // 调用父类的constructor(x, y)，继承父类的this对象
