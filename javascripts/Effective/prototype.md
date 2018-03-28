@@ -1,3 +1,5 @@
+## 原型
+
 * 1、prototype、__proto__、getPrototypeOf区分  
 
   C.prototype是指建立由new C()创建的对象的原型；  
