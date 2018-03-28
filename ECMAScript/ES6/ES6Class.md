@@ -153,6 +153,14 @@
     Object.__proto__ === Function.prototype   // true
     Function.prototype.__proto__ === Object.prototype   // true
     Object.prototype.__proto__ === null   // true
+
+    Function instanceof Object   // true 
+    Object instanceof Function   // true 
+    Function instanceof Function  // true
+    Object instanceof Object   // true
+    Number instanceof Object   // true
+    Number instanceof Function   // true
+    Number instanceof Number   // false
     ```
 
   - 子类继承null
