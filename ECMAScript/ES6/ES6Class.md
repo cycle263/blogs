@@ -172,3 +172,176 @@
     A.__proto__ === Function.prototype // true
     A.prototype.__proto__ === undefined // true
     ```
+
+* **原生构造函数的继承**
+
+  ES6可以自定义原生数据结构（比如Array、String等）的子类，这是ES5无法做到的。
+
+  ECMAScript的原生构造函数：
+  Boolean()、Number()、String()、Array()、Date()、Function()、RegExp()、Error()、Object()。
+
+  ES5是先新建子类的实例对象this，再将父类的属性添加到子类上，由于父类的内部属性无法获取，导致无法继承原生的构造函数。ES6允许继承原生构造函数定义子类，因为ES6是先新建父类的实例对象this，然后再用子类的构造函数修饰this，使得父类的所有行为都可以继承。
+
+  ```js
+  class VersionedArray extends Array {
+    constructor() {
+      super();
+      this.history = [[]];
+    }
+    commit() {
+      this.history.push(this.slice());
+    }
+    revert() {
+      this.splice(0, this.length, ...this.history[this.history.length - 1]);
+    }
+  }
+
+  var x = new VersionedArray();
+
+  x.push(1);
+  x.push(2);
+  x // [1, 2]
+  x.history // [[]]
+
+  x.commit();
+  x.history // [[], [1, 2]]
+  x.push(3);
+  x // [1, 2, 3]
+
+  x.revert();
+  x // [1, 2]
+  ```
+
+* **Class的取值函数（getter）和存值函数（setter）**
+
+  与ES5一样，在Class内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。
+
+  ```js
+  class MyClass {
+    constructor() {
+      // ...
+    }
+    get prop() {
+      return 'getter';
+    }
+    set prop(value) {
+      console.log('setter: '+value);
+    }
+  }
+
+  let inst = new MyClass();
+
+  inst.prop = 123;
+  // setter: 123
+
+  inst.prop
+  // 'getter'
+  ```
+
+* **Class的Generator方法**
+  
+  如果某个方法之前加上星号（*），就表示该方法是一个Generator函数。
+
+  ```js
+  class Foo {
+    constructor(...args) {
+      this.args = args;
+    }
+    * [Symbol.iterator]() {
+      for (let arg of this.args) {
+        yield arg;
+      }
+    }
+  }
+
+  for (let x of new Foo('hello', 'world')) {
+    console.log(x);
+  }
+  // hello
+  // world
+  ```
+
+* **Class的静态方法**
+
+  类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。
+  静态方法可以被子类继承，也可以用super对象调用。
+
+  ```js
+  class Foo {
+    static classMethod() {
+      return 'hello';
+    }
+  }
+
+  Foo.classMethod() // 'hello'
+
+  var foo = new Foo();
+  foo.classMethod()
+  // TypeError: undefined is not a function
+  ```
+
+* **Class的静态属性**
+
+  ES6明确规定，Class内部只有静态方法，没有静态属性。ES7有一个静态属性的提案，目前Babel转码器支持。这个提案对实例属性和静态属性，都规定了新的写法。
+
+  ```js
+  // ES 6的写法
+  class Foo {
+    prop: 2     // 错误写法一
+    static prop: 2    // 错误写法二
+  }
+
+  Foo.prop // undefined   正确写法
+
+  // ES 7的写法
+  class Foo {
+    static prop = 1;  // 静态属性
+    state = {};   // 实例属性
+  }
+  ```
+
+* **new.target属性**
+
+  ES6为new命令引入了一个new.target属性，（在构造函数中）返回new命令作用于的那个构造函数。如果构造函数不是通过new命令调用的，new.target会返回undefined。需要注意的是，子类继承父类时，new.target会返回子类，利用这个特点，可以写出不能独立使用、必须继承后才能使用的类。
+
+  ```js
+  function Person(name) {
+    if (new.target === Person) {
+      this.name = name;
+    } else {
+      throw new Error('必须使用new生成实例');
+    }
+  }
+
+  var person = new Person('张三'); // 正确
+  var notAPerson = Person.call(person, '张三');  // 报错
+  ```
+
+## Mixin模式的实现
+
+  > Mixin模式指的是，将多个类的接口“混入”（mix in）另一个类。
+
+  ```js
+  function mix(...mixins) {
+    class Mix {}
+
+    for (let mixin of mixins) {
+      copyProperties(Mix, mixin);
+      copyProperties(Mix.prototype, mixin.prototype);
+    }
+
+    return Mix;
+  }
+
+  function copyProperties(target, source) {
+    for (let key of Reflect.ownKeys(source)) {
+      if ( key !== "constructor" && key !== "prototype" && key !== "name" ) {
+        let desc = Object.getOwnPropertyDescriptor(source, key);
+        Object.defineProperty(target, key, desc);
+      }
+    }
+  }
+
+  // 使用
+  class DistributedEdit extends mix(Loggable, Serializable) { }
+  ```
