@@ -151,6 +151,7 @@
     
     Function.__proto__ === Function.prototype   // true
     Object.__proto__ === Function.prototype   // true
+    ({}).__proto__ === Object.prototype   // true
     Function.prototype.__proto__ === Object.prototype   // true
     Object.prototype.__proto__ === null   // true
 
@@ -164,3 +165,10 @@
     ```
 
   - 子类继承null
+
+    ```js
+    class A extends null { }
+
+    A.__proto__ === Function.prototype // true
+    A.prototype.__proto__ === undefined // true
+    ```
