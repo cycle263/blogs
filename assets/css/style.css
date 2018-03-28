@@ -17,4 +17,4 @@ ul li{line-height: 1.8;}.inner{position:relative;max-width:800px;padding:8px;mar
 #main_content{padding:36px 8px;} #main_content_wrap{background:#FDF6E4;border-top:1px solid #111;border-bottom:1px solid #111}
 #footer_wrap{background:#212121}@media screen and (max-width: 992px){img{max-width:100%}}@media screen and (max-width: 480px){body{font-size:14px}#downloads{display:none}.inner{min-width:320px;max-width:480px}#project_title{font-size:32px}h1{font-size:28px}h2{font-size:24px}h3{font-size:21px}h4{font-size:18px}h5{font-size:14px}h6{font-size:12px}code,pre{font-size:11px}}@media screen and (max-width: 320px){body{font-size:14px}#downloads{display:none}.inner{min-width:240px;max-width:320px}#project_title{font-size:28px}h1{font-size:24px}h2{font-size:21px}h3{font-size:18px}h4{font-size:16px}h5{font-size:14px}h6{font-size:12px}code,pre{min-width:240px;max-width:320px;font-size:11px}}
 #footer_wrap .inner > p:nth-child(2){display: none;}div.highlight{border: 3px solid #e0dfcc;border-radius: 5px;}
-li>ul{list-style: decimal;}li>ul>li>ul{list-style: lower-alpha;}
+li>ul{list-style: lower-alpha;} li>ul>li>ul{list-style: decimal;}
