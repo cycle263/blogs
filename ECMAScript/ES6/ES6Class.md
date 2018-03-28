@@ -11,6 +11,15 @@
   Point.prototype.toString = function () {
     return '(' + this.x + ', ' + this.y + ')';
   };
+
+  var point = new Point(2, 4);
+
+  point.__proto__ === Point.prototype   // true
+  Point.__proto__ === Function.prototype  // true
+
+  Point.constructor === Function    // true
+  point.constructor === Point   // true
+  Point.prototype.constructor === Point   // true
   ```
 
 * **Class基本语法**  
@@ -90,3 +99,60 @@
   ```
 
 * **类的prototype属性和__proto__属性**
+
+  __proto__属性是一个访问器属性（一个getter函数和一个setter函数）, 通过暴露它访问对象的内部prototype (一个对象或 null)。大多数浏览器的ES5实现之中，每一个对象都有__proto__属性，指向对应的构造函数的prototype属性。Class作为构造函数的语法糖，同时有prototype属性和__proto__属性，因此同时存在两条继承链。
+
+  __proto__属性已在ECMAScript 6语言规范中标准化，但为了确保Web浏览器的兼容性，推荐使用Object.getPrototypeOf和 Object.setPrototypeOf。
+
+  - 子类的__proto__属性，表示构造函数的继承，总是指向父类。
+
+  - 子类prototype属性的__proto__属性，表示方法的继承，总是指向父类的prototype属性。
+
+  ```js
+  class A { }
+
+  class B extends A { }
+
+  B.__proto__ === A // true
+  B.prototype.__proto__ === A.prototype // true
+
+  // B的实例继承A的实例
+  Object.setPrototypeOf(B.prototype, A.prototype);
+
+  // B继承A的静态属性
+  Object.setPrototypeOf(B, A);
+
+  Object.setPrototypeOf = function (obj, proto) {
+    obj.__proto__ = proto;
+    return obj;
+  }
+  ```
+
+* **Extends 的继承目标**
+
+  只要是一个有prototype属性的函数，就能被继承。另外，有三种比较特殊的情况：
+
+  - 子类继承Object类
+
+    ```js
+    class A extends Object { }
+
+    A.__proto__ === Object // true
+    A.prototype.__proto__ === Object.prototype // true
+    ```
+
+  - 不存在任何继承
+
+    ```js
+    class A { }
+
+    A.__proto__ === Function.prototype  // true
+    A.prototype.__proto__ === Object.prototype  // true
+    
+    Function.__proto__ === Function.prototype   // true
+    Object.__proto__ === Function.prototype   // true
+    Function.prototype.__proto__ === Object.prototype   // true
+    Object.prototype.__proto__ === null   // true
+    ```
+
+  - 子类继承null
