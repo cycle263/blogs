@@ -1,6 +1,6 @@
 ## Front-end knowledge summary
 
-[总目录](./menu)
+**[文章总目录](./menu)**
 
 ### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./ECMAScript)
 
