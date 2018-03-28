@@ -10,4 +10,8 @@
 
 * 4. 前端统计（访问统计、错误统计、用户行为统计、性能统计）
 
+* 5. 可视化开发（webGL、canvas、svg、D3.js）
+
+* 6. 全栈开发（前后端通吃，nodejs、php）
+
   参考百度统计，Google Analytics

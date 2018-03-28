@@ -6,4 +6,14 @@
 
 * Github的markdown文件自定义样式
 
+* Vue重造
+
 * 待续...
+
+
+## 待巩固的知识点
+
+* ES6、7温故
+
+* React、Vue性能
+
