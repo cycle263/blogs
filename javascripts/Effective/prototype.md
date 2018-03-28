@@ -16,6 +16,8 @@
     }
   }
   ```
+
+  ![prototype原型](../images/prototype.jpg)
   
 * 2、尽量使用Object.getPrototypeOf获取对象原型  
 
@@ -65,3 +67,5 @@
   Object.getPrototypeOf(Function.prototype) === Object.prototype;       // true
   Object.getPrototypeOf(Object.prototype) === null;     // true
   ```
+
+备注：侵图必删
