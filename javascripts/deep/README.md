@@ -23,7 +23,7 @@
 
 * clone vs deepclone(拷贝和深度拷贝)
 
-```
+```js
 // method 1
 var deepClone = function (obj) {
     var _tmp,result;
