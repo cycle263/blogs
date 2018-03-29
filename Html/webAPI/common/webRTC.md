@@ -18,7 +18,7 @@
 * **主要JavaScript API**
 
   - MediaStream         音视频流对象
-  - RTCPeerConnection   端对端音视频连接对象
-  - RTCDataChannel      端对端数据通道对象
+  - RTCPeerConnection   端对端音视频连接对象，用来建立和维护端到端连接，并提供高效的音视频流传输。
+  - RTCDataChannel      端对端数据通道对象，用来支持端到端的任意二进制数据传输。
 
   ![](../../images/rtc.png)
