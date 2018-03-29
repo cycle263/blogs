@@ -14,3 +14,11 @@
   - 信令与 SDP 协商：HTTP / WebSocket / SIP、 Offer Answer 模型
 
   ![](../../images/webrtc.jpg)
+
+* **主要JavaScript API**
+
+  - MediaStream         音视频流对象
+  - RTCPeerConnection   端对端音视频连接对象
+  - RTCDataChannel      端对端数据通道对象
+
+  ![](../../images/rtc.png)
