@@ -31,3 +31,7 @@
 * Javascript的变量采用链式作用域。读取变量的时候，先在当前作用域寻找该变量，如果找不到，就前往上一层的作用域寻找该变量。这样的设计，使得读取局部变量比读取全局变量快得多。
           
 * 使用join()来拼接字符串,特别是长字符串处理的时候
+
+* getAttribute vs dataSet vs jQuery.data
+
+* element.children vs previousElementSibling、lastElementChild、childElementCount
