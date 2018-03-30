@@ -13,7 +13,7 @@
 
 ## 待巩固的知识点
 
-* ES6、7温故
+* ES6、7温故 (Reflect、Proxy等)
 
 * React、Vue性能
 
