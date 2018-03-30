@@ -16,6 +16,10 @@
 
     [Unicode扩展阅读](http://pcedu.pconline.com.cn/empolder/gj/other/0505/616631_all.html#content_page_2)
 
+  * **如何才能区别 Unicode 和 ASCII ？**
+
+    计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？
+    
   * **GB码**
 
     - GB2312
@@ -32,9 +36,7 @@
     
     <u>从ASCII、GB2312、GBK到GB18030，这些编码方法是向下兼容的，即同一个字符在这些方案中总是有相同的编码，后面的标准支持更多的字符。而Unicode只与ASCII兼容（更准确地说，是与ISO-8859-1兼容），与GB码不兼容。例如“汉”字的Unicode编码是6C49，而GB码是BABA。</u>
 
-  * **如何才能区别 Unicode 和 ASCII ？**
-
-    计算机怎么知道三个字节表示一个符号，而不是分别表示三个符号呢？
+  
 
   * **UTF-8**
 
