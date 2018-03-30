@@ -15,7 +15,7 @@
 
 * ES6、7温故 (Reflect、Proxy等)
 
-* React、Vue性能
+* React、Vue性能 (动画深入理解)
 
 * 基础概念深入理解（原型、作用域、上下文）
 
