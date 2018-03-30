@@ -119,6 +119,9 @@
     `git branch --set-upstream-to=origin/<branch> [develop]`  将已经存在的分支指向远端，push/pull不用指向远端了，直接连接指定的远端分支
     或者 `git branch --set-upstream master origin/master`
     `git branch --set-upstream-to origin/master`
+    `git push -u origin develop` 这个操作在push的同时会指定当前分支的upstream。
+
+    git中存在upstream和downstream，简言之，当我们把本地仓库A中某分支x的代码push到远端仓库B分支y，此时仓库B的这个分支y就叫做A中x分支的upstream，而x则被称作y的downstream，这是一个相对关系，每一个本地分支都相对地可以有一个远程的upstream分支（注意这个upstream分支可以不同名，但通常我们都会使用同名分支作为upstream）。
 
   - 删除分支
     `git push origin :develop` 删除远端分支develop
@@ -147,7 +150,7 @@
     不推送任何东西并有错误提示，除非明确指定分支引用规格。强制使用分支引用规格来避免可能潜在的错误。
 
   * 2.current
-    推送当前分支到接收端名字相同的分支。  
+    推送当前分支到接收端名字相同的分支，在远程同名分支不存在的情况下自动创建同名分支
 
   * 3.upstream
     推送当前分支到上游@{upstream}。这个模式只适用于推送到与拉取数据相同的仓库，比如中央工作仓库流程模式。
@@ -156,7 +159,7 @@
     在中央仓库工作流程模式下，拒绝推送到上游与本地分支名字不同的分支。也就是只有本地分支名和上游分支名字一致才可以推送，就算是推送到不是拉取数据的远程仓库，只要名字相同也是可以的。在GIT 2.0中，simple将会是push.default的默认值。simple只会推送本地当前分支。
 
   *  5.matching
-    推送本地仓库和远程仓库所有名字相同的分支。这是git当前版本的缺省值。
+    推送本地仓库和远程仓库所有名字相同的分支。这是git 1.x版本的缺省值，执行 git push 但没有指定分支，它将 push 所有你本地的分支到远程仓库中对应匹配的分支。
 
   *  配置push.default的命令如下：
 

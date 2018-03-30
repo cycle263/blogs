@@ -25,7 +25,7 @@
 * -r 一般指远端，远端分支前面一般带有远端主机默认名origin(clone的时候默认命名)
 * -d 一般指删除，大写D强制删除
 * -a 一般指全部
-* -u 也就是--set-upstream，代表的是更新默认推送的地方
+* -u 也就是--set-upstream，代表的是更新默认推送的地方, 也即是指定当前分支的upstream
 * origin 仅仅是一个名字，git push origin master, 可在拉代码的时候命名为其他的
 
 ## git常用步骤
