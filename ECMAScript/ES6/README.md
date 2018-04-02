@@ -6,3 +6,4 @@
 * [ES6 Module深入理解](./ES6Module)
 * [ES6 Module加载原理](./ES6import)
 * [ES6 Class详解](./ES6Class)
+* [ES6 Proxy深入理解](./ES6Proxy)
