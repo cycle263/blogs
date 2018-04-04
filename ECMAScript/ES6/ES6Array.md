@@ -52,6 +52,26 @@
     [1, 2, ...more]
     ```
 
+  - 与解构赋值结合
+
+    扩展运算符可以与解构赋值结合起来，用于生成数组。如果将扩展运算符用于数组赋值，只能放在参数的最后一位，否则会报错。
+    ```js
+    // ES5
+    a = list[0], rest = list.slice(1)
+    // ES6
+    [a, ...rest] = list
+
+    const [first, ...middle, last] = [1, 2, 3, 4, 5]; // 报错
+    ```
+
+  - 字符串转数组
+
+    扩展运算符还可以将字符串转为真正的数组，并且能够正确识别四个字节的 Unicode 字符。
+    ```js
+    'x\uD83D\uDE80y'.length // 4
+    [...'x\uD83D\uDE80y'].length // 3，正解
+    ```
+
 * Array.from()  
 
   Array.from方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象
