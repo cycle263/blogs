@@ -86,10 +86,10 @@
 
     [...arrayLike]    // Uncaught TypeError: arrayLike is not iterable
 
-    / *
-    *  变量go是一个 Generator 函数，执行后返回的是一个遍历器对象，对这个遍历器对象执行扩展运算符，
-    *  就会将内部遍历得到的值，转为一个数组。
-    * /
+    /*
+    /*  变量go是一个 Generator 函数，执行后返回的是一个遍历器对象，对这个遍历器对象执行扩展运算符，*/
+    /*  就会将内部遍历得到的值，转为一个数组。*/
+    */
     const go = function*(){
       yield 1;
       yield 2;
