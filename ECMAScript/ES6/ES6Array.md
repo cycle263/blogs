@@ -70,6 +70,33 @@
     ```js
     'x\uD83D\uDE80y'.length // 4
     [...'x\uD83D\uDE80y'].length // 3，正解
+
+    function length(str) {
+      return [...str].length;
+    }
+    ```
+
+  - Iterator对象(Map, Set, Generator函数)
+
+    扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符。没有部署 Iterator 接口的对象，扩展运算符转化就会报错。这时，可以改为使用Array.from方法将arrayLike转为真正的数组。
+
+    ```js
+    [...document.querySelectorAll('div')]
+    // [<div>, <div>, <div>]
+
+    [...arrayLike]    // Uncaught TypeError: arrayLike is not iterable
+
+    / *
+    *  变量go是一个 Generator 函数，执行后返回的是一个遍历器对象，对这个遍历器对象执行扩展运算符，
+    *  就会将内部遍历得到的值，转为一个数组。
+    * /
+    const go = function*(){
+      yield 1;
+      yield 2;
+      yield 3;
+    };
+
+    [...go()] // [1, 2, 3]
     ```
 
 * **Array.from()**  
@@ -81,6 +108,14 @@
   Array.from(ps).forEach(function (p) {
     console.log(p);
   });
+
+  var arrayLike = {
+    0: 'a',
+    1: 'b',
+    2: 'c',
+    length: 3 // required
+  };
+  Array.from(arrayLike)
   ```
 
   对于还没有部署该方法的浏览器，可以用Array.prototyp.slice.call方法替代。还有Array()方法可以备用。  
