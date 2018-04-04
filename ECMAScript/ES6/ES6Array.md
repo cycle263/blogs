@@ -76,7 +76,7 @@
 
   Array.from方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象
   （包括ES6新增的数据结构Set和Map）。  
-  ```
+  ```js
   let ps = document.querySelectorAll('p');
   Array.from(ps).forEach(function (p) {
     console.log(p);
@@ -85,11 +85,13 @@
 
   对于还没有部署该方法的浏览器，可以用Array.prototyp.slice.call方法替代。还有Array()方法可以备用。  
   Array.from()还可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理。  
+  ```js
   Array.from(arrayLike, x => x * x);   // 等同于  
   Array.from(arrayLike).map(x => x * x);  
+  ```
 
   Array.from()的一个应用是，将字符串转为数组，然后返回字符串的长度。这样可以避免JavaScript将大于\uFFFF的Unicode字符，算作两个字符的bug。  
-  ```
+  ```js
   function countSymbols(string) {
     return Array.from(string).length;
   }
@@ -111,8 +113,10 @@
   findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。  
   两个方法都可以接受第二个参数，用来绑定回调函数的this对象。  
 
-  `[ 1, 3, 4, 2 ].find(x => x > 3)` 或者  
-  `[ 1, 3, 4, 2 ].filter(function (x) { return x > 3; })[0]; // 4`
+  ```js
+  [ 1, 3, 4, 2 ].find(x => x > 3)   // 或者  
+  [ 1, 3, 4, 2 ].filter(function (x) { return x > 3; })[0]; // 4
+  ```
 
 * **数组实例的fill()**  
 
@@ -128,7 +132,7 @@
 
   Array.protypeto.includes方法返回一个布尔值，表示某个数组是否包含给定的值。该方法属于ES7。第二个参数表示搜索的起始位置，默认为0, 可以为负数。
 
-  ```
+  ```js
   if (typeof Array.prototype.reduce != "function") {
       Array.prototype.reduce = function (callback, initialValue ) {
          var previous = initialValue, k = 0, length = this.length;
@@ -153,7 +157,7 @@
   数组推导中，for...of结构总是写在最前面，返回的表达式写在最后面。for...of后面还可以附加if语句，用来设定循环的限制条件。  
   数组推导的方括号构成了一个单独的作用域，在这个方括号中声明的变量类似于使用let语句声明的变量。  
   数组推导需要注意的地方是，新数组会立即在内存中生成。这时，如果原数组是一个很大的数组，将会非常耗费内存。  
-  ```
+  ```js
   var years = [ 1954, 1974, 1990, 2006, 2010, 2014 ];
   [for (year of years) if (year > 2000) year];// [ 2006, 2010, 2014 ]
   [for (year of years) if (year > 2000) if(year < 2010) year];// [ 2006]
