@@ -258,7 +258,7 @@
 
     - domain hash: 多个域名加大浏览器的并发量，推荐控制在2-4个，否则DNS解析的消耗得不偿失。
 
-    - css sprites: 合并icon和图片资源，减少资源总请求数。
+    - css sprites: 合并icon和图片资源，图片压缩和格式(webp)，减少资源总请求数。
 
     - minify、compress、combine: 合并压缩，减少资源大小。
 
