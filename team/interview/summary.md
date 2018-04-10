@@ -12,6 +12,9 @@
 
 Vue 的 MVVM 实现理解
 
+* 钩子函数的理解？
+* 生命周期比较？
+
 ## JavaScript
 
 * jsonp的实现？
@@ -33,8 +36,6 @@ Vue 的 MVVM 实现理解
 
 * Promise、generator、async/await 的原理解释
 * ES6 的新特性
-
-
 
 ## 工程化
 
