@@ -7,3 +7,7 @@
   * 双向绑定
 
     > value 的单向绑定 + onChange 事件侦听
+
+  * 生命周期
+
+    [vue生命周期](../images/lifecycle.jpg)
