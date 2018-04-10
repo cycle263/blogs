@@ -31,6 +31,7 @@ Vue 的 MVVM 实现理解
 * 简单的浏览器兼容问题解决方式
 * 如何实现一个性能优化后的 slider
 * 如何实现一个搜索高亮的文件树
+* flex-shrink、flex-grow详解
 
 ## ES6、ES7
 
