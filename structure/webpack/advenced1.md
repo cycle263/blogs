@@ -1,4 +1,4 @@
-## webpack
+## webpack 深入使用（二）
 
 * 多页面配置（非单页面SPA）  
   在config.js里配置：

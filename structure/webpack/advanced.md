@@ -1,4 +1,4 @@
-## webpack 深入使用理解
+## webpack 深入使用（一）
 
 * **启用source-map**  
 
@@ -96,3 +96,6 @@
 
   - 添加完执行命令  
     允许`npm run build`, 发觉build结构为bundle.js和vendors.js
+
+
+[webpack 深入使用(二)](./advenced1)
