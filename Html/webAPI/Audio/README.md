@@ -99,3 +99,7 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
   speechSynthesis.speak(msg);
   ```
 
+* **STT(speech to text)** -  SpeechRecognition
+
+* [语音图形化案例](https://mdn.github.io/voice-change-o-matic/)、 
+  [语音图形化案例详解](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API)

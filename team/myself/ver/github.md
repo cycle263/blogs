@@ -1,9 +1,9 @@
 * contributions贡献图
 
   ```js
-  var colors = ['#eeeeee', '#d6e685', '#8cc665', '#44a340', '#1e6823'];
+  var colors = ['#eeeeee', '#d6e685', '#8cc665', '#44a340', '#1e6823', '#eeeeee', '#eeeeee'];
   $$('.js-calendar-graph-svg g rect').forEach(function(ele){
-    var r = Math.floor(Math.random() * 5);
+    var r = Math.floor(Math.random() * 7);
     ele.setAttribute('fill', colors[r]);
   });
   ```
