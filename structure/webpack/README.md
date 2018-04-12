@@ -30,9 +30,9 @@ loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身�
 
 在 webpack 的配置中 loader 有两个目标：
 
-    + 识别出应该被对应的 loader 进行转换的那些文件。(使用 test 属性)
+- 识别出应该被对应的 loader 进行转换的那些文件。(使用 test 属性)
 
-    + 转换这些文件，从而使其能够被添加到依赖图中，并且最终添加到 bundle 中。(使用 use 属性)
+- 转换这些文件，从而使其能够被添加到依赖图中，并且最终添加到 bundle 中。(使用 use 属性)
 
 * **4、plugins 插件**     
 
