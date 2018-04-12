@@ -28,8 +28,8 @@
 
 * **前端工程**
     - webpack
-        + [webpack深入理解(一)](./structure/webpack/advanced)
-        + [webpack深入理解(二)](./structure/webpack/advanced1)
+        + [webpack深入使用理解(一)](./structure/webpack/advanced)
+        + [webpack深入使用理解(二)](./structure/webpack/advanced1)
     - gulp、grunt
     - [git入门](./team/git)
     - [git进阶详解](./team/git/advanced)

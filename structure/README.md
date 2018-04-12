@@ -2,8 +2,8 @@
 
 * [webapck](webpack)
 
-  - [webpack深入理解(一)](./webpack/advanced)
-  - [webpack深入理解(二)](./webpack/advanced1)
+  - [webpack深入使用理解(一)](./webpack/advanced)
+  - [webpack深入使用理解(二)](./webpack/advanced1)
 
 * [babel](babel) 转码器使用详解
 

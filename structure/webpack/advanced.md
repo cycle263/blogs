@@ -1,10 +1,10 @@
-## webpack 语法
+## webpack 深入使用理解
 
-* 启用source-map  
+* **启用source-map**  
 
   > 代码合并压缩后，不利于调试和排错，开启source-map后，出现错误会直接映射到出错的代码位置
 
-* 配置webpack-dev-server代理
+* **配置webpack-dev-server代理**
 
   > 假定在本机他是类似http://localhost:5000/api/* 这类的请求，现在添加配置让ajax请求可以直接proxy过去。
 
@@ -22,7 +22,7 @@
   },
   ```
 
-* 加载第三方库
+* **加载第三方库**
 
   > jQuery不支持AMD和CommonJS格式，webpack提供几种方法支持引入插件
 
@@ -59,7 +59,7 @@
 
     > 先安装jquery, 然后直接引入`import $ from 'jquery';`
 
-* 部署上线
+* **部署上线**
 
   > 部署上线使用webpack的时候不需要一些dev-tools,dev-server和jshint校验等，因此需要单独的config文件  
 
