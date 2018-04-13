@@ -56,8 +56,8 @@ loader 被用于转换某些类型的模块，而插件则可以用于执行范�
 * `webpack -w`  watch文件，实时进行打包更新
 
 
-[webpack 配置案例1](./example/webpack.config.js)
+[webpack 配置案例1](./example/webpack.config)
 
-[webpack 配置案例2](./example/standard-config.js)
+[webpack 配置案例2](./example/standard-config)
 
 [webpack 参照引用](https://doc.webpack-china.org/concepts/)
