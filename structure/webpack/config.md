@@ -1,6 +1,6 @@
 ## webpack 配置
 
-    ```
+    ```js
     module.exports = {
       // configuration
     };
@@ -8,13 +8,11 @@
 
 * entry配置
 
-    entry: [String | Array | Object]    //支持三种类型  
+    - entry: 入口 [String | Array | Object]    //支持三种类型  
 
-    `entry: './src/index.js',`  
-
-    `entry: ['./src/index.js'],`  //多个打包到一个
-
-    ```
+    ```js
+    entry: './src/index.js',  
+    entry: ['./src/index.js'],  //多个打包到一个
     entry: {
         index: './src/index.js',    //多个打包多个如可文件
     },
@@ -23,6 +21,8 @@
 * output配置
 
     - filename 输出的文件名称，多个入口时，可使用[name]替换，也可以加入[hash]
+
+    - chunkFilename 按需加载模块时输出的文件名称，'[name].[hash:base64:5].js'
 
     - path 绝对路径，所有输出文件的目标路径
 

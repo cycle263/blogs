@@ -28,6 +28,10 @@ module.exports = {
 
 loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。在 webpack 配置中定义 loader 时，要定义在 module.rules 中，而不是 rules。
 
+每一个 loader 都是一个对象，使用 ! 号拼接的写法。Loader 的工作方式 是从右向左执行，链式地按照顺序进行编译。loader 链中的第一个返回值给下一个 loader，在最后一个 loader，返回所预期的结果。
+
+loader 可以是同步或异步函数，也可使用 options 对象去接受配置参数。
+
 在 webpack 的配置中 loader 有两个目标：
 
   - 识别出应该被对应的 loader 进行转换的那些文件。(使用 test 属性)
@@ -52,32 +56,8 @@ loader 被用于转换某些类型的模块，而插件则可以用于执行范�
 * `webpack -w`  watch文件，实时进行打包更新
 
 
-## webpack 案例
+[webpack 配置案例1](./example/webpack.config.js)
 
-```js
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // 通过 npm 安装
-const webpack = require('webpack'); // 用于访问内置插件
-const path = require('path');
-
-const config = {
-entry: './path/to/my/entry/file.js',
-output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'my-first-webpack.bundle.js'
-},
-module: {
-    rules: [
-    { test: /\.txt$/, use: 'raw-loader' }
-    ]
-},
-plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
-    new HtmlWebpackPlugin({template: './src/index.html'})
-]
-};
-
-module.exports = config;
-```
-
+[webpack 配置案例2](./example/standard-config.js)
 
 [webpack 参照引用](https://doc.webpack-china.org/concepts/)
