@@ -39,6 +39,8 @@
 
     - HotModuleReplacementPlugin - 热更新插件
 
+    - webpack.DllPlugin 提供分离打包的方式，可以极大提高构建时间性能
+
   * **5、 目录/文件拷贝之:**
 
     - CopyWebpackPlugin - 目录及文件拷贝
