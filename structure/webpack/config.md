@@ -40,6 +40,18 @@
 
     - loaders: []
 
+* devtool
+
+    生成 sourcemap 的功能。
+
+    - source-map 此选项具有最完备的source map，但会减慢打包的速度；
+
+    - cheap-module-source-map 生成一个不带列映射的map
+
+    - eval-source-map 使用eval打包源文件模块，生成一个完整的source map。
+
+    - cheap-module-eval-source-map 这是最快生成source map的方法，生成后的Source Map 会和打包后的 JavaScript 文件同行显示，但没有列映射，所以慎用
+
 * resolve.extensions
 
     > 扩展名，import时可以不加的后缀名
