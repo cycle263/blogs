@@ -12,7 +12,18 @@
 
   DefinePlugin - 自由变量注入
 
-  ProvidePlugin - 模块变量标示符注入
+  ProvidePlugin - 模块变量标示符注入，自动加载模块，全局使用变量
+
+  ```js
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery'
+  })
+  // in a module
+  $('#item'); // 有效
+  jQuery('#item'); // 有效
+  // $和jQuery 自动被设置为 "jquery" 输出的内容
+  ```
 
   3、 文件抽取之:
 
