@@ -4,7 +4,7 @@
 
 webpack简单点来说就就是一个配置文件，所有的魔力都是在这一个文件中发生的。这个配置文件主要分为三大块:  
 
-* **1、entry入口文件** (string|Object<string>)
+* **1、entry入口文件** [string|Object string]
 
 让webpack用哪个文件作为项目的入口, 指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。
 ```js
