@@ -58,6 +58,8 @@
 
   **[ASCII、Unicode 扩展阅读](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)**
 
+  **[ASCII <-> Unicode <-> 中文](http://tool.chinaz.com/Tools/Unicode.aspx)**
+
 <br /><br />
 
 ## escape vs encodeURI(unicode vs utf-8)

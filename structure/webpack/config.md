@@ -52,6 +52,20 @@
 
     - cheap-module-eval-source-map 这是最快生成source map的方法，生成后的Source Map 会和打包后的 JavaScript 文件同行显示，但没有列映射，所以慎用
 
-* resolve.extensions
+* resolve
 
-    > 扩展名，import时可以不加的后缀名
+    - extensions: [".js", ".html", ".css", ".txt","less","ejs","json"], 自动扩展文件后缀名，import时可以不加的后缀名
+
+    - alias: { Temp: path.resolve(__dirname, "src/templates/") }， 模块别名定义，直接 require('AppStore') 即可,方便后续直接引用别名
+
+* devServer
+
+    - contentBase: "./dist", 本地服务器所加载的页面所在的目录
+    
+    - historyApiFallback: true, 再找不到文件的时候默认指向index.html
+    
+    - inline: true, 当源文件改变时会自动刷新页面
+    
+    - hot: true, 热加载开启
+    
+    - port:8080, 设置默认监听端口

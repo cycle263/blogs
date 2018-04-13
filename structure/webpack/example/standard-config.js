@@ -15,6 +15,7 @@ module.exports =  {
   plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery',
+      jQuery: 'jquery',
       _: 'underscore',
       React: 'react'
     }),
