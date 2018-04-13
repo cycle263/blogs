@@ -1,3 +1,4 @@
+```js
 var webpack = require("webpack");
 var DefinePlugin = require('webpack/lib/DefinePlugin');
 module.exports =  {
@@ -45,3 +46,4 @@ module.exports =  {
     }]
   }
 };
+```

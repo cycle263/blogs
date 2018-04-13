@@ -1,3 +1,4 @@
+```js
 var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");    //需要本目录安装webpack
@@ -48,3 +49,4 @@ module.exports = {
         })
     ]
 };
+```
