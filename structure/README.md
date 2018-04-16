@@ -2,9 +2,9 @@
 
 * [webapck](webpack)
 
+  - [webpack入门](./webpack)
   - [webpack深入使用(一)](./webpack/advanced)
   - [webpack深入使用(二)](./webpack/advanced1)
-  - [webpack入门](./webpack)
   - [webpack配置详解](./webpack/config)
   - [webpack之loader详解](./webpack/Loader)
   - [webpack之plugins详解](./webpack/plugins)
