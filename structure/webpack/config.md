@@ -8,7 +8,7 @@
 
 * **entry配置**
 
-    - entry: 入口 [String / Array / Object]    // 支持三种类型  
+    - entry: 入口 [String / Array / Object]   支持三种类型  
 
     ```js
     entry: './src/index.js',  
@@ -22,7 +22,7 @@
 
     - filename 输出的文件名称，多个入口时，可使用[name]替换，也可以加入[hash]
 
-    - chunkFilename 按需加载模块时输出的文件名称，'[name].[hash:base64:5].js'
+    - chunkFilename 按需加载模块时输出的文件名称，`[name].[hash:base64:5].js`
 
     - path 绝对路径，所有输出文件的目标路径
 
@@ -56,7 +56,7 @@
 
     - extensions: [".js", ".html", ".css", ".txt","less","ejs","json"], 自动扩展文件后缀名，import时可以不加的后缀名
 
-    - alias: { Temp: path.resolve(__dirname, "src/templates/") }， 模块别名定义，直接 require('AppStore') 即可,方便后续直接引用别名
+    - alias: `{ Temp: path.resolve(__dirname, "src/templates/") }`， 模块别名定义，直接 require('AppStore') 即可,方便后续直接引用别名
 
 * **devServer**
 

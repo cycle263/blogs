@@ -1,4 +1,4 @@
-## webpack 深入使用（一）
+## webpack 深入使用
 
 > web静态资源包括（js、css、html、image、font等）都可以划分成小模块，从而达到重复利用，按需加载，便于管理的目的。
 
