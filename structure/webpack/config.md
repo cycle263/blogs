@@ -6,9 +6,9 @@
     };
     ```
 
-* entry配置
+* **entry配置**
 
-    - entry: 入口 [String | Array | Object]    //支持三种类型  
+    - entry: 入口 [String / Array / Object]    // 支持三种类型  
 
     ```js
     entry: './src/index.js',  
@@ -18,7 +18,7 @@
     },
     ```
 
-* output配置
+* **output配置**
 
     - filename 输出的文件名称，多个入口时，可使用[name]替换，也可以加入[hash]
 
@@ -28,7 +28,7 @@
 
     - publicPath 输出解析文件的目录，url 相对于 HTML 页面。publicPath 并不会对生成文件的路径造成影响，主要是对你的页面里面引入的资源的路径做对应的补全，常见的就是css文件里面引入的图片。因为输出目录和开发目录的结构的变化，如果不设置publicPath,就会造成图片路径找不到
 
- * module.loaders
+ * **module.loaders**
 
     - test: 必须满足的条件
 
@@ -40,7 +40,7 @@
 
     - loaders: []
 
-* devtool
+* **devtool**
 
     生成 sourcemap 的功能。
 
@@ -52,13 +52,13 @@
 
     - cheap-module-eval-source-map 这是最快生成source map的方法，生成后的Source Map 会和打包后的 JavaScript 文件同行显示，但没有列映射，所以慎用
 
-* resolve
+* **resolve**
 
     - extensions: [".js", ".html", ".css", ".txt","less","ejs","json"], 自动扩展文件后缀名，import时可以不加的后缀名
 
     - alias: { Temp: path.resolve(__dirname, "src/templates/") }， 模块别名定义，直接 require('AppStore') 即可,方便后续直接引用别名
 
-* devServer
+* **devServer**
 
     - contentBase: "./dist", 本地服务器所加载的页面所在的目录
     
