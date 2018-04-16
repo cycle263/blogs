@@ -12,9 +12,9 @@
 
     ```js
     entry: './src/index.js',  
-    entry: ['./src/index.js'],  //多个打包到一个
+    entry: ['./src/index.js'],  // 多个打包到一个，添加多个彼此不互相依赖的文件，可以使用数组格式
     entry: {
-        index: './src/index.js',    //多个打包多个如可文件
+        index: './src/index.js',    // 多个打包多个如可文件
     },
     ```
 

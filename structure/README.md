@@ -4,6 +4,11 @@
 
   - [webpack深入使用(一)](./webpack/advanced)
   - [webpack深入使用(二)](./webpack/advanced1)
+  - [webpack入门](./webpack)
+  - [webpack配置详解](./webpack/config)
+  - [webpack之loader详解](./webpack/Loader)
+  - [webpack之plugins详解](./webpack/plugins)
+  - [webpack之chunks详解](./webpack/chunks)
 
 * [babel](babel) 转码器使用详解
 

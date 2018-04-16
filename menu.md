@@ -30,6 +30,11 @@
     - webpack
         + [webpack深入使用(一)](./structure/webpack/advanced)
         + [webpack深入使用(二)](./structure/webpack/advanced1)
+        + [webpack入门](./structure/webpack)
+        + [webpack配置详解](./structure/webpack/config)
+        + [webpack之loader详解](./structure/webpack/Loader)
+        + [webpack之plugins详解](./structure/webpack/plugins)
+        + [webpack之chunks详解](./structure/webpack/chunks)
     - gulp、grunt
     - [git入门](./team/git)
     - [git进阶详解](./team/git/advanced)
