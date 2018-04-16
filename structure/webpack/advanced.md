@@ -99,4 +99,4 @@
     允许`npm run build`, 发觉build结构为bundle.js和vendors.js
 
 
-[webpack 深入使用(二)](./advenced1)
+[webpack 深入使用(二)](./advanced1)
