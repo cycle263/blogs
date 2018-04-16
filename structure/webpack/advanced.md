@@ -28,7 +28,7 @@
 
   jQuery不支持AMD和CommonJS格式，webpack提供几种方法支持引入插件
 
-  - 1、webpack.ProvidePlugin  
+  - webpack.ProvidePlugin  
 
     ```js
     plugins: [{
@@ -40,7 +40,7 @@
     }]
     ```
 
-  - 2、imports-loader  
+  - imports-loader  
 
     `npm install imports-loader --save-dev` 先安装这个loader, 然后在入口js中引入  
 
@@ -56,7 +56,7 @@
     });
     ```
 
-  - 3、直接安装npm包  
+  - 直接安装npm包  
 
   先安装jquery, 然后直接引入`import $ from 'jquery';`
 
