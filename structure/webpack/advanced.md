@@ -2,6 +2,22 @@
 
 > web静态资源包括（js、css、html、image、font等）都可以划分成小模块，从而达到重复利用，按需加载，便于管理的目的。
 
+* **入口enter**
+
+  ```js
+  {
+    entry: {    // 打包成三个js
+      vendor: ['jquery', 'react', 'react-dom'],   // 尾部叠加
+      index: './src/index.js',
+      profile: './src/common/profile.js'
+    },
+    output: {
+      path: '/dist',
+      filename: "[name][chunkhash:base64:5].js"
+    }
+  }
+  ```
+
 * **启用source-map**  
 
   代码合并压缩后，不利于调试和排错，开启source-map后，出现错误会直接映射到出错的代码位置
@@ -117,8 +133,9 @@
   output: {
     path: BUILD_PATH,
     //根据entry的入口文件名称生成多个js文件
-    filename: '[name].js'
-  }
+    filename: '[name].js',
+    publicPath: 'https://www.companyCDN.com'  // 用于在生产模式下更新内嵌到css、html文件里的url值
+  },
   plugins: [
     //创建了两个HtmlWebpackPlugin的实例，生成两个页面
     new HtmlwebpackPlugin({

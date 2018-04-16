@@ -26,7 +26,7 @@
 
     - babel-loader
 
-    - file-loader
+    - file-loader 把源文件迁移到指定的目录（可以简单理解为从源文件目录迁移到build目录），并返回新文件的路径（简单拼接而成）。
 
-    - url-loader
+    - url-loader 将小图片过滤转base64 url，比较大的图片,使用base64就不适合了，编码会和html混在一起，一方面可读性差，另一方面加大了html页面的大小，反而加大了下载页面的大小。
 
