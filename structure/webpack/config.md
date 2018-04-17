@@ -72,4 +72,4 @@
 
 * **其他**
 
-    - env: 环境字段
+    - env: 环境字段，取自node的process.env.NODE_ENV，包括：test, dev, production
