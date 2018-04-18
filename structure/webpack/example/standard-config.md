@@ -7,7 +7,7 @@ module.exports =  {
   entry: './index.js',
   devtool: 'source-map',
   output: {
-    path: path.resolve(process.cwd(),'dist/'),
+    path: path.resolve(process.cwd(),`dist/${Date.now()}/`),
     filename: '[name].js'
   },
   resolve: {

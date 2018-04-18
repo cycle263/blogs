@@ -24,9 +24,21 @@
 
     - chunkFilename 按需加载模块时输出的文件名称，`[name].[hash:base64:5].js`
 
-    - path 绝对路径，所有输出文件的目标路径
+    - path 建议配置成绝对路径，所有输出文件的目标路径
 
     - publicPath 输出解析文件的目录，url相对于HTML页面。publicPath并不会对生成文件的路径造成影响，主要是对你的页面里面引入的资源的路径做对应的补全，常见的就是css文件里面引入的图片。因为输出目录和开发目录的结构的变化，如果不设置publicPath，就会造成图片路径找不到。
+
+    **静态资源最终访问路径 = output.publicPath + 资源loader或插件等配置路径**
+
+    ```js
+    output.publicPath = '/static/';
+    // 图片 url-loader 配置
+    {
+        name: 'img/[name].[ext]'
+    }
+    // 那么图片最终的访问路径为
+    output.publicPath + 'img/[name].[ext]' = '/static/img/[name].[ext]'
+    ```
 
  * **module.loaders**
 
