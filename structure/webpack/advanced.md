@@ -13,7 +13,7 @@
     },
     output: {
       path: '/dist',
-      filename: "[name][chunkhash:base64:5].js"
+      filename: "[name][chunkhash:base64:5].js"   // 缓存策略，非覆盖式发布
     }
   }
   ```
