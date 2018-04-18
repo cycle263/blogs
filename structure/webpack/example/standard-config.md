@@ -8,7 +8,8 @@ module.exports =  {
   devtool: 'source-map',
   output: {
     path: path.resolve(process.cwd(),`dist/${Date.now()}/`),
-    filename: '[name].js'
+    filename: '[name].js',
+    publicPath: 'http://cdn.com/'
   },
   resolve: {
     alias:{ jquery: process.cwd()+'/src/lib/jquery.js', }

@@ -16,17 +16,28 @@
 
 * 常见的loader
 
-    - style-loader
+  - style-loader
 
-    - css-loader
+  - css-loader
 
-    - postcss-loader
+  - postcss-loader
 
-    - less-loader
+  - less-loader
 
-    - babel-loader
+  - babel-loader
 
-    - file-loader 把源文件迁移到指定的目录（可以简单理解为从源文件目录迁移到build目录），并返回新文件的路径（简单拼接而成）。
+  - file-loader 把源文件迁移到指定的目录（可以简单理解为从源文件目录迁移到build目录），并返回新文件的路径（简单拼接而成）。
 
-    - url-loader 将源文件转换成DataUrl(声明文件mimetype的base64编码)。比较大的图片,使用base64就不适合了，编码会和html混在一起，一方面可读性差，另一方面加大了html页面的大小，反而加大了下载页面的大小。
+  - url-loader 将源文件转换成DataUrl(声明文件mimetype的base64编码)。比较大的图片,使用base64就不适合了，编码会和html混在一起，一方面可读性差，另一方面加大了html页面的大小，反而加大了下载页面的大小。
+
+  ```js
+  module: {
+　　loaders: [{
+　　　test: /\.(png|jpg|gif)$/,
+     limit: 8192, // 大于8192字节的正常打包，小于8192字节的以base64的方式引入
+     name: images/[hash:8]-[name].[ext],
+　　　loader: 'url-loader' 
+　　}]
+  }
+  ```
 
