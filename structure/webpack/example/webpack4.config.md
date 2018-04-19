@@ -2,12 +2,11 @@
 // webpack init
 const webpack = require('webpack');
 const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const env = process.env.WEBPACK_ENV;
-console.log('env: ', env);
+console.log('environment: ', env);
 
 module.exports = {
   entry: {
@@ -67,7 +66,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new UglifyJSPlugin(),
     new CleanWebpackPlugin('dist'),
     new ExtractTextPlugin('[name]-style.[hash:6].css'),
     new HtmlWebpackPlugin({

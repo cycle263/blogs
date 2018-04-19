@@ -56,7 +56,11 @@
 
     生成 sourcemap 的功能。
 
-    - source-map 此选项具有最完备的source map，但会减慢打包的速度；
+    - source-map 最原始的 source-map 实现方式，其实现是打包代码同时创建一个新的 sourcemap 文件， 并在打包文件的末尾添加 //# sourceURL 注释行告诉 JS 引擎文件在哪儿。此选项具有最完备的source map 文件，但会减慢打包的速度
+
+    - hidden-source-map 和 source-map 一样，但不会在 bundle 末尾追加注释
+
+    - inline-source-map 为打包前的每一个文件添加 sourcemap 的 DataUrl
 
     - cheap-module-source-map 生成一个不带列映射的map
 
