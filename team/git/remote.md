@@ -38,7 +38,7 @@
 
 * 新增github项目
 
-    ```
+    ```js
     git init
     git add README.md
     git commit -m "first commit"
@@ -53,3 +53,13 @@
     git remote add origin https://github.com/cycle263/recordAudio.git
     git push -u origin master
     ```
+
+    - github新建repository: repo_name
+
+    - git remote add origin https://github.com/cycle263/repo_name.git
+
+    - git pull
+
+    - git branch --set-upstream-to=origin/master master
+
+    - git add --all && git commit -m "all" && git push
