@@ -56,10 +56,26 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function () {
+    // alert('test ready');
     $('body').on('click', '.signature', function(){
       $(this).addClass('editabled').scrollTop(9999);
     });
+
+    window.onbeforeunload = function (e) {
+      if (!confirm('离开当前页面?')) return;
+  　　 var e = window.event || e;
+  　　 e.returnValue = ("确定离开当前页面吗？");
+      console.log('离开当前页面');
+    }
   });
+
+  window.addEventListener('beforeunload', function (event) { 
+    if (!confirm('离开当前页面?')) return;
+  });
+
+  window.onunload = function(){
+    alert('unoload');
+  }
 
   window.onerror = function (msg, url, lineNo, columnNo, error) {
     var string = msg.toLowerCase();

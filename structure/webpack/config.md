@@ -84,4 +84,4 @@
 
 * **其他**
 
-    - env: 环境字段，取自node的process.env.NODE_ENV，包括：test, dev, production
+    - env: 环境字段，取自node的process.env.NODE_ENV，包括：test, dev, production，也可以在package.json的scripts里设置。`"build": "NODE_ENV=production webpack --mode production"`
