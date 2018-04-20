@@ -56,7 +56,7 @@
 
 * **3、 文件抽取之:**
 
-  - file-loader - 传送font等文件
+  - DllPlugin 用某种方法实现了拆分 bundles，同时还大大提升了构建的速度。
 
   - ExtractTextPlugin - 抽取css文件
 

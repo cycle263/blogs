@@ -16,15 +16,28 @@
 
 * 常见的loader
 
-  - style-loader
+  - html-loader 导出 HTML 为字符串，需要引用静态资源
 
-  - css-loader
+  - style-loader 将模块的导出作为样式添加到 DOM 中
 
-  - postcss-loader
+  - css-loader 解析 CSS 文件后，使用 import 加载，并且返回 CSS 代码
 
-  - less-loader
+  - postcss-loader 使用 PostCSS 加载和转译 CSS/SSS 文件。另外，autoprefixer是postcss的一个插件, 在新的css属性上加前缀，如：'-webkit-'
 
-  - babel-loader
+  - less-loader 加载和转译 LESS 文件
+
+  - babel-loader 加载 ES2015+ 代码，然后使用 Babel 转译为 ES5
+
+    ```js
+    {
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      options: {
+        presets: ['env', 'react', 'es2017']
+      }
+    }
+    ```
 
   - file-loader 把源文件迁移到指定的目录（可以简单理解为从源文件目录迁移到build目录），并返回新文件的路径（简单拼接而成）。
 

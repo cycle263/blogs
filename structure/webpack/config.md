@@ -50,7 +50,9 @@
 
     - loader: 用 "!" 隔开多个loader
 
-    - loaders: []
+    - loaders: [], 多个loader，array string
+
+    - use: [{loader: 'loader', options: {}}]
 
 * **devtool**
 
@@ -72,7 +74,7 @@
 
     - extensions: [".js", ".html", ".css", ".txt","less","ejs","json"], 自动扩展文件后缀名，import时可以不加的后缀名
 
-    - alias: `{ Temp: path.resolve(__dirname, "src/templates/") }`， 模块别名定义，直接 require('AppStore') 即可,方便后续直接引用别名
+    - alias: `{ Temp: path.resolve(__dirname, "src/templates/") }`， 模块别名定义，直接 require('AppStore') 即可, 方便后续直接引用别名
 
 * **devServer**
 
