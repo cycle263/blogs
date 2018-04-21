@@ -26,3 +26,5 @@
 * git config深入研究
 
 * flex-grow, flex-shrink详解
+
+* babel详解 [babel中文网](https://babeljs.cn/learn-es2015/)
