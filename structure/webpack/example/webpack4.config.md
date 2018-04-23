@@ -3,7 +3,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');   // 提取CSS文件
-const HtmlWebpackPlugin = require('html-webpack-plugin');   // HTML插件
+const HtmlWebpackPlugin = require('html-webpack-plugin');   // 采用模板引擎形式注入到HTML
 const CleanWebpackPlugin = require('clean-webpack-plugin');   // build前清理目录插件
 const env = process.env.WEBPACK_ENV;  // 自定义的webpack环境变量
 
