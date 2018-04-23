@@ -104,7 +104,7 @@
     }
     ```
 
-  - 添加CommonsChunkPlugin
+  - 添加CommonsChunkPlugin，webpack4使用optimization.splitChunks替换CommonsChunkPlugin，具体参见[webpack4配置案例](./example/webpack4.config)
     ```js
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
