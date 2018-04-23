@@ -60,4 +60,6 @@ webpack简单点来说就就是一个配置文件，所有的魔力都是在这�
 
 [webpack 配置案例2](./example/standard-config)
 
+[webpack4 配置案例](./example/webpack4.config)
+
 [webpack 参照引用](https://doc.webpack-china.org/concepts/)
