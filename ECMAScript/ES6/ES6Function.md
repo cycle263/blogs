@@ -2,7 +2,7 @@
 
 * **1、函数参数的默认值**
 
-  ```
+  ```js
   // 写法一
   if (typeof y === 'undefined') {
     y = 'World';
@@ -24,12 +24,25 @@
   ES6引入rest参数（形式为“...变量名”），用于获取函数的多余参数，这样就不需要使用arguments对象了。  
   rest参数中的变量代表一个数组，所以数组特有的方法都可以用于这个变量。函数的length属性，不包括rest参数。  
   rest参数之后不能再有其他参数（即只能是最后一个参数），否则会报错。  
+  ```js
+  function f(x, ...y) {
+    // y是一个数组
+    return x * y.length;
+  }
+  f(3, "hello", true) == 6
+  ```
 
 * **3、扩展运算符**  
 
   扩展运算符（spread）是三个点（...）。它好比rest参数的逆运算，将一个数组转为用逗号分隔的参数序列。该运算符主要用于函数调用。何类似数组的对象，都可以用扩展运算符转为真正的数组。  
   如果将扩展运算符用于数组赋值(也就是数组解构)，只能放在参数的最后一位，否则会报错。 
-  ```
+  ```js
+  function f(x, y, z) {
+    return x + y + z;
+  }
+  // 将数组中的每个元素展开为函数参数
+  f(...[1,2,3]) == 6
+
   var students = ['Abby', 'Andy', 'Jane', 'Tom'];
   var somestudents, otherStudents;
   [...somestudents, otherStudents] = students ; //Uncaught SyntaxError: Rest element must be last element
@@ -48,7 +61,7 @@
   ES6允许使用“箭头”（=>）定义函数。var f = v => v;  等于 var f = function(v) {return v;};  
   如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分。  
   如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回。  
-  ```
+  ```js
   var sum = (num1, num2) => { return num1 + num2; }  
   ```
   由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号。  
@@ -64,7 +77,7 @@
 * **5、函数绑定**  
 
   函数绑定运算符是并排的两个双引号（::），双引号左边是一个对象，右边是一个函数。该运算符会自动将左边的对象，作为上下文环境（   即this对象），绑定到右边的函数上面。  
-  ```
+  ```js
   foo::bar(...arguments);
   i// 等同于
   bar.apply(foo, arguments);
@@ -84,7 +97,7 @@
   函数调用自身，称为递归。如果尾调用自身，就称为尾递归。  
   递归非常耗费内存，因为需要同时保存成千上百个调用帧，很容易发生“栈溢出”错误（stack overflow）。但对于尾递归来说，由于只存在一个调用帧，所以永远不会发生“栈溢出”错误。  
   
-  ```
+  ```js
   function factorial(n, total) {
     if (n === 1) return total;
     return factorial(n - 1, n * total);
@@ -94,7 +107,7 @@
 * **8、柯里化** 
 
   函数式编程有一个概念，叫做柯里化（currying），意思是将多参数的函数转换成单参数的形式。  
-  ```
+  ```js
   function currying(fn, n) {
     return function (m) {
       return fn.call(this, m, n);
@@ -106,7 +119,7 @@
   递归本质上是一种循环操作。纯粹的函数式编程语言没有循环操作命令，所有的循环都用递归实现。
 
 * **9、调用栈(call-stack) vs 调用点(call-site) vs 调用帧(call-frame)**
-  ```
+  ```js
   function baz() {
       // 调用栈是: baz
       // 我们的调用点是 global scope（全局作用域）

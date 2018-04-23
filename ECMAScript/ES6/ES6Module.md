@@ -2,6 +2,25 @@
 
 > 每一个ES6模块都是一个包含JS代码的文件，模块本质上就是一段脚本.
 
+```js
+// lib/math.js
+export function sum(x, y) {
+  return x + y;
+}
+export var pi = 3.141593;
+
+// lib/mathplusplus.js
+export * from "lib/math";
+export var e = 2.71828182846;
+export default function(x) {
+    return Math.exp(x);
+}
+
+// app.js
+import exp, {pi, e} from "lib/mathplusplus";
+console.log("e^π = " + exp(pi));
+```
+
 * **模块和脚本的区别：**
 
     - 在ES6模块中，无论你是否加入“use strict;”语句，默认情况下模块都是在严格模式下运行。
@@ -58,7 +77,7 @@
     ```
 
 
-* JS引擎运行模块的步骤
+* **JS引擎运行模块的步骤**
 
     - 语法解析：阅读模块源代码，检查语法错误。
 
@@ -70,6 +89,30 @@
 
     - 运行时：最终，在每一个新加载的模块体内执行所有语句。此时，导入的过程就已经结束了，所以当执行到达有一行import声明的代码的时候……什么都没发生！
 
+* **模块加载器支持以下功能**
+
+    - 动态加载（Dynamic loading）
+    - 状态一致性（State isolation）
+    - 全局空间一致性（Global namespace isolation）
+    - 编译钩子（Compilation hooks）
+    - 嵌套虚拟化（Nested virtualization）
+
+    ```js
+    // 动态加载 – ‘System’ 是默认的加载器
+    System.import("lib/math").then(function(m) {
+        alert("2π = " + m.sum(m.pi, m.pi));
+    });
+
+    // 创建执行沙箱 – new Loaders
+    var loader = new Loader({
+        global: fixup(window) // replace ‘console.log’
+    });
+    loader.eval("console.log(\"hello world!\");");
+
+    // 直接操作模块的缓存
+    System.get("jquery");
+    System.set("jquery", Module({$: $})); // WARNING: not yet finalized
+    ```
 
 ## 其他模块写法
 
