@@ -1,10 +1,10 @@
 ## webpack 配置
 
-    ```js
-    module.exports = {
-      // configuration
-    };
-    ```
+```js
+module.exports = {
+    // configuration
+};
+```
 
 * **entry配置**
 
