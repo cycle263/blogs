@@ -3,15 +3,15 @@
 // webpack init
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const env = process.env.WEBPACK_ENV;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');   // 提取CSS文件
+const HtmlWebpackPlugin = require('html-webpack-plugin');   // HTML插件
+const CleanWebpackPlugin = require('clean-webpack-plugin');   // build前清理目录插件
+const env = process.env.WEBPACK_ENV;  // 自定义的webpack环境变量
 
 module.exports = {
   entry: {
     index: path.resolve(__dirname, 'src/index.js'),
-    vendors: ['react', 'react-dom', 'jquery']
+    vendors: ['react', 'react-dom', 'jquery']   // 第三方js，变动少单独打包
   },
   output: {
     filename: '[name].[chunkhash:6].js',
@@ -23,11 +23,11 @@ module.exports = {
   performance: {
     hints: false 	// 关闭warning日志信息
   },
-  devServer: {
+  devServer: {    // 开发环境本地服务启动
     contentBase: path.resolve(__dirname)
   },
   resolve: {
-    alias: {
+    alias: {  // 别名定义
       imagesPath: path.resolve(__dirname, "src/assets/images/")
     }
   },
@@ -65,7 +65,7 @@ module.exports = {
     })
   ],
   optimization: {
-    splitChunks: {
+    splitChunks: {    // 分离第三方js
       chunks: 'initial',
       cacheGroups: {
         vendor: {
