@@ -45,12 +45,12 @@
 
   ```js
   module: {
-　　loaders: [{
-　　　test: /\.(png|jpg|gif)$/,
-     limit: 8192, // 大于8192字节的正常打包，小于8192字节的以base64的方式引入
-     name: images/[hash:8]-[name].[ext],
-　　　loader: 'url-loader' 
-　　}]
+    loaders: [{
+      test: /\.(png|jpg|gif)$/,
+      limit: 8192, // 大于8192字节的正常打包，小于8192字节的以base64的方式引入
+      name: images/[hash:8]-[name].[ext],
+      loader: 'url-loader' 
+    }]
   }
   ```
 
