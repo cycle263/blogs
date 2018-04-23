@@ -1,11 +1,5 @@
 ## webpack 配置
 
-```js
-module.exports = {
-    // configuration
-};
-```
-
 * **entry配置**
 
     - entry: 入口 [String / Array / Object]   支持三种类型  
