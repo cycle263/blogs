@@ -106,7 +106,7 @@
 
     简单说，ArrayBuffer对象代表原始的二进制数据，TypedArray视图用来读写简单类型的二进制数据，DataView视图用来读写复杂类型的二进制数据。
 
-  * **ECMAScript6**
+  * **[ECMAScript6](./ECMAScript/ES6/)**
 
     - ECMAScript6的实现进度  
 
@@ -114,7 +114,7 @@
 
     - ES6的转码
 
-      + Babel转码器，配置文件.babelrc
+      + [Babel转码器](./structure/babel/)，配置文件.babelrc
 
     - [ES6特性详解](./ECMAScript)
 
