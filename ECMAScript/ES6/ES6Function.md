@@ -20,8 +20,21 @@
   - 如果传入undefined，将触发该参数等于默认值，null则没有这个效果。
   
   - 指定了默认值以后，函数的length属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，length属性将失真。 `(function(a, b, c = 5){}).length // 2  `
-  
+
   - 参数变量是默认声明的，所以不能用let或const再次声明。另外，参数默认值是惰性求值的。
+
+  - 一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）。等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的。
+
+  ```js
+  function throwIfMissing() {
+    throw new Error('Missing parameter');
+  }
+  function foo(mustBeProvided = throwIfMissing()) {
+    return mustBeProvided;
+  }
+  foo()
+  // Error: Missing parameter
+  ```
   
 * **2、rest参数**  
 
@@ -34,6 +47,13 @@
     return x * y.length;
   }
   f(3, "hello", true) == 6
+
+  // arguments变量的写法
+  function sortNumbers() {
+    return Array.prototype.slice.call(arguments).sort();  // arguments对象不是数组，需要转换
+  }
+  // rest参数的写法
+  const sortNumbers = (...numbers) => numbers.sort();
   ```
 
 * **3、扩展运算符**  
