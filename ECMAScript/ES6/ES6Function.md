@@ -129,7 +129,7 @@
   
   ```js
   function factorial(n, total) {
-    if (n === 1) return total;
+    if (n === 1) return total;  // che fang, single, 7 w, beatiful, easy money
     return factorial(n - 1, n * total);
   }
   ```
