@@ -1,4 +1,4 @@
-* 1、Generator函数  
+## Generator函数
 
   Generator函数是ES6提供的一种异步编程解决方案，语法行为与传统函数完全不同。  
   可以把它理解成一个函数的内部状态的遍历器（也就是说，Generator函数是一个状态机）。它每调用一次，就进入下一个内部状态。Generator函数可以控制内部状态的变化，依次遍历这些状态。  
@@ -15,30 +15,30 @@
   
   调用Generator函数，返回一个部署了Iterator接口的遍历器对象，用来操作内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。  
   
-* 2、yield  
+* yield  
 
   由于Generator函数返回的遍历器，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield语句就是暂停标志。  
   next方法可以带一个参数，该参数就会被当作上一个yield语句的返回值。第一次使用next方法时，不能带有参数。V8引擎直接忽略第一次使用next方法时的参数。Generator函数从暂停状态到恢复运行，它的上下文状态（context）是不变的。通过next方法的参数，就有办法在Generator函数开始运行之后，继续向函数体内部注入值。  
   另外需要注意，yield语句不能用在普通函数中，否则会报错。  
   
-* 3、for...of  
+* for...of  
 
   使用for...of语句时不需要使用next方法。  
   next方法的返回对象的done属性为true，for...of循环就会中止，且不包含该返回对象,因此的return的返回值不会返回。
   
-* 4、throw  
+* throw  
 
   Generator函数可以在函数体外抛出错误，然后在函数体内捕获。  
   用遍历器的throw方法抛出的，而不是用throw命令抛出的。后者只能被函数体外的catch语句捕获。  
   如果遍历器函数内部没有部署try...catch代码块，那么throw方法抛出的错误，将被外部try...catch代码块捕获。  
   如果遍历器函数内部部署了try...catch代码块，那么遍历器的throw方法抛出的错误，不影响下一次遍历，否则遍历直接终止。  
   
-* 5、yield*语句  
+* yield*语句  
 
   如果yield命令后面跟的是一个遍历器，需要在yield命令后面加上星号，表明它返回的是一个遍历器。这被称为yield*语句。  
   yield*语句等同于在Generator函数内部，部署一个for...of循环。
 
-* 6、作为对象属性的Generator函数  
+* 作为对象属性的Generator函数  
 
   ```
   let obj = {
@@ -48,11 +48,11 @@
     * myGeneratorMethod() {
   ```
 
-* 7、Generator与状态机  
+* Generator与状态机  
 
   Generator是实现状态机的最佳结构。更简洁，更安全（状态不会被非法篡改）、更符合函数式编程的思想，在写法上也更优雅。
   
-* 8、Generator的应用  
+* Generator的应用  
 
   - 1.异步操作的同步化表达
   - 2.控制流管理

@@ -9,3 +9,4 @@
 * [ES6 Proxy深入理解](./ES6Proxy)
 * [ES6 Array深入理解](./ES6Array)
 * [ES6 Function详解](./ES6Function)
+* [ES6 Generator详解](./ES6Generator)
