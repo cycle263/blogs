@@ -162,6 +162,17 @@
 
   函数式编程有一个概念，叫做柯里化（currying），意思是将多参数的函数转换成单参数的形式。  
   ```js
+  // 阶乘尾调优化写法
+  function tailFactorial(n, total) {
+    if (n === 1) return total;
+    return tailFactorial(n - 1, n * total);
+  }
+  function factorial(n) {
+    return tailFactorial(n, 1);
+  }
+  factorial(5) // 120
+
+  // 柯里化优化写法
   function currying(fn, n) {
     return function (m) {
       return fn.call(this, m, n);
