@@ -115,8 +115,7 @@
   
 * **6、尾调用**  
 
-  尾调用（Tail Call）是函数式编程的一个重要概念，就是指某个函数的最后一步是调用另一个函数。  
-  尾调用不一定出现在函数尾部，只要是最后一步操作即可。  
+  尾调用（Tail Call）是函数式编程的一个重要概念，就是指某个函数的最后一步是调用另一个函数。尾调用不一定出现在函数尾部，只要是最后一步操作即可。  
 
   我们知道，函数调用会在内存形成一个“调用记录”，又称“调用帧”（call frame），保存调用位置和内部变量等信息。如果在函数A的内部调用函数B，那么在A的调用帧上方，还会形成一个B的调用帧。等到B运行结束，将结果返回到A，B的调用帧才会消失。如果函数B内部还调用函数C，那就还有一个C的调用帧，以此类推。所有的调用帧，就形成一个“调用栈”（call stack）。  
     
@@ -132,6 +131,31 @@
     if (n === 1) return total;  // che fang, single, 7 w, beatiful, easy money
     return factorial(n - 1, n * total);
   }
+  factorial(5) // 120
+
+  // 尾递归优化
+  function factorial(n, total) {
+    if (n === 1) return total;
+    return factorial(n - 1, n * total);
+  }
+  factorial(5, 1) // 120
+
+  function Fibonacci (n) {
+    if ( n <= 1 ) {return 1};
+    return Fibonacci(n - 1) + Fibonacci(n - 2);
+  }
+  Fibonacci(10) // 89
+  Fibonacci(100) // 堆栈溢出
+  Fibonacci(500) // 堆栈溢出
+
+  // 尾递归优化
+  function Fibonacci2 (n , ac1 = 1 , ac2 = 1) {
+    if( n <= 1 ) {return ac2};
+    return Fibonacci2 (n - 1, ac2, ac1 + ac2);
+  }
+  Fibonacci2(100) // 573147844013817200000
+  Fibonacci2(1000) // 7.0330367711422765e+208
+  Fibonacci2(10000) // Infinity
   ```
   
 * **8、柯里化** 
