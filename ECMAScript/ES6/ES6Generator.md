@@ -120,9 +120,113 @@
   
 * **throw** 
 
-  Generator函数可以在函数体外抛出错误，然后在函数体内捕获。用遍历器的throw方法抛出的，而不是用throw命令抛出的。后者只能被函数体外的catch语句捕获。  
+  Generator函数可以在函数体外抛出错误，然后在函数体内捕获。用遍历器的throw方法抛出的`generator.throw('a');`，而不是用throw命令抛出的`throw new Error('a');`。后者只能被函数体外的catch语句捕获。throw命令与g.throw方法是无关的，两者互不影响。 
 
   如果遍历器函数内部没有部署try...catch代码块，那么throw方法抛出的错误，将被外部try...catch代码块捕获。如果遍历器函数内部部署了try...catch代码块，那么遍历器的throw方法抛出的错误，不影响下一次遍历，否则遍历直接终止。  
+
+* **yield* 表达式**
+
+  在一个 Generator 函数里面执行另一个 Generator 函数。
+
+  ```js
+  function* foo() {
+    yield 'a';
+    yield 'b';
+  }
+  function* bar() {
+    yield 'x';
+    yield* foo(); // 而yield foo()则返回一个遍历器对象
+    yield 'y';
+  }
+
+  // 等同于
+  function* bar() {
+    yield 'x';
+    yield 'a';
+    yield 'b';
+    yield 'y';
+  }
+
+  // 等同于
+  function* bar() {
+    yield 'x';
+    for (let v of foo()) {
+      yield v;
+    }
+    yield 'y';
+  }
+
+  for (let v of bar()){
+    console.log(v);
+  }
+  // "x"
+  // "a"
+  // "b"
+  // "y"
+  ```
+
+  yield*命令可以很方便地取出嵌套数组的所有成员。
+
+  ```js
+  function* iterTree(tree) {
+    if (Array.isArray(tree)) {
+      for(let i=0; i < tree.length; i++) {
+        yield* iterTree(tree[i]);
+      }
+    } else {
+      yield tree;
+    }
+  }
+  const tree = [ 'a', ['b', 'c'], ['d', 'e'] ];
+  for(let x of iterTree(tree)) {
+    console.log(x);
+  }
+  // a
+  // b
+  // c
+  // d
+  // e
+  ```
+
+  **使用yield*语句遍历完全二叉树。**
+
+  ```js
+  // 下面是二叉树的构造函数，
+  // 三个参数分别是左树、当前节点和右树
+  function Tree(left, label, right) {
+    this.left = left;
+    this.label = label;
+    this.right = right;
+  }
+
+  // 下面是中序（inorder）遍历函数。
+  // 由于返回的是一个遍历器，所以要用generator函数。
+  // 函数体内采用递归算法，所以左树和右树要用yield*遍历
+  function* inorder(t) {
+    if (t) {
+      yield* inorder(t.left);
+      yield t.label;
+      yield* inorder(t.right);
+    }
+  }
+
+  // 下面生成二叉树
+  function make(array) {
+    // 判断是否为叶节点
+    if (array.length == 1) return new Tree(null, array[0], null);
+    return new Tree(make(array[0]), array[1], make(array[2]));
+  }
+  let tree = make([[['a'], 'b', ['c']], 'd', [['e'], 'f', ['g']]]);
+
+  // 遍历二叉树
+  var result = [];
+  for (let node of inorder(tree)) {
+    result.push(node);
+  }
+
+  result
+  // ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+  ```
 
 * **作为对象属性的Generator函数**  
 
