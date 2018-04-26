@@ -97,6 +97,12 @@
 
   - 1. 对数组和Set结构进行解构赋值时，会默认调用iterator接口。
 
+    ```js
+    let set = new Set().add('a').add('b').add('c');
+    let [first, ...rest] = set;
+    // first='a'; rest=['b','c'];
+    ```
+
   - 2. 扩展运算符（...）也会调用默认的iterator接口。
     yield*  
     Array.from()  
