@@ -6,6 +6,7 @@
 
   - function命令与函数名之间有一个星号；
   - 函数体内部使用yield语句，定义遍历器的每个成员，即不同的内部状态（yield语句在英语里的意思就是“产出”）。
+  - Generator 函数也不能跟new命令一起用，会报错。
   
   Generator函数的调用方法与普通函数一样，func()。不同的是，调用Generator函数后，返回的也不是函数运行结果，而是一个指向内部状态的指针对象，也就是遍历器对象（Iterator Object），该对象本身也具有Symbol.iterator属性，执行后返回自身。例如：`{value: 'something', done: false}`。
 
