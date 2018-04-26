@@ -2,7 +2,7 @@
 
   > Javascript集合数据结构主要有数组(Array)和对象(Object)，已经ES6新增的Map和Set。遍历器（Iterator）是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。
 
-* Iterator的作用有三个：
+* **Iterator的作用有三个**
 
   - 是为各种数据结构，提供一个统一的、简便的访问接口；
 
@@ -10,7 +10,7 @@
 
   - 是ES6创造了一种新的遍历命令for...of循环，Iterator接口主要供for...of消费。
 
-* Iterator的遍历过程：
+* **Iterator的遍历过程**
 
   - （1）创建一个指针，指向当前数据结构的起始位置。也就是说，遍历器的返回值是一个指针对象。
 
@@ -42,7 +42,58 @@
   每一次调用next方法，都会返回当前成员的信息，具体来说，就是返回一个包含value和done两个属性的对象。其中，value属性是当前成员的值，done属性是一个布尔值，表示遍历是否结束。  
   在ES6中，有三类数据结构原生具备Iterator接口：数组、某些类似数组的对象、Set和Map结构。  
 
-* 调用默认Iterator接口的场合：
+* **默认Iterator接口**
+
+  一种数据结构只要部署了 Iterator 接口，我们就称这种数据结构是“可遍历的”（iterable）。ES6 规定，默认的 Iterator 接口部署在数据结构的Symbol.iterator属性。Symbol.iterator属性本身是一个函数，就是当前数据结构默认的遍历器生成函数。执行这个函数，就会返回一个遍历器。
+
+  ```js
+  const obj = {   // obj是可遍历的, 因为有Symbol.iterator属性
+    [Symbol.iterator] : function () {
+      return {
+        next: function () {
+          return {
+            value: 'something',
+            done: true
+          };
+        }
+      };
+    }
+  };
+  ```
+
+  原生具备 Iterator 接口的数据结构：Array、Map、Set、String、TypedArray、函数的 arguments 对象、NodeList 对象。
+
+  ```js
+  // Symbol.iterator属性上部署遍历器生成方法
+  class RangeIterator {
+    constructor(start, stop) {
+      this.value = start;
+      this.stop = stop;
+    }
+    [Symbol.iterator]() { return this; }
+    next() {
+      var value = this.value;
+      if (value < this.stop) {
+        this.value++;
+        return {done: false, value: value};
+      }
+      return {done: true, value: undefined};
+    }
+  }
+  function range(start, stop) {
+    return new RangeIterator(start, stop);
+  }
+  for (var value of range(0, 3)) {
+    console.log(value); // 0, 1, 2
+  }
+
+  // 类似数组的对象部署遍历器
+  NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+  // 或者
+  NodeList.prototype[Symbol.iterator] = [][Symbol.iterator];
+  ```
+
+  **调用 Iterator 接口的场合**
 
   - 1. 对数组和Set结构进行解构赋值时，会默认调用iterator接口。
 
@@ -64,14 +115,14 @@
 
 
 
-* for...of循环
+* **for...of循环**
 
   一个数据结构只要部署了Symbol.iterator方法，就被视为具有iterator接口，就可以用for...of循环遍历它的成员。也就是说，
   for...of循环内部调用的是数据结构的Symbol.iterator方法。  
   for...of循环可以代替数组实例的forEach方法。  
   for...in循环读取键名，for...of循环读取键值。  
 
-* 与其他遍历方法比较：
+* **与其他遍历方法比较**
 
   for: 比较麻烦，写法繁琐  
   forEach: 无法中止跳出，break命令或return命令都不能奏效。  
