@@ -216,16 +216,15 @@
     if (array.length == 1) return new Tree(null, array[0], null);
     return new Tree(make(array[0]), array[1], make(array[2]));
   }
-  let tree = make([[['a'], 'b', ['c']], 'd', [['e'], 'f', ['g']]]);
-
+  let tree = make([[[['a'], 'a1', ['a2']], 'b', ['c']], 'd', [['e'], 'f', ['g']]]);
+  console.log(tree);
   // 遍历二叉树
   var result = [];
   for (let node of inorder(tree)) {
     result.push(node);
   }
 
-  result
-  // ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+  result // ["a", "a1", "a2", "b", "c", "d", "e", "f", "g"]
   ```
 
 * **作为对象属性的Generator函数**  
