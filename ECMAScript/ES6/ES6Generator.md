@@ -7,7 +7,7 @@
   - function命令与函数名之间有一个星号；
   - 函数体内部使用yield语句，定义遍历器的每个成员，即不同的内部状态（yield语句在英语里的意思就是“产出”）。
   
-  Generator函数的调用方法与普通函数一样，func()。不同的是，调用Generator函数后，返回的也不是函数运行结果，而是一个指向内部状态的指针对象，也就是遍历器对象（Iterator Object），例如：`{value: 'something', done: false}`。
+  Generator函数的调用方法与普通函数一样，func()。不同的是，调用Generator函数后，返回的也不是函数运行结果，而是一个指向内部状态的指针对象，也就是遍历器对象（Iterator Object），该对象本身也具有Symbol.iterator属性，执行后返回自身。例如：`{value: 'something', done: false}`。
 
   必须调用遍历器对象的next方法，使得指针移向下一个状态。每次调用next方法，内部指针就从函数头部或上一次的地方开始执行，直到遇到下一个yield语句（或return语句）为止。 
 
@@ -17,9 +17,29 @@
 
   由于Generator函数返回的遍历器，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield语句就是暂停标志。  
 
+  另外需要注意，yield表达式只能用在 Generator 函数里面，用在其他地方都会报错。
+
+  另外，yield表达式如果用在另一个表达式之中，必须放在圆括号里面，但yield表达式用作函数参数或放在赋值表达式的右边，可以不加括号。
+
+  ```js
+  function* demo() {
+    console.log('Hello' + yield 123); // SyntaxError
+    console.log('Hello' + (yield 123)); // OK
+  }
+
+  function* demo() {
+    foo(yield 'a', yield 'b'); // OK
+    let input = yield; // OK
+  }
+  ```
+
   **yield vs return** 
 
   每次遇到yield，函数暂停执行，下一次再从该位置继续向后执行，而return语句不具备位置记忆的功能。
+
+* **next**
+
+  next方法可以带一个参数，该参数就会被当作上一个yield语句的返回值。第一次使用next方法时，不能带有参数。V8引擎直接忽略第一次使用next方法时的参数。Generator函数从暂停状态到恢复运行，它的上下文状态（context）是不变的。通过next方法的参数，就有办法在Generator函数开始运行之后，继续向函数体内部注入值。  
 
   遍历器对象的next方法的运行逻辑如下:
 
@@ -30,26 +50,79 @@
   - 如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。
 
   - 如果该函数没有return语句，则返回的对象的value属性值为undefined。
-
-* **next**
-
-  next方法可以带一个参数，该参数就会被当作上一个yield语句的返回值。第一次使用next方法时，不能带有参数。V8引擎直接忽略第一次使用next方法时的参数。Generator函数从暂停状态到恢复运行，它的上下文状态（context）是不变的。通过next方法的参数，就有办法在Generator函数开始运行之后，继续向函数体内部注入值。  
-
-  另外需要注意，yield语句不能用在普通函数中，否则会报错。  
   
 * **for...of**  
 
-  使用for...of语句时不需要使用next方法。next方法的返回对象的done属性为true，for...of循环就会中止，且不包含该返回对象,因此的return的返回值不会返回。
+  使用for...of语句可以自动遍历 Generator 函数时生成的Iterator对象，不需要使用next方法。next方法的返回对象的done属性为true，for...of循环就会中止，且不包含该返回对象,因此的return的返回值不会返回。
+
+  ```js
+  function* foo() {
+    yield 1;
+    yield 2;
+    yield 3;
+    yield 4;
+    yield 5;
+    return 6;
+  }
+  for (let v of foo()) {
+    console.log(v);
+  }
+  // 1 2 3 4 5
+  ```
+
+  利用for...of循环，可以写出遍历任意对象（object）的方法。原生的 JavaScript 对象没有遍历接口，无法使用for...of循环，通过 Generator 函数为它加上这个接口。
+
+  ```js
+  function* objectEntries() {
+    let propKeys = Object.keys(this);
+    for (let propKey of propKeys) {
+      yield [propKey, this[propKey]];
+    }
+  }
+
+  let jane = { first: 'Jane', last: 'Doe' };
+  jane[Symbol.iterator] = objectEntries;
+  for (let [key, value] of jane) {
+    console.log(`${key}: ${value}`);
+  }
+  // first: Jane
+  // last: Doe
+  ```
+
+  除了for...of循环以外，扩展运算符（...）、解构赋值和Array.from方法内部调用的，都是遍历器接口。这意味着，它们都可以将 Generator 函数返回的 Iterator 对象，作为参数。
+
+  ```js
+  function* numbers () {
+    yield 1
+    yield 2
+    return 3
+    yield 4
+  }
+
+  // 扩展运算符
+  [...numbers()] // [1, 2]
+
+  // Array.from 方法
+  Array.from(numbers()) // [1, 2]
+
+  // 解构赋值
+  let [x, y] = numbers();
+  x // 1
+  y // 2
+
+  // for...of 循环
+  for (let n of numbers()) {
+    console.log(n)
+  }
+  // 1
+  // 2
+  ```
   
 * **throw** 
 
   Generator函数可以在函数体外抛出错误，然后在函数体内捕获。用遍历器的throw方法抛出的，而不是用throw命令抛出的。后者只能被函数体外的catch语句捕获。  
 
   如果遍历器函数内部没有部署try...catch代码块，那么throw方法抛出的错误，将被外部try...catch代码块捕获。如果遍历器函数内部部署了try...catch代码块，那么遍历器的throw方法抛出的错误，不影响下一次遍历，否则遍历直接终止。  
-  
-* **yield*语句**  
-
-  如果yield命令后面跟的是一个遍历器，需要在yield命令后面加上星号，表明它返回的是一个遍历器。这被称为yield*语句。yield*语句等同于在Generator函数内部，部署一个for...of循环。
 
 * **作为对象属性的Generator函数**  
 
@@ -62,10 +135,6 @@
   }
   ```
 
-* **Generator与状态机**  
-
-  Generator是实现状态机的最佳结构。更简洁，更安全（状态不会被非法篡改）、更符合函数式编程的思想，在写法上也更优雅。
-  
 * **Generator的应用**  
 
   - 1.异步操作的同步化表达
