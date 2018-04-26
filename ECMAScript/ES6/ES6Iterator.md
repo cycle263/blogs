@@ -95,7 +95,7 @@
 
   **调用 Iterator 接口的场合**
 
-  - 1. 对数组和Set结构进行解构赋值时，会默认调用iterator接口。
+  - 对数组和Set结构进行解构赋值时，会默认调用iterator接口。
 
     ```js
     let set = new Set().add('a').add('b').add('c');
@@ -103,33 +103,45 @@
     // first='a'; rest=['b','c'];
     ```
 
-  - 2. 扩展运算符（...）也会调用默认的iterator接口。
-    yield*  
-    Array.from()  
-    Map(), Set(), WeakMap(), WeakSet()  
-    Promise.all(), Promise.race()  
+  - 扩展运算符（...）也会调用默认的iterator接口。
 
-* 原生具备Iterator接口的数据结构：
+  - yield* 后面跟的是一个可遍历的结构，它会调用该结构的遍历器接口。
 
-  ES6对数组提供entries()、keys()和values()三个方法，就是返回三个遍历器。  
-  字符串是一个类似数组的对象，也原生具有Iterator接口。  
+  - for...of, Array.from()  
 
-* 遍历器的return()，throw()
-  遍历器返回的指针对象，next方法是必须部署的，return方法和throw方法是否部署是可选的。  
-  return方法的使用场合是，如果for...of循环提前退出（通常是因为出错，或者有break语句或continue语句），就会调用return方法。  
-  如果一个对象在完成遍历前，需要清理或释放资源，就可以部署return方法。  
+  - Map(), Set(), WeakMap(), WeakSet()  
 
+  - Promise.all(), Promise.race()  
 
+  
+
+* **遍历器的return()，throw()**
+
+  遍历器返回的指针对象，next方法是必须部署的，return方法和throw方法是否部署是可选的。return方法的使用场合是，如果for...of循环提前退出（通常是因为出错，或者有break语句或continue语句），就会调用return方法。如果一个对象在完成遍历前，需要清理或释放资源，就可以部署return方法。return方法必须返回一个对象，这是 Generator 规格决定的。
 
 * **for...of循环**
 
-  一个数据结构只要部署了Symbol.iterator方法，就被视为具有iterator接口，就可以用for...of循环遍历它的成员。也就是说，
-  for...of循环内部调用的是数据结构的Symbol.iterator方法。  
-  for...of循环可以代替数组实例的forEach方法。  
-  for...in循环读取键名，for...of循环读取键值。  
+  一个数据结构只要部署了Symbol.iterator方法，就被视为具有iterator接口，就可以用for...of循环遍历它的成员。也就是说，for...of循环内部调用的是数据结构的Symbol.iterator方法。 for...of循环可以代替数组实例的forEach方法。for...in循环读取键名，for...of循环读取键值。  
+
+  ```js
+  const arr = ['red', 'green', 'blue'];
+  for(let v of arr) {
+    console.log(v); // red green blue
+  }
+
+  const obj = {};
+  obj[Symbol.iterator] = arr[Symbol.iterator].bind(arr);
+  for(let v of obj) {
+    console.log(v); // red green blue
+  }
+  ```
 
 * **与其他遍历方法比较**
 
-  for: 比较麻烦，写法繁琐  
-  forEach: 无法中止跳出，break命令或return命令都不能奏效。  
-  for...in: 数组中只能遍历键名，并且会遍历原型链的新增键。总之，for...in循环主要是为遍历对象而设计的，不适用于遍历数组。  
+  - for: 比较麻烦，写法繁琐  
+
+  - forEach: 无法中止跳出，break命令或return命令都不能奏效。  
+
+  - for...in: 数组中只能遍历键名，并且会遍历原型链的新增键。总之，for...in循环主要是为遍历对象而设计的，不适用于遍历数组。  
+
+  - for...of: 提供了遍历所有数据结构的统一操作接口，迭代获取value值，可以与break、continue和return配合使用。
