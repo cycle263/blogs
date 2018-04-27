@@ -1,23 +1,23 @@
 ## 数值的扩展
 
-* **1、二进制和八进制表示法**  
+* **二进制和八进制表示法**  
 
-  ES6提供了二进制和八进制数值的新的写法，分别用前缀0b和0o表示。八进制用0o前缀表示的方法，将要取代已经在ES5中被逐步淘汰的加前缀0的写法。
+  ES6提供了二进制和八进制数值的新的写法，分别用前缀`0b`和`0o`表示。八进制用0o前缀表示的方法，将要取代已经在ES5中被逐步淘汰的加前缀0的写法。
 
   ```js
   // 数字
-  0xffff 65535  -- 十六进制数字
-  0o11  9  --- 八进制数字
-  0b11  3  --- 二进制数字
+  0xffff  65535   // 十六进制数字
+  0o11    9       // 八进制数字
+  0b11    3       // 二进制数字
 
   // 字符
-  x 字符 x
-  \\ 反斜线字符
-  \0n 八进制值的字符0n (0 <= n <= 7)
-  \0nn 八进制值的字符 0nn (0 <= n <= 7)
-  \0mnn 八进制值的字符0mnn 0mnn (0 <= m <= 3, 0 <= n <= 7)
-  \xhh 十六进制值的字符0xhh
-  \uhhhh 十六进制值的字符0xhhhh
+  x       字符 x
+  \\      反斜线字符
+  \0n     八进制值的字符0n (0 <= n <= 7)
+  \0nn    八进制值的字符 0nn (0 <= n <= 7)
+  \0mnn   八进制值的字符0mnn 0mnn (0 <= m <= 3, 0 <= n <= 7)
+  \xhh    十六进制值的字符0xhh
+  \uhhhh  十六进制值的字符0xhhhh
   \t 制表符('\u0009')
   \n 换行符 ('\u000A')
   \r 回车符 ('\u000D')
@@ -26,8 +26,16 @@
   \e 转义符 ('\u001B')
   ```
 
+* **进制之间转换**
 
-* **2、Number.isFinite(), Number.isNaN()**  
+  要将0b和0o前缀的字符串数值转为十进制，要使用Number方法。
+
+  ```js
+  Number('0b111')   // 7
+  Number('0o10')    // 8
+  ```
+
+* **Number.isFinite(), Number.isNaN()**  
 
   ES6在Number对象上，新提供了Number.isFinite()和Number.isNaN()两个方法，用来检查Infinite和NaN这两个特殊值。  
   Number.isFinite()用来检查一个数值是否非无穷（infinity）。Number.isFinite("15"); // false  
@@ -58,11 +66,11 @@
   Number.isNaN()用来检查一个值是否为NaN。与传统的全局方法isFinite()和isNaN()的区别在于，传统方法先调用Number()将非数值的值转为
   数值，再进行判断，而这两个新方法只对数值有效，非数值一律返回false。  
 
-* **3、Number.parseInt(), Number.parseFloat()**  
+* **Number.parseInt(), Number.parseFloat()**  
 
   ES6将全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变。逐步减少全局性方法。
 
-* **4、Number.isInteger()和安全整数**  
+* **Number.isInteger()和安全整数**  
 
   Number.isInteger()用来判断一个值是否为整数。需要注意的是，在JavaScript内部，整数和浮点数是同样的储存方法，所以3和3.0被
   视为同一个值。  
