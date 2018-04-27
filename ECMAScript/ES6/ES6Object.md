@@ -1,6 +1,6 @@
 ## Object
 
-* **1、属性的简洁表示法**  
+* **属性的简洁表示法**  
 
   ES6允许对象的属性和方法进行简写
 
@@ -27,7 +27,7 @@
   };
   ```
 
-* **2、属性名表达式**  
+* **属性名表达式**  
 
   JavaScript语言定义对象的属性，有两种方法：
   
@@ -42,9 +42,9 @@
     };
     ```
 
-  - 方法的name属性
+* **函数和方法的name属性**
 
-* **3、Object.is()**  
+* **Object.is()**  
 
   Object.is()用来比较两个值是否严格相等。它与严格比较运算符（===）的行为基本一致，不同之处只有两个：一是+0不等于-0，
   二是NaN等于自身。  
@@ -57,7 +57,7 @@
   Object.is(NaN, NaN) // true
   ```
 
-* **4、Object.assign(target, source1, source2)**  
+* **Object.assign(target, source1, source2)**  
 
   Object.assign方法用来将源对象（source）的所有可枚举属性，复制到目标对象（target）。  
   需要两个对象作为参数，第一个参数是目标对象，后面的参数都是源对象。只要有一个参数不是对象，就会抛出TypeError错误。  
@@ -87,13 +87,13 @@
 
   - （5）为属性指定默认值
 
-* 5、Object.setPrototypeOf()，Object.getPrototypeOf()  
+* **Object.setPrototypeOf()，Object.getPrototypeOf()**  
 
   proto属性，用来读取或设置当前对象的prototype对象。  
   Object.setPrototypeOf方法的作用与proto相同，用来设置一个对象的prototype对象。它是ES6正式推荐的设置原型对象的方法。  
   setPrototypeOf方法配套，用于读取一个对象的prototype对象。  
 
-* 6、Symbol  独一无二  
+* **Symbol 独一无二**  
 
   - (1). ES6引入了一种新的原始数据类型Symbol，表示独一无二的ID。通过Symbol函数生成。Symbol函数前不能使用new命令，否则会报错。
   Symbol类型的值不能与其他类型的值进行运算，会报错。但是，Symbol类型的值可以转为字符串(toString、String())。
@@ -108,7 +108,7 @@
   Symbol.keyFor方法返回一个已登记的Symbol类型值的key，未登记的Symbol值，所以返回undefined。
   - (8). Symbol.for为Symbol值登记的名字，是全局环境的，可以在不同的iframe或service worker中取到同一个值。
 
-* 7、内置的Symbol  
+* **内置的Symbol**  
 
   ES6还提供一些内置的Symbol值，指向语言内部使用的方法。  
   - (1).Symbol.hasInstance
@@ -120,7 +120,7 @@
   - (7).Symbol.toStringTag
   - (8).Symbol.unscopables
 
-* 8、Object.observe()，Object.unobserve()  
+* **Object.observe()，Object.unobserve()**  
 
   Object.observe方法用来监听对象（以及数组）的变化。一旦监听对象发生变化，就会触发回调函数。  
   Object.observe方法接受两个参数，第一个参数是监听的对象，第二个函数是一个回调函数。  
