@@ -11,3 +11,4 @@
 * [ES6 Function详解](./ES6Function)
 * [ES6 Generator详解](./ES6Generator)
 * [ES6 Iterator深入理解](./ES6Iterator)
+* [ES6 Number深入理解](./ES6Number)
