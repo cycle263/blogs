@@ -3,7 +3,7 @@
 * **1、属性的简洁表示法**  
 
   ES6允许对象的属性和方法进行简写
-    
+
   ```js
   const test = 'base';
   const baz = { test };   // 等同于 { test: test }
@@ -38,10 +38,10 @@
   二是NaN等于自身。  
 
   ```js
-  +0 === -0 //true
+  +0 === -0   // true
   NaN === NaN // false
 
-  Object.is(+0, -0) // false
+  Object.is(+0, -0)   // false
   Object.is(NaN, NaN) // true
   ```
 
