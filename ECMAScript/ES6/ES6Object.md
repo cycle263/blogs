@@ -35,12 +35,14 @@
   
   - 用表达式作为属性名，这时要将表达式放在方括号之内。
 
-  ```js
-  let obj = {
-    [propKey]: true,
-    ['a'+'bc']: 123
-  };
-  ```
+    ```js
+    let obj = {
+      [propKey]: true,
+      ['a' + 'bc']: 123
+    };
+    ```
+
+  - 方法的name属性
 
 * **3、Object.is()**  
 
