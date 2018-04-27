@@ -1,29 +1,43 @@
-* 1、属性的简洁表示法  
+## Object
 
-  ES6允许直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁。  
-  ```
-  function f( x, y ) {return { x, y };}
+* **1、属性的简洁表示法**  
+
+  ES6允许对象的属性和方法进行简写
+    
+  ```js
+  const test = 'base';
+  const baz = { test };   // 等同于 { test: test }
+
+  const o = {
+    method() {
+      return "Hello!";
+    }
+  };
   // 等同于
-  function f( x, y ) {return { x: x, y: y };}
+  const o = {
+    method: function() {
+      return "Hello!";
+    }
+  };
   ```
 
-* 2、属性名表达式  
+* **2、属性名表达式**  
 
   JavaScript语言定义对象的属性，有两种方法。  
   方法一是直接用标识符作为属性名，方法二是用表达式作为属性名，这时要将表达式放在方括号之内。  
-  ```
+  ```js
   let obj = {
     [propKey]: true,
     ['a'+'bc']: 123
   };
   ```
 
-* 3、Object.is()  
+* **3、Object.is()**  
 
   Object.is()用来比较两个值是否严格相等。它与严格比较运算符（===）的行为基本一致，不同之处只有两个：一是+0不等于-0，
   二是NaN等于自身。  
 
-  ```
+  ```js
   +0 === -0 //true
   NaN === NaN // false
 
@@ -31,7 +45,7 @@
   Object.is(NaN, NaN) // true
   ```
 
-* 4、Object.assign(target, source1, source2)  
+* **4、Object.assign(target, source1, source2)**  
 
   Object.assign方法用来将源对象（source）的所有可枚举属性，复制到目标对象（target）。  
   需要两个对象作为参数，第一个参数是目标对象，后面的参数都是源对象。只要有一个参数不是对象，就会抛出TypeError错误。  
@@ -39,27 +53,29 @@
 
   - （1）为对象添加属性
 
-    ```
-    class Point {
-      constructor(x, y) {
-        Object.assign(this, {x, y});
-      }
+  ```js
+  class Point {
+    constructor(x, y) {
+      Object.assign(this, {x, y});
     }
-    ```
+  }
+  ```
 
   - （2）为对象添加方法
+
   - （3）克隆对象
 
-    ```
-    function clone(origin) {
-      return Object.assign({}, origin);
-    }
-    ```
+  ```js
+  function clone(origin) {
+    return Object.assign({}, origin);
+  }
+  ```
 
   - （4）合并多个对象
+
   - （5）为属性指定默认值
 
-* 5、proto属性，Object.setPrototypeOf()，Object.getPrototypeOf()  
+* 5、Object.setPrototypeOf()，Object.getPrototypeOf()  
 
   proto属性，用来读取或设置当前对象的prototype对象。  
   Object.setPrototypeOf方法的作用与proto相同，用来设置一个对象的prototype对象。它是ES6正式推荐的设置原型对象的方法。  
