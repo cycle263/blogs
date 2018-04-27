@@ -19,6 +19,12 @@
       return "Hello!";
     }
   };
+
+  const obj = {
+    * m() {
+      yield 'hello world';
+    }
+  };
   ```
 
 * **2、属性名表达式**  
