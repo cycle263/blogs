@@ -1,11 +1,18 @@
-## Math对象的扩展（没有原型方法，不是函数对象）
+## Math对象的扩展
 
-* 1、Math.trunc()  
+* **Math.trunc()**  
 
-  Math.trunc方法用于去除一个数的小数部分，返回整数部分。不会四舍五入，不同于Number.prototype.toFixed, 
-  Math.ceil, Math.floor, Math.round
+  Math.trunc方法用于去除数的小数部分，返回整数部分。对于非数值，Math.trunc内部使用Number方法将其先转为数值。不会四舍五入，不同于Number.prototype.toFixed, Math.ceil, Math.floor, Math.round
 
-* 2、Math.sign()  
+  ```js
+  Math.trunc(-4.9)        // -4
+  Math.trunc('123.456')   // 123
+  Math.trunc(true)        //1
+  Math.trunc(false)       // 0
+  Math.trunc(null)        // 0
+  ```
+
+* **Math.sign()**  
 
   Math.sign方法用来判断一个数到底是正数、负数、还是零。如果参数为正数，返回+1；参数为负数，返回-1；  
   参数为0，返回0；参数为NaN，返回NaN。  
