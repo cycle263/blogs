@@ -44,10 +44,36 @@
 
 * **函数和方法的name属性**
 
+  函数和方法的name属性，返回函数名。
+
+  ```js
+  const person = {
+    sayName() {
+      console.log('hello!');
+    },
+    get foo() {},
+    set foo(x) {}
+  };
+  person.sayName.name   // "sayName"
+
+  const descriptor = Object.getOwnPropertyDescriptor(person, 'foo');
+  descriptor.get.name // "get foo"
+  descriptor.set.name // "set foo"
+
+  (new Function()).name // "anonymous"
+  ```
+
+  对象的方法使用了取值函数（getter）和存值函数（setter），name属性的在get和set属性上面，返回值是方法名前加上get和set。
+
+  有两种特殊情况：bind方法创造的函数，name属性返回bound加上原函数的名字；Function构造函数创造的函数，name属性返回anonymous。
+
 * **Object.is()**  
 
-  Object.is()用来比较两个值是否严格相等。它与严格比较运算符（===）的行为基本一致，不同之处只有两个：一是+0不等于-0，
-  二是NaN等于自身。  
+  Object.is()用来比较两个值是否严格相等。它与严格比较运算符（===）的行为基本一致，不同之处只有两个：
+  
+  - 是+0不等于-0
+
+  - 是NaN等于自身 
 
   ```js
   +0 === -0   // true
@@ -56,6 +82,8 @@
   Object.is(+0, -0)   // false
   Object.is(NaN, NaN) // true
   ```
+
+  相等运算符（==）和严格相等运算符（===），相等运算符会自动转换数据类型，严格相等运算符的NaN不等于自身，以及+0等于-0。
 
 * **Object.assign(target, source1, source2)**  
 
