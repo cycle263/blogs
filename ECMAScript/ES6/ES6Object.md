@@ -87,29 +87,27 @@
 
 * **Object.assign(target, source1, source2)**  
 
-  Object.assign方法用来将源对象（source）的所有可枚举属性，复制到目标对象（target）。  
-  需要两个对象作为参数，第一个参数是目标对象，后面的参数都是源对象。只要有一个参数不是对象，就会抛出TypeError错误。  
-  目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性(source2覆盖source1)。  
+  Object.assign方法用来将源对象（source）的所有可枚举属性，复制到目标对象（target）。需要两个对象作为参数，第一个参数是目标对象，后面的参数都是源对象。只要有一个参数不是对象，就会抛出TypeError错误。目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性(source2覆盖source1)。  
 
   - （1）为对象添加属性
 
-  ```js
-  class Point {
-    constructor(x, y) {
-      Object.assign(this, {x, y});
+    ```js
+    class Point {
+      constructor(x, y) {
+        Object.assign(this, {x, y});
+      }
     }
-  }
-  ```
+    ```
 
   - （2）为对象添加方法
 
   - （3）克隆对象
 
-  ```js
-  function clone(origin) {
-    return Object.assign({}, origin);
-  }
-  ```
+    ```js
+    function clone(origin) {
+      return Object.assign({}, origin);
+    }
+    ```
 
   - （4）合并多个对象
 
