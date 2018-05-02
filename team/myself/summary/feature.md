@@ -28,3 +28,5 @@
 * flex-grow, flex-shrink详解
 
 * babel详解 [babel中文网](https://babeljs.cn/learn-es2015/)
+
+* octet-stream vs form-data(content-type)
