@@ -16,3 +16,4 @@
 * [ES6 Math深入理解](./ES6Math)
 * [ES6 Object深入理解](./ES6Object)
 * [ES6 String深入理解](./ES6String)
+* [ES6 Promise深入理解](./ES6Promise)
