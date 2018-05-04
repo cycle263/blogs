@@ -21,7 +21,7 @@
 
 * webRTC深入理解
 
-* 前端视频截图
+* 前端视频截图、图片编辑和美化
 
 * git config深入研究
 
@@ -30,3 +30,5 @@
 * babel详解 [babel中文网](https://babeljs.cn/learn-es2015/)
 
 * octet-stream vs form-data(content-type)
+
+* Date对象详解（new Date vs Date、Date.parse等）
