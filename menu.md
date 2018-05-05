@@ -18,8 +18,8 @@
 
 * **EcmaScript**
     - [ES 6入门](./ECMAScript/ES6/ES6getStart)
-    - [ES6特性详解](./ECMAScript)
-    - [ES6函数详解](./ECMAScript/ES6/ES6Function)
+    - [ES6 特性详解](./ECMAScript)
+    - [ES6 函数详解](./ECMAScript/ES6/ES6Function)
     - [ES6 ArrayBuffer详解](./ECMAScript/ES6/ES6ArrayBuffer)
     - [ES6 Module深入理解](./ECMAScript/ES6/ES6Module)
     - [ES6 Module加载原理](./ECMAScript/ES6/ES6import)
