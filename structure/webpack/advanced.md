@@ -1,8 +1,10 @@
 ## webpack 深入使用
 
-> web静态资源包括（js、css、html、image、font等）都可以划分成小模块，从而达到重复利用，按需加载，便于管理的目的。
+> web静态资源包括（js、css、html、image、font等）都可以划分成小模块，从而达到重复利用，按需加载，便于管理的目的。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
 
 * **入口enter**
+
+  让webpack用哪个文件作为项目的入口, 指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。添加多个彼此不互相依赖的文件，可以使用数组格式.
 
   ```js
   {
@@ -17,10 +19,6 @@
     }
   }
   ```
-
-* **启用source-map**  
-
-  代码合并压缩后，不利于调试和排错，开启source-map后，出现错误会直接映射到出错的代码位置
 
 * **配置webpack-dev-server代理**
 
@@ -114,6 +112,9 @@
   - 添加完执行命令  
     允许`npm run build`, 发觉build结构为bundle.js和vendors.js
 
+* **启用source-map**  
+
+  代码合并压缩后，不利于调试和排错，开启source-map后，出现错误会直接映射到出错的代码位置
 
 * **多页面配置（非单页面SPA）**  
   在config.js里配置：
