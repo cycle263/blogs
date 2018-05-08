@@ -1,7 +1,3 @@
----
-date:       2018-03-24
----
-
 ## Front-end knowledge summary
 
 **[文章总目录](./menu)**
