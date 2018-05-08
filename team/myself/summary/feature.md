@@ -4,8 +4,6 @@
 
 * 自定义DND, 画流程图
 
-* Github的markdown文件自定义样式
-
 * Vue重造
 
 * 待续...
