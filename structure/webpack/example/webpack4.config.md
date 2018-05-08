@@ -26,6 +26,7 @@ module.exports = {
     contentBase: path.resolve(__dirname)
   },
   resolve: {
+    extensions: ['', '.js', '.jsx'], // 扩展名，import时可以不加的后缀名
     alias: {  // 别名定义
       imagesPath: path.resolve(__dirname, "src/assets/images/")
     }

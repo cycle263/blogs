@@ -24,6 +24,14 @@ webpack简单点来说就就是一个配置文件，所有的魔力都是在这�
 
     让webpack把处理完成的文件放在哪里, 以及如何命名这些文件。通过 output.filename 和 output.path 属性，来告诉 webpack bundle 的名称，以及我们想要生成(emit)到哪里。
 
+    ```js
+    output: {
+        filename: '[name].[chunkhash:6].js',
+        chunkFilename: '[name].[chunkhash].js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    ```
+
 * **3、loader 模块**     
 
     loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。在 webpack 配置中定义 loader 时，要定义在 module.rules 中，而不是 rules。
@@ -37,6 +45,34 @@ webpack简单点来说就就是一个配置文件，所有的魔力都是在这�
     - 识别出应该被对应的 loader 进行转换的那些文件。(使用 test 属性)
 
     - 转换这些文件，从而使其能够被添加到依赖图中，并且最终添加到 bundle 中。(使用 use 属性)
+
+    ```js
+    module: {
+      rules: [{
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['env', 'react', 'es2017']
+        }
+      }, {
+        test: /\.(less|css)$/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'less-loader'],
+          fallback: 'style-loader'
+        })
+      }, {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: 'images/[name].[hash:8].[ext]'
+          }
+        }]
+      }]
+    },
+    ```
 
 * **4、plugins 插件**     
 
