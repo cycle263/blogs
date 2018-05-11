@@ -88,6 +88,8 @@
 
   - ExtractTextPlugin - 抽取css文件
 
+  - AssetsPlugin - 待写
+
 * **4、 开发体验优化之:**
 
   - WebpackNotifierPlugin - 编译完成动态通知
@@ -97,8 +99,6 @@
   - open-browser-webpack-plugin - 打开服务器后 会自动打开浏览器
 
   - HotModuleReplacementPlugin - 热更新插件
-
-  - webpack.DllPlugin 提供分离打包的方式，可以极大提高构建时间性能
 
   - SourceMapDevToolPlugin 过滤Sourcemap文件
 
