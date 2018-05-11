@@ -56,7 +56,35 @@
 
 * **3、 文件抽取之:**
 
-  - DllPlugin 用某种方法实现了拆分 bundles，同时还大大提升了构建的速度。
+  - DllPlugin 用某种方法实现了拆分 bundles，同时还大大提升了构建的速度。Dll这个概念应该是借鉴了Windows系统的dll。打包dll的时候，Webpack会将所有包含的库做一个索引，写在一个manifest文件中，而引用dll的代码（dll user）在打包的时候，只需要读取这个manifest文件，就可以了。
+
+  Dll存在的优势：Dll打包以后是独立存在的，只要其包含的库没有增减、升级，hash也不会变化，只要包含的库没有增减、升级，就不需要重新打包。这样也大大提高了每次编译的速度。
+
+  webpack.DllPlugin的选项中，path是manifest文件的输出路径；name是dll暴露的对象名，要跟output里保持一致；context是解析包路径的上下文。output.library 的选项相结合可以暴露出 (也叫做放入全局域) dll 函数。
+
+  ```js
+  // webpack.dll.config.js
+  output: {
+    path: path.resolve(__dirname, './static'),
+    filename: '[name].dll.js',
+    library: '[name]_lib'   //
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      path: path.join(__dirname, 'dist', '[name]-manifest.json'),
+      name: '[name]_lib'    //
+    }),
+  ],
+  ```
+
+  DllReferencePlugin的选项中，context需要跟之前保持一致，这个用来指导Webpack匹配manifest中库的路径；manifest用来引入刚才输出的manifest文件。
+
+  ```js
+  new webpack.DllReferencePlugin({
+    context: __dirname,
+    manifest: require('./dist/vendor-manifest.json'),
+  }),
+  ```
 
   - ExtractTextPlugin - 抽取css文件
 
