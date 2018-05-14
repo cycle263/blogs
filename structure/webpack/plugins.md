@@ -97,7 +97,7 @@
     new AssetsPlugin({
       filename:'build/webpack.assets.js',
       processOutput:function(assets){
-          return 'window.WEBPACK_ASSETS='+JSON.stringify(assets);
+        return 'window.WEBPACK_ASSETS='+JSON.stringify(assets);
       }
     })
 
