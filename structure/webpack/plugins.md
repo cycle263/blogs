@@ -100,6 +100,14 @@
           return 'window.WEBPACK_ASSETS='+JSON.stringify(assets);
       }
     })
+
+    // html使用
+    <script>
+      document.write('<script src="static/webpack.assets.js?v=' + Math.random() + '"><\/script>');
+    </script>
+    <script>
+      document.write('<script src="static/' + window.WEBPACK_ASSETS['vendors'].js + '"><\/script>');
+    </script>
     ```
 
 * **4、 开发体验优化之:**
