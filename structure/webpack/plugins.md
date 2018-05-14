@@ -88,7 +88,19 @@
 
   - ExtractTextPlugin - 抽取css文件
 
-  - AssetsPlugin - 待写
+  - AssetsPlugin - assets-webpack-plugin该插件会在每次编译完成后，生成一份webpack.assets.js文件，文件的内容是最新的编译后的文件名称
+
+  ```js
+  window.WEBPACK_ASSETS={"main":{"js":"89c6e5b6d9bbc5fec2b8.index.js"}}
+
+  // webpack配置
+  new AssetsPlugin({
+    filename:'build/webpack.assets.js',
+    processOutput:function(assets){
+        return 'window.WEBPACK_ASSETS='+JSON.stringify(assets);
+    }
+  })
+  ```
 
 * **4、 开发体验优化之:**
 
