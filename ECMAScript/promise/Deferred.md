@@ -1,3 +1,5 @@
+## Deferred
+
 * 1、概述
   promise模式在任何时刻都处于以下三种状态之一：未完成（unfulfilled）、已完成（resolved）和拒绝（rejected）。  
   promise对象上的then方法负责添加针对已完成和拒绝状态下、的处理函数。then(fulfilledHandler, errorHandler, progressHandler)。  

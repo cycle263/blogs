@@ -1,3 +1,6 @@
+### Promise的简单实现思路
+
+```js
 /********** Promise的实现思路  *************/
 
 var promise = new Promise(function(resolve, reject){
@@ -119,3 +122,4 @@ Promise.deferred = Promise.defer = function(){
   });
   return dtd;
 };
+```
