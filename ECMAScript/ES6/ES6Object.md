@@ -113,6 +113,8 @@
 
   - （5）为属性指定默认值
 
+  - (6) 会触发setter，扩展运算符(展开操作符)不会。
+
 * **Object.setPrototypeOf()，Object.getPrototypeOf()**  
 
   proto属性，用来读取或设置当前对象的prototype对象。  
