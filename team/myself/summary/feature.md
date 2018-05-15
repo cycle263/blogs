@@ -29,6 +29,8 @@
 
 * octet-stream vs form-data(content-type)
 
-* Date对象详解（new Date vs Date、Date.parse等） -- √
+* [x] Date对象详解（new Date vs Date、Date.parse等）
 
 * hash-router --> html5-router
+
+* Google Analytics

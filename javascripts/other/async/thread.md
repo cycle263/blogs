@@ -18,7 +18,7 @@
 
   Javascript是单线程运行、支持异步机制的语言。js主线程模块(DOM，ajax, http)，js消息线程模块（event loop，异步任务通知，IO设备，定时事件）
 
-  主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。
+  主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。执行栈中的代码，总是在读取”任务队列”之前执行
 
   ![堆栈](../../images/heapStack.jpg)
 
@@ -38,23 +38,27 @@
 
 > 浏览器的任务队列不止一个，还有 microtasks 和 macrotasks, 整个的js代码macrotask先执行，同步代码执行完后有microtask执行microtask，没有microtask执行下一个macrotask，如此往复循环至结束
 
-  - microtasks:
+  - microtasks(微任务):
 
-    + process.nextTick
+    + process.nextTick 一次事件循环中，如果有多个 process.nextTick 会在执行栈之后，一次性全部执行。process.nextTick 是在本次事件循环之初触发，且不用检查任务队列，所以在时间上更快，执行效率更高，但是如果process.nextTick 事件太多，执行时长过长也会阻塞事件循环。
+
     + promiseObject.observe
+
     + MutationObserver
+    
     + Event
 
-  - macrotasks:
+  - macrotasks(宏任务):
 
     + setTimeout
     + setInterval
     + setImmediate
     + I/O
     + UI渲染
+    + script代码执行
+    + postMessage、requestAnimationFrame、MessageChannel、setImmediate
 
-
-  * 据whatwg规范介绍：
+  * 事件循环中，每一次循环称为 tick。据whatwg规范介绍：
 
     - 一个事件循环(event loop)会有一个或多个任务队列(task queue)
     - 每一个 event loop 都有一个 microtask queue
@@ -62,11 +66,11 @@
     - 一个任务 task 可以放入 macrotask queue 也可以放入 microtask queue 中
     - 调用栈清空(只剩全局)，然后执行所有的microtask。当所有可执行的microtask执行完毕之后。循环再次从macrotask开始，找到其中一个任务队列执行完毕，然后再执行所有的microtask，这样一直循环下去
 
-
 ## webworker
 
-  多线程，受控于主线程
+  多线程，受控于主线程。其实就是在Javascript单线程执行的基础上，开启一个子线程，进行任务处理，而不影响主线程的执行，当子线程执行完毕之后再回到主线程上，在这个过程中并不影响主线程的执行过程。
 
+  Web Worker的基本原理就是在当前的主线程中加载一个只读文件来创建一个新的线程，两个线程同时存在，且互不阻塞，并且在子线程与主线程之间提供了数据交换的接口postMessage和onmessage。来进行发送数据和接收数据。其数据格式可以为结构化数据（JSON等）。子线程并不支持操作页面的DOM。
 
 ## 异步
 
