@@ -2,6 +2,8 @@
 
 * [常用技巧](./common/常用技巧)
 
+* [this对象的深入理解](./common/this)
+
 * [polyfill vs shim](./other/polyfill)
 
 * [内存泄漏](./other/js内存泄漏)
