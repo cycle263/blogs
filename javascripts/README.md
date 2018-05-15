@@ -1,12 +1,14 @@
 ## javascript
 
-* [常用技巧](常用技巧)
+* [常用技巧](./common/常用技巧)
 
-* [polyfill vs shim](polyfill)
+* [polyfill vs shim](./other/polyfill)
 
-* [内存泄漏](js内存泄漏)
+* [内存泄漏](./other/js内存泄漏)
 
-* [JavaScript原型详解](./Effective/prototype)
+* [JavaScript原型详解](./depth/prototype)
+
+* [浏览器线程详解](./other/async/thread)
 
 
 
