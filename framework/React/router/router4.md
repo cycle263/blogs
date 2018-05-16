@@ -118,7 +118,7 @@
   - state, 执行push(path, state)操作时，location的state将被提供到堆栈信息里，state只有在browser和 memory history 有效。
   - block(prompt) 阻止跳转
 
-* location 位置信息，在Route component中，以this.props.location获取, 在Route render/children中，以 ({location}) => ()方式获取.
+* location 位置信息，在Route component中，以this.props.location获取, 在Route render/children中，以({location}) => ()方式获取.
 
   location 对象不会发生改变，因此可以在生命周期的回调函数中使用 location 对象来查看当前页面的访问地址是否发生改变。这种技巧在获取远程数据以及使用动画时非常有用。
 
