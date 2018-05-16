@@ -28,6 +28,24 @@
 
     BrowserRouter模式需求后端服务器配合，如nginx设置rewrite，如webpack-dev-server服务设置historyApiFallback配置。
 
+    ```js
+    // BrowserRouter
+    <BrowserRouter>
+      <Switch>
+        <Route path="/index" component={App} />
+        <Route path="/first" component={First} />
+        <Redirect from="/" to="/index"></Redirect>
+      </Switch>
+    </BrowserRouter>
+
+    // webpack devServer配置
+    devServer: {
+      contentBase: path.resolve(__dirname),
+      hot: true,
+      historyApiFallback: true
+    }
+    ```
+
   - Route 当页面的访问地址与 Route 上的 path 匹配时，就渲染出对应的 UI 界面。Route自带三个render method。每种 render method 都有不同的应用场景，同一个<Route> 应该只使用一种 render method ，大部分情况下你将使用 component 。
 
     + <Router component>
