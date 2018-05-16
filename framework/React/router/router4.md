@@ -60,7 +60,16 @@
     + activeClassName，默认样式名：active
 
     + activeStyle:object
+
+      ```js
+      <NavLink to="/about" activeClassName="active" activeStyle={{ color: 'green', fontWeight: 'bold' }}>MyBlog</NavLink>
+      ```
     
+    + exact: bool, 是否精准匹配时才激活样式
+
+    + strict: bool, 斜杠严格匹配时才激活样式
+
+    + isActive: func, 
 
 * react-router-native 用于 React Native 的 React Router
 
