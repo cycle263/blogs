@@ -69,10 +69,82 @@
 
     + strict: bool, 斜杠严格匹配时才激活样式
 
-    + isActive: func, 
+    + isActive: func, 导航激活的回调函数
+
+  - Switch 只渲染出第一个与当前访问地址匹配的 <Route> 或 <Redirect>。
+
+    ```js
+    <Fade>
+      <Switch>
+        {/* 用了Switch 这里每次只匹配一个路由，所有只有一个节点。 */}
+        <Route/>
+        <Route/>
+      </Switch>
+    </Fade>
+    ```
+
+  - Redirect 渲染时将导航到一个新地址，这个新地址覆盖在访问历史信息里面的本该访问的那个地址。
+
+    + to: string/object, 字符串或者location 对象
+
+    + push: bool, 若为真，重定向操作将会把新地址加入到访问历史记录里面，并且无法回退到前面的页面。
+
+    + from: string, 需要匹配的将要被重定向路径
+
+  - Prompt 当用户离开当前页面前做出一些提示。
+
+    + message: string/func, 提示信息或者参数为location对象的回调函数
+
+    + when: bool, 通过设置一定条件要决定是否启用 Prompt
 
 * react-router-native 用于 React Native 的 React Router
 
 * react-router-redux React Router 和 Redux 的集成
 
 * react-router-config 静态路由配置的小助手
+
+## 对象和方法
+
+* history history对象是可变的，因为建议从 <Route> 的 prop 里来获取 location，而不是从 history.location 直接获取。这样可以保证 React 在生命周期中的钩子函数正常执行。另外，history实现分为三种：
+
+  - browser history
+  - hash history
+  - memory history
+
+  history的属性和方法：
+
+  - length, 浏览历史堆栈的条数
+  - action, 跳转到当前页面的动作：push,replace,pop
+  - state, 执行push(path, state)操作时，location的state将被提供到堆栈信息里，state只有在browser和 memory history 有效。
+  - block(prompt) 阻止跳转
+
+* location 位置信息，在Route component中，以this.props.location获取, 在Route render/children中，以 ({location}) => ()方式获取.
+
+  location 对象不会发生改变，因此可以在生命周期的回调函数中使用 location 对象来查看当前页面的访问地址是否发生改变。这种技巧在获取远程数据以及使用动画时非常有用。
+
+  ```js
+  {
+    key: 'sdfad1'
+    pathname: '/about',
+    search: '?name=minooo'
+    hash: '#sdfas',
+    state: {
+      price: 123
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location !== this.props.location) {
+      // 已经跳转了！
+    }
+  }
+  ```
+
+* match
+  match 对象包含了 <Route path> 如何与 URL 匹配的信息，在Route component中，以this.props.match, 在Route render/children中，以 ({match}) => ()方式获取。具有以下属性：
+
+  - params: object 路径参数，通过解析 URL 中的动态部分获得键值对
+  - isExact: bool 为 true 时，整个 URL 都需要匹配
+  - path: string 用来匹配的路径模式，用于创建嵌套的 <Route>
+  - url: string URL 匹配的部分，用于嵌套的 <Link>
+
