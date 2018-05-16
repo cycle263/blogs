@@ -1,9 +1,9 @@
 ## 前端基础
 * **CSS** 清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？**什么是 FOUC (无样式内容闪烁)？你如何来避免 FOUC？BFC(块级格式化上下文)?css像素和设备像素区别？ 布局方式？上下垂直居中方案？**重构和回流、重绘(重新计算元素的几何大小和位置)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)?渐进增强和优雅降级?
 
-* 字面量式函数和声明式函数的区分？script defer vs async? 原型继承 vs 类继承？(灵活，接口，抽象类) **什么是异步？context vs scope vs this? 词法作用域(静态，不可变) vs 动态作用域(动态)? 闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分?file文件转换成arrayBuffer或者Blob?冒泡和捕获?setTimeout里面运行的函数的作用域this指向?++i vs i++?setTimeout vs setInterval?websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 事件代理的原理？** 
+* 字面量式函数和声明式函数的区分？script defer vs async? 原型继承 vs 类继承？(灵活，接口，抽象类) **怎么理解异步编程？context vs scope vs this? 词法作用域(静态，不可变) vs 动态作用域(动态)? 闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分? file文件转换成arrayBuffer或者Blob? 冒泡和捕获? setTimeout里面运行的函数的作用域this指向? setTimeout vs setInterval? websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 事件代理的原理？** 
 * Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？ webworker?(后台运行) storage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？
-* **js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？** 不可以，原因使用下标访问时，只是临时创建的array对象
+* **js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？** 不可以，原因使用下标访问时，只是临时创建的array对象。++i vs i++?
 
 * **ES6熟悉哪些新特性？箭头函数的作用域(是否有arguments,是否有自身的this对象和上下文, call能否覆盖箭头函数this)？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await？let vs const vs var(作用域级别，变量声明提升，重复声明)? 解构赋值和扩展运算符，rest属性？ Generator 和 Iterator? Module和import, export? proxy ?** 
 * babel转码的实现原理？ES6 module可否做到按需加载？(stage3: dynamic import) commonJS和AMD规范区别？和ES6的模块有什么不同？
@@ -22,7 +22,7 @@
 * **前端缓存？常用的前端性能指标？用什么工具来测试这些指标？怎么理解组件化/模块化，组件化诉求复用(更多关注UI)，模块化诉求解耦(关注数据和功能封装)，组件接口设计，理想的前端开发和部署流程，转译出的文件过大怎么办，速度过慢怎么办？**
 
 ## 全面性考察
-* 浏览器内核一般包括哪些线程？在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志，参数容量限制)  
+* **浏览器内核一般包括哪些线程？在浏览器中输入url到页面内容全部显示？html文档解析过程？**Get vs Post(历史记录和日志，参数容量限制)  
   从上至下，从外至内。url -> 域名解析 -> ip地址和端口，建立TCP连接 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
 * 前端安全：sql注入? XSS(跨站脚本攻击->输入特殊字符转义过滤)? CSRF(跨站请求伪造->表单增加hash值，POST更新)？同源策略？
 * 无缝发布部署，相关文件的先后发布顺序，灰度发布(全量发布)，错误监控和分析，安全性监控？自动化测试框架（mocha）？
