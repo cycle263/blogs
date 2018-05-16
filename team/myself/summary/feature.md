@@ -31,6 +31,8 @@
 
 * [x] Date对象详解（new Date vs Date、Date.parse等）
 
-* [ ] hash-router --> html5-router
+* [x] hash-router --> html5-router
 
 * [ ] Google Analytics
+
+* [ ] 节流和防抖
