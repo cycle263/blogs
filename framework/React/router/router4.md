@@ -98,7 +98,7 @@
 
   - Switch 只渲染出第一个与当前访问地址匹配的 <Route> 或 <Redirect>。
 
-    ```js
+    ```jsx
     <Fade>
       <Switch>
         {/* 用了Switch 这里每次只匹配一个路由，所有只有一个节点。 */}
