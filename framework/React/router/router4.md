@@ -52,12 +52,12 @@
 
       - component 只有当访问地址和路由匹配时，一个 React component 才会被渲染，此时此组件接受 route props (match, location, history)。
 
-        ```js
-        <Route path="/user/:username" component={User} />
-        const User = ({ match }) => {
-          return <h1>Hello {match.params.username}!</h1>
-        }
-        ```
+      ```js
+      <Route path="/user/:username" component={User} />
+      const User = ({ match }) => {
+        return <h1>Hello {match.params.username}!</h1>
+      }
+      ```
 
       - path: string, 任何可以被 path-to-regexp解析的有效 URL 路径
 
