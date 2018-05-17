@@ -54,7 +54,7 @@
 
         ```js
         <Route path="/user/:username" component={User} />
-        
+
         const User = ({ match }) => {
           return <h1>Hello {match.params.username}!</h1>
         }
@@ -82,8 +82,12 @@
 
     + activeStyle:object
 
-      ```js
-      <NavLink to="/about" activeClassName="active" activeStyle={{ color: 'green', fontWeight: 'bold' }}>MyBlog</NavLink>
+      ```react
+      const style = {
+        color: 'green',
+        fontWeight: 'bold'
+      };
+      <NavLink to="/about" activeClassName="active" activeStyle={style}>MyBlog</NavLink>
       ```
     
     + exact: bool, 是否精准匹配时才激活样式
