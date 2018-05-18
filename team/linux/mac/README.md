@@ -28,3 +28,5 @@
 * 查看端口号占用情况
 
   `lsof -i tcp:port`
+
+  `kill -9 PID  // 杀死进程` 

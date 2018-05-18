@@ -35,4 +35,4 @@
 
 * [ ] Google Analytics
 
-* [ ] 节流和防抖
+* [x] 节流和防抖
