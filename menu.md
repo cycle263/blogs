@@ -45,11 +45,14 @@
       + [webpack之plugins详解](./structure/webpack/plugins)
       + [webpack之chunks详解](./structure/webpack/chunks)
     - gulp、grunt
-    - [git入门](./team/git)
-    - [git进阶详解](./team/git/advanced)
-    - [git之rebase与merge区别？](./team/git/rebase)
-    - [git之tag详解](./team/git/tags)
-    - [git之远端管理](./team/git/remote)
+    - git
+      + [git入门](./team/git)
+      + [git进阶详解](./team/git/advanced)
+      + [git之rebase与merge区别？](./team/git/rebase)
+      + [git之tag详解](./team/git/tags)
+      + [git之远端管理](./team/git/remote)
+    - proxy
+      + [charles代理设置](./structure/proxy/charles)
 
 * **网络基础**
     - [websocket入门](./http/websocket)
