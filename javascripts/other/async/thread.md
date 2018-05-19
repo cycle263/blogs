@@ -40,19 +40,18 @@
 
   - microtasks(微任务):
 
-    + process.nextTick 一次事件循环中，如果有多个 process.nextTick 会在执行栈之后，一次性全部执行。process.nextTick 是在本次事件循环之初触发，且不用检查任务队列，所以在时间上更快，执行效率更高，但是如果process.nextTick 事件太多，执行时长过长也会阻塞事件循环。
+    + process.nextTick  process.nextTick方法可以在当前"执行栈"的尾部----下一次Event Loop（主线程读取"任务队列"）之前----触发回调函数。也就是说，它指定的任务总是发生在所有异步任务之前，插队到任务队列最前面。如果有多个process.nextTick语句（不管它们是否嵌套），将全部在当前"执行栈"的尾部执行。如果process.nextTick 事件太多，执行时长过长也会阻塞事件循环。
 
     + promiseObject.observe
-
     + MutationObserver
-    
     + Event
 
   - macrotasks(宏任务):
 
     + setTimeout
     + setInterval
-    + setImmediate
+    + setImmediate  在当前"任务队列"的尾部添加事件，也就是说，它指定的任务总是在下一次Event Loop时执行，这与setTimeout(fn, 0)很像。多个setImmediate可能则需要多次event loop才能执行完。
+
     + I/O
     + UI渲染
     + script代码执行
@@ -68,11 +67,11 @@
 
 ## webworker
 
-  多线程，受控于主线程。其实就是在Javascript单线程执行的基础上，开启一个子线程，进行任务处理，而不影响主线程的执行，当子线程执行完毕之后再回到主线程上，在这个过程中并不影响主线程的执行过程。
+  为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但完全受控于主线程。其实就是在Javascript单线程执行的基础上，开启一个子线程，进行任务处理，而不影响主线程的执行，当子线程执行完毕之后再回到主线程上，在这个过程中并不影响主线程的执行过程。
 
   Web Worker的基本原理就是在当前的主线程中加载一个只读文件来创建一个新的线程，两个线程同时存在，且互不阻塞，并且在子线程与主线程之间提供了数据交换的接口postMessage和onmessage。来进行发送数据和接收数据。其数据格式可以为结构化数据（JSON等）。子线程并不支持操作页面的DOM。
 
-## 异步
+## 定时器
 
 * setTimeout算异步吗？
 

@@ -1,7 +1,7 @@
 ## router
 
 ![路由流程](./images/router.jpg)
-```react
+```js
 import React from 'react';
 import { render, findDOMNode } from 'react-dom';
 import { Router, Route, Link, IndexRoute, Redirect } from 'react-router';
@@ -35,7 +35,7 @@ React.render((
 
 * react-router
 
-    > React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。
+  > React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。
 
 * 组成部分
 
@@ -52,10 +52,11 @@ React.render((
   - Link: 组件最终会渲染为 HTML 标签 <a>，它的 to、query、hash 属性会被组合在一起并渲染为 href 属性。虽然 Link 被渲染为超链接，但在内部实现上使用脚本拦截了浏览器的默认行为，然后调用了history.pushState 方法
 
 * 分类
-    - BrowserRouter  使用了HTML5的history API来记录你的路由历史
 
-    - HashRouter  使用URL(window.location.hash)的hash部分来记录
-    
-    - MemoryRouter node环境下的history，存储在memory中
+  - BrowserRouter  使用了HTML5的history API来记录你的路由历史
+
+  - HashRouter  使用URL(window.location.hash)的hash部分来记录
+  
+  - MemoryRouter node环境下的history，存储在memory中
   
 * [按需加载](https://react-guide.github.io/react-router-cn/docs/guides/advanced/DynamicRouting.html)

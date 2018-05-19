@@ -2,12 +2,13 @@
 
 * **JavaScript**
   - [浏览器线程详解](./javascripts/other/async/thread)
+  - [节流和防抖](./http/ajax/轮询(节流和防抖))
 
 * **framework**
     - react
       + [setState详解]()
       + [组件之间通信详解](./framework/React/Note/Communication)
-      + [setState详解]()
+      + [初试React route 4](./framework/React/router/router4)
 
     - angular
     - jQuery
