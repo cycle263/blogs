@@ -11,8 +11,8 @@
       + [初试React route 4](./framework/React/router/router4)
 
     - angular
-    - jQuery
     - vue
+    - jQuery
 
 * **Css**
     - 常识
@@ -45,6 +45,7 @@
       + [webpack之loader详解](./structure/webpack/Loader)
       + [webpack之plugins详解](./structure/webpack/plugins)
       + [webpack之chunks详解](./structure/webpack/chunks)
+
     - gulp、grunt
     - git
       + [git入门](./team/git)
@@ -52,6 +53,7 @@
       + [git之rebase与merge区别？](./team/git/rebase)
       + [git之tag详解](./team/git/tags)
       + [git之远端管理](./team/git/remote)
+      
     - proxy
       + [charles代理设置](./structure/proxy/charles)
 
