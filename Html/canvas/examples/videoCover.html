@@ -1,0 +1,35 @@
+<head>
+    <meta charset="UTF-8">
+    <title>capture screen</title>
+    <style type="text/css">
+        video,#container{width: 300px;height: 200px;}
+        #container>img{width: 100%;}
+    </style>
+</head>
+<body>
+    <video id="video" controls="controls">
+        <source src="../videos/v.mp4">
+    </video>
+    <div id="container"></div>
+    <script type="text/javascript">
+        (function() {
+            var video, container;
+            var scale = 0.8;
+            var initialize = function() {
+                container = document.getElementById("container");
+                video = document.getElementById("video");
+                video.addEventListener('loadeddata', captureImage);
+            };
+            var captureImage = function() {
+                var canvas = document.createElement("canvas");
+                canvas.width = this.videoWidth * scale;
+                canvas.height = this.videoHeight * scale;
+                canvas.getContext('2d').drawImage(this, 0, 0, canvas.width, canvas.height);
+                var img = document.createElement("img");
+                img.src = canvas.toDataURL();//转换成base64图片，地址拿出来就可以直接使用
+                container.appendChild(img);
+            };
+            initialize();
+        })();
+    </script>
+</body>
