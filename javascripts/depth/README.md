@@ -65,3 +65,7 @@ var deepClone = function (o){
 // method 4
 loadsh.deepclone
 ```
+
+* 引用类型 vs 值类型
+
+ Number、String 之类的值类型数据会被直接压入栈中，而引用类型只会压入对该值的一个索引，用 C 语言的概念来解释就是只保存了数据的指针，这些数据是储存在堆中的某块区间中。栈堆并不是独立的，栈也可以在堆中存放。
