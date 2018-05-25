@@ -4,9 +4,13 @@
 
 * file
 
+* Blob
+
 * binary
 
-* arrayBufferView
+* arrayBuffer
+
+* dataView vs TypedArray
 
 * content-type，常见的如下
 
