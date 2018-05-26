@@ -33,7 +33,7 @@
 
 * [x] hash-router --> html5-router
 
-* [ ] Google Analytics
+* [ ] Google Analytics vs 百度统计
 
 * [x] 节流和防抖
 
