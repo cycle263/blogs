@@ -4,9 +4,16 @@
 
   WebSocket在2011年被IETF定为标准RFC 6455，并被RFC 7936补充规范，WebSocket API被W3C定为标准。
  
-  ws最大的优势：在于服务器和客户端可以在给定的时间范围内的任意时刻，相互推送信息，数据的传输使用帧来传递，并且允许跨域通信。  
+  ws最大的优势：在于服务器和客户端可以在给定的时间范围内的任意时刻，相互推送信息，数据的传输使用帧来传递，并且允许跨域通信。 
 
-  目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议[Engine.IO protocol](https://github.com/socketio/engine.io-protocol)。  
+  目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议[Engine.IO protocol](https://github.com/socketio/engine.io-protocol)。socket.io 底层是 engine.io，这个库实现了跨平台的双向通信,使用了 WebSocket 和 XMLHttprequest（或JSONP） 封装了一套自己的 Socket 协议，在低版本浏览器里面使用长轮询替代 WebSocket。一个完整的 Engine.IO Socket 包括多个 XHR 和 WebSocket 连接。
+
+  为了在每一种浏览器上支持实时通讯，Socket.IO 在运行中选择最佳的传输方式，而不影响API。支持的方式为：WebSocket, Adobe Flash Socket, AJAX long polling, AJAX multipart streaming, Forever Iframe, JSONP Polling。
+
+  ```js
+  client request xhr ---->> server return { open: 0, sid, upgrades: [websocket/longpoll] }
+  client start WebSocket -- ping probe -->> server return pong probe -->> stop longpoll
+  ```
 
 * **发送包类型：**
 

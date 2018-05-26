@@ -16,6 +16,24 @@
 
     简单说，ArrayBuffer对象代表原始的二进制数据，TypedArray视图用来读写简单类型的二进制数据，DataView视图用来读写复杂类型的二进制数据。
 
+    ```js
+    var buffer = new ArrayBuffer(16);
+
+    var int32View = new Int32Array(buffer);
+    for (var i = 0; i < int32View.length; i++) {
+        int32View[i] = i * 2;
+    }   // 0, 2, 4和6填充 (一共4个4字节元素，所以总长度为16字节)
+
+    var int16View = new Int16Array(buffer);
+
+    for (var i = 0; i < int16View.length; i++) {
+        console.log("Entry " + i + ": " + int16View[i]);    // 00204060
+    }
+
+    int16View[0] = 32;
+    console.log("Entry 0 in the 32-bit array is now " + int32View[0]);      // 32
+    ```
+
 
 * **ArrayBuffer对象**
 
