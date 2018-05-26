@@ -36,3 +36,11 @@
 * [ ] Google Analytics
 
 * [x] 节流和防抖
+
+* [ ] 双飞翼布局，三列同高
+
+* [ ] arraybuffer, blob, array, binary, dataview
+
+* [ ] websocket vs socket.io，io是否必须前后端都使用io框架
+
+* [ ] 引用类型 vs 值类型

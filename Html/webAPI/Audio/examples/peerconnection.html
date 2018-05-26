@@ -1,0 +1,118 @@
+<html>
+<head>
+  <title>test webrtc</title>
+</head>
+<body>
+  Local:
+  <br>
+  <video id="localVideo" autoplay></video>
+  <br> Remote:
+  <br>
+  <video id="remoteVideo" autoplay></video>
+
+  <script>
+    console.log("开始");
+    // 仅仅用于控制哪一端的浏览器发起offer，#号后面有值的一方发起
+    // #号后面加true的为发起者
+    var isCaller = window.location.href.split('#')[1];
+
+    // 与信令服务器的WebSocket连接
+    var socket = new WebSocket("ws://127.0.0.1:3000");
+
+    // stun和turn服务器，打洞服务器设置
+    var iceServer = {
+      "iceServers": [{
+        "url": "stun:stun.l.google.com:19302"
+      }, {
+        "url": "turn:numb.viagenie.ca",
+        "username": "webrtc@live.com",
+        "credential": "muazkh"
+      }]
+    };
+
+    // 创建PeerConnection实例 (参数为null则没有iceserver，即使没有stunserver和turnserver，仍可在局域网下通讯)
+    window.RTCPeerConnection = window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+    var peerConnection = new RTCPeerConnection(iceServer)
+
+    // 发送offer的函数
+    var sendOfferFn = function (desc) {
+      // 设置本地Offer
+      peerConnection.setLocalDescription(desc);
+      // 发送offer
+      socket.send(JSON.stringify({
+        "event": "_offer",
+        "data": {
+          "sdp": desc
+        }
+      }));
+    };
+    // 发送answer的函数，发送本地session描述
+    var sendAnswerFn = function (desc) { // 发送answer
+      peerConnection.setLocalDescription(desc); // 设置本地Offer
+      socket.send(JSON.stringify({ // 发送answer
+        "event": "_answer",
+        "data": {
+          "sdp": desc
+        }
+      }));
+    };
+
+    // 获取本地音频数据
+    navigator.getMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia
+    navigator.getMedia({
+      audio: true, // 是否开启麦克风
+      video: true // 是否开启摄像头，这里还可以进行更多的配置
+    }, function (stream) {
+      // 获取到视频流stream 
+      // 绑定本地媒体流到video标签用于输出 
+      document.getElementById('localVideo').src = URL.createObjectURL(stream);
+      // 向PeerConnection中加入需要发送的流 
+      peerConnection.addStream(stream);
+      // 如果是发起方则发送一个offer信令
+      if (isCaller) {
+        peerConnection.createOffer(sendOfferFn, function (error) {
+          console.log('Failure callback: ' + error);
+        });
+      }
+    }, function (error) {
+      // 获取本地视频流失败
+      console.log("获取本地视频流失败");
+    })
+
+    // 发送ICE候选到其他客户端
+    peerConnection.onicecandidate = function (event) {
+      if (event.candidate !== null) {
+        socket.send(JSON.stringify({
+          "event": "_ice_candidate",
+          "data": {
+            "candidate": event.candidate
+          }
+        }));
+      }
+    };
+
+    // 如果检测到媒体流连接到本地，将其绑定到一个video标签上输出
+    peerConnection.onaddstream = function (event) {
+      document.getElementById('remoteVideo').src = URL.createObjectURL(event.stream);
+    };
+
+    //处理到来的信令
+    socket.onmessage = function (event) {
+      var json = JSON.parse(event.data);
+      //如果是一个ICE的候选，则将其加入到PeerConnection中，否则设定对方的session描述为传递过来的描述
+      if (json.event === "_ice_candidate") {
+        peerConnection.addIceCandidate(new RTCIceCandidate(json.data.candidate));
+      } else {
+        peerConnection.setRemoteDescription(new RTCSessionDescription(json.data.sdp));
+        // 如果是一个offer，那么需要回复一个answer
+        if (json.event === "_offer") {
+          peerConnection.createAnswer(sendAnswerFn, function (error) {
+            console.log('Failure callback: ' + error);
+          });
+        }
+      }
+    };
+  </script>
+</body>
+
+</html>
