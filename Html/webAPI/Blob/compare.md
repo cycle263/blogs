@@ -50,6 +50,15 @@
   var ab = u8.buffer;
   ```
 
+* Float32 -> Int16
+
+  ```js
+  while (l--) {
+    s = Math.max(-1, Math.min(1, samples[l]));  // -1, 0, 1
+    buf[l] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+  }
+  ```
+
 
 ## 其他概念
 
