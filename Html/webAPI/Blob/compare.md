@@ -14,6 +14,7 @@
 
   
 * websocket接受arraybuffer
+
   ```js
   /* websocket的情况下二进制流的获取 */
   var url = 'ws://127.0.0.1:8080';
@@ -22,9 +23,10 @@
   ws.onmessage = function (e) {
       var data = e.data;
   }
-    ```
+  ```
 
 * blob <-> arraybuffer
+
   ```js
   var blob = new Blob(); // blob是要转换的blob
   var fr = new FileReader();
@@ -38,12 +40,14 @@
   ```
 
 * arraybuffer <-> Uint8
+
   ```js
   var u8 = new Uint8Array(arraybuffer);
   var buffer = u8.buffer;
   ```
 
 * array -> arraybuffer
+
   ```js
   var arr = [0x15,0xFF,0x01,0x00,0x34,0xAB,0x11];
   var u8 = new Uint8Array(arr);
@@ -53,10 +57,22 @@
 * Float32 -> Int16
 
   ```js
+  // method 1
   while (l--) {
     s = Math.max(-1, Math.min(1, samples[l]));  // -1, 0, 1
     buf[l] = s < 0 ? s * 0x8000 : s * 0x7FFF;
   }
+
+  // method 2
+  while(i < len)
+  dataAsInt16Array[i] = convert(data[i++]);
+  function convert(n) {
+    var v = n < 0 ? n * 32768 : n * 32767;       // convert in range [-32768, 32767]
+    return Math.max(-32768, Math.min(32768, v)); // clamp
+  }
+
+  // method 3
+  var dataAsInt16Array = new Int16Array(data.buffer); // or TypedArray.from()
   ```
 
 
