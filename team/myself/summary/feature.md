@@ -39,7 +39,7 @@
 
 * [ ] 双飞翼布局，三列同高
 
-* [ ] arraybuffer, blob, array, binary, dataview
+* [ing...] arraybuffer, blob, array, binary, dataview
 
 * [ing...] websocket vs socket.io，io是否必须前后端都使用io框架
 

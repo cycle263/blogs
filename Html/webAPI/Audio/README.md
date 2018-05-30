@@ -85,6 +85,100 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
 
   另外需要注意的是，语音上下文，每个需要启用一个线程，目前最大支持六个。
 
+  ```js
+  var audioCtx = new AudioContext();
+  var source = audioCtx.createBufferSource();
+  var scriptNode = audioCtx.createScriptProcessor(4096, 1, 1);  // a bufferSize of 4096
+  ```
+
+* **createScriptProcessor**
+
+  ScriptProcessorNode 接口允许使用javaScript生成、处理、分析音频. 它是一个 AudioNode， 连接着两个缓冲区音频处理模块, 其中一个缓冲区包含输入音频数据，另外一个包含处理后的输出音频数据. 实现了 AudioProcessingEvent 接口的一个事件，每当输入缓冲区有新的数据时，事件将被发送到该对象，并且事件将在数据填充到输出缓冲区后结束。
+
+  AudioContext.createScriptProcessor() 中bufferSize取值在256和16384之间，为2的N次方。ScriptProcessorNode.onaudioprocess方法入参audioProcessingEvent，audioProcessingEvent的两个属性，inputBuffer、outputBuffer都是AudioBuffer类型，分别代表录音设备录入的AudioBuffer，和经过JavaScript处理之后输出的AudioBuffer。
+
+
+  [详情参见MDN官网](https://developer.mozilla.org/en-US/docs/Web/API/ScriptProcessorNode)
+
+  ```js
+  var myScript = document.querySelector('script');
+  var myPre = document.querySelector('pre');
+  var playButton = document.querySelector('button');
+        
+  // Create AudioContext and buffer source
+  var audioCtx = new AudioContext();
+  source = audioCtx.createBufferSource();
+
+  // Create a ScriptProcessorNode with a bufferSize of 4096 and a single input and output channel
+  var scriptNode = audioCtx.createScriptProcessor(4096, 1, 1);
+  console.log(scriptNode.bufferSize);
+
+  // load in an audio track via XHR and decodeAudioData
+
+  function getData() {
+    request = new XMLHttpRequest();
+    request.open('GET', 'viper.ogg', true);
+    request.responseType = 'arraybuffer';
+    request.onload = function() {
+      var audioData = request.response;
+
+      audioCtx.decodeAudioData(audioData, function(buffer) {
+      myBuffer = buffer;   
+      source.buffer = myBuffer;
+    },
+      function(e){"Error with decoding audio data" + e.err});
+    }
+    request.send();
+  }
+
+  // Give the node a function to process audio events
+  scriptNode.onaudioprocess = function(audioProcessingEvent) {
+    // The input buffer is the song we loaded earlier
+    var inputBuffer = audioProcessingEvent.inputBuffer;
+
+    // The output buffer contains the samples that will be modified and played
+    var outputBuffer = audioProcessingEvent.outputBuffer;
+
+    // Loop through the output channels (in this case there is only one)
+    for (var channel = 0; channel < outputBuffer.numberOfChannels; channel++) {
+      var inputData = inputBuffer.getChannelData(channel);
+      var outputData = outputBuffer.getChannelData(channel);
+
+      // Loop through the 4096 samples
+      for (var sample = 0; sample < inputBuffer.length; sample++) {
+        // make output equal to the same as the input
+        outputData[sample] = inputData[sample];
+
+        // add noise to each output sample
+        outputData[sample] += ((Math.random() * 2) - 1) * 0.2;         
+      }
+    }
+  }
+
+  getData();
+
+  // wire up play button
+  playButton.onclick = function() {
+    source.connect(scriptNode);
+    scriptNode.connect(audioCtx.destination);
+    source.start();
+  }
+        
+  // When the buffer source stops playing, disconnect everything
+  source.onended = function() {
+    source.disconnect(scriptNode);
+    scriptNode.disconnect(audioCtx.destination);
+  }
+  ```
+
+* **AudioBuffer**
+
+  AudioBuffer接口表示存在存储器里的短音频资产，利用AudioContext.decodeAudioData()方法从音频文件构建，或者利用 AudioContext.createBuffer()构建于原数据。一旦将其放入AudioBuffer，可以传递到一个 AudioBufferSourceNode进行播放。
+
+  缓存区（buffer）包含以下数据：不间断的IEEE75432位线性PCM，从-1到1的范围额定，就是说，32位的浮点缓存区的每个样本在-1.0到1.0之间。
+
+  AudioBuffer.getChannelData()返回一个 Float32Array，包含了带有频道的PCM数据，由频道参数定义（有0代表第一个频道）。
+
 * **MediaDevices接口是WebRTC技术的接口之一**
 
   - MediaDevices.getUserMedia()方法提示用户允许使用一个视频和/或一个音频输入设备，例如相机或屏幕共享和/或麦克风。如果用户给予许可，就返回一个Promise 对象，MediaStream对象作为此Promise对象的Resolved［成功］状态的回调函数参数，相应的，如果用户拒绝了许可，或者没有媒体可用的情况下，PermissionDeniedError 或者NotFoundError作为此Promise的Rejected［失败］状态的回调函数参数。注意，由于用户不会被要求必须作出允许或者拒绝的选择，所以返回的Promise对象可能既不会触发resolve 也不会触发 reject。
