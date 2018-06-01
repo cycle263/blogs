@@ -8,12 +8,10 @@ function _arrayBufferToBase64( buffer ) {
     }
     return window.btoa( binary );
 }
-
-or
+// or
 // arrayBuffer to Base64
 var base64String = btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)));
-
-or ES6
+// or ES6
 // arrayBuffer to Base64
 let base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
 
@@ -42,14 +40,14 @@ function str2ab(str){
 	return new Blob(byteNumbers, {type: 'image/png'});
 }
 
-// ArrayBuffer to Uint8
+// ArrayBuffer to blob
 var buffer = new ArrayBuffer(32);
 var blob = new Blob([buffer]);       // 注意必须包裹[]
 
 
 // dataURL（base64）转换为Blob对象
 function dataURLtoBlob(dataurl) {
-    var arr = dataurl.split(‘,‘),
+    var arr = dataurl.split(','),
       mime = arr[0].match(/:(.*?);/)[1],
       bstr = atob(arr[1]),
       n = bstr.length,
@@ -107,7 +105,5 @@ function blobToFile(theBlob, fileName){
     return theBlob;
 }
 
-or
-
-// blob to file
+// or blob to file
 var file = new File([myBlob], "name");
