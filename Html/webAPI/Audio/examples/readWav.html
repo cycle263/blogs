@@ -51,13 +51,13 @@
         console.error("Error with decoding audio data" + e.err)
       });
     }
-    request.onprogress = function(event) {
-      if (event.lengthComputable) {
-        var percentComplete = (event.loaded / event.total * 100).toFixed(2);
-        var percentText = 'Read wav file completion progress: ' + percentComplete + '%';
-        progress.innerHTML = percentText;
-      }
-    }
+    // request.onprogress = function(event) {
+    //   if (event.lengthComputable) {
+    //     var percentComplete = (event.loaded / event.total * 100).toFixed(2);
+    //     var percentText = 'Read wav file completion progress: ' + percentComplete + '%';
+    //     progress.innerHTML = percentText;
+    //   }
+    // }
     request.send();
   }
 
