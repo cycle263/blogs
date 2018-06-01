@@ -48,6 +48,13 @@
         console.error("Error with decoding audio data" + e.err)
       });
     }
+    request.onprogress = function(event) {
+      console.log(event.length)
+      if (event.lengthComputable) {
+        var percentComplete = event.loaded / event.total * 100;
+        console.log('precent complete: ', percentComplete + '%');
+      }
+    }
     request.send();
   }
 
