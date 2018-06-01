@@ -123,7 +123,7 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
       var audioData = request.response;
 
       audioCtx.decodeAudioData(audioData, function(buffer) {
-        myBuffer = buffer;   
+        var myBuffer = buffer;   
         source.buffer = myBuffer;
       }, function(e){
         console.error("Error with decoding audio data" + e.err)
@@ -136,7 +136,6 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
   scriptNode.onaudioprocess = function(audioProcessingEvent) {
     // The input buffer is the song we loaded earlier
     var inputBuffer = audioProcessingEvent.inputBuffer;
-
     // The output buffer contains the samples that will be modified and played
     var outputBuffer = audioProcessingEvent.outputBuffer;
 
@@ -149,7 +148,6 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
       for (var sample = 0; sample < inputBuffer.length; sample++) {
         // make output equal to the same as the input
         outputData[sample] = inputData[sample];
-
         // add noise to each output sample
         outputData[sample] += ((Math.random() * 2) - 1) * 0.2;         
       }
