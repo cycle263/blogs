@@ -54,7 +54,7 @@
     request.onprogress = function(event) {
       if (event.lengthComputable) {
         var percentComplete = (event.loaded / event.total * 100).toFixed(2);
-        var percentText = 'precent complete: ' + percentComplete + '%';
+        var percentText = 'Read wav file completion progress: ' + percentComplete + '%';
         progress.innerHTML = percentText;
       }
     }
