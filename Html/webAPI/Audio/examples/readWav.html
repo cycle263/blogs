@@ -50,12 +50,10 @@
       });
     }
     request.onprogress = function(event) {
-      console.log(event.length)
       if (event.lengthComputable) {
         var percentComplete = event.loaded / event.total * 100;
         var percentText = 'precent complete: ' + percentComplete + '%';
         progress.innerHTML = percentText;
-        console.log(percentText);
       }
     }
     request.send();
