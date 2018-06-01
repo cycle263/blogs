@@ -20,7 +20,7 @@
   client start WebSocket -- ping probe -->> server return pong probe -->> stop longpoll
   ```
 
-* **websocket vs http*
+* **websocket vs http**
 
     |      http          |    WebSocket        |
     | ------------------ | -----------------   |
