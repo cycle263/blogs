@@ -107,7 +107,7 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
         
   // Create AudioContext and buffer source
   var audioCtx = new AudioContext();
-  source = audioCtx.createBufferSource();
+  var source = audioCtx.createBufferSource();
 
   // Create a ScriptProcessorNode with a bufferSize of 4096 and a single input and output channel
   var scriptNode = audioCtx.createScriptProcessor(4096, 1, 1);
@@ -128,6 +128,13 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
       }, function(e){
         console.error("Error with decoding audio data" + e.err)
       });
+    }
+    request.onprogress = function(event) {
+      if (event.lengthComputable) {
+        var percentComplete = (event.loaded / event.total * 100).toFixed(2);
+        var percentText = 'Read wav file completion progress: ' + percentComplete + '%';
+        progress.innerHTML = percentText;
+      }
     }
     request.send();
   }

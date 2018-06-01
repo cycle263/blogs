@@ -20,16 +20,19 @@
 
 <body>
   <h1>read wav file</h1>
-  <button>Read Wav and make noise</button>
+  <audio id="sound" src="./test.mp3" controls="controls"></audio>
+  <button id="btn1">Read Wav and make noise</button>
+  <button id="btn2">Read Wav and play audio</button>
   <p id="progress"></p>
 </body>
 <script>
-  var playButton = document.querySelector('button');
+  var playButton1 = document.getElementById('btn1');
+  var playButton2 = document.getElementById('btn2');
   var progress = document.getElementById('progress');
 
   // Create AudioContext and buffer source
   var audioCtx = new AudioContext();
-  source = audioCtx.createBufferSource();
+  var source = audioCtx.createBufferSource();
 
   // Create a ScriptProcessorNode with a bufferSize of 4096 and a single input and output channel
   var scriptNode = audioCtx.createScriptProcessor(4096, 1, 1);
@@ -42,22 +45,22 @@
     request.responseType = 'arraybuffer';
     request.onload = function () {
       var audioData = request.response;
-      console.log('audioData', audioData);
       audioCtx.decodeAudioData(audioData, function (buffer) {
         var myBuffer = buffer;
         console.log('myBuffer', myBuffer);
         source.buffer = myBuffer;
+        source.loop = true;
       }, function (e) {
         console.error("Error with decoding audio data" + e.err)
       });
     }
-    // request.onprogress = function(event) {
-    //   if (event.lengthComputable) {
-    //     var percentComplete = (event.loaded / event.total * 100).toFixed(2);
-    //     var percentText = 'Read wav file completion progress: ' + percentComplete + '%';
-    //     progress.innerHTML = percentText;
-    //   }
-    // }
+    request.onprogress = function(event) {
+      if (event.lengthComputable) {
+        var percentComplete = (event.loaded / event.total * 100).toFixed(2);
+        var percentText = 'Read wav file completion progress: ' + percentComplete + '%';
+        progress.innerHTML = percentText;
+      }
+    }
     request.send();
   }
 
@@ -76,6 +79,7 @@
       // Loop through the 4096 samples
       for (var sample = 0; sample < inputBuffer.length; sample++) {
         // make output equal to the same as the input
+        console.log(inputData[sample])
         outputData[sample] = inputData[sample];
         // add noise to each output sample
         // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;
@@ -86,7 +90,7 @@
   getData();
 
   // wire up play button
-  playButton.onclick = function () {
+  playButton1.onclick = function () {
     source.connect(scriptNode);
     scriptNode.connect(audioCtx.destination);
     source.start();
