@@ -184,6 +184,8 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
   缓存区（buffer）包含以下数据：不间断的IEEE75432位线性PCM，从-1到1的范围额定，就是说，32位的浮点缓存区的每个样本在-1.0到1.0之间。
 
   AudioBuffer.getChannelData()返回一个 Float32Array，包含了带有频道的PCM数据，由频道参数定义（有0代表第一个频道）。
+  
+  [读取wav文件播放案例](./examples/readWav.html)
 
 * **MediaDevices接口是WebRTC技术的接口之一**
 
