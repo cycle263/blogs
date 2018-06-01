@@ -42,8 +42,10 @@
     request.responseType = 'arraybuffer';
     request.onload = function () {
       var audioData = request.response;
+      console.log('audioData', audioData);
       audioCtx.decodeAudioData(audioData, function (buffer) {
         var myBuffer = buffer;
+        console.log('myBuffer', myBuffer);
         source.buffer = myBuffer;
       }, function (e) {
         console.error("Error with decoding audio data" + e.err)
@@ -51,7 +53,7 @@
     }
     request.onprogress = function(event) {
       if (event.lengthComputable) {
-        var percentComplete = event.loaded / event.total * 100;
+        var percentComplete = (event.loaded / event.total * 100).toFixed(2);
         var percentText = 'precent complete: ' + percentComplete + '%';
         progress.innerHTML = percentText;
       }
