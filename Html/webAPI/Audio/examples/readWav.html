@@ -20,7 +20,7 @@
 
 <body>
   <h1>read wav file</h1>
-  <audio id="sound" src="./test.mp3" controls="controls"></audio>
+  <audio id="sound" src="" controls="controls"></audio>
   <button id="btn1">Read Wav and make noise</button>
   <button id="btn2">Read Wav and play audio</button>
   <p id="progress"></p>
@@ -79,7 +79,6 @@
       // Loop through the 4096 samples
       for (var sample = 0; sample < inputBuffer.length; sample++) {
         // make output equal to the same as the input
-        console.log(inputData[sample])
         outputData[sample] = inputData[sample];
         // add noise to each output sample
         // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;
