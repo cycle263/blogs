@@ -74,15 +74,15 @@
     for (var channel = 0; channel < outputBuffer.numberOfChannels; channel++) {
       var inputData = inputBuffer.getChannelData(channel);
       var outputData = outputBuffer.getChannelData(channel);
+      var springFactor = 48000 / 16000;
 
       // Loop through the 4096 samples
-      for (var sample = 0; sample < inputBuffer.length; sample++) {
+      for (var sample = 0; sample < inputBuffer.length; sample += springFactor) {
         // make output equal to the same as the input
-        outputData[sample] = inputData[sample];
+        outputData[sample] = inputData[sample];     
         // add noise to each output sample
         // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;
       }
-      // outputData = compress(inputData, 16000);
     }
   }
 
