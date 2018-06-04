@@ -74,7 +74,7 @@
     for (var channel = 0; channel < outputBuffer.numberOfChannels; channel++) {
       var inputData = inputBuffer.getChannelData(channel);
       var outputData = outputBuffer.getChannelData(channel);
-      var springFactor = 48000 / 16000;
+      var springFactor = 48000 / 8000;
 
       // Loop through the 4096 samples
       for (var sample = 0; sample < inputBuffer.length; sample += springFactor) {
