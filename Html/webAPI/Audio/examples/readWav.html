@@ -98,10 +98,10 @@
     var compression = parseInt(48000 / newRate);
     var length = orignData.length / compression;
     var result = new Float32Array(length);
-    var index = 0, j = 0;
+    var index = 0, j = 1;
     while (index < length) {
-      result[index] = orignData[j];
-      j += compression;
+      result[index] = orignData[orignData.length - j];
+      j++;
       index++;
     }
     return result;
