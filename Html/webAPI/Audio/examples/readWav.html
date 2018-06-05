@@ -99,6 +99,15 @@
     return Int8Array.from(input);
   }
 
+  function int16ToAudioBuffer(input) {
+    var myArrayBuffer = audioCtx.createBuffer(1, input.length, audioCtx.sampleRate);
+    var nowBuffering = myArrayBuffer.getChannelData(0);
+    for (var i = 0; i < input.length; i++) {
+      nowBuffering[i] = input[i];
+    }
+    return myArrayBuffer;
+  }
+
   function compress (orignData, newRate) { //合并压缩
     //压缩
     var compression = parseInt(48000 / newRate);
@@ -136,7 +145,8 @@
   playButton1.onclick = function () {
     var int16Arr = new Int16Array(audioBuffer.length);
     floatTo16BitPCM(int16Arr, 0, audioBuffer);
-    source.buffer = int16Arr;
+    var newAudioBuffer = int16ToAudioBuffer(int16Arr);
+    source.buffer = newAudioBuffer;
     source.loop = true;
     source.connect(scriptNode);
     scriptNode.connect(audioCtx.destination);
