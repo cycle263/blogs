@@ -81,8 +81,8 @@
       // Loop through the 4096 samples
       for (var sample = 0; sample < inputBuffer.length; sample += springFactor) {
         // make output equal to the same as the input
-        var s = Math.max(-1, Math.min(1, input[sample]));
-        
+        var s = Math.max(-1, Math.min(1, inputBuffer[sample]));
+
         outputData[sample] = s < 0 ? s * 0x8000 : s * 0x7FFF;;     
         // add noise to each output sample
         // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;
