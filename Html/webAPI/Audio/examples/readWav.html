@@ -81,7 +81,9 @@
       // Loop through the 4096 samples
       for (var sample = 0; sample < inputBuffer.length; sample += springFactor) {
         // make output equal to the same as the input
-        outputData[sample] = inputData[sample];     
+        var s = Math.max(-1, Math.min(1, input[sample]));
+        
+        outputData[sample] = s < 0 ? s * 0x8000 : s * 0x7FFF;;     
         // add noise to each output sample
         // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;
       }
@@ -146,8 +148,6 @@
 
   // wire up play button
   playButton1.onclick = function () {
-    var int16Arr = new Int16Array(audioBuffer.length);
-    floatTo16BitPCM(int16Arr, audioBuffer.getChannelData(0));
     source.buffer = audioBuffer;
     source.loop = true;
     source.connect(scriptNode);
