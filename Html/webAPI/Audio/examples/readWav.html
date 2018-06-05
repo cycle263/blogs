@@ -46,7 +46,13 @@
     request.responseType = 'arraybuffer';
     request.onload = function () {
       audioData = request.response;
-      playButton1.removeAttribute('disabled');
+      audioCtx.decodeAudioData(audioData, function (buffer) {
+        console.log('myBuffer', buffer);
+        audioBuffer = buffer;
+        playButton1.removeAttribute('disabled');
+      }, function (e) {
+        console.error("Error with decoding audio data: " + e)
+      });  
     }
     request.onprogress = function(event) {
       if (event.lengthComputable) {
@@ -125,17 +131,11 @@
 
   // wire up play button
   playButton1.onclick = function () {
-    audioCtx.decodeAudioData(audioData, function (buffer) {
-      console.log('myBuffer', buffer);
-      audioBuffer = buffer;
-      source.buffer = audioBuffer;
-      source.loop = true;
-      source.connect(scriptNode);
-      scriptNode.connect(audioCtx.destination);
-      source.start(0);
-    }, function (e) {
-      console.error("Error with decoding audio data" + e.err)
-    });
+    source.buffer = audioBuffer;
+    source.loop = true;
+    source.connect(scriptNode);
+    scriptNode.connect(audioCtx.destination);
+    source.start(0);
   }
 
   // stop
