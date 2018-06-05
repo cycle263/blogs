@@ -33,6 +33,7 @@
   var audioCtx = new AudioContext();
   var source = audioCtx.createBufferSource();
   var audioData = null;
+  var audioBuffer = null;
 
   // Create a ScriptProcessorNode with a bufferSize of 4096 and a single input and output channel
   var scriptNode = audioCtx.createScriptProcessor(4096, 1, 1);
@@ -126,7 +127,8 @@
   playButton1.onclick = function () {
     audioCtx.decodeAudioData(audioData, function (buffer) {
       console.log('myBuffer', buffer);
-      source.buffer = buffer;
+      audioBuffer = buffer;
+      source.buffer = audioBuffer;
       source.loop = true;
       source.connect(scriptNode);
       scriptNode.connect(audioCtx.destination);
