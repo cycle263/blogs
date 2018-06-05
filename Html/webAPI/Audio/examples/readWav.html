@@ -40,7 +40,7 @@
   // load in an audio track via XHR and decodeAudioData
   function getData() {
     request = new XMLHttpRequest();
-    request.open('GET', 'like you.wav', true);
+    request.open('GET', 'audio.wav', true);
     request.responseType = 'arraybuffer';
     request.onload = function () {
       var audioData = request.response;
