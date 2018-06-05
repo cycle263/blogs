@@ -4,6 +4,7 @@
   - [浏览器线程详解](./javascripts/other/async/thread)
   - [节流和防抖](./http/ajax/轮询(节流和防抖))
   - [语音识别](./Html/webAPI/Audio)
+  - [浅谈blob和arraybuffer](./Html/webAPI/Blob/compare)
 
 * **framework**
     - react

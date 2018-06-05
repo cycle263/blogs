@@ -45,9 +45,8 @@
     request.onload = function () {
       var audioData = request.response;
       audioCtx.decodeAudioData(audioData, function (buffer) {
-        myBuffer = buffer;
-        console.log('myBuffer', myBuffer);
-        source.buffer = myBuffer;
+        console.log('myBuffer', buffer);
+        source.buffer = buffer;
         source.loop = true;
       }, function (e) {
         console.error("Error with decoding audio data" + e.err)
