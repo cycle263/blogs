@@ -33,13 +33,13 @@
 
 * [x] hash-router --> html5-router
 
-* [ ] Google Analytics vs 百度统计
+* [x] Google Analytics vs 百度统计
 
 * [x] 节流和防抖
 
 * [ ] 双飞翼布局，三列同高
 
-* [ing...] arraybuffer, blob, array, binary, dataview
+* [x] arraybuffer, blob, array, binary, dataview
 
 * [ing...] websocket vs socket.io，io是否必须前后端都使用io框架
 
