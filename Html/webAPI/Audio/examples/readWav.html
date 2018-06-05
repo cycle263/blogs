@@ -20,7 +20,7 @@
 
 <body>
   <h1>read wav file</h1>
-  <button id="btn1">Read Wav and make noise</button>
+  <button id="btn1" disabled="true">Read Wav and make noise</button>
   <button id="btn2">Stop</button>
   <p id="progress"></p>
 </body>
@@ -32,6 +32,7 @@
   // Create AudioContext and buffer source
   var audioCtx = new AudioContext();
   var source = audioCtx.createBufferSource();
+  var audioData = null;
 
   // Create a ScriptProcessorNode with a bufferSize of 4096 and a single input and output channel
   var scriptNode = audioCtx.createScriptProcessor(4096, 1, 1);
@@ -43,14 +44,8 @@
     request.open('GET', 'audio.wav', true);
     request.responseType = 'arraybuffer';
     request.onload = function () {
-      var audioData = request.response;
-      audioCtx.decodeAudioData(audioData, function (buffer) {
-        console.log('myBuffer', buffer);
-        source.buffer = buffer;
-        source.loop = true;
-      }, function (e) {
-        console.error("Error with decoding audio data" + e.err)
-      });
+      audioData = request.response;
+      playButton1.removeAttribute('disabled');
     }
     request.onprogress = function(event) {
       if (event.lengthComputable) {
@@ -61,6 +56,8 @@
     }
     request.send();
   }
+
+  getData();
 
   // Give the node a function to process audio events
   scriptNode.onaudioprocess = function (audioProcessingEvent) {
@@ -127,10 +124,16 @@
 
   // wire up play button
   playButton1.onclick = function () {
-    getData();
-    source.connect(scriptNode);
-    scriptNode.connect(audioCtx.destination);
-    source.start(0);
+    audioCtx.decodeAudioData(audioData, function (buffer) {
+      console.log('myBuffer', buffer);
+      source.buffer = buffer;
+      source.loop = true;
+      source.connect(scriptNode);
+      scriptNode.connect(audioCtx.destination);
+      source.start(0);
+    }, function (e) {
+      console.error("Error with decoding audio data" + e.err)
+    });
   }
 
   // stop
