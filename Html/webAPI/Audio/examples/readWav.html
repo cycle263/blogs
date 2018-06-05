@@ -32,7 +32,6 @@
   // Create AudioContext and buffer source
   var audioCtx = new AudioContext();
   var source = audioCtx.createBufferSource();
-  var audioData = null;
   var audioBuffer = null;
 
   // Create a ScriptProcessorNode with a bufferSize of 4096 and a single input and output channel
@@ -45,7 +44,7 @@
     request.open('GET', 'audio.wav', true);
     request.responseType = 'arraybuffer';
     request.onload = function () {
-      audioData = request.response;
+      var audioData = request.response;
       audioCtx.decodeAudioData(audioData, function (buffer) {
         console.log('myBuffer', buffer);
         audioBuffer = buffer;
