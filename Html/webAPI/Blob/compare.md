@@ -79,6 +79,19 @@
   var dataAsInt8Array = Int8Array.from(int16Arr);
   ```
 
+* Uint8Array -> Float32Array
+
+  ```js
+  var convertBlock(incomingData) { // incoming data is a UInt8Array
+    var i, l = incomingData.length;
+    var outputData = new Float32Array(incomingData.length);
+    for (i = 0; i < l; i++) {
+        outputData[i] = (incomingData[i] - 128) / 128.0;
+    }
+    return outputData;
+  }
+  ```
+
 * arrayBuffer <-> base64
 
   ```js
