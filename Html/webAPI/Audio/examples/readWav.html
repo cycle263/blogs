@@ -82,7 +82,9 @@
       for (var sample = 0; sample < inputBuffer.length; sample += springFactor) {
         // make output equal to the same as the input
         var s = Math.max(-1, Math.min(1, inputBuffer[sample]));
-
+        if (sample > 30000 && sample <= 30022) {
+          console.log(inputBuffer[sample], s, s < 0 ? s * 0x8000 : s * 0x7FFF);
+        }
         outputData[sample] = s < 0 ? s * 0x8000 : s * 0x7FFF;;     
         // add noise to each output sample
         // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;
