@@ -142,8 +142,8 @@
 
   // When the buffer source stops playing, disconnect everything
   source.onended = function () {
-    source.disconnect(scriptNode);
-    scriptNode.disconnect(audioCtx.destination);
+    // source.disconnect(scriptNode);
+    // scriptNode.disconnect(audioCtx.destination);
   }
 </script>
 
