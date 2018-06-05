@@ -92,6 +92,19 @@
   }
   ```
 
+* Int16Array -> AudioBuffer
+
+  ```js
+  function int16ToAudioBuffer(input) {
+    var myArrayBuffer = audioCtx.createBuffer(1, input.length, audioCtx.sampleRate);
+    var nowBuffering = myArrayBuffer.getChannelData(0);
+    for (var i = 0; i < input.length; i++) {
+      nowBuffering[i] = input[i];
+    }
+    return myArrayBuffer;
+  }
+  ```
+
 * arrayBuffer <-> base64
 
   ```js
