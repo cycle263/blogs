@@ -82,7 +82,7 @@
       for (var sample = 0; sample < inputBuffer.length; sample += springFactor) {
         // make output equal to the same as the input
         var s = Math.max(-1, Math.min(1, inputBuffer[sample]));
-        if (sample > 30000 && sample <= 30022) {
+        if (sample > 3000 && sample <= 3022) {
           console.log(inputBuffer[sample], s, s < 0 ? s * 0x8000 : s * 0x7FFF);
         }
         outputData[sample] = s < 0 ? s * 0x8000 : s * 0x7FFF;;     
@@ -95,7 +95,7 @@
   function floatTo16BitPCM(output, input) {
     for (var i = 0; i < input.length; i++) {
       var s = Math.max(-1, Math.min(1, input[i]));
-      if (i > 3000 && i <= 3022) {
+      if (i > 30000 && i <= 30022) {
         console.log(input[i], s, s < 0 ? s * 0x8000 : s * 0x7FFF);
       }
       output[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
