@@ -95,6 +95,10 @@
     }
   }
 
+  function int16ToInt8Array(input) {
+    return Int8Array.from(input);
+  }
+
   function compress (orignData, newRate) { //合并压缩
     //压缩
     var compression = parseInt(48000 / newRate);
@@ -130,7 +134,9 @@
 
   // wire up play button
   playButton1.onclick = function () {
-    source.buffer = audioBuffer;
+    var int16Arr = new Int16Array(audioBuffer.length);
+    floatTo16BitPCM(int16Arr, 0, audioBuffer);
+    source.buffer = int16Arr;
     source.loop = true;
     source.connect(scriptNode);
     scriptNode.connect(audioCtx.destination);
