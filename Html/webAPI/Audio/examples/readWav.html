@@ -147,7 +147,7 @@
   // wire up play button
   playButton1.onclick = function () {
     var int16Arr = new Int16Array(audioBuffer.length);
-    floatTo16BitPCM(int16Arr, 0, audioBuffer);
+    floatTo16BitPCM(int16Arr, audioBuffer);
     var newAudioBuffer = int16ToAudioBuffer(int16Arr);
     source.buffer = newAudioBuffer;
     source.loop = true;
