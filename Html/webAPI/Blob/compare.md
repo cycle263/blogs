@@ -65,15 +65,11 @@
 
   // method 2
   while(i < len)
-  dataAsInt16Array[i] = convert(data[i++]);
+    dataAsInt16Array[i] = convert(data[i++]);
   function convert(n) {
     var v = n < 0 ? n * 32768 : n * 32767;       // convert in range [-32768, 32767]
     return Math.max(-32768, Math.min(32768, v)); // clamp
   }
-
-  // method 3
-  var dataAsInt16Array = new Int16Array(data); // or TypedArray.from()
-  var dataAsInt16Array = Int16Array.from(data);
   ```
 
 * Int16 -> Int8
