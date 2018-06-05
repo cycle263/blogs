@@ -95,7 +95,7 @@
   function floatTo16BitPCM(output, input) {
     for (var i = 0; i < input.length; i++) {
       var s = Math.max(-1, Math.min(1, input[i]));
-      if (i > 30000 && i <= 30022) {
+      if (i > 3000 && i <= 3022) {
         console.log(input[i], s, s < 0 ? s * 0x8000 : s * 0x7FFF);
       }
       output[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
