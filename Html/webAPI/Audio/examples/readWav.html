@@ -85,7 +85,7 @@
         if (sample > 3000 && sample <= 3022) {
           console.log(inputData[sample], s, s < 0 ? s * 0x8000 : s * 0x7FFF);
         }
-        outputData[sample] = s < 0 ? s * 0x8000 : s * 0x7FFF;;     
+        outputData[sample] = s < 0 ? Math.round(s * 0x8000) : Math.round(s * 0x7FFF);     
         // add noise to each output sample
         // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;
       }
