@@ -130,6 +130,7 @@
 
   // wire up play button
   playButton1.onclick = function () {
+    getData();
     source.connect(scriptNode);
     scriptNode.connect(audioCtx.destination);
     source.start(0);
@@ -142,8 +143,8 @@
 
   // When the buffer source stops playing, disconnect everything
   source.onended = function () {
-    // source.disconnect(scriptNode);
-    // scriptNode.disconnect(audioCtx.destination);
+    source.disconnect(scriptNode);
+    scriptNode.disconnect(audioCtx.destination);
   }
 </script>
 
