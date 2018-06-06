@@ -13,11 +13,14 @@
     </div>
   </div>
 
-  <canvas id="canvas" width="600" height="400"></canvas>
   <script src="../../scripts/rasterizeHTML.js"></script>
   <script>
-    var canvas = document.getElementById("canvas");
+    var canvas = document.createElement('canvas');
+    var content = document.getElementById('content');
+    canvas.width = content.clientWidth;
+    canvas.height = content.clientHeight;
     rasterizeHTML.drawHTML(document.getElementById('content').innerHTML, canvas);
+    document.body.appendChild(canvas);
   </script>
 </body>
 
