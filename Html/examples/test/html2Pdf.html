@@ -1,15 +1,15 @@
 <html>
   <title>test html to pdf</title>
   <body>
-    <div id="content">
+    <div id="content" style="background: #fff;">
       <div style="width:910px;height:100%;margin:2px auto;max-width: 920px;">
+        <img src="../../images/buffer.jpg" />
         <p>哈哈, zheshi fdjskaldjlk，tests</p>
         <p>哈哈, zheshi fdjskaldjlk，tests</p>
         <p>哈哈, zheshi fdjskaldjlk，tests</p>
         <p>哈哈, zheshi fdjskaldjlk，tests</p>
         <p>
-          <img src="https://gw.alipayobjects.com/zos/cstraining/wxVuosieYVISUyTTcUgB.jpg" title="????????????????????-???.jpg"
-            alt="????????????????????-???.jpg">
+          
         </p>
       </div>
     </div>
@@ -18,7 +18,6 @@
     <script>
       html2canvas(document.getElementById('content'), {
           onrendered: function (canvas) {
-
             var contentWidth = canvas.width;
             var contentHeight = canvas.height;
 
