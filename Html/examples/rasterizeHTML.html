@@ -105,14 +105,14 @@
       var contentWidth = canvas.width;
       var contentHeight = canvas.height;
 
-      //一页pdf显示html页面生成的canvas高度;
+      // a4纸的尺寸[595.28,841.89]
       var a4Width = 595.28;
       var a4Height = 841.89;
-      var pageHeight = contentWidth / a4Width * a4Height;
+      var pageHeight = contentWidth / a4Width * a4Height; // 一页pdf的高度
       //未生成pdf的html页面高度
       var copyContentHeight = contentHeight;
       var position = 0;
-      // a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+      // html页面生成的canvas在pdf中图片的宽高
       var imgWidth = a4Width;
       var imgHeight = a4Width / contentWidth * contentHeight;
       var pageData = canvas.toDataURL('image/png');
@@ -123,7 +123,7 @@
         pdf.addImage(pageData, 'png', 0, 0, imgWidth, imgHeight);
       } else {
         while (copyContentHeight > 0) {
-          pdf.addImage(pageData, 'png', 0, position, imgWidth + 10, imgHeight + 10)
+          pdf.addImage(pageData, 'png', 0, position, imgWidth, imgHeight);
           copyContentHeight -= pageHeight;
           position -= a4Height;
           // 避免添加空白页
