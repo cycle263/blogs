@@ -123,7 +123,7 @@
         pdf.addImage(pageData, 'jpg', 0, 0, imgWidth, imgHeight);
       } else {
         while (copyContentHeight > 0) {
-          pdf.addImage(pageData, 'jpg', -5, position, imgWidth, imgHeight)
+          pdf.addImage(pageData, 'jpg', 0, position, imgWidth, imgHeight)
           copyContentHeight -= pageHeight;
           position -= a4Height;
           // 避免添加空白页
