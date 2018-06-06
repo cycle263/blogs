@@ -102,7 +102,6 @@
     canvas.width = content.scrollWidth + 16;
     canvas.height = content.scrollHeight + 32;
     rasterizeHTML.drawHTML(document.getElementById('content').innerHTML, canvas).then(function(result){
-      console.log(result);
       var contentWidth = canvas.width;
       var contentHeight = canvas.height;
 
@@ -118,7 +117,7 @@
       var imgWidth = a4Width;
       var imgHeight = a4Width / contentWidth * contentHeight;
       var pageData = canvas.toDataURL('image/jpeg', 1.0);
-      var pdf = new jsPDF('', 'pt', 'a4');
+      var pdf = new jsPDF();
 
       //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
       //当内容未超过pdf一页显示的范围，无需分页
