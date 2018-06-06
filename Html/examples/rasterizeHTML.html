@@ -101,8 +101,7 @@
     var content = document.getElementById('content');
     canvas.width = content.scrollWidth + 16;
     canvas.height = content.scrollHeight + 32;
-    // 或者 rasterizeHTML.drawHTML(innerHTML, canvas)
-    rasterizeHTML.drawDocument(document.getElementById('content'), canvas).then(function(result){
+    rasterizeHTML.drawHTML(document.getElementById('content').innerHTML, canvas).then(function(result){
       var contentWidth = canvas.width;
       var contentHeight = canvas.height;
 
