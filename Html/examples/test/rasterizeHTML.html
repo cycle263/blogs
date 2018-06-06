@@ -17,12 +17,7 @@
   <script src="../../scripts/rasterizeHTML.js"></script>
   <script>
     var canvas = document.getElementById("canvas");
-
-      rasterizeHTML.drawHTML('<div style="font-size: 20px;">' +
-        'Some <span style="color: green">HTML</span>' +
-        ' with an image <img src="someimg.png">' +
-        '</div>',
-        canvas);
+    rasterizeHTML.drawHTML(document.getElementById('content'), canvas);
   </script>
 </body>
 
