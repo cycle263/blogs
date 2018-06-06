@@ -98,7 +98,7 @@
     canvas.width = content.scrollWidth + 16;
     canvas.height = content.scrollHeight + 32;
     var pdf = new jsPDF('', 'pt', 'a4');
-    pdf.addHTML(document.getElementById('content'));
+    pdf.addHTML(document.getElementById('content').innerHTML, 0, 0);
     pdf.save();
     // rasterizeHTML.drawHTML(document.getElementById('content').innerHTML, canvas).then(function(result){
     //   console.log(result);
