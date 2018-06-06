@@ -99,7 +99,7 @@
   window.onload = function() {
     var canvas = document.createElement('canvas');
     var content = document.getElementById('content');
-    canvas.width = content.scrollWidth;
+    canvas.width = content.scrollWidth + 16;
     canvas.height = content.scrollHeight + 32;
     rasterizeHTML.drawHTML(document.getElementById('content').innerHTML, canvas).then(function(result){
       console.log(result);
@@ -107,15 +107,16 @@
       var contentHeight = canvas.height;
 
       //一页pdf显示html页面生成的canvas高度;
-      var pageHeight = contentWidth / 592.28 * 841.89;
+      var a4Width = 595.28;
+      var a4Height = 841.89;
+      var pageHeight = contentWidth / a4Width * a4Height;
       //未生成pdf的html页面高度
       var leftHeight = contentHeight;
       //pdf页面偏移
       var position = 0;
       //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
-      var imgWidth = 595.28;
-      var imgHeight = 592.28 / contentWidth * contentHeight;
-
+      var imgWidth = a4Width;
+      var imgHeight = a4Width / contentWidth * contentHeight;
       var pageData = canvas.toDataURL('image/jpeg', 1.0);
       var pdf = new jsPDF('', 'pt', 'a4');
 
