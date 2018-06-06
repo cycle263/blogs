@@ -117,7 +117,7 @@
       var imgWidth = a4Width;
       var imgHeight = a4Width / contentWidth * contentHeight;
       var pageData = canvas.toDataURL('image/png');
-      var pdf = new jsPDF('', 'pt', 'a4');
+      var pdf = new jsPDF('', 'pt', 'a4');  // 单位为pt
 
       //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
       //当内容未超过pdf一页显示的范围，无需分页
