@@ -3,13 +3,13 @@
 
 <body>
   <div id="content" style="background: #fff;">
-    <div style="width:910px;height:100%;margin:2px auto;max-width: 920px;">
+    <div style="width:910px;height:100%;margin:2px auto;max-width: 920px;background: #fff;">
       <img src="../../images/buffer.jpg" />
       <p>哈哈, zheshi fdjskaldjlk，tests</p>
       <p>哈哈, zheshi fdjskaldjlk，tests</p>
       <p>哈哈, zheshi fdjskaldjlk，tests</p>
       <p>哈哈, zheshi fdjskaldjlk，tests</p>
-      <img style="max-width:500px;" src="https://gw.alipayobjects.com/zos/rmsportal/nGINITHcnyBpWWoDdRJT.jpg" alt="">
+      <img style="max-width:900px;" src="https://gw.alipayobjects.com/zos/rmsportal/nGINITHcnyBpWWoDdRJT.jpg" alt="">
     </div>
   </div>
 
@@ -19,8 +19,8 @@
   window.onload = function() {
     var canvas = document.createElement('canvas');
     var content = document.getElementById('content');
-    canvas.width = content.clientWidth;
-    canvas.height = content.clientHeight;
+    canvas.width = content.scrollWidth;
+    canvas.height = content.scrollHeight;
     rasterizeHTML.drawHTML(document.getElementById('content').innerHTML, canvas).then(function(result){
       console.log(result);
       var contentWidth = canvas.width;
@@ -55,9 +55,7 @@
           }
         }
       }
-
       pdf.save('content.pdf');
-
       document.body.appendChild(canvas);
     });
   }
