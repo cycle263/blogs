@@ -99,7 +99,7 @@
   window.onload = function() {
     var canvas = document.createElement('canvas');
     var content = document.getElementById('content');
-    canvas.width = content.scrollWidth + 16;
+    canvas.width = content.scrollWidth;
     canvas.height = content.scrollHeight + 32;
     rasterizeHTML.drawHTML(document.getElementById('content').innerHTML, canvas).then(function(result){
       console.log(result);
