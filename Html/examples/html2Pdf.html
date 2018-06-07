@@ -21,6 +21,7 @@
       var content = document.getElementById('content');
       download.onclick = function(){
         html2canvas(content, {
+            useCORS: true,
             onrendered: function (canvas) {
               var contentWidth = canvas.width;
               var contentHeight = canvas.height;
