@@ -99,18 +99,21 @@
   window.onload = function() {
     var canvas = document.createElement('canvas');
     var content = document.getElementById('content');
+    var cloneContent = $(document.getElementById('content')).clone();
+    cloneContent.find('div.edui-upload-video').remove();
+    cloneContent.find('img').css('maxWidth', '100%');
     canvas.width = content.scrollWidth + 16;
-    canvas.height = content.scrollHeight + 32;
-    rasterizeHTML.drawHTML(document.getElementById('content').innerHTML, canvas).then(function(result){
+    canvas.height = content.scrollHeight * 1.25;   // 字体和样式差异，拉高避免遗漏
+    rasterizeHTML.drawHTML(cloneContent.html(), canvas).then(function (result) {
       var contentWidth = canvas.width;
-      var contentHeight = canvas.height;
+      var contentHeight = result.image.height || canvas.height;
 
       // a4纸的尺寸[595.28,841.89]
       var a4Width = 595.28;
       var a4Height = 841.89;
       var pageHeight = contentWidth / a4Width * a4Height; // 一页pdf的高度
       //未生成pdf的html页面高度
-      var copyContentHeight = contentHeight;
+      var copyContentHeight = contentHeight + 32;
       var position = 0;
       // html页面生成的canvas在pdf中图片的宽高
       var imgWidth = a4Width;
@@ -132,10 +135,12 @@
           }
         }
       }
-      pdf.save('content.pdf');
+      pdf.save(articleName + '.pdf');
+      downloading = false;
       // document.body.appendChild(canvas);
       // document.body.appendChild(result.image);
     });
+      
   }
   </script>
 </body>
