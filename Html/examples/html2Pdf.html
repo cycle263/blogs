@@ -11,7 +11,7 @@
         <p>哈哈, zheshi fdjskaldjlk，tests</p>
         <p>哈哈, zheshi fdjskaldjlk，tests</p>
         <p>哈哈, zheshi fdjskaldjlk，tests</p>
-        <table border="1">
+        <table border="1" cellspacing="0">
           <tr>
             <td>内容</td>
             <td>内容</td>
@@ -54,7 +54,7 @@
       var content = document.getElementById('content');
       download.onclick = function(){
         html2canvas(content, {
-            useCORS: true,
+            useCORS: true,    // http(s)加载的图片
             onrendered: function (canvas) {
               var contentWidth = canvas.width;
               var contentHeight = canvas.height;
