@@ -76,7 +76,7 @@
     // canvas.style.width = (content.scrollWidth + 16) + 'px';
     // canvas.style.height = (content.scrollHeight * 1.25) + 'px';
     var context = canvas.getContext('2d');
-    context.scale(scale, scale);
+    // context.scale(scale, scale);
     context.font = 'Microsoft YaHei';
     context.fontSize = 13;
     rasterizeHTML.drawHTML(cloneContent.html(), canvas, { zoom: scale }).then(function (result) {
@@ -104,6 +104,7 @@
           pdf.addImage(pageData, 'png', 0, position, imgWidth, imgHeight);
           copyContentHeight -= pageHeight;
           position -= a4Height;
+          console.log(copyContentHeight, position, imgHeight);
           // 避免添加空白页
           if (copyContentHeight > 0) {
             pdf.addPage();
