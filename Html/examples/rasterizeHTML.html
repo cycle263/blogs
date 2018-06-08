@@ -98,10 +98,10 @@
 
       // 当内容未超过pdf一页显示的范围，无需分页
       if (copyContentHeight < pageHeight) {
-        pdf.addImage(pageData, 'png', 0, 0, imgWidth, imgHeight);
+        pdf.addImage(pageData, 'png', 0, 0, imgWidth*2, imgHeight);
       } else {
         while (copyContentHeight > 0) {
-          pdf.addImage(pageData, 'png', 0, position, imgWidth, imgHeight);
+          pdf.addImage(pageData, 'png', 0, position, imgWidth*2, imgHeight);
           copyContentHeight -= pageHeight;
           position -= a4Height;
           // 避免添加空白页
