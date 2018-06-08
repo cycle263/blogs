@@ -68,7 +68,7 @@
     var canvas = document.createElement('canvas');
     var content = document.getElementById('content');
     var cloneContent = $(document.getElementById('content')).clone();
-    var scale = 1.5;  // 缩放因子，优化清晰度
+    var scale = 2;  // 缩放因子，优化清晰度
     cloneContent.find('div.edui-upload-video').remove();
     cloneContent.find('img').css('maxWidth', '100%');
     cloneContent.find('table').css('borderCollapse', 'collapse').find('td').css({ 'border': '1px solid #CCCCCC', 'padding': '2px 12px' });
