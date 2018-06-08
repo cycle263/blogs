@@ -79,7 +79,7 @@
     context.scale(scale, scale);
     context.font = 'Microsoft YaHei';
     context.fontSize = 13;
-    rasterizeHTML.drawHTML(cloneContent.html(), canvas).then(function (result) {
+    rasterizeHTML.drawHTML(cloneContent.html(), canvas, { zoom: 2 }).then(function (result) {
       var contentWidth = canvas.width;
       var contentHeight = result.image.height || canvas.height;
 
