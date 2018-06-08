@@ -79,6 +79,16 @@
 
 WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网络应用或者站点，在不借助中间媒介的情况下，建立浏览器之间点对点（Peer-to-Peer）的连接，实现视频流和（或）音频流或者其他任意数据的传输。WebRTC包含的这些标准使用户在无需安装任何插件或者第三方的软件的情况下，创建点对点（Peer-to-Peer）的数据分享和电话会议成为可能。
 
+  ```js
+  // 默认采样率和采样位数
+  录音接口(navigator.mediaDevices.getUserMedia) -> promise对象，参数：MediaStream对象 -> URL.createObjectURL 或者 赋值给video.srcObject -> video、audio直接播放
+
+  // 修改采样率思路
+  录音接口(navigator.mediaDevices.getUserMedia) -> promise对象，参数：MediaStream对象 -> audioContext.createMediaStreamSource(stream), audioContext.createScriptProcessor(buffersize,1,1), 并且mediaStreamSource.connect(scriptProcessorNode), scriptProcessorNode.connect(audioContext.destination);  -> scriptProcessorNode.onaudioprocess(audioProcessingEvent)  -> audioProcessingEvent.inputBuffer, audioProcessingEvent.outputBuffer -> getChannelData return Float32Array, 缓存buffer，和length -> 修改采样率，chrome默认48k, 16/48可以理解为三个点取一点 -> 新起arraybuffer，定义pcm文件头信息(44位), 将缓存的buffer换算成Int16Array，缓冲到新buffer的44之后 -> 最后将新buffer转换成wav类型的Blob文件
+
+  // 读取本地wav文件
+  ```
+
 * **AudioContext**
 
   AudioContext是一个音频上下文对象，一段音频到达扬声器进行播放之前，半路对其进行拦截，于是我们就得到了音频数据了，这个拦截工作是由window.AudioContext来做的，我们所有对音频的操作都基于这个对象。
