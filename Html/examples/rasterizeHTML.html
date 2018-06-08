@@ -67,10 +67,13 @@
     var canvas = document.createElement('canvas');
     var content = document.getElementById('content');
     var cloneContent = $(document.getElementById('content')).clone();
+    var scale = 2;
     cloneContent.find('div.edui-upload-video').remove();
     cloneContent.find('img').css('maxWidth', '100%');
-    canvas.width = content.scrollWidth + 16;
-    canvas.height = content.scrollHeight * 1.25;   // 字体和样式差异，拉高避免遗漏
+    canvas.width = (content.scrollWidth + 16) * scale;
+    canvas.height = (content.scrollHeight * 1.25) * scale;   // 字体和样式差异，拉高避免遗漏
+    canvas.style.width = (content.scrollWidth + 16) * scale + 'px';
+    canvas.style.height = (content.scrollHeight * 1.25) * scale + 'px';
     rasterizeHTML.drawHTML(cloneContent.html(), canvas).then(function (result) {
       var contentWidth = canvas.width;
       var contentHeight = result.image.height || canvas.height;
