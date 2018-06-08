@@ -57,6 +57,7 @@
       var content = document.getElementById('content');
       download.onclick = function(){
         html2canvas(content, {
+            logging: true,
             useCORS: true,    // http(s)加载的图片, load images from a server
             scale: 1.5,   // 解决缩放清晰度问题
             onrendered: function (canvas) {
