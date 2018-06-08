@@ -68,13 +68,13 @@
     var canvas = document.createElement('canvas');
     var content = document.getElementById('content');
     var cloneContent = $(document.getElementById('content')).clone();
-    var scale = 1;
+    var scale = 2;
     cloneContent.find('div.edui-upload-video').remove();
     cloneContent.find('img').css('maxWidth', '100%');
     canvas.width = (content.scrollWidth + 16) * scale;
     canvas.height = (content.scrollHeight * 1.25) * scale;   // 字体和样式差异，拉高避免遗漏
-    canvas.style.width = (content.scrollWidth + 16) + 'px';
-    canvas.style.height = (content.scrollHeight * 1.25) + 'px';
+    // canvas.style.width = (content.scrollWidth + 16) + 'px';
+    // canvas.style.height = (content.scrollHeight * 1.25) + 'px';
     var context = canvas.getContext('2d');
     context.scale(scale, scale);
     context.font = 'Microsoft YaHei';
