@@ -60,7 +60,7 @@
         html2canvas(content, {
             logging: true,
             useCORS: true,    // http(s)加载的图片, load images from a server
-            scale: 1.5 // 解决缩放清晰度问题
+            scale: 3 // 解决缩放清晰度问题
           }).then(function (canvas) {
               var contentWidth = canvas.width;
               var contentHeight = canvas.height;
