@@ -73,8 +73,8 @@
     cloneContent.find('img').css('maxWidth', '100%');
     canvas.width = (content.scrollWidth + 16) * scale;
     canvas.height = (content.scrollHeight * 1.25) * scale;   // 字体和样式差异，拉高避免遗漏
-    canvas.style.width = (content.scrollWidth + 16) * scale + 'px';
-    canvas.style.height = (content.scrollHeight * 1.25) * scale + 'px';
+    canvas.style.width = (content.scrollWidth + 16) + 'px';
+    canvas.style.height = (content.scrollHeight * 1.25) + 'px';
     var context = canvas.getContext('2d');
     context.scale(scale, scale);
     context.font = 'Microsoft YaHei';
@@ -98,10 +98,10 @@
 
       // 当内容未超过pdf一页显示的范围，无需分页
       if (copyContentHeight < pageHeight) {
-        pdf.addImage(pageData, 'png', 0, 0, imgWidth*2, imgHeight);
+        pdf.addImage(pageData, 'png', 0, 0, imgWidth, imgHeight);
       } else {
         while (copyContentHeight > 0) {
-          pdf.addImage(pageData, 'png', 0, position, imgWidth*2, imgHeight);
+          pdf.addImage(pageData, 'png', 0, position, imgWidth, imgHeight);
           copyContentHeight -= pageHeight;
           position -= a4Height;
           // 避免添加空白页
