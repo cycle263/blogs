@@ -58,7 +58,8 @@
       download.onclick = function(){
         html2canvas(content, {
             useCORS: true,    // http(s)加载的图片, load images from a server
-            scale: 1,   // 解决缩放清晰度问题
+            scale: 2,   // 解决缩放清晰度问题
+            dpi: 192,
             onrendered: function (canvas) {
               var contentWidth = canvas.width;
               var contentHeight = canvas.height;
