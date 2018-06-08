@@ -87,6 +87,7 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
   录音接口(navigator.mediaDevices.getUserMedia) -> promise对象，参数：MediaStream对象 -> audioContext.createMediaStreamSource(stream), audioContext.createScriptProcessor(buffersize,1,1), 并且mediaStreamSource.connect(scriptProcessorNode), scriptProcessorNode.connect(audioContext.destination);  -> scriptProcessorNode.onaudioprocess(audioProcessingEvent)  -> audioProcessingEvent.inputBuffer, audioProcessingEvent.outputBuffer -> getChannelData return Float32Array, 缓存buffer，和length -> 修改采样率，chrome默认48k, 16/48可以理解为三个点取一点 -> 新起arraybuffer，定义pcm文件头信息(44位), 将缓存的buffer换算成Int16Array，缓冲到新buffer的44之后 -> 最后将新buffer转换成wav类型的Blob文件
 
   // 读取本地wav文件
+  xhr以arraybuffer类型读取wav文件 -> audioContext.decodeAudioData解码音频文件, 回调传入audioBuffer参数 -> audioContext.createBufferSource,  audioContext.createScriptProcessor(buffersize,1,1)  -> bufferSource.connect(scriptNode); scriptNode.connect(audioContext.destination); -> bufferSource.start()开始播放（bufferSource只可以消费一次，停止播放buffer会被清洗）
   ```
 
 * **AudioContext**
