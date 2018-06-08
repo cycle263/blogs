@@ -68,9 +68,10 @@
     var canvas = document.createElement('canvas');
     var content = document.getElementById('content');
     var cloneContent = $(document.getElementById('content')).clone();
-    var scale = 1;  // 缩放因子，优化清晰度
+    var scale = 1.5;  // 缩放因子，优化清晰度
     cloneContent.find('div.edui-upload-video').remove();
     cloneContent.find('img').css('maxWidth', '100%');
+    cloneContent.find('table').css('borderCollapse', 'collapse').find('td').css({ 'border': '1px solid #CCCCCC', 'padding': '2px 12px' });
     canvas.width = (content.scrollWidth + 16) * scale;
     canvas.height = (content.scrollHeight * 1.25) * scale;   // 乘以1.25，因字体和样式差异，拉高避免遗漏
     // canvas.style.width = (content.scrollWidth + 16) + 'px';
@@ -114,7 +115,7 @@
       pdf.save();
       downloading = false;
       // document.body.appendChild(canvas);
-      // document.body.appendChild(result.image);
+      document.body.appendChild(result.image);
     });
       
   }
