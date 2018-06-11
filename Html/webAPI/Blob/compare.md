@@ -158,21 +158,6 @@
   }
   ```
 
-* ArrayBuffer <-> blob
-
-  ```js
-  // ArrayBuffer to blob
-  var buffer = new ArrayBuffer(32);
-  var blob = new Blob([buffer]);       // 注意必须包裹[]
-
-  // blob to arraybuffer
-  var blob = new Blob(); // blob是要转换的blob
-  var fr = new FileReader();
-  fr.onload = function () {
-    var result = this.result; // result是转换后的结果
-  }
-  fr.readAsArrayBuffer(blob);
-  ```
 
 * base64 <-> blob
 
