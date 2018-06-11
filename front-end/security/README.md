@@ -52,6 +52,7 @@
   Referer有时也被用作防盗链, 即下载时判断来源地址是不是在网站域名之内, 否则就不能下载或显示,很多网站,如天涯就是通过Referer页面来判断用户是否能够下载图片.
 
   其他方案
+
   ```js
   function open_without_referrer(link){
     document.body.appendChild(document.createElement('iframe')).src='javascript:"<script>top.location.replace(\''+link+'\')<\/script>"';
@@ -61,3 +62,7 @@
     window.open('javascript:window.name;', '<script>location.replace("'+full_link+'")<\/script>');
   }
   ```
+
+  - 绕过图片防盗链
+
+    + 中转服务器
