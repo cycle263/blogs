@@ -124,6 +124,8 @@
   // or ES6
   // arrayBuffer to Base64
   let base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+
+  image.src = 'data:image/gif;base64,' + base64String;
   ```
 
 * base64 <-> unicode
