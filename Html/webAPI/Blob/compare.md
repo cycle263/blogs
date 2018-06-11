@@ -207,7 +207,7 @@
   }
   ```
 
-* blob <-> file
+* blob -> file
 
   ```js
   // blob to file
