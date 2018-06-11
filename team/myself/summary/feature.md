@@ -41,6 +41,6 @@
 
 * [x] arraybuffer, blob, array, binary, dataview
 
-* [ing...] websocket vs socket.io，io是否必须前后端都使用io框架
+* [x] websocket vs socket.io，io必须前后端都使用io框架
 
 * [ ] 引用类型 vs 值类型
