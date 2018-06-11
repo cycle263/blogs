@@ -26,6 +26,8 @@
 
   - less-loader 加载和转译 LESS 文件
 
+  - towebp-loader 根据图片类型转换成一份webp和原图两份图片，并且集成了url-loader的功能 支持url的limit功能和file-loader文件名的功能。
+
   - babel-loader 加载 ES2015+ 代码，然后使用 Babel 转译为 ES5
 
     ```js
