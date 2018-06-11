@@ -5,7 +5,7 @@
   </head>
   <body>
     <p></p>
-    <img src="" alt="">
+    <img alt="image">
     <!-- <script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script> -->
     <script>
     var xhr = new XMLHttpRequest();
@@ -13,8 +13,8 @@
     xhr.onload = function(){
       var bf = xhr.response;
       console.log(bf);
-      document.getElementsByTagName('p')[0].innerHTML = xhr.response.responseURL;
-      document.getElementsByTagName('img')[0].innerHTML = String.fromCharCode.apply(null, new Uint8Array(bf))
+      document.getElementsByTagName('p')[0].innerHTML = xhr.responseURL;
+      document.getElementsByTagName('img')[0].src = String.fromCharCode.apply(null, new Uint8Array(bf))
     }
     xhr.open('GET', '../images/buffer.jpg');
     xhr.send();
