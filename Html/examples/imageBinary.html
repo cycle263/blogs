@@ -14,7 +14,7 @@
       var bf = xhr.response;
       console.log(bf);
       document.getElementsByTagName('p')[0].innerHTML = xhr.responseURL;
-      document.getElementsByTagName('img')[0].src = String.fromCharCode.apply(null, new Uint8Array(bf))
+      document.getElementsByTagName('img')[0].src = btoa(String.fromCharCode.apply(null, new Uint8Array(bf)));
     }
     xhr.open('GET', '../images/buffer.jpg');
     xhr.send();
