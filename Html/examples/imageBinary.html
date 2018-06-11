@@ -9,9 +9,9 @@
     <script>
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'arraybuffer';
-    xhr.onload = function(result){
-      console.log(arguments);
-      document.getElementsByTagName('p')[0].innerHTML = result;
+    xhr.onload = function(){
+      console.log(request.response);
+      document.getElementsByTagName('p')[0].innerHTML = request.response.responseURL;
     }
     xhr.open('GET', '../images/buffer.jpg');
     xhr.send();
