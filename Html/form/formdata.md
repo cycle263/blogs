@@ -9,10 +9,33 @@
 * 通过xhr发送数据
 
   ```js
-  var xhr = new XMLHttpRequest();
-  xhr.open("post","login");
-  xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");   // 设置request header为表单提交方式
-  xhr.send(formData);
+  var formData = new FormData();
+  formData.append("username", "Groucho");
+  formData.append("accountnum", 123456); //数字123456会被立即转换成字符串 "123456"
+
+  // HTML 文件类型input，由用户选择
+  formData.append("userfile", fileInputElement.files[0]), 'fileName';
+
+  // JavaScript file-like 对象
+  var content = '<a id="a"><b id="b">hey!</b></a>'; // 新文件的正文...
+  var blob = new Blob([content], { type: "text/xml"});
+
+  formData.append("webmasterfile", blob, 'filename');
+
+  var request = new XMLHttpRequest();
+  request.open("POST", "http://foo.com/submitform.php");
+  request.send(formData);
+
+  // jQuery 处理FormData
+  var fd = new FormData(document.querySelector("form"));
+  fd.append("CustomField", "This is some extra data");
+  $.ajax({
+    url: "stash.php",
+    type: "POST",
+    data: fd,
+    processData: false,  // 不处理数据
+    contentType: false   // 不设置内容类型
+  });
   ```
 
 ## FormData 操作方法
@@ -80,3 +103,11 @@
   ```
 
 ## vs octet-stream vs x-www-form-urlencoded
+
+* Content-Type
+
+  Content-Type: application/x-www-form-urlencoded
+
+  Content-Type: multipart/form-data; boundary=ZnGpDtePMx0KrHh_G0X99Yef9r8JZsRJSXC
+
+  Content-Type: application/octet-stream
