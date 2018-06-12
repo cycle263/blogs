@@ -44,3 +44,5 @@
 * [x] websocket vs socket.io，io必须前后端都使用io框架
 
 * [ ] 引用类型 vs 值类型
+
+* [ ] 首屏时间，白屏时间，性能指标
