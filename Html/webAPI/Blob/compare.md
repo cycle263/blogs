@@ -25,6 +25,8 @@
   }
   ```
 
+## 格式转换
+
 * blob <-> arraybuffer
 
   ```js
