@@ -9,7 +9,9 @@
 
   > 网络应用中，两个应用程序同时需要向对方发送消息的能力（即全双工通信），所利用到的技术就是 socket，其能够提供端对端的通信。对于程序员而言，其需要在 A 端创建一个 socket 实例，并为这个实例提供其所要连接的 B 端的 IP 地址和端口号，而在 B 端创建另一个 socket 实例，并且绑定本地端口号来进行监听。当 A 和 B 建立连接后，双方就建立了一个端对端的 TCP 连接，从而可以进行双向通信。
 
-  目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议[Engine.IO protocol](https://github.com/socketio/engine.io-protocol)。socket.io 底层是 engine.io，这个库实现了跨平台的双向通信,使用了 WebSocket 和 XMLHttprequest（或JSONP） 封装了一套自己的 Socket 协议，在低版本浏览器里面使用长轮询替代 WebSocket。一个完整的 Engine.IO Socket 包括多个 XHR 和 WebSocket 连接。
+  目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议[Engine.IO protocol](https://github.com/socketio/engine.io-protocol)。
+  
+  socket.io 底层是 engine.io，这个库实现了跨平台的双向通信, 使用了 WebSocket 和 XMLHttprequest（或JSONP） 封装了一套自己的 Socket 协议，在低版本浏览器里面使用长轮询替代 WebSocket。一个完整的 Engine.IO Socket 包括多个 XHR 和 WebSocket 连接。
 
   为了在每一种浏览器上支持实时通讯，Socket.IO 在运行中选择最佳的传输方式，而不影响API。支持的方式为：WebSocket, Adobe Flash Socket, AJAX long polling, AJAX multipart streaming, Forever Iframe, JSONP Polling。
 
