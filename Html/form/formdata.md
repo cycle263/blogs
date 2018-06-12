@@ -1,6 +1,6 @@
 ## formdata
 
-  > XMLHttpRequest Level 2添加了一个新的接口FormData.利用FormData对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send()方法来异步的提交这个"表单".比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件.
+  > XMLHttpRequest Level 2添加了一个新的接口FormData。利用FormData对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件, 我们还可以使用XMLHttpRequest的send()方法来异步的提交这个"表单"。比起普通的ajax, 使用FormData的最大优点就是我们可以异步上传一个二进制文件.
 
 * FormData对象会自动将form中的表单值也包含进去，包括文件内容也会被编码之后包含进去。将文件内容自动序列化成字符串（相当于readAsBinaryString的手动拼接字符串）
 
@@ -13,7 +13,6 @@
   xhr.open("post","login");
   xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");   // 设置request header为表单提交方式
   xhr.send(formData);
-
   ```
 
 ## FormData 操作方法
@@ -79,3 +78,5 @@
   console.log(j.next()); // {done:false, value: "v1"}
   console.log(j.next()); // {done:true, value:undefined}
   ```
+
+## vs octet-stream vs x-www-form-urlencoded
