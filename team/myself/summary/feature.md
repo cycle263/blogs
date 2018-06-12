@@ -27,7 +27,7 @@
 
 * [ ] babel详解 [babel中文网](https://babeljs.cn/learn-es2015/)
 
-* [ing...] octet-stream vs form-data(content-type)
+* [x] octet-stream vs form-data(content-type)
 
 * [x] Date对象详解（new Date vs Date、Date.parse等）
 
