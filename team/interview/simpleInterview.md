@@ -12,7 +12,7 @@
 ## 框架类库
 * react生命周期？数据模型(redux、flux、reselect)-什么场景适用？无状态函数组件? react适合什么项目? **redux的三大原则？组件之间通信(订阅发布)？虚拟DOM和diff算法原理(按需更新，分层比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步?)？)类组件和函数式组件选择？循环组件需要用key?react合成事件和js原生事件区别？shouldComponentUpdate什么场景适用？pure-component优势？如何保持父子组件之间的松耦合？组件数属性传递(context)？**  一个基于state和props的组件渲染函数，state是自己的，props是外面引入的，变化就重新渲染。
 * angular 双向绑定机制 -> 脏检查机制($digest流程-->检查所有watcher) 不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？(track by $index)ng-click中能写js原生对象方法吗？factory、service、provider什么关系？
-* vue 双向绑定(dom监听 + data监听 -> 访问器属性劫持)？遇到过vuejs页面闪烁吗？v-if vs v-show区别(是否渲染)？vue 虚拟DOM和react 虚拟DOM的区别? 有哪些生命周期钩子函数？~~钩子函数vs回调函数？~~
+* vue 双向绑定(dom监听 + data监听 -> 访问器属性劫持)？遇到过vuejs页面闪烁吗？v-if vs v-show区别(是否渲染)？vue 虚拟DOM和react 虚拟DOM的区别? 有哪些生命周期钩子函数？~~钩子函数vs回调函数vs高阶函数？~~
 * jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ?
 * 可视化：d3.js、echart(canvas)、highchart(svg)、Three.js(基于D3)、highstock、EaselJS、flv.js，如何技术选型？优缺点
 
