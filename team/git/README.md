@@ -19,6 +19,7 @@
 * 7、 git push origin branch_name    将当前改动提交到远程branch_name分支上
   git push -u origin branch_name    将当前改动提交到远程branch_name分支上
 
+![git常见的命令表](./images/git-cmd.png)
 
 ### 备注
 
