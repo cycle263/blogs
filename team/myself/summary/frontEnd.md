@@ -14,4 +14,4 @@
 
 * 6. 全栈开发（前后端通吃，nodejs、php）
 
-  参考百度统计，Google Analytics
+参考百度统计，Google Analytics
