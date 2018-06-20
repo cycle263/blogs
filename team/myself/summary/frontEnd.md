@@ -12,6 +12,6 @@
 
 * 5. 可视化开发（webGL、canvas、svg、D3.js）
 
-* 6. 全栈开发（前后端通吃，nodejs、php）
+* 6. 全栈开发（前后端通吃，nodejs、php、go、deno）
 
 参考百度统计，Google Analytics
