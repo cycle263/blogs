@@ -74,7 +74,7 @@
 
     > npm 脚本有一个非常强大的功能，就是可以使用 npm 的内部变量。
     
-    通过npm_package_前缀，npm 脚本可以拿到package.json里面的字段。还可以通过npm_config_前缀，拿到 npm 的配置变量，即npm config get xxx命令返回的值
+    **如果是 Bash 脚本**，可以用$npm_package_name和$npm_package_version拿到package.json里面的字段。还可以通过npm_config_前缀，拿到 npm 的配置变量，即npm config get xxx命令返回的值。
 
   * 常见示例
 
@@ -109,4 +109,4 @@
 
 * 常见错误
 
-  - window环境不支持`${npm_package_family}/${npm_package_name}`变量方式来指定路径，估计原因：window环境npm script不能识别${}写法，可以将脚本移到单独的node js文件里执行。可以安装cross-env包解决。
+  - window环境不支持`${npm_package_family}/${npm_package_name}`变量方式来指定路径，估计原因：window环境不是bash脚本，不支持${}写法，可以将脚本移到单独的node js文件里执行。可以安装cross-env包解决。
