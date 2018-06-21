@@ -27,6 +27,7 @@
       margin-left: -100px;
   }
   #center .wrap {
+      text-align: center;
       margin: 0 100px 0 200px;
   }
 
@@ -40,6 +41,7 @@
       height: 300px;
   }
   #center1 {
+      text-align: center;
       width: 100%;
       background: #eee;
   }
@@ -54,6 +56,30 @@
       background: red;
       margin-right: -100px;
   }
+
+  /* flex布局 */
+  #container2 {
+    display: flex;
+    margin-top: 400px;
+    width: 100%;
+  }
+  #center2 {
+    text-align: center;
+    flex-grow: 1;
+	background-color: #eee;
+  }
+  #left2 {
+    order: -1;
+	flex: 0 1 200px;
+	background-color: blue;
+  }
+  #right2 {
+    flex: 0 1 100px;
+	background-color: red;
+  }
+  .col2 {
+      height: 300px;
+  }
   </style>
 </head>
 
@@ -61,19 +87,24 @@
   <!-- 双飞翼布局 -->
   <div id="container">
     <div id="center" class="col">
-      <div class="wrap">center</div>
+      <div class="wrap">双飞翼布局</div>
     </div>
     <div id="left" class="col">left</div>
     <div id="right" class="col">right</div>
   </div>
 
- 
-
   <!-- 圣杯布局 -->
   <div id="container1">
-    <div id="center1" class="col1">center</div>
+    <div id="center1" class="col1">圣杯布局</div>
     <div id="left1" class="col1">left</div>
     <div id="right1" class="col1">right</div>
+  </div>
+
+  <!-- flex布局 -->
+  <div id="container2">
+    <div id="center2" class="col2">Flex布局</div>
+    <div id="left2" class="col2">left</div>
+    <div id="right2" class="col2">right</div>
   </div>
 </body>
 
