@@ -78,7 +78,7 @@
 
   * 常见示例
 
-    ```
+    ```script
     // 删除目录
     "clean": "rimraf dist/*",
 
@@ -106,3 +106,7 @@
     // 构建 favicon
     "build:favicon": "node scripts/favicon.js",
     ```
+
+* 常见错误
+
+  - window环境不支持`${npm_package_family}/${npm_package_name}`变量方式来指定路径，估计原因：window环境npm script不能识别${}写法，可以将脚本移到单独的node js文件里执行。
