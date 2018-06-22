@@ -78,3 +78,6 @@ function fn3(){
 
 fn();
 console.log(a);
+
+// 写出打印的结果
+[1,2,3].map(parseInt) // [1,NaN,NaN]
