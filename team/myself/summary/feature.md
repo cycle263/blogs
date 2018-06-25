@@ -37,7 +37,7 @@
 
 * [x] 节流和防抖
 
-* [ing...] 双飞翼布局，三列同高
+* [x] 双飞翼布局，三列同高
 
 * [x] arraybuffer, blob, array, binary, dataview
 
