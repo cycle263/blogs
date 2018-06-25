@@ -14,7 +14,7 @@
 
     - await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try...catch 代码块中。
 
-      ```
+      ```js
       async function myFunction() {
         try {
           await somethingThatReturnsAPromise();
@@ -34,7 +34,7 @@
 
     - await 命令只能用在 async 函数之中，如果用在普通函数，就会报错。
 
-      ```
+      ```js
       async function dbFuc(db) {
         let docs = [{}, {}, {}];
 
