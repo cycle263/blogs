@@ -37,7 +37,7 @@
       return index===array.indexOf(ele)
   })
 
-  //数组去重 --- 性能较好，能区分hash值
+  // 数组去重 --- 性能较好，能区分hash值
   function unique(arr){
     var newArr = [],
         hash = {};
@@ -50,5 +50,14 @@
         }
     }
     return newArr;
+  }
+
+  // 对象数组针对某属性去重
+  function unique(arr, attr) {
+      let hash = {};
+      return arr.reduce((item, next) => {
+          hash[next[attr]] ? '' : hash[next[attr]] = true && item.push(next);
+          return item;
+      }, []);
   }
   ```
