@@ -38,6 +38,8 @@
     
     - 提供服务方发起通信，并向客户端推送数据的机制。
 
+    `http - spdy - ssl/tls - tcp`，SPDY位于HTTP之下，TCP和SSL之上，这样可以轻松兼容老版本的HTTP协议(将HTTP1.x的内容封装成一种新的frame格式)，同时可以使用已有的SSL功能。
+
 * [Ajax - xhrHttpRequest](ajax)的总结
 
 * 其他
