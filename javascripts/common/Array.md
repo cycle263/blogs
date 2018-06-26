@@ -52,6 +52,14 @@
     return newArr;
   }
 
+  function unique(arr) {
+      let hash = {};
+      return arr.reduce((item, next) => {
+          hash[next] ? '' : hash[next] = true && item.push(next);
+          return item;
+      }, []);
+  }
+
   // 对象数组针对某属性去重
   function unique(arr, attr) {
       let hash = {};
@@ -60,4 +68,32 @@
           return item;
       }, []);
   }
+  ```
+
+* 求数组中小于N的连续的最长子数组
+
+  ```js
+  var arr = [32,453,65,61,43,654,423,16,65,98,767,55,67,435,875,54,597,322,201,199,183];
+  function findLongest(arr, n) {
+    var result = [], temp = [];
+    var l = 0, index = -1, prev = 0, cur = 0;
+    arr.forEach(function(item, i){
+      if(item > n) {
+        prev = cur ? cur + 1 : 0;
+        cur = i;
+        temp = arr.slice(prev, cur);
+        temp.length && result.push(temp);
+      }
+    });
+    temp = arr.slice(cur+1);
+    temp.length && result.push(temp);
+    result.forEach(function(p,k){
+      if (p.length > l) {
+        l = p.length;
+        index = k;
+      }
+    });
+    return result[index];
+  }
+  findLongest(arr, 200);
   ```

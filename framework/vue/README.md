@@ -6,7 +6,7 @@
 
   * 双向绑定
 
-    > value 的单向绑定 + onChange 事件侦听
+    > value的单向绑定（数据劫持） + onChange 事件侦听
 
   * 生命周期
 
