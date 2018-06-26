@@ -56,3 +56,10 @@
   }
   ```
 
+  ```js
+  /\.(eot|ttf|woff|woff2)(\?.*)?$/ //使用 url-loader；
+  /\.(aac|m4a|mp3|oga|ogg|wav)$/ //使用 file-loader；
+  /\.(gif|ico|jpg|jpeg|png|svg|webp)$/ //使用 url-loader；
+  /\.(mp4|webm)$/ //使用 file-loader
+  ```
+
