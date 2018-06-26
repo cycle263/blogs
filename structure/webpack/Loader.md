@@ -20,7 +20,7 @@
 
   - style-loader 将模块的导出作为样式添加到 DOM 中
 
-  - css-loader 解析 CSS 文件后，使用 import 加载，并且返回 CSS 代码
+  - css-loader 解析CSS文件后，使用import加载，并且返回CSS代码，参数module开启避免模块之间的样式干扰，也就是className值hash化。
 
   - postcss-loader 使用 PostCSS 加载和转译 CSS/SSS 文件。另外，autoprefixer是postcss的一个插件, 在新的css属性上加前缀，如：'-webkit-'
 

@@ -11,3 +11,5 @@
   `npm install --cache-min Infinity <package-name>`
 
 * 升级antd版本尽量多测试
+
+* Tabs组件defaultActiveKey设置为不存在的key，会导致当前面板内容渲染不出来
