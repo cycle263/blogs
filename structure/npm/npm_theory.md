@@ -22,11 +22,11 @@
 
   * 脚本原理
 
-    每当执行npm run，就会自动新建一个 Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是 Shell（一般是 Bash）可以运行的命令，就可以写在 npm 脚本里面。
+    每当执行npm run，就会自动新建一个Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是Shell（一般是 Bash）可以运行的命令，就可以写在npm 脚本里面。
     
-    比较特别的是，npm run新建的这个 Shell，会将当前目录的node_modules/.bin子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。
+    比较特别的是，npm run新建的这个Shell，会将当前目录的node_modules/.bin子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。
 
-    由于 npm 脚本的唯一要求就是可以在 Shell 执行，因此它不一定是 Node 脚本，任何可执行文件都可以写在里面。
+    由于npm脚本的唯一要求就是可以在 hell 执行，因此它不一定是Node 脚本，任何可执行文件都可以写在里面。
 
   * 通配符和传参
 

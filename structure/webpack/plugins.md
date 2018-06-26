@@ -62,6 +62,8 @@
 
     webpack.DllPlugin的选项中，path是manifest文件的输出路径；name是dll暴露的对象名，要跟output里保持一致；context是解析包路径的上下文。output.library 的选项相结合可以暴露出 (也叫做放入全局域) dll 函数。
 
+    dllPlugin 和 commonChunkPlugin 是二选一的，并且在启用 dll 后和 external、common 一样需要在页面中引用对应的脚本，在 dll 中就是需要手动引用 vendor.dll.js
+
     ```js
     // webpack.dll.config.js
     output: {
