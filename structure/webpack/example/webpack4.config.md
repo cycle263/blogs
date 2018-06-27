@@ -73,7 +73,8 @@ module.exports = {
           name: 'vendors'
         }
       }
-    }
+    },
+    minimize: true  // 压缩代码，替代optimize.UglifyJsPlugin
   }
 };
 ```
