@@ -14,7 +14,7 @@
 
     + 去掉重复的依赖包，删除未使用依赖包，uninstall移除的依赖包；
 
-    + 精准尽可能小的依赖包，或者使用小功能包替换大而全的功能包；`fecha -> moment, lodash.isequal -> lodash`
+    + 精准尽可能小的依赖包，或者使用小功能包替换大而全的功能包；`fecha -> moment, lodash/isequal -> lodash`，缺点是可能引发重复打包
 
     + 另外，使用第三方库的优化插件，例如：`babel-plugin-antd、babel-plugin-lodash等`
       ```js
@@ -30,8 +30,7 @@
 
     + jsx文件未ES5化（未完待续...）
 
-    + externals，把我们的依赖申明为一个外部依赖，外部依赖通过 <script> 外链脚本引入。
-      `externals: ['react', 'react-dom', 'react-router']`
+    + externals，把我们的依赖申明为一个外部依赖，外部依赖通过 <script> 外链脚本引入。这样配置可以减少打包构建速度，充分利用CDN缓存机制，具体配置： `externals: ['react', 'react-dom', 'react-router']`
 
     + noParse，则会让 webpack 忽略对其进行文件的解析，直接会进入最后的 bundle
 
