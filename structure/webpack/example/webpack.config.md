@@ -16,7 +16,7 @@ module.exports = {
     },
     output: {
         path: BUILD_PATH,
-        filename: "[name].[hash].js"
+        filename: "[name].[chunkhash].js"
     },
     module: {
         loaders: [{
