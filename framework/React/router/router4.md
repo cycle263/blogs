@@ -130,7 +130,7 @@
 
 ## 对象和方法
 
-* history history对象是可变的，因为建议从 <Route> 的 prop 里来获取 location，而不是从 history.location 直接获取。这样可以保证 React 在生命周期中的钩子函数正常执行。另外，history实现分为三种：
+* history history对象是可变的，因为建议从 <Route> 的prop里来获取location，而不是history.location 直接获取。这样可以保证React在生命周期中的钩子函数正常执行。另外，history实现分为三种：
 
   - browser history
   - hash history

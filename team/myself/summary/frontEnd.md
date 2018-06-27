@@ -14,7 +14,7 @@
 
 * 6. 全栈开发（前后端通吃，nodejs、php、go、deno）
 
-参考百度统计，Google Analytics
+参考百度统计，Google Analytics，[cnzz统计](http://open.cnzz.com/a/new/trackevent/)
 
 **业务领域和基础工程领域**
 
