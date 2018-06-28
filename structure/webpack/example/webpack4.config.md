@@ -81,4 +81,6 @@ module.exports = {
     minimize: true  // 压缩代码，替代optimize.UglifyJsPlugin
   }
 };
+
+// 详情参见webpack4_config项目
 ```
