@@ -1,4 +1,7 @@
+## seajs vs requirejs
+
 - seajs：按需异步加载，即需即加载（CMD）
+
 - requirejs：提前预加载（AMD）
 
 > seajs内部运作案例：
@@ -38,9 +41,7 @@ c.js :
 })
 ```
 
-由上述可知 a 依赖 b ，b依赖c。
-首先将会执行seajs本身，在这个过程中将会定义其中一些全局的方法，seajs多版本的容错等等。
-当程序进入到index.js
+由上述可知 a 依赖 b ，b依赖c。先将会执行seajs本身，在这个过程中将会定义其中一些全局的方法，seajs多版本的容错等等。当程序进入到index.js
 
 seajs的use方法源码：
 
@@ -65,6 +66,7 @@ seajs.use = function(ids, callback) {
 ```
 
 use方法将会从config配置中查看，是否有预先加载的模块，如果config中并没有相关设置，将直接执行globalModule._use(ids, callback)。
+
 globalModule为seajs初始化时Module的实例，var globalModule = new Module(util.pageUri, STATUS.COMPILED),util.pageUri为页面地址
  
 接下来将调用 globalModule._use(ids, callback)：

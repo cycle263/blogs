@@ -2,7 +2,7 @@
 
 * 事件发射
 
-  ```
+  ```js
   // 简单实现了一下 subscribe 和 dispatch
   var EventEmitter = {
       _events: {},
@@ -29,7 +29,7 @@
 
 * 发布订阅
 
-  ```
+  ```js
   var PubSub = function(){
       this.handlers = {};
   };
@@ -56,8 +56,9 @@
   ```
 
 * 观察者
-    ```
-    function observe(data){
+
+```js
+function observe(data){
     if(!data || typeof data !== 'object'){
         console.error('The data format error!');
         return;
@@ -80,5 +81,5 @@
         }
         });
     });
-    }
-    ```
+}
+```
