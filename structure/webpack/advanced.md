@@ -200,3 +200,11 @@
 
   - Component当props属性发生变化以后的生命周期
     ![当props属性发生变化以后的生命周期](images/props.png)
+
+* 模块相互引用
+
+  在有2个或2个以上的文件之间的相互依赖关系构成闭环的时候，有时会出现`Can't read Property 'xxx' of undefined`或者`(0,xxx) is not a function`这类的错误。
+
+  出现这样的错误是跟webpack打包后的代码执行逻辑有关。webpack的头部启动代码中，通过闭包中的installedModules对象，将模块名或者id作为对象的key来缓存各个模块的export的值，通过判断installedModules上是否缓存了对应模块的key来判断是否已经加载了模块。当模块还处于第一次执行中的状态时，如果碰到相互引用的情况的话，webpack可能会认为一个没有完全加载完成的模块已经加载完了。
+
+  解决方案：要么打破循环引用，要么使用export function func(){}导出。
