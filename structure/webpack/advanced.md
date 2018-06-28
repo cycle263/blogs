@@ -201,7 +201,7 @@
   - Component当props属性发生变化以后的生命周期
     ![当props属性发生变化以后的生命周期](images/props.png)
 
-* 模块相互引用
+* **模块相互引用**
 
   在有2个或2个以上的文件之间的相互依赖关系构成闭环的时候，有时会出现`Can't read Property 'xxx' of undefined`或者`(0,xxx) is not a function`这类的错误。
 
