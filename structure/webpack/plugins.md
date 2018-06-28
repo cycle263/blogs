@@ -142,4 +142,4 @@
 
   - CopyWebpackPlugin - 目录及文件拷贝
 
-  - BannerPlugin 给代码添加版权信息
+  - BannerPlugin 给代码添加注释版权信息

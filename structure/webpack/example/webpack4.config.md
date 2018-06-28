@@ -62,7 +62,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'webpack4 入门教程',
       template: './index.html'
-    })
+    }),
+    new webpack.BannerPlugin({
+      banner:
+        "hash:[hash], chunkhash:[chunkhash], name:[name], filebase:[filebase], query:[query], file:[file] -- by Cycle"
+    }),
   ],
   optimization: {
     splitChunks: {    // 分离第三方js
