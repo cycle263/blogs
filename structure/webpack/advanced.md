@@ -15,10 +15,35 @@
     },
     output: {
       path: '/dist',
-      filename: "[name][chunkhash:base64:5].js"   // 缓存策略，非覆盖式发布
+      filename: "[name][chunkhash:base64:5].js",   // 缓存策略，非覆盖式发布
+      chunkFilename: '[name].[chunkhash:5].js',
     }
   }
   ```
+
+* **output出口**    
+
+  让webpack把处理完成的文件放在哪里, 以及如何命名这些文件。通过 output.filename 和 output.path 属性，来告诉 webpack bundle 的名称，以及我们想要生成(emit)到哪里。
+
+  ```js
+  output: {
+      filename: '[name].[chunkhash:6].js',
+      chunkFilename: '[name].[chunkhash].js',
+      path: path.resolve(__dirname, 'dist')
+  },
+  ```
+
+  **占位符**
+
+  - [name], 代表打包后的文件名称，在entry或代码中确定。
+
+  - [id], webpack给块分配的内部chunk id，如果没有隐藏，能在打包后的命令行中看到
+
+  - [hash]，每次构建过程中，生成的唯一 hash 值。
+
+  - [chunkhash / contenthash]，依据于打包生成文件内容的 hash 值,内容不变，值不变
+
+  - [ext]，资源扩展名,如js,jsx,png等等;
 
 * **配置webpack-dev-server代理**
 
@@ -93,11 +118,11 @@
 
   第三方库多的话，会造成文件过大，因此可以考虑分离app本身的js代码和第三方库代码
 
-  - 修改入口文件
+  - 修改入口文件 
     ```js
     entry: {
       app: path.resolve(APP_PATH, 'index.js'),
-      //添加到打包的vendors里的库
+      // 添加到打包的vendors里的库
       vendors: ['jquery', 'react']
     }
     ```
@@ -207,4 +232,4 @@
 
   出现这样的错误是跟webpack打包后的代码执行逻辑有关。webpack的头部启动代码中，通过闭包中的installedModules对象，将模块名或者id作为对象的key来缓存各个模块的export的值，通过判断installedModules上是否缓存了对应模块的key来判断是否已经加载了模块。当模块还处于第一次执行中的状态时，如果碰到相互引用的情况的话，webpack可能会认为一个没有完全加载完成的模块已经加载完了。
 
-  解决方案：要么打破循环引用，要么使用export function func(){}导出。
+  **解决方案**：要么打破循环引用，要么使用export function func(){}导出。

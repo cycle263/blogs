@@ -1,4 +1,6 @@
-## 插件推荐
+## 插件
+
+  webpack称plugins为其backbone,一切loader不能做的处理都可由plugins来做。
 
 * **1、代码优化之:**
 
@@ -11,7 +13,7 @@
     })
     ```
 
-  - UglifyJsPlugin - 压缩混淆代码，webpack --optimize-minimize 选项会开启 UglifyJsPlugin来压缩输出的js，但是默认的UglifyJsPlugin配置并没有把代码压缩到最小输出的js里还是有注释和空格，需要覆盖默认的配置
+  - UglifyJsPlugin - 压缩混淆代码，webpack --optimize-minimize 选项会开启 UglifyJsPlugin来压缩输出的js，但是默认的UglifyJsPlugin配置并没有把代码压缩到最小输出的js里还是有注释和空格，需要覆盖默认的配置。webpack4 已经内置此插件，但配置方式略有不同，[详情参见](./example/webpack4.config)
 
     ```js
     new UglifyJsPlugin({
@@ -33,7 +35,9 @@
     })
     ```
 
-* **2、 依赖注入之:**
+  - CompressionWebpackPlugin 使用配置的算法（如gzip）压缩打包生成的文件，[详情参见](https://webpack.js.org/plugins/compression-webpack-plugin)。
+
+* **2、依赖注入之:**
 
   - DefinePlugin - 自由变量注入
 
@@ -54,7 +58,7 @@
     // $和jQuery 自动被设置为 "jquery" 输出的内容
     ```
 
-* **3、 文件抽取之:**
+* **3、文件抽取之:**
 
   - DllPlugin 用某种方法实现了拆分 bundles，同时还大大提升了构建的速度。Dll这个概念应该是借鉴了Windows系统的dll。打包dll的时候，Webpack会将所有包含的库做一个索引，写在一个manifest文件中，而引用dll的代码（dll user）在打包的时候，只需要读取这个manifest文件，就可以了。
 
@@ -112,7 +116,7 @@
     </script>
     ```
 
-* **4、 开发体验优化之:**
+* **4、开发体验优化之:**
 
   - WebpackNotifierPlugin - 编译完成动态通知
 
@@ -120,7 +124,7 @@
 
   - open-browser-webpack-plugin - 打开服务器后 会自动打开浏览器
 
-  - HotModuleReplacementPlugin - 热更新插件
+  - HotModuleReplacementPlugin - 热更新插件，热更新(HMR)不能和[chunkhash]同时使用
 
   - SourceMapDevToolPlugin 过滤Sourcemap文件
 
@@ -134,6 +138,8 @@
     );
     ```
 
-* **5、 目录/文件拷贝之:**
+* **5、目录/文件拷贝之:**
 
   - CopyWebpackPlugin - 目录及文件拷贝
+
+  - BannerPlugin 给代码添加版权信息

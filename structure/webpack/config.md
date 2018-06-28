@@ -78,7 +78,7 @@
     
     - inline: true, 当源文件改变时会自动刷新页面
     
-    - hot: true, 热加载开启
+    - hot: true, 热加载开启，热更新(HMR)不能和[chunkhash]同时使用
     
     - port:8080, 设置默认监听端口
 
