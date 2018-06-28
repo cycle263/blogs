@@ -1,4 +1,4 @@
-## 发布订阅
+## js设计模型
 
 * 事件发射
 
@@ -34,7 +34,7 @@
       this.handlers = {};
   };
   PubSub.prototype.subscribe = function(eventType, handler) {
-      if (!(eventType in this.handlers)) {
+      if (!(eventType in this.handlers)) {  // eventType类型的订阅队列初始化
           this.handlers[eventType] = [];
       }
       this.handlers[eventType].push(handler); //添加事件监听器
@@ -47,6 +47,8 @@
       }
       return this;
   };
+
+  /******************* 调用 *******************/
   var event = new PubSub(); // 构造PubSub实例
   event.subscribe('list', function(msg) {
       console.log(msg);
@@ -68,17 +70,17 @@ function observe(data){
         if(typeof value === 'object')
         observe(value);
         Object.defineProperty(data, k, {
-        enumerable: true,
-        configurable: true,
-        get: function() {
-            return value;
-        },
-        set: function(newVal) {
-            if(value === newVal) return;
-            console.log('Data has changed, new value: ' + newVal);
-            value = newVal;
-            Pubsub.publish();
-        }
+            enumerable: true,
+            configurable: true,
+            get: function() {
+                return value;
+            },
+            set: function(newVal) {
+                if(value === newVal) return;
+                console.log('Data has changed, new value: ' + newVal);
+                value = newVal;
+                Pubsub.publish();
+            }
         });
     });
 }
