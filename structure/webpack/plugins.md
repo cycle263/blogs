@@ -39,7 +39,7 @@
 
 * **2、依赖注入之:**
 
-  - DefinePlugin - 自由变量注入
+  - DefinePlugin - 自由变量注入.允许你创建一个在编译时可以配置的全局常量。这可能会对开发模式和发布模式的构建允许不同的行为非常有用。
 
   - ProvidePlugin - 模块变量标示符注入，自动加载模块，全局使用变量
 
@@ -51,6 +51,7 @@
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     })
     // in a module
     $('#item'); // 有效
