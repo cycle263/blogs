@@ -42,8 +42,8 @@
 
 ## 分割代码
 
-* 入口方式
+* 入口方式：使用 entry 配置手动地分离代码。
 
-* CommonsChunkPlugin
+* CommonsChunkPlugin：使用 CommonsChunkPlugin 去重和分离 chunk。
 
-* 动态import
+* 动态import：通过模块的内联函数调用来分离代码。
