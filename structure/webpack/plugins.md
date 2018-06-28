@@ -1,6 +1,6 @@
 ## 插件
 
-  webpack称plugins为其backbone,一切loader不能做的处理都可由plugins来做。
+  webpack称plugins为其backbone, 一切loader不能做的处理都可由plugins来做。主要功能包括：对前一阶段打包后的代码进行处理，如添加替换一些内容，分割代码为多块，添加一些全局设置；辅助输出，如自动生成带有链接的index.html，对生成文件存储文件夹做一定的清理等。
 
 * **1、代码优化之:**
 
@@ -40,19 +40,22 @@
 * **2、依赖注入之:**
 
   - DefinePlugin - 自由变量注入.允许你创建一个在编译时可以配置的全局常量。这可能会对开发模式和发布模式的构建允许不同的行为非常有用。
-
-  - ProvidePlugin - 模块变量标示符注入，自动加载模块，全局使用变量
-
     ```js
     // 官方文档推荐使用下面的插件确保 NODE_ENV
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
     })
+    ```
+
+  - ProvidePlugin - 模块变量标示符注入，自动加载模块，全局使用变量
+
+    ```js
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery'
     })
+
     // in a module
     $('#item'); // 有效
     jQuery('#item'); // 有效
@@ -121,9 +124,11 @@
 
   - WebpackNotifierPlugin - 编译完成动态通知
 
-  - HtmlWebpackPlugin - 采用模板引擎形式注入到html文件，让开发更加easy
+  - HtmlWebpackPlugin - 采用模板引擎形式注入到html文件，将自动依据entry的配置引入依赖。
 
   - open-browser-webpack-plugin - 打开服务器后 会自动打开浏览器
+
+  - CleanWebpackPlugin  每次打包时，清空所配置的文件夹
 
   - HotModuleReplacementPlugin - 热更新插件，热更新(HMR)不能和[chunkhash]同时使用
 

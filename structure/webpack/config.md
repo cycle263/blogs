@@ -82,6 +82,12 @@
     
     - port:8080, 设置默认监听端口
 
-* **其他**
+* **其他配置**
 
-    - env: 环境字段，取自node的process.env.NODE_ENV，包括：test, dev, production，也可以在package.json的scripts里设置。`"build": "NODE_ENV=production webpack --mode production"`
+    - watch 启用 Watch 模式后，webpack 将持续监听任何已解析文件的更改，重新构建文件，Watch 模式默认关闭，在开发时候如果开启会很方便。
+
+    - performance 设置打包后命令行中该如何展示性能提示, hints值包括：false | "error" | "warning" `performance: { hints: false }`
+
+    - stats 配置打包过程中命令行中输出的内容，如没有输出none，标准输出normal，全部输出verbose，只输出错误errors-only
+
+备注：env: 环境字段（），取自node的process.env.NODE_ENV，也可以通过DefinePlugin插件配置，包括：test, dev, production，也可以在package.json的scripts里设置。`"build": "NODE_ENV=production webpack --mode production"`
