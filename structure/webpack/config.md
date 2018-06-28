@@ -66,6 +66,8 @@
 
 * **resolve**
 
+    确定模块如何被解析。
+
     - extensions: [".js", ".html", ".css", ".txt","less","ejs","json"], 自动扩展文件后缀名，import时可以不加的后缀名
 
     - alias: `{ Temp: path.resolve(__dirname, "src/templates/") }`， 模块别名定义，直接 require('AppStore') 即可, 方便后续直接引用别名
@@ -89,5 +91,7 @@
     - performance 设置打包后命令行中该如何展示性能提示, hints值包括：false | "error" | "warning" `performance: { hints: false }`
 
     - stats 配置打包过程中命令行中输出的内容，如没有输出none，标准输出normal，全部输出verbose，只输出错误errors-only
+
+    - externals，把我们的依赖申明为一个外部依赖，外部依赖通过 <script> 外链脚本引入。这样配置可以减少打包构建速度，充分利用CDN缓存机制，具体配置： `externals: ['react', 'react-dom', 'react-router']`
 
 备注：env: 环境字段（），取自node的process.env.NODE_ENV，也可以通过DefinePlugin插件配置，包括：test, dev, production，也可以在package.json的scripts里设置。`"build": "NODE_ENV=production webpack --mode production"`

@@ -132,6 +132,8 @@
 
   - HotModuleReplacementPlugin - 热更新插件，热更新(HMR)不能和[chunkhash]同时使用
 
+  - CaseSensitivePathsPlugin 路径有误则直接报错
+
   - SourceMapDevToolPlugin 过滤Sourcemap文件
 
     ```js
