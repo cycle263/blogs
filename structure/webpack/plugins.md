@@ -134,6 +134,8 @@
 
   - CaseSensitivePathsPlugin 路径有误则直接报错
 
+  - BundleAnalyzerPlugin 打包分析，代码分割是否合理
+
   - SourceMapDevToolPlugin 过滤Sourcemap文件
 
     ```js
@@ -151,3 +153,7 @@
   - CopyWebpackPlugin - 目录及文件拷贝
 
   - BannerPlugin 给代码添加注释版权信息
+
+  - NamedModulesPlugin 将使用模块的路径作为moduleId，而不是数字标识符
+
+  - HashedModuleIdsPlugin 该插件会根据模块的相对路径生成一个四位数的hash作为模块id
