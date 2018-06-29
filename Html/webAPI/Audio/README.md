@@ -18,7 +18,7 @@
 
   采样率是每秒对声音信号的采样次数，采样频率越高声音的还原就越真实越自然。chrome64的web接口的采样率为48K，采样位深为16位。人类耳朵能分辨语音频率为20hz ~ 20khz的声音。录音后将混缩后的音频转成小采样率，初始采样数据的准确与否也会对平均之后的值产生巨大影响，也就是说，用96kHz录制，转成44kHz后的音频，明显优于44kHz录制后直接输出的音频。这就是为何chrome接口默认录音频率为48K，而不是16K。
 
-  - 常见的采样率
+  - 常见的采样率(Hz)
 
     |   类型   |  采样率  |
     | -------- | ------- |
@@ -40,7 +40,15 @@
 
 * **码流率（比特率）**
 
-  码流率 = 采样率 * 位数，单位：bps 或者 kbps
+  码流率 = 采样率 * 位数，单位：bps 或者 kbps。
+
+  - 常见的比特率(bps)
+
+  |   类型   |  比特率  |
+  | -------- | ------- |
+  |  普通MP3  |  128k   |
+  |  标准MP3  |  192k   |
+  |  录音棚MP3 |  320k   |
 
 * **声道**
 
@@ -218,7 +226,7 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
   
   [读取wav文件播放案例](./examples/readWav.html)
 
-* **MediaDevices接口是WebRTC技术的接口之一**
+* **MediaStream接口是WebRTC技术的接口之一**
 
   - MediaDevices.getUserMedia()方法提示用户允许使用一个视频和/或一个音频输入设备，例如相机或屏幕共享和/或麦克风。如果用户给予许可，就返回一个Promise 对象，MediaStream对象作为此Promise对象的Resolved［成功］状态的回调函数参数，相应的，如果用户拒绝了许可，或者没有媒体可用的情况下，PermissionDeniedError 或者NotFoundError作为此Promise的Rejected［失败］状态的回调函数参数。注意，由于用户不会被要求必须作出允许或者拒绝的选择，所以返回的Promise对象可能既不会触发resolve 也不会触发 reject。
 
@@ -228,11 +236,13 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
   .catch(function(error) { ... })
   ```
 
-* **RTCPeerConnection - 此功能某些浏览器尚在开发中**
+* **RTCPeerConnection**
 
   RTCPeerConnection 接口代表一个由本地计算机到远端的WebRTC连接。该接口提供了创建，保持，监控，关闭连接的方法的实现。
 
 参考：[MDN - MediaDevices](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia)
+
+* **第三方webRTC封装**
 
 
 ## 语音合成（TTS）

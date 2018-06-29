@@ -1,5 +1,7 @@
 ## 模块机制
 
+    推荐使用 import export 来取代非标准的CMD AMD等。
+
 * **import路径**
 
     - import Fetch from 'fetch.io';  从项目下的node_modules下找
