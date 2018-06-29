@@ -44,6 +44,10 @@
 
 * 入口方式：使用 entry 配置手动地分离代码。
 
+  - 入口chunks之间包含重复的模块(lodash)，那些重复模块(lodash)都会被引入到各个bundle中。
+
+  - 这种方式不够灵活，并且不能将核心应用程序逻辑进行动态拆分代码。
+
 * CommonsChunkPlugin：使用 CommonsChunkPlugin 去重和分离 chunk。
 
 * 动态import：通过模块的内联函数调用来分离代码。

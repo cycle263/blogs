@@ -68,9 +68,9 @@
 
     Dll存在的优势：Dll打包以后是独立存在的，只要其包含的库没有增减、升级，hash也不会变化，只要包含的库没有增减、升级，就不需要重新打包。这样也大大提高了每次编译的速度。
 
-    webpack.DllPlugin的选项中，path是manifest文件的输出路径；name是dll暴露的对象名，要跟output里保持一致；context是解析包路径的上下文。output.library 的选项相结合可以暴露出 (也叫做放入全局域) dll 函数。
+    webpack.DllPlugin的选项中，path是manifest文件的输出路径；name是dll暴露的对象名，要跟output里保持一致；context是解析包路径的上下文。output.library的选项相结合可以暴露出 (也叫做放入全局域) dll 函数。
 
-    dllPlugin 和 commonChunkPlugin 是二选一的，并且在启用 dll 后和 external、common 一样需要在页面中引用对应的脚本，在 dll 中就是需要手动引用 vendor.dll.js
+    dllPlugin和commonChunkPlugin是二选一的，并且在启用 dll后和 external、common 一样需要在页面中引用对应的脚本，在 dll中就是需要手动引用 vendor.dll.js
 
     ```js
     // webpack.dll.config.js
@@ -96,7 +96,9 @@
     }),
     ```
 
-  - ExtractTextPlugin - 抽取css文件
+  - ExtractTextPlugin - 抽取css文件，用于将 CSS 从主应用程序中分离。
+
+  - commonChunkPlugin  可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。dllPlugin 和 commonChunkPlugin 是二选一的
 
   - AssetsPlugin - assets-webpack-plugin该插件会在每次编译完成后，生成一份webpack.assets.js文件，文件的内容是最新的编译后的文件名称
 
