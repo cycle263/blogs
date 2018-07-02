@@ -1,6 +1,6 @@
 ## 插件
 
-  webpack称plugins为其backbone, 一切loader不能做的处理都可由plugins来做。主要功能包括：对前一阶段打包后的代码进行处理，如添加替换一些内容，分割代码为多块，添加一些全局设置；辅助输出，如自动生成带有链接的index.html，对生成文件存储文件夹做一定的清理等。
+> webpack称plugins为其backbone, 一切loader不能做的处理都可由plugins来做。主要功能包括：对前一阶段打包后的代码进行处理，如添加替换一些内容，分割代码为多块，添加一些全局设置；辅助输出，如自动生成带有链接的index.html，对生成文件存储文件夹做一定的清理等。
 
 * **1、代码优化之:**
 
@@ -153,6 +153,8 @@
 * **5、目录/文件拷贝之:**
 
   - CopyWebpackPlugin - 目录及文件拷贝
+
+  - i18n-webpack-plugin 多语言插件
 
   - BannerPlugin 给代码添加注释版权信息
 

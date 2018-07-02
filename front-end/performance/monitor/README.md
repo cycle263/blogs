@@ -1,102 +1,26 @@
-## 前端指标监控
+## 前端监控
 
-* 白屏时间；
+* 指标监控的历史背景
 
-* 首屏时间；
+  - 1、手动时代：首屏加载时间，手动打点方式，分别在页头和首屏dom节点处new Date()打点，计算差值，作为首屏时间，再加上setTimeout(new Date(), 0)标记首屏可交互时间。
 
-* 用户可交互时间；
+  - 2、W3C API时代：Navigation Timing / performance.timing 精准的实现了性能测试的打点问题，domContentLoaded一般作为首屏加载时间。但ajax的异步数据渲染时间并没有计算在内，导致API的监控失去意义。
 
-* 总下载时间；
+  - performance.getEntries()，监控所有请求包括ajax和静态资源的请求监控
 
-* DNS解析时间；
+* 单页面
 
-* TCP连接时间；
+  - 监控hash变化
 
-* HTTP请求时间；
+  **无法监控的情况**
 
-* HTTP响应时间；
+  - 下拉刷新
+  - 滚动分页加载
+  - tab切换
+  - 不关闭，过段时间查看
 
-## 页面加载时间计算
+* MVVM
 
-* performance.timing  返回的[PerformanceTiming对象](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming)
+* 跨端
 
-* 其他方法
-
-    ```js
-    //首屏时间尝试：
-    //1,获取首屏基线高度
-    //2,计算出基线dom元素之上的所有图片元素
-    //3,所有图片onload之后为首屏显示时间
-    //
-    function getOffsetTop(ele) {
-        var offsetTop = ele.offsetTop;
-        if (ele.offsetParent !== null) {
-            offsetTop += getOffsetTop(ele.offsetParent);
-        }
-        return offsetTop;
-    }
-
-    var firstScreenHeight = win.screen.height;
-    var firstScreenImgs = [];
-    var isFindLastImg = false;
-    var allImgLoaded = false;
-    var t = setInterval(function() {
-        var i, img;
-        if (isFindLastImg) {
-            if (firstScreenImgs.length) {
-                for (i = 0; i < firstScreenImgs.length; i++) {
-                    img = firstScreenImgs[i];
-                    if (!img.complete) {
-                        allImgLoaded = false;
-                        break;
-                    } else {
-                        allImgLoaded = true;
-                    }
-                }
-            } else {
-                allImgLoaded = true;
-            }
-            if (allImgLoaded) {
-                collect.add({
-                    firstScreenLoaded: startTime - Date.now()
-                });
-                clearInterval(t);
-            }
-        } else {
-            var imgs = body.querySelector('img');
-            for (i = 0; i < imgs.length; i++) {
-                img = imgs[i];
-                var imgOffsetTop = getOffsetTop(img);
-                if (imgOffsetTop > firstScreenHeight) {
-                    isFindLastImg = true;
-                    break;
-                } else if (imgOffsetTop <= firstScreenHeight && !img.hasPushed) {
-                    img.hasPushed = 1;
-                    firstScreenImgs.push(img);
-                }
-            }
-        }
-    }, 0);
-
-
-
-    doc.addEventListener('DOMContentLoaded', function() {
-        var imgs = body.querySelector('img');
-        if (!imgs.length) {
-            isFindLastImg = true;
-        }
-    });
-
-    win.addEventListener('load', function() {
-        allImgLoaded = true;
-        isFindLastImg = true;
-        if (t) {
-            clearInterval(t);
-        }
-        collect.log(collect.global);
-    });
-    ```
-
-### 参考链接:
-
-    * [1、首屏计算的黑魔法](https://www.zhihu.com/question/23212408/answer/56647975)
+* 全栈
