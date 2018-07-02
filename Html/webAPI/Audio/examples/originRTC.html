@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script>
+      (function(){
+        window.URL = window.URL || window.webkitURL;
+        var audioContext = new AudioContext();
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(function (mediaStream) {
+          var mediaStreamSource = audioContext.createMediaStreamSource(mediaStream);   // 媒体流音频源
+          console.log(mediaStream, mediaStreamSource);
+          console.log('audioContext sampleRate', audioContext.sampleRate);
+        }).catch(function (error) {
+          switch (error.name || error.code) {
+            case 'PERMISSION_DENIED':
+            case 'PermissionDeniedError':
+              if (window.location.protocol === 'http') {
+                alert('网络环境不安全，推荐使用https');
+              } else {
+                alert('用户拒绝提供录音权限');
+              }
+              break;
+            case 'NOT_SUPPORTED_ERROR':
+            case 'NotSupportedError':
+              alert('浏览器不支持硬件设备。');
+              break;
+            case 'MANDATORY_UNSATISFIED_ERROR':
+            case 'MandatoryUnsatisfiedError':
+              alert('无法发现指定的硬件设备。');
+              break;
+            default:
+              alert('无法打开麦克风，异常信息:' + (error.code + ', error name: ' + error.name));
+              break;
+          }
+        });
+      })();  
+    </script>
+  </body>
+</html>
