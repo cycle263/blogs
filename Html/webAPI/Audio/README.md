@@ -118,6 +118,8 @@ WebRTC (Web Real-Time Communications) 是一项实时通讯技术，它允许网
   xhr以arraybuffer类型读取wav文件 -> audioContext.decodeAudioData解码音频文件, 回调传入audioBuffer参数 -> audioContext.createBufferSource,  audioContext.createScriptProcessor(buffersize,1,1)  -> bufferSource.connect(scriptNode); scriptNode.connect(audioContext.destination); -> bufferSource.start()开始播放（bufferSource只可以消费一次，停止播放buffer会被清洗）
   ```
 
+  [chrome 常见的webrtc接口案例](https://webrtc.github.io/samples/)
+
 * **AudioContext**
 
   AudioContext是一个音频上下文对象，一段音频到达扬声器进行播放之前，半路对其进行拦截，于是我们就得到了音频数据了，这个拦截工作是由window.AudioContext来做的，我们所有对音频的操作都基于这个对象。
