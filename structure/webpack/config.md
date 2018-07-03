@@ -70,7 +70,7 @@
 
     - extensions: [".js", ".html", ".css", ".txt","less","ejs","json"], 自动扩展文件后缀名，import时可以不加的后缀名
 
-    - alias: `{ Temp: path.resolve(__dirname, "src/templates/") }`， 模块别名定义，直接 require('AppStore') 即可, 方便后续直接引用别名
+    - alias: `{ Temp: path.resolve(__dirname, "src/templates/") }`， 模块别名定义，直接 require('AppStore') 即可, 方便后续直接引用别名, 也可以提高webpack搜索的速度
 
 * **devServer**
 

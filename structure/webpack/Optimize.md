@@ -35,6 +35,8 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
   - externals，把我们的依赖申明为一个外部依赖，外部依赖通过 <script> 外链脚本引入。这样配置可以减少打包构建速度，充分利用CDN缓存机制，具体配置： `externals: ['react', 'react-dom', 'react-router']`
 
+  - alias, resolve.alias 模块别名定义，直接引用别名即可，也可以提高webpack搜索的速度
+
   - noParse，module.noParse会让 webpack 忽略对其进行文件的解析，直接会进入最后的 bundle。例如：react.min.js这类没有依赖的模块，构建速度会更快。
 
   - DllPlugin 和 DllReferencePlugin， deps 中也引用了大量的 npm 包，而这些包在正常的开发过程中并不会进行修改，但是在每一次构建过程中却需要反复的将其分析，使用dllplugin可以避免这样的消耗。
