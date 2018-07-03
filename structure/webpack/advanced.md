@@ -128,6 +128,7 @@
     ```
 
   - 添加CommonsChunkPlugin，webpack4使用optimization.splitChunks替换CommonsChunkPlugin，具体参见[webpack4配置案例](./example/webpack4.config)
+
     ```js
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
@@ -135,6 +136,7 @@
     ```
 
   - 添加完执行命令  
+  
     允许`npm run build`, 发觉build结构为bundle.js和vendors.js
 
 * **启用source-map**  

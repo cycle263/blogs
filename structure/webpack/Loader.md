@@ -28,6 +28,15 @@
 
   - towebp-loader 根据图片类型转换成一份webp和原图两份图片，并且集成了url-loader的功能 支持url的limit功能和file-loader文件名的功能。
 
+  - expose-loader 用来把模块暴露到全局变量
+  
+    ```js
+    {
+      test: require.resolve('jquery'),  // require.resolve 用来得到模块对应的绝对路径
+      loader: 'expose-loader?$!expose-loader?jQuery'
+    }
+    ```
+
   - babel-loader 加载 ES2015+ 代码，然后使用 Babel 转译为 ES5
 
     ```js

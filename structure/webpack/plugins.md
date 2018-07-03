@@ -39,7 +39,7 @@
 
 * **2、依赖注入之:**
 
-  - DefinePlugin - 自由变量注入.允许你创建一个在编译时可以配置的全局常量。这可能会对开发模式和发布模式的构建允许不同的行为非常有用。
+  - DefinePlugin - 自由变量注入，允许你创建一个在编译时可以配置的全局常量。这可能会对开发模式和发布模式的构建允许不同的行为非常有用。
     ```js
     // 官方文档推荐使用下面的插件确保 NODE_ENV
     new webpack.DefinePlugin({
@@ -47,7 +47,7 @@
     })
     ```
 
-  - ProvidePlugin - 模块变量标示符注入，自动加载模块，全局使用变量
+  - ProvidePlugin - 模块变量标示符注入，自动加载内容到当前模块，但并没有暴露在全局，配合使用expose-loader
 
     ```js
     new webpack.ProvidePlugin({
@@ -98,7 +98,9 @@
 
   - ExtractTextPlugin - 抽取css文件，用于将 CSS 从主应用程序中分离。
 
-  - commonChunkPlugin  可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。dllPlugin 和 commonChunkPlugin 是二选一的
+  - commonChunkPlugin  可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。dllPlugin 和 commonChunkPlugin 是二选一的；**至于二者的区别： DllPlugin 是用于提速开发环境构建速度的，而 CommonsChunkPlugin 则是用于优化包尺寸的。**
+
+    webpack4已移除此插件，请使用SplitChunksPlugin。
 
   - AssetsPlugin - assets-webpack-plugin该插件会在每次编译完成后，生成一份webpack.assets.js文件，文件的内容是最新的编译后的文件名称
 
@@ -126,7 +128,7 @@
 
   - WebpackNotifierPlugin - 编译完成动态通知
 
-  - HtmlWebpackPlugin - 采用模板引擎形式注入到html文件，将自动依据entry的配置引入依赖。
+  - HtmlWebpackPlugin - 采用模板引擎形式注入到html文件，将自动依据entry的配置引入依赖。内部集成了ejs的模板引擎
 
   - open-browser-webpack-plugin - 打开服务器后 会自动打开浏览器
 

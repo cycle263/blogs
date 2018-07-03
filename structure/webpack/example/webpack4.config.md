@@ -72,7 +72,7 @@ module.exports = {
     }),
   ],
   optimization: {
-    splitChunks: {    // 分离第三方js
+    splitChunks: {    // 分离第三方js, 代替commonChunkPlugin
       chunks: 'initial',
       cacheGroups: {
         vendor: {
