@@ -19,6 +19,7 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
     + 精准尽可能小的依赖包，或者使用小功能包替换大而全的功能包；`fecha -> moment, lodash/isequal -> lodash`，缺点是可能引发重复打包
 
   - 另外，使用第三方库的优化插件，例如：`babel-plugin-antd、babel-plugin-lodash等`
+  
     ```js
     // 使用时，插件会进行组件关联性梳理，只引入相关组件和样式
     webpackConfig.babel.plugins.push(['antd', {
