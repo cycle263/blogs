@@ -73,13 +73,7 @@ module.exports = {
   ],
   optimization: {
     splitChunks: {    // 分离第三方js, 代替commonChunkPlugin
-      chunks: 'initial',
-      cacheGroups: {
-        vendor: {
-          test: /node_modules\//,
-          name: 'vendors'
-        }
-      }
+      chunks: 'all',
     },
     minimize: true  // 压缩代码，替代optimize.UglifyJsPlugin
   }

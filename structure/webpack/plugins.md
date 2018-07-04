@@ -98,9 +98,9 @@
 
   - ExtractTextPlugin - 抽取css文件，用于将 CSS 从主应用程序中分离。
 
-  - commonChunkPlugin  可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。dllPlugin 和 commonChunkPlugin 是二选一的；**至于二者的区别： DllPlugin 是用于提速开发环境构建速度的，而 CommonsChunkPlugin 则是用于优化包尺寸的。**
+  - commonChunkPlugin  可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。使用长期缓存策略：chunkhash，records，Cache-Control，将不经常变动的代码块长期缓存起来。dllPlugin 和 commonChunkPlugin 是二选一的；**至于二者的区别： DllPlugin 是用于提速开发环境构建速度的，而 CommonsChunkPlugin 则是用于优化包尺寸的。**
 
-    webpack4已移除此插件，请使用SplitChunksPlugin。
+    webpack4已移除此插件，请使用配置项optimization.splitChunks and runtimeChunk 或者插件形式splitChunksPlugin。
 
   - AssetsPlugin - assets-webpack-plugin该插件会在每次编译完成后，生成一份webpack.assets.js文件，文件的内容是最新的编译后的文件名称
 
