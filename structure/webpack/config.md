@@ -94,4 +94,4 @@
 
     - externals，把我们的依赖申明为一个外部依赖，外部依赖通过 <script> 外链脚本引入。这样配置可以减少打包构建速度，充分利用CDN缓存机制，具体配置： `externals: ['react', 'react-dom', 'react-router']`
 
-备注：env: 环境字段（），取自node的process.env.NODE_ENV，也可以通过DefinePlugin插件配置，包括：test, dev, production，也可以在package.json的scripts里设置。`"build": "NODE_ENV=production webpack --mode production"`。可以根据env字段区分开发环境和生产环境，进行使用不同的webpack配置文件，更利于配置精细化。
+备注：env: 环境字段（），来自全局变量process.env.NODE_ENV，不是node中的环境变量, 而是webpack.DefinePlugin中定义的全局变量，包括：development/production，也可以在package.json的scripts里设置。`"build": "NODE_ENV=production webpack --mode production"`。可以根据env字段区分开发环境和生产环境，进行使用不同的webpack配置文件，更利于配置精细化。mode配置不同，默认的配置项不同。
