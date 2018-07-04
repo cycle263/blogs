@@ -31,7 +31,22 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
   - css-module，增加样式hash后缀，避免组件之间的样式干扰，缺点是增大了打包后的文件大小。
 
-  - jsx文件未ES5化（未完待续...）
+  - jsx文件未ES5化，成熟的 npm 包会在发布前将自己 es5，甚至 es3 化，这些依赖包完全没有经过 babel 的必要。可以配置loader的exclude项过滤
+
+    ```js
+    {
+      test: /\.js(x)*$/,
+      loader: 'babel-loader',
+      exclude: function(path) {
+          // 路径中含有 node_modules 的就不去解析。
+          var isNpmModule = !!path.match(node_modules/);
+          return isNpmModule;
+      },
+      query: {
+          presets: ['react', 'es2015-ie', 'stage-1']
+      }
+    }
+    ```
 
   - externals，把我们的依赖申明为一个外部依赖，外部依赖通过 <script> 外链脚本引入。这样配置可以减少打包构建速度，充分利用CDN缓存机制，具体配置： `externals: ['react', 'react-dom', 'react-router']`
 
@@ -41,7 +56,7 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
   - DllPlugin 和 DllReferencePlugin， deps 中也引用了大量的 npm 包，而这些包在正常的开发过程中并不会进行修改，但是在每一次构建过程中却需要反复的将其分析，使用dllplugin可以避免这样的消耗。
 
-  简单来说 DllPlugin 的作用是预先编译一些模块，而 DllReferencePlugin 则是把这些预先编译好的模块引用起来。这边需要注意的是 DllPlugin 必须要在 DllReferencePlugin 执行前，执行过一次。
+  简单来说 DllPlugin 的作用是预先编译一些模块，而 DllReferencePlugin 则是把这些预先编译好的模块引用起来。这边需要注意的是 DllPlugin 必须要在 DllReferencePlugin 执行前，执行过一次。它的缺点也很明显，就是很多重复的内容被多次打包进了bundle文件，因此不适合生产环境使用。
 
   dllPlugin 和 commonChunkPlugin 是二选一的，并且在启用 dll 后和 external、common 一样需要在页面中引用对应的脚本，在 dll 中就是需要手动引用 vendor.dll.js。
 

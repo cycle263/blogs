@@ -28,6 +28,8 @@
 
   - towebp-loader 根据图片类型转换成一份webp和原图两份图片，并且集成了url-loader的功能 支持url的limit功能和file-loader文件名的功能。
 
+  - cache-loader 在一些性能开销较大的 loader 之前添加此 loader，以将结果缓存到磁盘里。保存和读取这些缓存文件会有一些时间开销，所以请只对性能开销较大的 loader 使用此 loader。
+
   - expose-loader 用来把模块暴露到全局变量
   
     ```js

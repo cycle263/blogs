@@ -90,7 +90,15 @@
 
     - performance 设置打包后命令行中该如何展示性能提示, hints值包括：false | "error" | "warning" `performance: { hints: false }`
 
-    - stats 配置打包过程中命令行中输出的内容，如没有输出none，标准输出normal，全部输出verbose，只输出错误errors-only
+    - stats 配置打包过程中命令行中输出的内容，如没有输出none，标准输出normal，全部输出verbose，只输出错误errors-only, 只在发生错误或有新的编译时输出 minimal
+
+        ```js
+        stats: {  // 打包过程的日志信息，更细节的配置
+            entrypoints: false,
+            children: false,
+            modules: false, // 不打印后面的模块详情信息
+        },
+        ```
 
     - externals，把我们的依赖申明为一个外部依赖，外部依赖通过 <script> 外链脚本引入。这样配置可以减少打包构建速度，充分利用CDN缓存机制，具体配置： `externals: ['react', 'react-dom', 'react-router']`
 
