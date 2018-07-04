@@ -24,3 +24,13 @@
 * 跨端
 
 * 全栈
+
+## 前端监控指标
+
+| 上报字段 |	描述 |	计算方式 |	备注 |
+| ------- | ----- | ------- | ---- |
+| firstbyte |	首包时间	| responseStart - domainLookupStart	| |
+| fpt	 | First Paint Time, 首次渲染时间 / 白屏时间 | 	responseEnd - fetchStart	 | 从请求开始到浏览器开始解析第一批 HTML 文档字节的时间差 |
+| tti	 | Time to Interact，首次可交互时间 | 	domInteractive - fetchStart	 | 浏览器完成所有 HTML 解析并且完成 DOM 构建，此时浏览器开始加载资源 |
+| ready	| HTML 加载完成时间， 即 DOM Ready 时间	| domContentLoadEventEnd - fetchStart	| 如果页面有同步执行的 JS，则同步 JS 执行时间 = ready - tti |
+| load	| 页面完全加载时间	| loadEventStart - fetchStart	| load = 首次渲染时间 + DOM 解析耗时 + 同步 JS 执行 + 资源加载耗时 | 
