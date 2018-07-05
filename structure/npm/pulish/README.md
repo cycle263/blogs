@@ -1,3 +1,7 @@
 ## 发布模块
 
-* package.json
+  ```js
+  // npm set registry http://registry.npmjs.org
+  npm init -> npm login / npm adduser -> npm publish
+  // npm set registry https://registry.npm.taobao.org
+  ```

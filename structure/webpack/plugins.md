@@ -171,6 +171,8 @@
 
   理解一些 webpack 底层的内部特性来做相应的勾子。
 
+  [webpack的整体流程](./images/webpack.png)
+
 * 插件架构
 
   插件都是被实例化的带有 apply 原型方法的对象。这个 apply 方法在安装插件时将被 webpack 编译器调用一次。apply 方法提供了一个对应的编译器对象的引用，从而可以访问到相关的编译器回调。
@@ -210,7 +212,9 @@
         }
       });
 
-      compilation.assets['buildFiles.md'] = {
+      const name = this.options.fileName || 'buildFiles.md';
+
+      compilation.assets[name] = {
         source: function() {
           return files;
         },
@@ -222,4 +226,15 @@
   }
 
   module.exports = ShowBuildFilesPlugin;
+  ```
+
+* 插件的使用
+
+  ```js
+  {
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin(), // 内置的插件
+      new HtmlWebpackPlugin({template: './src/index.html'}) // 第三方插件
+    ]
+  }
   ```
