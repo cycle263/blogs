@@ -90,7 +90,9 @@
 
     - performance 设置打包后命令行中该如何展示性能提示, hints值包括：false | "error" | "warning" `performance: { hints: false }`
 
-    - stats 配置打包过程中命令行中输出的内容，如没有输出none，标准输出normal，全部输出verbose，只输出错误errors-only, 只在发生错误或有新的编译时输出 minimal
+    - stats 配置打包过程中命令行中输出的内容，如没有输出none，标准输出normal，全部输出verbose，只输出错误errors-only, 只在发生错误或有新的编译时输出 minimal。
+
+      对于 webpack-dev-server ，这个属性要放在 devServer 对象里。
 
         ```js
         stats: {  // 打包过程的日志信息，更细节的配置
