@@ -163,3 +163,63 @@
   - NamedModulesPlugin 将使用模块的路径作为moduleId，而不是数字标识符
 
   - HashedModuleIdsPlugin 该插件会根据模块的相对路径生成一个四位数的hash作为模块id
+
+
+## 编写插件
+
+* 准备工作
+
+  理解一些 webpack 底层的内部特性来做相应的勾子。
+
+* 插件架构
+
+  插件都是被实例化的带有 apply 原型方法的对象。这个 apply 方法在安装插件时将被 webpack 编译器调用一次。apply 方法提供了一个对应的编译器对象的引用，从而可以访问到相关的编译器回调。
+
+  ```js
+  SomePlugin.prototype.apply = function(compiler) { // 访问编译器
+    compiler.plugin('done', function(compilation) {
+      console.log('Hello World!');
+    });
+
+    compiler.plugin("emit", function(compilation， cb) {  // 访问编译对象
+      compilation.plugin("optimize", function() {
+        console.log("Assets are being optimized.");
+      });
+
+      // Async handle
+      cb();
+    });
+  };
+  ```
+
+* 插件案例
+
+  ```js
+  "use strict";
+
+  class ShowBuildFilesPlugin {
+    constructor(options) {
+      this.options = options;
+    }
+
+    apply(compiler) {
+      compiler.hooks.compilation.tap("ShowBuildFilesPlugin", compilation => {
+        let files = '## Build files:\n\n';
+        for (let file in compilation.assets) {
+          files += `- ${file}`;
+        }
+      });
+
+      compilation.assets['buildFiles.md'] = {
+        source: function() {
+          return files;
+        },
+        size: function() {
+          return files.length;
+        }
+      };
+    }
+  }
+
+  module.exports = ShowBuildFilesPlugin;
+  ```

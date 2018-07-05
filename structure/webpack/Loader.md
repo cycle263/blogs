@@ -2,6 +2,8 @@
 
   > Webpack 本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换。Loader 可以理解为是模块和资源的转换器。
 
+  webpack 可以使用 loader 来预处理文件。这允许你打包除 JavaScript 之外的任何静态资源。你可以使用 Node.js 来很简单地编写自己的 loader。loader 通过在 require() 语句中使用 loadername! 前缀来激活，或者通过 webpack 配置中的正则表达式来自动应用
+
 * Loader有哪些特性？
 
   - Loader可以通过管道方式链式调用，但是最后一个loader必须返回js
@@ -25,6 +27,10 @@
   - postcss-loader 使用 PostCSS 加载和转译 CSS/SSS 文件。另外，autoprefixer是postcss的一个插件, 在新的css属性上加前缀，如：'-webkit-'
 
   - less-loader 加载和转译 LESS 文件
+
+  - json-loader 加载 JSON 文件（默认包含）
+
+  - markdown-loader 将 Markdown 转译为 HTML
 
   - towebp-loader 根据图片类型转换成一份webp和原图两份图片，并且集成了url-loader的功能 支持url的limit功能和file-loader文件名的功能。
 
