@@ -47,7 +47,8 @@
       exclude: /node_modules/,
       loader: 'babel-loader',
       options: {
-        presets: ['env', 'react', 'es2017']
+        presets: ['env', 'react', 'es2017'],
+        plugins: ['syntax-dynamic-import']  // 动态引入chunk, `import(/* webpackChunkName: "my-chunk-name" */'moment').then`
       }
     }
     ```

@@ -24,8 +24,36 @@
 
 * 缓存
 
+  - 长缓存
+
+  - hash
+
 * 分包
+
+  - 并行加载
+
+  - 按需加载
+
+    异步路由
+
+    ```js
+    // react-router3
+    <Route path="adminIndex" getComponent={(attrs, callback) => { require.ensure([], (require) => { var d = require('../ctlComponents/IndexCtl'); callback(null, d.default); }, 'index'); }} />
+
+    // react-router4
+    // 异步加载js写法；
+    import IndexCtl from 'bundle-loader?lazy!../ctlComponents/IndexCtl.js';
+
+    <Route exact path='/(index)?' render={loadAsyncModule(IndexCtl)} />
+
+    const loadAsyncModule = (Module) => prop =>(
+      <Bundle load={Module}>
+        {(ModuleComponent) => <ModuleComponent {...prop} />}
+      </Bundle>
+    )
+    ```
 
 * 压缩
 
-* 按需加载
+
+* 作用域提升
