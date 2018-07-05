@@ -41,17 +41,17 @@
 
   - babel-loader 加载 ES2015+ 代码，然后使用 Babel 转译为 ES5
 
-    ```js
-    {
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      options: {
-        presets: ['env', 'react', 'es2017'],
-        plugins: ['syntax-dynamic-import']  // 动态引入chunk, `import(/* webpackChunkName: "my-chunk-name" */'moment').then`
-      }
+  ```js
+  {
+    test: /\.(js|jsx)$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader',
+    options: {
+      presets: ['env', 'react', 'es2017'],
+      plugins: ['syntax-dynamic-import']  // 动态引入chunk, `import(/* webpackChunkName: "my-chunk-name" */'moment').then`
     }
-    ```
+  }
+  ```
 
   - file-loader 把源文件迁移到指定的目录（可以简单理解为从源文件目录迁移到build目录），并返回新文件的路径（简单拼接而成）。
 
