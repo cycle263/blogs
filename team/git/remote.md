@@ -36,6 +36,12 @@
     `git push --force origin`  强行覆盖远程主机上更新的版本
     `git push origin --tags`    push默认不推送标签，除非加上--tags
 
+* 修改远端主机地址
+
+    `git remote set-url [--push] <name> <newurl> [<oldurl>] // --push 修改origin.pushurl`
+    `git remote set-url <name> <newurl> // 修改origin.url`
+    `git remote set-url --delete <name> <url> // 删除origin.url, --add新增origin.url`
+
 * 新增github项目
 
     ```js
