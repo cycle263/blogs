@@ -4,6 +4,8 @@
 
 * moduleId
 
+默认情况下，moduleId为增量数字，可以使用插件方式改变成其他ID。
+
 ```js
 // modules数组用于保存所有的模块初始化函数, 通过 IIFE 的方式传入, 给所有模块外面加一层包装函数，使其成为模块初始化函数
 (function (modules) {
