@@ -8,13 +8,25 @@
 
 * 配置
 
-  -
+  - 
 
-  -
+  - 
 
-* 插件
+* 插件系统升级
 
-  -
+  ```js
+  // webpack 3
+  compiler.plugin('done',callback) // 注册
+  compilitation.applyPlugins('done',params) // 触发
+
+  // webpack 4
+  compiler.hooks.done.tap('mypluinname',callback) // 注册
+  compiler.hooks.done.call() // 触发
+  ```
+
+  内部插件的升级
+
+  - 
 
 ## webpack的基本原理
 

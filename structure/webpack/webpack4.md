@@ -1,10 +1,10 @@
 ## webpack4升级
 
-  > 主要针对生产环境进行了优化升级。
+  > webpack以配置驱动，繁琐的配置也成为了webpack进一步发展的障碍，零配置的打包构建工具如雨后春笋。webpack4对配置要求降低了很多，甚至entry和output也非必配项。
 
 * mode属性
 
-  分为开发和生产环境（development/production），常用的配置以及配置好默认值
+  即默认策略配置，分为开发和生产环境（development/production），常用的配置以及配置好默认值。默认值为production。devlopment针对开发环境做了优化，production针对生产环境做了优化。
 
 * 分包插件升级
 
