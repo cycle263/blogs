@@ -39,7 +39,7 @@
 
   - [id], webpack给块分配的内部chunk id，如果没有隐藏，能在打包后的命令行中看到
 
-  - [hash]，每次构建过程中，生成的唯一 hash 值。
+  - [hash]，每次构建过程中，根据compilation编译对象生成的唯一 hash 值，每次打包都会产生一个编译对象，因此hash每次都会改变。
 
   - [chunkhash / contenthash]，依据于打包生成文件内容的 hash 值,内容不变，值不变
 
