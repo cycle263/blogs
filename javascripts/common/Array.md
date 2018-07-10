@@ -70,6 +70,20 @@
   }
   ```
 
+* 数组重复性判断
+
+```js
+function arrRepeat(arr){
+    var arrStr = JSON.stringify(arr),str;
+    for (var i = 0; i < arr.length; i++) {
+        if (arrStr.indexOf(arr[i]) != arrStr.lastIndexOf(arr[i])){
+            return true;
+        }
+    };
+    return false;
+}
+```
+
 * 求数组中小于N的连续的最长子数组
 
   ```js
