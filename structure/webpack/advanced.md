@@ -41,7 +41,7 @@
 
   - [hash]，每次构建过程中，根据compilation编译对象生成的唯一 hash 值，每次打包都会产生一个编译对象，因此hash每次都会改变。
 
-  - [chunkhash / contenthash]，依据于打包生成文件内容的 hash 值,内容不变，值不变
+  - [chunkhash / contenthash]，依据于打包生成文件内容的 hash 值,内容不变，值不变。不推荐在开发环境使用hash，增加编译时间。
 
   - [ext]，资源扩展名,如js,jsx,png等等;
 

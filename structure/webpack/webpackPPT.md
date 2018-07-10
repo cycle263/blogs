@@ -40,7 +40,7 @@
 
   - hash
 
-    在 webpack 中提供了两种方式，hash 和 chunkhash
+    在 webpack 中提供了两种方式，hash 和 chunkhash。但不推荐在开发环境使用hash，增加编译时间。
 
     + hash：在 webpack 一次构建中会产生一个 compilation 对象，该 hash 值是对 compilation 内所有的内容计算而来的，因此hash每次都会改变。
 
@@ -49,6 +49,10 @@
     ```js
     // webpack.config.js
     module.exports = {
+        entry: {
+            app: 'app.js',
+            vendor: ['react', 'react-dom']
+        },
         output: {
             chunkFilename: '[name].[chunkhash:5].chunk.js',
         }

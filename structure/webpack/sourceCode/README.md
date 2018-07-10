@@ -22,7 +22,7 @@
   })
 ])
 
-// 模块加载函数
+// 模块加载函数, webpackJsonp调用
 function __webpack_require__(moduleId) {
 	// Check if module is in cache
 	if(installedModules[moduleId])
