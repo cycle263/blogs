@@ -2,6 +2,10 @@
 
 * ssh远程中文乱码问题  UTF-8
 
+  ```shell
+  locale 查看本地和远端的字符集编码方式
+  ```
+
 * 环境变量配置
 
   `vi ~/.bash_profile 或者 ~/.zshrc`
