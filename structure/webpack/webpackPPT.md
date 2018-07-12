@@ -19,7 +19,7 @@
   compiler.plugin('done',callback) // 注册
   compilitation.applyPlugins('done',params) // 触发
 
-  // webpack 4
+  // webpack 4 - tapable
   compiler.hooks.done.tap('mypluinname',callback) // 注册
   compiler.hooks.done.call() // 触发
   ```
@@ -27,6 +27,12 @@
   内部插件的升级
 
   - 
+
+  其他配置升级
+
+  - 分离出独立的webpack-cli
+
+  - module.loaders不再支持，请使用module.rules
 
 ## webpack的基本原理
 

@@ -16,7 +16,7 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
     + 去掉重复的依赖包，删除未使用依赖包，uninstall移除的依赖包；
 
-    + 精准尽可能小的依赖包，或者使用小功能包替换大而全的功能包；`fecha -> moment, lodash/isequal -> lodash`，缺点是可能引发重复打包
+    + 精准尽可能小的依赖包，或者使用小功能包替换大而全的功能包；`fecha -> moment, lodash/isequal || lodash.isequal -> lodash`，缺点是可能引发重复打包
 
   - 另外，使用第三方库的优化插件，例如：`babel-plugin-antd、babel-plugin-lodash等`
   
@@ -61,6 +61,10 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
   dllPlugin 和 commonChunkPlugin 是二选一的，并且在启用 dll 后和 external、common 一样需要在页面中引用对应的脚本，在 dll 中就是需要手动引用 vendor.dll.js。
 
   - stats (string/object)打包过程的日志信息展示，五种输出级别："errors-only"、"minimal"、"none"、"normal"、"verbose"，[stats详细介绍](./config)
+
+  - 懒加载，也即是按需加载，require.ensure 或者 bundle-loader
+  
+    require.ensure 内部依赖于 Promises，旧的浏览器中使用记得引入 es6-promise polyfill。
 
 ## 分割代码的方式
 
