@@ -16,7 +16,7 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
     + 去掉重复的依赖包，删除未使用依赖包，uninstall移除的依赖包；
 
-    + 精准尽可能小的依赖包，或者使用小功能包替换大而全的功能包；`fecha -> moment, lodash/isequal || lodash.isequal -> lodash`，缺点是可能引发重复打包
+    + 精准尽可能小的依赖包，或者使用小功能包替换大而全的功能包；`fecha -> moment, lodash/isequal || lodash.isequal -> lodash`，缺点是可能引发重复打包。在使用antd 的时间组件时，不建议替换moment，因为重度依赖moment。
 
   - 另外，使用第三方库的优化插件，例如：`babel-plugin-antd、babel-plugin-lodash等`
   
