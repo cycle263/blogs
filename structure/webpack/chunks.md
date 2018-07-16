@@ -46,10 +46,27 @@
 
     Chunk 的生成还涉及到依赖解析和模块 ID 分配，这是无法稳定实质上没有变化的 chunk 文件的 chunkhash 变动问题的本源。
 
+* 模块ID
+
+    模块的 ID 是 webpack 根据依赖的收集顺序递增的正整数。
+
 * webpack runtime
 
     全局 webpackJsonp 方法：模块读取函数，用来区分模块是否加载，并调用 __webpack_require__ 函数；
 
     私有 __webpack_require__ 方法：模块初始化执行函数，并给执行过的模块做标记；
-    
+
     异步 chunk 加载函数（用 script 标签异步加载），加载的 chunk 内容均被 webpackJsonp 包裹的，script 加载成功会直接执行。这个函数还包含了所有生成的 chunks 的路径。
+
+
+## 合理划分公用模块
+
+* 根据更新频率
+
+    - 库和工具 - libs
+
+    - 定制 UI 库和工具 - vendor
+
+    - 业务模块 - entries
+    
+    - 低频库/工具/代码 - 分割为 chunk
