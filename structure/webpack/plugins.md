@@ -160,6 +160,8 @@
 
   - BannerPlugin 给代码添加注释版权信息
 
+  - inline-manifest-webpack-plugin 在html 便内联脚本，提高了页面的加载速度，例如webpack runtime
+
   - NamedModulesPlugin 将使用模块的路径作为moduleId，而不是数字标识符，缺点是构建内容增大，模块路径信息泄露。
 
   - HashedModuleIdsPlugin 该插件会根据模块的相对路径生成一个四位数的hash作为模块id，解决NamedModulesPlugin 纯在的缺点。

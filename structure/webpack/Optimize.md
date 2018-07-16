@@ -62,9 +62,18 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
   - stats (string/object)打包过程的日志信息展示，五种输出级别："errors-only"、"minimal"、"none"、"normal"、"verbose"，[stats详细介绍](./config)
 
-  - 懒加载，也即是按需加载，require.ensure 或者 bundle-loader
+  - 懒加载，也即是按需加载，require.ensure 或者 bundle-loader，syntax-dynamic-import
   
     require.ensure 内部依赖于 Promises，旧的浏览器中使用记得引入 es6-promise polyfill。
+
+    ```js
+    // bundle-loader
+    bundle((file) => {...})
+
+    require.ensure('module', () => {...})
+
+    import('module').then(() => {...}).catch()
+    ```
 
 ## 分割代码的方式
 
@@ -75,6 +84,8 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
   - 这种方式不够灵活，并且不能将核心应用程序逻辑进行动态拆分代码。
 
 * CommonsChunkPlugin：使用 CommonsChunkPlugin 去重和分离 chunk。
+
+  - name和names：chunk的名称，如果这个chunk已经在entry中定义，该chunk会被直接提取；如果没有定义，则生成一个空的chunk来提取其他所有chunk的公共代码。
 
 * 动态import：通过模块的内联函数调用来分离代码。
 

@@ -1,25 +1,12 @@
 ## webpack之代码拆分
 
-* CommonsChunkPlugin
+* chunk vs bundle vs module
 
-    - options.name/names (string / string[])
+    chunk webpack特有的，用于管理打包的过程，分包成多个chunk
 
-        哪些代码块，可以为数组
+    bundle 就是打包到一个文件中的相关代码，通过情况下，chunk会直接输入对应的bundle，当然不是所有的配置都会产生这一对一的关系。
 
-    - options.filename(string)
-
-        代码块输出的名称
-
-    - options.minChunks(number / Infinity / function(module, count) -> boolean)
-
-    - options.chunks(string[])
-
-    - options.children(boolean)
-
-    - options.async(boolean / string)
-
-    - options.minSize
-
+    module js模块，所有静态资源都可以成为module
 
 * hash
 
@@ -52,11 +39,13 @@
 
 * webpack runtime
 
-    全局 webpackJsonp 方法：模块读取函数，用来区分模块是否加载，并调用 __webpack_require__ 函数；
+    runtime 包含 chunks ID 及其对应 chunkhash 的对象。runtime其他主要功能:
 
-    私有 __webpack_require__ 方法：模块初始化执行函数，并给执行过的模块做标记；
+    - 全局 webpackJsonp 方法：模块读取函数，用来区分模块是否加载，并调用 __webpack_require__ 函数；
 
-    异步 chunk 加载函数（用 script 标签异步加载），加载的 chunk 内容均被 webpackJsonp 包裹的，script 加载成功会直接执行。这个函数还包含了所有生成的 chunks 的路径。
+    - 私有 __webpack_require__ 方法：模块初始化执行函数，并给执行过的模块做标记；
+
+    - 异步 chunk 加载函数（用 script 标签异步加载），加载的 chunk 内容均被 webpackJsonp 包裹的，script 加载成功会直接执行。这个函数还包含了所有生成的 chunks 的路径。
 
 
 ## 合理划分公用模块
@@ -68,5 +57,5 @@
     - 定制 UI 库和工具 - vendor
 
     - 业务模块 - entries
-    
+
     - 低频库/工具/代码 - 分割为 chunk
