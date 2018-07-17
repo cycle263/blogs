@@ -40,6 +40,7 @@
 * **2、依赖注入之:**
 
   - DefinePlugin - 自由变量注入，允许你创建一个在编译时可以配置的全局常量。这可能会对开发模式和发布模式的构建允许不同的行为非常有用。
+  
     ```js
     // 官方文档推荐使用下面的插件确保 NODE_ENV
     new webpack.DefinePlugin({
@@ -77,12 +78,12 @@
     output: {
       path: path.resolve(__dirname, './static'),
       filename: '[name].dll.js',
-      library: '[name]_lib'   //
+      library: '[name]_lib'   // 全局变量名称
     },
     plugins: [
       new webpack.DllPlugin({
         path: path.join(__dirname, 'dist', '[name]-manifest.json'),
-        name: '[name]_lib'    //
+        name: '[name]_lib'    //和output.library中一致，也就是输出的manifest.json中的 name值
       }),
     ],
     ```

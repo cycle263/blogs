@@ -12,20 +12,13 @@
 
   `分析代码 -> 寻找依赖 -> 生成依赖链 -> 使用对应的loader -> 生成抽象语法树AST -> 遍历AST, 输出js`
 
-
 ## webpack4区别
 
 * mode
 
-  - development，devlopment针对开发环境做了优化
+  - development，devlopment针对开发环境做了优化，不再需要注入变量process.env.NODE_ENV，此变量值跟mode值相同。
 
   - production(default)，production针对生产环境做了优化。比如：压缩（minification）、作用域提升（scope hoist）等等，以及很多默认插件都不再需要自己引入。
-
-* 配置
-
-  - 
-
-  - 
 
 * 插件系统升级
 
@@ -39,11 +32,13 @@
   compiler.hooks.done.call() // 触发
   ```
 
-  内部插件的升级
+  内部插件的升级：
 
-  - 
+  - splitChunksPlugin
 
-  其他配置升级
+  - UglifyjsWebpackPlugin -> optimization.minimize
+
+  其他配置升级：
 
   - 分离出独立的webpack-cli
 
