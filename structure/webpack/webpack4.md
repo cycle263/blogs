@@ -11,6 +11,29 @@
   commonChunkPlugin -> optimization.splitChunks and runtimeChunk 或者 splitChunksPlugin and runtimeChunkPlugin插件形式， 分包插件优化升级
 
   ```js
+  // 配置案例
+  {
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            chunks: "initial",
+            minChunks: 2,
+            maxInitialRequests: 5,
+            minSize: 30000
+          },
+          vendor: {
+            test: /node_modules/,
+            chunks: "initial",
+            name: "vendor",
+            priority: 10,
+            enforce: true
+          }
+        }
+      }
+    }
+  }
+
   // webpack4 源码
   if (options.optimization.splitChunks)
 			new SplitChunksPlugin(options.optimization.splitChunks).apply(compiler);
@@ -70,7 +93,7 @@
 
   Webpack 4，官方提供了sideEffects属性，通过将其设置为false，可以主动标识该类库中的文件只执行简单输出，并没有执行其他操作，可以放心shaking。除了可以减小bundle文件的体积，同时也能够提升打包速度。为了检查side effects，Webpack需要在打包的时候将所有的文件执行一遍。而在设置sideEffects之后，则可以跳过执行那些未被引用的文件。
 
-  Tree shaking一直是一个美丽而遥不可及的话题。影响tree shaking的根本原因在于side effects（副作用），其中最广为人知的一条side effect就是动态引入依赖的问题。ES6其实也提供import()方法支持动态引入依赖，所以以下写法其实也是完全可行的。
+  Tree shaking一直是一个美丽而遥不可及的话题，它是一个术语，通常用于描述移除 JavaScript 上下文中的未引用代码。这个术语和概念实际上是兴起于 ES2015 模块打包工具 rollup。可以简单地理解为摇树，抖落掉枯萎无用的树叶。影响tree shaking的根本原因在于side effects（副作用），其中最广为人知的一条side effect就是动态引入依赖的问题。ES6其实也提供import()方法支持动态引入依赖，所以以下写法其实也是完全可行的。
 
   ```js
   if(Math.random() > 0.5) {
@@ -111,3 +134,26 @@
       }
   ]
   ```
+
+* 多进程之HappyPack
+
+HappyPack就能让Webpack把任务分解给多个子进程去并发的执行，子进程处理完后再把结果发送给主进程，其中子进程的个数为cpu的个数减去1,需要在loader处修改如下
+
+```js
+// loader中修改为
+use: 'happypack/loader?id=babel',
+
+// plugin中添加
+new HappyPack({
+    id: 'babel',
+    //如何处理.js文件，和rules里的配置相同
+    loaders: [{
+        loader: 'babel-loader',
+        query: {
+            presets: [
+                "env", "stage-0"
+            ]
+        }
+    }]
+}),
+```

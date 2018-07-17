@@ -76,13 +76,15 @@
 
     - contentBase: "./dist", 本地服务器所加载的页面所在的目录
     
-    - historyApiFallback: true, 再找不到文件的时候默认指向index.html
+    - historyApiFallback: true, 找不到文件的时候默认指向index.html
     
-    - inline: true, 当源文件改变时会自动刷新页面
+    - inline: true, 加入一个websocket客户端，当源文件改变时会自动刷新页面
     
     - hot: true, 热加载开启，热更新(HMR)不能和[chunkhash]同时使用
     
-    - port:8080, 设置默认监听端口
+    - port: 8080, 设置默认监听端口
+
+    - compress: true 开发服务器是否启动gzip等压缩
 
 * **其他配置**
 
