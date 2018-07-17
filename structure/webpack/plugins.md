@@ -40,7 +40,7 @@
 * **2、依赖注入之:**
 
   - DefinePlugin - 自由变量注入，允许你创建一个在编译时可以配置的全局常量。这可能会对开发模式和发布模式的构建允许不同的行为非常有用。
-  
+
     ```js
     // 官方文档推荐使用下面的插件确保 NODE_ENV
     new webpack.DefinePlugin({
@@ -97,7 +97,7 @@
     }),
     ```
 
-  - ExtractTextPlugin - 抽取css文件，用于将 CSS 从主应用程序中分离。
+  - ExtractTextPlugin - 抽取css文件，用于将 CSS 从主应用程序中分离。不过，webpack@4.3.0已不支持使用，推荐使用mini-css-extract-plugin。
 
   - commonChunkPlugin  可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk。使用长期缓存策略：chunkhash，records，Cache-Control，将不经常变动的代码块长期缓存起来。dllPlugin 和 commonChunkPlugin 是二选一的；**至于二者的区别： DllPlugin 是用于提速开发环境构建速度的，而 CommonsChunkPlugin 则是用于优化包尺寸的。**
 

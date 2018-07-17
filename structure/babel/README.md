@@ -36,6 +36,8 @@
 
 * babel-register，改写require命令，为它加上一个钩子。此后，每当使用require加载.js、.jsx、.es和.es6后缀名的文件，就会先用Babel进行转码，但它不会对当前文件转码。另外，由于它是实时转码，所以只适合在开发环境使用。
 
+
+
 #### babel配置文件.babelrc
 
 * presets：字段设定转码规则，官方提供一定的规则集，你可以根据需要安装。ES7不同阶段语法提案的转码规则（共有4个阶段。
@@ -67,7 +69,7 @@
   }
   ```
 
-* presets-env: 使用babel-preset-es2015, 它会将generator函数编译为复杂的ES5代码, 这是没有必要的。但使用babel-preset-env, 我们可以声明环境, 然后该preset就会只编译包含我们所声明环境缺少的特性的代码，因此也是比较推荐的方式。babel-preset-env，babel会根据指定的浏览器兼容列表自动引入所有所需的polyfill。
+* presets-env: 初始化配置时已经安装。它的前身是 babel-preset-es2015/es2016/es2017 以后要用新特性这个包就可以搞定一切。使用babel-preset-env, 我们可以声明环境, 然后该preset就会只编译包含我们所声明环境缺少的特性的代码，因此也是比较推荐的方式。babel-preset-env，babel会根据指定的浏览器兼容列表自动引入所有所需的polyfill。
 
   ```js
   {
