@@ -79,24 +79,50 @@
 
   - 按需加载
 
-    异步路由
+    拆分方式：
+
+    + 基于路由拆分
 
     ```js
     // react-router3
-    <Route path="adminIndex" getComponent={(attrs, callback) => { require.ensure([], (require) => { var d = require('../ctlComponents/IndexCtl'); callback(null, d.default); }, 'index'); }} />
+    <Route path="adminIndex" 
+      getComponent={(attrs, callback) => { 
+        require.ensure([], (require) => { 
+          var d = require('../ctlComponents/IndexCtl'); 
+          callback(null, d.default); 
+        }, 'index'); 
+      }} />
 
     // react-router4
     // 异步加载js写法；
     import IndexCtl from 'bundle-loader?lazy!../ctlComponents/IndexCtl.js';
 
-    <Route exact path='/(index)?' render={loadAsyncModule(IndexCtl)} />
 
     const loadAsyncModule = (Module) => prop =>(
       <Bundle load={Module}>
         {(ModuleComponent) => <ModuleComponent {...prop} />}
       </Bundle>
-    )
+    );
+    <Route exact path='/(index)?' render={loadAsyncModule(IndexCtl)} />
     ```
+
+    + 基于组件拆分
+
+    ```js
+
+    ```
+
+    实现方式：
+
+    + require.ensure：webpack在编译时，会静态地解析代码中的require.ensure()，同时将模块添加到一个分开的 chunk当中。这个新的chunk会被webpack通过jsonp来按需加载。
+
+      `require.ensure(dependencies: String[], callback: function(require), chunkName: String)`
+
+    + bundle-loader
+    
+    + syntax-dynamic-import
+    
+    + react-loadable
 
 * 压缩
 

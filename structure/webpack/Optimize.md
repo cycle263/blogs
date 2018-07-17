@@ -62,7 +62,7 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
   - stats (string/object)打包过程的日志信息展示，五种输出级别："errors-only"、"minimal"、"none"、"normal"、"verbose"，[stats详细介绍](./config)
 
-  - 懒加载，也即是按需加载，require.ensure 或者 bundle-loader，syntax-dynamic-import
+  - 懒加载，也即是按需加载，require.ensure 或者 bundle-loader，syntax-dynamic-import，react-loadable
   
     require.ensure 内部依赖于 Promises，旧的浏览器中使用记得引入 es6-promise polyfill。
 
@@ -73,6 +73,14 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
     require.ensure('module', () => {...})
 
     import('module').then(() => {...}).catch()
+
+    // react-loadable高阶组件方式
+    const LoadableBar = Loadable({
+      loader: () => import('./components/Bar'),
+      loading() {
+        return <div>Loading...</div>
+      }
+    });
     ```
 
 ## 分割代码的方式
