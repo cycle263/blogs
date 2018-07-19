@@ -21,7 +21,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 ## 前端工程化
 * 常见的前端优化措施：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存资源缓存，图片服务器，减少DOM操作，模块化等。webpack的插件原理？webpack缓存可能存在的坑，解决方案？webpack代码分隔？webpack性能优化手段？多页面可能存在的坑（跨路由跳转，传参），解决方案？webpack打包时，模块循环引用会发生什么后果？babel转码的实现原理？ commonJS和AMD规范区别？和ES6的模块有什么不同？
-* ~~组件划分粒度？版本控制系统(svn、git)?~~ 对前端工程进行流程化开发，nginx的combo技术，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案。  
+* 组件划分粒度？版本控制系统(svn、git)? 对前端工程进行流程化开发，nginx的combo技术，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案。  
 * 前端缓存？常用的前端性能指标？用什么工具来测试这些指标？怎么理解组件化/模块化，组件化诉求复用(更多关注UI)，模块化诉求解耦(关注数据和功能封装)，组件接口设计，转译出的文件过大怎么办，速度过慢怎么办？怎么绕开防盗链？webpack中的require.ensure什么作用？
 * 理想的前端开发和部署流程？无缝发布部署，先部署页面还是资源？非覆盖式更新，灰度发布(全量发布)，错误监控和分析，安全性监控？自动化测试框架（mocha）？
 
