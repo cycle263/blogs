@@ -77,11 +77,22 @@
 
 * comet 通过延迟应答响应，模拟向客户端推送消息的功能，实际上comet会将响应至于挂起状态，当服务端有内容更新，才返回该响应。维持连接会消耗更多的资源。
 
-* spdy google 2009年，谷歌公开了自行研发的 SPDY 协议，主要解决 HTTP/1.1 效率不高的问题。
+* spdy google 2009年，谷歌公开了自行研发的 SPDY 协议，主要解决 HTTP/1.1 效率不高的问题。SPDY并没有完全改写http协议，而是在应用层和传输层之间新加会话层的形式运作，并规定通信使用SSL。
 
-* websocket
+  优势：
 
-* http2 2015年，HTTP/2 发布，它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了，下一个新版本将是 HTTP/3。
+  - 多路复用
+  - 请求优先级
+  - 压缩http首部
+  - 推送功能
+  
+  不足：
+
+  - 多路复用只针对单个域名（IP地址）
+
+* websocket web浏览器和web服务器之间全双工通信标准，协议由IETF制定，websocket api由W3C定位标准。一旦通信连接，可发送json, html, xml, 图片等任意格式的数据。
+
+* http2 2015年，HTTP/2 发布，它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了，下一个新版本将是 HTTP/3。http2的多项技术标准采用了spdy, http speed + mobility, network-friendly等协议标准。
 
 * https vs http
 
