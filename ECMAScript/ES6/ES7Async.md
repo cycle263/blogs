@@ -10,6 +10,25 @@
 
     - 更广的适用性，yield 命令后面只能是Thunk函数或Promise对象，await命令后面，可以跟Promise对象和原始类型的值(数值，字符串等)
 
+  * await vs promise.then
+
+    - await会暂停所在的async函数的执行, promise.then将函数加入回调链中之后，会继续执行当前函数。
+
+    - promise resolve异常时，promise所在的作用域已经不存在了，要打印它的堆栈信息，需要额外记录，对性能和资源都有一定消耗。
+
+    ```js
+    // promise.then
+    const a = () => {
+      b().then(() => c());
+    };
+
+    // async/await
+    const a = async () => {
+      await b();
+      c();
+    };
+    ```
+
   * 使用
 
     - await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try...catch 代码块中。

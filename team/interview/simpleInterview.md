@@ -9,7 +9,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 * 字面量式函数和声明式函数的区分？script defer vs async? 原型继承 vs 类继承？(灵活，接口，抽象类) 怎么理解异步编程？context vs scope vs this? 词法作用域(静态，不可变) vs 动态作用域(动态)? 闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分? file文件转换成arrayBuffer或者Blob，Float32Array, DataView? 冒泡和捕获? setTimeout里面运行的函数的作用域this指向? setTimeout vs setInterval? websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 事件代理的原理？节流(固定时间段执行一次)和防抖(未到延迟时间，重新计时)？怎么理解高阶函数？(函数可以当做参数传递，也可以被当做返回值返回，高阶函数就是这一类的函数。)
 * Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？ webworker?(后台运行) storage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？ 不可以，原因使用下标访问时，只是临时创建的array对象。++i vs i++?
 
-* ES6熟悉哪些新特性？箭头函数的作用域(是否有arguments,是否有自身的this对象和上下文, call能否覆盖箭头函数this,不能用作构造函数)？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? aynsc和await？let vs const vs var(作用域级别，变量声明提升，重复声明)? 解构赋值和扩展运算符，rest属性(解构赋值...放在最后一位)？ Generator 和 Iterator(生成器和迭代器)? Module和import, export? proxy ?
+* ES6熟悉哪些新特性？箭头函数的作用域(是否有arguments,是否有自身的this对象和上下文, call能否覆盖箭头函数this,不能用作构造函数)？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? Promise、generator、async/await 的原理解释？let vs const vs var(作用域级别，变量声明提升，重复声明)? 解构赋值和扩展运算符，rest属性(解构赋值...放在最后一位)？ Generator 和 Iterator(生成器和迭代器)? Module和import, export? proxy ?
 * canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
 
 ## 框架类库
@@ -32,7 +32,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 ## 加分技能
 * 熟悉的设计模式：订阅模式、观察者模式、工厂模式，单例模式，流行的mvc，mvvc，mv*架构模式，REST API vs GraphQL(Apollo-请求多组数据)
-* 擅长一门后端，如nodejs(事件驱动-无阻塞, 擅长IO密集，非计算密集)，关系型数据库和非关系型数据库，函数式编程，堆、栈和队列区别(全局持久手动 vs 局部临时自动)，多媒体前端经验(webRTC)，网络协议，http2等。如何基于http协议建立一个长连接？http 304状态码？协商缓存与强制缓存的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。
+* 擅长一门后端，如nodejs(事件驱动-无阻塞, 擅长IO密集，非计算密集)，关系型数据库和非关系型数据库，函数式编程，堆、栈和队列区别(全局持久手动 vs 局部临时自动)，多媒体前端经验(webRTC)，网络协议，http2等。如何基于http协议建立一个长连接？http 304状态码？协商缓存与强制缓存的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。浏览器缓存种类、区别与使用细节？
 * ~~做过什么提高开发效率的工作？(包括团队)~~ 如何降低项目的后期的维护成本？前端人员如何提高运营人员更强的支持力度？比较难的技术问题?前端的价值体现？前端代码规范
 * 有没有做过开源项目？有没有blog和github项目？最近在学什么？接下来半年打算学习什么？每天花多长时间学习？豁然开朗的知识点？开发过程中遇到的最大难点(超复杂的数据结构，扩展第三库)？
 * 最有挑战的项目？发布前发现bug如何处理？作为前端对于公司最大的价值贡献？相比其他前端的优势？如何面对编码凌乱和页面无设计的项目？PWA-渐进式增强progressive web app?(全屏运行、离线能力、推送通知)
