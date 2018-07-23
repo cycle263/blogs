@@ -23,3 +23,8 @@
     举一个例子，获取数据是一个 action，一个点击是一个 action，一个 input 变化也是一个 action 等等
 
   - View 看起来像 React view (或者其它类似的概念)
+
+
+## Flux vs Vuex
+
+
