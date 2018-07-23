@@ -48,3 +48,5 @@
 * [ ] 首屏时间，白屏时间，性能指标
 
 * [ ] 爬虫，防爬
+
+* [ ] Tapable vs Emiter vs Sub/Pub
