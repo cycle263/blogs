@@ -163,3 +163,11 @@
   - reconfigure：属性的attributes对象发生变化
   - preventExtensions：对象被禁止扩展（当一个对象变得不可扩展时，也就不必再监听了）  
   Object.observe和Object.unobserve这两个方法不属于ES6，而是属于ES7的一部分。不过，Chrome浏览器从33版起就已经支持。
+
+* getOwnPropertyDescriptors
+
+  该函数返回一个对象所有的属性，甚至包括get/set函数。ES2017加入这个函数的主要动机在于方便将一个对象深度拷贝给另一个对象，同时可以将getter/setter拷贝。和Object.assign不同。
+
+  Object.assign将一个对象除了getter/setter以外的都深度拷贝了。
+
+  将原对象Car拷贝到ElectricCar，你就会发现Object.getOwnPropertyDescriptors拷贝了 getter和setter，而Object.assign没有。
