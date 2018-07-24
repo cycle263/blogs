@@ -36,6 +36,21 @@
 ## 其他方案
 
 * 缓存
+    
+    ```js
+    // 字段优先级，越大越高
+    cache-control > expires > etag > last-modified
+
+    last-modified: Wed, 16 May 2018 02:57:16 GMT
+    if-modified-since: Wed, 16 May 2018 05:55:38 GMT
+
+    if-none-match: "D5FC8B85A045FF720547BC36FC872550"
+    etag: "D5FC8B85A045FF720547BC36FC872550"
+
+    expires: Thu, 16 May 2019 03:05:59 GMT
+
+    cache-control: max-age=31536000
+    ```
 
 * 离线包
 

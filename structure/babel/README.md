@@ -118,7 +118,7 @@
 
 - 全局引入polyfill
 
-  + 页面中引入babel-polyfill.js的CDN地址
+  + 页面中引入babel-polyfill.js的CDN地址，如：[polyfill.io](https://cdn.polyfill.io/v2/polyfill.min.js?features=Map,Set)
 
   + 在webpack配置文件增加入口: ["babel-polyfill",'./src/app.js']
 
