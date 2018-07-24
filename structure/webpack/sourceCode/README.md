@@ -57,7 +57,7 @@ function webpackUniversalModuleDefinition(root, factory) {
 		root["ajax"] = factory();
 }
 
-// webpackJsonp
+// webpackJsonp, require.ensure按需加载
 function webpackJsonpCallback(chunkIds, moreModules, executeModules) {
 		// add "moreModules" to the modules object,
 		// then flag all "chunkIds" as loaded and fire callback
@@ -80,6 +80,7 @@ function webpackJsonpCallback(chunkIds, moreModules, executeModules) {
 		}
 };
 
+// 动态加载
 // This file contains only the entry chunk.
 // The chunk loading function for additional chunks
 __webpack_require__.e = function requireEnsure(chunkId) {
@@ -123,5 +124,15 @@ __webpack_require__.e = function requireEnsure(chunkId) {
 		};
 		head.appendChild(script);
 		return promise;
+};
+
+// es6 module和commonjs模块混合使用
+// getDefaultExport function for compatibility with non-harmony modules
+__webpack_require__.n = function(module) {
+    var getter = module && module.__esModule ?
+        function getDefault() { return module['default']; } :
+        function getModuleExports() { return module; };
+    __webpack_require__.d(getter, 'a', getter);
+    return getter;
 };
 ```
