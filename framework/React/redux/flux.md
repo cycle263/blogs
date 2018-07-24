@@ -27,4 +27,4 @@
 
 ## Flux vs Vuex
 
-
+  vuex基于
