@@ -34,7 +34,7 @@
 
   内部插件的升级：
 
-  - splitChunksPlugin
+  - CommonChunksPlugin -> splitChunksPlugin，分包更加细腻，公用的模块会被拆分成多个独立的包，可以保证加载进来的代码一定是会被依赖到的。
 
   - UglifyjsWebpackPlugin -> optimization.minimize
 
@@ -128,3 +128,5 @@
 
 
 * 作用域提升
+
+* tree shaking

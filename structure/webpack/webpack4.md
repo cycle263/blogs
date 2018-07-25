@@ -8,7 +8,7 @@
 
 * 分包插件升级
 
-  commonChunkPlugin -> optimization.splitChunks and runtimeChunk 或者 splitChunksPlugin and runtimeChunkPlugin插件形式， 分包插件优化升级
+  commonChunkPlugin -> optimization.splitChunks and runtimeChunk 或者 splitChunksPlugin and runtimeChunkPlugin插件形式， 分包插件优化升级。CommonChunksPlugin 会找到多数模块中都共有的东西，并且把它提取出来，里面可能会存在一些当前模块不需要的东西。SplitChunksPlugin分包更加细腻，公用的模块会被拆分成多个独立的包，可以保证加载进来的代码一定是会被依赖到的。
 
   ```js
   // 配置案例
@@ -51,9 +51,9 @@
 
   - splitChunksPlugin配置项解析
 
-    + test 限制范围
+    + test 限制范围，以 module 为单位控制 chunk 的抽取范围，是一种细粒度比较小的方式。
 
-    + chunks 值为"initial", "async"（默认） 或 "all"
+    + chunks 值为"all", "async"（默认） 或 "initial"，分别代表了全部 chunk，按需加载的 chunk 以及初始加载的 chunk。
 
     + minChunks entry引用次数大于此值则分包，默认为1
 
@@ -94,6 +94,8 @@
   Webpack 4，官方提供了sideEffects属性，通过将其设置为false，可以主动标识该类库中的文件只执行简单输出，并没有执行其他操作，可以放心shaking。除了可以减小bundle文件的体积，同时也能够提升打包速度。为了检查side effects，Webpack需要在打包的时候将所有的文件执行一遍。而在设置sideEffects之后，则可以跳过执行那些未被引用的文件。
 
   Tree shaking一直是一个美丽而遥不可及的话题，它是一个术语，通常用于描述移除 JavaScript 上下文中的未引用代码。这个术语和概念实际上是兴起于 ES2015 模块打包工具 rollup。可以简单地理解为摇树，抖落掉枯萎无用的树叶。影响tree shaking的根本原因在于side effects（副作用），其中最广为人知的一条side effect就是动态引入依赖的问题。ES6其实也提供import()方法支持动态引入依赖，所以以下写法其实也是完全可行的。
+
+  webpack 2.0 开始原生支持 ES Module，也就是说不需要 babel 把 ES Module 转换成曾经的 commonjs 模块了，要使用 Tree Shaking，请关闭 babel 默认的模块转义。
 
   ```js
   if(Math.random() > 0.5) {
