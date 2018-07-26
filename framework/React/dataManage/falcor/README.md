@@ -29,3 +29,8 @@
 * 流程
 
   action => model => async props => render => event => action
+
+
+## set get call
+
+* remove  更新数据信息
