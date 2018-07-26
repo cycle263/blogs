@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+  />
+  <title>用户测试用例</title>
+  <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.7.1/skins/default/aliplayer-min.css" />
+</head>
+
+<body>
+  <div class="prism-player" id="J_prismPlayer" style="position: absolute"></div>
+  <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.7.1/aliplayer-min.js"></script>
+  <script>
+    var player = new Aliplayer({
+      id: 'J_prismPlayer',
+      width: '100%',
+      autoplay: false,
+      source: '../../../canvas/videos/v.mp4',
+    }, function (player) {
+      console.log('播放器创建完成！')
+    });
+  </script>
+</body>
+
+</html>

@@ -120,9 +120,25 @@
 
     + bundle-loader
     
-    + syntax-dynamic-import
+    + syntax-dynamic-import babel 插件 syntax-dynamic-import 来让 babel 可以识别 `import('lodash').then({} => {})`
     
-    + react-loadable
+    + react-loadable 封装了未来JS的新语法import()，是专门用于动态 import 的 React 高阶组件，可以把任何组件改写为支持动态 import 的形式。
+
+    ```js
+    import Loadable from 'react-loadable';
+    import Loading from './loading-component';
+
+    const LoadableComponent = Loadable({
+      loader: () => import('./my-component'),
+      loading: Loading,
+    });
+
+    export default class App extends React.Component {
+      render() {
+        return <LoadableComponent/>;
+      }
+    }
+    ```
 
 * 压缩
 
