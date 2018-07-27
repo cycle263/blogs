@@ -228,9 +228,9 @@
 
   `require.ensure(dependencies: String[], callback: function(require), chunkName: String)`
 
-  - dependencies 字符串数组，在回调函数执行前，可以将所有依赖包进行声明。无依赖使用空数组，保证此chunk被单独打包。声明了依赖包，会预加载懒执行，也就是，代码会download下来，但不会执行，真正执行的是callback里面的require.
+  - dependencies 字符串数组，在回调函数执行前，可以将所有依赖包进行声明。无依赖使用空数组，保证此chunk被单独打包。声明了依赖包，会预加载懒执行，也就是，代码会download下来，但不会执行，真正执行的是callback里面的require。另外require.include也是引入一个不需要执行的依赖方法。
 
-  - callback 所有的依赖都加载完成后，webpack会执行这个回调函数，并传递require参数，可以进一步 require() 依赖和其它模块提供下一步的执行。
+  - callback 所有的依赖都加载完成后，webpack会执行这个回调函数，并传递require参数，可以进一步 require() 依赖和其它模块提供下一步的执行。require参数不能随意取名，否则无法被 webpack 静态解析器处理，所以还是请使用 require。
 
   - chunkName 提供给require.ensure()的chunk的名称。如果所有的ensure的chunkName定义一样，则全部放进此chunk种。也可以定义为带目录层级的名称，webpack会按照层级创建文件夹。
 

@@ -94,9 +94,7 @@
       }} />
 
     // react-router4
-    // 异步加载js写法；
     import IndexCtl from 'bundle-loader?lazy!../ctlComponents/IndexCtl.js';
-
 
     const loadAsyncModule = (Module) => prop =>(
       <Bundle load={Module}>
@@ -117,8 +115,24 @@
     + require.ensure：webpack在编译时，会静态地解析代码中的require.ensure()，同时将模块添加到一个分开的 chunk当中。这个新的chunk会被webpack通过jsonp来按需加载。
 
       `require.ensure(dependencies: String[], callback: function(require), chunkName: String)`
+      - dependencies 字符串数组，在回调函数执行前，可以将所有依赖包进行声明。无依赖使用空数组，保证此chunk被单独打包。声明了依赖包，会预加载懒执行，也就是，代码会download下来，但不会执行，真正执行的是callback里面的require.
 
-    + ECMAScript的dynamic import, `import('lodash').then(_ => {})`，第三方插件方式包括：
+      - callback 所有的依赖都加载完成后，webpack会执行这个回调函数，并传递require参数，可以进一步 require() 依赖和其它模块提供下一步的执行。require参数不能随意取名，否则无法被 webpack 静态解析器处理，所以还是请使用 require。
+
+      - chunkName 提供给require.ensure()的chunk的名称。如果所有的ensure的chunkName定义一样，则全部放进此chunk种。也可以定义为带目录层级的名称，webpack会按照层级创建文件夹。
+
+      备注：require.ensure 内部依赖于 Promises，旧的浏览器中使用记得引入 es6-promise polyfill。
+
+      ```js
+      /* 
+      a.js 和 b.js会被打包到一起，但只有b.js会被执行。想去执行 a.js，我们需要异步地引用它，如 require、 ('./a.js')，让它的 JavaScritp 被执行。
+      */
+      require.ensure(['./a.js'], function(require) {
+          require('./b.js');
+      });
+      ```
+
+    + ECMAScript的dynamic import, 动态的 import() 提供一个基于Promise的API，写法： `import('lodash').then(_ => {})`，第三方插件方式包括：
 
       - bundle-loader
       
@@ -143,6 +157,8 @@
       ```
 
     + AMD的异步加载
+
+      dependencies的所有包会打包到一个文件，但无法自定义名称。
 
       ```js
       require(['./list'], function(list){
