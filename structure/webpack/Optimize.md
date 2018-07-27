@@ -31,7 +31,9 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
   - css-module，增加样式hash后缀，避免组件之间的样式干扰，缺点是增大了打包后的文件大小。
 
-  - jsx文件未ES5化，成熟的 npm 包会在发布前将自己 es5，甚至 es3 化，这些依赖包完全没有经过 babel 的必要。可以配置loader的exclude项过滤
+  - jsx文件未ES5化，成熟的 npm 包会在发布前将自己 es5，甚至 es3 化，这些依赖包完全没有经过 babel 的必要。可以配置loader的exclude项过滤。实际上，在当下 2018 年，对于大部分用户(90%)而言，我们根本不需要把代码编译到 ES5，不仅体积大，而且运行速度慢。支持 <script type="module"> 的浏览器，必然支持下面的特性：async/await、Promise、Class、箭头函数、Map/Set、fetch 等等...
+
+  而不支持 <script type="module"> 的老旧浏览器，会因为无法识别这个标签，而不去加载 ES2015+ 的代码。另外老旧的浏览器同样无法识别 nomodule 熟悉，会自动忽略它，从而加载 ES5 标准的代码。
 
     ```js
     {
@@ -64,7 +66,7 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
   - 懒加载，也即是按需加载，require.ensure 或者 bundle-loader，syntax-dynamic-import，react-loadable
   
-    require.ensure 内部依赖于 Promises，旧的浏览器中使用记得引入 es6-promise polyfill。
+  require.ensure 内部依赖于 Promises，旧的浏览器中使用记得引入 es6-promise polyfill。
 
     ```js
     // bundle-loader
@@ -82,6 +84,20 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
       }
     });
     ```
+
+  - 图片懒加载
+
+    react-lazyload、react-lazy-load。也可以先加载一张低像素的模糊图片，然后等高清图片加载完毕进行替换。lazyload 组件的原理大概分为两种：
+
+    + 监听 window 对象或者父级对象的 scroll 事件，触发 load；
+
+    + 使用 Intersection Observer API 来获取元素的可见性。
+
+  - 占位显示（placeholder）
+
+    在加载文本、图片的时候，经常出现“闪屏”的情况，比如图片或者文字还没有加载完毕，此时页面上对应的位置还是完全空着的，然后加载完毕，内容会突然撑开页面，导致“闪屏”的出现，造成不好的体验。为了避免这种突然撑开的情况，我们要做的就是提前设置占位元素，也就是 placeholder，成熟的第三方组件：react-placeholder、react-hold
+
+
 
 ## 分割代码的方式
 
