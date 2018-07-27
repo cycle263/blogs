@@ -222,15 +222,17 @@
 
 * **require.ensure()**
 
+  在commonjs中有一个Modules/Async/A规范，里面定义了require.ensure语法。webpack实现了它，作用是可以在打包的时候进行代码分片，并异步加载分片后的代码。
+
   webpack 在编译时，会静态地解析代码中的 require.ensure()，同时将模块添加到一个分开的 chunk 当中。这个新的 chunk 会被 webpack 通过 jsonp 来按需加载。
 
   `require.ensure(dependencies: String[], callback: function(require), chunkName: String)`
 
-  - dependencies 字符串数组，在回调函数执行前，可以将所有依赖包进行声明。无依赖使用空数组，保证此chunk被单独打包。
+  - dependencies 字符串数组，在回调函数执行前，可以将所有依赖包进行声明。无依赖使用空数组，保证此chunk被单独打包。声明了依赖包，会预加载懒执行，也就是，代码会download下来，但不会执行，真正执行的是callback里面的require.
 
   - callback 所有的依赖都加载完成后，webpack会执行这个回调函数，并传递require参数，可以进一步 require() 依赖和其它模块提供下一步的执行。
 
-  - chunkName 提供给require.ensure()的chunk的名称。如果所有的ensure的chunkName定义一样，则全部放进此chunk种。
+  - chunkName 提供给require.ensure()的chunk的名称。如果所有的ensure的chunkName定义一样，则全部放进此chunk种。也可以定义为带目录层级的名称，webpack会按照层级创建文件夹。
 
   备注：require.ensure 内部依赖于 Promises，旧的浏览器中使用记得引入 es6-promise polyfill。
 

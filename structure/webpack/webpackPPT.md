@@ -118,30 +118,39 @@
 
       `require.ensure(dependencies: String[], callback: function(require), chunkName: String)`
 
-    + bundle-loader
-    
-    + syntax-dynamic-import babel 插件 syntax-dynamic-import 来让 babel 可以识别 `import('lodash').then({} => {})`
-    
-    + react-loadable 封装了未来JS的新语法import()，是专门用于动态 import 的 React 高阶组件，可以把任何组件改写为支持动态 import 的形式。
+    + ECMAScript的dynamic import, `import('lodash').then(_ => {})`，第三方插件方式包括：
 
-    ```js
-    import Loadable from 'react-loadable';
-    import Loading from './loading-component';
+      - bundle-loader
+      
+      - syntax-dynamic-import babel 插件 syntax-dynamic-import 来让 babel 可以识别 `import('lodash').then({} => {})`
+      
+      - react-loadable 封装了未来JS的新语法import()，是专门用于动态 import 的 React 高阶组件，可以把任何组件改写为支持动态 import 的形式。
 
-    const LoadableComponent = Loadable({
-      loader: () => import('./my-component'),
-      loading: Loading,
-    });
+      ```js
+      import Loadable from 'react-loadable';
+      import Loading from './loading-component';
 
-    export default class App extends React.Component {
-      render() {
-        return <LoadableComponent/>;
+      const LoadableComponent = Loadable({
+        loader: () => import('./my-component'),
+        loading: Loading,
+      });
+
+      export default class App extends React.Component {
+        render() {
+          return <LoadableComponent/>;
+        }
       }
-    }
-    ```
+      ```
+
+    + AMD的异步加载
+
+      ```js
+      require(['./list'], function(list){
+          list.show();
+      });
+      ```
 
 * 压缩
-
 
 * 作用域提升
 
