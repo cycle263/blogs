@@ -20,7 +20,7 @@ webpack整体是一个插件架构，所有的功能都以插件的方式集成�
 
 * compilation 对象代表了每一次版本构建和生成资源。当运行 webpack 开发环境中间件时，每当检测到一个文件变化，一次新的编译将被创建，从而生成一组新的编译资源。一个编译对象表现了当前的模块资源、编译生成资源、变化的文件、以及被跟踪依赖的状态信息。编译对象也提供了很多关键点回调供插件做自定义处理时选择使用。
 
-  compilation，它继承于compiler，所以能拿到一切compiler的内容，compiler.plugin('emit')任务点输出compilation。在编译阶段，模块会被加载(loaded)、封存(sealed)、优化(optimized)、分块(chunked)、哈希(hashed)和重新创建(restored)。
+  compilation，它继承于compiler，所以能拿到一切compiler的内容，compiler.plugin('emit')任务点输出compilation。Compilation 类扩展(extend)自 Tapable，可以按照 compiler 钩子的相同方式，调用 tap。在编译阶段，模块会被加载(loaded)、封存(sealed)、优化(optimized)、分块(chunked)、哈希(hashed)和重新创建(restored)。
 
   [Compilation源码](https://github.com/webpack/webpack/blob/master/lib/Compilation.js)
 

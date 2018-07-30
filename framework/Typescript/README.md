@@ -1,3 +1,3 @@
 ## TypeScript
 
-* nothing added to commit but untracked files present
+Typescript是JavaScript类型的超集，可以编译成纯JavaScript。
