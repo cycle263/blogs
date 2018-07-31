@@ -31,3 +31,15 @@ Typescript是JavaScript类型的超集，可以编译成纯JavaScript。
   - Null 和 Undefined
 
   - Never never类型表示的是那些永不存在的值的类型。
+
+* 变量声明
+
+  let和const是JavaScript里相对较新的变量声明方式，const是对let的一个增强，它能阻止对一个变量再次赋值。
+
+  对比var：
+  
+  - 同个块级作用域不可以多次声明
+  
+  - 块级作用域
+  
+  - 没有变量声明提升
