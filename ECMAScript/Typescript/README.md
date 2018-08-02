@@ -43,3 +43,12 @@ Typescript是JavaScript类型的超集，可以编译成纯JavaScript。
   - 块级作用域
   
   - 没有变量声明提升
+
+* 属性重命名
+
+  ```js
+  let { a: newName1, b: newName2 } = o;
+
+  // 指定类型
+  let {a, b}: {a: string, b: number} = o;
+  ```
