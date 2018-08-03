@@ -5,7 +5,7 @@
   当 <a> 中没有文本而 href 不为空的时候，显示其链接：
   ```
   a[href^="http"]:empty::before {
-    content: attr(href);
+    content: attr(": " href);    // href可以替换成其他自定义属性
   }
   ```
 
