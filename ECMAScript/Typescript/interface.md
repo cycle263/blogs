@@ -36,3 +36,25 @@ TypeScript的核心原则之一是对值所具有的结构进行类型检查。
   TypeScript具有ReadonlyArray<T>类型，它与Array<T>相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改。
 
 * 属性检查
+
+  对象字面量会被会经过额外属性检查，当将它们赋值给变量或作为参数传递的时候。如果一个对象字面量存在任何“目标类型”不包含的属性时，会得到一个错误。绕开这些检查非常简单。最简便的方法是使用类型断言。然而，最佳的方式是能够添加一个字符串索引签名，前提是你能够确定这个对象可能具有某些做为特殊用途使用的额外属性。 
+
+  ```ts
+  interface SquareConfig {
+    color?: string;
+    width?: number;
+  }
+
+  function createSquare(config: SquareConfig): { color: string; area: number } {
+    // ...
+  }
+
+  let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig);  // 断言
+
+  // 索引签名
+  interface SquareConfig {
+    color?: string;
+    width?: number;
+    [propName: string]: any;
+  }
+  ```
