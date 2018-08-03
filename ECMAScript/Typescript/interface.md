@@ -21,4 +21,18 @@ TypeScript的核心原则之一是对值所具有的结构进行类型检查。
 
 * 只读属性
 
-  一些对象属性只能在对象刚刚创建的时候修改其值，可以在属性名前用 readonly来指定只读属性。
+  一些对象属性只能在对象刚刚创建的时候修改其值，可以在属性名前用 readonly来指定只读属性。最简单判断该用readonly还是const的方法是看要把它做为变量使用还是做为一个属性。 
+
+  ```ts
+  interface Point {
+    readonly x: number;
+    readonly y: number;
+  }
+
+  let p1: Point = { x: 10, y: 20 };
+  p1.x = 5; // error!
+  ```
+
+  TypeScript具有ReadonlyArray<T>类型，它与Array<T>相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改。
+
+* 属性检查
