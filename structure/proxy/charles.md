@@ -59,4 +59,4 @@
 
   - Charles Proxy -> SSL Proxying Settings... -> 勾选Enable SSL Proxying -> Add 需要代理的地址和端口
 
-    `as.alipayobjects.com:443`
+    `as.tests.com:443`

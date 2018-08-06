@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <title>Result</title>
-    <link rel="stylesheet" href="https://os.alipayobjects.com/rmsportal/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://os.testobjects.com/tests/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
     <style media="screen">
         html, body{
             font-size: 16px;
@@ -14,7 +14,7 @@
             position: relative;
         }
         #content{
-            background: url('https://os.alipayobjects.com/rmsportal/lUwNYKjbMApzJSG.png') no-repeat;
+            background: url('https://os.testobjects.com/tests/lUwNYKjbMApzJSG.png') no-repeat;
             background-size: cover;
             position: relative;
         }
@@ -239,7 +239,7 @@
 </head>
 <body>
 <div class="exam-result-return">
-    <a href="learnTrainingPersonRecord.htm?id=$!value.trainingId" class="return">&nbsp;</a>
+    <a href="learntestingPersonRecord.htm?id=$!value.testingId" class="return">&nbsp;</a>
     <span class="result">考试结果</span>
     <a class="exam-result-button" id="showDialog" href="javascript:void(0);">解析</a>
 </div>
@@ -268,11 +268,11 @@
 </div>
 
 <div id="btns-box">
-    <a class="btn btn-index" href="trainingCenter.htm"><img src="https://os.alipayobjects.com/rmsportal/TxrIyFGPDljzPpO.png" height="50%" class="submit-icon"></img><span>返回首页</span></a>
-    <a class="btn btn-reexamine" href="beforeExam.htm?userId=$!value.actorId&examId=$!value.examId&paperId=$!value.paperId&trainingId=$!value.trainingId&isRepeatExam=true"><img src="https://os.alipayobjects.com/rmsportal/tnRMCgSoBjczUDr.png" height="50%" class="record-icon"></img><span>重新考试</span></a>
+    <a class="btn btn-index" href="testingCenter.htm"><img src="https://os.testobjects.com/tests/TxrIyFGPDljzPpO.png" height="50%" class="submit-icon"></img><span>返回首页</span></a>
+    <a class="btn btn-reexamine" href="beforeExam.htm?userId=$!value.actorId&examId=$!value.examId&paperId=$!value.paperId&testingId=$!value.testingId&isRepeatExam=true"><img src="https://os.testobjects.com/tests/tnRMCgSoBjczUDr.png" height="50%" class="record-icon"></img><span>重新考试</span></a>
 </div>
 
-<script src="https://os.alipayobjects.com/rmsportal/vJiWrkscXQXdURo.js"></script>
+<script src="https://os.testobjects.com/tests/vJiWrkscXQXdURo.js"></script>
 <script type="text/javascript">
     $(function(){
         Zepto.fn.annular = function(){
@@ -382,17 +382,17 @@
         //悬浮效果
         $('.btn-reexamine').on("click tap", function(e) {
             var that = this;
-            $('img', this).attr('src', 'https://os.alipayobjects.com/rmsportal/RPjqsMaqmPuiavK.png');
+            $('img', this).attr('src', 'https://os.testobjects.com/tests/RPjqsMaqmPuiavK.png');
             setTimeout(function(){
-                $('img', this).attr('src', 'https://os.alipayobjects.com/rmsportal/tnRMCgSoBjczUDr.png');
+                $('img', this).attr('src', 'https://os.testobjects.com/tests/tnRMCgSoBjczUDr.png');
             }, 500);
         });
 
         $('.btn-index').on("click tap", function(e) {
             var that = this;
-            $('img', this).attr('src', 'https://os.alipayobjects.com/rmsportal/cDZwfpufjvyrEtW.png');
+            $('img', this).attr('src', 'https://os.testobjects.com/tests/cDZwfpufjvyrEtW.png');
             setTimeout(function(){
-                $('img', this).attr('src', 'https://os.alipayobjects.com/rmsportal/TxrIyFGPDljzPpO.png');
+                $('img', this).attr('src', 'https://os.testobjects.com/tests/TxrIyFGPDljzPpO.png');
             }, 500);
         });
     });

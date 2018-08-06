@@ -1,7 +1,7 @@
 /* common style */
 @font-face {
   font-family: "iconfonttheme";
-  src: url('https://os.alipayobjects.com/rmsportal/lfxdplduPoccLYjfSWRM.ttf') format('truetype');
+  src: url('https://os.tests.com/tests/lfxdplduPoccLYjfSWRM.ttf') format('truetype');
 }
 .iconfont {
   font-family:"iconfonttheme" !important;

@@ -64,7 +64,7 @@
     git push -u origin develop
     ```
 
-* alipay work
+* project work
 
     ```ssh
     git checkout -b xx-feature

@@ -794,7 +794,7 @@
   //use
   (function(){
       var t = new fn('<p><a href="{0}">{1}</a><span>{2}</span></p>');
-      console.log(t.format('http://www.alibaba.com','Alibaba','Welcome'));
+      console.log(t.format('http://www.test.com','test','Welcome'));
   })();
   ```
 

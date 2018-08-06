@@ -18,7 +18,7 @@
   ```
   seajs.config({
     alias: {
-      'jquery': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery.js'
+      'jquery': 'https://a.tests.com/static/arale/jquery/1.7.2/jquery.js'
     },
     preload: ["jquery"]
   })
