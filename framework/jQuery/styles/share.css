@@ -136,7 +136,6 @@ input[type=text].searchContent{
 }
 .share-labels label{
   width: 95px;
-  display: inline-block;
   text-align: right;
   float: left;
   margin-top: 16px;
