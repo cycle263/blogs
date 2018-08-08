@@ -59,7 +59,7 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
 
     + event.nativeEvent.stopPropagation：阻止的是代理到根元素（如document）的事件。
 
-    + event.nativeEvent.stopImmediatePropagation： 阻止调用相同事件的其他侦听器，除了该事件的冒泡行为被阻止之外(event.stopPropagation方法的作用), 该元素绑定的后序相同类型事件的监听函数的执行也将被阻止。所以可以阻止和react一样代理在document上的事件，如jquery中的 $(document).on('click', function(){});
+    + event.nativeEvent.stopImmediatePropagation： 阻止调用相同类型事件的其他侦听器，除了该事件的冒泡行为被阻止之外(event.stopPropagation方法的作用), 该元素绑定的后序相同类型事件的监听函数的执行也将被阻止。所以可以阻止和react一样代理在document上的事件，如jquery中的 $(document).on('click', function(){});
 
   - 在react里面，如果在异步函数里获取合成事件的属性，结果会是null；
 
