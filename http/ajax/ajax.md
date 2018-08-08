@@ -49,6 +49,7 @@
 
   - 可以重复的请求用Get(查), 不可重复的用Post(增删改)
 
+  ![GET vs POST](../images/postVsGet.jpeg)
 
 ## json
 

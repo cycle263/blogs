@@ -65,7 +65,16 @@ transaction.perform(testMethod);
 
 ## shouldComponentUpdate比较
 
+PureRenderMixin的核心代码
+
 ```js
+function shallowCompare(instance, nextProps, nextState) {
+  return (
+    !shallowEqual(instance.props, nextProps) ||
+    !shallowEqual(instance.state, nextState)
+  );
+}
+
 function is(x, y) {
   // SameValue algorithm
   if (x === y) {
@@ -78,7 +87,7 @@ function is(x, y) {
   }
 }
 
-function shallowEqual(objA, objB) {
+function shallowEqual(objA, objB) { // 浅比较
   if (is(objA, objB)) {
     return true;
   }
