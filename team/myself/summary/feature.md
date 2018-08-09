@@ -52,3 +52,5 @@
 * [ ] Tapable vs Emiter vs Sub/Pub
 
 * [ ] typescript转型
+
+* [ ] execCommand, getSelection, createRange
