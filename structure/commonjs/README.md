@@ -27,3 +27,4 @@
   
   模块加载AMD，CMD，CommonJS Modules/2.0 规范这些规范的目的都是为了 JavaScript 的模块化开发，特别是在浏览器端的对于依赖的模块，AMD 是提前执行，CMD 是延迟执行CMD 推崇依赖就近，AMD 推崇依赖前置。
 
+* Commonjs模块的加载原理
