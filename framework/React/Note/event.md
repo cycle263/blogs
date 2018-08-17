@@ -67,6 +67,16 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
 
     解决方案：可以在异步函数之前用变量缓存合成事件的属性值。
 
+    ```js
+    handleChange(event) {
+      console.log(event.type);   /* change */
+
+      setTimeout(() => {
+        console.log(event.type);
+      });
+    }
+    ```
+
   - 将合成事件作为props传给子组件，会有警告信息提示；解决方案同上。
 
   `Warning: This synthetic event is reused for performance reasons. If you're seeing this, you're accessing the property target on a released/nullified synthetic event. This is set to null. If you must keep the original synthetic event around, use event.persist(). See https://fb.me/react-event-poo... for more information.`

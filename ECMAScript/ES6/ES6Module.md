@@ -36,7 +36,7 @@ console.log("e^π = " + exp(pi));
     - 导出的名称会与你需要使用的其它名称产生冲突，ES6为你提供了重命名的方法解决.`export {
       v1 as streamV1 }` 或者 `import {flip as flipOmelet} from "eggs.js";`
 
-    - export default, 后可跟随任何值：一个函数、一个类、一个对象字面量，只要你能想到的都可以。
+    - export default, 后可跟随任何值：一个函数、一个类、一个对象字面量，只要你能想到的都可以。因为export default命令其实只是输出一个叫做default的变量，所以它后面不能跟变量声明语句。
 
     - 可以用一种统一的方式将其它模块中的内容聚合在一起导出.
 
