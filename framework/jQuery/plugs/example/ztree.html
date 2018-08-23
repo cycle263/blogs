@@ -5,7 +5,10 @@
     <title>ztree</title>
     <link rel="stylesheet" href="https://cdn.cdnjs.net/zTree.v3/3.5.29/css/zTreeStyle/zTreeStyle.css">
     <style media="screen">
-      .ztree li{line-height: 18px;padding: 2px;}
+      .ztree li{
+        line-height: 18px;
+        padding: 2px;
+      }
       #rMenu {
         position: absolute;
         background-color: #F0F0F0;
@@ -16,7 +19,7 @@
         margin: 8px 0;
       }
       #rMenu li {
-        padding: 4px 24px;
+        padding: 4px 16px;
         line-height: 22px;
         cursor: pointer;
         color: #333;
@@ -98,7 +101,7 @@
         width: 56px;
         height: 56px;
         line-height: 56px;
-        font-size: 16px;
+        font-size: 24px;
       }
       .ant-modal-close:focus,
       .ant-modal-close:hover {
@@ -146,9 +149,9 @@
 
     <div id="rMenu" style="display: none;">
       <ul>
-        <li id="m_add">新增节点</li>
-        <li id="m_edit">编辑节点</li>
-        <li id="m_del">删除节点</li>
+        <li id="m_add">新建</li>
+        <li id="m_edit">编辑</li>
+        <li id="m_del">删除</li>
         <li id="m_refresh">刷新</li>
       </ul>
     </div>
