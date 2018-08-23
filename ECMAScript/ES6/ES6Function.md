@@ -160,7 +160,8 @@
   
 * **8、柯里化** 
 
-  函数式编程有一个概念，叫做柯里化（currying），意思是将多参数的函数转换成单参数的形式。  
+  函数式编程有一个概念，叫做柯里化（currying），意思是将多参数的函数转换成单参数的形式。也就是，只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。
+
   ```js
   // 阶乘尾调优化写法
   function tailFactorial(n, total) {
@@ -181,6 +182,7 @@
   const factorial = currying(tailFactorial, 1);
   factorial(5) // 120
   ```
+  
   递归本质上是一种循环操作。纯粹的函数式编程语言没有循环操作命令，所有的循环都用递归实现。
 
 * **9、调用栈(call-stack) vs 调用点(call-site) vs 调用帧(call-frame)**
