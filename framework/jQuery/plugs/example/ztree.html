@@ -76,7 +76,7 @@
                 console.log('click ====== node: ', node);
               },
               beforeDrop: function(id, nodes, target, type) { // 禁止跨父节点拖拽
-
+                console.log(nodes[0].getIndex(), target.getIndex());
               },
               onRightClick: function(e, id, node) {   // 右键菜单
                 $('#rMenu').css({top: e.pageY + 'px', left: e.pageX + 'px'}).show();
@@ -85,15 +85,13 @@
             edit: {
               drag: {
                 autoExpandTrigger: true,
-                prev: function(id, nodes, targetNode) {
-                  console.log(nodes[0], targetNode);
+                prev: function(id, nodes, targetNode) {   // 拖拽到目标节点之前，不能跨级
                   return nodes[0].parentTId === targetNode.parentTId && targetNode.level !== 0;
                 },
-                next: function (id, nodes, targetNode) {
-                  console.log(nodes[0], targetNode);
+                next: function (id, nodes, targetNode) {  // 拖拽到目标节点之后，不能跨级
                   return nodes[0].parentTId === targetNode.parentTId && targetNode.level !== 0;
                 },
-                inner: false,
+                inner: false,   // 禁止拖拽成子节点
               },
               enable: true,
               showRemoveBtn: false,
