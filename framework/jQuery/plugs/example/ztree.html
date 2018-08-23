@@ -14,12 +14,12 @@
     <script src="https://cdn.cdnjs.net/zTree.v3/3.5.21/js/jquery.ztree.all.min.js"></script>
     <script type="text/javascript">
       $(function () {
-        $.getJSON('./../mock/category.json', function(data){
-          console.log(data);
+        $.getJSON('./../mock/categorys.json', function(res){
+          console.log(res);
           var setting = {
             async: {
               enable: true,
-              url: './../mock/category.json',
+              url: './../mock/categorys.json',
               dataFilter: function(id, pnode, data) { // 数据预处理
 
               }
@@ -39,7 +39,7 @@
             }
           };
 
-          $.fn.zTree.init($('#treeDemo'), setting, data);
+          $.fn.zTree.init($('#treeDemo'), setting, res.data);
         });
       });
     </script>
