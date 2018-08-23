@@ -13,17 +13,23 @@
         position: absolute;
         background-color: #F0F0F0;
         border: solid #ddd 1px;
+        border-radius: 4px;
       }
       #rMenu ul {
         padding: 0;
-        margin: 8px 0;
+        margin: 4px 0;
+        border-radius: 6px;
+      }
+      #m_del {
+        border-bottom: 1px solid #dcc;
       }
       #rMenu li {
-        padding: 4px 16px;
-        line-height: 22px;
+        font-size: 13px;
+        padding: 3px 24px;
+        line-height: 20px;
         cursor: pointer;
-        color: #333;
         list-style: none;
+        padding-right: 86px;
       }
       #rMenu li:hover {
         background-color: #7b68ee;
@@ -38,12 +44,11 @@
         color: rgba(0, 0, 0, 0.65);
         -webkit-box-sizing: border-box;
                 box-sizing: border-box;
-        width: 640px;
         margin: 0;
         padding: 0;
         list-style: none;
         position: relative;
-        width: auto;
+        width: 640px;
         margin: 0 auto;
         top: 100px;
         padding-bottom: 24px;
@@ -274,7 +279,7 @@
         // 右键新增节点
         $('#rMenu').on('click', '#m_add', function () {
           $('#rMenu').hide();
-          var newNode = { name: "新节点" + Date.now() };
+          var newNode = { name: "新节点-" + Date.now() };
           var curNode = treeObj.getSelectedNodes()[0];
           showNodeEditModal();
           if (curNode) {
