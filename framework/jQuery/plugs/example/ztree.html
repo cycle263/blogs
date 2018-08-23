@@ -99,11 +99,6 @@
         line-height: 56px;
         font-size: 16px;
       }
-      .ant-modal-close-x:before {
-        content: "\E633";
-        display: block;
-        font-family: "anticon" !important;
-      }
       .ant-modal-close:focus,
       .ant-modal-close:hover {
         color: #444;
@@ -163,7 +158,7 @@
       <div class="ant-modal">
         <div class="ant-modal-content">
           <button class="ant-modal-close">
-            <span class="ant-modal-close-x"></span>
+            <span class="ant-modal-close-x">×</span>
           </button>
           <div class="ant-modal-header">
             <div class="ant-modal-title">Title</div>
@@ -187,8 +182,8 @@
           </div>
           <div class="ant-modal-footer">
             <div>
-              <button type="button" class="button btn-view">保存</button>
-              <button type="button" class="button btn-view">取消</button>
+              <button type="button" class="button btn-view btn-save">保存</button>
+              <button type="button" class="button btn-view btn-cancel">取消</button>
             </div>
           </div>
         </div>
@@ -266,7 +261,7 @@
         var showNodeEditModal = function(data) {
           data = data || {};
           $('.ant-modal-mask, .ant-modal-wrap').show();
-          $('.ant-modal-wrap [name="parentCategory"]').val(data.categoryDesc || '');
+          $('.ant-modal-wrap [name="parentCategory"]').val(data.getParentNode().categoryName || '');
           $('.ant-modal-wrap [name="categoryName"]').val(data.categoryName || '');
           $('.ant-modal-wrap [name="categoryDesc"]').val(data.categoryDesc || '');
         };
@@ -311,6 +306,15 @@
               treeObj.removeNode(nodes[0]);
             }
           }
+        });
+        
+        // 取消弹框
+        $('.ant-modal-wrap').on('click', '.ant-modal-close-x,.btn-cancel', function () {
+          $('.ant-modal-mask, .ant-modal-wrap').hide();
+        });
+
+        $('.ant-modal-wrap').on('click', '.btn-save', function () {
+          $('.ant-modal-mask, .ant-modal-wrap').hide();
         });
       });
     </script>
