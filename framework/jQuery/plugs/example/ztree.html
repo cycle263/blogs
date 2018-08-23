@@ -86,12 +86,12 @@
               drag: {
                 autoExpandTrigger: true,
                 prev: function(id, nodes, targetNode) {
-                  console.log(nodes[0].pId, targetNode.pId);
-                  return nodes[0].pId === targetNode.pId;
+                  console.log(nodes[0], targetNode);
+                  return nodes[0].parentTId === targetNode.parentTId && targetNode.level !== 0;
                 },
                 next: function (id, nodes, targetNode) {
-                  console.log(nodes[0].pId, targetNode.pId);
-                  return nodes[0].pId === targetNode.pId;
+                  console.log(nodes[0], targetNode);
+                  return nodes[0].parentTId === targetNode.parentTId && targetNode.level !== 0;
                 },
                 inner: false,
               },
