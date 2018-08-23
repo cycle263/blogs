@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "name": "test7",
+      "fatherId": 1,
+      "id": 7,
+      "leaf": false,
+      "root": false
+    },
+    {
+      "name": "test8",
+      "fatherId": 1,
+      "id": 8,
+      "leaf": true,
+      "root": false
+    },
+    {
+      "name": "test9",
+      "fatherId": 1,
+      "id": 9,
+      "leaf": true,
+      "root": false
+    }
+  ]
+}

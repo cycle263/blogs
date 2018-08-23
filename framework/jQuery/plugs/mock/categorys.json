@@ -15,7 +15,7 @@
     "name": "test3",
     "fatherId": 1,
     "id": 3,
-    "leaf": false,
+    "leaf": true,
     "root": false
   }, {
     "name": "test4",

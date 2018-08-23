@@ -28,7 +28,8 @@
           var setting = {
             async: {
               enable: true,
-              url: './../mock/categorys.json',
+              type: 'get',
+              url: './../mock/categorys2.json',
               dataFilter: function(id, pnode, data) { // 数据预处理
                 console.log(arguments);
                 return transformTreeData(data);
