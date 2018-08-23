@@ -297,13 +297,13 @@
         });
 
         // 右键刷新节点
-        $('#rMenu').on('click', '#m_del', function () {
+        $('#rMenu').on('click', '#m_refresh', function () {
           $('#rMenu').hide();
           treeObj.reAsyncChildNodes(treeObj.getSelectedNodes()[0], "refresh");
         });
 
         // 右键删除节点
-        $('#rMenu').on('click', '#m_refresh', function () {
+        $('#rMenu').on('click', '#m_del', function () {
           $('#rMenu').hide();
           var nodes = treeObj.getSelectedNodes();
           if (nodes && nodes.length > 0) {
