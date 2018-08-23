@@ -9,6 +9,7 @@
       #rMenu {
         position: absolute;
         background-color: #F0F0F0;
+        border: solid #ddd 1px;
       }
       #rMenu ul {
         padding: 0;
@@ -17,7 +18,13 @@
       #rMenu li {
         padding: 4px 24px;
         line-height: 22px;
+        cursor: pointer;
+        color: #333;
         list-style: none;
+      }
+      #rMenu li:hover {
+        background-color: #7b68ee;
+        color: #fff;
       }
     </style>
   </head>
@@ -53,17 +60,7 @@
               type: 'get',
               url: './../mock/categorys2.json',
               dataFilter: function(id, pnode, res) { // 数据预处理
-                console.log(arguments);
                 return transformTreeData(res.data);
-              }
-            },
-            callback: {
-              beforeDrop: function(id, nodes, target, type) { // 禁止跨父节点拖拽
-
-              },
-              onRightClick: function(e, id, node) {   // 右键菜单
-                var body = document.body;
-                $('#rMenu').css({top: e.clientY + body.scrollTop + 'px', left: e.clientX + body.scrollLeft + 'px'}).show();
               }
             },
             data: {
@@ -72,6 +69,22 @@
                 idKey: 'id',
                 pIdKey: 'fatherId',
                 rootPid: 0
+              }
+            },
+            callback: {
+              beforeDrop: function(id, nodes, target, type) { // 禁止跨父节点拖拽
+
+              },
+              onRightClick: function(e, id, node) {   // 右键菜单
+                $('#rMenu').css({top: e.pageY + 'px', left: e.pageX + 'px'}).show();
+              }
+            },
+            edit: {
+              drag: {
+                autoExpandTrigger: true,
+                prev: function(id, nodes, targetNode) {
+                  console.log(arguments);
+                }
               }
             }
           };
