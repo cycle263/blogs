@@ -231,6 +231,7 @@
                 console.log(nodes[0].getIndex(), target.getIndex());
               },
               onRightClick: function(e, id, node) {   // 右键菜单
+                treeObj.selectNode(node);
                 $('#rMenu').css({top: e.pageY + 'px', left: e.pageX + 'px'}).show();
               }
             },
@@ -259,11 +260,10 @@
         });
 
         var showNodeEditModal = function(data) {
-          data = data || {};
           $('.ant-modal-mask, .ant-modal-wrap').show();
-          $('.ant-modal-wrap [name="parentCategory"]').val(data.getParentNode().categoryName || '');
-          $('.ant-modal-wrap [name="categoryName"]').val(data.categoryName || '');
-          $('.ant-modal-wrap [name="categoryDesc"]').val(data.categoryDesc || '');
+          $('.ant-modal-wrap [name="parentCategory"]').val(data && data.getParentNode().categoryName || '');
+          $('.ant-modal-wrap [name="categoryName"]').val(data && data.categoryName || '');
+          $('.ant-modal-wrap [name="categoryDesc"]').val(data && data.categoryDesc || '');
         };
         
         // 右键新增节点
@@ -273,9 +273,9 @@
           var curNode = treeObj.getSelectedNodes()[0];
           showNodeEditModal();
           if (curNode) {
-            zTree.addNodes(curNode, newNode);
+            treeObj.addNodes(curNode, newNode);
           } else {
-            zTree.addNodes(null, newNode);
+            treeObj.addNodes(null, newNode);
           }
         });
 
