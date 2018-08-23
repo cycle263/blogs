@@ -264,10 +264,11 @@
         });
 
         var showNodeEditModal = function(data) {
+          data = data || {};
           $('.ant-modal-mask, .ant-modal-wrap').show();
-          $('.ant-modal-wrap [name="parentCategory"]').val(data.categoryDesc);
-          $('.ant-modal-wrap [name="categoryName"]').val(data.categoryName);
-          $('.ant-modal-wrap [name="categoryDesc"]').val(data.categoryDesc);
+          $('.ant-modal-wrap [name="parentCategory"]').val(data.categoryDesc || '');
+          $('.ant-modal-wrap [name="categoryName"]').val(data.categoryName || '');
+          $('.ant-modal-wrap [name="categoryDesc"]').val(data.categoryDesc || '');
         };
         
         // 右键新增节点
@@ -275,6 +276,7 @@
           $('#rMenu').hide();
           var newNode = { name: "增加" + (addCount++) };
           var curNode = treeObj.getSelectedNodes()[0];
+          showNodeEditModal();
           if (curNode) {
             zTree.addNodes(curNode, newNode);
           } else {
@@ -285,6 +287,8 @@
         // 右键编辑节点
         $('#treeDemo').on('click', '#m_edit', function () {
           $('#rMenu').hide();
+          var curNode = treeObj.getSelectedNodes()[0];
+          showNodeEditModal(curNode);
         });
 
         // 右键刷新节点
