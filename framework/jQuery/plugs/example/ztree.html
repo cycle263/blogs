@@ -274,7 +274,7 @@
         // 右键新增节点
         $('#rMenu').on('click', '#m_add', function () {
           $('#rMenu').hide();
-          var newNode = { name: "增加" + (addCount++) };
+          var newNode = { name: "新节点" + Date.now() };
           var curNode = treeObj.getSelectedNodes()[0];
           showNodeEditModal();
           if (curNode) {
