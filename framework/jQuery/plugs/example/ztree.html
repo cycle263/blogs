@@ -272,7 +272,7 @@
         };
         
         // 右键新增节点
-        $('#treeDemo').on('click', '#m_add', function () {
+        $('#rMenu').on('click', '#m_add', function () {
           $('#rMenu').hide();
           var newNode = { name: "增加" + (addCount++) };
           var curNode = treeObj.getSelectedNodes()[0];
@@ -285,20 +285,20 @@
         });
 
         // 右键编辑节点
-        $('#treeDemo').on('click', '#m_edit', function () {
+        $('#rMenu').on('click', '#m_edit', function () {
           $('#rMenu').hide();
           var curNode = treeObj.getSelectedNodes()[0];
           showNodeEditModal(curNode);
         });
 
         // 右键刷新节点
-        $('#treeDemo').on('click', '#m_del', function () {
+        $('#rMenu').on('click', '#m_del', function () {
           $('#rMenu').hide();
           treeObj.reAsyncChildNodes(treeObj.getSelectedNodes()[0], "refresh");
         });
 
         // 右键删除节点
-        $('#treeDemo').on('click', '#m_refresh', function () {
+        $('#rMenu').on('click', '#m_refresh', function () {
           $('#rMenu').hide();
           var nodes = treeObj.getSelectedNodes();
           if (nodes && nodes.length > 0) {
