@@ -21,7 +21,7 @@
               enable: true,
               url: './../mock/categorys.json',
               dataFilter: function(id, pnode, data) { // 数据预处理
-
+                console.log(arguments)
               }
             },
             callback: {
@@ -34,6 +34,7 @@
                 enable: true,
                 idKey: 'id',
                 pIdKey: 'fatherId',
+                isParent: 'leaf',
                 rootPid: 0
               }
             }
