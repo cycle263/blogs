@@ -1,0 +1,39 @@
+{
+  "data": [{
+    "name": "root",
+    "fatherId": 0,
+    "id": 1,
+    "leaf": false,
+    "root": true
+  }, {
+    "name": "test1",
+    "fatherId": 1,
+    "id": 2,
+    "leaf": false,
+    "root": false
+  }, {
+    "name": "test1",
+    "fatherId": 1,
+    "id": 3,
+    "leaf": false,
+    "root": false
+  }, {
+    "name": "test1",
+    "fatherId": 1,
+    "id": 4,
+    "leaf": true,
+    "root": false
+  }, {
+    "name": "test1",
+    "fatherId": 1,
+    "id": 5,
+    "leaf": false,
+    "root": false
+  }, {
+    "name": "test1",
+    "fatherId": 1,
+    "id": 6,
+    "leaf": true,
+    "root": false
+  }]
+}
