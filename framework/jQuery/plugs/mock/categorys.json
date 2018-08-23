@@ -35,5 +35,19 @@
     "id": 6,
     "leaf": true,
     "root": false
+  },
+  {
+    "name": "drag1",
+    "fatherId": 1,
+    "id": 906,
+    "leaf": true,
+    "root": false
+  },
+  {
+    "name": "drag2",
+    "fatherId": 1,
+    "id": 806,
+    "leaf": true,
+    "root": false
   }]
 }
