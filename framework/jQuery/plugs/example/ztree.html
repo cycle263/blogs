@@ -8,11 +8,16 @@
       .ztree li{line-height: 18px;padding: 2px;}
       #rMenu {
         position: absolute;
-        background-color: #D1E7F0;
+        background-color: #F0F0F0;
+      }
+      #rMenu ul {
+        padding: 0;
+        margin: 8px 0;
       }
       #rMenu li {
-        padding: 2px 24px;
+        padding: 4px 24px;
         line-height: 22px;
+        list-style: none;
       }
     </style>
   </head>
@@ -47,9 +52,9 @@
               enable: true,
               type: 'get',
               url: './../mock/categorys2.json',
-              dataFilter: function(id, pnode, data) { // 数据预处理
+              dataFilter: function(id, pnode, res) { // 数据预处理
                 console.log(arguments);
-                return transformTreeData(data);
+                return transformTreeData(res.data);
               }
             },
             callback: {
@@ -57,7 +62,8 @@
 
               },
               onRightClick: function(e, id, node) {   // 右键菜单
-                $('#rMenu').show();
+                var body = document.body;
+                $('#rMenu').css({top: e.clientY + body.scrollTop + 'px', left: e.clientX + body.scrollLeft + 'px'}).show();
               }
             },
             data: {
