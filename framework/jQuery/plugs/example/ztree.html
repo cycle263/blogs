@@ -199,6 +199,7 @@
           if (!Array.isArray(data)) return data;
           data.map(function(ele) {
             ele.isParent = !ele.leaf;
+            ele.name = ele.name ? ele.name : ele.categoryName;
             ele.open = ele.root ? true : false;
             return ele;
           });

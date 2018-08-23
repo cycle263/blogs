@@ -1,36 +1,42 @@
 {
   "data": [{
     "name": "root",
+    "categoryName": "root",
     "fatherId": 0,
     "id": 1,
     "leaf": false,
     "root": true
   }, {
     "name": "test2",
+    "categoryName": "test2",
     "fatherId": 1,
     "id": 2,
     "leaf": false,
     "root": false
   }, {
     "name": "test3",
+    "categoryName": "test3",
     "fatherId": 1,
     "id": 3,
     "leaf": true,
     "root": false
   }, {
     "name": "test4",
+    "categoryName": "test4",
     "fatherId": 1,
     "id": 4,
     "leaf": true,
     "root": false
   }, {
     "name": "test5",
+    "categoryName": "test5",
     "fatherId": 1,
     "id": 5,
     "leaf": false,
     "root": false
   }, {
     "name": "test6",
+    "categoryName": "test6",
     "fatherId": 1,
     "id": 6,
     "leaf": true,
