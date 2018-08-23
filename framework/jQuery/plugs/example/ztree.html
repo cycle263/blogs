@@ -72,6 +72,9 @@
               }
             },
             callback: {
+              onClick: function(e, id, node) {
+                console.log('click ====== node: ', node);
+              },
               beforeDrop: function(id, nodes, target, type) { // 禁止跨父节点拖拽
 
               },
@@ -83,8 +86,14 @@
               drag: {
                 autoExpandTrigger: true,
                 prev: function(id, nodes, targetNode) {
-                  console.log(arguments);
-                }
+                  console.log(nodes[0].pId, targetNode.pId);
+                  return nodes[0].pId === targetNode.pId;
+                },
+                next: function (id, nodes, targetNode) {
+                  console.log(nodes[0].pId, targetNode.pId);
+                  return nodes[0].pId === targetNode.pId;
+                },
+                inner: false,
               },
               enable: true,
               showRemoveBtn: false,
