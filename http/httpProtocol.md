@@ -55,7 +55,7 @@
 
   - Access-Control-Allow-Credentials: 告知客户端,当请求的credientials属性是true的时候,响应是否可以被得到
 
-* 缓存
+* 浏览器缓存
 
   浏览器缓存分为：强制缓存和协商缓存，优先读取强制缓存。
     
