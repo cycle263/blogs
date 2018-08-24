@@ -16,6 +16,16 @@
 
 * HTTP响应时间；
 
+* 页面停留时长
+
+    window.onload / window.onbeforeunload, pageshow / pagehide, onfoucs / onblur, visibilitychange
+
+    |       action        |        desc        |
+    | ------------------- | ------------------ |
+    |         进入         | 加载，跳转，刷新，前进后退 |
+    |      活跃状态切换      | 失焦，最小化，切换tab, 电脑休眠  |
+    |           离开        | 关闭页面，跳转，刷新，前进后退   |
+
 ## 页面加载时间计算
 
 * performance.timing  返回的[PerformanceTiming对象](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming)
