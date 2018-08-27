@@ -17,7 +17,7 @@ this.setState((prevState, props) => ({
     counter: prevState.counter + props.increment
 }));
 
-// 由React控制的事件处理过程setState不会同步更新this.state；在React控制之外的情况，setState会同步更新this.state，如：addEventListener，setTimeout/setInterval等, 这类情况下的setState没走react的事物机制，执行时批量更新没设置为true，因此每次都直接render了。
+// 由React控制的事件处理过程setState不会同步更新this.state；在React控制之外的情况，setState会同步更新this.state，如：addEventListener，setTimeout/setInterval等, 这类情况下的setState没走react的事物机制，执行时批量更新(isBatchingUpdates)没设置为true，因此每次都直接render了。
 ```
 
 * 将props转换成自己的state
