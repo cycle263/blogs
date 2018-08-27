@@ -1,5 +1,7 @@
 ## react diff原理
 
+根据新数据生成一个全新的Virtual DOM，然后跟上次生成的Virtual DOM去 diff，得到一个Patch，然后把这个Patch更新到浏览器的DOM上去，这里的patch是新的虚拟DOM和上一次的虚拟DOM经过diff后的差异化的部分。
+
 ![diff](../images/compare.png )
 
 * diff 策略
