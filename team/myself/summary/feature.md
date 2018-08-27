@@ -35,7 +35,7 @@
 
 * [x] Google Analytics vs 百度统计
 
-* [ ] 节流和防抖, 深入理解，lodash源码
+* [ ] 节流和防抖, lodash源码
 
 * [x] 双飞翼布局，三列同高
 
@@ -43,7 +43,7 @@
 
 * [x] websocket vs socket.io，io必须前后端都使用io框架
 
-* [ ] 引用类型 vs 值类型
+* [x] 引用类型 vs 值类型
 
 * [ ] 首屏时间，白屏时间，性能指标
 

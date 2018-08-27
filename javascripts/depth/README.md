@@ -21,7 +21,7 @@
 
   + hasOwnProperty(..) 仅仅检查 myObject 是否拥有属性，但不会查询 [[Prototype]] 链对象
 
-* clone vs deepclone(拷贝和深度拷贝)
+* clone vs deepclone (浅拷贝和深度拷贝)
 
   浅度拷贝，只是拷贝引用地址，并不会新开一块内存地址。拷贝后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响。Array.prototype.slice(), Array.prototype.concat(), jQury的$.extend({},obj)等为浅拷贝。
 
