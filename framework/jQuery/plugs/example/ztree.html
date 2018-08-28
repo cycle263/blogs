@@ -126,6 +126,20 @@
         line-height: 1.5;
         word-wrap: break-word;
       }
+      .ant-modal-body > div {
+        line-height: 36px;
+        margin-bottom: 8px;
+      }
+      .ant-modal-body > div .input-normal {
+        width: 200px;
+        line-height: 22px;
+        border-radius: 4px;
+        outline: none;
+        border: 1px solid #ccc;
+      }
+      .ant-modal-body > div textarea.input-normal {
+        width: 400px;
+      }
       .ant-modal-footer {
         border-top: 1px solid #e8e8e8;
         padding: 10px 16px;
@@ -196,7 +210,7 @@
             <span class="ant-modal-close-x">×</span>
           </button>
           <div class="ant-modal-header">
-            <div class="ant-modal-title">Title</div>
+            <div class="ant-modal-title">类目编辑</div>
           </div>
           <div class="ant-modal-body form-horizontal">
             <div><span class="control-label">父级类目：</span>
@@ -211,7 +225,7 @@
             </div>
             <div><span class="control-label">类目描述：</span>
               <span class="control">
-                <input type="text" name="categoryDesc" class="input-normal" />
+                <textarea rows="6" name="categoryDesc" class="input-normal"></textarea>
               </span>
             </div>
           </div>
