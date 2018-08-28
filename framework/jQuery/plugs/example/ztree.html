@@ -133,7 +133,8 @@
       .ant-modal-body > div .input-normal {
         width: 200px;
         line-height: 22px;
-        border-radius: 4px;
+        border-radius: 5px;
+        padding: 2px 5px;
         outline: none;
         border: 1px solid #ccc;
       }
@@ -340,7 +341,7 @@
           $('#rMenu').hide();
           var nodes = treeObj.getSelectedNodes();
           if (nodes && nodes.length > 0) {
-            if (nodes[0].children && nodes[0].children.length > 0) {
+            if (nodes[0].children && nodes[0].children.length > 0 || nodes[0].isParent) {
               var msg = "要删除的节点是父节点，如果删除将连同子节点一起删掉。\n\n请确认！";
               if (confirm(msg) == true) {
                 treeObj.removeNode(nodes[0]);
