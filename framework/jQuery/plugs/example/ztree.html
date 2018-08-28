@@ -279,15 +279,7 @@
         // 右键新增节点
         $('#rMenu').on('click', '#m_add', function () {
           $('#rMenu').hide();
-          var newNode = { name: "新节点-" + Date.now() };
-          var curNode = treeObj.getSelectedNodes()[0];
-          console.log('Brother nodes: ', curNode.getParentNode().children)
-          showNodeEditModal();
-          if (curNode) {
-            treeObj.addNodes(curNode, newNode);
-          } else {
-            treeObj.addNodes(null, newNode);
-          }
+          showNodeEditModal();   
         });
 
         // 右键编辑节点
@@ -325,6 +317,16 @@
         });
 
         $('.ant-modal-wrap').on('click', '.btn-save', function () {
+          var newNode = { name: "新节点-" + Date.now() };
+          var curParentNode = treeObj.getSelectedNodes()[0].getParentNode();
+          var curBrotherNodes = curParentNode.children;
+          var brotherLen = curBrotherNodes.length;
+          console.log('Last brother node: ', curBrotherNodes[brotherLen - 1]);
+          if (curParentNode) {
+            treeObj.addNodes(curParentNode, newNode);
+          } else {
+            treeObj.addNodes(null, newNode);
+          }
           $('.ant-modal-mask, .ant-modal-wrap').hide();
         });
       });
