@@ -261,6 +261,7 @@
             async: {
               enable: true,
               type: 'get',
+              autoParam: ['id', 'id=fatherId'],
               url: './../mock/categorys2.json',
               dataFilter: function(id, pnode, res) { // 数据预处理
                 return transformTreeData(res.data);
