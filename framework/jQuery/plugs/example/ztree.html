@@ -237,7 +237,7 @@
               onClick: function(e, id, node) {
                 console.log('click ====== node: ', node);
               },
-              beforeDrop: function(id, nodes, target, type) { // 禁止跨父节点拖拽
+              beforeDrop: function(id, nodes, target, type) {
                 console.log(nodes[0].getIndex(), target.getIndex());
               },
               onRightClick: function(e, id, node) {   // 右键菜单
@@ -281,6 +281,7 @@
           $('#rMenu').hide();
           var newNode = { name: "新节点-" + Date.now() };
           var curNode = treeObj.getSelectedNodes()[0];
+          console.log('Brother nodes: ', curNode.getParentNode().children)
           showNodeEditModal();
           if (curNode) {
             treeObj.addNodes(curNode, newNode);
