@@ -132,6 +132,32 @@
         text-align: right;
         border-radius: 0 0 4px 4px;
       }
+      .ant-modal-footer button {
+        line-height: 1.5;
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        -ms-touch-action: manipulation;
+            touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 0 15px;
+        font-size: 14px;
+        border-radius: 4px;
+        height: 32px;
+        -webkit-user-select: none;
+          -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        position: relative;
+        color: rgba(0, 0, 0, 0.65);
+        background-color: #fff;
+        border-color: #d9d9d9;
+      }
       .ant-modal-footer button + button {
         margin-left: 8px;
         margin-bottom: 0;
@@ -316,14 +342,21 @@
           $('.ant-modal-mask, .ant-modal-wrap').hide();
         });
 
-        $('.ant-modal-wrap').on('click', '.btn-save', function () {
-          var newNode = { name: "新节点-" + Date.now() };
-          var curParentNode = treeObj.getSelectedNodes()[0].getParentNode();
-          var curBrotherNodes = curParentNode.children;
+        $('.ant-modal-wrap').on('click', '.btn-save', function () {   
+          var category =  $('.ant-modal-wrap [name="parentCategory"]').val();
+          var name =  $('.ant-modal-wrap [name="categoryName"]').val();
+          var desc = $('.ant-modal-wrap [name="categoryDesc"]').val();
+          var curNode = treeObj.getSelectedNodes()[0];
+          var curBrotherNodes = curNode.getParentNode().children;
           var brotherLen = curBrotherNodes.length;
           console.log('Last brother node: ', curBrotherNodes[brotherLen - 1]);
-          if (curParentNode) {
-            treeObj.addNodes(curParentNode, newNode);
+          if (!category || !name) {
+            alert('请输入类目和名称！');
+            return;
+          }
+          var newNode = { name: name, category: category, description: desc };
+          if (curNode) {
+            treeObj.addNodes(curNode, newNode);
           } else {
             treeObj.addNodes(null, newNode);
           }
