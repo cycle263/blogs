@@ -279,7 +279,8 @@
           });
           return data;
         };
-
+        
+        // 请求树形结构数据
         jQuery.getJSON('./../mock/categorys.json?id=0', function(res){
           var setting = {
             async: {
@@ -336,7 +337,8 @@
         $(document).on('click', function(){
           $('#rMenu').hide();
         });
-
+        
+        // 展示弹框
         var showNodeEditModal = function(data) {
           $('.ant-modal-mask, .ant-modal-wrap').show();
           $('.ant-modal-wrap [name="parentCategory"]').val(data && data.getParentNode().categoryName || '');
@@ -395,7 +397,8 @@
         $('.ant-modal-wrap').on('click', '.ant-modal-close-x,.btn-cancel', function () {
           $('.ant-modal-mask, .ant-modal-wrap').hide();
         });
-
+        
+        // 保存数据
         $('.ant-modal-wrap').on('click', '.btn-save', function () {   
           var category =  $('.ant-modal-wrap [name="parentCategory"]').val();
           var name =  $('.ant-modal-wrap [name="categoryName"]').val();
