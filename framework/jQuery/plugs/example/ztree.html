@@ -232,7 +232,7 @@
           </div>
           <div class="ant-modal-footer">
             <div>
-              <button type="button" class="button btn-view btn-save">保存</button>
+              <button type="button" disabled class="button btn-view btn-save">保存</button>
               <button type="button" class="button btn-view btn-cancel">取消</button>
             </div>
           </div>
@@ -245,6 +245,25 @@
     <script type="text/javascript">
       $(function () {
         var treeObj;
+        var debounce = function(fn, interval) {
+          var timer = null;
+
+          function delay() {
+            var target = this;
+            var args = arguments;
+            return setTimeout(function () {
+              fn.apply(target, args);
+            }, interval);
+          }
+
+          return function () {
+            if (timer) {
+              clearTimeout(timer);
+            }
+
+            timer = delay.apply(this, arguments);
+          }
+        };
         var transformTreeData = function(data) {
           if (!Array.isArray(data)) return data;
           data.map(function(ele) {
@@ -352,6 +371,17 @@
               treeObj.removeNode(nodes[0]);
             }
           }
+        });
+
+        $('.ant-modal-wrap').on('change', '[name="categoryName"]', function(){
+          var t = $(this).val();
+          debounce(function(){
+            jQuery.getJSON('./../mock/categorys.json?id=0&name='+t, function (res) {
+              if (res) {
+                $('.btn-save').prop('disabled', false);
+              }
+            });
+          }, 500);
         });
         
         // 取消弹框
