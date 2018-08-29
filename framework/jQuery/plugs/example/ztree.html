@@ -281,7 +281,9 @@
               },
               beforeDrop: function(id, nodes, target, type) {
                 console.log(nodes[0].getIndex(), target.getIndex());
-                console.log('&&&&&&&&&&&&&&&&&', nodes[0].getParentNode.children.map(item => ({id: item.id, sort: item.sort, index: item.getIndex()}));
+                console.log('&&&&&&&&&&&&&&&&&', nodes[0].getParentNode.children.map(
+                  item => ({id: item.id, sort: item.sort, index: item.getIndex()})
+                ));
               },
               onRightClick: function(e, id, node) {   // 右键菜单
                 treeObj.selectNode(node);
