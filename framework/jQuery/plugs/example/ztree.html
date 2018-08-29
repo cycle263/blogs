@@ -279,10 +279,10 @@
               onClick: function(e, id, node) {
                 console.log('click ====== node: ', node);
               },
-              beforeDrop: function(id, nodes, target, type) {
-                console.log(nodes[0].getIndex(), target.getIndex());
-                console.log('&&&&&&&&&&&&&&&&&', nodes[0].getParentNode.children.map(
-                  item => ({id: item.id, sort: item.sort, index: item.getIndex()})
+              onDrop: function(e, id, nodes, target, type) {
+                console.log(nodes, target);
+                console.log('&&&&&&&&&&&&&&&&&', nodes[0].getParentNode().children.map(
+                  item => ({id: item.id, sort: item.sort || '', index: item.getIndex()})
                 ));
               },
               onRightClick: function(e, id, node) {   // 右键菜单
