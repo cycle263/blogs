@@ -15,6 +15,8 @@
 
 * [ ] React、Vue性能 (动画深入理解)，虚拟DOM的实现比较，双向绑定的实现
 
+* [ ] js动画和css动画的比较
+
 * [ ] React中setState，key详解
 
 * [ ] 基础概念深入理解（原型、作用域、上下文）
@@ -56,3 +58,5 @@
 * [ ] typescript转型
 
 * [ ] execCommand, getSelection, createRange
+
+* [ ] redux-saga, redux-thunk, redux-promise比较
