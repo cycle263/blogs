@@ -372,8 +372,9 @@
             }
           }
         });
-
-        $('.ant-modal-wrap').on('change', '[name="categoryName"]', function(){
+        
+        // 验证name的唯一性
+        $('.ant-modal-wrap').on('input', '[name="categoryName"]', function(){
           var t = $(this).val();
           debounce(function(){
             jQuery.getJSON('./../mock/categorys.json?id=0&name='+t, function (res) {
