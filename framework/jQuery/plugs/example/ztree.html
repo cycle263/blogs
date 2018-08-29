@@ -280,8 +280,7 @@
                 console.log('click ====== node: ', node);
               },
               onDrop: function(e, id, nodes, target, type) {
-                console.log(nodes, target);
-                console.log('&&&&&&&&&&&&&&&&&', nodes[0].getParentNode().children.map(
+                console.log('>>>>>>>>>>>>>>', nodes[0].getParentNode().children.map(
                   item => ({id: item.id, sort: item.sort || '', index: item.getIndex()})
                 ));
               },

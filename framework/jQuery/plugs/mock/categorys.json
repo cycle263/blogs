@@ -4,6 +4,7 @@
     "categoryName": "root",
     "fatherId": 0,
     "id": 1,
+    "sort": 1,
     "leaf": false,
     "root": true
   }, {
@@ -11,6 +12,7 @@
     "categoryName": "test2",
     "fatherId": 1,
     "id": 2,
+    "sort": 2,
     "leaf": false,
     "root": false
   }, {
@@ -18,6 +20,7 @@
     "categoryName": "test3",
     "fatherId": 1,
     "id": 3,
+    "sort": 3,
     "leaf": true,
     "root": false
   }, {
@@ -25,6 +28,7 @@
     "categoryName": "test4",
     "fatherId": 1,
     "id": 4,
+    "sort": 4,
     "leaf": true,
     "root": false
   }, {
@@ -32,6 +36,7 @@
     "categoryName": "test5",
     "fatherId": 1,
     "id": 5,
+    "sort": 5,
     "leaf": false,
     "root": false
   }, {
@@ -39,6 +44,7 @@
     "categoryName": "test6",
     "fatherId": 1,
     "id": 6,
+    "sort": 6,
     "leaf": true,
     "root": false
   },
@@ -46,6 +52,7 @@
     "name": "drag1",
     "fatherId": 1,
     "id": 801,
+    "sort": 7,
     "leaf": true,
     "root": false
   },
@@ -53,12 +60,14 @@
     "name": "drag2",
     "fatherId": 1,
     "id": 802,
+    "sort": 8,
     "leaf": true,
     "root": false
   }, {
     "name": "drag3",
     "fatherId": 1,
     "id": 803,
+    "sort": 9,
     "leaf": true,
     "root": false
   },
@@ -66,6 +75,7 @@
     "name": "drag4",
     "fatherId": 1,
     "id": 804,
+    "sort": 10,
     "leaf": true,
     "root": false
   },
@@ -73,6 +83,7 @@
     "name": "drag5",
     "fatherId": 1,
     "id": 805,
+    "sort": 11,
     "leaf": true,
     "root": false
   },
@@ -80,6 +91,7 @@
     "name": "drag6",
     "fatherId": 1,
     "id": 806,
+    "sort": 12,
     "leaf": true,
     "root": false
   }]
