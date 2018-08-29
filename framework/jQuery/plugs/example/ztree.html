@@ -375,13 +375,16 @@
         
         // 验证name的唯一性
         var handleNameChange = debounce(function (e) {
+          console.log(this, arguments);
           jQuery.getJSON('./../mock/categorys.json?id=0&name=' + e.target.value, function (res) {
             if (res) {
               $('.btn-save').prop('disabled', false);
             }
           });
         }, 500);
-        $('.ant-modal-wrap').on('input', '[name="categoryName"]', handleNameChange);
+        $('.ant-modal-wrap').on('input', '[name="categoryName"]', function(e){
+          handleNameChange.bind(this);
+        });
         
         // 取消弹框
         $('.ant-modal-wrap').on('click', '.ant-modal-close-x,.btn-cancel', function () {
