@@ -376,13 +376,13 @@
         // 验证name的唯一性
         $('.ant-modal-wrap').on('input', '[name="categoryName"]', function(){
           var t = $(this).val();
-          debounce(function(){
+          (debounce(function(){
             jQuery.getJSON('./../mock/categorys.json?id=0&name='+t, function (res) {
               if (res) {
                 $('.btn-save').prop('disabled', false);
               }
             });
-          }, 500);
+          }, 500))();
         });
         
         // 取消弹框
