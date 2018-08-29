@@ -374,16 +374,14 @@
         });
         
         // 验证name的唯一性
-        $('.ant-modal-wrap').on('input', '[name="categoryName"]', function(){
-          var t = $(this).val();
-          (debounce(function(){
-            jQuery.getJSON('./../mock/categorys.json?id=0&name='+t, function (res) {
-              if (res) {
-                $('.btn-save').prop('disabled', false);
-              }
-            });
-          }, 500))();
-        });
+        var handleNameChange = debounce(function (e) {
+          jQuery.getJSON('./../mock/categorys.json?id=0&name=' + e.target.value, function (res) {
+            if (res) {
+              $('.btn-save').prop('disabled', false);
+            }
+          });
+        }, 500);
+        $('.ant-modal-wrap').on('input', '[name="categoryName"]', handleNameChange);
         
         // 取消弹框
         $('.ant-modal-wrap').on('click', '.ant-modal-close-x,.btn-cancel', function () {
