@@ -245,6 +245,8 @@
     <script type="text/javascript">
       $(function () {
         var treeObj;
+
+        // 防抖函数
         var debounce = function(fn, interval) {
           var timer = null;
 
@@ -257,7 +259,7 @@
           }
 
           return function () {
-            console.log(this, arguments);
+            console.log(this, arguments, timer);
             if (timer) {
               clearTimeout(timer);
             }
@@ -265,6 +267,8 @@
             timer = delay.apply(this, arguments);
           }
         };
+
+        // 树形结构数据转换
         var transformTreeData = function(data) {
           if (!Array.isArray(data)) return data;
           data.map(function(ele) {
@@ -377,14 +381,14 @@
         // 验证name的唯一性
         var handleNameChange = debounce(function (e) {
           console.log(this, arguments);
-          jQuery.getJSON('./../mock/categorys.json?id=0&name=' + e.target.value, function (res) {
+          jQuery.getJSON('./../mock/categorys.json?id=0&name=' + $(this).val(), function (res) {
             if (res) {
               $('.btn-save').prop('disabled', false);
             }
           });
         }, 500);
         $('.ant-modal-wrap').on('input', '[name="categoryName"]', function(e){
-          handleNameChange.bind(this)();
+          handleNameChange.bind(this)(e);
         });
         
         // 取消弹框
