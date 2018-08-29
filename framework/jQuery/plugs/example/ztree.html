@@ -259,7 +259,6 @@
           }
 
           return function () {
-            console.log(this, arguments, timer);
             if (timer) {
               clearTimeout(timer);
             }
@@ -382,13 +381,12 @@
         
         // 验证name的唯一性
         var handleNameChange = debounce(function (e) {
-          console.log(this, arguments);
           jQuery.getJSON('./../mock/categorys.json?id=0&name=' + $(this).val(), function (res) {
             if (res) {
               $('.btn-save').prop('disabled', false);
             }
           });
-        }, 500);
+        }, 800);
         $('.ant-modal-wrap').on('input', '[name="categoryName"]', function(e){
           handleNameChange.bind(this)(e);
         });
