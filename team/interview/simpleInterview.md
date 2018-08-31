@@ -9,7 +9,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 * 字面量式函数和声明式函数的区分？script defer(渲染完再按顺序执行) vs async(下载完就执行)? 原型继承 vs 类继承？(灵活，接口，抽象类) 怎么理解异步编程？立即执行函数（IIFE）作用？context vs scope vs this? 词法作用域(静态，不可变) vs 动态作用域(动态)? 闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分? 事件冒泡和事件捕获，事件委托? 宿主对象(window,global,xmlhttprequest) vs 原生对象(String,Math,Array等)？setTimeout里面运行的函数的作用域this指向? setTimeout vs setInterval?  事件代理的原理？节流(固定时间段执行一次)和防抖(未到延迟时间，重新计时)？怎么理解高阶函数？(函数可以当做参数传递，也可以被当做返回值返回，高阶函数就是这一类的函数。)
 * Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？ webworker?(后台运行) localStorage vs sessionStorage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义，无function.caller和function.arguments)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？ 不可以，原因使用下标访问时，只是临时创建的array对象。++i vs i++?
 
-* ES6熟悉哪些新特性？箭头函数(是否有arguments, 是否有自身的this对象和上下文, call能否覆盖箭头函数this, 不能用作构造函数，this指向创建时的上下文)？实现promise(new Promise直接执行，then在当前tick的最后，但还在当前tick中)? Promise、generator、async/await 的原理解释？let vs const vs var(作用域级别，变量声明提升，重复声明, const内存地址不可变，对象属性可变)? file文件转换成arrayBuffer或者Blob，base64String, Float32Array, DataView? 解构赋值和扩展运算符，rest属性(解构赋值...放在最后一位)剩余变量？ Generator 和 Iterator(生成器和迭代器)? Module和import, export? proxy? ES 6模块和commonjs模块的区别(值的引用 vs 值的拷贝，编译时输出 vs 运行时加载, 符号链接-只读 vs module.exports)？
+* ES6熟悉哪些新特性？箭头函数(是否有arguments, 是否有自身的this对象和上下文, call能否覆盖箭头函数this, 不能用作构造函数，this指向创建时的上下文)？实现promise(fulfilled、rejected 或 pending, 状态不可逆转，易读可并行异步请求)? Promise、generator、async/await 的原理解释？let vs const vs var(作用域级别，变量声明提升，重复声明, const内存地址不可变，对象属性可变)? file文件转换成arrayBuffer或者Blob，base64String, Float32Array, DataView? 解构赋值和扩展运算符，rest属性(解构赋值...放在最后一位)剩余变量？ Generator 和 Iterator(生成器和迭代器)? Module和import, export? proxy? ES 6模块和commonjs模块的区别(值的引用 vs 值的拷贝，编译时输出 vs 运行时加载, 符号链接-只读 vs module.exports)？
 * canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
 
 ## 框架类库
@@ -23,7 +23,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 * 常见的前端优化措施：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存资源缓存，图片服务器，减少DOM操作，模块化等。webpack的插件原理？webpack缓存可能存在的坑，解决方案？webpack代码分隔？webpack性能优化手段？多页面可能存在的坑（跨路由跳转，传参），解决方案？webpack打包时，模块循环引用会发生什么后果(导出匿名方法)？babel转码的实现原理？ commonJS和AMD规范区别？和ES6的模块有什么不同？
 * 组件划分粒度？版本控制系统(svn、git)? 对前端工程进行流程化开发，nginx的combo技术，对前端GUI软件编译合并打包，gulp、grunt、webpack等构建工具各自优缺点，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案。  
 * 前端缓存？构建hash化实现久缓存？常用的页面性能指标？用什么工具来测试这些指标？怎么理解组件化/模块化，组件化诉求复用(更多关注UI)，模块化诉求解耦(关注数据和功能封装)，组件接口设计，转译出的文件过大怎么办，速度过慢怎么办？怎么绕开防盗链？webpack中的require.ensure什么作用？webpack为毛难用？(文档不完善，过于依赖插件，配置繁琐) webpack中的常用手段(tree shaking,scope hoisting,Code Splitting,Long-term caching)
-* 理想的前端开发和部署流程？无缝发布部署，先部署页面还是资源？非覆盖式更新，灰度发布(全量发布)，错误监控和分析，安全性监控？自动化测试框架（mocha）？
+* 理想的前端开发和部署流程？无缝发布部署，先部署页面还是资源？非覆盖式更新，灰度发布(全量发布)，错误监控和分析，安全性监控？自动化测试框架（mocha）？SPA(单页面)优势？（减少请求，减少页面刷新，更适合多端）
 
 ## 全面性考察
 * 浏览器内核一般包括哪些线程？在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志，参数容量限制)  
