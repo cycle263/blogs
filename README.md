@@ -8,7 +8,7 @@
 
   * **[jQuery](./framework/jQuery)**
 
-    jQuery API,  Principle of jQuery
+    jQuery API,  Principle of jQuery {{ site.github.owner_name }}
 
       ```js
       jQuery.fn.myPlugin = function(){}   // jquery plugins
