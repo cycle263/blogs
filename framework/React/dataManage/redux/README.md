@@ -94,7 +94,7 @@
 
 ## 高阶组件
 
-  - 由原始组件创造一个新的组件并且扩展它的行为。高阶组件通过包裹（wrapped）被传入的React组件，经过一系列处理，最终返回一个相对增强（enhanced）的React组件，供其他组件调用。
+  由原始组件创造一个新的组件并且扩展它的行为。高阶组件通过包裹（wrapped）被传入的React组件，经过一系列处理，最终返回一个相对增强（enhanced）的React组件，供其他组件调用。
 
   ```js
   // MyComponent 是纯的 UI 组件
@@ -142,6 +142,42 @@
   // 为了把Store传入组件，必须使用 Redux 提供的Provider组件在应用的最外面，包裹一层。
   ```
 
+  - 属性代理是最常见的高阶组件的使用方式，将被包裹组件的props和新生成的props一起传递给此组件，这称之为属性代理。
+
+    ```js
+    export default function withHeader(WrappedComponent) {
+      return class HOC extends Component {
+        render() {
+          const newProps = {
+            test:'hoc'
+          }
+          // 透传props，并且传递新的newProps
+          return <div>
+            <WrappedComponent {...this.props} {...newProps}/>
+          </div>
+        }
+      }
+    }
+    ```
+
+  - 基于反向继承的方式，React组件继承了被传入的组件，所以它能够访问到的区域、权限更多，相比属性代理方式，它更像打入组织内部，对其进行修改。
+
+    ```js
+    export default function (WrappedComponent) {
+      return class Inheritance extends WrappedComponent {
+        componentDidMount() {
+          // 可以方便地得到state，做一些更深入的修改。
+          console.log(this.state);
+        }
+        render() {
+          return super.render();
+        }
+      }
+    }
+    ```
+
+  - 组合多个高阶组件
+  
 ## 其他相关
 
 * [flux](flux) 状态管理标准
