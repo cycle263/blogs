@@ -151,7 +151,7 @@
           const newProps = {
             test:'hoc'
           }
-          // 透传props，并且传递新的newProps
+          /* 透传props，并且传递新的newProps */
           return <div>
             <WrappedComponent {...this.props} {...newProps}/>
           </div>
@@ -166,7 +166,7 @@
     export default function (WrappedComponent) {
       return class Inheritance extends WrappedComponent {
         componentDidMount() {
-          // 可以方便地得到state，做一些更深入的修改。
+          /* 可以方便地得到state，做一些更深入的修改 */
           console.log(this.state);
         }
         render() {
@@ -176,8 +176,21 @@
     }
     ```
 
-  - 组合多个高阶组件
-  
+  - 组合多个高阶组件，高阶组件为React组件增强了一个功能，如果需要同时增加多个功能需要组合多个高阶组件，使用compose可以简化上述过程，也能体现函数式编程思想。
+
+  compose可以帮助我们组合任意个（包括0个）高阶函数，例如compose(a,b,c)返回一个新的函数d，函数d依然接受一个函数作为入参，只不过在内部会依次调用c,b,a，从表现层对使用者保持透明。compose函数实现方式有很多种，这里推荐其中一个recompact.compose。
+
+    ```js
+    @withHeader
+    @withLoading
+    class Demo extends Component{ }
+
+    /* use compose */
+    const enhance = compose(withHeader,withLoading);
+    @enhance
+    class Demo extends Component{ }
+    ```
+
 ## 其他相关
 
 * [flux](flux) 状态管理标准
