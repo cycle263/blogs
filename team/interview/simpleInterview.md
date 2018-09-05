@@ -17,11 +17,11 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 ## 框架类库
 
-* **react**生命周期？数据模型(redux、flux、Mobx、reselect)-什么场景适用？无状态函数组件(纯函数)，及其优势? react适合什么项目? redux的三大原则？redux的缺陷(临时状态，数据库vs状态管理，扁平化，数据庞大)？redux中间件（saga, thunk）？组件之间通信(订阅发布)？jsx语法？虚拟DOM和diff算法原理(按需更新，分层比较, 同层按key比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步? - 在React控制之外的情况-setTimeout、event，setState会同步更新)？) 类组件和函数式组件选择？展示组件和容器组件？受控组件和非受控组件？循环组件需要用key(diff, unique)? 为什么不建议使用index作key(只是顺序变动)? react合成事件和js原生事件区别(冒泡到document)？如何阻止原生事件的冒泡？(避免原生事件与React事件混用，或者通过target进行判断, e.nativeEvent.stopImmediatePropagation) shouldComponentUpdate什么场景适用(手动判断是否render)？refs 的作用？调和算法Fiber? 如何保持父子组件之间的松耦合？组件数属性传递(context)？优化手段有哪些？React.Children作用（自动传递给包含着它的组件）? 高阶组件(属性代理方式-新旧props一起传递，反向继承方式-继承包裹组件)？高阶组件的主要功能是封装并抽离组件的通用逻辑，让此部分逻辑在组件间更好地被复用。
+* **react**生命周期？数据模型(redux、flux、Mobx、reselect)-什么场景适用？无状态函数组件(纯函数)，及其优势? react适合什么项目? redux的三大原则？redux的缺陷(临时状态，数据库vs状态管理，扁平化，数据庞大)？redux中间件（saga, thunk）？组件之间通信(订阅发布)？jsx语法？虚拟DOM和diff算法原理(按需更新，分层比较, 同层按key比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步? - 在React控制之外的情况-setTimeout、event，setState会同步更新)？) 类组件和函数式组件选择？展示组件和容器组件？受控组件和非受控组件？循环组件需要用key(diff算法优化, unique)? 为什么不建议使用index作key(顺序变动)? react合成事件和js原生事件区别(冒泡到document)？如何阻止原生事件的冒泡？(避免原生事件与React事件混用，或者通过target进行判断, e.nativeEvent.stopImmediatePropagation) shouldComponentUpdate什么场景适用(手动判断是否render)？refs 的作用？调和算法Fiber? 如何保持父子组件之间的松耦合？组件数属性传递(context)？优化手段有哪些？React.Children作用（自动传递给包含着它的组件）? 高阶组件(属性代理方式-新旧props一起传递，反向继承方式-继承包裹组件)？高阶组件的主要功能是封装并抽离组件的通用逻辑，让此部分逻辑在组件间更好地被复用。
 
 * angular 双向绑定机制 -> 脏检查机制 (digest流程-->检查所有watcher) 不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？(track by $index)ng-click中能写js原生对象方法吗？factory、service、provider什么关系？zone.js（猴子补丁，异步任务之间进行持久性传递，异步任务都将运行在global.zone的上下文中）
 
-* vue 双向绑定(dom监听 + data监听 -> 访问器属性劫持)？模板语法，遇到过vuejs页面闪烁吗？v-if vs v-show区别(是否渲染)？vue 虚拟DOM和react 虚拟DOM的区别? 有哪些生命周期钩子函数？ 
+* vue 双向绑定(dom监听 + data监听 -> 访问器属性劫持)？模板语法，遇到过vuejs页面闪烁吗？v-if vs v-show区别(是否渲染)？vue 虚拟DOM和react 虚拟DOM的区别? 有哪些生命周期钩子函数？子系统的实现原理？
 
 * jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ? input标签的onchange事件怎么触发？输入后触发使用jquery的input事件。
 
@@ -29,7 +29,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 ## 前端工程化
 
-* **webpack**打包原理？插件的基本原理？webpack缓存可能存在的坑（精准缓存），解决方案？（构建hash化实现久缓存）webpack代码分隔？webpack性能优化手段？(tree shaking,scope hoisting,Code Splitting,Long-term caching) 编译出的文件过大怎么办，速度过慢怎么办？多页面可能存在的坑（跨路由跳转，传参），解决方案？webpack打包时，模块循环引用会发生什么后果(导出匿名方法)？webpack中的require.ensure什么作用？webpack为毛难用？(文档不完善，过于依赖插件，配置繁琐) 
+* **webpack**打包原理？插件的基本原理？webpack缓存可能存在的坑（精准缓存），解决方案？（构建hash化实现久缓存）webpack代码分隔？webpack性能优化手段？(tree shaking,scope hoisting,Code Splitting,Long-term caching) 编译出的文件过大怎么办，速度过慢怎么办？多页面可能存在的坑（跨路由跳转，传参），解决方案？webpack打包时，模块循环引用会发生什么后果(导出匿名方法)？webpack中怎么实现按需加载？（多入口，require.ensure，import().then等）webpack中的require.ensure什么作用？webpack为毛难用？(文档不完善，过于依赖插件，配置繁琐) 
 
 * gulp、grunt、webpack等构建工具各自优缺点，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案。  
 

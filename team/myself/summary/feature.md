@@ -62,3 +62,5 @@
 * [ ] redux-saga, redux-thunk, redux-promise比较
 
 * [ ] 流式异步（stream），队列式异步(queue)
+
+* [ ] jQuery.getScript, $.load, $.get, $.post, $.getJSON
