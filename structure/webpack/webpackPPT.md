@@ -170,6 +170,21 @@
           list.show();
       });
       ```
+    + dva的动态加载
+
+      dva 内置了 dynamic 方法用于实现组件的动态加载
+
+      ```js
+      import dynamic from 'dva/dynamic';
+
+      const UserPageComponent = dynamic({
+        app,
+        models: () => [
+          import('./models/users'),
+        ],
+        component: () => import('./routes/Users'),
+      });
+      ```
 
 * 压缩
 

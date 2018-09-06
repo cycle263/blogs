@@ -90,6 +90,8 @@
 
   常见api
 
+  put 用于触发 action，call 用于调用异步处理逻辑，select 用于从 state 中获取数据。详情如下：
+
   - take(pattern) 在 Store 上等待指定的 action。 在发起与 pattern 匹配的 action 之前，Generator 将暂停。  
 
   - takeEvery(channel, saga, ...args) 在发起（dispatch）到 Store 并且匹配 pattern 的每一个 action 上派生一个 saga。也就是说，takeEvery 允许处理并发的 action，包括相同的action，但不保证顺序。其中，saga: Function: 为一个 Generator 函数。
@@ -140,3 +142,17 @@
   - put(action) 向 Store 发起一个 action。 这个 effect 是非阻塞型的，并且所有向下游抛出的错误（例如在 reducer 中），都不会冒泡回到 saga 当中。 put.resolve(action)为阻塞型，返回了 promise，它将会等待其结果。
 
   - fork(fn, ...args) 用来命令 middleware 以 非阻塞调用 的形式执行 fn。
+
+
+## dva
+
+* 背景：使用React技术栈管理大型复杂的应用往往要使用Redux来管理应用的状态，然而随着深度使用，Redux也暴露出了一些问题。如编写页面配套（action、reducer）过于繁琐、复杂，组件之间耦合较深、不够扁平化、调用action creator发起动作破坏action纯洁性且必须层层传递等。
+
+dva 帮你自动化了Redux 架构一些繁琐的步骤，比如上面所说的redux store 的创建，中间件的配置，路由的初始化等等,没有什么魔法，只是帮你做了redux + react-router + redux-saga 架构的那些恶心、繁琐、容易出错的步骤，只需写几行代码就可以实现上述步骤，它解决了背景所说的所有缺点。
+
+dva其实就是把之前Redux每个路由下的state、reducer、sagas写到一块去了，做了写到一块去也能做到以前redux能做的事，并且让思路变得很清晰。
+
+![dva流程](../../images/dva.jpeg)
+
+
+备注：侵图告之必删

@@ -61,3 +61,13 @@
 		return results[1] || '';
 	}
 	```
+
+* 10、getScript, get, post, ajax, getJSON 几个方式都基于ajax的再次封装, $('ele').load
+
+	- getScript其实就是get(..., 'script')，同理getJSON
+
+	- get就是ajax的type为get方式，同理post
+
+	- ajax的dataType可以为：['json', 'html', 'script', 'jsonp', 'xml', 'text']
+
+	- $('ele').load(url, data, cb)， 可以加载HTML
