@@ -111,3 +111,33 @@ function arrRepeat(arr){
   }
   findLongest(arr, 200);
   ```
+
+* 数组扁平化的方法
+
+  - concat大法, 只能扁平两层级
+
+    ```js
+    const arr = [1, 2, 3, [4, 5]];
+    Array.prototype.concat.apply([], arr);
+
+    [].concat(...arr);
+    ```
+
+  - 递归大法
+
+    ```js
+    function steamroller(arr) {
+      var newArr = [];
+      for (var i = 0; i < arr.length; i++) {
+          if (Array.isArray(arr[i])) {
+              /* 如果是数组，调用(递归)steamroller 将其扁平化 */
+              /* 然后再 push 到 newArr 中 */
+              newArr.push.apply(newArr, steamroller(arr[i]));
+          } else {
+              /* 不是数组直接 push 到 newArr 中 */
+              newArr.push(arr[i]);
+          }
+      }
+      return newArr;
+    }
+    ```
