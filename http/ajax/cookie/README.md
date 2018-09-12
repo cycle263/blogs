@@ -22,3 +22,5 @@ cors跨域请求，可加上这个option `xhrFields: { withCredentials: true }, 
   -  ;secure (cookie只通过https协议传输)  
 
 * 3、cookie的值字符串可以用encodeURIComponent()来保证它不包含任何逗号、分号或空格(cookie值中禁止使用这些值).
+
+* `1969-12-31T23:59:59.000Z` 是一个会话周期(session), 临时性Cookie，不会被持久化，也就是关闭你的浏览器后，这个cookie就会消失。这个是chrome特意用来表示会话周期的。
