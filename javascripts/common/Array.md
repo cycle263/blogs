@@ -129,14 +129,11 @@ function arrRepeat(arr){
     function steamroller(arr) {
       var newArr = [];
       for (var i = 0; i < arr.length; i++) {
-          if (Array.isArray(arr[i])) {
-              /* 如果是数组，调用(递归)steamroller 将其扁平化 */
-              /* 然后再 push 到 newArr 中 */
-              newArr.push.apply(newArr, steamroller(arr[i]));
-          } else {
-              /* 不是数组直接 push 到 newArr 中 */
-              newArr.push(arr[i]);
-          }
+        if (Array.isArray(arr[i])) {
+          newArr.push.apply(newArr, steamroller(arr[i]));
+        } else {
+          newArr.push(arr[i]);
+        }
       }
       return newArr;
     }
