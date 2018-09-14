@@ -5,11 +5,11 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 ## 前端基础
 
-* **CSS** 高度塌陷的原因？清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？外边距叠加(空元素, 普通流相邻，父元素无内边距和边框)? 什么是 FOUC (无样式内容闪烁)？你如何来避免 FOUC？BFC(块级格式化上下文)? css像素和设备像素区别？ 布局方式(双飞翼、圣杯、弹性、格栅、浮动、瀑布流、响应式)？上下垂直居中方案？重构和回流、重绘(重新计算元素的几何大小和位置)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)? 渐进增强和优雅降级? inline-block之间为何有间隙？
+* **CSS** 高度塌陷的原因？清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？外边距叠加(空元素, 普通流相邻，父元素无内边距和边框)? 什么是 FOUC (无样式内容闪烁)？你如何来避免 FOUC？BFC(块级格式化上下文)? css像素和设备像素区别？ 布局方式(双飞翼、圣杯、弹性、格栅、浮动、瀑布流、响应式)？上下垂直居中方案？回流vs重绘(重新计算元素的几何大小和位置引发回流，不影响布局变化的属性变动只会重绘；回流必将引起重绘，而重绘不一定会引起回流)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)? 渐进增强和优雅降级? inline-block之间为何有间隙？
 
-* **ES6** 熟悉哪些新特性？箭头函数(是否有arguments, 是否有自身的this对象和上下文, call能否覆盖箭头函数this, 不能用作构造函数，this指向创建时的上下文)？实现promise(fulfilled、rejected 或 pending, 状态不可逆转，易读可并行异步请求)? Promise、generator、async/await 的原理解释？let vs const vs var(作用域级别，变量声明提升，重复声明, const内存地址不可变，对象属性可变)? file文件转换成arrayBuffer或者Blob，base64String, Float32Array, DataView? 解构赋值和扩展运算符，rest属性(解构赋值...放在最后一位)剩余变量？ Generator 和 Iterator(生成器和迭代器)? Module和import, export? proxy? ES 6模块和commonjs模块的区别(值的引用 vs 值的拷贝，编译时输出 vs 运行时加载, 符号链接-只读 vs module.exports)？ ES 7中的decorator-装饰器(@withHeader)？
+* **ES6** 熟悉哪些新特性？箭头函数(是否有arguments, 是否有自身的this对象和上下文, call能否覆盖箭头函数this, 不能用作构造函数，this指向创建时的上下文)？实现promise(fulfilled、rejected 或 pending, 状态不可逆转，易读可并行异步请求)? Promise、generator、async/await 的原理解释？let vs const vs var(作用域级别，变量声明提升，重复声明, const内存地址不可变，对象属性可变)? file文件转换成arrayBuffer或者Blob，base64String, Float32Array, DataView? 解构赋值和扩展运算符，rest属性(解构赋值...放在最后一位)剩余变量？ Generator 和 Iterator(生成器和迭代器)? Module和import, export? proxy? ES 6模块和commonjs模块的区别(值的引用 vs 值的拷贝，编译时输出 vs 运行时加载, 符号链接-只读 vs module.exports)？ ES 7中的decorator-装饰器(@withHeader)？ set去重(类似于数组结构，new Set(iterator))
 
-* 字面量式函数和声明式函数的区别？(声明提升-not function) script defer(渲染完再按顺序执行) vs async(下载完就执行)? 原型继承 vs 类继承？(灵活，接口，抽象类) 怎么理解异步编程？立即执行函数（IIFE）作用？context vs scope vs this? 词法作用域(静态，不可变) vs 动态作用域(动态)? 闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分? 事件冒泡和事件捕获，事件委托? 宿主对象(window,global,xmlhttprequest) vs 原生对象(String,Math,Array等)？setTimeout里面运行的函数的作用域this指向? setTimeout vs setInterval?  事件代理的原理？节流(固定时间段执行一次)和防抖(未到延迟时间，重新计时)？钩子函数vs回调函数vs高阶函数？怎么理解高阶函数？(将函数当做参数传递，并返回新函数) 柯里化函数 vs 高阶函数(柯里化函数一定是高阶函数，反之不一定)？
+* 字面量式函数和声明式函数的区别？(声明提升-not function) script defer(渲染完再按顺序执行) vs async(下载完就执行)? 原型继承 vs 类继承？(灵活，接口，抽象类) 怎么理解异步编程？立即执行函数（IIFE）作用？context vs scope vs this? 词法作用域(静态，不可变) vs 动态作用域(动态)? 闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分? 事件冒泡和事件捕获，事件委托? 宿主对象(window,global,xmlhttprequest) vs 原生对象(String,Math,Array等)？浅拷贝和深拷贝区别（是否分配新内存）？基本类型 vs 引用类型（基本类型如Number, 名值都存于栈内存，引用类型如Object，名存栈内，值存堆内存，并用引用地址指向堆）？setTimeout里面运行的函数的作用域this指向? setTimeout vs setInterval?  事件代理的原理？节流(固定时间段执行一次)和防抖(未到延迟时间，重新计时)？钩子函数vs回调函数vs高阶函数？怎么理解高阶函数？(将函数当做参数传递，并返回新函数) 柯里化函数 vs 高阶函数(柯里化函数一定是高阶函数，反之不一定)？
 
 * Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？ webworker?(后台运行) localStorage vs sessionStorage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义，无function.caller和function.arguments)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？ 不可以，原因使用下标访问时，只是临时创建的array对象。++i vs i++?
 
@@ -21,7 +21,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 * angular 双向绑定机制 -> 脏检查机制 (digest流程-->检查所有watcher) 不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？(track by $index)ng-click中能写js原生对象方法吗？factory、service、provider什么关系？zone.js（猴子补丁，异步任务之间进行持久性传递，异步任务都将运行在global.zone的上下文中）
 
-* vue 双向绑定(dom监听 + data监听 -> 访问器属性劫持)？模板语法，遇到过vuejs页面闪烁吗？v-if vs v-show区别(是否渲染)？vue 虚拟DOM和react 虚拟DOM的区别? 有哪些生命周期钩子函数？子系统的实现原理？
+* vue 双向绑定(dom监听 + data监听 -> 访问器属性劫持 + 发布订阅推送变动通知)？模板语法，遇到过vuejs页面闪烁吗？v-if vs v-show区别(是否渲染, 频繁切换状态的性能差别)？vue 虚拟DOM和react 虚拟DOM的区别? 有哪些生命周期钩子函数？子系统的实现原理？ Vue.nextTick使用场景(类似于this.setState中的回调)？独立构建(standalone)和运行时构建(runtime-only)区别？
 
 * jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ? input标签的onchange事件怎么触发？输入后触发使用jquery的input事件。
 
@@ -29,7 +29,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 ## 前端工程化
 
-* **webpack**打包原理？插件的基本原理？webpack缓存可能存在的坑（精准缓存），解决方案？（构建hash化实现久缓存）webpack代码分隔？webpack性能优化手段？(tree shaking,scope hoisting,Code Splitting,Long-term caching) 编译出的文件过大怎么办，速度过慢怎么办？多页面可能存在的坑（跨路由跳转，传参），解决方案？webpack打包时，模块循环引用会发生什么后果(导出匿名方法)？webpack中怎么实现按需加载？（多入口，require.ensure，import().then等）webpack中的require.ensure什么作用？webpack为毛难用？(文档不完善，过于依赖插件，配置繁琐) 
+* **webpack**打包原理？插件的基本原理？webpack缓存可能存在的坑（精准缓存），解决方案？（构建hash化实现久缓存）webpack代码分隔？webpack性能优化手段？(tree shaking,scope hoisting,Code Splitting,Long-term caching) 编译出的文件过大怎么办，速度过慢怎么办？多页面可能存在的坑（跨路由跳转，传参），解决方案？webpack打包时，模块循环引用会发生什么后果(导出匿名方法)？webpack中怎么实现按需加载？（多入口，require.ensure，import().then等）webpack中的require.ensure什么作用？webpack为毛难用？(文档不完善，过于依赖插件，配置繁琐) webpack的loader加载顺序（右->左,下->上, compose-reduceRight, pipe-reduce）
 
 * gulp、grunt、webpack等构建工具各自优缺点，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案。  
 
@@ -45,10 +45,10 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 ## 加分技能
 
-* **http**协议？websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 如何基于http协议建立一个长连接？浏览器缓存种类、区别与使用细节？post请求是否可以网络缓存？http 304状态码？协商缓存（etag、last-modified）与强制缓存（cache-control、expires）的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。https加密的原理？http请求的幂等性（get,delete,put幂等，post不满足）？
+* **http**协议？websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 如何基于http协议建立一个长连接？浏览器缓存种类、区别与使用细节？post请求是否可以网络缓存？http 304状态码？301 vs 302(永久重定向和临时，SEO地址和内容抓取不同)? 协商缓存（etag、last-modified）与强制缓存（cache-control、expires）的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。https加密的原理？http请求的幂等性（get,delete,put幂等，post不满足）cookie vs session(client vs server, 安全性，容量)？
 
 * 熟悉的设计模式：订阅模式、观察者模式、工厂模式，单例模式; 流行的mvc，mvvc，mv*架构模式；接口的设计：REST API vs GraphQL(Apollo-请求多组数据)；其他脚本语言：typescrpt?  编码格式，字节码等： encodeURI vs escape(utf-8 vs unicode)？ASCII、Unicode、GBK、UTF-8之间的关系？新开发模式：PWA-渐进式增强progressive web app?(全屏运行、离线能力、推送通知) ，小程序，多端开发，WebAssembly-字节码标准(Java 字节码)?
 
-* 擅长一门后端，如nodejs(事件驱动-无阻塞, 擅长IO密集，非计算密集)，关系型数据库和非关系型数据库，函数式编程，堆、栈和队列区别(全局持久手动 vs 局部临时自动)、八大排序算法(冒泡，选择，插入...)。特别的项目开发经验：多媒体前端经验(webRTC) 、可视化开发经验、数亿访问级别的项目经验等。
+* 擅长一门后端，如nodejs(事件驱动-无阻塞, 擅长IO密集，非计算密集)，关系型数据库和非关系型数据库，函数式编程，堆、栈和队列区别(全局持久手动 vs 局部临时自动)、树形数据与扁平化的list相互转换？八大排序算法(冒泡，选择，插入...)。特别的项目开发经验：多媒体前端经验(webRTC) 、可视化开发经验、数亿访问级别的项目经验等。
 
 * 做过什么提高开发效率的工作？(包括团队) 如何降低项目的后期的维护成本？前端人员如何提高运营人员更强的支持力度？比较难的技术问题? 前端的价值体现？前端代码规范？有没有做过开源项目？有没有blog和github项目？最近在学什么？接下来半年打算学习什么？每天花多长时间学习？豁然开朗的知识点？开发过程中遇到的最大难点(超复杂的数据结构，扩展第三库)？最有挑战的项目？发布前发现bug如何处理？作为前端对于公司最大的价值贡献？相比其他前端的优势？如何面对编码凌乱和页面无设计的项目？

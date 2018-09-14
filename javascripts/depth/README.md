@@ -68,6 +68,9 @@ var deepClone = function (o){
 
 // method 4
 loadsh.deepclone
+
+// method 5
+$.extend
 ```
 
 * 引用类型 vs 值类型

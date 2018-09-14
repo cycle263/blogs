@@ -20,9 +20,13 @@
 
 ## 常见clone方法
 
-  1、JSON大法
-    `var newObj = JSON.parse( JSON.stringify( someObj ) );`
+- 1、JSON大法
+  `var newObj = JSON.parse( JSON.stringify( someObj ) );`
 
-  2、Object.assign
+- 2、Object.assign
 
-  3、递归大法
+- 3、递归大法
+
+- 4、$.extend( [deep ], target, object1 [, objectN ] )
+
+- 5、lodash.cloneDeep

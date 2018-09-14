@@ -31,11 +31,11 @@
 * 数组去重
 
   ```js
-  [...new Set([1,2,3,1,'a',1,'a'])]   // ES6
+  [...new Set([1, 2, 3, 1, 'a', 1, 'a'])]   // ES6 set去重
 
-  [1,2,3,1,'a',1,'a'].filter(function(ele,index,array){   // ES5
-      return index===array.indexOf(ele)
-  })
+  [1, 2, 3, 1, 'a', 1, 'a'].filter(function(ele, index, array){   // ES5
+      return index === array.indexOf(ele)
+  });
 
   // 数组去重 --- 性能较好，能区分hash值
   function unique(arr){
