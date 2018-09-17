@@ -155,12 +155,10 @@ console.log(obj1)  //输出什么   {name: 'jirengu'}
 console.log(obj2)  //输出什么   {age: 2}
 
 
-
 function swapone(x, y){
   x.name = '111';
   y.age = 3;
 }
-
 
 var obj3 = {name: 'jirengu'}
 var obj4 = {age: 2}
