@@ -203,7 +203,7 @@ var data2 = [
 ];
 
 // 扁平化再合并
-function flatten(data2, p) {
+function flatten(data, p) {
   var temp = [];
   var flattening = (arr, pName = 0) => {
     arr && arr.map(item => {
@@ -219,12 +219,13 @@ function flatten(data2, p) {
     });
     return temp;
   }
-  flattening(data2, p);
+  flattening(data, p);
   return temp;
 }
 
-flatten(data1, 1);
+flatten(data1);
 
+// list to tree
 function list_to_tree(list) {
   var map = {}, node, roots = [], i;
   for (i = 0; i < list.length; i += 1) {
@@ -233,8 +234,7 @@ function list_to_tree(list) {
   }
   for (i = 0; i < list.length; i += 1) {
     node = list[i];
-    if (node.parentId !== "0") {
-      // if you have dangling branches check that map[node.parentId] exists
+    if ((node.parentId - 0) !== 0) {
       list[map[node.parentId]].children.push(node);
     } else {
       roots.push(node);
