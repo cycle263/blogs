@@ -23,7 +23,11 @@
 
 * React.createClass   // es5方式
 
+  - 方法自动绑定this
+
 * extends React.Component   // 优先推荐的es6方式
+
+  - 手动bind作用域
 
 * Mixins
 
