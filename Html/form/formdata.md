@@ -104,7 +104,9 @@
 
 ## vs octet-stream vs x-www-form-urlencoded
 
-* Content-Type
+* Content-Type: text/html | text/plain | text/xml
+
+  Content-Type: image/jpeg | image/gif | image/png | audio/wav | audio/mp3 | video/mpeg4 | video/avi
 
   Content-Type: application/x-www-form-urlencoded
 
@@ -114,4 +116,4 @@
 
 * 提交内容
 
-  formdata可以提交普通键值对，也可以提交(多个)文件键值对。octet-stream 只能提交二进制，而且只能提交一个二进制；如果提交文件，只能提交一个文件, 后台接收参数只能有一个，而且只能是流（或者字节数组）。x-www-form-urlencoded提交的是键值对，所有键与值都会被urlencoded，但不能提交二进制。
+  formdata可以提交普通键值对，也可以提交(多个)文件键值对，分隔符boundary分隔。octet-stream 只能提交二进制，而且只能提交一个二进制；如果提交文件，只能提交一个文件, 后台接收参数只能有一个，而且只能是流（或者字节数组）。x-www-form-urlencoded提交的是键值对，所有键与值都会被urlencoded，但不能提交二进制。
