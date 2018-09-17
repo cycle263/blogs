@@ -30,13 +30,13 @@
 
     + set: 给属性提供setter的方法，如果没有setter则为undefined。该方法将接受唯一参数，并将该参数的新值分配给该属性。默认为 undefined。
 
-    ```
+    ```js
     var myObject = {
-      // 为 `a` 定义 getter
+      /* 为 `a` 定义 getter */
       get a() {
         return this._a_;
       },
-      // 为 `a` 定义 setter
+      /* 为 `a` 定义 setter */
       set a(val) {
         this._a_ = val * 2;
       }
@@ -53,7 +53,7 @@
     ```
 
 
-  ```
+  ```js
   var o = {}; // 创建一个新对象
 
   // Example of an object property added with defineProperty with a data property descriptor

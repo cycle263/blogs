@@ -5,7 +5,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 ## 前端基础
 
-* **CSS** 高度塌陷的原因？清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？外边距叠加(空元素, 普通流相邻，父元素无内边距和边框)? 什么是 FOUC (无样式内容闪烁)？你如何来避免 FOUC？BFC(块级格式化上下文)? css像素和设备像素区别？ 布局方式(双飞翼、圣杯、弹性、格栅、浮动、瀑布流、响应式)？上下垂直居中方案？回流vs重绘(重新计算元素的几何大小和位置引发回流，不影响布局变化的属性变动只会重绘；回流必将引起重绘，而重绘不一定会引起回流)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)? 渐进增强和优雅降级? inline-block之间为何有间隙？
+* **CSS** 高度塌陷的原因？清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？外边距叠加(空元素, 普通流相邻，父元素无内边距和边框)? 什么是 FOUC (无样式内容闪烁)？你如何来避免 FOUC？BFC(块级格式化上下文)? css像素和设备像素区别？ 布局方式(双飞翼、圣杯、弹性、格栅、浮动、瀑布流、响应式)？上下垂直居中方案？回流vs重绘(重新计算元素的几何大小和位置引发回流，不影响布局变化的属性变动只会重绘；回流必将引起重绘，而重绘不一定会引起回流)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)? 渐进增强和优雅降级? inline-block之间为何有间隙？绝对定位元素如何判断是否重叠(offset, 中心点定位)？
 
 * **ES6** 熟悉哪些新特性？箭头函数(是否有arguments, 是否有自身的this对象和上下文, call能否覆盖箭头函数this, 不能用作构造函数，this指向创建时的上下文)？实现promise(fulfilled、rejected 或 pending, 状态不可逆转，易读可并行异步请求)? Promise、generator、async/await 的原理解释？let vs const vs var(作用域级别，变量声明提升，重复声明, const内存地址不可变，对象属性可变)? file文件转换成arrayBuffer或者Blob，base64String, Float32Array, DataView? 解构赋值和扩展运算符，rest属性(解构赋值...放在最后一位)剩余变量？ Generator 和 Iterator(生成器和迭代器)? Module和import, export? proxy? ES 6模块和commonjs模块的区别(值的引用 vs 值的拷贝，编译时输出 vs 运行时加载, 符号链接-只读 vs module.exports)？ ES 7中的decorator-装饰器(@withHeader)？ set去重(类似于数组结构，new Set(iterator))
 
@@ -23,7 +23,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 * vue 双向绑定(dom监听 + data监听 -> 访问器属性劫持 + 发布订阅模式进行通知)？模板语法，遇到过vuejs页面闪烁吗？v-if vs v-show区别(是否渲染, 频繁切换状态的性能差别)？vue 虚拟DOM和react 虚拟DOM的区别? 有哪些生命周期钩子函数？子系统的实现原理？ Vue.nextTick使用场景(类似于this.setState中的回调)？独立构建(standalone)和运行时构建(runtime-only)区别？
 
-* jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ? input标签的onchange事件怎么触发？输入后触发使用jquery的input事件。
+* jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ? input标签的onchange事件怎么触发？输入后触发请使用jquery的input事件。
 
 * 可视化：d3.js、echart(canvas)、highchart(svg)、Three.js(基于D3)、highstock、EaselJS、flv.js，如何技术选型？优缺点
 

@@ -1,17 +1,17 @@
 ## ECMAScript 6 新功能
 
-    > [es 6 案例解析](http://es6-features.org/)
+    [es 6 案例解析](http://es6-features.org/)
 
 * constants - 常量
 
     ECMAScript 6 写法：
-    ```
+    ```js
     const PI = 3.141593;
     PI > 3.0;
     ```
 
     ECMAScript 5 写法：
-    ```
+    ```js
     Object.defineProperty(typeof global === "object" ? global : window, "PI", {
         value:        3.141593,
         enumerable:   true,
@@ -23,7 +23,7 @@
 
 * 块作用域 - 变量和函数
 
-    ```
+    ```js
     {
         function foo () { return 1; }
         foo() === 1;
@@ -37,7 +37,7 @@
 
 * 箭头函数 - =>
 
-    ```
+    ```js
     odds  = evens.map(v => v + 1);
     pairs = evens.map(v => ({ even: v, odd: v + 1 }));
     nums  = evens.map((v, i) => v + i);
@@ -45,14 +45,14 @@
 
 * 扩展参数处理 - ...和默认值
 
-    ```
+    ```js
     function f (x, y, ...a) {
         return (x + y) * a.length;
     }
     f(1, 2, "hello", true, 7) === 9;
     ```
 
-    ```
+    ```js
     var params = [ "hello", true, 7 ];
     var other = [ 1, 2, ...params ]; // [ 1, 2, "hello", true, 7 ]
     f(1, 2, ...params) === 9;
@@ -69,7 +69,7 @@
 
     - 字符串插入
 
-        ```
+        ```js
         var customer = { name: "Foo" };
         var card = { amount: 7, product: "Bar", unitprice: 42 };
         message = `Hello ${customer.name},
@@ -80,18 +80,18 @@
     - 自定义插入
 
         ECMAScript 6 写法：
-        ```
+        ```js
         get`http://example.com/foo?bar=${bar + baz}&quux=${quux}`;
         ```
 
         ECMAScript 5 写法：
-        ```
+        ```js
         get(["http://example.com/foo?bar=", "&quux=", ""], bar + baz, quux);
         ```
 
     - 字符串访问
 
-        ```
+        ```js
         function quux (strings, ...values) {
             strings[0] === "foo\n";
             strings[1] === "bar";
@@ -109,13 +109,13 @@
     - 进制
 
         ECMAScript 6 写法：
-        ```
+        ```js
         0b111110111 === 503;
         0o767 === 503;
         ```
 
         ECMAScript 5 写法：
-        ```
+        ```js
         parseInt("111110111", 2) === 503;
         parseInt("767", 8) === 503;
         0767 === 503; // only in non-strict, backward compatibility mode
@@ -123,7 +123,7 @@
 
     - 编码
 
-        ```
+        ```js
         "𠮷".length === 2;
         "𠮷".match(/./u)[0].length === 2;
         "𠮷" === "\uD842\uDFB7";
@@ -136,7 +136,7 @@
 
     `obj = {x, y}` 等同于 `obj = {x: x, y: y}`;
 
-    ```
+    ```js
     let obj = {
         foo: "bar",
         [ "baz" + quux() ]: 42
@@ -153,7 +153,7 @@
 
 * 赋值分配
 
-    ```
+    ```js
     var list = [ 1, 2, 3 ];
     var [ a, , b ] = list;
     [ b, a ] = [ a, b ];    //a、b值互换
@@ -171,7 +171,7 @@
     ```
 
     ECMAScript 6 写法：
-    ```
+    ```js
     function f ([ name, val ]) {
         console.log(name, val);
     }
@@ -210,8 +210,8 @@
 
 * 模块
 
-    ```
-    //  lib/math.js
+    ```js
+    // lib/math.js
     export function sum (x, y) { return x + y };
     export var pi = 3.141593;
 
