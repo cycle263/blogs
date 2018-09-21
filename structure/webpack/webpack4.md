@@ -95,7 +95,7 @@
 
   Tree shaking一直是一个美丽而遥不可及的话题，它是一个术语，通常用于描述移除 JavaScript 上下文中的未引用代码。这个术语和概念实际上是兴起于 ES2015 模块打包工具 rollup。可以简单地理解为摇树，抖落掉枯萎无用的树叶。影响tree shaking的根本原因在于side effects（副作用），其中最广为人知的一条side effect就是动态引入依赖的问题。ES6其实也提供import()方法支持动态引入依赖，所以以下写法其实也是完全可行的。
 
-  webpack 2.0 开始原生支持 ES Module，也就是说不需要 babel 把 ES Module 转换成曾经的 commonjs 模块了，要使用 Tree Shaking，请关闭 babel 默认的模块转义。
+  webpack 2.0 开始原生支持 ES Module，也就是说不需要 babel 把 ES Module 转换成曾经的 commonjs 模块了，要使用 Tree Shaking，请关闭 babel 默认的模块转义，开启loose模式，避免babel转化产生新的副作用，导致shaking not working。
 
   ```js
   if(Math.random() > 0.5) {
