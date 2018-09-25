@@ -34,3 +34,9 @@
   `lsof -i tcp:port`
 
   `kill -9 PID  // 杀死进程` 
+
+* 快速截屏
+
+  `COMMAND+SHIFT+3`，截取全屏
+  
+  `COMMAND+SHIFT+4`，框取截屏
