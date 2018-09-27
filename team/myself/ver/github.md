@@ -35,3 +35,20 @@
   $$('#main_content')[0].style.paddingTop = '0px';
   $$('body')[0].style.fontSize = '15px';
   ```
+
+* 动态加载jQuery脚本
+
+  ```js
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.charset = 'utf-8';
+  script.async = true;
+  script.timeout = 120000;
+  script.src = 'http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js';
+  script.onload = function() {
+    console.log(arguments);
+    script.onload = null;
+  };
+  head.appendChild(script);
+  ```

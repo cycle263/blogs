@@ -63,7 +63,7 @@
 
 * [ ] 流式异步（stream），队列式异步(queue)
 
-* [ ] jQuery.getScript, $.load, $.get, $.post, $.getJSON, $('ele').load
+* [x] jQuery.getScript, $.load, $.get, $.post, $.getJSON, $('ele').load
 
 * [ ] scrollingElement
 

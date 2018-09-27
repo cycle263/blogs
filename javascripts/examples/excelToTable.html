@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>Excel to table</title>
+    <style>
+    table{
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      width: 100%;
+      display: table;
+      color: rgba(0, 0, 0, 0.87);
+    }
+    table tr {
+      height: 42px;
+    }
+    table th {
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.54);
+    }
+    table td, table th {
+      display: table-cell;
+      border-bottom: 1px solid rgba(224, 224, 224, 1);
+      text-align: left;
+    }
+    </style>
+  </head>
+  <body>
+    <div style="padding: 16px 0;margin-bottom: 16px;">
+      <input type="file" id="file" >
+    </div>
+    <table id="excel"></table>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.0/xlsx.full.min.js"></script>
+    <script>
+    $(function(){
+      var fileEle = $('#file'),
+        excelEle = $('#excel');
+      
+      var rABS = false; // true: readAsBinaryString ; false: readAsArrayBuffer
+      fileEle.on('change', function(){
+        var files = this.files;
+        var file = files[0];
+        var fileReader = new FileReader();
+        fileReader.onload = function(e) {
+          var data = e.target.result;
+          if (!rABS) data = new Uint8Array(data);
+          var workbook = XLSX.read(data, { type: rABS ? 'binary' : 'array' });
+          console.log(workbook);
+          var roa = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], { raw: false, header: 1 });
+          console.log(roa);
+          process_json(roa);
+        };
+        if (rABS) 
+          fileReader.readAsBinaryString(file); 
+        else 
+          fileReader.readAsArrayBuffer(file);
+      });
+
+      function process_json(data) {
+        var str = '';
+        data.forEach((item, i) => {
+          if (i === 0) {
+            str += '<thead><tr><th>' + item.join('</th><th>') + '</th></tr></thead><tbody>';
+          } else {
+            str += '<tr><td>' + item.join('</td><td>') + '</td></tr>';
+          }
+        });
+        str += '</tbody>';
+        excelEle.html(str);
+      }
+    });
+    </script>
+  </body>
+</html>
