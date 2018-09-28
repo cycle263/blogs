@@ -130,6 +130,19 @@
   image.src = 'data:image/gif;base64,' + base64String;
   ```
 
+* -> unicode
+
+  ```js
+  var GB2312UnicodeConverter = {
+    ToUnicode:function(str){
+      return escape(str).toLocaleLowerCase().replace(/%u/gi,'\\u');
+    }
+    ,ToGB2312:function(str){
+      return unescape(str.replace(/\\u/gi,'%u'));
+    }
+  };
+  ```
+
 * base64 <-> unicode
 
   ```js
@@ -141,7 +154,7 @@
   }
 
   b64EncodeUnicode('✓ à la mode'); // "4pyTIMOgIGxhIG1vZGU="
-  b64EncodeUnicode('\n'); // "Cg=="
+  b64EncodeUnicode('\n');       // "Cg=="
 
   function b64DecodeUnicode(str) {
     return decodeURIComponent(atob(str).split('').map(function(c) {
@@ -150,71 +163,58 @@
   }
 
   b64DecodeUnicode('4pyTIMOgIGxhIG1vZGU='); // "✓ à la mode"
-  b64DecodeUnicode('Cg=='); // "\n"
+  b64DecodeUnicode('Cg==');     // "\n"
   ```
 
 * utf8 -> unicode
 
   ```js
   function Utf8ToUnicode(strUtf8){
-      var bstr = "";
-      var nTotalChars = strUtf8.length;        // total chars to be processed.
-      var nOffset = 0;                                        // processing point on strUtf8
-      var nRemainingBytes = nTotalChars;        // how many bytes left to be converted
-      var nOutputPosition = 0;
-      var iCode, iCode1, iCode2;                        // the value of the unicode.
+    var bstr = "";
+    var nTotalChars = strUtf8.length;        // total chars to be processed.
+    var nOffset = 0;                         // processing point on strUtf8
+    var nRemainingBytes = nTotalChars;       // how many bytes left to be converted
+    var nOutputPosition = 0;
+    var iCode, iCode1, iCode2;                // the value of the unicode.
 
-      while (nOffset < nTotalChars)
-      {
-          iCode = strUtf8.charCodeAt(nOffset);
-          if ((iCode & 0x80) == 0)                        // 1 byte.
-          {
-              if ( nRemainingBytes < 1 )                // not enough data
-                      break;
-
-              bstr += String.fromCharCode(iCode & 0x7F);
-              nOffset ++;
-              nRemainingBytes -= 1;
-          }
-          else if ((iCode & 0xE0) == 0xC0)        // 2 bytes
-          {
-              iCode1 =  strUtf8.charCodeAt(nOffset + 1);
-              if ( nRemainingBytes < 2 ||                        // not enough data
-                        (iCode1 & 0xC0) != 0x80 )                // invalid pattern
-              {
-                      break;
-              }
-
-              bstr += String.fromCharCode(((iCode & 0x3F) << 6) | (iCode1 & 0x3F));
-              nOffset += 2;
-              nRemainingBytes -= 2;
-          }
-          else if ((iCode & 0xF0) == 0xE0)        // 3 bytes
-          {
-              iCode1 =  strUtf8.charCodeAt(nOffset + 1);
-              iCode2 =  strUtf8.charCodeAt(nOffset + 2);
-              if ( nRemainingBytes < 3 ||                        // not enough data
-                        (iCode1 & 0xC0) != 0x80 ||                // invalid pattern
-                        (iCode2 & 0xC0) != 0x80 )
-              {
-                      break;
-              }
-
-              bstr += String.fromCharCode(((iCode & 0x0F) << 12) |
-                              ((iCode1 & 0x3F) <<  6) |
-                              (iCode2 & 0x3F));
-              nOffset += 3;
-              nRemainingBytes -= 3;
-          } else                                                                // 4 or more bytes -- unsupported
+    while (nOffset < nTotalChars) {
+      iCode = strUtf8.charCodeAt(nOffset);
+      if ((iCode & 0x80) == 0) {              // 1 byte
+        if ( nRemainingBytes < 1 )            // not enough data
           break;
-      }
 
-      if (nRemainingBytes != 0) {
-          // bad UTF8 string.
-          return "";
-      }
+        bstr += String.fromCharCode(iCode & 0x7F);
+        nOffset ++;
+        nRemainingBytes -= 1;
+      } else if ((iCode & 0xE0) == 0xC0) {    // 2 bytes
+        iCode1 =  strUtf8.charCodeAt(nOffset + 1);
+        if ( nRemainingBytes < 2 || (iCode1 & 0xC0) != 0x80 ) {
+          break;
+        }
 
-      return bstr;
+        bstr += String.fromCharCode(((iCode & 0x3F) << 6) | (iCode1 & 0x3F));
+        nOffset += 2;
+        nRemainingBytes -= 2;
+      } else if ((iCode & 0xF0) == 0xE0) {
+        iCode1 =  strUtf8.charCodeAt(nOffset + 1);
+        iCode2 =  strUtf8.charCodeAt(nOffset + 2);
+        if ( nRemainingBytes < 3 ||  (iCode1 & 0xC0) != 0x80 || (iCode2 & 0xC0) != 0x80 ) {
+          break;
+        }
+
+        bstr += String.fromCharCode(((iCode & 0x0F) << 12) | ((iCode1 & 0x3F) <<  6) | (iCode2 & 0x3F));
+        nOffset += 3;
+        nRemainingBytes -= 3;
+      } else                      // 4 or more bytes -- unsupported
+        break;
+    }
+
+    if (nRemainingBytes != 0) {
+      // bad UTF8 string.
+      return "";
+    }
+
+    return bstr;
   }
   ```
 
@@ -222,7 +222,7 @@
 
   ```js
   function GB2312UTF8(){
-    this.Dig2Dec=function(s){
+    this.Dig2Dec = function(s){
       var retV = 0;
       if(s.length == 4){
         for(var i = 0; i < 4; i ++){
@@ -232,7 +232,7 @@
       }
       return -1;
     } 
-    this.Hex2Utf8=function(s){
+    this.Hex2Utf8 = function(s){
       var retS = "";
       var tempS = "";
       var ss = "";
@@ -251,7 +251,7 @@
       }
       return "";
     } 
-    this.Dec2Dig=function(n1){
+    this.Dec2Dig = function(n1) {
       var s = "";
       var n2 = 0;
       for(var i = 0; i < 4; i++){
@@ -264,8 +264,7 @@
       }
       return s;      
     }
-  
-    this.Str2Hex=function(s){
+    this.Str2Hex = function(s) {
       var c = "";
       var n;
       var ss = "0123456789ABCDEF";
@@ -277,7 +276,7 @@
       }
       return digS;
     }
-    this.Gb2312ToUtf8=function(s1){
+    this.Gb2312ToUtf8 = function(s1) {
       var s = escape(s1);
       var sa = s.split("%");
       var retV ="";
@@ -299,14 +298,14 @@
       }
       return retV;
     }
-    this.Utf8ToGb2312=function(str1){
+    this.Utf8ToGb2312 = function(str1) {
       var substr = "";
       var a = "";
       var b = "";
       var c = "";
       var i = -1;
       i = str1.indexOf("%");
-      if(i==-1){
+      if(i ==- 1) {
         return str1;
       }
       while(i != -1) {
@@ -315,7 +314,7 @@
           str1 = str1.substr(i+1,str1.length-i);
           a = str1.substr(0,2);
           str1 = str1.substr(2,str1.length - 2);
-          if(parseInt("0x" + a) & 0x80 == 0){
+          if(parseInt("0x" + a) & 0x80 == 0) {
             substr = substr + String.fromCharCode(parseInt("0x" + a));
           } else if(parseInt("0x" + a) & 0xE0 == 0xC0){ //two byte
             b = str1.substr(1,2);
@@ -375,7 +374,6 @@
     return new Blob(byteNumbers, {type: 'image/png'});
   }
   ```
-
 
 * base64 <-> blob
 

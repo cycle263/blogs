@@ -11,7 +11,7 @@ Introduction -> ES 6、JavaScript -> React|Vue|Angular
 
 * 字面量式函数和声明式函数的区别？(声明提升-not function) script defer(渲染完再按顺序执行) vs async(下载完就执行)? 原型继承 vs 类继承？(灵活，接口，抽象类) 怎么理解异步编程？立即执行函数（IIFE）作用？context vs scope vs this? 词法作用域(静态，不可变) vs 动态作用域(动态)? 闭包的理解、优缺点？this对象？原型链(顶端在哪)？作用域？变量声明提升？FormData提交的数据分为哪几部分? 事件冒泡和事件捕获，事件委托? 宿主对象(window,global,xmlhttprequest) vs 原生对象(String,Math,Array等)？浅拷贝和深拷贝区别（是否分配新内存）？基本类型 vs 引用类型（基本类型如Number, 名值都存于栈内存，引用类型如Object，名存栈内，值存堆内存，并用引用地址指向堆）？setTimeout里面运行的函数的作用域this指向? setTimeout vs setInterval?  事件代理的原理？节流(固定时间段执行一次)和防抖(未到延迟时间，重新计时)？钩子函数vs回调函数vs高阶函数？怎么理解高阶函数？(将函数当做参数传递，并返回新函数) 柯里化函数 vs 高阶函数(柯里化函数一定是高阶函数，反之不一定)？new String('a') vs 'a'（字符串基本类型，字符串对象）？
 
-* Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？ webworker?(后台运行) localStorage vs sessionStorage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义，无function.caller和function.arguments)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？ 不可以，原因使用下标访问时，只是临时创建的array对象。++i vs i++?
+* Ajax跨域(jsonp, 动态script, iframe, window.name, postMessage, cors2, 代理服务器)？ fetch vs axios vs ajax vs XMLHttpRequest？ webworker?(后台运行) localStorage vs sessionStorage? bind操作? new操作? IIFE(http协议标准、json标准)?js垃圾回收：标记清除和引用计数？异步编程(执行栈、消息队列)？严格模式的好处(意外全局变量，this自动转换，重复定义，无function.caller和function.arguments)？Function.prototype.call vs apply？iframe的优缺点(阻塞主页面的Onload事件,并行加载限制)？js中不可以直接使用【下标方式】修改字符串内容？js语句结束加分号吗？ 不可以，原因使用下标访问时，只是临时创建的array对象。++i vs i++?
 
 * canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
 

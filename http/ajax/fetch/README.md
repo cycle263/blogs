@@ -13,6 +13,7 @@ fetch号称是AJAX的替代品，是在ES6出现的，使用了ES6中的promise�
   - fetch默认不会带cookie，需要添加配置项
   - fetch不支持abort，不支持超时控制，使用setTimeout及Promise.reject的实现的超时控制并不能阻止请求过程继续在后台运行，造成了流量的浪费
   - fetch没有办法原生监测请求的进度，而XHR可以
+  - fetch对象的 body.json 和 body.text 方法默认使用utf-8编码，并且无法修改编码格式
 
 ```js
 fetch(fetchurl, {

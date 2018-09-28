@@ -51,7 +51,7 @@
 
 * [ ] 首屏时间，白屏时间，性能指标
 
-* [ ] 爬虫，防爬
+* [ ] 爬虫，防爬    防盗，反防盗
 
 * [ ] Tapable vs Emiter vs Sub/Pub
 
@@ -68,3 +68,7 @@
 * [ ] scrollingElement
 
 * [ ] 离线包，jsBridge
+
+* [ ] fetch vs axios vs ajax vs XMLHttpRequest vs jQuery.ajax？
+
+* [ ] 

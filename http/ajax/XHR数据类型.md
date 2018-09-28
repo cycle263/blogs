@@ -95,7 +95,7 @@
       Blob可以append ArrayBuffer的数据，可以列举为更加高级的二进制大对象。
 
       ```js
-      // 创建一个8字节的ArrayBuffer  
+      // 创建一个8字节的ArrayBuffer   
       var b = new ArrayBuffer(8);  
 
       // 创建一个指向b的视图v1，采用Int32类型，开始于默认的字节索引0，直到缓冲区的末尾  

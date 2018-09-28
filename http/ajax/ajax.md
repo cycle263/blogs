@@ -12,6 +12,10 @@
 
   "application/json", JSON方式请求
 
+  - 指定response的数据类型，content-type
+
+    XHR1可使用overrideMimeType方法，XHR2使用xhr.responseType。
+
 * ajax预检请求
 
   非简单请求是那种对服务器有特殊要求的请求，比如请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为"预检"请求（preflight）。  
@@ -27,6 +31,12 @@
     该字段是一个逗号分隔的字符串，指定浏览器CORS请求会额外发送的头信息字段，上例是X-Custom-Header。
 
   响应：服务器收到"预检"请求以后，检查了Origin、Access-Control-Request-Method和Access-Control-Request-Headers字段以后，确认允许跨源请求，就可以做出回应。
+
+* response header
+
+  W3C的 xhr 标准中做了限制，规定客户端无法获取 response 中的 Set-Cookie、Set-Cookie2这2个字段，无论是同域还是跨域请求。W3C 的 cors 标准对于跨域请求也做了限制，规定对于跨域请求，客户端允许获取的response header字段只限于“simple response header”和“Access-Control-Expose-Headers” 。
+
+  getAllResponseHeaders()只能拿到限制内的header, getResponseHeader方法也只能传参为限制内的，否则报Refused to get unsafe header的错误。
 
 
 ## 有趣知识点
