@@ -59,7 +59,7 @@
 
 * [ ] execCommand, getSelection, createRange
 
-* [ ] redux-saga, redux-thunk, redux-promise比较
+* [ ] redux-saga, redux-thunk, redux-promise比较, redux vs mbox
 
 * [ ] 流式异步（stream），队列式异步(queue)
 

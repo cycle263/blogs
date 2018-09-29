@@ -63,6 +63,11 @@
   }
   ```
 
-  - 绕过图片防盗链
+* 如何绕过图片防盗链？
 
-    + 中转服务器
+  - 后端预下载，也就是将图片直接下载下来成为自己的，当然就不受防盗链的限制了，但有侵犯知识产权的问题存在
+
+  - 第三方代理，也就是下载的过程交由第三方来处理，推荐常用的有：`https://images.weserv.nl?url=referrerUrl&w=100`，这种方式避免了产权问题，牺牲了性能。
+
+  - 删除Header中的Referrer，MDN推荐关闭referrer方式，在meta标签中设置referrer值为no-referrer，这种方式相当于取消了文档中所有链接的referrer，也可以使用referrerPolicy，精准地指定某一个资源的referrer政策，`<img src="x.jpg" referrerPolicy="no-referrer" />`
+

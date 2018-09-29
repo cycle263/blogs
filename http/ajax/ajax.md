@@ -14,7 +14,56 @@
 
   - 指定response的数据类型，content-type
 
-    XHR1可使用overrideMimeType方法，XHR2使用xhr.responseType。
+    XHR1可使用overrideMimeType方法，XHR2使用xhr.responseType属性，更加方便。
+
+* timeout
+
+  超过 timeout 设置时间请求还没有结束（包括成功/失败），则会触发ontimeout事件，主动结束该请求。计时起始点为xhr.send()方法的调用时刻，结束为xhr.loadend触发时刻。
+
+  当xhr为一个sync同步请求时，xhr.timeout必须置为0，否则会抛错。
+
+* async vs sync
+
+  当xhr为同步请求时，有如下限制：
+
+  - xhr.timeout必须为0
+
+  - xhr.withCredentials必须为 false
+
+  - xhr.responseType必须为""（注意置为"text"也不允许）
+
+* send类型
+
+  - ArrayBuffer
+  - Blob
+
+  - Document，如果data是 Document 类型，同时也是HTML Document类型，则content-type默认值为text/html; charset=UTF-8;否则为application/xml; charset=UTF-8。
+
+  - DOMString，content-type默认值为text/plain; charset=UTF-8
+
+  - FormData，content-type默认值为multipart/form-data; boundary=[xxx]
+
+  - null
+
+* withCredentials
+
+  在发同域请求时，浏览器会将cookie自动加在request header中；但在发送跨域请求时，cookie并没有自动加在request header中。
+
+  分析原因：在CORS标准中做了规定，默认情况下，浏览器在发送跨域请求时，不能发送任何认证信息（credentials）如"cookies"和"HTTP authentication schemes"。除非xhr.withCredentials为true（xhr对象有一个属性叫withCredentials，默认值为false）。
+
+  所以根本原因是cookies也是一种认证信息，在跨域请求中，client端必须手动设置xhr.withCredentials=true，且server端也必须允许request能携带认证信息（即response header中包含Access-Control-Allow-Credentials:true），并且一定不能将Access-Control-Allow-Origin设置为*，而必须设置为请求页面的域名，这样浏览器才会自动将cookie加在request header中。
+
+* xhr事件触发顺序
+
+  正常情况下，事件的触发顺序如下：
+
+  ```js
+  xhr.onreadystatechange
+  xhr.onloadstart
+  xhr.onprogress
+  xhr.onload
+  xhr.onloadend
+  ```
 
 * ajax预检请求
 

@@ -44,31 +44,31 @@
 
     npm 默认提供下面这些钩子:
 
-      prepublish，postpublish
+    - prepublish，postpublish
 
-      preinstall，postinstall
+    - preinstall，postinstall
 
-      preuninstall，postuninstall
+    - preuninstall，postuninstall
 
-      preversion，postversion
+    - preversion，postversion
 
-      pretest，posttest
+    - pretest，posttest
 
-      prestop，poststop
+    - prestop，poststop
 
-      prestart，poststart
+    - prestart，poststart
       
-      prerestart，postrestart
+    - prerestart，postrestart
 
   * 脚本简写
 
-    npm start是npm run start
+    `npm start` 是 `npm run start`
 
-    npm stop是npm run stop的简写
+    `npm stop` 是 `npm run stop`的简写
 
-    npm test是npm run test的简写
+    `npm test` 是 `npm run test`的简写
 
-    npm restart是npm run stop && npm run restart && npm run start的简写
+    `npm restart` 是 `npm run stop && npm run restart && npm run start`的简写
 
   * 脚本变量
 

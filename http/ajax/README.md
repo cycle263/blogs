@@ -12,6 +12,8 @@
 
   * [fetch](fetch)
 
+    fetch号称是AJAX的替代品，是在ES6出现的，使用了ES6中的promise对象。Fetch是基于promise设计的。Fetch的代码结构比起ajax简单多了，参数有点像jQuery ajax。但是，一定记住fetch不是ajax的进一步封装，而是原生js。Fetch函数就是原生js，没有使用XMLHttpRequest对象。
+
   * [axios](https://github.com/axios/axios)
 
     axios不是原生JS的，需要进行安装，它不但可以在客户端使用，而且可以在nodejs端使用。Axios也可以在请求和响应阶段进行拦截。同样也是基于promise对象的。

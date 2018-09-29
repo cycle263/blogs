@@ -31,9 +31,9 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
   - css-module，增加样式hash后缀，避免组件之间的样式干扰，缺点是增大了打包后的文件大小。
 
-  - jsx文件未ES5化，成熟的 npm 包会在发布前将自己 es5，甚至 es3 化，这些依赖包完全没有经过 babel 的必要。可以配置loader的exclude项过滤。实际上，在当下 2018 年，对于大部分用户(90%)而言，我们根本不需要把代码编译到 ES5，不仅体积大，而且运行速度慢。支持 <script type="module"> 的浏览器，必然支持下面的特性：async/await、Promise、Class、箭头函数、Map/Set、fetch 等等...
+  - jsx文件未ES5化，成熟的 npm 包会在发布前将自己 es5，甚至 es3 化，这些依赖包完全没有经过 babel 的必要。可以配置loader的exclude项过滤。实际上，在当下 2018 年，对于大部分用户(90%)而言，我们根本不需要把代码编译到 ES5，不仅体积大，而且运行速度慢。支持 `<script type="module">` 的浏览器，必然支持下面的特性：async/await、Promise、Class、箭头函数、Map/Set、fetch 等等...
 
-  而不支持 <script type="module"> 的老旧浏览器，会因为无法识别这个标签，而不去加载 ES2015+ 的代码。另外老旧的浏览器同样无法识别 nomodule 熟悉，会自动忽略它，从而加载 ES5 标准的代码。
+  而不支持 `<script type="module">` 的老旧浏览器，会因为无法识别这个标签，而不去加载 ES2015+ 的代码。另外老旧的浏览器同样无法识别 nomodule 熟悉，会自动忽略它，从而加载 ES5 标准的代码。
 
     ```js
     {
@@ -50,7 +50,7 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
     }
     ```
 
-  - externals，把我们的依赖申明为一个外部依赖，外部依赖通过 <script> 外链脚本引入。这样配置可以减少打包构建速度，充分利用CDN缓存机制，具体配置： `externals: ['react', 'react-dom', 'react-router']`
+  - externals，把我们的依赖申明为一个外部依赖，外部依赖通过 `<script>` 外链脚本引入。这样配置可以减少打包构建速度，充分利用CDN缓存机制，具体配置： `externals: ['react', 'react-dom', 'react-router']`
 
   - alias, resolve.alias 模块别名定义，直接引用别名即可，也可以提高webpack搜索的速度
 
@@ -93,10 +93,45 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
 
     + 使用 Intersection Observer API 来获取元素的可见性。
 
+  - 图片加载优化
+
+    base64化，减少http请求，推荐使用HTTP2，多路连接复用
+
+    使用压缩的图片格式webP、sharpP（压缩图方案，比webP效率更高）
+
   - 占位显示（placeholder）
 
     在加载文本、图片的时候，经常出现“闪屏”的情况，比如图片或者文字还没有加载完毕，此时页面上对应的位置还是完全空着的，然后加载完毕，内容会突然撑开页面，导致“闪屏”的出现，造成不好的体验。为了避免这种突然撑开的情况，我们要做的就是提前设置占位元素，也就是 placeholder，成熟的第三方组件：react-placeholder、react-hold
 
+  - 作用域提升
+
+    ModuleConcatenationPlugin(webpack3) -> optimization.concatenateModules(webpack4)。scope hoisting的效果同样也依赖于静态分析。带来的好处是，减少bundle体积，较少不必要的作用域。
+
+    实现原理：分析出模块之间的依赖关系，尽可能的把打散的模块合并到一个函数中去，但前提是不能造成代码冗余。
+
+    ```js
+    /* 开启前 */
+    [
+      /* 0 */
+      function(module, exports, require) {
+          var module_a = require(1)
+          console.log(module_a['default'])
+      }
+
+      /* 1 */
+      function(module, exports, require) {
+          exports['default'] = 'module A'
+      }
+    ]
+
+    /* 开启后 */
+    [
+      function(module, exports, require) {
+          var module_a_defaultExport = 'module A'
+          console.log(module_a_defaultExport)
+      }
+    ]
+    ```
 
 
 ## 分割代码的方式

@@ -26,3 +26,15 @@
   HTTP/2 将每个请求或回应的所有数据包，称为一个数据流（stream）。每个数据流都有一个独一无二的编号。数据包发送的时候，都必须标记数据流ID，用来区分它属于哪个数据流。客户端发出的数据流，ID为奇数，服务器发出的，ID为偶数。
 
   数据流发送到一半的时候，客户端和服务器都可以发送信号（RST_STREAM帧），取消这个数据流。客户端还可以指定数据流的优先级。优先级越高，服务器就会越早回应。
+
+
+## 其他优化技巧
+
+* DNS 预获取
+
+  加了 dns-prefetch 可以提前去解析资源的域名，这样可以减少网络请求时间。
+
+  ```html
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="http://www.test.com/">
+  ```

@@ -8,6 +8,7 @@
 
       ```js
       // 生成了一个超级链接，点击后提示下载文本文件hello-world.txt，文件内容为“Hello World”。
+
       var blob = new Blob(["Hello World"]);
 
       var a = document.createElement("a");
@@ -22,6 +23,7 @@
 
       ```js
       // 使用XMLHttpRequest对象，将大文件分割上传
+
       function upload(blobOrFile) {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/server', true);

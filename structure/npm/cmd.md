@@ -10,7 +10,7 @@
 
 * config 添加一些设置，可以供scripts读取用，同时这里的值也会被添加到系统的环境变量中。
 
-    ```
+    ```json
     "config": {
         "port": "8080"
     }
@@ -21,13 +21,20 @@
 * engines  
 
     指定包运行的环境
-    ```
+    ```json
     "engines": {
         "node": ">=0.10.3 < 0.12",
         "npm": "~1.0.20"
     }
     ```
 
+* 多个script命令执行
+
+    ```js
+    npm run script1.js & npm run script2.js     // 并行执行（同时执行）
+
+    npm run script1.js && npm run script2.js    // 继发执行 （执行完前一个才执行下一个）
+    ```
 
 ## 常用命令
 
@@ -62,7 +69,7 @@
 
 * 优质的镜像地址
 
-    ```
+    ```json
     alibaba -- http://registry.npm.alibaba-inc.com
     npm ---- https://registry.npmjs.org/
     cnpm --- http://r.cnpmjs.org/
