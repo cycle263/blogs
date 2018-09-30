@@ -34,3 +34,10 @@
 | tti	 | Time to Interact，首次可交互时间 | 	domInteractive - fetchStart	 | 浏览器完成所有 HTML 解析并且完成 DOM 构建，此时浏览器开始加载资源 |
 | ready	| HTML 加载完成时间， 即 DOM Ready 时间	| domContentLoadEventEnd - fetchStart	| 如果页面有同步执行的 JS，则同步 JS 执行时间 = ready - tti |
 | load	| 页面完全加载时间	| loadEventStart - fetchStart	| load = 首次渲染时间 + DOM 解析耗时 + 同步 JS 执行 + 资源加载耗时 | 
+
+
+## 监控埋点技巧
+
+* 合并上报
+
+  收集数据，放入队列，延时对这些队列里的请求参数做压缩，生成一个统一的 URL，再将之发送至服务器中，以减少请求节省流量。
