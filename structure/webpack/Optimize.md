@@ -1,6 +1,6 @@
 ## webpack之性能优化
 
-webpack的优化技巧，提升构建速度，减少构建包大小等。
+webpack的优化技巧，提升构建速度，减少构建包大小，加快页面加载速度等。
 
 * 优化的相关概念
 
@@ -131,6 +131,45 @@ webpack的优化技巧，提升构建速度，减少构建包大小等。
           console.log(module_a_defaultExport)
       }
     ]
+    ```
+
+  - HappyPack
+
+    webpack的打包过程是io密集和计算密集型的操作，如果能同时fork多个进程并行处理各个任务，将会有效的缩短构建时间，HappyPack就能做到这点。其中happyThreadPool是根据cpu数量生成的共享进程池，防止过多的占用系统资源。
+
+    ```js
+    const HappyPack = require('happypack');
+    const os = require('os');
+
+    const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+
+    module.exports = {
+      ...
+      module: {
+        plugins: [
+          ...
+          new HappyPack({
+              id: 'happyBabel',
+              loaders: [{
+                  loader: 'babel-loader',
+                  options: {
+                      cacheDirectory: true,
+                      presets: ['react', 'es2015', 'stage-0'],
+                      plugins: ['add-module-exports', 'transform-decorators-legacy'],
+                  },
+              }],
+              threadPool: happyThreadPool,
+              verbose: true,
+          }),
+          new HappyPack({
+              id: 'happyCss',
+              loaders: ['css-loader', 'postcss-loader'],
+              threadPool: happyThreadPool,
+              verbose: true,
+          }),
+        ],
+      }
+    };
     ```
 
 

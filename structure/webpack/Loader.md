@@ -24,7 +24,18 @@
 
   - css-loader 解析CSS文件后，使用import加载，并且返回CSS代码，参数module开启避免模块之间的样式干扰，也就是className值hash化。
 
-  - postcss-loader 使用 PostCSS 加载和转译 CSS/SSS 文件。另外，autoprefixer是postcss的一个插件, 在新的css属性上加前缀，如：'-webkit-'
+  - postcss-loader 使用 PostCSS 加载和转译 CSS/SSS 文件。另外，autoprefixer是postcss的一个插件, 在新的css属性上加前缀，如：'-webkit-'。postcss-loader 与 postcss-sprites: 合成雪碧图, 减小HTTP请求. 注意合成后的图片文件大小。
+
+  ```json
+  // 雪碧图
+  {
+    loader: "postcss-loader",
+    options: {
+      ident: "postcss",
+      plugins: [require("postcss-sprites")(spritesConfig)]
+    }
+  }
+  ```
 
   - less-loader 加载和转译 LESS 文件
 
@@ -38,16 +49,16 @@
 
   - expose-loader 用来把模块暴露到全局变量
   
-    ```js
-    {
-      test: require.resolve('jquery'),  // require.resolve 用来得到模块对应的绝对路径
-      loader: 'expose-loader?$!expose-loader?jQuery'
-    }
-    ```
+  ```json
+  {
+    test: require.resolve('jquery'),  // require.resolve 用来得到模块对应的绝对路径
+    loader: 'expose-loader?$!expose-loader?jQuery'
+  }
+  ```
 
   - babel-loader 加载 ES2015+ 代码，然后使用 Babel 转译为 ES5
 
-  ```js
+  ```json
   {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,

@@ -2,6 +2,10 @@
 
 > webpack 每一个依赖等都是 module, 最后 trunk 的输出，就是对一个个 module 做排序、拼接、渲染，得到最后的 trunk 内容。
 
+* chunkId
+
+	一个chunk里面可以包含多个module。
+
 * moduleId
 
 默认情况下，moduleId为增量数字，可以使用插件方式改变成其他ID。
@@ -12,7 +16,7 @@
   ...
 })([
   (function (module, __webpack_exports__, __webpack_require__) {
-    /* ... */
+    /* ... */		// moduleId
   }),
   (function (module, __webpack_exports__, __webpack_require__) {
     /* ... */
