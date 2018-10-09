@@ -67,6 +67,7 @@ function uuid(){
 	}
 	return rng();
 }
+// Uint8Array(16) [195, 197, 116, 222, 147, 62, 177, 38, 206, 81, 20, 143, 154, 238, 67, 65]
 
 function bytesToUuid(buf, offset) {
   var i = offset || 0;
