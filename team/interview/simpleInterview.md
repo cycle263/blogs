@@ -38,14 +38,14 @@ Introduction -> ES 6/7、JavaScript、Css -> React|Vue|Angular
 * 理想的前端开发和部署流程？（对前端工程进行流程化开发，nginx的combo技术，对前端GUI软件编译合并打包）无缝发布部署，先部署页面还是资源？非覆盖式更新，灰度发布(全量发布)，错误监控和分析，安全性监控？自动化测试框架（mocha）？SPA(单页面)优势？（减少请求，减少页面刷新，更适合多端） 版本控制系统(svn、git)? 
 
 ## 全面性考察
-* 浏览器内核一般包括哪些线程？在浏览器中输入url到页面内容全部显示？html文档解析过程？Get vs Post(历史记录和日志，参数容量限制)  
-  从上至下，从外至内。url -> 域名解析 -> ip地址和端口，建立TCP连接 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应
+* 浏览器内核一般包括哪些线程？（GUI 渲染线程，javascript 引擎线程，浏览器事件触发线程，定时触发器线程，异步 http 请求线程）html文档解析过程？在浏览器中输入url到页面内容全部显示？
+  （从上至下，从外至内。url -> 域名解析 -> ip地址和端口，建立TCP连接 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应）
 
 * 前端安全：sql注入? XSS(跨站脚本攻击->输入特殊字符转义过滤)? CSRF(跨站请求伪造->表单增加hash值，POST更新)？同源策略？ jsBridge原因和安全（webview，注入js; 拦截url->分析->执行原生方法->传递回调）？
 
 ## 加分技能
 
-* **http**协议？websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 如何基于http协议建立一个长连接？浏览器缓存种类、区别与使用细节？post请求是否可以网络缓存？http 304状态码？301 vs 302(永久重定向和临时，SEO地址和内容抓取不同)? 协商缓存（etag、last-modified）与强制缓存（cache-control、expires）的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。https加密的原理？http请求的幂等性（get,delete,put幂等，post不满足）cookie vs session(client vs server, 安全性，容量)？三次握手 + 四次挥手？
+* **http**协议？Get vs Post(历史记录和日志，参数容量限制，明文显示) websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 如何基于http协议建立一个长连接？浏览器缓存种类、区别与使用细节？post请求是否可以网络缓存？http 304状态码？301 vs 302(永久重定向和临时，SEO地址和内容抓取不同)? 协商缓存（etag、last-modified）与强制缓存（cache-control、expires）的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。https加密的原理？http请求的幂等性（get,delete,put幂等，post不满足）cookie vs session(client vs server, 安全性，容量)？三次握手 + 四次挥手？
 
 * 熟悉的设计模式：订阅模式、观察者模式、工厂模式，单例模式; 流行的mvc，mvvc，mv*架构模式；接口的设计：REST API vs GraphQL(Apollo-请求多组数据)；其他脚本语言：typescrpt?  编码格式，字节码等： encodeURI vs escape(utf-8 vs unicode)？ASCII、Unicode、GBK、UTF-8之间的关系？编码之间的转换(gbk -> utf-8)？新开发模式：PWA-渐进式增强progressive web app?(全屏运行、离线能力、推送通知) ，小程序，多端开发，WebAssembly-字节码标准(Java 字节码)?
 
