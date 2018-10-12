@@ -29,7 +29,7 @@ Introduction -> ES 6/7、JavaScript、Css -> React|Vue|Angular
 
 ## 前端工程化
 
-* **webpack**打包原理？插件的基本原理？webpack缓存可能存在的坑（精准缓存），解决方案？（构建hash化实现久缓存）webpack代码分隔？webpack性能优化手段？(tree shaking - 去掉无用冗余代码, scope hoisting,Code Splitting,Long-term caching) 编译出的文件过大怎么办，速度过慢怎么办？多页面可能存在的坑（跨路由跳转，传参），解决方案？webpack打包时，模块循环引用会发生什么后果(导出匿名方法)？webpack中怎么实现按需加载？（多入口，require.ensure，import().then等）webpack中的require.ensure什么作用？webpack为毛难用？(文档不完善，过于依赖插件，配置繁琐) webpack的loader加载顺序（右->左,下->上, compose-reduceRight, pipe-reduce）怎么理解函数副作用（有外部变量影响，包含原型链影响）？
+* **webpack**打包原理？插件的基本原理？webpack缓存可能存在的坑（精准缓存），解决方案？（构建hash化实现久缓存）webpack代码分隔？webpack性能优化手段？(tree shaking - 去掉无用冗余代码, scope hoisting,Code Splitting,Long-term caching) 编译出的文件过大怎么办，速度过慢怎么办？多页面可能存在的坑（跨路由跳转，传参），解决方案？webpack打包时，模块循环引用会发生什么后果(导出匿名方法)？webpack中怎么实现按需加载？（多入口，require.ensure，import().then等）webpack中的require.ensure什么作用？webpack为毛难用？(文档不完善，过于依赖插件，配置繁琐) webpack的loader加载顺序（右->左,下->上, compose-reduceRight, pipe-reduce）怎么理解函数副作用（有外部变量影响，包含原型链影响）？ webpack中的热更新原理？
 
 * gulp、grunt、webpack等构建工具各自优缺点，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案。  
 

@@ -10,7 +10,29 @@
 
 - 工作流程
 
-  `分析代码 -> 寻找依赖 -> 生成依赖链 -> 使用对应的loader -> 生成抽象语法树AST -> 遍历AST, 输出js`
+  ```flow
+  st=>start: 分析代码
+  op1=>operation: 寻找依赖
+  op2=>operation: 生成依赖链
+  op3=>operation: 使用对应的loader
+  op4=>operation: 生成抽象语法树AST
+  e=>end: 遍历AST，输出chunk
+  st->op1(right)->op2(right)->op3->op4->e
+  ```
+
+- 构建流程
+
+  `初始化参数(config+shell) -> 初始化Compiler对象，加载插件，执行run方法开始编译 -> 找出所有入口文件 -> `
+
+  ```flow
+  st=>start: 初始化参数(config+shell)
+  op1=>operation: 初始化Compiler对象，加载插件，执行run方法开始编译
+  op2=>operation: 出所有入口文件
+  op3=>operation: 使用对应的loader
+  op4=>operation: 生成抽象语法树AST
+  e=>end: 遍历AST，输出chunk
+  st->op1->op2->op3->op4
+  ```
 
 ## webpack4区别
 
