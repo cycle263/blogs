@@ -1,6 +1,6 @@
 ## Promise标准
 
-```
+```js
 var promise = new Promise(function(resolve, reject) {
   // 异步操作的代码
 
@@ -20,7 +20,7 @@ var promise = new Promise(function(resolve, reject) {
 
 * Promise值得穿透
 
-  ```
+  ```js
   new Promise(resolve=>resolve(8))
   .then()
   .catch()

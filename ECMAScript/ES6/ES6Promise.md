@@ -14,7 +14,8 @@
   它们是两个函数，由JavaScript引擎提供，不用自己部署。  
   Promise实例生成以后，可以用then方法分别指定Resolved状态和Reject状态的回调函数。then方法可以接受两个回调函数作为参数。  
   第一个回调函数是Promise对象的状态变为Resolved时调用，第二个回调函数是Promise对象的状态变为Reject时调用。  
-  ```﻿
+  
+  ```js
   function msgAfterTimeout (msg, who, timeout) {
       return new Promise((resolve, reject) => {
           setTimeout(() => resolve(`${msg} Hello ${who}!`), timeout)
@@ -58,7 +59,7 @@
 
   Promise.all方法用于将多个Promise实例，包装成一个新的Promise实例。有一个被rejected，新的promise的状态就变成rejected。 then回调参数为array
 
-    ```
+    ```js
     function fetchAsync (url, timeout, onData, onError) {
         …
     }

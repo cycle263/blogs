@@ -7,3 +7,5 @@
 * vs Grunt
 
   相比grunt而言，gulp容易上手，基于stream，管道拼接多个tash；
+
+* vs Parcel
