@@ -1,6 +1,6 @@
 ## React
 
-  > 一个组件的渲染函数就是一个基于 state 和 props 的纯函数，state 是自己的，props 是外面来的，任何东西变了就重新渲染一遍.
+一个组件的渲染函数就是一个基于 state 和 props 的纯函数，state 是自己的，props 是外面来的，任何东西变了就重新渲染一遍.
 
 * 状态管理框架
 
@@ -18,7 +18,13 @@
 
 * [初试React route 4](./router/router4)
 
-* [经验总结](./Note)
+* [diff算法初识](./Note/diff)
+
+* [react事件系统](./Note/event)
+
+* [react的setstate方法](./Note/setState)
+
+* [react与其他框架比较](./Note/compare)
 
 * [React UI](./antd)
 
@@ -55,3 +61,36 @@
 - 依次执行事务中的操作步骤：a, b, c, d...
 
 - 全部成功，提交事务；失败任何一个，回滚事务
+
+```js
+// react Transaction
+var Transaction = require('./Transaction');
+
+// 我们自己定义的 Transaction
+var MyTransaction = function() {
+  // do sth.
+};
+
+Object.assign(MyTransaction.prototype, Transaction.Mixin, {
+  getTransactionWrappers: function() {
+    return [{
+      initialize: function() {
+        console.log('before method perform');
+      },
+      close: function() {
+        console.log('after method perform');
+      }
+    }];
+  };
+});
+
+var transaction = new MyTransaction();
+var testMethod = function() {
+  console.log('test');
+}
+transaction.perform(testMethod);
+
+// before method perform
+// test
+// after method perform
+```

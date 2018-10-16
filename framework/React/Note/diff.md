@@ -32,41 +32,15 @@
 
 ![diff](../images/key.webp )
 
-## react setState
 
-![diff](../images/setstate.png )
+* shouldComponenetUpdate
 
-```js
-var Transaction = require('./Transaction');
+  避免重复渲染，避免不必要的diff比较
 
-// 我们自己定义的 Transaction
-var MyTransaction = function() {
-  // do sth.
-};
+* PureComponent作用失效
 
-Object.assign(MyTransaction.prototype, Transaction.Mixin, {
-  getTransactionWrappers: function() {
-    return [{
-      initialize: function() {
-        console.log('before method perform');
-      },
-      close: function() {
-        console.log('after method perform');
-      }
-    }];
-  };
-});
+  进行浅比较，非js基本类型失效，onClick回调使用箭头函数，每次回调匿名函数都会是不同对象，PureComponent作用失效
 
-var transaction = new MyTransaction();
-var testMethod = function() {
-  console.log('test');
-}
-transaction.perform(testMethod);
-
-// before method perform
-// test
-// after method perform
-```
 
 ## shouldComponentUpdate比较
 

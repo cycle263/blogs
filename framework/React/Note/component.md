@@ -31,7 +31,7 @@
 
 * Mixins
 
-  > (混入)是面向对象编程OOP的一种实现，其作用是为了复用共有的代码，将共有的代码通过抽取为一个对象，然后通过Mixins进该对象来达到代码复用.
+  (混入)是面向对象编程OOP的一种实现，其作用是为了复用共有的代码，将共有的代码通过抽取为一个对象，然后通过Mixins进该对象来达到代码复用.
 
 ```js
 // React.Component方式不支持Mixins
@@ -53,6 +53,6 @@ const Contacts = React.createClass({
 });
 ```
 
-## createClass vs extends React.Component
+* createClass vs extends React.Component
 
-  * 通过extends方式生成的组件，没有createClass中对getInitialState及getDefaultProps的显示管理
+  通过extends方式生成的组件，没有createClass中对getInitialState及getDefaultProps的显示管理

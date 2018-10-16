@@ -64,3 +64,9 @@
     + redux 函数式（Functional）管理，state 是不可变对象，适合大型项目
 
     + MobX 响应式（Reactive）管理，state 是可变对象，适合中小型项目
+
+
+
+## vs React 16
+
+* componentWillMount、componentWillReceiveProps、componentWillUpdate vs getDerivedStateFromProps
