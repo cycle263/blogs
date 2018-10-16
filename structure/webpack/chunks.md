@@ -29,6 +29,8 @@
     }
     ```
 
+    备注：hash 的默认长度为 20 个字符，可通过 output.hashDigestLength 全局配置，或使用 [hash:16] 方式配置，还可以通过 output.hashDigest 配置何时生成 hash。
+
 * 不稳定的chunkhash
 
     Chunk 的生成还涉及到依赖解析和模块 ID 分配，这是无法稳定实质上没有变化的 chunk 文件的 chunkhash 变动问题的本源。

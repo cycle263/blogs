@@ -84,11 +84,11 @@
 
     除了render方法都需要自己绑定指向当前Element的this对象, 以下几种方式：
 
-      - =>箭头函数声明方式可以自动绑定(onClick={() => this.tick()})
+    - =>箭头函数声明方式可以自动绑定(onClick={() => this.tick()})
 
-      - 亦或者在构造函数中绑定(this.tick = this.tick.bind(this);)  -- 一次绑定随处可用
+    - 亦或者在构造函数中绑定(this.tick = this.tick.bind(this);)  -- 一次绑定随处可用
 
-      - 亦或者在事件定义时绑定（onClick={this.click.bind(this)}）
+    - 亦或者在事件定义时绑定（onClick={this.click.bind(this)}）
 
   + 事件处理函数传参
 
@@ -113,6 +113,12 @@
     return React.createElement.bind(null, type);
   }
   ```
+
+* 受控组件 vs 非受控组件
+
+  受控组件完全受控于react的state，可以理解为react的双向绑定；
+
+  非受控组件也就是不完全受控于state
 
 * 函数组件 vs 类组件
 

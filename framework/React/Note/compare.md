@@ -70,3 +70,5 @@
 ## vs React 16
 
 * componentWillMount、componentWillReceiveProps、componentWillUpdate vs getDerivedStateFromProps
+
+![getDerivedStateFromProps](../images/derived.webp)
