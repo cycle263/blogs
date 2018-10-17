@@ -6,13 +6,13 @@
 
   - ls: 显示目录  
 
-      + ls -la l(long)、a(all)列出所有(包含隐藏)文件的详情信息
+    + ls -la l(long)、a(all)列出所有(包含隐藏)文件的详情信息
 
-      + ls -t 按更改时间排序
+    + ls -t 按更改时间排序
 
   - cd: 切换目录  
 
-      cd - 后退到上次目录  
+    cd - 后退到上次目录  
 
   - vi: 编辑器指令 +n 打开文件，光标定位第n行 + 打开文件，光标定位最后一行
 
@@ -130,7 +130,7 @@
 
   - mv: 移动或者重命名 -f(强行移动/重命名), -i(移动/重命名前尝试), -u(更新)
 
-      `mv cronfile.txt myfile.txt  // 将cronfile.txt重命名为myfile.txt`
+    `mv cronfile.txt myfile.txt  // 将cronfile.txt重命名为myfile.txt`
 
   - rm: 删除文件 -r 删除目录 -f 强制删除
 
@@ -160,7 +160,7 @@
 
   - which: 在PATH变量指定的路径中搜索某个系统命令的为止，并且返回第一个搜索结果
 
-  ```ssh
+  ```js
   grep foo /etc/passwd
   返回在password文件中所有的含有foo的行
 
@@ -168,10 +168,10 @@
   -i选项是忽略大小写，这就意味着若某一行含有FOO或FOo也会被搜索到。
 
   grep还支持递归搜索：
-  grep -r “foo” /home/sjvn
+  `grep -r “foo” /home/sjvn`
   这条命令将会搜索/home/sjvn目录及其子目录下所有的包含“foo”的行
 
   grep也通常与其他命令串连起来使用，例如：
-  ls -la | grep foo*
+  `ls -la | grep foo*`
   列出当前目录下任何以foo开头的文件或目录。例如如下文件将被匹配：foo，foobar，foolish.txt等等。
   ```

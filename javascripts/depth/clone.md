@@ -21,6 +21,9 @@
 ## 常见clone方法
 
 - 1、JSON大法
+
+  局限性：会忽略undefined，不能序列化函数，不能解决循环引用的对象。
+
   `var newObj = JSON.parse( JSON.stringify( someObj ) );`
 
 - 2、Object.assign
@@ -30,3 +33,5 @@
 - 4、$.extend( [deep ], target, object1 [, objectN ] )
 
 - 5、lodash.cloneDeep
+
+- 6、MessageChannel的postMessage和Worker的postMessage，都是深复制数据传递，但也不能序列化函数

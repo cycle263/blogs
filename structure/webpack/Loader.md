@@ -2,7 +2,7 @@
 
   > Webpack 本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换。Loader 可以理解为是模块和资源的转换器。
 
-  webpack 可以使用 loader 来预处理文件。这允许你打包除 JavaScript 之外的任何静态资源。你可以使用 Node.js 来很简单地编写自己的 loader。loader 通过在 require() 语句中使用 loadername! 前缀来激活，或者通过 webpack 配置中的正则表达式来自动应用
+  webpack 可以使用 loader 来预处理文件。这允许你打包除 JavaScript 之外的任何静态资源。你可以使用 Node.js 来很简单地编写自己的 loader。loader 通过在 require() 语句中使用 loadername! 前缀来激活，或者通过 webpack 配置中的正则表达式来自动应用。
 
 * Loader有哪些特性？
 
@@ -12,9 +12,17 @@
 
   - Loader 运行在 node.js 环境中
 
-  - !符号用于分隔多个loader
+  - !符号用于分隔多个loader（webpack4写法不同，rules:test）
 
   - 每一个 loader 都是一个对象
+
+* loader的优先级
+
+  - !分隔符写法，是从右向左执行，链式地按照顺序进行编译。loader 链中的第一个返回值给下一个 loader，在最后一个 loader，返回所预期的结果
+
+  - 同test的越后面的loader优先级越高
+
+  - 不同test的，可以使用`enforce: 'pre'`强调优先级
 
 * 常见的loader
 

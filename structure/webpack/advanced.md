@@ -41,7 +41,7 @@
 
   - [hash]，每次构建过程中，根据compilation编译对象生成的唯一 hash 值，每次打包都会产生一个编译对象，因此hash每次都会改变。
 
-  - [chunkhash / contenthash]，依据于打包生成文件内容的 hash 值,内容不变，值不变。不推荐在开发环境使用hash，增加编译时间。
+  - [chunkhash / contenthash]，依据于打包生成文件内容的 hash 值, 内容不变，值不变。不推荐在开发环境使用hash，增加编译时间。 contenthash由 css 提取插件提供，根据自身内容计算得来。在webpack4.3之后支持性不好，不推荐使用，非得使用推荐`[md5:contenthash:hex:20]`
 
   - [ext]，资源扩展名,如js,jsx,png等等;
 
@@ -53,7 +53,7 @@
   devServer: {
     hot: true,
     inline: true,
-    //其实很简单的，只要配置这个参数就可以了
+    // 其实很简单的，只要配置这个参数就可以了
     proxy: {
       '/api/*': {
           target: 'http://localhost:5000',

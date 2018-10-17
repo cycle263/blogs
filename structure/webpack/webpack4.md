@@ -14,6 +14,7 @@
   // 配置案例
   {
     optimization: {
+      runtimeChunk: 'single',
       splitChunks: {
         cacheGroups: {
           commons: {
@@ -70,13 +71,13 @@
       缓存组会继承splitChunks的配置。
 
     ```js
-    // webpack4 splitChunks配置项的默认值源码
+    /* webpack4 splitChunks配置项的默认值源码 */
     this.set("optimization.splitChunks", {});
 		this.set("optimization.splitChunks.chunks", "async");
 		this.set("optimization.splitChunks.minSize", 30000);
 		this.set("optimization.splitChunks.minChunks", 1);
 		this.set("optimization.splitChunks.maxAsyncRequests", 5);
-    // 打包分隔符， 如：vendors~chunkA~chunkB.js
+    /* 打包分隔符， 如：vendors~chunkA~chunkB.js */
 		this.set("optimization.splitChunks.automaticNameDelimiter", "~"); 
 		this.set("optimization.splitChunks.maxInitialRequests", 3);
 		this.set("optimization.splitChunks.name", true);
@@ -84,6 +85,20 @@
     ```
 
   - runtimeChunkPlugin 添加一个只包含运行时(runtime)额外代码块到每一个入口
+
+    ```js
+
+    ```
+
+* chunk命名规则配置
+
+  HashedModuleIdsPlugin插件根据路径生成的 hash 作为 module identifier。
+
+  ```json
+  optimization: {
+    namedModules: true  // 数字id命名规则换成路径的方式，webpack4中当mode为development会默认启动
+  }
+  ```
 
 * 混淆压缩升级
 
