@@ -19,9 +19,17 @@
     Unicode 并没有统一规定每个符号用三个或者四个字节表示。Unicode 只规定了每个字符对应到唯一的代码值（code point），代码值 从 0000 ~ 10FFFF 共 1114112 个值 ，真正存储的时候需要多少个字节是由具体的编码格式决定的。比如：字符 「A」用 UTF-8 的格式编码来存储就只占用1个字节，用 UTF-16 就占用2个字节，而用 UTF-32 存储就占用4个字节。
 
     ```js
-    String.fromCodePoint()  // 从Unicode码点返回对应字符
-    String.prototype.codePointAt()  // 从字符返回对应的码点
+    String.fromCodePoint()  /* 从Unicode码点返回对应字符 */
+    String.prototype.codePointAt()  /* 从字符返回对应的码点 */
     String.prototype.at() // 返回字符串给定位置的字符
+
+    escape('҈');    // %u0488
+    0x488.toString();   // 1160
+    '҈'.codePointAt(0)    // 1160
+
+    var str = `热҈的҈字҈都҈出҈`;
+    escape(str);
+    unescape("%u70ED%u0488%u7684%u0488%u5B57%u0488%u90FD%u0488%u51FA%u0488");
     ```
 
     [Unicode扩展阅读](http://pcedu.pconline.com.cn/empolder/gj/other/0505/616631_all.html#content_page_2)
@@ -62,6 +70,8 @@
     | 0x010000 - 0x10FFFF  |	1110xxxx 10xxxxxx 10xxxxxx 10xxxxxx |
 
     例如“汉”字的Unicode编码是6C49。6C49在0800-FFFF之间，所以肯定要用3字节模板了：1110xxxx 10xxxxxx 10xxxxxx。将6C49写成二进制是：0110 110001 001001， 用这个比特流依次代替模板中的x，得到：11100110 10110001 10001001，即E6 B1 89。
+
+    网页中编码格式基本都是UTF-8，然而即便我们用UTF-8格式保存了HTML文件，但是其中的中文字符依然是以UTF-16的形式保存的。`server-unicode -> utf-8 browser`
 
   **[ASCII、Unicode 扩展阅读](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)**
 

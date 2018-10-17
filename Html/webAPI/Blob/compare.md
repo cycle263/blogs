@@ -166,9 +166,33 @@
   b64DecodeUnicode('Cg==');     // "\n"
   ```
 
-* utf8 -> unicode
+* string -> binary
 
   ```js
+  function strToBinary(str) {
+    let result = '';
+    for( let i = 0 , len = str.length ; i < len ; i++){
+        result += str.charCodeAt(i).toString(2)
+    }
+    return result;
+  }
+  ```
+
+* utf8 <-> unicode
+
+  ```js
+  // unicode为1个接收数据，串口收到的字符编码放在该数组中
+  function UnicodeToUtf8(unicode) {
+    var uchar;
+    var utf8str = "";
+    
+    for(let i = 0; i < unicode.length; i += 2){			
+      uchar = (unicode[i] << 8) | unicode[i + 1];				// UNICODE为2字节编码，一次读入2个字节
+      utf8str = utf8str + String.fromCharCode(uchar);	// 使用String.fromCharCode强制转换
+    }
+    return utf8str;
+  }
+
   function Utf8ToUnicode(strUtf8){
     var bstr = "";
     var nTotalChars = strUtf8.length;        // total chars to be processed.
@@ -441,6 +465,14 @@
 
 ## 其他概念
 
+* base64
+
+  单个字符一般用一个字节就可以表示(中文等其他特殊文字除外)，而一个字节由8位二进制数构成。那么base64编码中,是将每6位二进制作为一个单位解析后参照字符集的索引就可以得到编码后的字符。多余的2位，base64编码时会将二进制通过在末尾补0的方式使其位数满足24的倍数。
+
+  base64的字符集[A-Za-z0-9+/]，补位的零转换为字符`=`，`=`的数量代表补位的数量。
+
+  js中window对象的atob()和btoa()方法可进行base64的编码和解码。
+
 * buffer
 
   为数据缓冲对象，是一个类似数组结构的对象，可以通过指定开始写入的位置及写入的数据长度，往其中写入二进制数据。
@@ -453,7 +485,7 @@
 
   一个整数可能占 1 个、2 个或 4 个字节，即 8 个、16 个或 32 个二进制位。整数还分无符号数和有符号数。无符号数的所有二进制位都用于表示数值，于是 n 位无符号数的范围就是 0 到2^n-1，例如 8 位无符号数的范围是 0 ~ 255。有符号数则把最高位用作符号位，0 表示正数（或 0），1 表示负数。剩下的 n-1 位用于表示数值，正数直接表示，而负数则用「补码」表示 —— 负数-a的这 n-1 位的值是2^{n-1} - a。因此，n 位有符号数的范围是-2^{n-1}到2^{n-1} - 1，例如 8 位有符号数的范围是 -128 ~ 127。
 
-　　举几个例子。正数 233 的二进制形式是 11101001，它用不同长度的无符号数和有符号数的表示如下图，红色的 0 表示符号     位。注意图中没有 8 位有符号数，因为 233 超出了 8 位有符号数的范围。
+　举几个例子。正数 233 的二进制形式是 11101001，它用不同长度的无符号数和有符号数的表示如下图，红色的 0 表示符 号位。注意图中没有 8 位有符号数，因为 233 超出了 8 位有符号数的范围。
 
   ![整数在计算机中的表示](../../images/buffer.jpg)
 
