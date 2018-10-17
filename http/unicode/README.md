@@ -10,7 +10,7 @@
 
   * **Unicode**
 
-    Unicode(Universal Multiple-Octet Coded Character Set)是一种字符编码方法，简称为UCS。UCS可以看作是"Unicode Character Set"的缩写。不过它是由国际组织设计，可以容纳全世界所有语言文字的编码方案。将世界上所有的符号都纳入其中，每一个符号都给予一个独一无二的编码，又叫码点，它是一个很大的集合，现在的规模可以容纳100多万个符号。比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字严。具体的符号对应表，可以查询[unicode.org](http://www.unicode.org/)， 或者专门的[汉字对应表](http://www.chi2ko.com/tool/CJK.htm)。
+    Unicode(Universal Multiple-Octet Coded Character Set)是一种字符编码方法，简称为UCS，熟称万国码。UCS可以看作是"Unicode Character Set"的缩写。不过它是由国际组织设计，可以容纳全世界所有语言文字的编码方案。将世界上所有的符号都纳入其中，每一个符号都给予一个独一无二的编码，又叫码点，它是一个很大的集合，现在的规模可以容纳100多万个符号。比如，U+0639表示阿拉伯字母Ain，U+0041表示英语的大写字母A，U+4E25表示汉字严。具体的符号对应表，可以查询[unicode.org](http://www.unicode.org/)， 或者专门的[汉字对应表](http://www.chi2ko.com/tool/CJK.htm)。
 
     历史上存在两个试图独立设计Unicode的组织，即国际标准化组织（ISO）和一个软件制造商的协会（unicode.org）。ISO开发了ISO 10646项目，Unicode协会开发了Unicode项目。目前两个项目仍都存在，并独立地公布各自的标准。Unicode协会现在的最新版本是2005年的Unicode 4.1.0。ISO的最新标准是10646-3:2003。
 
