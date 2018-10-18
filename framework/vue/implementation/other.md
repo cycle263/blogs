@@ -27,11 +27,43 @@
 
 * 2.5版本之后
 
-  `Promise -> MessageChannel -> setTimeout`
+  `setImmediate -> MessageChannel -> Promise -> setTimeout`
 
   MessageChannel属于宏任务，优先级是：MessageChannel -> setTimeout。
 
   变动原因：micro task 的执行优先级非常高，在某些场景下它甚至要比事件冒泡还要快，就会导致一些诡异的问题。所以最终 nextTick 采取的策略是默认走 micro task，对于一些 DOM 交互事件，如 v-on 绑定的事件回调函数的处理，会强制走 macro task。
 
   对于 macro task 的执行，Vue.js 优先检测是否支持原生 setImmediate，这是一个高版本 IE 和 Edge 才支持的特性，不支持的话再去检测是否支持原生的 MessageChannel，如果也不支持的话就会降级为 setTimeout 0。
+
+  ```js
+  if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
+    timerFunc = () => {
+      setImmediate(nextTickHandler)
+    }
+  } else if (typeof MessageChannel !== 'undefined' && (
+    isNative(MessageChannel) ||
+    // PhantomJS
+    MessageChannel.toString() === '[object MessageChannelConstructor]'
+  )) {
+    const channel = new MessageChannel()
+    const port = channel.port2
+    channel.port1.onmessage = nextTickHandler
+    timerFunc = () => {
+      port.postMessage(1)
+    }
+  } else
+  /* istanbul ignore next */
+  if (typeof Promise !== 'undefined' && isNative(Promise)) {
+    // use microtask in non-DOM environments, e.g. Weex
+    const p = Promise.resolve()
+    timerFunc = () => {
+      p.then(nextTickHandler)
+    }
+  } else {
+    // fallback to setTimeout
+    timerFunc = () => {
+      setTimeout(nextTickHandler, 0)
+    }
+  }
+  ```
 

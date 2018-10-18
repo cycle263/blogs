@@ -67,7 +67,7 @@
   - 当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染
   - 渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）
 
-  - microtasks(微任务): 可以理解是在当前 task 执行结束后立即执行的任务, 也就是说，在当前task任务后，下一个task之前，在渲染之前。所以它的响应速度相比setTimeout（setTimeout是task）会更快，因为无需等渲染。
+  - **microtasks(微任务)**: 可以理解是在当前 task 执行结束后立即执行的任务, 也就是说，在当前task任务后，下一个task之前，在渲染之前。所以它的响应速度相比setTimeout（setTimeout是task）会更快，因为无需等渲染。
 
     + process.nextTick  process.nextTick方法可以在当前"执行栈"的尾部----下一次Event Loop（主线程读取"任务队列"）之前----触发回调函数。也就是说，它指定的任务总是发生在所有异步任务之前，插队到任务队列最前面。如果有多个process.nextTick语句（不管它们是否嵌套），将全部在当前"执行栈"的尾部执行。如果process.nextTick 事件太多，执行时长过长也会阻塞事件循环。
 
@@ -76,7 +76,7 @@
     + Event
     + Promise.then(浏览器自带版本)
 
-  - macrotasks(宏任务):
+  - **macrotasks(宏任务)**:
 
     + setTimeout
     + setInterval
@@ -85,7 +85,8 @@
     + I/O
     + UI渲染
     + script主代码执行
-    + postMessage、requestAnimationFrame、MessageChannel、setImmediate
+    + postMessage、requestAnimationFrame
+    + MessageChannel
 
   * 事件循环中，每一次循环称为 tick。据whatwg规范介绍：
 
