@@ -13,6 +13,10 @@
   this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
   ```
 
+* 运行过程
+
+  `数据更改 -> setter -> Dep -> Watcher -> nextTick -> patch -> 更新视图`
+
 * 双向绑定
 
   value的单向绑定（数据劫持 + 发布订阅） + onChange 事件侦听。当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter，在数据变动时发布消息给订阅者，触发相应的监听回调。

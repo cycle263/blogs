@@ -74,7 +74,7 @@
     + promiseObject.observe
     + MutationObserver 监视对DOM树变化
     + Event
-    + Promise.then(浏览器自带版本)
+    + Promise.then(浏览器原生版本)
 
   - **macrotasks(宏任务)**:
 
@@ -85,7 +85,7 @@
     + I/O
     + UI渲染
     + script主代码执行
-    + postMessage、requestAnimationFrame
+    + postMessage、requestAnimationFrame、Object.observe
     + MessageChannel
 
   * 事件循环中，每一次循环称为 tick。据whatwg规范介绍：
