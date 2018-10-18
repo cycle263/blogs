@@ -4,6 +4,18 @@
 
   webpack 可以使用 loader 来预处理文件。这允许你打包除 JavaScript 之外的任何静态资源。你可以使用 Node.js 来很简单地编写自己的 loader。loader 通过在 require() 语句中使用 loadername! 前缀来激活，或者通过 webpack 配置中的正则表达式来自动应用。
 
+  更简单地说，loader其实就是一个Funtion，能够传入本次匹配到的文件内容供我们自定义修改，并返回。
+
+  ```js
+  /**
+   * loader Function
+   * @param {String} content 文件内容
+   */
+  module.exports = function(content){
+    return "1;" + content;
+  }
+  ```
+
 * Loader有哪些特性？
 
   - Loader可以通过管道方式链式调用，但是最后一个loader必须返回js

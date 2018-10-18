@@ -32,11 +32,39 @@
 
     - mapStateToProps：负责输入逻辑，即将state映射到 UI 组件的参数（props）。构建好Redux系统的时候，它会被自动初始化，但是你的React组件并不知道它的存在，因此你需要分拣出你需要的Redux状态，所以你需要绑定一个函数，它的参数是state，简单返回你关心的几个值。
 
+    传入mapStateToProps之后，会订阅store的状态改变，在每次store的state发生变化的时候，都会被调用。
+
+    ```js
+    const mapStateToProps = (state, ownProps) => {
+      return {
+        active: ownProps.filter === state.visibilityFilter
+      }
+    }
+    ```
+
     - mapDispatchToProps：负责输出逻辑，即将用户对 UI 组件的操作映射成 Action。声明好的action作为回调，也可以被注入到组件里，就是通过这个函数，它的参数是dispatch，通过redux的辅助方法bindActionCreator绑定所有action以及参数的dispatch，就可以作为属性在组件里面作为函数简单使用了，不需要手动dispatch。这个mapDispatchToProps是可选的，如果不传这个参数redux会简单把dispatch作为属性注入给组件，可以手动当做store.dispatch使用。
+
+    ```js
+    action.increase = function (info) {
+      return {
+        {
+          type:'INCREASE'，
+          info
+        }
+      }
+    }
+
+    const mapDispatchToProps = (dispatch, ownProps) => {
+      return {
+        increase: (...args) => dispatch(actions.increase(...args)),
+        decrease: (...args) => dispatch(actions.decrease(...args))
+      }
+    }
+    ```
 
 ### 案例
 
-  ```react
+  ```jsx
   import { connect } from 'react-redux'
 
   const VisibleTodoList = connect(

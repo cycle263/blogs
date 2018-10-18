@@ -38,16 +38,34 @@
 
   插件是 webpack 生态系统的重要组成部分，它能够钩入(hook)到在每个编译(compilation)中触发的所有关键事件。在编译的每一步，插件都具备完全访问 compiler 对象的能力，如果情况合适，还可以访问当前 compilation 对象。
 
-  tapable 是 webpack 的一个核心工具，它提供了类似的插件接口，也可以单独使用。webpack 中许多对象扩展自 Tapable 类，例如：SyncHook, SyncBailHook, AsyncParallelHook 等。
+  tapable 是 webpack 的一个核心工具，它提供了类似的插件接口，也可以单独使用。webpack本质上是一种事件流的机制，它的工作流程就是将各个插件串联起来，而实现这一切的核心就是Tapable，webpack中最核心的负责编译的Compiler和负责创建bundles的Compilation都是Tapable的实例。webpack 中许多对象扩展自 Tapable 类，例如：SyncHook, SyncBailHook, AsyncParallelHook 等。
   [tapable详情](https://github.com/webpack/tapable)
 
   ```js
+  // tapable类的原型
+  class SyncHook{
+    constructor(){
+      this.hooks = [];
+    }
+    // 订阅事件
+    tap(name, fn){
+      this.hooks.push(fn);
+    }
+    // 发布
+    call(){
+      this.hooks.forEach(hook => hook(...arguments));
+    }
+  }
+
+  // 实例化自己的钩子
+  compiler.hooks.myHook = new SyncHook(['data'])
+
   // webpack 3
   compiler.plugin('done',callback) // 注册
-  compilitation.applyPlugins('done',params) // 触发
+  compilitation.applyPlugins('done', params) // 触发
 
   // webpack 4 - tapable
-  compiler.hooks.done.tap('mypluinname',callback) // 注册
+  compiler.hooks.done.tap('mypluinname', callback) // 注册
   compiler.hooks.done.call() // 触发
   ```
 

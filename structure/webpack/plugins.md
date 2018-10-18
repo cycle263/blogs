@@ -4,6 +4,41 @@
 
 主要功能包括：对前一阶段打包后的代码进行处理，如添加替换一些内容，分割代码为多块，添加一些全局设置；辅助输出，如自动生成带有链接的index.html，对生成文件存储文件夹做一定的清理等。
 
+```js
+// @file: plugins/myplugin.js
+const pluginName = 'MyPlugin';
+// tapable是webpack自带的package，是webpack的核心实现
+// 不需要单独install，可以在安装过webpack的项目里直接require
+// 拿到一个同步hook类
+const { SyncHook } = require("tapable");
+class MyPlugin {
+  // 传入webpack config中的plugin配置参数
+  constructor(options) {
+    // { test: 1 }
+    console.log('@plugin constructor', options);
+  }
+
+  apply(compiler) {
+    console.log('@plugin apply');
+    // 实例化自定义事件
+    compiler.hooks.myPlugin = new SyncHook(['data'])
+
+    compiler.hooks.environment.tap(pluginName, () => {
+      //广播自定义事件
+      compiler.hooks.myPlugin.call("It's my plugin.")
+      console.log('@environment');
+    });
+
+    // compiler.hooks.compilation.tap(pluginName, (compilation) => {
+        // 你也可以在compilation上挂载hook
+        // compilation.hooks.myPlugin = new SyncHook(['data'])
+        // compilation.hooks.myPlugin.call("It's my plugin.")
+    // });
+  }
+}
+module.exports = MyPlugin;
+```
+
 * **1、代码优化之:**
 
   - CommonsChunkPlugin - 抽取公共代码。可以提取出多个代码块都依赖的模块形成一个单独的模块。要发挥CommonsChunkPlugin的作用还需要浏览器缓存机制的配合。在应用有多个页面的场景下提取出所有页面公共的代码减少单个页面的代码，在不同页面之间切换时所有页面公共的代码之前被加载过而不必重新加载。这个方法可以非常有效的提升应用性能。

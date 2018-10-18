@@ -2,13 +2,100 @@
 
 > webpack 每一个依赖等都是 module, 最后 trunk 的输出，就是对一个个 module 做排序、拼接、渲染，得到最后的 trunk 内容。
 
+webpack本质上是一种事件流的机制，它的工作流程就是将各个插件串联起来，而实现这一切的核心就是Tapable，webpack中最核心的负责编译的Compiler和负责创建bundles的Compilation都是Tapable的实例。Tapable的原理其实就是EventEmit，通过发布者-订阅者模式实现。
+
+```js
+// 未分包的打包结果文件
+(function (modules) {
+  //  缓存已经加载过的module的exports
+  //  module在exports之前还是有js需要执行的，缓存的目的就是优化这一过程
+  // The module cache
+  var installedModules = {};
+
+  // The require function
+  /**
+   * 模拟CommonJS require()
+   * @param {String} moduleId 模块路径
+   */
+  function __webpack_require__(moduleId) {
+
+    // Check if module is in cache
+    if (installedModules[moduleId]) {
+      return installedModules[moduleId].exports;
+    }
+    // Create a new module (and put it into the cache)
+    var module = installedModules[moduleId] = {
+      i: moduleId,
+      l: false,
+      exports: {}
+    };
+
+    // 执行单个module JS Function并填充installedModules与module
+    // function mudule(module, __webpack_exports__[, __webpack_require__])
+    // Execute the module function
+    modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+    // Flag the module as loaded
+    module.l = true;
+
+    // Return the exports of the module
+    return module.exports;
+  }
+
+  // expose the modules object (__webpack_modules__)
+  __webpack_require__.m = modules;
+
+  // expose the module cache
+  __webpack_require__.c = installedModules;
+
+ ......
+
+  // __webpack_public_path__
+  __webpack_require__.p = "";
+
+  // 加载Entry并返回Entry的exports
+  // Load entry module and return exports
+  return __webpack_require__(__webpack_require__.s = "./src/index.js");
+})
+  // modules其实就是一个对象，键是模块的路径，值就是模块的JS Function
+  ({
+    "./src/index.js": function (module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+      eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _module_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module.js */ \"./src/module.js\");\n/* harmony import */ var _module_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_module_js__WEBPACK_IMPORTED_MODULE_0__);\n{};\nconsole.log(_module_js__WEBPACK_IMPORTED_MODULE_0___default.a.s);\n\n//# sourceURL=webpack:///./src/index.js?");
+    },
+    "./src/module.js": function (module, exports) {
+      eval("{};var s = 123;\nconsole.log(s);\nmodule.exports = {\n  s: s\n};\n\n//# sourceURL=webpack:///./src/module.js?");
+    }
+  });
+```
+
+![webpack完整的执行流程图](../images/progress.jpg)
+
+* tapable的实现思路
+
+```js
+class SyncHook{
+	constructor(){
+		this.hooks = [];
+	}
+	// 订阅事件
+	tap(name, fn){
+		this.hooks.push(fn);
+	}
+	// 发布
+	call(){
+		this.hooks.forEach(hook => hook(...arguments));
+	}
+}
+```
+
 * chunkId
 
 	一个chunk里面可以包含多个module。
 
 * moduleId
 
-默认情况下，moduleId为增量数字，可以使用插件方式改变成其他ID。
+	默认情况下，moduleId为增量数字，可以使用插件方式改变成其他ID。
 
 ```js
 // modules数组用于保存所有的模块初始化函数, 通过 IIFE 的方式传入, 给所有模块外面加一层包装函数，使其成为模块初始化函数

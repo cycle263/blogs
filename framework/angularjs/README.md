@@ -1,4 +1,4 @@
-## angular
+## angularjs
 
 * 脏检查机制
 
