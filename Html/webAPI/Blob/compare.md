@@ -229,7 +229,7 @@
         bstr += String.fromCharCode(((iCode & 0x0F) << 12) | ((iCode1 & 0x3F) <<  6) | (iCode2 & 0x3F));
         nOffset += 3;
         nRemainingBytes -= 3;
-      } else                      // 4 or more bytes -- unsupported
+      } else          // 4 or more bytes -- unsupported
         break;
     }
 

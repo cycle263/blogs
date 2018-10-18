@@ -20,16 +20,16 @@
 
   - 使用事件实现组件间沟通脱离了单向数据流机制，不用将数据或者回调函数一层一层地传给子组件，可以避免出现上述的亲戚图。
 
-    ```
+    ```js
     var EventEmitter = {
       _events: {},
       dispatch: function (event, data) {
-          if (!this._events[event]) return; // no one is listening to this event
+          if (!this._events[event]) return; /* no one is listening to this event */
           for (var i = 0; i < this._events[event].length; i++)
               this._events[event][i](data);
       },
       subscribe: function (event, callback) {
-        if (!this._events[event]) this._events[event] = []; // new event
+        if (!this._events[event]) this._events[event] = []; /* new event */
         this._events[event].push(callback);
       },
       unSubscribe: function(event){
@@ -64,7 +64,7 @@
 
     ref属性可以是一个回调函数，并且这个回调函数会在组件被挂载后立刻被执行。引用到的组件会被作为参数传递，这个回调函数可以立即使用组件，或者把它的引用保存起来供将来使用（又或者，两者兼有）。
 
-    ```
+    ```jsx
     render() {
       return <TextInput ref={(c) => this._input = c} />;
     }
@@ -77,7 +77,7 @@
 
     React也支持在任意组件上使用一个字符串（而不是回调）来作为ref属性。尽管这种做法现在已经基本被弃用。
 
-    ```
+    ```jsx
     <input ref="myInput" />
     var input = this.refs.myInput;
     ```

@@ -42,7 +42,7 @@
 
   - 一个组件需要改变另一个组件的状态
 
-  ```react
+  ```jsx
   const Counter = ({ value, onIncrement, onDecrement }) => (
     <div>
     <h1>{value}</h1>
@@ -96,7 +96,7 @@
 
   由原始组件创造一个新的组件并且扩展它的行为。高阶组件通过包裹（wrapped）被传入的React组件，经过一系列处理，最终返回一个相对增强（enhanced）的React组件，供其他组件调用。
 
-  ```js
+  ```jsx
   // MyComponent 是纯的 UI 组件
   <div className="index">
     <p>{this.props.text}</p>
