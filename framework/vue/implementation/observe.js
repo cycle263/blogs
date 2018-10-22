@@ -1,3 +1,7 @@
+/**
+ * 数据监听器
+ * @param {*} data 
+ */
 function observe(data){
   if(!data || typeof data !== 'object'){
     console.error('The data format error!');

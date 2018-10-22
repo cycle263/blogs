@@ -15,7 +15,13 @@
 
 * 运行过程
 
+  - 编译器将字符串模板（template）编译为渲染函数（render），称之为编译过程
+  
+  - 运行时实际调用编译的渲染函数，称之为运行过程。
+
   `数据更改 -> setter -> Dep -> Watcher -> nextTick -> patch -> 更新视图`
+
+  ![vue流程图](../images/progress.jpeg)
 
 * 双向绑定
 
@@ -44,9 +50,3 @@
   创建 -> 挂载 -> 更新 -> 销毁
 
   [vue生命周期](../images/lifecycle.jpg)
-
-* 运行过程
-
-  - 编译器将字符串模板（template）编译为渲染函数（render），称之为编译过程
-  
-  - 运行时实际调用编译的渲染函数，称之为运行过程。
