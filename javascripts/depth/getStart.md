@@ -17,9 +17,29 @@
 
 * 2、浮点运算  
 
-  javascript只有数字类型，不论是浮点数和整数，其实都是双精度浮点数,但能完美表达53位精度的整数。(-2五十三次方)~(2五十三次方)。  
-  位运算比较特殊，javascript会将其隐式地转换成32位整数后进行运算，toString(2);  
-  浮点运算经常不精准，例如：0.1+0.2，解决方案--尽量使用整数运算。  
+  javascript只有数字类型，不论是浮点数和整数，其实都是双精度浮点数，但能完美表达53位精度的整数。(-2五十三次方)~(2五十三次方)。  
+  位运算比较特殊，javascript会将其隐式地转换成32位整数后进行运算，toString(2); 
+
+  - 精度丢失 
+
+  浮点运算经常不精准，例如：`0.1 + 0.2 = 0.30000000000000004`
+
+  分析原因：`(0.1).toString(2) // 0.0001100110011...`。十进制中一位小数 0.1 ~ 0.9 当中除了 0.5 之外的值在转化成二进制的过程中都丢失了精度。
+  
+  解决方案：针对大数的整数可以考虑使用 bigint 类型(目前在 stage 3 阶段)，针对小数尽量使用整数运算。
+
+  ```js
+  function strip(num, precision = 12) {
+    return +parseFloat(num.toPrecision(precision));
+  }
+
+  function add(num1, num2) {
+    const num1Digits = (num1.toString().split('.')[1] || '').length;
+    const num2Digits = (num2.toString().split('.')[1] || '').length;
+    const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
+    return (num1 * baseNum + num2 * baseNum) / baseNum;
+  }
+  ```
 
 * 3、分号自动插入  
 
@@ -38,9 +58,8 @@
 * 5、尽量避免使用with语句  
 
   javascript对待所有变量都是相同，从最内层作用域开始向外查找变量，with语句好比一个变量作用域。  
-  变量作用域和引入对象的字段歧义冲突，让代码的可读性几乎丧失，并且with代码库需要所搜对象的原型链来查找with代码块里的所有变量，导   致运行速度降低，成为with语句最大的诟病，建议尽量使用短局部变量代替。  
+  变量作用域和引入对象的字段歧义冲突，让代码的可读性几乎丧失，并且with代码库需要所搜对象的原型链来查找with代码块里的所有变量，导致运行速度降低，成为with语句最大的诟病，建议尽量使用短局部变量代替。  
 
 * 6、迭代方法优于循环  
 
-  使用迭代方法（如：Array.prototype.forEach、map）替换for循环，使得代码更可读，需要提前终止或者有控制流操作，建议使用循环，
-  当然，some和every方法也具有控制流操作能力。
+  使用迭代方法（如：Array.prototype.forEach、map）替换for循环，使得代码更可读，需要提前终止或者有控制流操作，建议使用循环，当然，some和every方法也具有控制流操作能力。
