@@ -303,9 +303,8 @@
 
     - 评价D3.js  
 
-        可以直接操作SVG DOM对象也是 D3 与其他『高级』Visualization框架（例如highchart，protovis）  
-
-        所有操作都是真实的dom操作，d3.js你看成是svg的jQuery就行了    
+        可以直接操作SVG DOM对象也是 D3 与其他『高级』Visualization框架（例如highchart，protovis）
+        所有操作都是真实的dom操作，d3.js你看成是svg的jQuery就行了
 
     - 数据和DOM如何交互  
 

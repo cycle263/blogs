@@ -28,4 +28,30 @@
   
   模块加载AMD，CMD，CommonJS Modules/2.0 规范这些规范的目的都是为了 JavaScript 的模块化开发，特别是在浏览器端的对于依赖的模块，AMD 是提前执行，CMD 是延迟执行CMD 推崇依赖就近，AMD 推崇依赖前置。
 
+  ```js
+  // a.js
+  export let a = 10;
+  export let b = 10;
+  export function add() {
+    a = 15;
+    b = 20;
+    return a+b;
+  };
+
+  // b.js
+  import {a, b, add} from './a.js';
+  a+b;    // 20
+  add();  // 35
+  a+b;    // 35, 导出的变量是只读引用
+  ```
+
 * Commonjs模块的加载原理
+
+  CommonJS的一个模块，就是一个脚本文件。require命令第一次加载该脚本，就会执行整个脚本，然后在内存生成一个对象，类似于`{id:'', exports: {}, loaded: true}`，其中ID表示模块名，exports是模块输出的各个接口，loaded表示模块脚本是否执行完。
+
+  以后需要用到这个模块的时候，就会到exports属性上面取值。即使再次执行require命令，也不会再次执行该模块，而是到缓存之中取值。
+
+* Commonjs模块的循环引用
+
+  不会再次执行该模块，而是到缓存之中取值。
+

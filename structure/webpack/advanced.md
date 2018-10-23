@@ -84,13 +84,13 @@
     `npm install imports-loader --save-dev` 先安装这个loader, 然后在入口js中引入  
 
     ```js
-    //注意这种写法 我们把jQuery这个变量直接插入到plugin.js里面了
-    //相当于在这个文件的开始添加了 var jQuery = require('jquery');
+    /* 注意这种写法 我们把jQuery这个变量直接插入到plugin.js里面了
+      相当于在这个文件的开始添加了 var jQuery = require('jquery'); */
     import 'imports?jQuery=jquery!./plugin.js';
 
-    //后面的代码一样
+    /* 后面的代码一样 */
     myPromise.then((number) => {
-      //call our jquery plugin!
+      // call our jquery plugin!
       $('p').greenify();
     });
     ```
