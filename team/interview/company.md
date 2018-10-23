@@ -13,7 +13,7 @@
     + 方法二: obj instanceof Array 在某些IE版本中不正确  
     + 方法三: 方法一二皆有漏洞，在ECMA Script5中定义了新方法Array.isArray(), 保证其兼容性，最好的方法如下：  
     
-      ```
+      ```js
       if(typeof Array.isArray==="undefined")
       {
         Array.isArray = function(arg){
@@ -23,12 +23,12 @@
       ```
 
 * 3.已知ID的Input输入框，希望获取这个输入框的输入值，怎么做？(不使用第三方框架)  
-  ```
+  ```js
   document.getElementById(“ID”).value
   ```
 
 * 4.希望获取到页面中所有的checkbox怎么做？(不使用第三方框架)  
-  ```
+  ```js
   var domList = document.getElementsByTagName('input')
   var checkBoxList = [];
   var len = domList.length;　　//缓存到局部变量
@@ -40,7 +40,7 @@
   ```
 
 * 5.设置一个已知ID的DIV的html内容为xxxx，字体颜色设置为黑色(不使用第三方框架)  
-  ```
+  ```js
   var dom = document.getElementById(“ID”);
   dom.innerHTML = "xxxx";
   dom.style.color = "#000";
@@ -62,7 +62,7 @@
       * 可以使得页面不重载全部内容的情况下加载局部内容，降低数据传输量
       * 避免用户不断刷新或者跳转页面，提高用户体验
     + 缺点
-      * 对搜索引擎不友好（
+      * 对搜索引擎seo不友好
       * 要实现ajax下的前后退功能成本较大
       * 可能造成请求数的增加
       * 跨域问题限制
@@ -71,7 +71,7 @@
     + 优点：轻量级、易于人的阅读和编写，便于机器（JavaScript）解析，支持复合数据类型（数组、对象、字符串、数字）
 
 * 8.看下列代码输出为何？解释原因。  
-  ```
+  ```js
   var a;
   alert(typeof a); // undefined
   alert(b); // 报错
@@ -79,14 +79,14 @@
   解释：Undefined是一个只有一个值的数据类型，这个值就是“undefined”，在使用var声明变量但并未对其赋值进行初始化时，这个变量的值就是undefined。而b由于未声明将报错。注意未申明的变量和声明了未赋值的是不一样的。
 
 * 9.看下列代码,输出什么？解释原因。  
-  ```
+  ```js
   var a = null;
   alert(typeof a); //object
   ```
   解释：null是一个只有一个值的数据类型，这个值就是null。表示一个空指针对象，所以用typeof检测会返回”object”。
 
 * 10.看下列代码,输出什么？解释原因。  
-  ```
+  ```js
   var undefined;
   undefined == null; // true
   1 == true;   // true
@@ -104,15 +104,16 @@
   所以，对于0、空字符串的判断，建议使用 “===” 。“===”会先判断两边的值类型，类型不匹配时为false。  
   
   那么问题来了，看下面的代码，输出什么，foo的值为什么？  
-    ```
-    var foo = "11"+2-"1";
-    console.log(foo);
-    console.log(typeof foo);
-    ```
+
+  ```js
+  var foo = "11"+2-"1";
+  console.log(foo);
+  console.log(typeof foo);
+  ```
     执行完后foo的值为111，foo的类型为String。
 
 * 11.看代码给答案。  
-  ```
+  ```js
   var a = new Object();
   a.value = 1;
   b = a;
@@ -123,11 +124,11 @@
 
 * 12.已知数组var stringArray = [“This”, “is”, “Baidu”, “Campus”]，Alert出”This is Baidu Campus”。  
 
-  答案：alert(stringArray.join(“”))
+  答案：`alert(stringArray.join(“”))`
 
   已知有字符串foo=”get-element-by-id”,写一个function将其转化成驼峰表示法”getElementById”。
   
-  ```
+  ```js
   function combo(msg){
       var arr=msg.split("-");
       for(var i=1;i<arr.length;i++){
@@ -144,7 +145,7 @@
   - 1) 实现对该数组的倒排，输出[5,1,4,2,6,3]
   
   - 2) 实现对该数组的降序排列，输出[6,5,4,3,2,1]
-  ```
+  ```js
   function combo(msg){
       var arr=msg.split("-");
       for(var i=1;i<arr.length;i++){
@@ -156,7 +157,7 @@
   ```
   
 * 14.输出今天的日期，以YYYY-MM-DD的方式，比如今天是2014年9月26日，则输出2014-09-26
-  ```
+  ```js
   var d = new Date();
   // 获取年，getFullYear()返回4位的数字
   var year = d.getFullYear();
@@ -172,23 +173,34 @@
   
 * 15.将字符串`<tr><td>{$id}</td><td>{$name}</td></tr>`中的{$id}替换成10，{$name}替换成Tony （使用正则表达式）
 
-  答案：`”<tr><td>{$id}</td><td>{$id}_{$name}</td></tr>”.replace(/{\$id}/g, ’10′).replace(/{\$name}/g, ‘Tony’);`
+  答案：`"<tr><td>{$id}</td><td>{$id}_{$name}</td></tr>".replace(/{\$id}/g, '10').replace(/{\$name}/g, 'Tony');`
 
-* 16.为了保证页面输出安全，我们经常需要对一些特殊的字符进行转义，请写一个函数escapeHtml，将<, >, &, “进行转义
-  ```
-  function escapeHtml(str) {
-    return str.replace(/[<>”&]/g, function(match) {
-      switch (match) {
-       case “<”:
-          return “&lt;”;
-       case “>”:
-          return “&gt;”;
-       case “&”:
-          return “&amp;”;
-       case “\””:
-          return “&quot;”;
-      }
-    });
+* 16.为了保证页面输出安全，避免xss，需要对一些特殊的字符进行转义，将<, >, &, “, ', / 进行转义
+
+  ```js
+  function escapeHtml(text) {
+    return text.replace(
+      /&/g, '&amp;').replace(
+      /"/g, '&quot;').replace(
+      /'/g, "&#x27;").replace(
+      /</g, '&lt;').replace(
+      />/g, '&gt;').replace(
+      /\s+/g, '&nbsp;').replace(
+      /\\/g, '&#x2F;').replace(
+      /-/g, '&mdash;').replace(
+      /→/g, '&rarr;');
+  }
+  function unescapeHtml(text) {
+    return text.replace(
+      /&amp;/g, '&').replace(
+      /&quot;/g, '"').replace(
+      /&#x27;/g, "'").replace(
+      /&lt;/g, '<').replace(
+      /&gt;/g, '>').replace(
+      /&nbsp;/g, ' ').replace(
+      /&#x2F;/g, '/').replace(
+      /&mdash;/g, '—').replace(
+      /&rarr;/g, '→');
   }
   ```
   
@@ -199,7 +211,7 @@
   短路表达式：作为”&&”和”||”操作符的操作数表达式，这些表达式在进行求值时，只要最终的结果已经可以确定是真或假，求值过程便告终止，这称之为短路求值。
 
 * 18.看下列代码，将会输出什么?(变量声明提升)
-  ```
+  ```js
   var foo = 1;
   function(){
       console.log(foo);
@@ -209,7 +221,7 @@
   ```
   
   答案：输出undefined 和 2。上面代码相当于：
-  ```
+  ```js
   var foo = 1;
   function(){
       var foo;
@@ -221,7 +233,8 @@
   函数声明与变量声明会被JavaScript引擎隐式地提升到当前作用域的顶部，但是只提升名称不会提升赋值部分。
 
 * 19.用js实现随机选取10–100之间的10个数字，存入一个数组，并排序。
-  ```
+
+  ```js
   var iArray = []; 
   funtion getRandom(istart, iend){
     var iChoice = istart - iend +1;
@@ -234,7 +247,7 @@
   ```
 
 * 20.把两个数组合并，并删除第二个元素。
-  ```
+  ```js
   var array1 = ['a','b','c'];
   var bArray = ['d','e','f'];
   var cArray = array1.concat(bArray);
@@ -262,15 +275,15 @@
 * 22.有这样一个URL：`http://item.taobao.com/item.htm?a=1&b=2&c=&d=xxx&e`，请写一段JS程序提取URL中的各个GET参数(参数名和参数个数不确定)，将其按key-value形式返回到一个json结构中，如{a:’1′, b:’2′, c:”, d:’xxx’, e:undefined}。  
 
   答案：  
-  ```
+  ```js
   function serilizeUrl(url) {
-      var result = {};
-      url = url.split("?")[1];
-      var map = url.split("&");
-      for(var i = 0, len = map.length; i < len; i++) {
-          result<script>jQuery(function($) {$("#google-maps-1").gMap({controls: false,scrollwheel: false,markers: [{address: "",icon: {image: "http://web.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/_colors/red/pin.png",iconsize: [32, 32],iconanchor: [16,27],infowindowanchor: [16, 27]}}],address: "",zoom: 15,icon: {image: "http://web.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/_colors/red/pin.png",iconsize: [32, 32],iconanchor: [16,27],infowindowanchor: [16, 27]}});});</script><div id="google-maps-1" class="google-maps" style="width: 100%; height: 200px;"></div>.split("=")[0]] = map[i].split("=")[1];
-      }
-      return result;
+    var result = {};
+    url = url.split("?")[1];
+    var map = url.split("&");
+    for(var i = 0, len = map.length; i < len; i++) {
+        result<script>jQuery(function($) {$("#google-maps-1").gMap({controls: false,scrollwheel: false,markers: [{address: "",icon: {image: "http://web.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/_colors/red/pin.png",iconsize: [32, 32],iconanchor: [16,27],infowindowanchor: [16, 27]}}],address: "",zoom: 15,icon: {image: "http://web.jobbole.com/wp-content/themes/jobboleblogv3/_assets/img/_colors/red/pin.png",iconsize: [32, 32],iconanchor: [16,27],infowindowanchor: [16, 27]}});});</script><div id="google-maps-1" class="google-maps" style="width: 100%; height: 200px;"></div>.split("=")[0]] = map[i].split("=")[1];
+    }
+    return result;
   }
   ```
 
@@ -280,7 +293,7 @@
   `var regMail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;`
 
 * 24.看下面代码，给出输出结果。
-  ```
+  ```js
   for(var i=1;i<=3;i++){
     setTimeout(function(){
         console.log(i);    
@@ -291,7 +304,7 @@
   
   原因：Javascript事件处理器在线程空闲之前不会运行。追问，如何让上述代码输出1 2 3？ 
   
-  ```
+  ```js
   for(var i=1;i<=3;i++){
      setTimeout((function(a){  //改成立即执行函数
          console.log(a);    
@@ -302,7 +315,7 @@
 * 25.写一个function，清除字符串前后的空格。（兼容所有浏览器）
 
   使用自带接口trim()，考虑兼容性：
-  ```
+  ```js
   var result=[];
   function fn(n){  //典型的斐波那契数列
      if(n==1){
@@ -329,7 +342,7 @@
   考察点1：对于基本数据类型和引用数据类型在内存中存放的是值还是指针这一区别是否清楚  
   考察点2：是否知道如何判断一个变量是什么类型的  
   考察点3：递归算法的设计 
-  ```
+  ```js
   // 方法一：
   Object.prototype.clone = function(){
     var o = this.constructor === Array ? [] : {};
@@ -388,7 +401,7 @@
   ```
 
 * 3.小贤是一条可爱的小狗(Dog)，它的叫声很好听(wow)，每次看到主人的时候就会乖乖叫一声(yelp)。从这段描述可以得到以下对象：
-  ```
+  ```js
   function Dog() {
    this.wow = function() {
      alert(’Wow’);
@@ -402,7 +415,7 @@
   小芒和小贤一样，原来也是一条可爱的小狗，可是突然有一天疯了(MadDog)，一看到人就会每隔半秒叫一声(wow)地不停叫唤(yelp)。请根据描述，按示例的形式用代码来实。（继承，原型，setInterval）
   
   答案：
-  ```
+  ```js
   function MadDog() {
     this.yelp = function() {
       var self = this;          
@@ -421,7 +434,7 @@
   ```
 
 * 4.下面这个ul，如何点击每一列的时候alert其index?（闭包）
-  ```
+  ```html
   <ul id=”test”>
     <li>这是第一条</li>
     <li>这是第二条</li>
@@ -429,7 +442,7 @@
   </ul>
   ```
   答案：
-  ```
+  ```js
   // 方法一：
   var lis=document.getElementById('2223').getElementsByTagName('li');
   for(var i=0;i<3;i++)
@@ -455,7 +468,7 @@
   
 * 5.编写一个JavaScript函数，输入指定类型的选择器(仅需支持id，class，tagName三种简单CSS选择器，无需兼容组合选择器)可以返回匹配的DOM节点，需考虑浏览器兼容性和性能。
 
-  ```
+  ```js
   /*** @param selector {String} 传入的CSS选择器。* @return {Array}*/
   
   答案：
@@ -519,7 +532,7 @@
   ```
 
 * 6.请评价以下代码并给出改进意见。
-   ```
+  ```js
   if(window.addEventListener){
       var addListener = function(el,type,listener,useCapture){
           el.addEventListener(type,listener,useCapture);
@@ -539,7 +552,7 @@
   　不需要使用window.addEventListener或document.all来进行检测浏览器，应该使用能力检测；  
   　由于attachEvent在IE中有this指向问题，所以调用它时需要处理一下  
   改进如下：  
-  ```
+  ```js
   function addEvent(elem, type, handler){
   　　if(elem.addEventListener){
   　　　　elem.addEventListener(type, handler, false);
@@ -556,7 +569,7 @@
   ```
 
 * 7.给String对象添加一个方法，传入一个string类型的参数，然后将string的每个字符间价格空格返回，例如：
-  ```
+  ```js
   addSpace(“hello world”) // -> ‘h e l l o  w o r l d’
   
   String.prototype.spacify = function(){
@@ -572,7 +585,7 @@
 * 8.定义一个log方法，让它可以代理console.log的方法。
   
   可行的方法一：
-  ```
+  ```js
   function log(msg)　{
       console.log(msg);
   }
@@ -580,7 +593,7 @@
   log("hello world!") // hello world!
   ```
   如果要传入多个参数呢？显然上面的方法不能满足要求，所以更好的方法是：
-  ```
+  ```js
   function log(){
       console.log.apply(console, arguments);
   };
@@ -600,7 +613,7 @@
   伪数组（类数组）：无法直接调用数组方法或期望length属性有什么特殊的行为，但仍可以对真正数组遍历方法来遍历它们。典型的是函数的argument参数，还有像调用getElementsByTagName,document.childNodes之类的,它们都返回NodeList对象都属于伪数组。可以使用Array.prototype.slice.call(fakeArray)将数组转化为真正的Array对象。
   
   假设接第八题题干，我们要给每个log方法添加一个”(app)”前缀，比如`’hello world!’ ->’(app)hello world!’`。方法如下：
-  ```
+  ```js
   function log(){
     var args = Array.prototype.slice.call(arguments);  //为了使用unshift数组方法，将argument转化为真正的数组
     args.unshift('(app)');
@@ -610,7 +623,7 @@
   ```
   
 * 10.对作用域上下文和this的理解，看下列代码：
-  ```
+  ```js
   var User = {
     count: 1,
    
@@ -631,7 +644,7 @@
   func是在winodw的上下文中被执行的，所以会访问不到count属性。
   
   继续追问，那么如何确保Uesr总是能访问到func的上下文，即正确返回1。正确的方法是使用Function.prototype.bind。兼容各个浏览器完整代码如下：
-  ```
+  ```js
   Function.prototype.bind = Function.prototype.bind || function(context){
      var self = this;
    
@@ -649,7 +662,7 @@
   window.onload()方法是必须等到页面内包括图片的所有元素加载完毕后才能执行。
   
   $(document).ready()是DOM结构绘制完毕后就执行，不必等到加载完毕。
-  ```
+  ```js
   /*
    * 传递函数给whenReady()
    * 当文档解析完毕且为操作准备就绪时，函数作为document的方法调用
@@ -694,7 +707,7 @@
   })();
   ```
   如果上述代码十分难懂，下面这个简化版：
-  ```
+  ```js
   function ready(fn){
       if(document.addEventListener) {        //标准浏览器
           document.addEventListener('DOMContentLoaded', function() {
@@ -725,7 +738,7 @@
 
 * 13.首次访问tip提醒，在此访问不再提示  
 
-  ```
+  ```js
   function setcookie(name,value,days){  //给cookie增加一个时间变量
   　　var exp = new Date(); 
   　　exp.setTime(exp.getTime() + days*24*60*60*1000); //设置过期时间为days天
@@ -775,7 +788,7 @@
   ```
 
 * 14.说出以下函数的作用是？空白区域应该填写什么？
-  ```
+  ```js
   //define 
   (function(window){
       function fn(str){
@@ -802,7 +815,7 @@
   
   第一个空是：arguments
   
-  第二个空是：/\{(\d+)\}/ig
+  第二个空是：`/\{(\d+)\}/ig`
 
 * 15.用面向对象的Javascript来介绍一下自己。（没答案哦亲，自己试试吧）
 
