@@ -23,6 +23,21 @@
   |       动态绑定，不缓存       | 会缓存执行代码的结果，导致引用代码块的值不会随着包代码的值变化而变化 |
   |       静态分析，加载效率高        |         无法静态分析，效率偏低      |
 
+  ```js
+  // even.js
+  import { odd } from './odd'
+  export var counter = 0;
+  export function even(n) {
+    counter++;
+    return n == 0 || odd(n - 1);
+  }
+
+  // odd.js
+  import { even } from './even';
+  export function odd(n) {
+    return n != 0 && even(n - 1);
+  }
+  ```
 
   CommonJs 模块输出的是一个值的拷贝，ES6模块输出的是一个值的引用; CommonJS 模块是运行时加载，也就是遇到require就加载并执行，ES6模块是编译时输出接口，ES6输入的模块变量，只是一个符号链接（一个引用），所以这个变量是只读的，对它进行重新赋值就会报错。也就是说，ES6模块是动态引用，不存在缓存值的问题，而且模块里面的变量，绑定其所在的模块，每次都会动态地去被加载的模块取值。
   
