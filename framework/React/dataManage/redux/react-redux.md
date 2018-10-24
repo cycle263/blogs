@@ -1,6 +1,8 @@
 ## react-redux
 
-  > Redux 的作者封装了一个 React 专用的库 React-Redux。React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。
+  > redux本身是个非常纯粹的状态管理库，需要通过react-redux这个库的帮助来管理react的状态。
+  
+  Redux 的作者封装了一个 React 专用的库 React-Redux。React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。
   
   **React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是由 React-Redux 自动生成。也就是说，用户负责视觉层，状态管理则是全部交给它。**
 

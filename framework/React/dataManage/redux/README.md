@@ -76,6 +76,14 @@
   store.subscribe(render);
   ```
 
+* **redux的缺点**
+
+  - 使用复杂，需要编写大量的代码，解决方案比较多，如dva、rematch、mirror等
+
+  - 更新效率不高，由于使用的不可变数据模式，每次更新都会copy一份完整的state
+
+  - 数据传递效率低，采用的context API一直存在传递效率问题
+
 ## 比较react
 
   a. 需要回调通知state (等同于回调参数) -> action  
