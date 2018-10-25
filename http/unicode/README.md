@@ -83,25 +83,36 @@
 
 <br /><br />
 
-## escape vs encodeURI(unicode vs utf-8)
+## escape vs encodeURI(unicode vs utf-8) vs btoa / atob
 
   * **escape**
 
-    escape方法把字符串生成十六进制转义序列字符（特色字符如: @*_+-./ 被排除在外），当该值小于等于0xFF时,用一个2位转移序列: %xx 表示. 大于的话则使用4位序列:%uxxxx 表示。目前该方法以及废弃，推荐使用encodeURI。escape 的编码有一个弊端在于，它后面是4位16进制，故不支持基本多文种平面（BMP）外的字符（unicode大于0xffff）的字符；而encodeURI是基于 UTF-8的，编码本身理论上可以支持0x10ffff内的字符（实际上现在的JavaScript不支持BMP外的字符，所以encodeURI也不支持 ）。
+    escape不能直接用于URL编码，它的真正作用是返回一个字符的Unicode编码值。escape方法把字符串生成十六进制转义序列字符（特色字符如: @*_+-./ 被排除在外），当该值小于等于0xFF时，用一个2位转移序列：%xx 表示；大于的话则使用4位序列：%uxxxx 表示。
+    
+    目前该方法以及废弃，推荐使用encodeURI。escape 的编码有一个弊端在于，它后面是4位16进制，故不支持基本多文种平面（BMP）外的字符（unicode大于0xffff）的字符；而encodeURI是基于 UTF-8的，编码本身理论上可以支持0x10ffff内的字符（实际上现在的JavaScript不支持BMP外的字符，所以encodeURI也不支持 ）。
 
     ```js
     escape("äöü");        // "%E4%F6%FC"
+
     escape("ć");          // "%u0107"
     ```
 
   * **encodeURI**
 
-    encodeURI方法主要针对URL地址， encodeURI方法不会对下列字符编码： ASCII字母、数字、~!@#$&*()=:/,;?+'，
+    encodeURI方法主要针对URL地址参数部分，编码的范围相对于encodeURIComponent要小，encodeURI方法不会对下列字符编码： `ASCII字母、数字、~!@#$&*()=:/,;?+'`
     ![保留字符](../images/encodeURI.jpg)
+
+    ```js
+    encodeURI("http://ydr.me?user=hello world"); 
+    // "http://ydr.me?user=hello%20world"
+
+    encodeURIComponent("http://ydr.me?user=hello world"); 
+    // "http%3A%2F%2Fydr.me%3Fuser%3Dhello%20world"
+    ```
 
   * **encodeURIComponent**
 
-    encodeURIComponent方法不会对下列字符编码： ASCII字母、数字、~!*()'
+    encodeURIComponent方法针对整个URL地址，编码的范围相对于encodeURI要大，encodeURIComponent方法不会对下列字符编码： `ASCII字母、数字、~!*()'`
 
     备注：escape 在处理0xff之外字符的时候，是直接使用字符的unicode在前面加上一个 「%u」，而encodeURI则是先进行UTF-8，再在UTF-8的每个字节码前加上一个「%」；在处理0xff以内字符时，编码方式是一样的（都是「%XX」，XX为字符的16进制unicode，同时也是字符的UTF-8），只是范围（即哪些字符编码哪些字符不编码）不一样。encodeURI 是W3C 的标准，而 escape 是非标准。
 
@@ -112,5 +123,21 @@
     |   ü    |	  50108    |  	C3BC      |	    252     |	   FC    |
     |   ć    |	  50311    |  	C487      |	    263     |	   107   |
 
+  * atob / btoa
+
+    - btoa：将ASCII字符串或二进制数据转换成一个base64编码过的字符串，该方法不能直接作用于Unicode字符串，所以对中文的base64编码会报错。如果要对中文进行base64编码，只需要将中文进行 encodeURIComponent 进行编码之后再进行 base64编码即可。
+
+      `btoa(encodeURIComponent("hello @你好，我是中文！"));`
+
+    - atob：将已经被base64编码过的数据进行解码。
+
+    ```js
+    function utf8_to_b64( str ) {
+      return window.btoa(unescape(encodeURIComponent( str )));
+    }
+    function b64_to_utf8( str ) {
+      return decodeURIComponent(escape(window.atob( str )));
+    }
+    ```
 
 备注：（侵图必删）
