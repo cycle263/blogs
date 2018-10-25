@@ -1,0 +1,1 @@
+* encode vs btoa vs escape

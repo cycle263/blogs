@@ -71,4 +71,4 @@
 
 * [ ] fetch vs axios vs ajax vs XMLHttpRequest vs jQuery.ajax？
 
-* [ ] 
+* [ ] encode vs btoa vs escape
