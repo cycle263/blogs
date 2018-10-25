@@ -123,6 +123,12 @@
     |   ü    |	  50108    |  	C3BC      |	    252     |	   FC    |
     |   ć    |	  50311    |  	C487      |	    263     |	   107   |
 
+    ```js
+    fetch('https://api.github.com/repos/cycle263/blogs/git/blobs/9d98c5b00150c1ee29a8f0f07a996459e7189420')
+    .then(res => res.json())
+    .then(json => console.log(decodeURIComponent(escape(atob(json.content)))));
+    ```
+
   * atob / btoa
 
     - btoa：将ASCII字符串或二进制数据转换成一个base64编码过的字符串，该方法不能直接作用于Unicode字符串，所以对中文的base64编码会报错。如果要对中文进行base64编码，只需要将中文进行 encodeURIComponent 进行编码之后再进行 base64编码即可。
