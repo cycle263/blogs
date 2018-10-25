@@ -46,7 +46,11 @@
 
   - postcss-loader 使用 PostCSS 加载和转译 CSS/SSS 文件。另外，autoprefixer是postcss的一个插件, 在新的css属性上加前缀，如：'-webkit-'。postcss-loader 与 postcss-sprites: 合成雪碧图, 减小HTTP请求. 注意合成后的图片文件大小。
 
-  ```json
+  ```js
+  let spritesConfig = {
+    spritePath: "./dist/static"
+  };
+
   // 雪碧图
   {
     loader: "postcss-loader",

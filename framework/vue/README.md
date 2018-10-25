@@ -45,8 +45,20 @@
 
 * 生命周期
 
+  总共分为8个阶段创建前/后，载入前/后，更新前/后，销毁前/后
+
   beforeCreate、created、beforeMount、mounted、beforeUpdate、updated、beforeDestroy、destroyed
 
   创建 -> 挂载 -> 更新 -> 销毁
 
   [vue生命周期](../images/lifecycle.jpg)
+
+* 常用指令
+
+  - v-modal  实现双向绑定
+
+  - v-bind   属性绑定
+
+  - v-for     数据遍历
+
+  - v-if     属性判断，是否隐藏
