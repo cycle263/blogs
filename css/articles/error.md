@@ -6,7 +6,7 @@
 
   解决办法：设置span的vertical-align为bottom；或为span添加内容为空格；
 
-* display: inline-block  同行多个inline-block之间出现间距。
+* `display: inline-block` 同行多个inline-block之间出现间距。
 
   原因：元素之间有空格，间距的大小与上下文的字体和文字大小相关。
 

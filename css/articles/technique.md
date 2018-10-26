@@ -3,7 +3,7 @@
 * 1、对空链接使用属性选择器
 
   当 <a> 中没有文本而 href 不为空的时候，显示其链接：
-  ```
+  ```css
   a[href^="http"]:empty::before {
     content: attr(": " href);    // href可以替换成其他自定义属性
   }
@@ -12,7 +12,7 @@
 * 2、继承 box-sizing
 
   让 box-sizing 继承自 html ：
-  ```
+  ```css
   html {
     box-sizing: border-box;
   }
@@ -24,7 +24,7 @@
 * 3、使用负的 nth-child 选取元素
 
   使用负的 nth-child 在 1 到 n 之间选择元素：
-  ```
+  ```css
   li {
     display: none;
   }
@@ -35,7 +35,7 @@
   }
   ```
   当然，如果你了解 :not() 的话，还可以这么做：
-  ```
+  ```css
   li:not(:nth-child(-n+3)) {
     display: none;
   }
@@ -43,7 +43,7 @@
 
 * 4、CSS Filters  修改图片的颜色
 
-  ```
+  ```css
   /* simple filter */
   .myElement {
     -webkit-filter: blur(2px);
@@ -56,7 +56,7 @@
 
 * 5、CSS Counters
 
-  ```
+  ```css
   这个特性可以把一个 counter 加到元素中，通过 :before 或 :after ：
   /* initialize the counter */
   ol.slides {
@@ -75,7 +75,7 @@
 * 6、文本溢出省略的处理方法
 
   - 1)单行文本溢出
-  ```
+  ```css
   .inline{
     overflow:hidden;
     white-space:nowrap;
@@ -84,7 +84,7 @@
   ```
 
   - 2)多行文本溢出
-  ```
+  ```css
   .foo{
     display:-webkit-box!important;
     overflow:hidden;
@@ -98,7 +98,7 @@
 * 7、CSS实现垂直水平居中
 
   - 方法1:
-  ```
+  ```css
   .parent {
     width:800px;
     height:500px;
@@ -115,7 +115,7 @@
   }
   ```
   - 方法2：
-  ```
+  ```css
   .parent {
     width:800px;
     height:500px;
@@ -132,7 +132,7 @@
   }
   ```
   - 方法3：
-  ```
+  ```css
   .parent {
     width:800px;
     height:500px;
@@ -148,7 +148,7 @@
   }
   ```
   - 方法4：
-  ```
+  ```css
   .parent {
     width:800px;
     height:500px;
