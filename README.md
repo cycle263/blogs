@@ -270,7 +270,7 @@
 
     浏览器向服务器发送一个HTTP请求，然后服务器不断单向地向浏览器推送“信息”（message）。
 
-    ```
+    ```js
     new EventSource(url);
     ```
 
@@ -296,7 +296,7 @@
 
   * **[git](team/git)**
 
-    ```git
+    ```js
     $ git clone someobject.git
     $ git add .
     $ git commit -m "message"
