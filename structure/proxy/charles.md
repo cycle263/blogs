@@ -18,7 +18,7 @@
 
     备注：弹出的编辑窗里不用挨个填，把整个网址输到host，会自动帮你把网址解析成host、path、query等部分  
 
-    ![map setting](images/mapLocal.png)
+    ![map setting](./images/mapLocal.png)
 
 * Rewrite
 
@@ -28,7 +28,7 @@
 
     Rewrite功能很强大的，包括header的增删改和param的增删改，还有body修改等。
 
-    ![rewrite](../images/rewrite.png)
+    ![rewrite](./images/rewrite.png)
 
 * Map Remote
 

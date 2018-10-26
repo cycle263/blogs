@@ -72,3 +72,5 @@
 * [ ] fetch vs axios vs ajax vs XMLHttpRequest vs jQuery.ajax？
 
 * [ ] encode vs btoa vs escape
+
+* [ ] css font-family中文字体推荐
