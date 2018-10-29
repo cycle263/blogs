@@ -82,7 +82,6 @@
   - module.loaders不再支持，请使用module.rules
 
 
-
 ## webpack常见的优化手段及其原理
 
 * 缓存
@@ -98,7 +97,7 @@
     + chunkhash： 每一个chunk 都根据自身的内容计算而来, 可以保证在chunk没有变化的时候hash不变，文件不需要更新，chunk变了后，可保证hash唯一，由于hash太长，这里截取了hash的5个字符。
 
     ```js
-    // webpack.config.js
+    /* webpack.config.js */
     module.exports = {
         entry: {
             app: 'app.js',
@@ -120,8 +119,8 @@
 
     + 基于路由拆分
 
-    ```js
-    // react-router3
+    ```jsx
+    /* react-router3  */
     <Route path="adminIndex" 
       getComponent={(attrs, callback) => { 
         require.ensure([], (require) => { 

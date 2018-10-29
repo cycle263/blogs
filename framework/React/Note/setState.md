@@ -51,16 +51,28 @@ class Child extends Component {
 
 * fiber
 
-在React 16之前，组件层级很深，并且频繁渲染会导致卡顿或者帧率不高的情况，fiber的出现就是为了解决这样的问题。
+  - 背景
 
-```flow
-st=>start: ParnetComp
-op1=>operation: SelfComp
-op2=>operation: ChildComp
-op3=>operation: GrandsonComp
-op4=>subroutine: GrandsonComp DidMount
-op5=>inputoutput: ChildComp DidMount
-op6=>operation: SelfComp DidMount
-e=>end: ParnetComp DidMount
-st->op1->op2->op3(right)->op4->op5->op6->e
-```
+  在React 16之前，组件层级很深，并且频繁渲染会导致卡顿或者帧率不高的情况，fiber的出现就是为了解决这样的问题。简单说，在React渲染期间，它占用浏览器主线程，浏览器也在与用户交互。
+
+  - 优势
+  
+  采用新的算法策略之后，开发者可以通过优先级，控制不同类型任务的优先级，提高用户体验，以及整个应用程序的灵活性。例如：将动画的渲染任务优先级提高，对动画的支持会变得比较友好。
+
+  ```flow
+  st=>start: ParnetComp
+  op1=>operation: SelfComp
+  op2=>operation: ChildComp
+  op3=>operation: GrandsonComp
+  op4=>subroutine: GrandsonComp DidMount
+  op5=>inputoutput: ChildComp DidMount
+  op6=>operation: SelfComp DidMount
+  e=>end: ParnetComp DidMount
+  st->op1->op2->op3(right)->op4->op5->op6->e
+  ```
+
+  - 劣势
+
+  task按照优先级之后，可能低优先级的任务永远不会执行，称之为starvation；task有可能被打断，需要重新执行，那么某些依赖生命周期实现的业务逻辑可能会受到影响。
+
+
