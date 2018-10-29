@@ -2,28 +2,46 @@
 
 * css样式调试
 
+  ![chrome中css样式调试](../images/style.png)
+
 * js调试
+
+  - sources breakpoints
+
+    ![chrome中js调试](../images/sources.png)
+
+  - 请求详情查看
+
+    ![chrome中请求详情](../images/network.png)
+
+  - console大法
+
+  - debugger
 
 * 代理调试
 
+  - charles, Fiddle, devServer.proxy, SwitchyOmega
+
 * 模拟
 
-## chrome其他知识点
+  - mockjs
+
+## chrome其他技巧
 
 - 1、把console内的代码添加到sources
   在代码最后加上    //@ sourceURL = name.js;
 
 - 2、快捷键操作
 
-  * ctrl+shift+o （cmd+shift+o）搜寻sources里的函数名称，
+  * ctrl + shift + o （cmd+shift+o）搜寻sources里的函数名称，
 
   * Ctrl + D (Cmd + D) 选择下一个匹配的匹配项
 
-  * ctrl+o/p (cmd+o/p) 搜寻文件名，
+  * ctrl + o/p (cmd+o/p) 搜寻文件名，
 
   * ctrl+shift+f (cmd+opt+f) 搜寻所有文件内容
 
-  * ctrl+g (too) 跳转到行
+  * ctrl + g (too) 跳转到行
 
   * shift + click 改变element颜色的格式
 
@@ -62,7 +80,6 @@
 
 * 1、Content scripts: 指的是Chrome拓展注入在网页中的脚本。比如安装了一个叫 JSONView的Chrome拓展
 
-* 2、
 
 
 ## 移动端调试

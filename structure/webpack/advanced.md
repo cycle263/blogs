@@ -49,7 +49,7 @@
 
   假定在本机他是类似`http://localhost:5000/api/* -> http://devserver.net:5000/api/*` 这类的请求，现在添加配置让ajax请求可以直接proxy过去。
 
-  ```js
+  ```json
   devServer: {
     hot: true,
     inline: true,
