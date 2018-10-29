@@ -32,22 +32,22 @@ this.setState((prevState, props) => ({
 
 * 将props转换成自己的state
 
-  ```js
-  class Child extends Component {
-      constructor(props) {
-          super(props);
-          this.state = {
-              someThings: props.someThings
-          };
-      }
-      componentWillReceiveProps(nextProps) {
-          this.setState({someThings: nextProps.someThings});
-      }
-      render() {
-          return <div>{this.state.someThings}</div>
-      }
-  }
-  ```
+```js
+class Child extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            someThings: props.someThings
+        };
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({someThings: nextProps.someThings});
+    }
+    render() {
+        return <div>{this.state.someThings}</div>
+    }
+}
+```
 
 * fiber
 
