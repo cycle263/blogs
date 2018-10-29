@@ -47,7 +47,7 @@
 
 * **配置webpack-dev-server代理**
 
-  假定在本机他是类似http://localhost:5000/api/* 这类的请求，现在添加配置让ajax请求可以直接proxy过去。
+  假定在本机他是类似`http://localhost:5000/api/* -> http://devserver.net:5000/api/*` 这类的请求，现在添加配置让ajax请求可以直接proxy过去。
 
   ```js
   devServer: {
@@ -56,7 +56,7 @@
     // 其实很简单的，只要配置这个参数就可以了
     proxy: {
       '/api/*': {
-          target: 'http://localhost:5000',
+          target: 'http://devserver.net:5000',
           secure: false
       }
     }

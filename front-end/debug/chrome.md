@@ -1,5 +1,15 @@
 ## chrome 调试技巧
 
+* css样式调试
+
+* js调试
+
+* 代理调试
+
+* 模拟
+
+## chrome其他知识点
+
 - 1、把console内的代码添加到sources
   在代码最后加上    //@ sourceURL = name.js;
 

@@ -1,3 +1,6 @@
+## 浏览器判断
+
+```js
 var agent = navigator.userAgent.toLowerCase(),
   opera = window.opera,
   browser = {
@@ -56,3 +59,4 @@ var agent = navigator.userAgent.toLowerCase(),
    */
   quirks : ( document.compatMode == 'BackCompat' )
 };
+```
