@@ -1,20 +1,40 @@
-## npm 模块安装机制
+## npm scripts -- CLI Commands
 
-  安装之前，npm install会先检查，node_modules目录之中是否已经存在指定模块。如果存在，就不再重新安装了，即使远程仓库已经有了一个新版本，也是如此。如果你希望，一个模块不管是否安装过，npm 都要强制重新安装，可以使用-f或--force参数。
+* name, version, description, homepage, author, contributors, repository, keywords
 
-  -- registry 指定安装依赖包镜像地址
+* scripts 构建命令
 
+  - 参数：npm_package_name, npm_package_version(环境变量中以"npm_config_"开头的都被解释为配置选项)
 
-## 模块的安装过程
+* main  包的入口文件
 
-  * 发出npm install命令
+* config 添加一些设置，可以供scripts读取用，同时这里的值也会被添加到系统的环境变量中。
 
-  * npm 向 registry 查询模块压缩包的网址
+  ```json
+  "config": {
+      "port": "8080"
+  }
+  ```
 
-  * 下载压缩包，存放在~/.npm目录
+  优先级：命令行 > 环境变量 > 用户配置文件 > 全局配置 > 内置配置文件 > 默认配置  
 
-  * 解压压缩包到当前项目的node_modules目录
+* engines  
 
+  指定包运行的环境
+  ```json
+  "engines": {
+      "node": ">=0.10.3 < 0.12",
+      "npm": "~1.0.20"
+  }
+  ```
+
+* 多个script命令执行
+
+  ```js
+  npm run script1.js & npm run script2.js     // 并行执行（同时执行）
+
+  npm run script1.js && npm run script2.js    // 继发执行 （执行完前一个才执行下一个）
+  ```
 
 ## [npm scripts](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
 
