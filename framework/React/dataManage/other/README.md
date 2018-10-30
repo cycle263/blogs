@@ -1,17 +1,17 @@
-## 其他redux中间件
+## redux中间件
 
 * redux-thunk
+
+  redux-thunk 选择以 middleware 的形式来增强 redux store 的 dispatch 方法（即：支持了 dispatch(function)），从而在拥有了 异步获取数据能力 的同时，又可以进一步将 数据获取相关的业务逻辑 从 View 层分离出去。
 
   ```js
   // sync thunk
   function add (x, y) {
     return x + y;
   }
-
   var thunk = function() {
     return add(10, 15);
   };
-
   thunk();    // 25
 
   // async thunk
@@ -20,11 +20,9 @@
       cb(x + y);
     });
   }
-
   var thunk = function(cb) {
     addAsync(10, 15, cb);
   }
-
   thunk(function(sum) {
     console.log(sum);  // 25
   })
@@ -37,16 +35,14 @@
       fn.apply(null, args);
     }
   }
-
   var thunk = makeThunk(addAsync, 10, 15);
   ```
 
   缺点：回调地狱
 
-
 * redux-saga
 
-  redux-saga 是一个用于管理应用程序 Side Effect（副作用，例如异步获取数据，访问浏览器缓存等）的 library，它的目标是让副作用管理更容易，执行更高效，测试更简单，在处理故障时更容易。
+  redux-saga 是一个用于管理应用程序 Side Effect（副作用，例如：异步获取数据，访问浏览器缓存等）的 library，它的目标是让副作用管理更容易，执行更高效，测试更简单，在处理故障时更容易。
 
   redux-saga 是一个 redux 中间件，意味着这个线程可以通过正常的 redux action 从主应用程序启动，暂停和取消，它能访问完整的 redux state，也可以 dispatch redux action。
 
@@ -75,9 +71,7 @@
   }
 
   /*
-    也可以使用 takeLatest
-
-    不允许并发，dispatch 一个 `USER_FETCH_REQUESTED` action 时，
+    也可以使用 takeLatest 不允许并发，dispatch 一个 `USER_FETCH_REQUESTED` action 时，
     如果在这之前已经有一个 `USER_FETCH_REQUESTED` action 在处理中，
     那么处理中的 action 会被取消，只会执行当前的
   */
@@ -127,7 +121,7 @@
     });
     ```
 
-  - call(fn, ...args) / call([context, fnName], ...args) 以参数 args 调用函数。其中 fn 是一个 Generator 函数( yield )或者普通函数, apply(context, fn, [args])另一种写法。
+  - call(fn, ...args) / call([context, fnName], ...args) 用来创建 effect 对象，被称作是 effect factory。以参数 args 调用函数。其中 fn 是一个 Generator 函数( yield )或者普通函数, apply(context, fn, [args])另一种写法。
 
     ```js
     const users = yield call(fetch, '/users'),
@@ -142,6 +136,18 @@
   - put(action) 向 Store 发起一个 action。 这个 effect 是非阻塞型的，并且所有向下游抛出的错误（例如在 reducer 中），都不会冒泡回到 saga 当中。 put.resolve(action)为阻塞型，返回了 promise，它将会等待其结果。
 
   - fork(fn, ...args) 用来命令 middleware 以 非阻塞调用 的形式执行 fn。
+
+    ```js
+    function* fetchData() {
+      /* 等待 2 秒后，打印欢迎语（阻塞） */
+      const greeting = yield call(fn);
+      console.log('greeting: ', greeting);
+
+      /* 立即打印 task 对象（非阻塞） */
+      const task = yield fork(fn);
+      console.log('task: ', task);
+    }
+    ```
 
 
 ## dva

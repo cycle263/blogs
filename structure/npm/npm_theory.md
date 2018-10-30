@@ -78,7 +78,7 @@
 
   * 常见示例
 
-    ```script
+    ```json
     // 删除目录
     "clean": "rimraf dist/*",
 
