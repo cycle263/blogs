@@ -1,3 +1,22 @@
+## shell
+
+Shell 既是一种脚本编程语言，也是一个连接内核和用户的软件。常见的 Shell 有 sh、bash、csh、tcsh、ash 等。bash shell 是 Linux 的默认 shell，由 GNU 组织开发，保持了对 sh shell 的兼容性，是各种 Linux 发行版默认配置的 shell。
+
+* 查看支持的shell
+
+  Shell 是一个程序，一般都是放在/bin或者/user/bin目录下，当前 Linux 系统可用的 Shell 都记录在/etc/shells文件中。/etc/shells是一个纯文本文件，你可以在图形界面下打开它，也可以使用 cat 命令查看它。
+
+  ![all shells](images/shells.png)
+
+* 默认shell
+
+  `echo $SHELL` 输出SHELL环境变量，也就是默认shell
+  `chsh -s /bin/bash`  修改默认SHELL为bash，一般情况下，`/bin/zsh` 都链接指向 `/bin/bash`
+
+* 当前用户目录
+
+  在Linux中，~ 表示代码主目录，也就是当前登录用户的用户目录。相当于 `/Users/cycle263/`
+
 ## Linux常用的shell命令
 
 ![shell commands](images/shell.png)

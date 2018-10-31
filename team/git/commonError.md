@@ -2,7 +2,7 @@
 
 * git push origin someBranch，报错误如下：
 
-  ```shell
+  ```js
   error: src refspec someBranch does not match any.
   error: failed to push some refs to 'someBranch'.
   ```

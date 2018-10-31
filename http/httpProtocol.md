@@ -147,8 +147,6 @@
 
 * websocket web浏览器和web服务器之间全双工通信标准，协议由IETF制定，websocket api由W3C定位标准。一旦通信连接，可发送json, html, xml, 图片等任意格式的数据。
 
-* http2 2015年，HTTP/2 发布，它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了，下一个新版本将是 HTTP/3。http2的多项技术标准采用了spdy, http speed + mobility, network-friendly等协议标准。
-
 * https vs http
 
   - HTTPS协议需要到CA申请证书，一般免费证书很少，需要交费。
@@ -163,17 +161,15 @@
 
 * [Http2](./http2) 相比http1.1
 
-    > HTTP/2 则是一个彻底的二进制协议，头信息和数据体都是二进制，并且统称为"帧"（frame）：头信息帧和数据帧。
+    > http2 2015年，HTTP/2 发布，它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了，下一个新版本将是 HTTP3。http2的多项技术标准采用了spdy, http speed + mobility, network-friendly等协议标准。HTTP2 是一个彻底的二进制协议，头信息和数据体都是二进制，并且统称为"帧"（frame）：头信息帧和数据帧。
 
     - 连接复用
-
     - 持久化连接
-
     - 强制加密
-
     - 服务端推送
-
     - 协议头压缩
+
+    服务器是否支持http2是在https连接初始化的时候确认的，所以实际上http2只有在https下才会启用。
 
 * [Websocket](websocket)详解
 
