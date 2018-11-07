@@ -116,7 +116,8 @@ jQuery.fn.extend({
             },
 
             initEvents = function(){
-                //查询按钮点击事件
+                // 查询按钮点击事件，引用页面如果手动查询，可能会重复请求；
+                // 如果请求比较定制化，可以考虑用和pager-query不同的className
                 form.off("click", ".pager-query").on("click", ".pager-query", function(event){
                     event.preventDefault();
                     opts.currentPage = 1;
@@ -227,6 +228,7 @@ jQuery.fn.extend({
                         renderPager(res, text, xhr);
                     },
                     error: function(jqXHR, textStatus, errorThrown){
+                        // 异常处理
                         console.error('network error: ' + textStatus);
                         throw new Error(errorThrown);
                     }
