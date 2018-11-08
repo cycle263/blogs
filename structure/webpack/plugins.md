@@ -188,6 +188,8 @@ module.exports = MyPlugin;
 
   - PurifyCSS css tree shaking
 
+  - 多进程 HappyPack
+
   - SourceMapDevToolPlugin 过滤Sourcemap文件
 
     ```js
