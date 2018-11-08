@@ -21,3 +21,11 @@
 [CDNJS](https://cdnjs.com/)
 
 [微信CDN](http://qydev.weixin.qq.com/cdn/cdnjs.html)
+
+[jsDelivr CDN](https://www.jsdelivr.com/)
+
+  `highlight CDN: https://cdn.jsdelivr.net/npm/reveal.js@3.7.0/plugin/highlight/highlight.js`
+
+[CDNJS CDN](https://cdnjs.com/)
+
+  `highlight CDN: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.min.js`
