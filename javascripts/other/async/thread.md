@@ -12,6 +12,20 @@
 
   - GUI渲染线程   负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。（绘制用户界面、与js主线程是互斥的），界面需要重绘或者回流时，该线程也会执行。当JS引擎执行时GUI线程会被挂起，GUI 更新会被保存在一个队列中等到 JS 引擎空闲时立即被执行。
 
+    ```html
+    <script>
+      function test(){
+        console.log('something');
+      }
+      test();
+    </script>
+    <script src="/js/bar.js"></script>
+    <!-- async 阻塞加载和渲染，下载完立即执行，顺序难以保证 -->
+    <script async src="/js/boo.js"></script>
+    <!-- defer 阻塞加载和渲染，下载后等DOM解析完才执行 -->
+    <script defer src="/js/foot.js"></script>
+    ```
+
   - http网络请求线程 （处理用户的get、post等请求，等返回结果后将回调函数推入任务队列）XMLHttpRequest是通过浏览器新开一个线程进行请求，并将检测状态变更，状态发送变更异步线程就产生状态变更事件，将这个回调函数放入事件队列中，再由JavaScript引擎执行。
 
   - 定时触发器线程 （setTimeout、setInterval等待时间结束后把执行函数推入任务队列中）。浏览器定时计数器并不是由 JavaScript 引擎计数的（因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确），由单独的定时触发器线程计时；并且，setTimeout的等待时间结束后并不是直接执行的，而是先推入浏览器的一个任务队列，在同步队列结束后在依次调用任务队列中的任务。注意，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。
@@ -20,6 +34,60 @@
 
   ![JavaScript主线程](../../images/thread.jpg)
 
+## webworker
+
+  为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但完全受控于主线程。其实就是在Javascript单线程执行的基础上，开启一个子线程，进行任务处理，而不影响主线程的执行，当子线程执行完毕之后再回到主线程上，在这个过程中并不影响主线程的执行过程。
+
+  Web Worker的基本原理就是在当前的主线程中加载一个只读文件来创建一个新的线程，两个线程同时存在，且互不阻塞，并且在子线程与主线程之间提供了数据交换的接口postMessage和onmessage。来进行发送数据和接收数据。其数据格式可以为结构化数据（JSON等）。子线程并不支持操作页面的DOM。
+
+  ![webworker](../../images/webworker.webp)
+
+  * vs SharedWorker
+
+  WebWorker只属于某个页面，不会和其他页面的Render进程（浏览器内核进程）共享，所以Chrome会创建一个新的线程来运行Worker中的JavaScript；SharedWorker是浏览器所有页面共享的，所以Chrome浏览器为SharedWorker单独创建一个进程来运行JavaScript。
+
+### 定时器
+
+* setTimeout会准时执行吗？
+
+  ```js
+  function testTimeout() {
+    let startTime = performance.now() // 设置开始的时间戳
+    setTimeout(function(){
+      const passTime = performance.now() - startTime // 获取当前时间和开始时间差
+      console.log('执行时间为：', passTime);  // 正常情况下在130毫秒左右
+    }, 100);
+    let i = 9999999;
+    do {
+      i--;
+    } while (i)
+  }
+  ```
+
+  定时器并不能保证真正定时执行，一般会延迟一些时间执行，
+
+* setTimeout算异步吗？
+
+  调用 setTimeout 函数会在一个时间段过去后在队列中添加一个消息。这个时间段作为函数的第二个参数被传入。如果队列中没有其它消息，消息会被马上处理。但是，如果有其它消息，setTimeout 消息必须等待其它消息处理完。因此第二个参数仅仅表示最少的时间，而非确切的时间。
+
+  也就是说，setTimeout()只是将事件插入了任务队列，必须等到当前代码（执行栈）执行完，主线程才会去执行它指定的回调函数。setTimeout 里面的代码是在当前环境中的任务执行完了「之后」才执行，实际上是js引擎调用的event loop模块，event loop有4ms的时间间隔，并不是真正意义上的同时进行。Ajax可以和js代码同时运行的，因为它是有浏览器的http网络请求线程负责，并不是js引擎。
+
+* setInterval vs setTimeout模拟定时执行
+
+  setTimeout计时到后就会去执行，然后执行一段时间后才会继续下一个setTimeout，中间就多了运行回调函数代码的时间；
+
+  而setInterval，定时线程会在每次到时候精准地将回调函数推入任务队列，中间没有运行代码的时间，存在上次未执完的可能性，会导致要么某次被跳过（浏览器本身优化，不会重复放入队列），要么间隔时间比预期小；而且把浏览器最小化显示等操作时，浏览器会把setInterval的回调函数放在队列中，等浏览器窗口再次打开时，一瞬间全部执行时。
+
+  ```js
+  // setTimeout vs setInterval
+  setTimeout(function fn(){       
+    // TODO
+    setTimeout(fn, 100);
+  }, 100);
+  setInterval(function(){
+    // TODO
+  }, 100);
+  ```
 
 ### 执行任务（执行栈）
 
@@ -98,62 +166,6 @@
     - 调用栈清空(只剩全局)，然后执行所有的microtask；当所有可执行的microtask执行完毕之后。循环再次从macrotask开始，找到其中一个任务队列执行完毕，然后再执行所有的microtask，这样一直循环下去
 
   备注：官方的promise和polyfill版的promise两者有很大区别，前者为microtask形式，后者通过setTimeout模拟的macrotask形式。
-
-
-### 定时器
-
-* setTimeout会准时执行吗？
-
-  ```js
-  function testTimeout() {
-    let startTime = performance.now() // 设置开始的时间戳
-    setTimeout(function(){
-      const passTime = performance.now() - startTime // 获取当前时间和开始时间差
-      console.log('执行时间为：', passTime);  // 正常情况下在130毫秒左右
-    }, 100);
-    let i = 9999999;
-    do {
-      i--;
-    } while (i)
-  }
-  ```
-
-  定时器并不能保证真正定时执行，一般会延迟一些时间执行，
-
-* setTimeout算异步吗？
-
-  调用 setTimeout 函数会在一个时间段过去后在队列中添加一个消息。这个时间段作为函数的第二个参数被传入。如果队列中没有其它消息，消息会被马上处理。但是，如果有其它消息，setTimeout 消息必须等待其它消息处理完。因此第二个参数仅仅表示最少的时间，而非确切的时间。
-
-  也就是说，setTimeout()只是将事件插入了任务队列，必须等到当前代码（执行栈）执行完，主线程才会去执行它指定的回调函数。setTimeout 里面的代码是在当前环境中的任务执行完了「之后」才执行，实际上是js引擎调用的event loop模块，event loop有4ms的时间间隔，并不是真正意义上的同时进行。Ajax可以和js代码同时运行的，因为它是有浏览器的http网络请求线程负责，并不是js引擎。
-
-* setInterval vs setTimeout模拟定时执行
-
-  setTimeout计时到后就会去执行，然后执行一段时间后才会继续下一个setTimeout，中间就多了运行回调函数代码的时间；
-
-  而setInterval，定时线程会在每次到时候精准地将回调函数推入任务队列，中间没有运行代码的时间，存在上次未执完的可能性，会导致要么某次被跳过（浏览器本身优化，不会重复放入队列），要么间隔时间比预期小；而且把浏览器最小化显示等操作时，浏览器会把setInterval的回调函数放在队列中，等浏览器窗口再次打开时，一瞬间全部执行时。
-
-  ```js
-  // setTimeout vs setInterval
-  setTimeout(function fn(){       
-    // TODO
-    setTimeout(fn, 100);
-  }, 100);
-  setInterval(function(){
-    // TODO
-  }, 100);
-  ```
-
-## webworker
-
-  为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但完全受控于主线程。其实就是在Javascript单线程执行的基础上，开启一个子线程，进行任务处理，而不影响主线程的执行，当子线程执行完毕之后再回到主线程上，在这个过程中并不影响主线程的执行过程。
-
-  Web Worker的基本原理就是在当前的主线程中加载一个只读文件来创建一个新的线程，两个线程同时存在，且互不阻塞，并且在子线程与主线程之间提供了数据交换的接口postMessage和onmessage。来进行发送数据和接收数据。其数据格式可以为结构化数据（JSON等）。子线程并不支持操作页面的DOM。
-
-  ![webworker](../../images/webworker.webp)
-
-  * vs SharedWorker
-
-  WebWorker只属于某个页面，不会和其他页面的Render进程（浏览器内核进程）共享，所以Chrome会创建一个新的线程来运行Worker中的JavaScript；SharedWorker是浏览器所有页面共享的，所以Chrome浏览器为SharedWorker单独创建一个进程来运行JavaScript。
 
 #### 资料参见
 
