@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Get rect point</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .content{
+      width: 1200px;
+      min-height: 1800px;
+      margin: 0 auto;
+      background-image: url('./images/background.png');
+    }
+    .linkRect{
+      display: inline-block;
+      position: absolute;
+      cursor: pointer;
+      z-index: 9;
+      border: 1px solid #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+
+  </div>
+  <!-- coordinate -->
+  <script>
+    (function() { 
+      var hasRectSelect = false, selRect, startX, startY, _x, _y;
+
+      var renderRect = function(o) {
+        var link = document.createElement('a');
+        link.style.cssText = `width: ${o.w}px;height: ${o.h}px;left: ${o.x}px; top: ${o.y}px;`;
+        link.className = "linkRect";
+        link.href = 'https://www.google.com/' + document.querySelectorAll('.linkRect').length;
+        link.target = 'blank';
+        document.body.appendChild(link);
+      };
+
+      document.onmousedown = function(e) { 
+        hasRectSelect = true;
+        startX = e.pageX;
+        startY = e.pageY;
+        e.stopPropagation(); 
+      };
+
+      document.onmousemove = function(e) { 
+        if (hasRectSelect) { 
+          _x = e.pageX; 
+          _y = e.pageY;
+          var w = Math.abs(_x - startX);
+          var h = Math.abs(_y - startY);
+
+          if (w < 3 || h < 3) return;   // 优化性能，避免鼠标误点
+          
+          if (!selRect) {
+            selRect = document.createElement("div"); 
+            selRect.style.cssText = "position:absolute;width:0px;height:0px;font-size:0px;margin:0px;padding:0px;border:1px dashed #0099FF;background-color:#C3D5ED;z-index:1000;filter:alpha(opacity:60);opacity:0.6;";  
+            document.body.appendChild(selRect);
+          }
+
+          selRect.style.left = Math.min(_x, startX) + "px";
+          selRect.style.top = Math.min(_y, startY) + "px";
+          selRect.style.width = w + "px";
+          selRect.style.height = h + "px"; 
+        } 
+        e.stopPropagation(); 
+      };
+
+      document.onmouseup = function() { 
+        hasRectSelect = false; 
+        if (selRect) { 
+          var s = selRect.style;
+          var info = {
+            x: parseInt(s.left),
+            y: parseInt(s.top),
+            w: parseInt(s.width),
+            h: parseInt(s.height)
+          };
+          console.log(`coordinate: ${info.x}, ${info.y}, width: ${info.w}, height: ${info.h}`);
+          renderRect(info);
+          document.body.removeChild(selRect);
+        } 
+        _x = null, _y = null, selRect = null, startX = null, startY = null; 
+      };
+   })(); 
+  </script>
+</body>
+</html>
