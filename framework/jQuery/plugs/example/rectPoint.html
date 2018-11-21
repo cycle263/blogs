@@ -104,6 +104,24 @@
       var hasRectSelect = false, hasMoving = false, hasResize = false, selRect, op = {}, startX, startY, _x, _y;
       var content = document.querySelector('.content');
       var hot = document.querySelector('.hotLinks');
+      
+      // 获取坐标和长宽信息
+      var getPointInfo = function(s) {
+        return {
+          x: parseInt(s.left),
+          y: parseInt(s.top),
+          w: parseInt(s.width),
+          h: parseInt(s.height)
+        };
+      };
+      
+      // 缓存坐标和长宽信息
+      var cachePointInfo = function(ele, o) {
+        ele.setAttribute('data-px', o.x);
+        ele.setAttribute('data-py', o.y);
+        ele.setAttribute('data-pw', o.w);
+        ele.setAttribute('data-ph', o.h);
+      };
 
       var renderRect = function(o) {
         var link = document.createElement('a');
@@ -114,8 +132,7 @@
         link.text = '';
         link.appendChild(span);
         link.setAttribute('data-href', 'https://www.google.com/' + document.querySelectorAll('.linkRect').length);
-        link.setAttribute('data-px', o.x);
-        link.setAttribute('data-py', o.y);
+        cachePointInfo(link, o);
         hot.appendChild(link);
       };
 
@@ -137,10 +154,13 @@
           _x = e.pageX;
           _y = e.pageY;
         }
+        if (hasMoving || hasResize) {
+          var mx = _x - startX;   // x轴移动距离
+          var my = _y - startY;   // y轴移动距离
+        }
         if (hasRectSelect) {  // 画框选框
           var w = Math.abs(_x - startX);  // x轴移动距离的绝对值
           var h = Math.abs(_y - startY);  // y轴移动距离的绝对值
-
           if (w < 3 || h < 3) return;   // 优化性能，避免鼠标误点
           
           if (!selRect) {
@@ -153,16 +173,10 @@
           selRect.style.top = Math.min(_y, startY) + "px";
           selRect.style.width = w + "px";
           selRect.style.height = h + "px"; 
-        } 
-        if (hasMoving || hasResize) {
-          var mx = _x - startX;   // x轴移动距离
-          var my = _y - startY;   // y轴移动距离
-        }
-        if (hasMoving) {  // 任意移动框选框
+        } else if (hasMoving) {  // 任意移动框选框
           hasMoving.style.left = op.x + mx + "px";
           hasMoving.style.top = op.y + my + "px";
-        }
-        if (hasResize) {  // 缩放框选框
+        } else if (hasResize) {  // 缩放框选框
           hasResize.style.width = op.w + mx + "px";
           hasResize.style.height = op.h + my + "px";
         }
@@ -185,21 +199,19 @@
       };
 
       document.onmouseup = function(e) { 
+        if (selRect && hasRectSelect) { 
+          var s = selRect.style;
+          var info = getPointInfo(s);
+          renderRect(info);
+          document.body.removeChild(selRect);
+        } else if (hasMoving || hasResize) {
+          var ele = hasMoving || hasResize;
+          var o = getPointInfo(ele.style);
+          cachePointInfo(ele, o);
+        } 
         hasRectSelect = false;
         hasMoving = false;
         hasResize = false;
-        if (selRect) { 
-          var s = selRect.style;
-          var info = {
-            x: parseInt(s.left),
-            y: parseInt(s.top),
-            w: parseInt(s.width),
-            h: parseInt(s.height)
-          };
-          console.log(`coordinate: ${info.x}, ${info.y}, width: ${info.w}, height: ${info.h}`);
-          renderRect(info);
-          document.body.removeChild(selRect);
-        }
         _x = null, _y = null, selRect = null, startX = null, startY = null, op = {};
       };
    })(); 
