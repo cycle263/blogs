@@ -21,23 +21,31 @@
       position: absolute;
       cursor: pointer;
       z-index: 9;
-      border: 1px solid #fff;
+      border: 1px dashed #fff;
+      text-decoration: none;
+      padding: 3px;
+    }
+    .linkRect .resize {
+      display: inline-block;
+      position: absolute;
+      height: 6px;
+      width: 6px;
+      right: -3px;
+      bottom: -3px;
+      cursor: nwse-resize;
+      background-color: #3C9DD0;
+    }
+    .hotLinks {
+      position: absolute;
+      top: 0;
     }
 
     /* Moema */
-    .button--moema {
-      padding: 1.5em 3em;
-      border-radius: 50px;
-      background: #7986cb;
+    .button-moema {
+      border-radius: 4px;
       color: #fff;
-      -webkit-transition: background-color 0.3s, color 0.3s;
-      transition: background-color 0.3s, color 0.3s;
     }
-    .button--moema.button--inverted {
-      background: #ECEFF1;
-      color: #37474f;
-    }
-    .button--moema::before {
+    .button-moema::before {
       content: '';
       position: absolute;
       top: -20px;
@@ -51,35 +59,15 @@
       -webkit-transform: scale3d(0.8, 0.5, 1);
       transform: scale3d(0.8, 0.5, 1);
     }
-    .button--moema:hover {
-      -webkit-transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
-      transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
-      color: #ECEFF1;
-      background-color: #3f51b5;
-      -webkit-animation: anim-moema-1 0.3s forwards;
-      animation: anim-moema-1 0.3s forwards;
+    .button-moema:hover {
+      color: #e95924;
+      border: 1px dashed #e95924;
+      -webkit-animation: anim-moema-1 0.5s ease-in-out;
+      animation: anim-moema-1 0.5s ease-in-out;
     }
-    .button--moema.button--inverted:hover {
-      color: #ECEFF1;
-      background-color: #7986cb;
-    }
-    .button--moema:hover::before {
-      -webkit-animation: anim-moema-2 0.3s 0.3s forwards;
-      animation: anim-moema-2 0.3s 0.3s forwards;
-    }
-    @-webkit-keyframes anim-moema-1 {
-      60% {
-        -webkit-transform: scale3d(0.8, 0.8, 1);
-        transform: scale3d(0.8, 0.8, 1);
-      }
-      85% {
-        -webkit-transform: scale3d(1.1, 1.1, 1);
-        transform: scale3d(1.1, 1.1, 1);
-      }
-      100% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-      }
+    .button-moema:hover::before {
+      -webkit-animation: anim-moema-2 0.5s 0.3s ease-in-out;
+      animation: anim-moema-2 0.5s 0.3s ease-in-out;
     }
     @keyframes anim-moema-1 {
       60% {
@@ -95,13 +83,6 @@
         transform: scale3d(1, 1, 1);
       }
     }
-    @-webkit-keyframes anim-moema-2 {
-      to {
-        opacity: 0;
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-      }
-    }
     @keyframes anim-moema-2 {
       to {
         opacity: 0;
@@ -112,30 +93,39 @@
   </style>
 </head>
 <body>
+  <!-- 背景图 -->
   <div class="content">
     <img src="./images/background.png" alt="background-image" />
   </div>
-  <!-- coordinate -->
+  <!-- 热点 -->
+  <div class="hotLinks"></div>
   <script>
     (function() { 
-      var hasRectSelect = false, selRect, startX, startY, _x, _y;
+      var hasRectSelect = false, hasMoving = false, hasResize = false, selRect, op = {}, startX, startY, _x, _y;
       var content = document.querySelector('.content');
+      var hot = document.querySelector('.hotLinks');
 
       var renderRect = function(o) {
         var link = document.createElement('a');
+        var span = document.createElement('span');
+        span.className = 'resize';
         link.style.cssText = `width: ${o.w}px;height: ${o.h}px;left: ${o.x}px; top: ${o.y}px;`;
         link.className = "linkRect";
-        link.href = 'https://www.google.com/' + document.querySelectorAll('.linkRect').length;
-        link.target = 'blank';
-        document.body.appendChild(link);
+        link.text = '';
+        link.appendChild(span);
+        link.setAttribute('data-href', 'https://www.google.com/' + document.querySelectorAll('.linkRect').length);
+        link.setAttribute('data-px', o.x);
+        link.setAttribute('data-py', o.y);
+        hot.appendChild(link);
       };
 
       document.querySelector('.content img').onload = function(){
         content.style.height = this.height + 'px';
+        hot.style.height = this.height + 'px';
         content.removeChild(this);
       };
 
-      document.onmousedown = function(e) { 
+      content.onmousedown = function(e) { 
         hasRectSelect = true;
         startX = e.pageX;
         startY = e.pageY;
@@ -143,11 +133,13 @@
       };
 
       document.onmousemove = function(e) { 
-        if (hasRectSelect) { 
-          _x = e.pageX; 
+        if (hasRectSelect || hasMoving || hasResize) {
+          _x = e.pageX;
           _y = e.pageY;
-          var w = Math.abs(_x - startX);
-          var h = Math.abs(_y - startY);
+        }
+        if (hasRectSelect) {  // 画框选框
+          var w = Math.abs(_x - startX);  // x轴移动距离的绝对值
+          var h = Math.abs(_y - startY);  // y轴移动距离的绝对值
 
           if (w < 3 || h < 3) return;   // 优化性能，避免鼠标误点
           
@@ -162,11 +154,40 @@
           selRect.style.width = w + "px";
           selRect.style.height = h + "px"; 
         } 
+        if (hasMoving || hasResize) {
+          var mx = _x - startX;   // x轴移动距离
+          var my = _y - startY;   // y轴移动距离
+        }
+        if (hasMoving) {  // 任意移动框选框
+          hasMoving.style.left = op.x + mx + "px";
+          hasMoving.style.top = op.y + my + "px";
+        }
+        if (hasResize) {  // 缩放框选框
+          hasResize.style.width = op.w + mx + "px";
+          hasResize.style.height = op.h + my + "px";
+        }
         e.stopPropagation(); 
       };
 
-      document.onmouseup = function() { 
-        hasRectSelect = false; 
+      hot.onmousedown = function(e){
+        // 区分缩放和移动框选框
+        if (e.target.className === 'resize')
+          hasResize = e.target.parentElement;
+        else
+          hasMoving = e.target;
+        startX = e.pageX;
+        startY = e.pageY;
+        op.x = parseInt(hasMoving ? hasMoving.style.left : hasResize.style.left);
+        op.y = parseInt(hasMoving ? hasMoving.style.top : hasResize.style.top);
+        op.w = parseInt(hasMoving ? hasMoving.style.width : hasResize.style.width);
+        op.h = parseInt(hasMoving ? hasMoving.style.height : hasResize.style.height);
+        e.stopPropagation();
+      };
+
+      document.onmouseup = function(e) { 
+        hasRectSelect = false;
+        hasMoving = false;
+        hasResize = false;
         if (selRect) { 
           var s = selRect.style;
           var info = {
@@ -178,8 +199,8 @@
           console.log(`coordinate: ${info.x}, ${info.y}, width: ${info.w}, height: ${info.h}`);
           renderRect(info);
           document.body.removeChild(selRect);
-        } 
-        _x = null, _y = null, selRect = null, startX = null, startY = null; 
+        }
+        _x = null, _y = null, selRect = null, startX = null, startY = null, op = {};
       };
    })(); 
   </script>
