@@ -4,7 +4,37 @@
 
   name, version, description, homepage, author, contributors, repository, keywords
 
-- version - 版本号
+- name - 模块名称（必填）
+
+  小于等于214个字节，包括前缀名称在内（如 xxx/xxxmodule），不得以"_"或"."开头，不能含有大写字母，name会成为url的一部分，不能含有url非法字符
+
+- bin - 内部命令软链接
+
+  指定各个内部命令对应的可执行文件的位置。
+
+  ```json
+  {
+    bin: {
+      tool: "./menu/tool.js"
+    }
+  }
+  ```
+
+- config - 命令行的环境变量
+
+  ```json
+  {
+    config: {
+      port: "8004"
+    } 
+  }
+  ```
+
+- engines - 模块运行的平台
+
+  `{ "engines" : { "node" : ">=0.10.3 <0.12" } }`
+
+- version - 版本号（必填）
 
   版本号一般格式： `x.y.z`，分别代表 `大版本号.小功能版本号.小修改小修复`，也可以理解为 `major.minor.patch`，`主版本号.次版本号.修补版本号`
 
@@ -27,3 +57,10 @@
   匹配 2.2.3, 2.2.9 ; 不匹配 2.3.0, 2.4.5
 
 * 任意两条规则，用空格连接起来，表示“与”逻辑，即两条规则的交集；任意两条规则，通过 || 连接起来，表示“或”逻辑，即两条规则的并集。
+
+
+资料参见
+
+[package.json文件](http://javascript.ruanyifeng.com/nodejs/packagejson.html)
+
+[package字段详解](http://www.cnblogs.com/tzyy/p/5193811.html)

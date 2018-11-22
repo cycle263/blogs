@@ -6,24 +6,60 @@
   <title>Get rect point</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    .content{
-      width: 1200px;
-      min-height: 1800px;
-      margin: 0 auto;
-      background-image: url('./images/background.png');
-      background-size: cover;
+    
+    header {
+      height: 300px;
+      margin: 16px auto;
     }
-    .content img {
-      width: 1200px;
+    article {
+      width: 1280px;
+      margin: 0 auto;
+      display: flex;
+    }
+    aside {
+      width: 346px;
+      border: 1px solid #dddddd;
+      margin-left: 16px;
+      padding: 8px;
+    }
+    footer {
+      height: 52px;
+      line-height: 52px;
+      text-align: center;
+    }
+    .mainBox {
+      width: 1264px;
+      border: 1px solid #dddddd;
+      margin: 16px auto;
+      padding: 8px;
+    }
+    .content{
+      width: 900px;
+      height: 700px;
+      overflow: auto;
+    }
+    .rect {
+      position:absolute;
+      width: 0px;
+      height: 0px;
+      font-size: 0px;
+      margin: 0px;
+      padding: 0px;
+      border: 1px dashed #0099FF;
+      background-color:#C3D5ED;
+      z-index: 1000;
+      opacity: 0.6;
     }
     .linkRect{
       display: inline-block;
+      margin:0px;
+      padding:0px;
       position: absolute;
       cursor: pointer;
       z-index: 9;
-      border: 1px dashed #fff;
+      border: 1px dashed #0099FF;
+      background-color:#C3D5ED;
       text-decoration: none;
-      padding: 3px;
     }
     .linkRect .resize {
       display: inline-block;
@@ -36,8 +72,10 @@
       background-color: #3C9DD0;
     }
     .hotLinks {
-      position: absolute;
-      top: 0;
+      display: inline-block;
+      position: relative;
+      background-image: url('./images/background.png');
+      background-size: cover;
     }
 
     /* Moema */
@@ -93,17 +131,40 @@
   </style>
 </head>
 <body>
-  <!-- 背景图 -->
-  <div class="content">
-    <img src="./images/background.png" alt="background-image" />
-  </div>
-  <!-- 热点 -->
-  <div class="hotLinks"></div>
+  <header class="mainBox">
+    This is header
+  </header>
+  <!-- 中间内容 -->
+  <article>
+    <!-- 背景图 -->
+    <section class="content">
+      <!-- 热点 -->
+      <div class="hotLinks">
+        <img src="./images/background.png" alt="background-image" />
+      </div>
+    </section>
+    <aside>
+      This is aside
+    </aside>
+  </article>
+  <footer class="mainBox">
+    <button type="button">Save</button>
+  </footer>
+  
   <script>
     (function() { 
       var hasRectSelect = false, hasMoving = false, hasResize = false, selRect, op = {}, startX, startY, _x, _y;
       var content = document.querySelector('.content');
       var hot = document.querySelector('.hotLinks');
+      // 背景图容器相对DOM起点的偏移
+      var getOffsetInfo = function() {
+        return {
+          x: content.offsetLeft,
+          y: content.offsetTop,
+          sx: content.scrollLeft,
+          sy: content.scrollTop
+        };
+      };
       
       // 获取坐标和长宽信息
       var getPointInfo = function(s) {
@@ -126,27 +187,43 @@
       var renderRect = function(o) {
         var link = document.createElement('a');
         var span = document.createElement('span');
+        var offsetInfo = getOffsetInfo();
         span.className = 'resize';
-        link.style.cssText = `width: ${o.w}px;height: ${o.h}px;left: ${o.x}px; top: ${o.y}px;`;
+        link.style.cssText = `width: ${o.w}px;height: ${o.h}px;left: ${o.x - offsetInfo.x + offsetInfo.sx}px; top: ${o.y - offsetInfo.y + offsetInfo.sy}px;`;
         link.className = "linkRect";
         link.text = '';
         link.appendChild(span);
         link.setAttribute('data-href', 'https://www.google.com/' + document.querySelectorAll('.linkRect').length);
-        cachePointInfo(link, o);
         hot.appendChild(link);
+        cachePointInfo(link, getPointInfo(link.style));
+        link = null;
+        span = null;
       };
 
-      document.querySelector('.content img').onload = function(){
-        content.style.height = this.height + 'px';
+      document.querySelector('.hotLinks img').onload = function () {
+        hot.style.width = this.width + 'px';
         hot.style.height = this.height + 'px';
-        content.removeChild(this);
+        hot.removeChild(this);
       };
 
-      content.onmousedown = function(e) { 
-        hasRectSelect = true;
-        startX = e.pageX;
+      hot.onmousedown = function (e) {
+        var ele = e.target;
+        // 区分缩放和移动框选框
+        if (ele.className === 'resize')
+          hasResize = ele.parentElement;
+        else if (ele.className === 'hotLinks')
+          hasRectSelect = true;
+        else if (ele.className.indexOf('linkRect') > -1)
+          hasMoving = ele;
+        startX = e.pageX;   // 初始化坐标
         startY = e.pageY;
-        e.stopPropagation(); 
+        if (hasMoving || hasResize) {
+          op.x = parseInt(hasMoving ? hasMoving.style.left : hasResize.style.left);
+          op.y = parseInt(hasMoving ? hasMoving.style.top : hasResize.style.top);
+          op.w = parseInt(hasMoving ? hasMoving.style.width : hasResize.style.width);
+          op.h = parseInt(hasMoving ? hasMoving.style.height : hasResize.style.height);
+        }
+        e.stopPropagation();
       };
 
       document.onmousemove = function(e) { 
@@ -162,10 +239,9 @@
           var w = Math.abs(_x - startX);  // x轴移动距离的绝对值
           var h = Math.abs(_y - startY);  // y轴移动距离的绝对值
           if (w < 3 || h < 3) return;   // 优化性能，避免鼠标误点
-          
           if (!selRect) {
-            selRect = document.createElement("div"); 
-            selRect.style.cssText = "position:absolute;width:0px;height:0px;font-size:0px;margin:0px;padding:0px;border:1px dashed #0099FF;background-color:#C3D5ED;z-index:1000;filter:alpha(opacity:60);opacity:0.6;";  
+            selRect = document.createElement("div");
+            selRect.className = "rect";
             document.body.appendChild(selRect);
           }
 
@@ -180,21 +256,6 @@
           hasResize.style.width = op.w + mx + "px";
           hasResize.style.height = op.h + my + "px";
         }
-        e.stopPropagation(); 
-      };
-
-      hot.onmousedown = function(e){
-        // 区分缩放和移动框选框
-        if (e.target.className === 'resize')
-          hasResize = e.target.parentElement;
-        else
-          hasMoving = e.target;
-        startX = e.pageX;
-        startY = e.pageY;
-        op.x = parseInt(hasMoving ? hasMoving.style.left : hasResize.style.left);
-        op.y = parseInt(hasMoving ? hasMoving.style.top : hasResize.style.top);
-        op.w = parseInt(hasMoving ? hasMoving.style.width : hasResize.style.width);
-        op.h = parseInt(hasMoving ? hasMoving.style.height : hasResize.style.height);
         e.stopPropagation();
       };
 

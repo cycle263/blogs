@@ -38,13 +38,13 @@
 
 * 修改远端主机地址
 
-    `git remote set-url [--push] <name> <newurl> [<oldurl>] // --push 修改origin.pushurl`
-    `git remote set-url <name> <newurl> // 修改origin.url`
-    `git remote set-url --delete <name> <url> // 删除origin.url, --add新增origin.url`
+    `git remote set-url [--push] <name> <newurl> [<oldurl>]` // --push 修改origin.pushurl
+    `git remote set-url <name> <newurl>` // 修改origin.url
+    `git remote set-url --delete <name> <url>` // 删除origin.url, --add新增origin.url
 
 * 新增github项目
 
-    ```js
+    ```sh
     git init
     git add README.md
     git commit -m "first commit"

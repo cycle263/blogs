@@ -34,7 +34,7 @@
 
   作用是为Promise实例添加状态改变时的回调函数。then方法返回的是一个新的Promise实例。第一个回调函数完成以后，会将返回结果作为参数，传入第二个回调函数(链式写法)。  
 
-  ```
+  ```js
   // then(resolveHandler, rejectHandler) 这种形式时，rejectHandler 并不会捕获由 resolveHandler 引发的异常。而catch(errorHandler) 这种形式可以处理到所有异常。
   somePromise().then(function(){
 
@@ -61,7 +61,7 @@
 
     ```js
     function fetchAsync (url, timeout, onData, onError) {
-        …
+        // todo
     }
     let fetchPromised = (url, timeout) => {
         return new Promise((resolve, reject) => {
@@ -108,3 +108,13 @@
 * 8、Promise.reject()  
 
   Promise.reject(reason)方法也会返回一个新的Promise实例，该实例的状态为rejected。
+
+## Promise的局限性
+
+* 写法繁琐
+
+* 异步堆栈信息不明确，难以追踪错误
+
+* 调试噩梦
+
+针对以上问题，推荐使用ES8的 async/await。

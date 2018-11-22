@@ -55,4 +55,4 @@ function loadJS( src, cb ){
 	return script;
 }
 
-功能全面推荐：lazyload.js
+// 功能全面推荐：lazyload.js

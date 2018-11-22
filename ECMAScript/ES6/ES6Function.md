@@ -212,3 +212,28 @@
 
   baz(); // <-- baz 的调用点
   ```
+
+* **bind方法**
+
+  ```js
+  // bind shim
+  Function.prototype.bind = Function.prototype.bind || function (context) {
+    if (typeof this !== "function") {
+      throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var that = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+    var Empty = function () {};
+
+    var bound = function () {
+        that.apply(this instanceof that ? this : context, args.concat(Array.prototype.slice.call(arguments)));
+    }
+
+    Empty.prototype = this.prototype;
+    bound.prototype = new Empty();
+    Empty.prototype = null;
+    return bound;
+  }
+  // 推荐是用es5-shim
+  ```

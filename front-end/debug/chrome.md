@@ -81,7 +81,6 @@
 * 1、Content scripts: 指的是Chrome拓展注入在网页中的脚本。比如安装了一个叫 JSONView的Chrome拓展
 
 
-
 ## 移动端调试
 
 * usb调试打开，usb连接方式选择“MTP（媒体传输协议）”，重启app或者浏览器，打开chrome调试窗口。

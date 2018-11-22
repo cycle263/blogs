@@ -44,3 +44,5 @@
   多个transform属性之间用空格隔开，`transform: translateX(-40px) scale(0);`
 
 * table col width超出容器宽度，滚动条就会占位挤压单元格
+
+* block会根据设定宽度来渲染width，未设定则会继承父元素；inline-block未定宽度则会根据内容来撑开width

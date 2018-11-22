@@ -42,16 +42,16 @@
 
   ```markdown
   | Tables        | Are           | Cool  |
-  | ------------- |---------------| ------|
-  | col 3 is      | right-aligned | $1600 |
+  | :-----------: |--------------:| ------|
+  | center-aligned| right-aligned | $1600 |
   | col 2 is      | centered      |   $12 |
   | zebra stripes | are neat      |    $1 |
   ```
   <br />
   
   | Tables        | Are           | Cool  |  
-  | ------------- |---------------| ------|  
-  | col 3 is      | right-aligned | $1600 |  
+  | :-----------: |--------------:| ------|  
+  | center-aligned| right-aligned | $1600 |  
   | col 2 is      | centered      |   $12 |  
   | zebra stripes | are neat      |    $1 |  
 
@@ -62,13 +62,17 @@
 
 * **横线（分割线）**
 
-  ```markdown
+  ```
   ***  ---  ___(三个及以上)
   ```
 
 * **空行和空格**
 
-  ```markdown
+  ```html
   <br />  空行
   &nbsp;  空格
   ```
+
+* **流程图**
+
+  待续...

@@ -1,6 +1,6 @@
 ## shell
 
-Shell 既是一种脚本编程语言，也是一个连接内核和用户的软件。常见的 Shell 有 sh、bash、csh、tcsh、ash 等。bash shell 是 Linux 的默认 shell，由 GNU 组织开发，保持了对 sh shell 的兼容性，是各种 Linux 发行版默认配置的 shell。
+Shell 既是一种脚本编程语言，也是一个连接内核和用户的软件。常见的 Shell 脚本解析器 有 sh、bash、csh、tcsh、ash 等。bash shell 是 Linux 的默认 shell，由 GNU 组织开发，保持了对 sh shell 的兼容性，是各种 Linux 发行版默认配置的 shell。
 
 * 查看支持的shell
 

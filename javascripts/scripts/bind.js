@@ -19,3 +19,10 @@ if (!Function.prototype.bind) {
     return fBound;
   };
 }
+
+// test
+console.log('bind...');
+
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('after DOMContentLoaded, outer 4444');
+});

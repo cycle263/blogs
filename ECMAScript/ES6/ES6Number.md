@@ -35,6 +35,30 @@
   Number('0o10')    // 8
   ```
 
+* **十进制转换成任何进制**
+
+  `Number.prototype.toString(2)`
+
+  ```js
+  function baseConverter(decNumber, base) {
+    var remStack = new Stack(),
+        rem,
+        baseString = '',
+        digits = '0123456789ABCDEF';
+    white (decNumber > 0) {
+        rem = Math.floor(decNumber % base);
+        remStack.push(rem);
+        decNumber = Math.floor(decNumber / base);
+    }
+    
+    white(!remStack.isEmpty()) {
+        baseString += digits[remStack.pop()];
+    }
+    
+    return baseString;
+  }
+  ```
+
 * **Number.isFinite(), Number.isNaN()**  
 
   Number.isFinite()用来检查一个数值是否为有限的（finite），即不是Infinity， 如果参数类型不是数值，一律返回false。Number.isNaN()用来检查一个值是否为NaN，只有对于NaN才返回true，非NaN一律返回false。

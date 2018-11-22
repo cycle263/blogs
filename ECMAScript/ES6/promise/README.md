@@ -47,7 +47,7 @@ var promise = new Promise(function(resolve, reject) {
   * Promise.prototype.then()
   * Promise.prototype.catch()
   * Promise.all()   // 全部完成，取且
-  * Promise.race()  // 完成一个，取或
+  * Promise.race()  // 完成一个，取或，竞速
 
 
 ## Promise 实现

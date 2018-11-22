@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 外联脚本 -->
+  <script src="../scripts/bind.js"></script>
+  <!-- <script async src="../scripts/bind.js"></script> -->
+  <script defer src="../scripts/bind.js"></script>
+  <script>
+    // 内联脚本
+    console.log('111');
+
+    window.onload = function() {
+      console.log('after onload, 222');
+    };
+    
+    document.addEventListener('DOMContentLoaded', function(){
+      console.log('after DOMContentLoaded, 333');
+    });
+  </script>
+</body>
+</html>

@@ -63,9 +63,8 @@
     可选参数 -a: 表示保护内容修改和增删
 
   - 同步到服务端  
-    `git push`  指定了分支，可省略后面参数       
-      可选参数 -f: 表示强制覆盖  
-    `git push origin HEAD:<name-of-remote-branch>` 或者 `git push origin lbranch-1:refs/rbranch-1`  // 将当前分支推送到源存储库中的远程引用匹配主机。 这种形式方便推送当前分支，而不考虑其本地名称。
+    `git push`  同步到依赖的远端分支，可省略后面参数，可选参数 -f: 表示强制覆盖  
+    `git push origin HEAD:<name-of-remote-branch>` 或者 `git push origin lbranch-1:refs/rbranch-1`  // 将当前分支推送到源存储库中的远程引用匹配主机，这种形式方便推送当前分支，而不考虑其本地名称。
     `git push origin branch-name`  不存在的远端分支：`git push origin localBranch:remoteBranch`
 
 * git 合并代码
@@ -87,24 +86,34 @@
 
 * git 撤销操作
 
-  - 回滚提交
-    `git reset <file>`  某个文件索引会回滚到最后一次提交， C → B, 也即是重置暂存区的指定文件，与上一次commit保持一致，但工作区不变  
-    `git reset --hard [commit]`  重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致  
-    `git reset [commit]`  重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变  
+  - 回滚提交  删除指定的commit，直接重置
+
     `git checkout .`  恢复暂存区的所有文件到工作区  
     `git checkout [commit] [file]`  恢复某个commit的指定文件到暂存区和工作区  
     `git checkout [file]`  恢复暂存区的指定文件到工作区 
     `git checkout -- file`  让这个文件回到最近一次git commit或git add时的状态
+
+    `git reset <file>`  某个文件索引会回滚到最后一次提交， C → B, 也即是重置暂存区的指定文件，与上一次commit保持一致，但工作区不变  
+    `git reset --hard [commit]`  重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致  
+    `git reset [commit]`  重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变  
     `git reset --hard`  重置暂存区与工作区，与上一次commit保持一致  
     `git reset --hard origin/master`     重置暂存区和工作区，与远端master保持一致，包括版本号
     `git reset --hard HEAD^`    回滚到上一个版本
     `git reset --hard HEAD^^`   回滚到上上个版本
+    `git reset --hard HEAD~10`  回滚到前10个版本
 
   - 暂存数据 -- (暂存本地修改，工作区还原到上次提交)
 
     `git stash`  暂存工作区代码到本地栈
     `git stash apply ${0}`  恢复栈内最近暂存的数据到工作区
-    `git stash pop` 恢复最近暂存
+    `git stash pop` 恢复最近暂存，并从栈内删除
+    `git stash list`  查看本地栈列表
+
+  - 恢复代码  会产生新的commit
+
+    git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit。
+
+    `git revert [commit]` 恢复到指定的某个版本
 
 * git 分支管理
 

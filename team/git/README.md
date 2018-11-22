@@ -63,79 +63,79 @@
 
 * git config 配置   
 
-    全局配置，所有的git目录下都会加上此配置，`git config user.email`则只会新增本git目录下的一条config  
+  全局配置，所有的git目录下都会加上此配置，`git config user.email`则只会新增本git目录下的一条config  
 
-    ```ssh
-    git config --global user.name "name"
-    git config --global user.email "name@email.com"
-    git config --global credential.helper store
-    git config --global push.default simple   // 配置推送方式：只推送当前分支到名字相同的远端
-    ```
+  ```sh
+  git config --global user.name "name"
+  git config --global user.email "name@email.com"
+  git config --global credential.helper store
+  git config --global push.default simple   // 配置推送方式：只推送当前分支到名字相同的远端
+  ```
 
 * git 创建repository  
 
-    ```ssh
-    git clone [url] new_directory  
-    cd new_directory  
-    git checkout -b branch origin/new-name
-    touch README.md  
-    git add README.md  
-    git commit -m "message"  
-    git push -u origin develop  
-    ```
+  ```sh
+  git clone [url] new_directory  
+  cd new_directory  
+  git checkout -b branch origin/new-name
+  touch README.md  
+  git add README.md  
+  git commit -m "message"  
+  git push -u origin develop  
+  ```
 
 * 已存在目录下创建  
 
-    ```ssh
-    git init  //在当前目录新建一个Git代码库
-    git remote add origin [url]
-    git add .
-    git commit -m "m"
-    git push -u origin develop
-    ```
+  ```sh
+  git init  //在当前目录新建一个Git代码库
+  git remote add origin [url]
+  git add .
+  git commit -m "m"
+  git push -u origin develop
+  ```
 
 * project work
 
-    ```ssh
-    git checkout -b xx-feature
-    git add --all
-    git commit -am "描述"
-    git pull --rebase origin master     //rebase远端主干代码
-    // 解决冲突
-    git push origin xx-feature:xx-feature       //push到远端分支
-    ```
+  ```sh
+  git checkout -b xx-feature
+  git add --all
+  git commit -am "描述"
+  git pull --rebase origin master     //rebase远端主干代码
+  // 解决冲突
+  git push origin xx-feature:xx-feature       //push到远端分支
+  ```
 
 * 自动添加tag
 
-    ```ssh
-    #!/bin/bash
+  ```sh
+  #!/bin/bash
 
-    echo '用法： sh ./deploy.sh 0.0.1'
-    echo '作用： 自动删除原先的tag，重新在当前commit打tag，并推送到默认分支'
-    echo 'Author @加里，有问题请自己改代码'
-    echo $1
-    echo '-----------'
-    echo
-    echo
+  echo '用法： sh ./deploy.sh 0.0.1'
+  echo '作用： 自动删除原先的tag，重新在当前commit打tag，并推送到默认分支'
+  echo 'Author @加里，有问题请自己改代码'
+  echo $1
+  echo '-----------'
+  echo
+  echo
 
-    git fetch
-    git tag -d $1
-    git push origin :$1
-    git tag $1
-    git push origin $1
-    ```
+  git fetch
+  git tag -d $1
+  git push origin :$1
+  git tag $1
+  git push origin $1
+  ```
 
 * 手动合并解决冲突
 
-    ```ssh
-    git fetch origin
-    git checkout -b shopLite origin/shopLite
+  ```sh
+  git fetch origin
+  git checkout -b shopLite origin/shopLite
 
-    git checkout master
-    git merge --no-ff shopLite
+  git checkout master
+  git merge --no-ff shopLite
 
-    git push origin master
-    ```
+  git push origin master
+  ```
 
 ## git 技巧命令  
 
@@ -166,7 +166,7 @@
     `git log --follow [file]`   显示某个文件的版本历史，包括文件改名  
     `git blame [file]`   显示指定文件是什么人在什么时间修改过  
 
-    ```
+    ```sh
     选项 说明
     -p 按补丁格式显示每个更新之间的差异。
     --stat 显示每次更新的文件修改统计信息。
@@ -188,7 +188,10 @@
     `git push [remote-name] [branch-name]`   git push (远程仓库名) (分支名)  
 
     `git push [远程名] [本地分支]:[远程分支]`  省略 [本地分支]，那就等于是在说“在这里提取空白然后把它变成[远程分支]”  
-    `git push origin master`, 报错如下：`error: src refspec master does not match any.  ` 解决方案 ---> `git push origin HAED:master`，原因：缺少README.md文件，或者git show-ref查看，或者本地分支名称和远端分支名称不符合，需要指定HEAD
+
+    `git push origin master`, 报错如下：`error: src refspec master does not match any.` 
+    
+    解决方案 ---> `git push origin HAED:master`，原因：缺少README.md文件，或者git show-ref查看，或者本地分支名称和远端分支名称不符合，需要指定HEAD
 
  * git 免密码push
 
