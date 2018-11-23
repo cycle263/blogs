@@ -21,7 +21,7 @@ Typescript是JavaScript类型的超集，可以编译成纯JavaScript。
   - 枚举 enum类型是对JavaScript标准数据类型的一个补充。 
 
     ```js
-    enum Color {Red = 1, Green = 2, Blue = 4};  // 编号默认从0开始
+    enum Color { Red = 1, Green = 2, Blue = 4 };  // 编号默认从0开始
     ```
 
   - Any 不希望类型检查器对进行检查，希望让它们通过编译阶段的检查，可以使用 any类型来标记这些变量
