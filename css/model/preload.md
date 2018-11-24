@@ -30,3 +30,9 @@ onload="var script = document.createElement('script');
 * Prefetch 
 
   提示浏览器这个资源将来可能需要，但是把决定是否和什么时间加载这个资源的决定权交给浏览器。
+
+
+参考资料
+
+[Link Preload 标签](http://eux.baidu.com/blog/fe/link-preload-%E6%A0%87%E7%AD%BE)
+[preload vs prefetch优先级](https://juejin.im/post/58e8acf10ce46300585a7a42)

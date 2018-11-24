@@ -34,3 +34,9 @@
   </body>
 </html>
 ```
+
+参考资料
+
+[骨架屏二三事](https://mp.weixin.qq.com/s/xmjfSRznFVrG8L2p-3HNUw)
+[让骨架屏更快渲染](https://zhuanlan.zhihu.com/p/34550387)
+[Vue页面骨架屏注入实践](https://segmentfault.com/a/1190000014832185)
