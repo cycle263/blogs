@@ -1,6 +1,6 @@
 ## webpack之性能优化
 
-webpack的优化技巧，提升构建速度，减少构建包大小，加快页面加载速度等。
+webpack的优化技巧，提升构建速度(并行编译、hash缓存、预编译)，减少构建包大小，加快页面加载速度（减少编译体积-treeShaking|scopeHositing、hash缓存、分包机制）等。
 
 * 优化的相关概念
 
