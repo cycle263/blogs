@@ -10,8 +10,8 @@
   - 只读属性赋值会抛出异常
   - 八进制数字如00840是语法错误
   - 删除不可删除的属性、删除全局变量都会抛出一个错误
-  - eval和arguments不能被赋值和绑定
-  - 不支持使用arguments.callee和arguments.caller
+  - eval 和 arguments不能被赋值和绑定
+  - 不支持使用 arguments.callee 和 arguments.caller
   - arguments不会随函数参数值改变而改变
   - 全局函数this执行undefined，而非window
 
