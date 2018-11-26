@@ -45,7 +45,9 @@
 
   ![webworker](../../images/webworker.webp)
 
-  * vs SharedWorker
+  Web Workers规范中有三种实现类型：Dedicated Workers、Shared Workers、Service workers。
+
+  * SharedWorker
 
   WebWorker只属于某个页面，不会和其他页面的Render进程（浏览器内核进程）共享，所以Chrome会创建一个新的线程来运行Worker中的JavaScript；SharedWorker是浏览器所有页面共享的，所以Chrome浏览器为SharedWorker单独创建一个进程来运行JavaScript。
 
@@ -233,7 +235,7 @@
     + process.nextTick  浏览器主线程的执行过程就是一个 tick，nextTick 顾名思义，就是下一个 tick。process.nextTick方法可以在当前"执行栈"的尾部----下一次Event Loop（主线程读取"任务队列"）之前----触发回调函数。也就是说，它指定的任务总是发生在所有异步任务之前，插队到任务队列最前面。如果有多个process.nextTick语句（不管它们是否嵌套），将全部在当前"执行栈"的尾部执行。如果process.nextTick 事件太多，执行时长过长也会阻塞事件循环。
 
     + promiseObject.observe
-    + MutationObserver 监视对DOM树变化
+    + MutationObserver 监视对DOM树变化的原生API
     + Promise.then(浏览器原生版本)
 
   - **macrotasks(宏任务)**: 可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）

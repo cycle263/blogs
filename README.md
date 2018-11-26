@@ -190,7 +190,7 @@
 
   * **Web Worker**
 
-    > Web Workers 是 HTML5 提供的一个javascript多线程解决方案.  
+    > Web Workers 是 HTML5 提供的一个javascript多线程解决方案，主要用于处理CPU 计算密集型任务和需要长时间运行的任务。
 
     Web Worker的基本原理就是在当前javascript的主线程中，使用Worker类加载一个javascript文件来开辟一个新的线程，起到互不阻塞执行的效果，并且提供主线程和新线程之间数据交换的接口：postMessage，onmessage。    
 
