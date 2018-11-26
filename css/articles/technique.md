@@ -169,3 +169,15 @@
     background-color: red;
   }   
   ```
+  - 方法5：
+  ```css
+  .wraper {
+    position: relative;
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  ```

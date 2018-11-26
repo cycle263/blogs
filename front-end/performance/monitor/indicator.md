@@ -4,6 +4,8 @@
 
 * 首屏时间；
 
+    - 首屏相关的除了 FP 还有两个指标，分别称为 FCP (First Contentful Paint，页面有效内容的绘制) 和 FMP (First Meaningful Paint，页面有意义的内容绘制)
+
 * 用户可交互时间；
 
 * 总下载时间；
