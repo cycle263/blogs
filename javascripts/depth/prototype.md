@@ -4,8 +4,9 @@
 
   C.prototype是指建立由new C()创建的对象的原型；  
   obj.__proto__是指获取obj的原型对象的非标准方法；  
-  Object.getPrototypeOf(obj)是指ES5中用来获取obj的原型对象的标准方法；  
-  ```
+  Object.getPrototypeOf(obj)是指ES5中用来获取obj的原型对象的标准方法；
+    
+  ```js
   if(typeof Object.create === "undefined"){
     Object.create = function(obj){
       var t = typeof obj;
@@ -24,7 +25,8 @@
 * 2、尽量使用Object.getPrototypeOf获取对象原型  
 
   不支持ES5环境，自动以构造此方法  
-  ```
+
+  ```js
   if(typeof Object.getPrototypeOf === "undefined"){
     Object.getPrototypeOf = function(obj){
       var t = typeof obj;
@@ -39,7 +41,8 @@
 * 3、this绑定  
 
   两种方式：局部变量引用this形成闭包；回调函数使用bind(this), map函数中可以传入第二参作为this
-  ```
+
+  ```js
   function CVSReader(separators){
     this.separators = separators || [","];
     this.regexp = new RegExp(this.separators.map(function(sep){
@@ -57,7 +60,7 @@
 
 * 4、原型链的顶端指向null
 
-  ```
+  ```js
   function Somebody(name, age){
     this.name = name;
     this.age = age;
