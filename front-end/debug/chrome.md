@@ -30,6 +30,9 @@
 
 - 1、把console内的代码添加到sources
   在代码最后加上    //@ sourceURL = name.js;
+  在sources的左侧Snippets选项里，可以添加js脚本snippet，并且可以端点调试，反复运行。
+
+  [snippets调试调用堆栈](../images/stack.png)
 
 - 2、快捷键操作
 

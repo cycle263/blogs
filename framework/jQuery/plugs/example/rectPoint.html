@@ -6,7 +6,10 @@
   <title>Get rect point</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    
+    body {
+      margin: 0;
+      padding: 0;
+    }
     header {
       height: 300px;
       margin: 16px auto;
@@ -76,6 +79,9 @@
       position: relative;
       background-image: url('./images/background.png');
       background-size: cover;
+    }
+    .hotLinks.mobilebc {
+      background-image: url('./images/mobileBC.jpeg');
     }
 
     /* Moema */
@@ -148,14 +154,47 @@
     </aside>
   </article>
   <footer class="mainBox">
-    <button type="button">Save</button>
+    <button class="changebc" type="button">Change mobile image</button>
+    <button class="savePoints" type="button">Save</button>
   </footer>
   
   <script>
     (function() { 
+      // @hasRectSelect 是否可以框选
+      // @op 框选框原来的坐标信息
       var hasRectSelect = false, hasMoving = false, hasResize = false, selRect, op = {}, startX, startY, _x, _y;
       var content = document.querySelector('.content');
       var hot = document.querySelector('.hotLinks');
+      var hotW = 0, hotH = 0;   // hot容器的宽高
+      var cbtn = document.querySelector('.changebc');
+      var saveBtn = document.querySelector('.savePoints');
+      
+      // 切换pc和mobile背景图
+      cbtn.onclick = function(){
+        hot.insertAdjacentHTML('beforeend', '<img src="./images/mobileBC.jpeg" alt="mobile-image" />');
+        hot.classList.add('mobilebc');
+        document.querySelector('.hotLinks img').onload = function () {
+          hot.style.width = this.width + 'px';
+          hot.style.height = this.height + 'px';
+          hotW = this.width;
+          hotH = this.height;
+          hot.removeChild(this);
+        };
+      };
+      
+      // 保存坐标信息到localStorage
+      saveBtn.onclick = function() {
+        var temp = Array.from(document.querySelectorAll('.linkRect')).map(ele => {
+          return {
+            x: ele.dataset['px'],
+            y: ele.dataset['py'],
+            w: ele.dataset['pw'],
+            h: ele.dataset['ph']
+          }
+        });
+        localStorage.setItem('rectPoints', JSON.stringify(temp));
+      };
+
       // 背景图容器相对DOM起点的偏移
       var getOffsetInfo = function() {
         return {
@@ -184,6 +223,14 @@
         ele.setAttribute('data-ph', o.h);
       };
 
+      // 判断拖拽是否溢出
+      // @con 容器的宽高信息
+      // @cur 当前鼠标的坐标信息
+      var hasOverflow = function(con, cur) {
+        return cur.x >= 0 && cur.y >= 0 && cur.x + cur.w <= con.w && cur.y + cur.h <= con.h;
+      };
+      
+      // 渲染框选框
       var renderRect = function(o) {
         var link = document.createElement('a');
         var span = document.createElement('span');
@@ -203,15 +250,17 @@
       document.querySelector('.hotLinks img').onload = function () {
         hot.style.width = this.width + 'px';
         hot.style.height = this.height + 'px';
+        hotW = this.width;
+        hotH = this.height;
         hot.removeChild(this);
       };
 
       hot.onmousedown = function (e) {
         var ele = e.target;
         // 区分缩放和移动框选框
-        if (ele.className === 'resize')
+        if (ele.className.indexOf('resize') > -1)
           hasResize = ele.parentElement;
-        else if (ele.className === 'hotLinks')
+        else if (ele.className.indexOf('hotLinks') > -1)
           hasRectSelect = true;
         else if (ele.className.indexOf('linkRect') > -1)
           hasMoving = ele;
@@ -244,15 +293,21 @@
             selRect.className = "rect";
             document.body.appendChild(selRect);
           }
-
+          if (!hasOverflow({ w: hotW, h: hotH }, { x: Math.min(_x, startX), y: Math.min(_y, startY), w: w, h: h })) return;
           selRect.style.left = Math.min(_x, startX) + "px";
           selRect.style.top = Math.min(_y, startY) + "px";
           selRect.style.width = w + "px";
           selRect.style.height = h + "px"; 
         } else if (hasMoving) {  // 任意移动框选框
+          var mvstyle = hasMoving.style;
+          if (!hasOverflow({ w: hotW, h: hotH }, { x: op.x + mx, y: op.y + my, w: parseInt(mvstyle.width), h: parseInt(mvstyle.height) })) {
+            return;
+          }
           hasMoving.style.left = op.x + mx + "px";
           hasMoving.style.top = op.y + my + "px";
         } else if (hasResize) {  // 缩放框选框
+          var restyle = hasResize.style;
+          if (!hasOverflow({ w: hotW, h: hotH }, { x: parseInt(restyle.left), y: parseInt(restyle.top), w: op.w + mx, h: op.h + my })) return;
           hasResize.style.width = op.w + mx + "px";
           hasResize.style.height = op.h + my + "px";
         }

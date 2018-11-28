@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>rect</title>
+  <style>
+  .hotLinks {
+    position: relative;
+    background-image: url('./images/mobileBC.jpeg');
+    background-size: cover;
+  }
+  .linkRect{
+    display: inline-block;
+    margin:0px;
+    padding:0px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 9;
+    border: 1px dashed #0099FF;
+    background-color: rgba(195, 213, 237, .6);
+    text-decoration: none;
+  }
+  </style>
+</head>
+<body>
+    <!-- 热点 -->
+    <div class="hotLinks">
+      <img src="./images/mobileBC.jpeg" alt="background-image" />
+    </div>
+  <script>
+    var hot = document.querySelector('.hotLinks');
+    var rate;   // 缩放比例
+    var docWidth = document.body.clientWidth;
+
+    document.querySelector('.hotLinks img').onload = function () {
+      var w = this.width;
+      var h = this.height;
+      rate = (docWidth / w);
+      hot.style.height = rate * this.height + 'px';
+      hot.removeChild(this);
+    };
+
+    window.onload = function(){
+      var rectPoints = localStorage.getItem('rectPoints'), arr = [];
+      try {
+        rectPoints = JSON.parse(rectPoints);
+      } catch (error) {
+        console.error(error);
+      }
+      if (!Array.isArray(rectPoints)) return;
+      arr = rectPoints.map(item => {
+        var x = (item.x * rate).toFixed(3);
+        var y = (item.y * rate).toFixed(3);
+        var w = (item.w * rate).toFixed(3);
+        var h = (item.h * rate).toFixed(3);
+        return `<a class="linkRect" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;" src="${item.link || ''}"></a>`;
+      });
+      hot.insertAdjacentHTML('beforeend', arr.join(''));
+    }
+  </script>
+</body>
+</html>

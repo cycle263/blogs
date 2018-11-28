@@ -124,9 +124,7 @@
 
 * 使用重复 DOM 等，如重复使用同一个弹窗而非创建多个。
 
-* ImageData, ArrayBuffer等合理使用，避免过多开销
-
-
+* ImageData, ArrayBuffer等合理使用，避免过多开销。
 
 参考资料
 

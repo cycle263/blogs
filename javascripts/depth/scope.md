@@ -30,7 +30,8 @@
     执行上下文对象的内部属性：[[code evaluation]]、[[function]]、[[Real]]。上下文控制着this的引用，
 
     ```js
-    // 存入堆栈顺序：global exec ctx -> outer exec ctx -> inner exec ctx -> console.log
+    // 存入堆栈顺序：global exec ctx -> outer exec ctx -> inner exec ctx
+
     function outer() { 
         inner();
     }
@@ -48,11 +49,9 @@
 
 * **避免滥用eval** 
 
-  eval函数会将其参数当做javascript程序进行解释，并运行于调用者的局部作用域，也就是赋予了外部调用者能改变函数内部作用域的能力。  
-  尽量避免使用eval函数污染内部作用域，非用不可，尽量间接调用，再不行封装在即执行函数作用域内。  
+  eval函数会将其参数当做javascript程序进行解释，并运行于调用者的局部作用域，也就是赋予了外部调用者能改变函数内部作用域的能力。尽量避免使用eval函数污染内部作用域，非用不可，尽量间接调用，再不行封装在即执行函数作用域内。  
   
-  eval函数具有调用整个作用域的能力，即直接调用eval函数放在局部作用域内求值，而间接调用eval函数放在全局作用域内求值。  
-  两种间接调用方式：eval赋值给变量；(0,eval)(parameters)  
+  eval函数具有调用整个作用域的能力，即直接调用eval函数放在局部作用域内求值，而间接调用eval函数放在全局作用域内求值。两种间接调用方式：eval赋值给变量；`(0,eval)(parameters)`
   
   通常情况下，直接调用eval函数性能消耗较大，可能导致其包含的函数以及所有直到最外层的函数运行都相对缓慢。
 
@@ -73,13 +72,13 @@
 
 ## 案例分析
 
-```js
-var x = 1;       
-function a() {                
-    console.log(x);          // 1, 函数a创建时就确定了scope，记录x为1
-}      
-!function() {             
-    var x = 2;              
-    a();       
-} ();
-```
+    ```js
+    var x = 1;       
+    function a() {                
+        console.log(x);          // 1, 函数a创建时就确定了scope，记录x为1
+    }      
+    !function() {             
+        var x = 2;              
+        a();       
+    } ();
+    ```
