@@ -6,7 +6,7 @@
 
 ![prototype](./images/instance.png)
 
-```
+```js
 function SuperType(){
 	this.property = 'super';
 }

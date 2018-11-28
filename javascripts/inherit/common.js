@@ -1,7 +1,7 @@
 var common = {
   /* 类式继承 */
   extend: function(sup, sub){
-    var F = Function(){};
+    var F = function(){};
     F.prototype = sup.prototype;
     sub.prototype = new f();
     sub.prototype.construtor = sub;
@@ -12,7 +12,7 @@ var common = {
   },
   /*  原型继承 */
   clone: function(o){
-    var F = Function(){};
+    var F = function(){};
     F.prototype = o;
     return new F();
   },
