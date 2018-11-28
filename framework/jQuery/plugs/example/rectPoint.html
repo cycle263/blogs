@@ -173,13 +173,7 @@
       cbtn.onclick = function(){
         hot.insertAdjacentHTML('beforeend', '<img src="./images/mobileBC.jpeg" alt="mobile-image" />');
         hot.classList.add('mobilebc');
-        document.querySelector('.hotLinks img').onload = function () {
-          hot.style.width = this.width + 'px';
-          hot.style.height = this.height + 'px';
-          hotW = this.width;
-          hotH = this.height;
-          hot.removeChild(this);
-        };
+        document.querySelector('.hotLinks img').onload = handleHotSize;
       };
       
       // 保存坐标信息到localStorage
@@ -193,6 +187,27 @@
           }
         });
         localStorage.setItem('rectPoints', JSON.stringify(temp));
+      };
+      
+      // 节流防抖
+      function debounce(fn, interval) {
+        var timer = null;
+
+        function delay() {
+          var target = this;
+          var args = arguments;
+          return setTimeout(function () {
+            fn.apply(target, args);
+          }, interval);
+        }
+
+        return function () {
+          if (timer) {
+            clearTimeout(timer);
+          }
+
+          timer = delay.apply(this, arguments);
+        }
       };
 
       // 背景图容器相对DOM起点的偏移
@@ -247,13 +262,15 @@
         span = null;
       };
 
-      document.querySelector('.hotLinks img').onload = function () {
+      var handleHotSize = function(){
         hot.style.width = this.width + 'px';
         hot.style.height = this.height + 'px';
         hotW = this.width;
         hotH = this.height;
         hot.removeChild(this);
       };
+
+      document.querySelector('.hotLinks img').onload = handleHotSize;
 
       hot.onmousedown = function (e) {
         var ele = e.target;
@@ -275,7 +292,7 @@
         e.stopPropagation();
       };
 
-      document.onmousemove = function(e) { 
+      document.onmousemove = debounce(function(e) { 
         if (hasRectSelect || hasMoving || hasResize) {
           _x = e.pageX;
           _y = e.pageY;
@@ -293,9 +310,11 @@
             selRect.className = "rect";
             document.body.appendChild(selRect);
           }
-          if (!hasOverflow({ w: hotW, h: hotH }, { x: Math.min(_x, startX), y: Math.min(_y, startY), w: w, h: h })) return;
-          selRect.style.left = Math.min(_x, startX) + "px";
-          selRect.style.top = Math.min(_y, startY) + "px";
+          var minx = Math.min(_x, startX);
+          var miny = Math.min(_y, startY);
+          if (!hasOverflow({ w: hotW, h: hotH }, { x: minx, y: miny, w: w, h: h })) return;
+          selRect.style.left = minx + "px";
+          selRect.style.top = miny + "px";
           selRect.style.width = w + "px";
           selRect.style.height = h + "px"; 
         } else if (hasMoving) {  // 任意移动框选框
@@ -312,7 +331,7 @@
           hasResize.style.height = op.h + my + "px";
         }
         e.stopPropagation();
-      };
+      }, 8);
 
       document.onmouseup = function(e) { 
         if (selRect && hasRectSelect) { 
