@@ -110,26 +110,52 @@
 
   ```js
   // 2 3 5 4 1
-  setTimeout(function() {   // macrotask
+  setTimeout(function timecb() {   // macrotask
     console.log(1);
   }, 0);
-  new Promise(function executor(resolve) {
+  new Promise(function exec(resolve) {
     console.log(2);
-    for( var i=0 ; i<10000 ; i++ ) {
+    for( var i=0; i<10000 ; i++ ) {
       i == 9999 && resolve();
     }
     console.log(3);
-  }).then(function() {
+  }).then(function thencb() {
     console.log(4);   // microtask
   });
   console.log(5);
   ```
 
+  ```js
+  |               [code]             |    [call stack]     |     [task queue]    |    [webAPI]    |
+  |----------------------------------|---------------------|---------------------|----------------|
+  | setTimeout(function timecb() {   |   console.log(2)    |                     |   setTimeout   |
+  |   console.log(1);                |   console.log(3)    |                     |  promise/then  |
+  | }, 0);                           |        exec         |                     |                |
+  | new Promise(function exec(rv){   |   console.log(5)    |                     |                |
+  |   console.log(2);                |   console.log(4)    |                     |                |
+  |   for( var i=0; i<10000 ; i++ ){ |        thencb       |                     |                |
+  |     i == 9999 && rv();           |   console.log(1)    |                     |                |
+  |   }                              |        timecb       |                     |                |
+  |   console.log(3);                |    main/anonymous   |                     |                |
+  | }).then(function thencb() {      |                     |                     |                |
+  |   console.log(4);                |                     |                     |                |
+  | });                              |                     |                     |                |
+  | console.log(5);                  |                     |                     |                |
+  ```
+
   * 栈
 
-  栈（stack）中主要存放一些基本类型（Undefined、Null、Boolean、Number 和 String）的值、变量、函数调用信息和对象的引用等（基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中），向地址减小的方向增长，可读可写可执行，其优势是存取速度比堆要快，并且栈内的数据可以共享，但缺点是存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。
+  栈（stack）中主要存放一些基本类型（Undefined、Null、Boolean、Number 和 String）的值、变量、参数，返回值，函数引用和对象的引用等（基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中），向地址减小的方向增长，可读可写可执行，其优势是存取速度比堆要快，并且栈内的数据可以共享，但缺点是存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。
 
   栈中不存在对堆中某个对象的引用，那么就认为该对象已经不再需要，在垃圾回收时就会清除该对象占用的内存空间。因此，在不需要时应该将对对象的引用释放掉（解除引用），以利于垃圾回收，这样就可以提高程序的性能。释放对对象的引用最常用的方法就是为其赋值为null，这种做法适用于大多数全局变量和全局对象的属性。局部变量会在他们离开执行环境时自动被解除引用。解除一个值的引用并不意味着自动回收该值所占用的内存。解除引用的真正作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。
+
+  栈有几种含义，不同的语境代表不同的含义，分别包括：
+  
+  - 数据结构栈(存取方式)，后进先出
+  
+  - 代码运用的函数调用栈，call stack，使用chrome调试时，可以直接观察到调用路径
+  
+  - 内存区域(stack栈、heap堆)。一般来说，每个线程分配一个stack，每个进程分配一个heap，也就是说，stack是线程独占的，heap是线程共用的。
 
   ```js
   // JS实现栈代码
@@ -216,7 +242,7 @@
 
 ### 任务队列
 
-> 浏览器的任务队列不止一个，还有 microtasks 和 macrotasks, 整个的js代码macrotask先执行，同步代码执行完后有microtask执行microtask，没有microtask执行下一个macrotask，如此往复循环至结束。
+> 浏览器的任务队列都是已经完成的异步操作，任务队列不止一个，还分为 microtasks 和 macrotasks, 整个的js代码macrotask先执行，同步代码执行完后有microtask执行microtask，没有microtask执行下一个macrotask，如此往复循环至结束。
 
 在ECMAScript中，microtask称为jobs，macrotask可称为task。
 
@@ -230,6 +256,19 @@
   - 当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染
   - 渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）
 
+  ```js
+  // 解释代码
+  if (isEmpty(stack)) {	// 执行栈空了(只剩下全局的)，同步任务执行完了
+  	for (macroTask of macroTaskQueue) {
+    	handleMacroTask();	// 处理宏任务
+	
+    	for (microTask of microTaskQueue) {
+        	handleMicroTask(microTask);		// 处理微任务
+    	}								 
+  	}
+  }
+  ```
+
   - **microtasks(微任务)**: 可以理解是在当前 task 执行结束后立即执行的任务, 也就是说，在当前task任务后，下一个task之前，在渲染之前。所以它的响应速度相比setTimeout（setTimeout是task）会更快，因为无需等渲染。
 
     + process.nextTick  浏览器主线程的执行过程就是一个 tick，nextTick 顾名思义，就是下一个 tick。process.nextTick方法可以在当前"执行栈"的尾部----下一次Event Loop（主线程读取"任务队列"）之前----触发回调函数。也就是说，它指定的任务总是发生在所有异步任务之前，插队到任务队列最前面。如果有多个process.nextTick语句（不管它们是否嵌套），将全部在当前"执行栈"的尾部执行。如果process.nextTick 事件太多，执行时长过长也会阻塞事件循环。
@@ -237,6 +276,7 @@
     + promiseObject.observe
     + MutationObserver 监视对DOM树变化的原生API
     + Promise.then(浏览器原生版本)
+    + Async、Generator
 
   - **macrotasks(宏任务)**: 可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）
 
@@ -271,3 +311,5 @@
 [js中的堆和栈](https://www.imooc.com/article/23564)
 
 [js调用堆栈概述](https://juejin.im/post/5a05b4576fb9a04519690d42)
+
+[stack三种含义](http://www.ruanyifeng.com/blog/2013/11/stack.html)

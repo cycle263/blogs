@@ -29,10 +29,8 @@
 ## chrome其他技巧
 
 - 1、把console内的代码添加到sources
-  在代码最后加上    //@ sourceURL = name.js;
-  在sources的左侧Snippets选项里，可以添加js脚本snippet，并且可以端点调试，反复运行。
 
-  [snippets调试调用堆栈](../images/stack.png)
+  在代码最后加上    `//@ sourceURL = name.js;`
 
 - 2、快捷键操作
 
@@ -76,12 +74,27 @@
 
 * 5、Sinppets功能
 
-  Sources下面的左侧的Sinppets代码片段按钮，可以保存一些调试或测试代码小片段
+  Sources下面的左侧的Sinppets代码片段按钮，可以保存一些调试或测试代码小片段，并且可以端点调试，反复运行。
+
+  [snippets调试调用堆栈](../images/stack.png)
 
 
-## chrome 调试生僻知识点
+## chrome 调试知识点
 
-* 1、Content scripts: 指的是Chrome拓展注入在网页中的脚本。比如安装了一个叫 JSONView的Chrome拓展
+* Content scripts: 指的是Chrome拓展注入在网页中的脚本。比如安装了一个叫 JSONView的Chrome拓展
+
+* call stack 当前调试的函数的调用栈，也就是调用记录
+
+* scope 当前函数的作用域链，local表示当前局部作用域，closure表示作用域链中的闭包，global表示全局作用域
+
+* step over next function call
+  跨过，实际表现是不遇到函数时，执行下一步。遇到函数时，不进入函数直接执行下一步。
+
+* step into next function call
+  跨入，实际表现是不遇到函数时，执行下一步。遇到到函数时，进入函数执行上下文。
+
+* step out of current function
+  跳出当前函数
 
 
 ## 移动端调试
