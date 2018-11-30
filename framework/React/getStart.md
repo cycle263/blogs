@@ -116,9 +116,9 @@
 
 * 受控组件 vs 非受控组件
 
-  受控组件完全受控于react的state，可以理解为react的双向绑定；
+  受控组件完全受控于react的state或props，由value和onChange事件控制，可以理解为react的双向绑定；
 
-  非受控组件也就是不完全受控于state
+  非受控组件也就是不完全受控于state或props，换言之，组件没有state和props。
 
 * 函数组件 vs 类组件
 
