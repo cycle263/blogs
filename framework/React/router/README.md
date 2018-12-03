@@ -60,3 +60,5 @@ React.render((
   - MemoryRouter node环境下的history，存储在memory中
   
 * [按需加载](https://react-guide.github.io/react-router-cn/docs/guides/advanced/DynamicRouting.html)
+
+[基于路由的按需加载](https://react.docschina.org/docs/code-splitting.html)

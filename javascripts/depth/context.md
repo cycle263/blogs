@@ -62,7 +62,8 @@
   executionContextVO = {
     scopeChain: {},   // 作用域链
     variableObject: {
-      arguments: {}
+      arguments: {},
+      outer: GlobalExectionContext
     },  // 变量和参数，返回值等
     this: {}  // this指向
   }

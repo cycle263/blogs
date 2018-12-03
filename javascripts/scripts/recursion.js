@@ -1,7 +1,7 @@
-//数组生成树
+// 数组生成树
 var data = [{"name":"根节点","fatherId":0,"id":1},
-      {"name":"节点1","fatherId":1,"id":2},
-      {"name":"根节点","fatherId":0,"id":3}]
+    {"name":"节点1","fatherId":1,"id":2},
+    {"name":"根节点","fatherId":0,"id":3}]
 var item, arr = [], obj = {};
 
 for (var i = 0, l = data.length; i < l; i++) {

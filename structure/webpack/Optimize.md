@@ -68,12 +68,15 @@ webpack的优化技巧，提升构建速度(并行编译、hash缓存、预编�
   
   require.ensure 内部依赖于 Promises，旧的浏览器中使用记得引入 es6-promise polyfill。
 
+  React Loadable 将动态引入(dynamic import)封装成了一个对 React 友好的 API 来在特定组件下引入代码分割的功能。
+
     ```js
     // bundle-loader
     bundle((file) => {...})
 
     require.ensure('module', () => {...})
 
+    // babel-plugin-syntax-dynamic-import
     import('module').then(() => {...}).catch()
 
     // react-loadable高阶组件方式

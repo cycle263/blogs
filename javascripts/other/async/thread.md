@@ -33,7 +33,7 @@
 
   - 定时触发器线程 （setTimeout、setInterval等待时间结束后把执行函数推入任务队列中）。浏览器定时计数器并不是由 JavaScript 引擎计数的（因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确），由单独的定时触发器线程计时；并且setTimeout的等待时间结束后并不是直接执行的，而是先推入浏览器的一个任务队列，在同步队列结束后在依次调用任务队列中的任务。注意，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms。
 
-  - 浏览器事件触发线程   归属于浏览器而不是JS引擎，用来控制事件循环（可以理解秘书助理）。（将click、mouse等交互事件发生后将这些事件放入事件队列中）当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待 JS 引擎的处理。这些事件可以是当前执行的代码块，如：定时任务-setTimeout；也可来自浏览器内核的其他线程，如：鼠标点击、AJAX 异步请求等，但由于JS的单线程关系，所有这些事件都得排队等待 JS 引擎处理。
+  - 浏览器事件触发线程   归属于浏览器而不是JS引擎，用来控制事件循环（可以理解秘书助理）。（将click、mouse、定时触发、XHR等交互事件发生后，将这些事件放入事件队列中）当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待 JS 引擎的处理。这些事件可以是当前执行的代码块，如：定时任务-setTimeout；也可来自浏览器内核的其他线程，如：鼠标点击、AJAX 异步请求等，但由于JS的单线程关系，所有这些事件都得排队等待 JS 引擎处理。
 
   ![JavaScript主线程](../../images/thread.jpg)
 
@@ -128,19 +128,19 @@
   ```js
   |               [code]             |    [call stack]     |     [task queue]    |    [webAPI]    |
   |----------------------------------|---------------------|---------------------|----------------|
-  | setTimeout(function timecb() {   |   console.log(2)    |                     |   setTimeout   |
-  |   console.log(1);                |   console.log(3)    |                     |  promise/then  |
-  | }, 0);                           |        exec         |                     |                |
-  | new Promise(function exec(rv){   |   console.log(5)    |                     |                |
-  |   console.log(2);                |   console.log(4)    |                     |                |
-  |   for( var i=0; i<10000 ; i++ ){ |        thencb       |                     |                |
-  |     i == 9999 && rv();           |   console.log(1)    |                     |                |
-  |   }                              |        timecb       |                     |                |
-  |   console.log(3);                |    main/anonymous   |                     |                |
-  | }).then(function thencb() {      |                     |                     |                |
-  |   console.log(4);                |                     |                     |                |
-  | });                              |                     |                     |                |
-  | console.log(5);                  |                     |                     |                |
+  | setTimeout(function timecb() {   |   console.log(2)    |          |          |   setTimeout   |
+  |   console.log(1);                |   console.log(3)    |          |          |  promise/then  |
+  | }, 0);                           |        exec         |          |          |                |
+  | new Promise(function exec(rv){   |   console.log(5)    |          |          |                |
+  |   console.log(2);                |   console.log(4)    |          |          |                |
+  |   for( var i=0; i<10000 ; i++ ){ |        thencb       |          |          |                |
+  |     i == 9999 && rv();           |   console.log(1)    |          |          |                |
+  |   }                              |        timecb       |          |          |                |
+  |   console.log(3);                |    main/anonymous   |          |          |                |
+  | }).then(function thencb() {      |                     |          |          |                |
+  |   console.log(4);                |                     |          |          |                |
+  | });                              |                     |          |          |                |
+  | console.log(5);                  |                     |          |          |                |
   ```
 
   * 栈

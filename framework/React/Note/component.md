@@ -1,12 +1,3 @@
-## react常见的组件库
-
-* [React-Bootstrap](https://react-bootstrap.github.io/)
-
-* [ReCharts](http://recharts.org/)
-
-* [Antd](https://ant.design/docs/react/introduce)
-
-
 ## 组件创建方式
 
 * 无状态函数式组件
@@ -65,6 +56,67 @@ const mixin = function(obj, mixins) {
 };
 ```
 
+* pureRender
+
+  - PureRenderMixin
+
+    实现 shouldComponentUpdate，对props 和 state 进行浅比较shallowEqual。
+
+    ```js
+    var shallowCompare = require('shallowCompare');
+
+    var ReactComponentWithPureRenderMixin = {
+      shouldComponentUpdate: function(nextProps, nextState) {
+        return shallowCompare(this, nextProps, nextState);
+      },
+    };
+
+    module.exports = ReactComponentWithPureRenderMixin;
+    ```
+
+  - react-pure-render
+
+  - React.PureComponent
+
+    React 15.3.0 新增了一个 PureComponent 类，也就是props和state未发生改变，组件的render方法不会触发。props/state对比在 ReactCompositeComponent 里实现的。
+
+    ```js
+    function ReactPureComponent(props, context, updater) {
+      this.props = props;
+      this.context = context;
+      this.refs = emptyObject;
+      this.updater = updater || ReactNoopUpdateQueue;
+    }
+
+    function ComponentDummy() {}
+    ComponentDummy.prototype = ReactComponent.prototype;
+    ReactPureComponent.prototype = new ComponentDummy();
+    ReactPureComponent.prototype.constructor = ReactPureComponent;
+    /* Avoid an extra prototype jump for these methods. 避免原型链拉长导致方法查找的性能开销 */
+    Object.assign(ReactPureComponent.prototype, ReactComponent.prototype);
+    ReactPureComponent.prototype.isPureReactComponent = true;
+
+    
+    /* 浅比较 */
+    var shallowEqual = require('shallowEqual');
+
+    function shallowCompare(instance, nextProps, nextState) {
+      return (
+        !shallowEqual(instance.props, nextProps) ||
+        !shallowEqual(instance.state, nextState)
+      );
+    }
+    ```
+
 * createClass vs extends React.Component
 
   通过extends方式生成的组件，没有createClass中对getInitialState及getDefaultProps的显示管理
+
+
+## react常见的组件库
+
+* [React-Bootstrap](https://react-bootstrap.github.io/)
+
+* [ReCharts](http://recharts.org/)
+
+* [Antd](https://ant.design/docs/react/introduce)
