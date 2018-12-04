@@ -2,7 +2,7 @@
 
 * redux-thunk
 
-  redux-thunk 选择以 middleware 的形式来增强 redux store 的 dispatch 方法（即：支持了 dispatch(function)），从而在拥有了 异步获取数据能力 的同时，又可以进一步将 数据获取相关的业务逻辑 从 View 层分离出去。
+  redux-thunk 选择以 middleware 的形式来增强 redux store 的 dispatch 方法（即：支持了 dispatch(function)），从而在拥有了异步获取数据能力的同时，又可以进一步将数据获取相关的业务逻辑从 View 层分离出去。
 
   ```js
   // sync thunk

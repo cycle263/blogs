@@ -212,3 +212,7 @@
 * [react-redux](react-redux) React专用状态管理库
 
 * [redux组件设计](reduxComponent)
+
+参考资料
+
+[阮一峰redux三部曲](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
