@@ -1,6 +1,6 @@
 ## preload vs prefetch
 
-资源加载指令，preload, prefetch, preconnect
+资源加载指令，preload, prefetch, preconnect。当一个资源被 preload 或者 prefetch 获取后，它可以从 HTTP 缓存移动至渲染器的内存缓存中。
 
 `<link rel="preload" />` 和 `<link rel="prefetch" />`
 
@@ -21,6 +21,10 @@ onload="var script = document.createElement('script');
   `<link rel="preload" href="late_discovered_thing.js" as="script">`
   `<meta http-equiv="Link" content="</images/big.jpeg>; rel=prefetch">`
 
+  - http头和preload标签写法区别
+
+    根据规范，许多服务器当它们遇到 preload HTTP 头会发起 HTTP/2 推送，不确保有没有发起不必要的推送，推荐使用标签写法，或者在http头加上nopush属性。
+
   - vs 浏览器预加载
 
   浏览器预加载只预先加载在HTML中声明的资源。preload 指令允许在 CSS 和JavaScript 中预加载指定的资源，并允许决定何时应用每个资源。
@@ -39,6 +43,8 @@ onload="var script = document.createElement('script');
 
   - 什么时候该用呢？当前页面很重要的需要优先加载的资源使用preload，例如：首屏渲染脚本，字体和图片等
 
+  特别的地方，在 Chrome 中，如果用户从一个页面跳转到另一个页面，prefetch 发起的请求仍会进行不会中断。另外，prefetch 的资源在网络堆栈中至少缓存 5 分钟，无论它是不是可以缓存的。
+
 * prefetch 
 
   Prefetch 是一个低优先级的资源提示，允许浏览器在后台（空闲时，由浏览器决定何时加载）获取将来可能用得到的资源，并且将他们存储在浏览器的缓存中。一旦一个页面加载完毕就会开始下载其他的资源，然后当用户点击了一个带有 prefetched 的连接，它将可以立刻从缓存中加载内容。有三种不同的 prefetch 的类型，link，DNS 和 prerendering。
@@ -55,14 +61,17 @@ onload="var script = document.createElement('script');
 
   `<link rel="prerender" href="https://www.domain.com">`
 
+  - 什么时候使用呢？用户不久即将需要加载的但优先级又不高的资源。
+
 * preconnect
 
   允许浏览器在一个 HTTP 请求正式发给服务器前预先执行一些操作，包括 DNS 解析，TLS 协商，TCP 握手。使用 preconnect 是个有效而且克制的资源优化方法，它不仅可以优化页面并且可以防止资源利用的浪费。
 
   `<link href="https://cdn.domain.com" rel="preconnect" crossorigin>`
 
+![chrome请求资源优先级详细版](../../front-end/images/load_priority.jpeg)
 
-![chrome请求资源优先级](../../front-end/images/load.jpg)
+![chrome请求资源优先级简化版](../../front-end/images/load.jpg)
 
 参考资料
 

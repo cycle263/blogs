@@ -300,6 +300,33 @@
 
   备注：官方的promise和polyfill版的promise两者有很大区别，前者为microtask形式，后者通过setTimeout模拟的macrotask形式。
 
+  ```js
+  async function async1(){ 
+    console.log('async1 start');
+    /* 遇到await暂时执行，如果await语句后面是异步函数，返回Promise，需要等待Promise状态改变后放入
+    /* microtasks queue; 如果await语句后面是同步函数，则直接放入microtasks队列，等待执行栈内的同步代码
+    /* 执行完毕，开始按顺序执行microtasks队列的处理函数。
+     */
+    await async2();
+    console.log('async1 end'); 
+  } 
+  async function async2(){ 
+    console.log('async2'); 
+  } 
+  console.log('script start');
+  setTimeout(function(){ 
+    console.log('setTimeout');
+  }, 0);
+  async1(); 
+  new Promise(function(resolve){ 
+    console.log('promise1');
+    resolve(); 
+  }).then(function(){ 
+    console.log('promise2');
+  }); 
+  console.log('script end');
+  ```
+
 #### 资料参见
 
 [JS运行机制全面梳理](https://segmentfault.com/a/1190000012925872)
