@@ -83,6 +83,7 @@
     "explorer.confirmDragAndDrop": false,
     "window.zoomLevel": 0,
     "editor.tabSize": 2,
-    "editor.detectIndentation": true,
+		"editor.detectIndentation": true,
+		"typescript.tsdk": "*/typescript/,*/ts/",		// 指定需要tslint的目录
 	}
 	```

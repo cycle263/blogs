@@ -57,8 +57,13 @@
         var h = (item.h * rate).toFixed(3);
         return `<a class="linkRect" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;" src="${item.link || ''}"></a>`;
       });
-      hot.insertAdjacentHTML('beforeend', arr.join(''));
-    }
+      hot.innerHTML = arr.join('');
+    };
+    
+    // 横竖屏切换
+    window.onorientationchange = function(e){
+      location.reload();
+    };
   </script>
 </body>
 </html>

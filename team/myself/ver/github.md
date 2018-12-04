@@ -52,3 +52,12 @@
   };
   head.appendChild(script);
   ```
+
+
+## github搜索技巧
+
+* 指定语言  `language:javascript`
+
+* 指定stars数量   `stars:>200`
+
+[github高级搜索](https://github.com/search/advanced)
