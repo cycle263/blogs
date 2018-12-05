@@ -21,9 +21,11 @@
     }
     aside {
       width: 346px;
+      max-height: 682px;
       border: 1px solid #dddddd;
       margin-left: 16px;
       padding: 8px;
+      overflow-y: auto;
     }
     footer {
       height: 52px;
@@ -80,8 +82,58 @@
       background-image: url('./images/background.png');
       background-size: cover;
     }
+    .hotLinks.pcbc {
+      background-image: url('./images/background.png');
+    }
     .hotLinks.mobilebc {
       background-image: url('./images/mobileBC.jpeg');
+    }
+    .hide {
+      display: none;
+    }
+    .infoOpeator {
+      float: right;
+    }
+    .infoOpeator span {
+      cursor: pointer;
+      margin-right: 16px;
+    }
+
+    .hotInfos {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .hotInfos li {
+      background-color: #f0f0f0;
+      padding: 8px;
+      margin-bottom: 16px;
+    }
+    .tabs {
+      width: 1280px;
+      margin: 0 auto;
+      list-style: none;
+      padding: 0;
+    }
+    .tabs li {
+      display: inline-block;
+      margin: 0;
+      border: 1px solid #e8e8e8;
+      border-bottom: 0;
+      border-radius: 4px 4px 0 0;
+      background: #fafafa;
+      margin-right: 2px;
+      padding: 0 16px;
+      -webkit-transition: all .3s cubic-bezier(.645,.045,.355,1);
+      transition: all .3s cubic-bezier(.645,.045,.355,1);
+      line-height: 38px;
+      cursor: pointer;
+    }
+    .tabs li.active {
+      background: #fff;
+      border-color: #e8e8e8;
+      color: #1890ff;
+      padding-bottom: 1px;
     }
 
     /* Moema */
@@ -141,20 +193,27 @@
     This is header
   </header>
   <!-- 中间内容 -->
+  <!-- tab切换 -->
+  <ul class="tabs">
+    <li data-type="pcbc" class="active">Tab1 name</li>
+    <li data-type="mobilebc">Tab2 name</li>
+  </ul>
   <article>
     <!-- 背景图 -->
     <section class="content">
       <!-- 热点 -->
-      <div class="hotLinks">
+      <div class="hotLinks pcbc">
         <img src="./images/background.png" alt="background-image" />
       </div>
+      <div class="hotLinks mobilebc hide">
+        <img src="./images/mobileBC.jpeg" alt="background-image" />
+      </div>
     </section>
-    <aside>
-      This is aside
+    <aside class="pointsAside">
+      <ul class="hotInfos"></ul>
     </aside>
   </article>
   <footer class="mainBox">
-    <button class="changebc" type="button">Change mobile image</button>
     <button class="savePoints" type="button">Save</button>
   </footer>
   
@@ -164,28 +223,60 @@
       // @op 框选框原来的坐标信息
       var hasRectSelect = false, hasMoving = false, hasResize = false, selRect, op = {}, startX, startY, _x, _y;
       var content = document.querySelector('.content');
-      var hot = document.querySelector('.hotLinks');
-      var hotW = 0, hotH = 0;   // hot容器的宽高
-      var cbtn = document.querySelector('.changebc');
+      var pchot = document.querySelector('.pcbc');
+      var mbhot = document.querySelector('.mobilebc');
+      var hotInfos = document.querySelector('.hotInfos');
+      var pointsAside = document.querySelector('.pointsAside');
+      var hotW = 0, hotH = 0;
+      var isPc = true;  // 当前展示背景
       var saveBtn = document.querySelector('.savePoints');
-      
-      // 切换pc和mobile背景图
-      cbtn.onclick = function(){
-        hot.insertAdjacentHTML('beforeend', '<img src="./images/mobileBC.jpeg" alt="mobile-image" />');
-        hot.classList.add('mobilebc');
-        document.querySelector('.hotLinks img').onload = handleHotSize;
+
+      // tab切换
+      document.querySelector('.tabs').addEventListener('click', function(e){
+        if (e.target.tagName !== 'LI') return;
+        var cur = e.target;
+        var type = cur.dataset["type"];
+        isPc = type === 'pcbc';
+        document.querySelectorAll('.tabs li').forEach(ele => {
+          if (ele.dataset["type"] === type)
+            ele.classList.add('active');
+          else
+            ele.classList.remove('active');
+        });
+        document.querySelectorAll('.hotLinks').forEach(ele => {
+          if (ele.classList.contains(type)) {
+            ele.classList.remove('hide');
+            hotW = ele.dataset['hotw'] - 0;
+            hotH = ele.dataset['hoth'] - 0;
+          } else
+            ele.classList.add('hide');
+        });
+        renderPointsInfo(_getPointsAll());
+      });
+
+      // 左右联动效果
+      mbhot.onclick = pchot.onclick = function(e) {
+        if (!e.target.classList.contains('linkRect')) return;
+        var cur = e.target;
+        var k = cur.dataset['key'];
+        var curInfoEle = document.querySelector(`.hotInfos .${k}`);
+        if (!curInfoEle) return;
+        pointsAside.scrollTop = curInfoEle.offsetTop - pointsAside.offsetTop;
+        e.preventDefault();
+      };
+      pointsAside.onclick = function(e) {
+        if (e.target.tagName !== 'LI') return;
+        var cur = e.target;
+        var k = cur.className;
+        var curRectEle = document.querySelector(`.content .${k}`);
+        if (!curRectEle) return;
+        var d = curRectEle.dataset;
+        content.scrollTo(d['px'] - (content.clientWidth - curRectEle.clientWidth) / 2, d['py'] - (content.clientHeight - curRectEle.clientHeight) / 2);
       };
       
       // 保存坐标信息到localStorage
       saveBtn.onclick = function() {
-        var temp = Array.from(document.querySelectorAll('.linkRect')).map(ele => {
-          return {
-            x: ele.dataset['px'],
-            y: ele.dataset['py'],
-            w: ele.dataset['pw'],
-            h: ele.dataset['ph']
-          }
-        });
+        var temp = _getPointsAll();
         localStorage.setItem('rectPoints', JSON.stringify(temp));
       };
       
@@ -205,13 +296,26 @@
           if (timer) {
             clearTimeout(timer);
           }
-
           timer = delay.apply(this, arguments);
         }
       };
 
+      // 获取所有坐标信息
+      // @isPc 类型
+      var _getPointsAll = function() {
+        var c = isPc ? 'pcbc' : 'mobilebc';
+        return Array.from(document.querySelectorAll(`.${c} .linkRect`)).map(ele => {
+          return {
+            x: ele.dataset['px'],
+            y: ele.dataset['py'],
+            w: ele.dataset['pw'],
+            h: ele.dataset['ph']
+          }
+        });
+      };
+
       // 背景图容器相对DOM起点的偏移
-      var getOffsetInfo = function() {
+      var _getOffsetInfo = function() {
         return {
           x: content.offsetLeft,
           y: content.offsetTop,
@@ -221,7 +325,7 @@
       };
       
       // 获取坐标和长宽信息
-      var getPointInfo = function(s) {
+      var _getPointInfo = function(s) {
         return {
           x: parseInt(s.left),
           y: parseInt(s.top),
@@ -229,51 +333,111 @@
           h: parseInt(s.height)
         };
       };
+
+      // 获取唯一标识key
+      var _getUniqueKey = function(o) {
+        var type = isPc ? "PC" : "Mobile";
+        return `${type}_${o.x}_${o.y}`;
+      };
       
       // 缓存坐标和长宽信息
-      var cachePointInfo = function(ele, o) {
+      var _cachePointInfo = function(ele, o) {
+        var k = _getUniqueKey(o);
         ele.setAttribute('data-px', o.x);
         ele.setAttribute('data-py', o.y);
         ele.setAttribute('data-pw', o.w);
         ele.setAttribute('data-ph', o.h);
+        ele.setAttribute('data-key', k);
+        ele.className = `linkRect ${k}`;
+        ele.innerHTML = `${k}<span class="resize"></span>`;
       };
 
-      // 判断拖拽是否溢出
+      // 判断拖拽和拉伸是否溢出
       // @con 容器的宽高信息
-      // @cur 当前鼠标的坐标信息
-      var hasOverflow = function(con, cur) {
+      // @cur 当前鼠标的坐标信息和移动距离
+      var _hasOverflow = function(con, cur) {
         return cur.x >= 0 && cur.y >= 0 && cur.x + cur.w <= con.w && cur.y + cur.h <= con.h;
       };
+
+      var _getPointInfoStr = function(o) {
+        var k = _getUniqueKey(o);
+        var edit = `<span class="editBtn"><svg viewBox="64 64 896 896" class="" data-icon="edit" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"></path></svg></span>`;
+        var del = `<span class="delBtn"><svg viewBox="64 64 896 896" class="" data-icon="delete" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"></path></svg></span>`;
+        return `<li class="${k}"><h3><b>${k}</b><span class="infoOpeator">${edit}${del}</span></h3><p class="whInfo">高宽度信息：${o.h}_${o.w}px</p><p>这是详情描述信息，告诉你如何开发？</p></li >`;
+      };
+      
+      // 新增右侧坐标详情信息
+      // @ o 坐标信息Object
+      var _addPointInfo = function(o) {
+        hotInfos.insertAdjacentHTML('beforeend', _getPointInfoStr(o));
+      };
+
+      // 更新右边坐标详情信息
+      var _updatePointInfo = function(key, o) {
+        var curInfo = document.querySelector(`.hotInfos .${key}`);
+        if(!curInfo) return;
+        var k = _getUniqueKey(o);
+        curInfo.className = k;
+        curInfo.querySelector('.whInfo').innerHTML = `高宽度信息：${o.h}_${o.w}px`;
+        curInfo.querySelector('h3 b').innerHTML = k;
+      };
+
+      // 渲染右侧所有坐标详情信息
+      var renderPointsInfo = function(arr) {
+        var str = arr.map(item => {
+          return _getPointInfoStr(item);
+        }).join('');
+        hotInfos.innerHTML = str;
+      };
+
+      // 初始化渲染所有坐标详情信息
+      renderPointsInfo(_getPointsAll());
       
       // 渲染框选框
-      var renderRect = function(o) {
+      var _renderRect = function(o) {
         var link = document.createElement('a');
         var span = document.createElement('span');
-        var offsetInfo = getOffsetInfo();
+        var offsetInfo = _getOffsetInfo();
+        var curHot = document.querySelector('.tabs .active').dataset['type'];
+        // 相对viewport的坐标转换成相对parentElement的坐标
+        var obj = {
+          x: o.x - offsetInfo.x + offsetInfo.sx,
+          y: o.y - offsetInfo.y + offsetInfo.sy,
+          w: o.w,
+          h: o.h
+        };
         span.className = 'resize';
-        link.style.cssText = `width: ${o.w}px;height: ${o.h}px;left: ${o.x - offsetInfo.x + offsetInfo.sx}px; top: ${o.y - offsetInfo.y + offsetInfo.sy}px;`;
+        link.style.cssText = `width: ${obj.w}px;height: ${obj.h}px;left: ${obj.x}px; top: ${obj.y}px;`;
         link.className = "linkRect";
-        link.text = '';
+        link.text = _getUniqueKey(obj);;
         link.appendChild(span);
         link.setAttribute('data-href', 'https://www.google.com/' + document.querySelectorAll('.linkRect').length);
-        hot.appendChild(link);
-        cachePointInfo(link, getPointInfo(link.style));
+        document.querySelector(`.${curHot}`).appendChild(link);
+        _cachePointInfo(link, obj);
+        _addPointInfo(obj);
         link = null;
         span = null;
       };
       
       // 设定hot容器的宽高
-      var handleHotSize = function(){
-        hot.style.width = this.width + 'px';
-        hot.style.height = this.height + 'px';
-        hotW = this.width;
-        hotH = this.height;
-        hot.removeChild(this);
+      var handleHotSize = function(e) {
+        var p = e.target.parentElement;
+        isPc = p.classList.contains('pcbc');
+        var w = this.width;
+        var h = this.height;
+        p.style.width = w + 'px';
+        p.style.height = h + 'px';
+        p.dataset['hotw'] = w;   // 缓存容器宽高
+        p.dataset['hoth'] = h;
+        hotW = isPc ? w : hotW;
+        hotH = isPc ? h : hotH;
+        p.removeChild(this);
       };
 
-      document.querySelector('.hotLinks img').onload = handleHotSize;
+      document.querySelector('.hotLinks.pcbc img').onload = handleHotSize;
+      document.querySelector('.hotLinks.mobilebc img').onload = handleHotSize;
 
-      hot.onmousedown = function (e) {
+      mbhot.onmousedown = pchot.onmousedown = function (e) {
         var ele = e.target;
         // 区分缩放和移动框选框
         if (ele.className.indexOf('resize') > -1)
@@ -291,9 +455,11 @@
           op.h = parseInt(hasMoving ? hasMoving.style.height : hasResize.style.height);
         }
         e.stopPropagation();
+        e.preventDefault();
       };
 
       document.onmousemove = debounce(function(e) { 
+        if (!hasRectSelect && !hasMoving && !hasResize) return;
         if (hasRectSelect || hasMoving || hasResize) {
           _x = e.pageX;
           _y = e.pageY;
@@ -313,37 +479,38 @@
           }
           var minx = Math.min(_x, startX);
           var miny = Math.min(_y, startY);
-          if (!hasOverflow({ w: hotW, h: hotH }, { x: minx, y: miny, w: w, h: h })) return;
+          var osObj = _getOffsetInfo();
+          if (!_hasOverflow({ w: hotW, h: hotH }, { x: minx - osObj.x + osObj.sx, y: miny - osObj.y + osObj.sy, w: w, h: h })) return;
           selRect.style.left = minx + "px";
           selRect.style.top = miny + "px";
           selRect.style.width = w + "px";
           selRect.style.height = h + "px"; 
         } else if (hasMoving) {  // 任意移动框选框
           var mvstyle = hasMoving.style;
-          if (!hasOverflow({ w: hotW, h: hotH }, { x: op.x + mx, y: op.y + my, w: parseInt(mvstyle.width), h: parseInt(mvstyle.height) })) {
+          if (!_hasOverflow({ w: hotW, h: hotH }, { x: op.x + mx, y: op.y + my, w: parseInt(mvstyle.width), h: parseInt(mvstyle.height) })) {
             return;
           }
           hasMoving.style.left = op.x + mx + "px";
           hasMoving.style.top = op.y + my + "px";
         } else if (hasResize) {  // 缩放框选框
           var restyle = hasResize.style;
-          if (!hasOverflow({ w: hotW, h: hotH }, { x: parseInt(restyle.left), y: parseInt(restyle.top), w: op.w + mx, h: op.h + my })) return;
+          if (!_hasOverflow({ w: hotW, h: hotH }, { x: parseInt(restyle.left), y: parseInt(restyle.top), w: op.w + mx, h: op.h + my })) return;
           hasResize.style.width = op.w + mx + "px";
           hasResize.style.height = op.h + my + "px";
         }
-        e.stopPropagation();
       }, 8);
 
       document.onmouseup = function(e) { 
         if (selRect && hasRectSelect) { 
           var s = selRect.style;
-          var info = getPointInfo(s);
-          renderRect(info);
+          var info = _getPointInfo(s);
+          _renderRect(info);
           document.body.removeChild(selRect);
         } else if (hasMoving || hasResize) {
           var ele = hasMoving || hasResize;
-          var o = getPointInfo(ele.style);
-          cachePointInfo(ele, o);
+          var o = _getPointInfo(ele.style);
+          _updatePointInfo(ele.dataset['key'], o)
+          _cachePointInfo(ele, o);
         } 
         hasRectSelect = false;
         hasMoving = false;

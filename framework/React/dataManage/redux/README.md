@@ -24,9 +24,13 @@
 
 * 流程图
 
-  component -> action -> reducer -> state 的单向数据流转
+  ```js
+  ┌-----------┐    ┌--------┐    ┌---------┐
+  | component | -> | action | -> | reducer | -> state 的单向数据流转
+  └-----------┘    └--------┘    └---------┘
 
   Action Creator => action => store.dispatch(action) => reducer(state, action) => 原 state state = nextState
+  ```
 
   ![常见redux流程图](./images/redux.png)
 

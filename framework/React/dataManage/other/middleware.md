@@ -82,11 +82,11 @@
   export default mySaga;
   ```
 
-  常见api
+  **常见api**
 
   put 用于触发 action，call 用于调用异步处理逻辑，select 用于从 state 中获取数据。详情如下：
 
-  - take(pattern) 在 Store 上等待指定的 action。 在发起与 pattern 匹配的 action 之前，Generator 将暂停。  
+  - take(pattern) 在 Store 上等待指定的 action。在发起与 pattern 匹配的 action 之前，Generator 将暂停。  
 
   - takeEvery(channel, saga, ...args) 在发起（dispatch）到 Store 并且匹配 pattern 的每一个 action 上派生一个 saga。也就是说，takeEvery 允许处理并发的 action，包括相同的action，但不保证顺序。其中，saga: Function: 为一个 Generator 函数。
 
@@ -133,7 +133,7 @@
     ];  // 同步执行
     ```
 
-  - put(action) 向 Store 发起一个 action。 这个 effect 是非阻塞型的，并且所有向下游抛出的错误（例如在 reducer 中），都不会冒泡回到 saga 当中。 put.resolve(action)为阻塞型，返回了 promise，它将会等待其结果。
+  - put(action) 向 Store 发起一个 action。 这个 effect 是非阻塞型的，并且所有下游抛出的错误（例如在 reducer 中），都不会冒泡回到 saga 当中。 put.resolve(action)为阻塞型，返回了 promise，它将会等待其结果。
 
   - fork(fn, ...args) 用来命令 middleware 以 非阻塞调用 的形式执行 fn。
 
