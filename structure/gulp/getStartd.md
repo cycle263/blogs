@@ -1,10 +1,24 @@
-- 1、gulp的常见任务
+## Gulp
+
+* gulp的主要场景
+
+  - 通过gulp.task注册任务
+
+  - 通过gulp.run执行任务
+
+  - 通过gulp.watch监听文件
+
+  - 通过gulp.src读取文件
+
+  - 通过gulp.dest写入文件
+
+* gulp的常见任务
   + 检查Javascript
   + 编译Sass（或Less之类的）文件
   + 合并Javascript
   + 压缩并重命名合并后的Javascript
   
-- 2、使用Gulp插件来完成我们以下任务：
+* Gulp常见插件
   + sass的编译（gulp-ruby-sass）
   + 自动添加css前缀（gulp-autoprefixer）
   + 压缩css（gulp-minify-css）

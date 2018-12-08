@@ -1,20 +1,16 @@
 ## npm scripts -- CLI Commands
 
-npm脚本都存放在package.json文件里的scripts字段里，也可以直接运行nodejs脚本。scripts字段是一个对象，它的每一个属性，对应一段脚本。这些定义在package.json里面的脚本，就称为npm脚本。
+npm脚本都存放在package.json文件里的scripts字段里，也可以直接运行nodejs脚本。scripts字段是一个对象，它的每一个属性，对应一段shell脚本，其底层实现原理是通过调用shell去运行脚本命令。这些定义在package.json里面的脚本，就称为npm脚本。
 
 * **脚本原理**
 
   每当执行`npm run`，就会自动新建一个Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是Shell（一般是 Bash）可以运行的命令，就可以写在npm 脚本里面。
   
-  比较特别的是，`npm run`新建的这个Shell，会将当前目录的`node_modules/.bin`子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。
-
-  由于npm脚本的唯一要求就是可以在 shell 中执行，因此它不一定是Node 脚本，任何可执行文件都可以写在里面。
+  比较特别的是，`npm run`新建的这个Shell，会将当前目录的`node_modules/.bin`子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。由于npm脚本的唯一要求就是可以在 shell 中执行，因此它不一定是Node 脚本，任何可执行文件都可以写在里面。
 
 * 通配符和传参
 
-  由于 npm 脚本就是 Shell 脚本，因为可以使用 Shell 通配符。*表示任意文件名，**表示任意一层子目录。
-
-  向 npm 脚本传入参数，要使用 -- 标明。
+  由于 npm 脚本就是 Shell 脚本，因为可以使用 Shell 通配符。*表示任意文件名，**表示任意一层子目录。向 npm 脚本传入参数，要使用 -- 标明。
 
   npm 脚本里面需要执行多个任务，那么需要明确它们的执行顺序。如果是并行执行（即同时的平行执行），可以使用&符号。如果是继发执行（即只有前一个任务成功，才执行下一个任务），可以使用&&符号。
 

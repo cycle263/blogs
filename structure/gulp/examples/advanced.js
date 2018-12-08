@@ -10,9 +10,9 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	merge = require('merge-stream'),
 	paths = {
-		scripts: ['htdocs/source/examination/**/*.js', '!htdocs/source/examination/**/assets/*.js'],
-		css: ['htdocs/css/**/*.css', '!htdocs/css/**/assets/*.css'],
-		html: ['templates/**/screen/*.vm']
+		scripts: ['src/source/test/**/*.js', '!src/source/test/**/assets/*.js'],
+		css: ['src/css/**/*.css', '!src/css/**/assets/*.css'],
+		html: ['dist/**/screen/*.vm']
 	},
 	getPackageJson = function () {
 		return JSON.parse(fs.readFileSync('./package.json', 'utf8'));
@@ -37,7 +37,7 @@ gulp.task('scripts', function () {
 			}
         }))
         .pipe(uglify())
-        .pipe(gulp.dest('htdocs/js'))
+        .pipe(gulp.dest('src/js'))
 		.on('error', function(err){
             gutil.log(err);
             this.emit('end');
@@ -48,7 +48,7 @@ gulp.task('scripts', function () {
 gulp.task('minify-css', function(){
 	return gulp.src(paths.css)
         .pipe(minifyCss())
-        .pipe(gulp.dest('htdocs/css'))
+        .pipe(gulp.dest('src/css'))
 		.on('error', function(err){
             gutil.log(err);
             this.emit('end');
@@ -59,24 +59,24 @@ gulp.task('minify-css', function(){
 gulp.task('rev', function(){
 	var css = gulp.src(paths.css)
 		.pipe(rev())
-		.pipe(gulp.dest('htdocs/css/assets'))
+		.pipe(gulp.dest('src/css/assets'))
 		.pipe(rev.manifest({
-			base: 'htdocs',
+			base: 'src',
 			merge: true
 		}))
-		.pipe(gulp.dest('htdocs'))
+		.pipe(gulp.dest('src'))
 		.on('error', function(err){
             gutil.log(err);
             this.emit('end');
         }),	
 		js = gulp.src(paths.scripts)
 		.pipe(rev())
-		.pipe(gulp.dest('htdocs/js/examination/assets'))
+		.pipe(gulp.dest('src/js/test/assets'))
 		.pipe(rev.manifest({
-			base: 'htdocs',
+			base: 'src',
 			merge: true
 		}))
-		.pipe(gulp.dest('htdocs'))
+		.pipe(gulp.dest('src'))
 		.on('error', function(err){
             gutil.log(err);
             this.emit('end');
@@ -88,10 +88,10 @@ gulp.task('rev', function(){
 gulp.task('compile', ['rev'], function () {
     var manifest = JSON.parse(fs.readFileSync('rev-manifest.json', 'utf8'));
 
-    return gulp.src('uisvr/theme/standards/head.html')
+    return gulp.src('uidir/theme/standards/head.html')
 		.pipe(handlebars(manifest, handlebarOpts))
 		.pipe(rename('head.vm'))
-		.pipe(gulp.dest('uisvr/theme/standards'))
+		.pipe(gulp.dest('uidir/theme/standards'))
 		.on('error', function(err){
             gutil.log(err);
             this.emit('end');
@@ -107,7 +107,7 @@ gulp.task('pulish', function () {
           'suffix': 'rev',
           'fileTypes': ['js']
         }))
-        .pipe(gulp.dest('templates'));
+        .pipe(gulp.dest('dist'));
 });
 
 //监听任务
