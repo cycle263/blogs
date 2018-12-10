@@ -1,62 +1,58 @@
 ## 浏览器判断
 
 ```js
-var agent = navigator.userAgent.toLowerCase(),
-  opera = window.opera,
-  browser = {
-  /**
-   * @property {boolean} ie 检测当前浏览器是否为IE
-   * @example
-   * ```js
-   * if ( UE.browser.ie ) {
-   *     console.log( '当前浏览器是IE' );
-   * }
-   * ```
-   */
-  ie		:  /(msie\s|trident.*rv:)([\w.]+)/.test(agent),
+var agent = navigator.userAgent.toLowerCase();
+var opera = window.opera,
+var browser = {
+  ie		:  /(msie\s|trident.*rv:)([\w.]+)/.test(agent), // 检测当前浏览器是否为IE
 
-  /**
-   * @property {boolean} opera 检测当前浏览器是否为Opera
-   * @example
-   * ```js
-   * if ( UE.browser.opera ) {
-   *     console.log( '当前浏览器是Opera' );
-   * }
-   * ```
-   */
-  opera	: ( !!opera && opera.version ),
+  isEdge: userAgent.indexOf("Edge") > -1, // 检测当前浏览器是否为edge
 
-  /**
-   * @property {boolean} webkit 检测当前浏览器是否是webkit内核的浏览器
-   * @example
-   * ```js
-   * if ( UE.browser.webkit ) {
-   *     console.log( '当前浏览器是webkit内核浏览器' );
-   * }
-   * ```
-   */
-  webkit	: ( agent.indexOf( ' applewebkit/' ) > -1 ),
+  opera	: ( !!opera && opera.version ), // 检测当前浏览器是否为Opera
 
-  /**
-   * @property {boolean} mac 检测当前浏览器是否是运行在mac平台下
-   * @example
-   * ```js
-   * if ( UE.browser.mac ) {
-   *     console.log( '当前浏览器运行在mac平台下' );
-   * }
-   * ```
-   */
-  mac	: ( agent.indexOf( 'macintosh' ) > -1 ),
+  webkit	: ( agent.indexOf( ' applewebkit/' ) > -1 ),  // 检测当前浏览器是否是webkit内核的浏览器
 
-  /**
-   * @property {boolean} quirks 检测当前浏览器是否处于“怪异模式”下
-   * @example
-   * ```js
-   * if ( UE.browser.quirks ) {
-   *     console.log( '当前浏览器运行处于“怪异模式”' );
-   * }
-   * ```
-   */
-  quirks : ( document.compatMode == 'BackCompat' )
+  mac	: ( agent.indexOf( 'macintosh' ) > -1 ),  // 检测当前浏览器是否是运行在mac平台下
+
+  quirks: ( document.compatMode == 'BackCompat' ),  // 检测当前浏览器是否处于“怪异模式”下
+
+  trident: agent.indexOf('Trident') > -1, // IE内核   
+
+  presto: agent.indexOf('Presto') > -1, // opera内核  
+
+  webKit: agent.indexOf('AppleWebKit') > -1, // 苹果、谷歌内核   
+
+  gecko: agent.indexOf('Gecko') > -1 && agent.indexOf('KHTML') == -1, // 火狐内核  
+
+  mobile: !!agent.match(/AppleWebKit.*Mobile.*/), // 是否为移动终端   
+
+  ios: !!agent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // ios终端   
+
+  android: agent.indexOf('Android') > -1 || agent.indexOf('Linux') > -1, // android终端或者uc浏览器   
+  iPhone: agent.indexOf('iPhone') > -1 , // 是否为iPhone或者QQHD浏览器   
+
+  iPad: agent.indexOf('iPad') > -1, // 是否iPad     
+
+  webApp: agent.indexOf('Safari') == -1 // 是否web应该程序，没有头部与底部  
+
 };
+var isPc = function() {
+  return browser.mobile || browser.ios || browser.android ||    
+    browser.iPhone || browser.iPad;
+};
+
+var isPC2 = function() {
+  var userAgentInfo = navigator.userAgent;
+  var Agents = ["Android", "iPhone",
+    "SymbianOS", "Windows Phone",
+    "iPad", "iPod"];
+  var flag = true;
+  for (var v = 0; v < Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      flag = false;
+      break;
+    }
+  }
+  return flag;
+}
 ```

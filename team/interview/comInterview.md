@@ -128,6 +128,7 @@
 
 * 5. DOM怎样添加、移除、移动、复制、创建和查找节点
 
+    ```js
     // 创建新节点
 
     createDocumentFragment() //创建一个DOM片段  
@@ -159,6 +160,7 @@
     querySelector()     //可以使用 id, 类, 类型, 属性, 属性值等来选取元素,返回一个匹配元素
 
     querySelectorAll()  //返回多个匹配元素
+    ```
 
 * 6. null和undefined的区别？  
 
@@ -206,17 +208,12 @@
 
 * 10. 如何获取UA？  
 
-    ```
+    ```js
     function whatBrowser() {
-
-        document.Browser.Name.value=navigator.appName;
-
-        document.Browser.Version.value=navigator.appVersion;
-
-        document.Browser.Code.value=navigator.appCodeName;
-
-        document.Browser.Agent.value=navigator.userAgent;
-
+        document.Browser.Name.value = navigator.appName;
+        document.Browser.Version.value = navigator.appVersion;
+        document.Browser.Code.value = navigator.appCodeName;
+        document.Browser.Agent.value = navigator.userAgent;
     }
     ```
 

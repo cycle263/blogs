@@ -36,7 +36,7 @@
 
   - flex-shrink [<number>] 缩小比例，默认1，即如果空间不足，该item将缩小。溢出参照此值
 
-  - flex-basis [<length> | auto; /* default auto \*/] 分配多余空间之前，项目占据的 main size, 默认auto
+  - flex-basis [<length> | auto; /* default auto */] 分配多余空间之前，项目占据的 main size, 默认auto
 
   - flex none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ] flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
 
