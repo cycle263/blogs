@@ -8,12 +8,14 @@
 * react 的 key 的作用以及实现原理，并设定一个具体情境进行分析
 * 对 Redux 和 Mobx 的设计理念理解
 * virtual-dom 的基本原理与简单的源码解释
-* pure-component 和 shouldComponentUpdate，pure-component 相关概念
+* pure-component 和 shouldComponentUpdate，pure-component, function-component 相关概念
 
 Vue 的 MVVM 实现理解
 
 * 钩子函数的理解？
 * 生命周期比较？
+* 为何引入virtual-dom？
+* 单向数据流和双向绑定的优缺点？
 
 ## JavaScript
 
@@ -23,6 +25,7 @@ Vue 的 MVVM 实现理解
 * 如何写一个深拷贝函数
 * event-loop 和 macro-task、micro-task 的理解与应用举例
 * JScore 的理解
+* 执行上下文分哪几类？和作用域有什么区别？执行栈是什么？js的基本数据类型哪些存储在堆，哪些存在栈？
 
 ## HTML、CSS
 
@@ -36,7 +39,6 @@ Vue 的 MVVM 实现理解
 ## ES6、ES7
 
 * Promise、generator、async/await 的原理解释
-* ES6 的新特性
 
 ## 工程化
 

@@ -235,7 +235,6 @@
       var mbhot = document.querySelector('.mobilebc');
       var hotInfos = document.querySelector('.hotInfos');
       var pointsAside = document.querySelector('.pointsAside');
-      var hotW = 0, hotH = 0;
       var isPc = true;  // 当前展示背景
       var saveBtn = document.querySelector('.savePoints');
 
@@ -254,8 +253,8 @@
         document.querySelectorAll('.hotLinks').forEach(ele => {
           if (ele.classList.contains(type)) {
             ele.classList.remove('hide');
-            hotW = ele.dataset['hotw'] - 0;
-            hotH = ele.dataset['hoth'] - 0;
+            hotw = ele.dataset['hotw'] - 0;
+            hoth = ele.dataset['hoth'] - 0;
           } else
             ele.classList.add('hide');
         });
@@ -326,8 +325,9 @@
 
       // 获取所有坐标信息
       // @isPc 类型
-      var _getPointsAll = function() {
+      var _getPointsAll = function(type) {
         var c = isPc ? 'pcbc' : 'mobilebc';
+        c = type === 'all' ? 'hotLinks' : c;
         return Array.from(document.querySelectorAll(`.${c} .linkRect`)).map(ele => {
           return {
             x: ele.dataset['px'],
@@ -453,8 +453,6 @@
         p.style.height = h + 'px';
         p.dataset['hotw'] = w;   // 缓存容器宽高
         p.dataset['hoth'] = h;
-        hotW = isPc ? w : hotW;
-        hotH = isPc ? h : hotH;
         p.removeChild(this);
       };
 
@@ -487,6 +485,10 @@
         if (hasRectSelect || hasMoving || hasResize) {
           _x = e.pageX;
           _y = e.pageY;
+          var cur = isPc ? ".pcbc" : ".mobilebc";
+          var curEle = document.querySelector(cur);
+          var hotw = curEle.dataset['hotw'];
+          var hoth = curEle.dataset['hoth'];
         }
         if (hasMoving || hasResize) {
           var mx = _x - startX;   // x轴移动距离
@@ -504,21 +506,21 @@
           var minx = Math.min(_x, startX);
           var miny = Math.min(_y, startY);
           var osObj = _getOffsetInfo();
-          if (!_hasOverflow({ w: hotW, h: hotH }, { x: minx - osObj.x + osObj.sx, y: miny - osObj.y + osObj.sy, w: w, h: h })) return;
+          if (!_hasOverflow({ w: hotw, h: hoth }, { x: minx - osObj.x + osObj.sx, y: miny - osObj.y + osObj.sy, w: w, h: h })) return;
           selRect.style.left = minx + "px";
           selRect.style.top = miny + "px";
           selRect.style.width = w + "px";
           selRect.style.height = h + "px"; 
         } else if (hasMoving) {  // 任意移动框选框
           var mvstyle = hasMoving.style;
-          if (!_hasOverflow({ w: hotW, h: hotH }, { x: op.x + mx, y: op.y + my, w: parseInt(mvstyle.width), h: parseInt(mvstyle.height) })) {
+          if (!_hasOverflow({ w: hotw, h: hoth }, { x: op.x + mx, y: op.y + my, w: parseInt(mvstyle.width), h: parseInt(mvstyle.height) })) {
             return;
           }
           hasMoving.style.left = op.x + mx + "px";
           hasMoving.style.top = op.y + my + "px";
         } else if (hasResize) {  // 缩放框选框
           var restyle = hasResize.style;
-          if (!_hasOverflow({ w: hotW, h: hotH }, { x: parseInt(restyle.left), y: parseInt(restyle.top), w: op.w + mx, h: op.h + my })) return;
+          if (!_hasOverflow({ w: hotw, h: hoth }, { x: parseInt(restyle.left), y: parseInt(restyle.top), w: op.w + mx, h: op.h + my })) return;
           hasResize.style.width = op.w + mx + "px";
           hasResize.style.height = op.h + my + "px";
         }

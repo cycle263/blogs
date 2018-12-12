@@ -50,14 +50,30 @@
         console.error(error);
       }
       if (!Array.isArray(rectPoints)) return;
-      arr = rectPoints.map(item => {
+      arr = rectPoints.map((item, i) => {
         var x = (item.x * rate).toFixed(3);
         var y = (item.y * rate).toFixed(3);
         var w = (item.w * rate).toFixed(3);
         var h = (item.h * rate).toFixed(3);
-        return `<a class="linkRect" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;" src="${item.link || ''}"></a>`;
+        return `<a class="linkRect ${i === 0 ? 'unabled' : ''}" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;" href="${item.link || 'https://www.google.com'}"></a>`;
       });
       hot.innerHTML = arr.join('');
+    };
+
+    hot.onclick = function (e) {
+      var cur = e.target;
+      if (!cur.classList.contains('linkRect')) return;
+      if (cur.classList.contains('unabled')) {
+        e.preventDefault();
+        alert('不可点击');
+      } else {
+        console.log('do something...');
+      }
+    };
+
+    window.onbeforeunload = function () {
+      console.log('go out');
+      localStorage.setItem('onbeforeunload', 'onbeforeunload');
     };
     
     // 横竖屏切换
