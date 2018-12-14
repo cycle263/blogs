@@ -214,7 +214,6 @@
         <img src="./images/background.png" alt="background-image" />
       </div>
       <div class="hotLinks mobilebc hide">
-        <img src="./images/mobileBC.jpeg" alt="background-image" />
       </div>
     </section>
     <aside class="pointsAside">
@@ -226,6 +225,9 @@
   </footer>
   
   <script>
+    window.onload = function () {
+      console.log(111);
+    };
     (function() { 
       // @hasRectSelect 是否可以框选
       // @op 框选框原来的坐标信息
@@ -454,6 +456,7 @@
         p.dataset['hotw'] = w;   // 缓存容器宽高
         p.dataset['hoth'] = h;
         p.removeChild(this);
+        console.log(p.className, w, h)
       };
 
       document.querySelector('.hotLinks.pcbc img').onload = handleHotSize;
