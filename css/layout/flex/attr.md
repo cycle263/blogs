@@ -1,6 +1,6 @@
 ## Flexbox
 
-  > 弹性布局，任何一个容器都可以指定为flex布局
+  > 弹性布局，任何一个容器都可以指定为flex布局。`display: flex|inline-flex`
 
 * container
 
