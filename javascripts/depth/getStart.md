@@ -39,6 +39,85 @@
     const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
     return (num1 * baseNum + num2 * baseNum) / baseNum;
   }
+
+  // 大数相乘
+  var multiply = function(num1, num2) {
+    if(isNaN(num1) || isNaN(num2)) return '';
+    var len1 = num1.length,
+      len2 = num2.length;
+    var ans = [];
+    for (var i = len1 - 1; i >= 0; i--) {
+      for (var j = len2 - 1; j >= 0; j--) {
+        var index1 = i + j;
+        var index2 = i + j + 1;
+        var mul = num1[i] * num2[j] + (ans[index2] || 0);
+        ans[index1] = Math.floor(mul / 10) + (ans[index1] || 0);
+        ans[index2] = mul % 10;
+      }
+    }
+    var result = ans.join('');
+      //这里结果有可能会是多个零的情况，需要转成数字判断
+    return +result === 0 ? '0' : result;
+  }
+
+  // 大数相加
+  var plugs = function(n1, n2) {
+    if (!n1.length || !n2.length) return;
+    var res = '';
+    var n = 0;
+    var x, x1, x2;
+    for(let i = n1.length - 1, j = n2.length - 1; i > -1 || j > -1; --i, --j) {
+      x1 = i > -1 ? n1[i] : '0';
+      x2 = j > -1 ? n2[j] : '0';
+      x = (x1 - 0) + (x2 - 0) + n;
+      n = Math.floor(x / 10); // 进位数
+      x %= 10;  // 本位数
+      res = x.toString() + res.toString();
+    }
+    res = n > 0 ? '1' + res : res;
+    return res;
+  };
+
+  function sumStrings(a, b) {
+    a = '0' + a;    // 加0是因为两个最大的位数相加后可能需要进位
+    b = '0' + b;
+  
+    var arrA = a.split(''),
+        arrB = b.split(''),
+        res = [],
+        temp = '',
+        carry = 0,
+        distance = a.length - b.length,
+        len = distance > 0 ? a.length : b.length;
+      
+    // 在长度小的那个数值字符串前面添加distance个0，这样两个数值的位数就保持一致，
+    // 如：9797979797、34646，需要将这两个数值转成['0','9','7','9','7','9','7','9','7','9','7']、['0','0','0','0','0','3','4','6','4','6']
+    if(distance > 0){
+        for(let i = 0; i < distance; i++){
+            arrB.unshift('0');
+        } 
+    } else { 
+        for(let i = 0; i < Math.abs(distance); i++){
+            arrA.unshift('0');
+        }
+    }
+  
+    // 从数组的最后一位开始向前遍历，把两个数组对应位置的数值字符串转成整形后相加，
+    // carry表示相加后的进位，比如最后一位相加是7+6=13，这里进位carry是1
+    // 在遍历的时候每次都加上上次相加后的carry进位
+    for(let i = len - 1; i >= 0; i--){
+        temp = +arrA[i] + (+arrB[i]) + carry;
+        if(temp >= 10){  
+            carry = 1;
+            res.push((temp + '')[1]);
+        }else{
+            carry = 0;
+            res.push(temp);
+        } 
+    }
+    res = res.reverse().join('').replace(/^0/,'');
+    console.log(res)
+  }
   ```
 
 * 3、分号自动插入  

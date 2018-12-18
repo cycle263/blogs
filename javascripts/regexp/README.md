@@ -72,6 +72,7 @@ String.prototype.replace方法的第二个参数可以使用美元符号$，用�
 
 ## 正则表达式保留字
 
+```
 ^ (carat)
 . (period)
 [ (left bracket}
@@ -84,6 +85,7 @@ $ (dollar sign)
 ? (question mark)
 { (left curly bracket, or left brace)
 \ backslash 
+```
 
 * 数字（十六进制、十进制）
 
