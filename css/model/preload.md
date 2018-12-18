@@ -5,7 +5,6 @@
 `<link rel="preload" />` 和 `<link rel="prefetch" />`
 
 ```html
-
 <link rel="preload" as="script" href="async_script.js"
 onload="var script = document.createElement('script');
   script.src = this.href;

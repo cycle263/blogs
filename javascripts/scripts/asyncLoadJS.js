@@ -6,6 +6,8 @@ function asyncLoadJS(fileName){
         script = doc.createElement('script');
     script.setAttribute('type', 'text/javascript');
     script.setAttribute('src', fileName);
+    script.async = true;
+    script.crossOrigin = 'anonymous';
     
     for(var i = 0, l = scripts.length; i < l; i++){
         if(scripts[i].attributes.src == fileName){
@@ -20,9 +22,10 @@ function asyncLoadJS(fileName){
 
 //方法二
 function loadScript(url, callback){
-
     var script = document.createElement("script")
     script.type = "text/javascript";
+    script.async = true;
+    script.crossOrigin = 'anonymous';
 
     if (script.readyState){  //IE
         script.onreadystatechange = function(){
@@ -47,7 +50,8 @@ function loadJS( src, cb ){
 	var ref = window.document.getElementsByTagName( "script" )[ 0 ];
 	var script = window.document.createElement( "script" );
 	script.src = src;
-	script.async = true;
+    script.async = true;
+    script.crossOrigin = 'anonymous';
 	ref.parentNode.insertBefore( script, ref );
 	if (cb && typeof(cb) === "function") {
 		script.onload = cb;
