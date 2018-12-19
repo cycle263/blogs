@@ -6,13 +6,13 @@
 
     - 三种方式，以object保存则可以直接赋值和读取，以json字符串方式赋值，直接需解析获取
 
-    - jQuery: $.data(ele, data ,key),ele为javascript元素对象，将会把DOM属性中data-\*值也保存到jQuery.cache中(后续js增加的除外)，而$(ele).data()不会，jQuery的两种方式都会保存在jQuery.cache中
+    - jQuery: $.data(ele, data ,key), ele为javascript元素对象，将会把DOM属性中data-\*值也保存到jQuery.cache中(后续js增加的除外)，而$(ele).data()不会，jQuery的两种方式都会保存在jQuery.cache中
 
 * jQuery(document).ready VS window.onload
 
     - window.onload是在网页中的所有元素（包括关联的资源文件：图片、样式等）完全加载后才会执行，并且只会执行一次；等价于jQuery(window).load
 
-    - jQuery(document).ready是在DOM准备就绪的时候被调用，并且可以多次执行。简式写法：$(function(){})或者$().ready()
+    - jQuery(document).ready是在DOM准备就绪的时候被调用，并且可以多次执行。简式写法：$(function(){})或者$().ready();
 
 * animate
 

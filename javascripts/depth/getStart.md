@@ -142,3 +142,16 @@
 * 6、迭代方法优于循环  
 
   使用迭代方法（如：Array.prototype.forEach、map）替换for循环，使得代码更可读，需要提前终止或者有控制流操作，建议使用循环，当然，some和every方法也具有控制流操作能力。
+
+* 7、money每三位逗号分隔
+
+  ```js
+  var a = 4398; var str = '';
+  var arr = Array.from(a.toString());
+  var start = arr.length % 3;
+
+  arr.map((item, i) => {
+    str += i === start && i !== 0 ? ',' + item : item;
+    start = i === start ? start + 3 : start;
+  });
+  ```
