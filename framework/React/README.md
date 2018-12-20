@@ -87,7 +87,7 @@
 
   回调函数是编程语言实现层面上的事件通知功能，可以理解为系统在符合你设定的条件时自动调用。回调函数其实就是调用者把回调函数的函数指针传递给调用函数，当调用函数执行完毕时，通过函数指针来调用回调函数。
   
-  钩子函数并不是编程语言实现层面上的事件通知功能，钩子的概念源于Windows的消息处理机制，通过设置钩子，应用程序可以对所有的消息事件进行拦截，然后执行钩子函数，对消息进行想要的处理方式。
+  钩子函数并不是编程语言实现层面上的事件通知功能，钩子的概念源于Windows的消息处理机制，通过设置钩子，应用程序可以对所有的消息事件进行拦截，然后执行钩子函数，对消息进行想要的处理方式。钩子函数更多作用于全局或者类级别，回调函数通过作用于实例级别。
 
   ```js
   let btn = document.getElementById("btn");
@@ -103,6 +103,25 @@
   ```
 
   为了捕获消息而生的，但是钩子函数在捕获消息的第一时间就会执行，而回调函数是在整个捕获过程结束时，最后一个被执行的。回调函数其实就是调用者把回调函数的函数指针传递给调用函数，当调用函数执行完毕时，通过函数指针来调用回调函数。
+
+  ```js
+  // define a custom css hook, jquery钩子
+  jQuery.cssHooks.custombox = {
+    get: function(elem, computed, extra) {
+      return $.css(elem, 'borderRadius') == "50%"
+        ? "circle"
+        : "box";
+    },
+    set: function(elem, value) {
+      elem.style.borderRadius = value == "circle"
+        ? "50%"
+        : "0";
+    }
+  };
+
+  // have .css() use that hook
+  $("#some-selector").css("custombox", "circle");
+  ```
 
 ## 钩子函数 vs 数据库事务
 

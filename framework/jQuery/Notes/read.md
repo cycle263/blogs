@@ -6,7 +6,7 @@
 
     - 三种方式，以object保存则可以直接赋值和读取，以json字符串方式赋值，直接需解析获取
 
-    - jQuery: $.data(ele, data ,key), ele为javascript元素对象，将会把DOM属性中data-\*值也保存到jQuery.cache中(后续js增加的除外)，而$(ele).data()不会，jQuery的两种方式都会保存在jQuery.cache中
+    - jQuery: $.data(ele, data ,key), ele为javascript元素对象，将会把DOM属性中data-\*值也保存到jQuery.cache中(后续js增加的除外)，而$(ele).data()不会，jQuery的两种方式都会保存在jQuery.cache中，但都不会保存到data-\*的DOM结构中，可使用$(ele).attr('data-key', 123);
 
 * jQuery(document).ready VS window.onload
 

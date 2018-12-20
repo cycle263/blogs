@@ -70,4 +70,4 @@
 
 	- ajax的dataType可以为：['json', 'html', 'script', 'jsonp', 'xml', 'text']
 
-	- $('ele').load(url, data, cb)， 可以加载HTML
+	- $('ele').load(url, data, cb)，可以加载HTML

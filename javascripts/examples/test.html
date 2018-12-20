@@ -13,6 +13,21 @@
       <input type="file" name="name" value="">
       <button type="submit" name="button">Submit</button>
     </form>
+    <p>点击复制后在右边textarea CTRL+V看一下</p>
+    <input type="text" id="inputText" value="测试文本" />
+    <input type="button" id="btn" value="复制" />
+    <textarea rows="4"></textarea>
+    <script type="text/javascript">
+      var btn = document.getElementById('btn');
+      btn.addEventListener('click', function () {
+        var inputText = document.getElementById('inputText');
+        var currentFocus = document.activeElement;
+        inputText.focus();
+        inputText.setSelectionRange(0, inputText.value.length);
+        document.execCommand('copy', true);
+        currentFocus.focus();
+      });
+    </script>
 
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js" type="text/javascript"></script>
     <script type="text/javascript">

@@ -98,6 +98,20 @@
   };
 
   // test();
+
+  // 单列list转多列table展示
+  var arr = [1, 2, 34, 35, 432, 3423, 432, 4, 4, 6564, 'u7', 657, 7657, 767, 655];
+  function transData(arr, num) {
+    if (!Array.isArray(arr)) return;
+    var c = num || 10;
+    var remainder = arr.length % c;
+    var complement = (new Array(c - remainder)).join(',').split(',');
+    var all = arr.concat(complement);
+    return all.map((item, i) => {
+      return `${i === 0 && i % c === 0 ? '<tr>' : i !== 0 && i % c === 0 ? '</tr><tr>' : ''}<td>${item}</td>${i === all.length - 1 ? '</tr>' : ''}`;
+    }).join('');
+  }
+  transData(arr, 6);
 </script>
 </body>
 </html>
