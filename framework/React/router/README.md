@@ -58,7 +58,26 @@ React.render((
   - HashRouter  使用URL(window.location.hash)的hash部分来记录
   
   - MemoryRouter node环境下的history，存储在memory中
-  
-* [按需加载](https://react-guide.github.io/react-router-cn/docs/guides/advanced/DynamicRouting.html)
 
-[基于路由的按需加载](https://react.docschina.org/docs/code-splitting.html)
+* history
+
+  history用于记录浏览器的会话历史记录，可以实现前进后退等跳转功能。在HTML5规范中，W3C规范使用pushState和replaceState方法来修改浏览器URL地址，而不触发页面重载，实际上，router的browserHistory也是类似的。
+
+  - hashHistory   通过URL的hash部分（#）切换页面，优点是不需要服务端配置，缺点是不够清爽不够优雅，容易拼接和编码造成丢失。
+
+  - browserHistory  需要服务端进行配置，否则访问非首页地址时会出现404。这是因为，路径指向服务器的真是路径，而该路径并没有相关的资源，所以返回资源不存在。要让页面正常运行，我们需要让页面在访问这些url的时候返回单页应用的index.html，然后再从前端解析到正确的路由进行加载。
+
+    + 开发服务器使用webpack-dev-server，加上 `--history-api-fallback`参数就可以。`webpack-dev-server --inline --content-base . --history-api-fallback`
+
+    + 开发服务器是Nginx时，*.conf 配置
+
+      ```json
+      {
+        server {
+          location / {  // nginx 只匹配 / ，剩下的应该由react-router
+            try_files $uri /index.html
+          }
+        }
+      }
+      ```
+      

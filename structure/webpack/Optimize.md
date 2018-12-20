@@ -190,3 +190,8 @@ webpack的优化技巧，提升构建速度(并行编译、hash缓存、预编�
 
 * 动态import：通过模块的内联函数调用来分离代码。
 
+
+  
+* [按需加载](https://react-guide.github.io/react-router-cn/docs/guides/advanced/DynamicRouting.html)
+
+[基于路由的按需加载](https://react.docschina.org/docs/code-splitting.html)

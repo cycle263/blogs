@@ -26,7 +26,7 @@
 
     + keyLength: number, 设置它里面路由的 location.key 的长度。默认是6。（key的作用：点击同一个链接时，每次该路由下的 location.key都会改变，可以通过 key 的变化来刷新页面。）
 
-    BrowserRouter模式需求后端服务器配合，如nginx设置rewrite，如webpack-dev-server服务设置historyApiFallback配置。
+    BrowserRouter模式需求后端服务器配合，如 nginx 设置 rewrite，如 webpack-dev-server 服务设置historyApiFallback 配置。
 
     ```js
     // BrowserRouter
@@ -82,7 +82,7 @@
 
     + activeStyle:object
 
-      ```react
+      ```js
       const style = {
         color: 'green',
         fontWeight: 'bold'

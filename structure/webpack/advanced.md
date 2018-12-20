@@ -101,9 +101,9 @@
 
 * **部署上线**
 
-  部署上线使用webpack的时候不需要一些dev-tools,dev-server和jshint校验等，因此需要单独的config文件  
+  部署上线使用webpack的时候不需要一些dev-tools, dev-server和jshint校验等，因此需要单独的config文件  
 
-  - 复制config.js文件，命名为webpack.production.config.js，将其中的dev-tools,dev-server和jshint校验等删除。  
+  - 复制config.js文件，命名为webpack.production.config.js，将其中的dev-tools, dev-server和jshint校验等删除。  
 
   - 在package.json中添加一个命令  
     ```js
