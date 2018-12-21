@@ -65,7 +65,7 @@
 
 * [x] jQuery.getScript, $.load, $.get, $.post, $.getJSON, $('ele').load
 
-* [ ] scrollingElement
+* [ ] scrollingElement、activeElement
 
 * [ ] 离线包，jsBridge
 
