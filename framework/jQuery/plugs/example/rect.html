@@ -23,6 +23,9 @@
     text-decoration: none;
   }
   </style>
+  <script>
+  console.log(document.querySelector('.hotLinks img'));
+  </script>
 </head>
 <body>
     <!-- 热点 -->
@@ -35,6 +38,7 @@
     var docWidth = document.body.clientWidth;
 
     document.querySelector('.hotLinks img').onload = function () {
+      console.log('img onload...', document.querySelector('.hotLinks img').onload)
       var w = this.width;
       var h = this.height;
       rate = (docWidth / w);
@@ -43,6 +47,7 @@
     };
 
     window.onload = function(){
+      console.log('window onload', document.querySelector('.hotLinks img'))
       var rectPoints = localStorage.getItem('rectPoints'), arr = [];
       try {
         rectPoints = JSON.parse(rectPoints);
