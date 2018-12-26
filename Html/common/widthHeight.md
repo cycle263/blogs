@@ -1,6 +1,6 @@
 ## 宽高总结
 
-outerWidth、innerWidth、document.documentElement.clientWidth、document.body.screen.width、screen.availWidth
+outerWidth、innerWidth、document.documentElement.clientWidth、document.body.screen.width、screen.availWidth等
 
 * 屏幕相关宽高
 
