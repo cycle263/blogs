@@ -86,6 +86,8 @@
 
     - compress: true 开发服务器是否启动gzip等压缩
 
+    - https: true，开启https服务，例如：http2 和 service Worker
+
 * **其他配置**
 
     - watch 启用 Watch 模式后，webpack 将持续监听任何已解析文件的更改，重新构建文件，Watch 模式默认关闭，在开发时候如果开启会很方便。

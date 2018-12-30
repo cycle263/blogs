@@ -204,6 +204,30 @@ module.exports = MyPlugin;
 
 * **5、目录/文件拷贝之:**
 
+  - web-webpack-plugin - 基于webPlugin
+
+    ```js
+    const { AutoWebPlugin, WebPlugin } = require('web-webpack-plugin');
+    const autoWebPlugin = new AutoWebPlugin('pages', {  // pages目录下的所有入口
+      template: './template.html',
+      postEntrys: ['./commmon.css'],  // 公用资源文件
+      commonsChunk: {
+        name: 'common',
+      },
+    });
+
+    entry: autoWebPlugin.entry({
+      // 扩充非pages目录下的额外入口
+    }),
+    plugins:[
+      new WebPlugin({
+        template: './template.html',
+        filename: 'index.html'
+      }),
+      autoWebPlugin,
+    ]
+    ```
+
   - CopyWebpackPlugin - 目录及文件拷贝
 
   - i18n-webpack-plugin 多语言插件

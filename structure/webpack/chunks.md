@@ -2,11 +2,11 @@
 
 * chunk vs bundle vs module
 
-    chunk webpack特有的，用于管理打包的过程，分包成多个chunk，一个chunk里面可以包含多个module。
+    - chunk webpack特有的，用于管理打包的过程(代码合并和分割)，分包成多个chunk，一个chunk里面可以包含多个module。
 
-    bundle 就是打包到一个文件中的相关代码，通过情况下，chunk会直接输入对应的bundle，当然不是所有的配置都会产生这一对一的关系。
+    - bundle 就是打包到一个文件中的相关代码，通过情况下，chunk会直接输入对应的bundle，当然不是所有的配置都会产生这一对一的关系。
 
-    module js模块，所有静态资源都可以成为module
+    - module js模块，所有静态资源都可以成为module，一切皆模块，一个模块对应一个文件。
 
 * hash
 
