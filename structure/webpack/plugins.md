@@ -204,7 +204,7 @@ module.exports = MyPlugin;
 
 * **5、目录/文件拷贝之:**
 
-  - web-webpack-plugin - 基于webPlugin
+  - web-webpack-plugin - AutoWebPlugin基于webPlugin, 也就是WebPlugin插件支持的功能AutoWebPlugin都支持， 其中AutoWebPlugin会根据依赖的资源注入<!--STYLE--> 和 <!--SCRIPT--> 位置， 没有注释制定位置，则注入head标签和body标签最后
 
     ```js
     const { AutoWebPlugin, WebPlugin } = require('web-webpack-plugin');
