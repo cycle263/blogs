@@ -2,8 +2,13 @@
 
 * ssh远程中文乱码问题  UTF-8
 
-  ```shell
+  ```sell
   locale 查看本地和远端的字符集编码方式
+
+  vi ~/.zshrc 修改本地的shell配置，在文件最后加上
+
+  export LC_ALL="zh_CN.GBK"
+  export LANG="zh_CN.GBK"
   ```
 
 * 环境变量配置
@@ -40,3 +45,7 @@
   `COMMAND+SHIFT+3`，截取全屏
   
   `COMMAND+SHIFT+4`，框取截屏
+
+* shell退出远程
+
+  `exit / logout`
