@@ -10,15 +10,21 @@
 * virtual-dom 的基本原理与简单的源码解释
 * pure-component 和 shouldComponentUpdate，pure-component, function-component 相关概念
 
-Vue 的 MVVM 实现理解
+## Vue 的 MVVM 实现理解
 
 * 钩子函数的理解？
 * 生命周期比较？
 * 为何引入virtual-dom？
 * 单向数据流和双向绑定的优缺点？
+* vue的响应式原理，依赖收集、监听数组？
+* 实现一个vue的mixin方法
 
 ## JavaScript
 
+* 实现一个promise的all方法
+* 实现一个发布订阅类
+* 实现一个可设置过期时间的localstorage
+* 实现一个sleep类
 * jsonp的实现？
 * 实现bind函数？
 * JS 的基本函数式使用，比如 reduce、curry？
@@ -26,6 +32,8 @@ Vue 的 MVVM 实现理解
 * event-loop 和 macro-task、micro-task 的理解与应用举例
 * JScore 的理解
 * 执行上下文分哪几类？和作用域有什么区别？执行栈是什么？js的基本数据类型哪些存储在堆，哪些存在栈？
+* 如何判断点是否在方形或者圆形内，如何判断两个方形是否重叠？
+
 
 ## HTML、CSS
 
@@ -50,7 +58,8 @@ Vue 的 MVVM 实现理解
 * 对几种状态维持方式的理解与使用细节
 * 移动端的优化方式* 
 * webp 图片的浏览器兼容检测
-* 跨平台工具栈
+* 跨平台工具栈，跨浏览器和nodejs的工具
+* 设计一个单点登录的系统
 
 ## 后端开发
 
@@ -65,3 +74,4 @@ Vue 的 MVVM 实现理解
 * 一个简单的 DSL 的 compiler 实现
 * 基本设计模式的考察
 * 计算机视觉中的 DL 和 Saliency
+* websocket的握手过程，http协议的三次握手，四次挥手

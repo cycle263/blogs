@@ -59,7 +59,7 @@ console.log("e^π = " + exp(pi));
   export let _ = function () {};           // 导出 _ 对象
   export function lodash () {};            // 导出 lodash 函数
   export default function (x) {return x};  // 导出匿名函数并设为默认导出对象
-  export { _, lodash as default };         // 一次导出多个对象
+  export { _, lodash as default };         // 一次导出多个对象, 默认导出部分用对象解析方式拿不到
   ```
 
 * **import**
