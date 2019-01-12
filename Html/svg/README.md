@@ -4,6 +4,8 @@
 
   - svg vs canvas
 
+    图形条纹简单的情况下，一般比位图要小，扁平化UI的今天，大多数情况SVG都会更小。
+
   | svg | canvas |  
   | --- | ------ |  
   | 使用 XML 描述 2D 图形的语言 | 通过 JavaScript 来绘制 2D 图形 |  

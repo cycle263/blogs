@@ -44,7 +44,7 @@
 
   - css-loader 解析CSS文件后，使用import加载，并且返回CSS代码，参数module开启避免模块之间的样式干扰，也就是className值hash化。
 
-  - postcss-loader 使用 PostCSS 加载和转译 CSS/SSS 文件。另外，autoprefixer是postcss的一个插件, 在新的css属性上加前缀，如：'-webkit-'。postcss-loader 与 postcss-sprites: 合成雪碧图, 减小HTTP请求. 注意合成后的图片文件大小。
+  - postcss-loader 使用 PostCSS 加载和转译 CSS/SSS 文件。另外，autoprefixer是postcss的一个插件, 在新的css属性上加前缀，如：'-webkit-'。postcss-loader 与 postcss-sprites: 合成雪碧图, 减小HTTP请求。注意合成后的图片文件大小。
 
   ```js
   let spritesConfig = {
@@ -94,7 +94,7 @@
   }
   ```
 
-  - file-loader 把源文件迁移到指定的目录（可以简单理解为从源文件目录迁移到build目录），并返回新文件的路径（简单拼接而成）。
+  - file-loader 可以将js和css中导入的图片地址替换成正确的地址，同时将文件输出到对应的位置。也就是，把源文件迁移到指定的目录（可以简单理解为从源文件目录迁移到build目录），并返回新文件的路径（简单拼接而成）。
 
   - url-loader 将源文件转换成DataUrl(声明文件mimetype的base64编码)。比较大的图片,使用base64就不适合了，编码会和html混在一起，一方面可读性差，另一方面加大了html页面的大小，反而加大了下载页面的大小。
 
@@ -116,3 +116,10 @@
   /\.(mp4|webm)$/ //使用 file-loader
   ```
 
+  - imagemin-webpack-plugin 对图片大小进行压缩
+
+  - webpack-spritesmith 制作雪碧图
+
+  - raw-loader 可以将文本文件的内容读取出来，注入到js和css中
+
+  - svg-inline-loader 跟raw-loader相似，不同之处，它会分析SVG的内容去掉不必要的部分，以减少SVG大小

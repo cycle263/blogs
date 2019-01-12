@@ -104,6 +104,8 @@ this.addEventListener('fetch', event => {
 
 - 使用不正常，记得开启一些浏览器的功能配置，例如：Chrome Canary: 访问 `chrome://flags` 并开启 experimental-web-platform-features; 重启浏览器 (注意：有些特性在Chrome中没有默认开放支持)；
 
+- 结合webpack，可以使用webpack插件 serviceworker-webpack-plugin
+
 参考资料
 
 [如何使用Service_Workers](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API/Using_Service_Workers)

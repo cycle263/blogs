@@ -1,6 +1,6 @@
 ## npm scripts -- CLI Commands
 
-npm脚本都存放在package.json文件里的scripts字段里，也可以直接运行nodejs脚本。scripts字段是一个对象，它的每一个属性，对应一段shell脚本，其底层实现原理是通过调用shell去运行脚本命令。这些定义在package.json里面的脚本，就称为npm脚本。
+Npm script是npm的内置功能，npm脚本都存放在package.json文件里的scripts字段里，也可以直接运行nodejs脚本。scripts字段是一个对象，它的每一个属性，对应一段shell脚本，其底层实现原理是通过调用shell去运行脚本命令。这些定义在package.json里面的脚本，就称为npm脚本。
 
 * **脚本原理**
 
