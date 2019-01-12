@@ -50,19 +50,19 @@
 
 * **devtool**
 
-    生成 sourcemap 的功能。
+    生成 sourcemap 的功能。在生产环境中，一般不会将source Map上传到服务端，而是采用错误收集系统，将错误信息压缩位置收集，然后通过source map进行反射，计算出未压缩源码的错误位置。
 
     - source-map 最原始的 source-map 实现方式，其实现是打包代码同时创建一个新的 sourcemap 文件， 并在打包文件的末尾添加 //# sourceURL 注释行告诉 JS 引擎文件在哪儿。此选项具有最完备的source map 文件，但会减慢打包的速度
 
-    - hidden-source-map 和 source-map 一样，但不会在 bundle 末尾追加注释
+    - hidden-source-map 和 source-map 一样，但不会在 bundle 末尾追加注释，也就是不会指出map文件位置
 
-    - inline-source-map 为打包前的每一个文件添加 sourcemap 的 DataUrl
+    - inline-source-map 为打包前的每一个文件添加 sourcemap 的 DataUrl，但不会单独生成map文件
 
     - cheap-module-source-map 生成一个不带列映射的map
 
     - eval-source-map 使用eval打包源文件模块，生成一个完整的source map。
 
-    - cheap-module-eval-source-map 这是最快生成source map的方法，生成后的Source Map 会和打包后的 JavaScript 文件同行显示，但没有列映射，所以慎用
+    - cheap-module-eval-source-map 这是最快生成source map的方法，生成后的Source Map 会和打包后的 JavaScript 文件同行显示，但没有列映射，开发环境不压缩的情况下，可以尝试
 
 * **resolve**
 
