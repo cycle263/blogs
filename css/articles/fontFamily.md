@@ -12,6 +12,7 @@
 |    微软正黑体  |  Microsoft JhengHei  |
 |       楷体    |  	KaiTi  |
 |     新宋体    |  NSimSun  |
+|     格鲁吉亚   |  Georgia  |
 
 * 常见OS X内置中文字体
 
