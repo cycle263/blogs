@@ -22,6 +22,7 @@
 
 ## JavaScript
 
+* try catch finally中分别有return，会如何执行？多个return如何执行？
 * 实现一个promise的all方法
 * 实现一个发布订阅类
 * 实现一个可设置过期时间的localstorage
@@ -38,6 +39,7 @@
 
 ## HTML、CSS
 
+* 为何CSS相邻兄弟选择器只支持后面的元素，而不支持前面的兄弟元素？
 * HTML 的语义化理解
 * CSS 动画性能比较问题
 * 简单的浏览器兼容问题解决方式
