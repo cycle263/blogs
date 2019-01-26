@@ -4,6 +4,7 @@
 * 解决页面loading状态和error状态的显示？
 * redux中如何优化action到store的书写效率？
 * react 的 diff 算法基本原理与源码解释
+* 为什么需要调用 super(props)？ 为什么推荐在componentDidMount中发起request请求？
 * 如何细粒度地控制 react 组件更新
 * react 的 key 的作用以及实现原理，并设定一个具体情境进行分析
 * 对 Redux 和 Mobx 的设计理念理解
