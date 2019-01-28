@@ -6,6 +6,10 @@
 
 * contentState
 
+* Entity
+
+  文本上附加一些额外的信息，比如超链接
+
 * Decorator
 
   自定义组件来渲染特定的内容，使用CompositeDecorator类定义所需的装饰器行为
