@@ -61,3 +61,7 @@ Introduction -> ES 6/7、JavaScript、Css -> React|Vue|Angular
 - es6 module vs commonjs module ? let vs const vs var 
 
 - setState异步？ diff算法策略？ 双向绑定 vs 单向数据流 ？合成事件 ？ redux的中间件
+
+## 实践题
+
+[实践题](./summary)
