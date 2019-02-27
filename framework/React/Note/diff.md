@@ -53,6 +53,16 @@
 
   进行浅比较，非js基本类型失效，onClick回调使用箭头函数，每次回调匿名函数都会是不同对象，PureComponent作用失效。
 
+  每次render生成新的对象，也会导致PureComponent作用失效。
+
+* PureComponent是不是适合任何情况
+
+  应该尽量避免在顶层组件（因为顶层组件的 props 数据结构往往比较复杂，而且是组件树的源头）中使用 PureComponent，容易遇到坑点，并且不好排查。
+   
+  另外，`<Element style={} />`写法会导致每次都会进行shallowEqual，反而比较Component更费性能。
+
+  因此，已经预期到某个组件的 props 或是 state 会「频繁变动」，那就根本不用使用 PureComponent，因为这样反而会变慢。
+
 * PureRenderMixin的核心代码
 
 ```js

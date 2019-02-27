@@ -3,3 +3,5 @@
   request - xhr.setRequestHeader('Content-Type', '')
 
   response - xhr.responseType = '';
+
+* 固定IP无法host绑定，预发绑定，解决办法，改成动态获取IP
