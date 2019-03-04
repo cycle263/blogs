@@ -4,6 +4,20 @@
 
   [浏览器同源策略](http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)
 
+  * 同源策略
+
+  同源策略是浏览器最核心的安全功能，避免遭受XSS、CSFR等攻击。
+
+  同源策略限制内容有：
+
+    Cookie、LocalStorage、IndexedDB 等存储性内容
+
+    DOM 节点
+
+    AJAX 请求发送后，结果被浏览器拦截
+
+  但是有三个标签是允许跨域加载资源： img、link、script
+
 
 ## cors跨域详细总结
 
