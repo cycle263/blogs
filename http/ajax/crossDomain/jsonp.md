@@ -25,11 +25,29 @@ var $jsonp = function(src, opts){
     document.getElementsByTagName('head')[0].appendChild(script);
 };
 
+// method 2
+function jsonp({ url, params, callback }) {
+  return new Promise((resolve, reject) = {
+    let script = document.createElement('script')
+    window[callback] = function(data) {
+      resolve(data);
+      document.body.removeChild(script);
+    };
+    params = { ...params, callback }; /* wd=b&callback=show */
+    let arrs = [];
+    for (let key in params) {
+      arrs.push(`${key}=${params[key]}`);
+    }
+    script.src = `${url}?${arrs.join('&')}`;
+    document.body.appendChild(script);
+  });
+}
+
 // 是一种非正式传输协议，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据。基本原理为script脚本没有同源策略，实际上是src属性不受同源策略影响，也就是说img,script,iframe元素
 
 
 
-// method 2
+// method 3
 function proxy (url, callback) {
     var flag = true,
         $iframe = document.createElement('iframe'),

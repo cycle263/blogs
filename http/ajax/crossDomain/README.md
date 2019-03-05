@@ -10,11 +10,11 @@
 
   同源策略限制内容有：
 
-    Cookie、LocalStorage、IndexedDB 等存储性内容
+    - Cookie、LocalStorage、IndexedDB 等存储性内容
 
-    DOM 节点
+    - DOM 节点
 
-    AJAX 请求发送后，结果被浏览器拦截
+    - AJAX 请求发送后，结果被浏览器拦截。跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。跨域是为了阻止用户读取到另一个域名下的内容，Ajax 可以获取响应，浏览器认为这不安全，所以拦截了响应。
 
   但是有三个标签是允许跨域加载资源： img、link、script
 
