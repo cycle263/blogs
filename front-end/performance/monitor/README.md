@@ -84,4 +84,4 @@
 参见资料
 
 [Script Error规范](https://github.com/BetterJS/badjs-report/issues/3)
-[解决 "Script Error" 的另类思路](https://cloud.tencent.com/developer/article/1367170)
+[解决Script Error的另类思路](https://cloud.tencent.com/developer/article/1367170)
