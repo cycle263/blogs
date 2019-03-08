@@ -88,6 +88,12 @@
 
   - 数据传递效率低，采用的context API一直存在传递效率问题
 
+  - store里状态残留问题，多组件共用store里某个状态时要注意初始化清空问题
+
+  - 交互频繁store庞大时会有卡顿
+
+  - 不支持typescript
+
 ## 比较react
 
   a. 需要回调通知state (等同于回调参数) -> action  

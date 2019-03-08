@@ -4,7 +4,7 @@ context API主要用来解决跨组件传参泛滥的问题（prop drilling)。
 
 * 旧context API（react 16.3之前）
 
-  虽然功能上context可以跨层级传递，但是本质上context也是同props一样一层一层的往下传递的，当层级过深的时候还是会出现效率问题。并且代码非常多的冗余，例如：childContextTypes 和 getChildContext。另外，shouldComponentUpdate方法能阻断context的传递。
+  虽然功能上context可以跨层级传递，但是本质上context也是同props一样一层一层的往下传递的，当层级过深的时候还是会出现效率问题，代码非常多的冗余，例如：childContextTypes 和 getChildContext。另外，shouldComponentUpdate方法能阻断context的传递，导致无法透传的情况。
 
   ```js
   // 传递者，生成数据并放入context中
@@ -46,7 +46,7 @@ context API主要用来解决跨组件传参泛滥的问题（prop drilling)。
   ```js
   import React, { Component, createContext } from 'react';
 
-  const DEFAULT_STATE = {color: 'red'};  
+  const DEFAULT_STATE = { color: 'red' };  
   const { Provider, Consumer } = createContext(DEFAULT_STATE);
 
   // 传递者，生成数据并放入context中
