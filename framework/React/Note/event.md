@@ -6,36 +6,65 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
   class ExampleApplication extends Component {
     constructor() {
         super(arguments);
-        this.onReactClick.bind(this);
     }
     componentDidMount() {
-        const parentDom = ReactDOM.findDOMNode(this);
-        const childrenDom = parentDom.queneSelector(".button");
-        childrenDom .addEventListen('click', this.onDomClick, false);
+        this.parent.addEventListener('click', (e) => {
+          console.log('dom parent');
+        });
+        this.child.addEventListener('click', (e) => {
+          console.log('dom child');
+        });
+        document.addEventListener('click', (e) => {
+          console.log('document');
+        });
     }
-    onDomClick() {  // 事件委托
-        console.log('Javascript Dom click');
+    childClick = () => {  
+        console.log('react child');
     }
-    onReactClick() {  // react合成事件
-        console.log('React click');
+    parentClick = () => {  
+        console.log('react parent');
     }
     render() {
-        <div>
-            <button className="button" onClick={this.onReactClick()}>点击</button>
+      <div onClick={this.parentClick} ref={ref => this.parent = ref}>
+        <div onClick={this.childClick} ref={ref => this.child = ref}>
         </div>
+      </div>
     }
   }
-  // Dom click
-  // React click
+  // dom child
+  // dom parent
+  // react child
+  // react parent
+  // document
   ```
 
   ![合成事件示意图](../images/syntheticEvent.png)
+
+  - react的所有事件都挂载在document中
+
+  - 当真实dom触发后冒泡到document后才会对react事件进行处理
+
+  - 所以原生的事件会先执行
+
+  - 然后执行react合成事件
+
+  - 最后执行真正在document上挂载的事件
 
 * 合成事件机制
 
   react事件机制分为三个部分:
 
   - 事件注册部分，所有的事件都会注册到document上，拥有统一的调函数dispatchEvent来执行事件分发。React使用对象池来管理合成事件对象的创建和销毁，这样减少了垃圾的生成和新对象内存的分配，大大提高了性能。
+
+    + 触发document注册原生事件的回调dispatchEvent
+    + 获取到触发这个事件最深一级的元素
+    + 遍历这个元素的所有父元素，依次对每一级元素进行处理。
+    + 构造合成事件。
+    + 将每一级的合成事件存储在eventQueue事件队列中。
+    + 遍历eventQueue。
+    + 通过isPropagationStopped判断当前事件是否执行了阻止冒泡方法。
+    + 如果阻止了冒泡，停止遍历，否则通过executeDispatch执行合成事件。
+    + 释放处理完成的事件。
 
   - 事件分发部分，首先生成合成事件，注意同一种事件类型只能生成一个合成事件Event，如onclick这个类型的事件，dom上所有带有通过jsx绑定的onClick的回调函数都会按顺序（冒泡或者捕获）会放到Event._dispatchListeners 这个数组里，后面依次执行它。也就是说，React以队列的方式，从触发事件的组件向父组件回溯，调用它们在JSX中声明的callback，React自身实现了一套事件冒泡机制。
 
@@ -51,7 +80,7 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
 
   - SimpleEventPlugin等plugin：根据不同的事件类型，构造不同的合成事件。比如：focus对应的React合成事件为SyntheticFocusEvent。其他合成事件插件包括：EnterLeaveEventPlugin，ChangeEventPlugin，SelectEventPlugin，BeforeInputEventPlugin。
 
-* 常见问题
+### 常见问题
 
   - 阻止冒泡，合成事件的stopPropagation只能阻止合成事件的冒泡，对原生事件无效。而原生事件的阻止冒泡可以阻止合成事件。
 
@@ -87,10 +116,27 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
 
   - 属性值有差别
 
-  - 事件名称小驼峰写法
+  - 在 React 中你不能通过返回false 来阻止默认行为，必须明确调用 preventDefault。
+
+  - 事件名称小驼峰写法，传递的参数是回调函数，而不是函数字符串
 
 * vs jQuery事件系统
 
   - 事件对象复用，一般无法异步使用事件对象
 
   - 没有自定义事件
+
+### 为何要手动绑定this?
+
+```js
+// dispatchEvent调用了invokeGuardedCallback方法
+function invokeGuardedCallback(name, func, a) {
+  try {
+    func(a);  // 回调函数是直接调用调用的，并没有指定组件
+  } catch (x) {
+    if (caughtError === null) {
+      caughtError = x;
+    }
+  }
+}
+```
