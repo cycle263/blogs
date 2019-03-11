@@ -32,6 +32,10 @@
 
 * 7、[前端高频面试题详解](https://juejin.im/post/5c7bd72ef265da2de80f7f17)
 
+* 8、[每日签到面试](https://github.com/Advanced-Frontend/Daily-Interview-Question/blob/master/datum/summary.md)
+
+* 9、[网易面试题](https://github.com/yygmind/blog)
+
 #### [返回首页](../../)
 
 
