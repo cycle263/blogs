@@ -1,8 +1,3 @@
-```js
-Introduction -> ES 6/7、JavaScript、Css -> React|Vue|Angular 
--> Webpack|Gulp -> Http|WebSocket|ajax
-```
-
 ## 前端基础
 
 * **CSS** CSS的position有几个值，分别有什么行为？高度塌陷的原因？清除浮动的几种方法？行内元素和块元素区别？盒模型、选择器优先级？外边距叠加(空元素, 普通流相邻，父元素无内边距和边框)? 什么是 FOUC (无样式内容闪烁)？你如何来避免 FOUC？BFC(块级格式化上下文)? 外边距折叠合并？base line? css像素和设备像素区别？ 布局方式(双飞翼、圣杯、弹性、格栅、浮动、瀑布流、响应式)？上下垂直居中方案？回流vs重绘(重新计算元素的几何大小和位置引发回流，不影响布局变化的属性变动只会重绘；回流必将引起重绘，而重绘不一定会引起回流)？多个行内元素之间出现间距的原因？两个行内元素一个有内容一个没有就会出现错位的原因？css3动画？避免无样式内容闪烁(样式加载晚于HTML，或者出现多个不同位置覆盖的样式)? 渐进增强和优雅降级? inline-block之间为何有间隙？绝对定位元素如何判断是否重叠(offset, 中心点定位)？
@@ -44,10 +39,10 @@ Introduction -> ES 6/7、JavaScript、Css -> React|Vue|Angular
 * 依赖包冲突如何解决？线上环境有问题，线下无问题，如何调试解决？怎么样保证所有手机的兼容问题，跨平台兼容问题，低版本浏览器兼容问题？介绍下 npm 模块安装机制，为什么输入 npm install 就可以自动安装对应的模块？
 
 ## 全面性考察
-* 浏览器内核一般包括哪些线程？（GUI 渲染线程，javascript 引擎线程，浏览器事件触发线程，定时触发器线程，异步 http 请求线程）html文档解析过程？在浏览器中输入url到页面内容全部显示？
+* 浏览器和 Node 事件循环的区别？ 浏览器内核一般包括哪些线程？（GUI 渲染线程，javascript 引擎线程，浏览器事件触发线程，定时触发器线程，异步 http 请求线程）html文档解析过程？在浏览器中输入url到页面内容全部显示？
   （从上至下，从外至内。url -> 域名解析 -> ip地址和端口，建立TCP连接 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应）
 
-* 前端安全：sql注入? XSS(跨站脚本攻击->输入特殊字符转义过滤)? CSRF(跨站请求伪造->表单增加hash值，POST更新)？同源策略？ jsBridge原因和安全（webview，注入js; 拦截url->分析->执行原生方法->传递回调）？
+* 前端安全：sql注入? XSS(跨站脚本攻击->输入特殊字符转义过滤)? CSRF(跨站请求伪造->表单增加hash值，POST更新)？同源策略？ jsBridge原因和安全（webview，注入js; 拦截url->分析->执行原生方法->传递回调）？劫持cookie 或者 token？
 
 ## 加分技能
 
@@ -65,6 +60,8 @@ Introduction -> ES 6/7、JavaScript、Css -> React|Vue|Angular
 - script defer(渲染完再按顺序执行) vs async(下载完就执行)? 内联脚本 vs 外联脚本 vs 外联css？href vs src ? 
 
 - es6 module vs commonjs module ? let vs const vs var 
+
+- CSS的position有几个值，分别有什么行为？
 
 - setState异步？ diff算法策略？ 双向绑定 vs 单向数据流 ？合成事件 ？ redux的中间件
 
