@@ -14,3 +14,8 @@
   - 在 windows 上并不能通过 ${npm_package_name} 和 ${npm_package_version} 来指向package.json中的name和version。
 
   - 设置NODE_ENV参数在cmd中报错(bash中是否报错？)，`NODE_ENV=development` -> `set NODE_ENV=development` 或者使用cross-env库 `cross-env NODE_ENV=production`
+
+
+* 清理host和DNS缓存
+
+  `chrome://net-internals/#dns`
