@@ -29,15 +29,15 @@
 
     ```js
     var str = 'test1,test2,test3';
-    str.split();      //默认用空字符串切割
-    str.split(",")    //逗号切割，参数不可省略
+    str.split();      // 默认用空字符串切割
+    str.split(",")    // 逗号切割，参数不可省略
     ```
 
   + Array to String
     ```js
     var arr = [12, 34, 56];
-    arr.join();      //默认用逗号切割
-    arr.join(",")    //逗号切割，参数可省略
+    arr.join();      // 默认用逗号切割
+    arr.join(",")    // 号切割，参数可省略
     ```
 
   + 数组去重
@@ -45,11 +45,13 @@
     ```js
     [...new Set([1, 2, 3, 1, 'a', 1, 'a'])]   // ES6 set去重
 
-    [1, 2, 3, 1, 'a', 1, 'a'].filter(function(ele, index, array){   // ES5
+    Array.from(new Set([1,2,3,3,4,4]))  // ES6 set去重
+
+    [1, 2, 3, 1, 'a', 1, 'a'].filter(function(ele, index, array){ 
         return index === array.indexOf(ele)
     });
 
-    // 数组去重 --- 性能较好，能区分hash值
+    /* 数组去重 --- 性能较好，能区分hash值 */
     function unique(arr){
       var newArr = [],
           hash = {};
@@ -72,7 +74,24 @@
         }, []);
     }
 
-    // 对象数组针对某属性去重
+    function unique(arr) {
+      var arr = this,
+        result = [],
+        i,
+        j,
+        len = arr.length;
+      for(i = 0; i < len; i++){
+        for(j = i + 1; j < len; j++){
+          if(arr[i] === arr[j]){
+            j = ++i;
+          }
+        }
+        result.push(arr[i]);
+      }
+      return result;
+    }
+
+    /* 对象数组针对某属性去重 */
     function unique(arr, attr) {
         let hash = {};
         return arr.reduce((item, next) => {
@@ -124,15 +143,82 @@
     findLongest(arr, 200);
     ```
 
+  + 数组合并
+
+    ```js
+    var arr = [1, 2, 3, 4];
+    arr.concat([5, 6]); // [1,2,3,4,5,6]
+
+    [...arr, ...[5, 6]]; // [1,2,3,4,5,6]
+
+    [].push.apply(arr, [5, 6]);
+
+    [5, 6].map(item => arr.push(item));
+    ```
+
+  + 数组排序的方法
+
+    - sort
+
+      ```js
+      [1,2,3,4].sort(); // [1, 2,3,4],默认是升序
+
+      [1,2,3,4].sort((a, b) => b - a); // [4,3,2,1] 降序
+      ```
+
+    - 冒泡排序
+
+      ```js
+      var bubleSort = function (arr) {
+        let len = arr.length;
+        for (let outer = len; outer >= 2; outer--) {
+          for (let inner = 0; inner <= outer - 1; inner++) {
+            if (arr[inner] > arr[inner + 1]) {
+              /* 升序 */
+              [arr[inner], arr[inner + 1]] = [arr[inner + 1], arr[inner]];
+            }
+          }
+        }
+        return arr;
+      }
+      ```
+
+    - 选择排序
+
+      ```js
+      Array.prototype.selectSort = function (arr) {
+        let arr=this,
+          len = arr.length;
+        for (let i = 0, len = this.arr.length; i < len; i++) {
+          for (let j = i, len = this.arr.length; j < len; j++) {
+            if (this.arr[i] > this.arr[j]) {
+              [this.arr[i], this.arr[j]] = [this.arr[j], this.arr[i]];
+            }
+          }
+        }
+        return arr;
+      }
+      ```
+
   + 数组扁平化的方法
 
-    - concat大法, 只能扁平两层级
+    - concat大法, 扁平两层级
 
       ```js
       const arr = [1, 2, 3, [4, 5]];
       Array.prototype.concat.apply([], arr);
 
       [].concat(...arr);
+      ```
+
+      ```js
+      /* 扁平无限层级 */
+      function flatten(arr) {
+        while(arr.some(item=>Array.isArray(item))) {
+          arr = [].concat(...arr);
+        }
+        return arr;
+      }
       ```
 
     - 递归大法
@@ -150,3 +236,7 @@
         return newArr;
       }
       ```
+
+    - Array.prototype.flat
+
+      `[1,[2,3,[4,5]]].flat(3);  // [1, 2, 3, 4, 5]`

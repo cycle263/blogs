@@ -61,7 +61,7 @@
 
 - es6 module vs commonjs module ? let vs const vs var 
 
-- CSS的position有几个值，分别有什么行为？
+- CSS的position有几个值，分别有什么行为？函数字面量和函数声明定义的两种函数，有哪些细节区别？
 
 - setState异步？ diff算法策略？ 双向绑定 vs 单向数据流 ？合成事件 ？ redux的中间件
 

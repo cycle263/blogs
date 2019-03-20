@@ -1,6 +1,6 @@
 ## web api
 
-    > [MDN-web api](https://developer.mozilla.org/en-US/docs/Web/API)
+  > [MDN-web api](https://developer.mozilla.org/en-US/docs/Web/API)
 
 * file
 
@@ -31,3 +31,5 @@
 * html5 download属性（兼容性不佳，IE和Safari不支持）
 
   > a标签包含download属性，则直接下载该资源，文件名为download指定的文件名称
+
+  其他方式：加上Content-Disposition: attachment 这个响应头，浏览器不直接打开，以附件的形式下载。
