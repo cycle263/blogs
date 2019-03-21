@@ -93,7 +93,7 @@
 - 如何配置React-Router
 - 路由的动态加载模块
 - 服务端渲染SSR
-- 介绍路由的history   [解析](/framework/React/router)
+- 介绍路由的history   [解析]({{ site.baseurl }}/framework/React/router)
 - 介绍Redux数据流的流程
 - Redux如何实现多个组件之间的通信，多个组件使用相同状态如何进行管理
 - 多个组件之间如何拆分各自的state，每块小的组件有自己的状态，它们之间还有一些公共的状态需要维护，如何思考这块
