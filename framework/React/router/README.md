@@ -37,6 +37,8 @@ React.render((
 
 * 实现原理
 
+  react-router赖以依存的history，history是一个独立的第三方js库，可以用来兼容在不同浏览器、不同环境下对历史记录的管理，拥有统一的API。
+
   ![](../images/react-router.png)
 
 * 组成部分
