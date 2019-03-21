@@ -35,6 +35,7 @@
 * JScore 的理解
 * 执行上下文分哪几类？和作用域有什么区别？执行栈是什么？js的基本数据类型哪些存储在堆，哪些存在栈？
 * 如何判断点是否在方形或者圆形内，如何判断两个方形是否重叠？
+* src vs href ?
 
 
 ## HTML、CSS
@@ -92,8 +93,8 @@
 - React声明周期及自己的理解
 - 如何配置React-Router
 - 路由的动态加载模块
-- 服务端渲染SSR
-- 介绍路由的history   [解析]({{ site.baseurl }}/framework/React/router)
+- 服务端渲染SSR   [详情解析]({{site.baseurl}}/front-end/performance/SSRAndCSR)
+- 介绍路由的history   [详情解析]({{site.baseurl}}/framework/React/router)
 - 介绍Redux数据流的流程
 - Redux如何实现多个组件之间的通信，多个组件使用相同状态如何进行管理
 - 多个组件之间如何拆分各自的state，每块小的组件有自己的状态，它们之间还有一些公共的状态需要维护，如何思考这块
@@ -143,8 +144,8 @@
 
 ### 滴滴
 
-- react-router怎么实现路由切换
-- react-router里的<Link>标签和<a>标签有什么区别
+- react-router怎么实现路由切换    [详情解析]({{site.baseurl}}/framework/React/router)
+- react-router里的<Link>标签和<a>标签有什么区别   [详情解析]({{site.baseurl}}/framework/React/router)  局部刷新渲染 和 全部刷新渲染区别
 - <a>标签默认事件禁掉之后做了什么才实现了跳转
 - React层面的性能优化
 - 整个前端性能提升大致分几类
@@ -264,7 +265,7 @@
 - 遇到性能问题一般在哪个生命周期里解决
 - 怎么做性能优化（异步加载组件...）
 - 写react有哪些细节可以优化
-- React的事件机制（绑定一个事件到一个组件上）
+- React的事件机制（绑定一个事件到一个组件上） [详情解析]({{site.baseurl}}/framework/React/Note/event)
 - 介绍下事件代理，主要解决什么问题
 - 前端开发中用到哪些设计模式
 - React/Redux中哪些功能用到了哪些设计模式
@@ -288,7 +289,7 @@
 - [x] div垂直水平居中（flex、绝对定位）
 - 两个元素块，一左一右，中间相距10像素
 - 上下固定，中间滚动布局如何实现
-- [1, 2, 3, 4, 5]变成[1, 2, 3, a, b, 5]
+- [1, 2, 3, 4, 5]变成[1, 2, 3, a, b, 5]   `[1, 2, 3, 4, 5].splice(3, 1, 'a', 'b')`
 - 取数组的最大值（ES5、ES6）
 - apply和call的区别
 - ES5和ES6有什么区别
@@ -325,7 +326,7 @@
 - 介绍React高阶组件
 - 父子组件之间如何通信
 - Redux怎么实现属性传递，介绍下原理
-- React-Router版本号
+- React-Router的基本原理    [详情解析]({{site.baseurl}}/framework/React/router)
 - 网站SEO怎么处理
 - 介绍下HTTP状态码
 - 403、301、302是什么
