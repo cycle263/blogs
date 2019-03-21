@@ -313,7 +313,6 @@
 - 介绍下Promise的用途和性质
 - Promise和Callback有什么区别
 - React生命周期
-- 喜马拉雅
 - ES6新的特性
 - 介绍Promise
 - Promise有几个状态
