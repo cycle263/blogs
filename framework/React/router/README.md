@@ -1,6 +1,8 @@
-## router
+## react-router
 
-![路由流程](./images/router.jpg)
+React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。在react-router中，URL对应Location对象，而UI是由react components来决定的，这样就转变成location与components之间的同步问题。
+
+![路由流程](../images/router.jpg)
 ```js
 import React from 'react';
 import { render, findDOMNode } from 'react-dom';
@@ -33,11 +35,24 @@ React.render((
 ), document.getElementById('example'));
 ```
 
-* react-router
+* 实现原理
 
-  > React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。
+  ![](../images/react-router.png)
 
 * 组成部分
+
+  - location
+
+    ```json
+    {
+      pathname, // url的基本路径
+      search, // 查询字段
+      hash, // url中的hash值
+      state, // url对应的state字段
+      action, // 分为 push、replace、pop三种
+      key // 生成方法为: Math.random().toString(36).substr(2, length)
+    }
+    ```
 
   - Router: 它的history对象是整个路由系统的核心，它暴露了很多属性和方法在路由系统中使用
 
@@ -45,23 +60,15 @@ React.render((
 
   - Redirect: 是一个重定向组件，有 from 和 to 两个属性；
 
-  - state: location.state, 共享数据
+  - state: location.state, 共享数据，为了维护state的状态，将其存储在sessionStorage里面。
 
-  - param: 通过 /:param 的方式传递
+  - param: 通过 `/:param` 的方式传递
 
-  - Link: 组件最终会渲染为 HTML 标签 <a>，它的 to、query、hash 属性会被组合在一起并渲染为 href 属性。虽然 Link 被渲染为超链接，但在内部实现上使用脚本拦截了浏览器的默认行为，然后调用了history.pushState 方法
+  - Link: 组件最终会渲染为 HTML 标签 `<a>`，它的 to、query、hash 属性会被组合在一起并渲染为 href 属性。虽然 Link 被渲染为超链接，但在内部实现上使用脚本拦截了浏览器的默认行为，然后调用了history.pushState 方法
 
-* 分类
+### history
 
-  - BrowserRouter  使用了HTML5的history API来记录你的路由历史
-
-  - HashRouter  使用URL(window.location.hash)的hash部分来记录
-  
-  - MemoryRouter node环境下的history，存储在memory中
-
-* history
-
-  history用于记录浏览器的会话历史记录，可以实现前进后退等跳转功能。在HTML5规范中，W3C规范使用pushState和replaceState方法来修改浏览器URL地址，而不触发页面重载，实际上，router的browserHistory也是类似的。
+history用于记录浏览器的会话历史记录，可以实现前进后退等跳转功能。在HTML5规范中，W3C规范使用pushState和replaceState方法来修改浏览器URL地址，而不触发页面重载，实际上，router的browserHistory也是类似的。
 
   - hashHistory   通过URL的hash部分（#）切换页面，优点是不需要服务端配置，缺点是不够清爽不够优雅，容易拼接和编码造成丢失。
 
@@ -80,4 +87,25 @@ React.render((
         }
       }
       ```
-      
+  - memoryHistory  node环境下，主要存储在memeory里面
+
+* history的常用API
+
+  ```json
+  {
+    listenBefore, // 内部的hook机制，可以在location发生变化前执行某些行为，AOP的实现
+    listen, // location发生改变时触发回调
+    transitionTo, // 执行location的改变
+    push, // 改变location
+    replace,
+    go,
+    goBack,
+    goForward,
+    createKey, // 创建location的key，用于唯一标示该location，是随机生成的
+    createPath,
+    createHref,
+    createLocation, // 创建location
+  }
+  ```
+
+
