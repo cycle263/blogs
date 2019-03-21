@@ -24,7 +24,7 @@
 
     + writable：当且仅当该属性的writable为true时，该属性才能被赋值运算符改变。默认为false。
 
-  - 存取描述符(存取器)同时具有以下可选键值:
+  - 存取描述符(存取器/访问器)同时具有以下可选键值:
 
     + get: 给属性提供getter的方法，如果没有getter则为undefined。该方法返回值被用作属性值。默认为undefined。
 
@@ -115,3 +115,10 @@
     enumerable : false
   });
   ```
+
+
+## vs proxy属性代理
+
+* defineProperty无法监听数组的索引赋值，也不玩监听数组长度变化；
+
+* defineProperty只能监听对象属性，无法监听对象本身，也就是属性值本身是对象，需要深层遍历来监听；

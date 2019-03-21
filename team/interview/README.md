@@ -36,6 +36,10 @@
 
 * 9、[网易面试题](https://github.com/yygmind/blog)
 
+* 10、[2018各大厂面试题](https://segmentfault.com/a/1190000016868065)
+
+* 11、[高级面试汇总](https://segmentfault.com/a/1190000017137059)
+
 #### [返回首页](../../)
 
 

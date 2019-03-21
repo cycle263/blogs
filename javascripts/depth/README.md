@@ -28,30 +28,29 @@
   深度拷贝，新分配一块内存地址，用递归方法完全复制所有的内容，包括子节点。拷贝后的对象与原来的对象是完全隔离，互不影响。例如：JOSN.stringify方式、$.extend(true,{},obj)、_.cloneDeep都为深度拷贝，而Object.assign只能拷贝一层。
 
 ```js
-// method 1
+// method 1, 无法拷贝函数
 var deepClone = function (obj) {
-    var _tmp,result;
-    _tmp = JSON.stringify(obj);
-    result = JSON.parse(_tmp);
-    return result;
-}
+  var _tmp,result;
+  _tmp = JSON.stringify(obj);
+  result = JSON.parse(_tmp);
+  return result;
+};
 
 // method 2
-var deepClone = function fnDeepClone(obj){
-  var result = typeof obj.splice === 'function'?[]:{},
-  key;
+var deepClone = function (obj){
+  var result = typeof obj.splice === 'function' ? [] : {};
   if (obj && typeof obj === 'object'){
-    for (key in obj ){
+    for (let key in obj ){
       if (obj[key] && typeof obj[key] === 'object'){
-        result[key] = fnDeepClone(obj[key]); //属性值为object，递归调用deepClone
+        result[key] = deepClone(obj[key]); // 属性值为object，递归调用deepClone
       }else{
-        result[key] = obj[key]; //属性值不为object，直接复制参数对象的每一个键/值
+        result[key] = obj[key]; // 属性值不为object，直接复制参数对象的每一个键/值
       }
     }
     return result;
   }
   return obj;
-}
+};
 
 // method 3
 var deepClone = function (o){
@@ -64,13 +63,31 @@ var deepClone = function (o){
   });
 
   return copy;
-}
+};
 
 // method 4
 loadsh.deepclone
 
 // method 5
 $.extend
+
+// method 6
+var deepClone = function(source){
+  const targetObj = Array.isArray(source) ? [] : {}; // 判断复制的目标是数组还是对象
+  if (source && typeof source === 'object'){
+    for(let keys in source){ // 遍历目标
+      if(source.hasOwnProperty(keys)){
+        if(source[keys] && typeof source[keys] === 'object'){ // 如果值是对象，就递归一下
+          targetObj[keys] = deepClone(source[keys]);
+        }else{ // 如果不是，就直接赋值
+          targetObj[keys] = source[keys];
+        }
+      }
+    }
+    return targetObj;
+  }
+  return source;
+}
 ```
 
 * 引用类型 vs 值类型
