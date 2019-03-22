@@ -93,8 +93,8 @@
 - React声明周期及自己的理解
 - 如何配置React-Router
 - 路由的动态加载模块
-- 服务端渲染SSR   [详情解析]({{site.baseurl}}/front-end/performance/SSRAndCSR)
-- 介绍路由的history   [详情解析]({{site.baseurl}}/framework/React/router)
+- 服务端渲染SSR   [【详情解析】]({{site.baseurl}}/front-end/performance/SSRAndCSR)
+- 介绍路由的history   [【详情解析】]({{site.baseurl}}/framework/React/router)
 - 介绍Redux数据流的流程
 - Redux如何实现多个组件之间的通信，多个组件使用相同状态如何进行管理
 - 多个组件之间如何拆分各自的state，每块小的组件有自己的状态，它们之间还有一些公共的状态需要维护，如何思考这块
@@ -144,20 +144,20 @@
 
 ### 滴滴
 
-- react-router怎么实现路由切换    [详情解析]({{site.baseurl}}/framework/React/router)
-- react-router里的<Link>标签和<a>标签有什么区别   [详情解析]({{site.baseurl}}/framework/React/router)  局部刷新渲染 和 全部刷新渲染区别
-- <a>标签默认事件禁掉之后做了什么才实现了跳转
+- react-router怎么实现路由切换    [【详情解析】]({{site.baseurl}}/framework/React/router)
+- react-router里的`<Link>`标签和`<a>`标签有什么区别   [【详情解析】]({{site.baseurl}}/framework/React/router)  局部刷新渲染 和 全部刷新渲染区别
+- `<a>`标签默认事件禁掉之后做了什么才实现了跳转
 - React层面的性能优化
 - 整个前端性能提升大致分几类
-- [x] import { Button } from 'antd' ，打包的时候只打包button，分模块加载，是怎么做到的
-- [x] 使用import时，webpack对node_modules里的依赖会做什么
+- `import { Button } from 'antd' `，打包的时候只打包button，分模块加载，是怎么做到的
+- 使用import时，webpack对node_modules里的依赖会做什么
 - JS异步解决方案的发展历程以及优缺点
 - Http报文的请求会有几个部分
 - cookie放哪里，cookie能做的事情和存在的价值
 - cookie和token都存放在header里面，为什么只劫持前者
 - cookie和session有哪些方面的区别
 - React中Dom结构发生变化后内部经历了哪些变化
-- React挂载的时候有3个组件，textComponent、composeComponent、domComponent，区别和关系，Dom结构发生变化时怎么区分data的变化，怎么更新，更新怎么调度，如果更新的时候还有其他任务存在怎么处理
+- React挂载的时候有3个组件，`textComponent、composeComponent、domComponent`，区别和关系，Dom结构发生变化时怎么区分data的变化，怎么更新，更新怎么调度，如果更新的时候还有其他任务存在怎么处理
 - key主要是解决哪一类的问题，为什么不建议用索引index（重绘）
 - Redux中异步的请求怎么处理
 - Redux中间件是什么东西，接受几个参数（两端的柯里化函数）
@@ -166,8 +166,8 @@
 - state是怎么注入到组件的，从reducer到组件经历了什么样的过程
 - koa中response.send、response.rounded、response.json发生了什么事，浏览器为什么能识别到它是一个json结构或是html
 - koa-bodyparser怎么来解析request
-- [x] webpack整个生命周期，loader和plugin有什么区别
-- [x] 介绍AST（Abstract Syntax Tree）抽象语法树
+- webpack整个生命周期，loader和plugin有什么区别
+- 介绍AST（Abstract Syntax Tree）抽象语法树
 - 安卓Activity之间数据是怎么传递的
 - 安卓4.0到6.0过程中WebView对js兼容性的变化
 - WebView和原生是如何通信
@@ -265,7 +265,7 @@
 - 遇到性能问题一般在哪个生命周期里解决
 - 怎么做性能优化（异步加载组件...）
 - 写react有哪些细节可以优化
-- React的事件机制（绑定一个事件到一个组件上） [详情解析]({{site.baseurl}}/framework/React/Note/event)
+- React的事件机制（绑定一个事件到一个组件上） [【详情解析】]({{site.baseurl}}/framework/React/Note/event)
 - 介绍下事件代理，主要解决什么问题
 - 前端开发中用到哪些设计模式
 - React/Redux中哪些功能用到了哪些设计模式
@@ -325,7 +325,7 @@
 - 介绍React高阶组件
 - 父子组件之间如何通信
 - Redux怎么实现属性传递，介绍下原理
-- React-Router的基本原理    [详情解析]({{site.baseurl}}/framework/React/router)
+- React-Router的基本原理    [【详情解析】]({{site.baseurl}}/framework/React/router)
 - 网站SEO怎么处理
 - 介绍下HTTP状态码
 - 403、301、302是什么
@@ -385,9 +385,9 @@
 - 介绍JS数据类型，基本数据类型和引用数据类型的区别
 - Array是Object类型吗
 - 数据类型分别存在哪里
-- var a = {name: "前端开发"}; var b = a; a = null那么b输出什么
-- var a = {b: 1} 存放在哪里
-- var a = {b: {c: 1}}存放在哪里
+- `var a = {name: "前端开发"}; var b = a; a = null` 那么b输出什么
+- `var a = {b: 1}` 存放在哪里
+- `var a = {b: {c: 1}}` 存放在哪里
 - 栈和堆的区别
 - 垃圾回收时栈和堆的区别
 - 数组里面有10万个数据，取第一个元素和第10万个元素的时间相差多少
@@ -492,7 +492,7 @@ npm2和npm3+有什么区别
 ### 蘑菇街
 
 - html语义化的理解
-- <b>和<strong>的区别
+- `<b>和<strong>`的区别
 - 对闭包的理解
 - 工程中闭包使用场景
 - 介绍this和原型
@@ -526,7 +526,7 @@ npm2和npm3+有什么区别
 - 介绍class和ES5的类以及区别
 - 介绍箭头函数和普通函数的区别
 - 介绍defineProperty方法，什么时候需要用到
-- for..in 和 object.keys的区别
+- `for..in` 和 `object.keys` 的区别
 - 介绍闭包，使用场景
 - 使用闭包特权函数的使用场景
 - get和post有什么区别
