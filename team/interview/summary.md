@@ -137,7 +137,7 @@
 * 浏览器事件流向
 * 介绍事件代理以及优缺点
 * React组件事件代理的原理     [【详情解析】]({{site.baseurl}}/framework/React/implement/event)
-* 介绍this各种情况
+* 介绍this各种情况      [【详情解析】]({{site.baseurl}}/javascripts/common/this)
 * 前端怎么控制管理路由      [【详情解析】]({{site.baseurl}}/framework/React/router)
 * 使用路由时出现问题如何解决
 * React怎么做数据的检查和变化

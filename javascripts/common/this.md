@@ -32,6 +32,16 @@ var obj1 = {
     obj2: obj2
 };
 obj1.obj2.foo(); // 42
+
+var student = {
+    func: function() {
+        console.log(this);
+    };
+};
+
+student.func(); // student object
+var studentFunc = student.func;
+studentFunc();  // window，相当于window.studentFunc()
 ```
 
 - 隐含丢失（Implicitly Lost）
