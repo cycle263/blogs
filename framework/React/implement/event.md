@@ -132,7 +132,7 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
 // dispatchEvent调用了invokeGuardedCallback方法
 function invokeGuardedCallback(name, func, a) {
   try {
-    func(a);  // 回调函数是直接调用调用的，并没有指定组件
+    func(a);  // 回调函数是直接调用，并没有指定组件
   } catch (x) {
     if (caughtError === null) {
       caughtError = x;

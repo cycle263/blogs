@@ -18,7 +18,7 @@
 
 * extends React.Component   // 优先推荐的es6方式
 
-  - 手动bind作用域
+  - 手动bind作用域，未使用箭头函数或者指定this，则指向undefined
 
 * Mixins
 

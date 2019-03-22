@@ -10,8 +10,8 @@
 * **framework**
     - react
 
-      + [setState详解](./framework/React/Note/setState)
-      + [react合成事件](./framework/React/Note/event)
+      + [setState详解](./framework/React/implement/setState)
+      + [react合成事件](./framework/React/implement/event)
       + [组件之间通信详解](./framework/React/dataManage/Communication)
       + [初试React route 4](./framework/React/router/router4)
       + [虚拟DOM比较](./framework/React/Note/diff)
