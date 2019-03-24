@@ -17,6 +17,7 @@
       + [初试React route 4](./framework/React/router/router4)
       + [虚拟DOM比较](./framework/React/Note/diff)
       + [react context API](./framework/React/dataManage/context)
+      + [redux](./framework\React\dataManage\redux)
       + [redux中间件](./framework/React/dataManage/other)
 
     - angular
