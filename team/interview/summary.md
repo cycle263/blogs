@@ -32,7 +32,7 @@
 * 实现bind函数？
 * JS 的基本函数式使用，比如 reduce、curry？
 * 如何写一个深拷贝函数
-* event-loop 和 macro-task、micro-task 的理解与应用举例
+* event-loop 和 macro-task、micro-task 的理解       [【详情解析】]({{site.baseurl}}/javascripts/other/async/thread)
 * JScore 的理解
 * 执行上下文分哪几类？和作用域有什么区别？执行栈是什么？js的基本数据类型哪些存储在堆，哪些存在栈？
 * 如何判断点是否在方形或者圆形内，如何判断两个方形是否重叠？
