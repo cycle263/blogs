@@ -16,7 +16,7 @@
 
   - reducer: Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会发生变化。这种 State 的计算过程就叫做 Reducer。决定应用数据新状态的函数，接收应用之前的状态和一个 action 返回数据的新状态，reducer作为一个函数，可以根据web应用之前的状态（previousState）和交互行为（通过flux中提到的action来表征），决定web应用的下一状态（newState），从而实现state端的数据更新处理。本质上是根据 action.type 来更新 state 并返回 nextState 的函数，“更新” 并不是指 reducer 可以直接对 state 进行修改。Redux 规定，须先复制一份 state，在副本 nextState 上进行修改操作。
 
-  - 纯函数: Reducer 函数最重要的特征是，它是一个纯函数。也就是说，只要是同样的输入，必定得到同样的输出。
+  - 纯函数: Reducer 函数最重要的特征是，它是一个纯函数。也就是说，只要是同样的输入，必定得到同样的输出，是幂等的。
 
   - middleware: redux 提供中间件的方式，完成一些 flux 流程的自定义控制，同时形成其插件体系
 
@@ -25,6 +25,7 @@
 * 流程图
 
   ```js
+  // view中产生action，通过store.dispatch(action)将action交由reducer处理，最终根据处理的结果更新view。
   ┌-----------┐    ┌--------┐    ┌---------┐
   | component | -> | action | -> | reducer | -> state 的单向数据流转
   └-----------┘    └--------┘    └---------┘
@@ -109,111 +110,6 @@
   - 子组件改变父组件state的办法只能是通过onClick触发父组件声明好的回调，也就是父组件提前声明好函数或方法作为契约描述自己的state将如何变化，再将它同样作为属性交给子组件使用。
 
   - 为了面临所有可能的扩展问题，最容易想到的办法就是把所有state集中放到所有组件顶层，然后分发给所有组件。这就是redux诞生的背景
-
-## 高阶组件（HOC）
-
-  由原始组件创造一个新的组件并且扩展它的行为。高阶组件通过包裹（wrapped）被传入的React组件，经过一系列处理，最终返回一个相对增强（enhanced）的React组件，供其他组件调用。
-
-  高阶组件是通过将原组件 包裹（wrapping） 在容器组件（container component）里面的方式来 组合（composes） 使用原组件。高阶组件就是一个没有副作用的纯函数。
-  
-  ```jsx
-  // MyComponent 是纯的 UI 组件
-  <div className="index">
-    <p>{this.props.text}</p>
-    <input
-      defaultValue={this.props.name}
-      onChange={this.props.onChange}
-    />
-  </div>
-
-
-  const App = connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(MyComponent);
-
-  // mapStateToProps: 定义 UI 组件参数与 State 之间的映射
-  // mapDispatchToProps：定义 UI 组件与 Action 之间的映射
-
-  function reducer(state = {
-    text: '你好，访问者',
-    name: '访问者'
-  }, action) {
-    switch (action.type) {
-      case 'change':
-        return {
-          name: action.payload,
-          text: '你好，' + action.payload
-        };
-    }
-  }
-  const initState = {};
-
-  const store = createStore(reducer, initState);
-
-  ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.body.appendChild(document.createElement('div'))
-  );
-
-  // Store由 Redux 提供的createStore方法生成，该方法接受reducer作为参数。
-  // 为了把Store传入组件，必须使用 Redux 提供的Provider组件在应用的最外面，包裹一层。
-  ```
-
-  - 属性代理是最常见的高阶组件的使用方式，将被包裹组件的props和新生成的props一起传递给此组件，这称之为属性代理。
-
-    ```js
-    export default function withHeader(WrappedComponent) {
-      return class HOC extends Component {
-        render() {
-          const newProps = {
-            test:'hoc'
-          }
-          /* 透传props，并且传递新的newProps */
-          return <div>
-            <WrappedComponent {...this.props} {...newProps}/>
-          </div>
-        }
-      }
-    }
-    ```
-
-  - 基于反向继承的方式，React组件继承了被传入的组件，所以它能够访问到的区域、权限更多，相比属性代理方式，它更像打入组织内部，对其进行修改。
-
-    ```js
-    export default function (WrappedComponent) {
-      return class Inheritance extends WrappedComponent {
-        componentDidMount() {
-          /* 可以方便地得到state，做一些更深入的修改 */
-          console.log(this.state);
-        }
-        render() {
-          return super.render();
-        }
-      }
-    }
-    ```
-
-  - 组合多个高阶组件，高阶组件为React组件增强了一个功能，如果需要同时增加多个功能需要组合多个高阶组件，使用compose可以简化上述过程，也能体现函数式编程思想。
-
-  compose可以帮助我们组合任意个（包括0个）高阶函数，例如compose(a,b,c)返回一个新的函数d，函数d依然接受一个函数作为入参，只不过在内部会依次调用c,b,a，从表现层对使用者保持透明。compose函数实现方式有很多种，这里推荐其中一个recompact.compose。
-
-    ```js
-    @withHeader
-    @withLoading
-    class Demo extends Component{ }
-
-    /* use compose */
-    const enhance = compose(withHeader,withLoading);
-    @enhance
-    class Demo extends Component{ }
-    ```
-
-  * 与父组件区别
-
-  高阶组件作为一个函数，它可以更加纯粹地关注业务逻辑层面的代码，比如数据处理，数据校验，发送请求等，可以改善目前代码里业务逻辑和UI逻辑混杂在一起的现状。父组件则是UI层的东西，我们先前经常把一些业务逻辑处理放在父组件里，这样会造成父组件混乱的情况。为了代码进一步解耦，可以考虑使用高阶组件这种模式。
 
 ## 其他相关
 

@@ -100,8 +100,8 @@
 * 介绍Redux数据流的流程
 * Redux如何实现多个组件之间的通信，多个组件使用相同状态如何进行管理
 * 多个组件之间如何拆分各自的state，每块小的组件有自己的状态，它们之间还有一些公共的状态需要维护，如何思考这块
-* 使用过的Redux中间件
-* 如何解决跨域的问题    [【详情解析】]({{site.baseurl}}/http/ajax/crossDomain)
+* 使用过的Redux中间件   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/other/middleware)
+* 如何解决跨域的问题，表单可以跨域吗？    [【详情解析】]({{site.baseurl}}/http/ajax/crossDomain)
 * 常见Http请求头
 * 移动端适配1px的问题
 * 介绍flex布局
@@ -119,7 +119,6 @@
 
 * 介绍redux，主要解决什么问题
 * 文件上传如何做断点续传
-* 表单可以跨域吗
 * promise、async有什么区别
 * 搜索请求如何处理（防抖）
 * 搜索请求中文如何请求
@@ -192,7 +191,6 @@
 * bind、call、apply的区别
 * 动画的了解
 * 介绍下原型链（解决的是继承问题吗）
-* 对跨域的了解
 
 ### 有赞
 
@@ -216,7 +214,6 @@
 * 介绍虚拟DOM
 * 如何设计一个localStorage，保证数据的实效性
 * 如何设计Promise.all()
-* 介绍高阶组件
 * sum(2, 3)实现sum(2)(3)的效果
 * react性能优化
 * 两个对象如何比较
@@ -250,8 +247,6 @@
 
 ### 沪江
 
-* 介绍下浏览器跨域
-* 怎么去解决跨域问题
 * jsonp方案需要服务端怎么配合
 * Ajax发生跨域要设置什么（前端）
 * 加上CORS之后从发起到请求正式成功的过程
@@ -278,8 +273,8 @@
 
 * 小程序里面开页面最多多少
 * React子父组件之间如何传值
-* Emit事件怎么发，需要引入什么
-* 介绍下React高阶组件，和普通组件有什么区别
+* Emit事件怎么发，需要引入什么？
+* React高阶组件，和普通组件有什么区别？   [【详情解析】]({{site.baseurl}}/framework/React/implement/HOC)
 * 一个对象数组，每个子对象包含一个id和name，React如何渲染出全部的name
 * 在哪个生命周期里写
 * 其中有几个name不存在，通过异步接口获取，如何做
@@ -323,7 +318,6 @@
 * React16.3对生命周期的改变
 * 介绍下React的Filber架构
 * 画Filber渲染树
-* 介绍React高阶组件
 * 父子组件之间如何通信
 * Redux怎么实现属性传递，介绍下原理
 * React-Router的基本原理    [【详情解析】]({{site.baseurl}}/framework/React/router)
@@ -340,7 +334,6 @@
 * 介绍下数字签名的原理
 * 前后端通信使用什么方案
 * RESTful常用的Method
-* 介绍下跨域
 * Access-Control-Allow-Origin在服务端哪里配置
 * csrf跨站攻击怎么解决
 * 前端和后端怎么联调
@@ -371,7 +364,6 @@
 * 介绍koa2      [【详情解析】]({{site.baseurl}}/structure/nodejs/koa2)
 * Promise如何实现的
 * 异步请求，低版本fetch如何低版本适配
-* ajax如何处理跨域
 * CORS如何设置
 * jsonp为什么不支持post方法
 * 介绍同源策略
@@ -449,7 +441,6 @@
 * 介绍垃圾回收
 * cookie的引用为了解决什么问题
 * cookie和localStorage的区别
-* 如何解决跨域问题
 * 前端性能优化
 
 ### 宝宝树
