@@ -13,7 +13,7 @@
     此写法会直接拼写在domain后面，跳转到http://myServer.com/page.html
 
 
-* href vs src
+* href vs src / src vs href
 
 Href 超文本链接，指向网络资源所在位置，如果我们在文档添加`<link href="common.css" />`，浏览器会下载资源并且不会停止对当前文档的处理。也就是启用单独的下载线程异步处理，不会阻塞DOM的加载。
 

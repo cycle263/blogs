@@ -77,7 +77,7 @@ setTimeout( obj.foo, 100 ); // "oops, global"
 
 - 硬绑定（Hard Binding）
 
-    在 ES6 中，有bind(..) 生成的硬绑定函数，也可以polyfill
+    在 ES6 中，有bind(..) 生成的硬绑定函数，也可以polyfill。
 
 - API 调用的“环境”
 

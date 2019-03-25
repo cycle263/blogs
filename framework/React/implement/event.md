@@ -84,7 +84,7 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
 
   - 阻止冒泡，合成事件的stopPropagation只能阻止合成事件的冒泡，对原生事件无效。而原生事件的阻止冒泡可以阻止合成事件。
 
-    + event.stopPropagation：在react事件回调函数中调用能阻止react合成事件的冒泡
+    + event.stopPropagation：在react事件回调函数中调用能阻止react合成事件的冒泡。其实，React合成事件封装的stopPropagtion函数在调用时给自己加了个isPropagationStopped的标记位来确定后续监听器是否执行。
 
     + event.nativeEvent.stopPropagation：阻止的是代理到根元素（如document）的事件。
 
@@ -109,6 +109,8 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
   - 将合成事件作为props传给子组件，会有警告信息提示；解决方案同上。
 
   `Warning: This synthetic event is reused for performance reasons. If you're seeing this, you're accessing the property target on a released/nullified synthetic event. This is set to null. If you must keep the original synthetic event around, use event.persist(). See https://fb.me/react-event-poo... for more information.`
+
+  - 需要使用浏览器原生事件，可以通过合成事件的nativeEvent属性获取
 
 * vs 原生事件
 

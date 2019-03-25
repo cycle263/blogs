@@ -68,6 +68,9 @@
 
   - [falcor](./dataManage/falcor)
 
+
+## 其他文章
+
 * [React route](./router)
 
 * [初试React route 4](./router/router4)
@@ -83,3 +86,11 @@
 * [this指向和mixins、pureComponent](./Note/component)
 
 * [React UI](./antd)
+
+* [react通信方式](./dataManage/Communication)
+
+* [react context](./dataManage/context)
+
+* [react ref](./implement/ref)
+
+* [react fiber](./implement/fiber)
