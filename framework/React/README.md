@@ -80,4 +80,6 @@
 
 * [react与其他框架比较](./Note/compare)
 
+* [this指向和mixins、pureComponent](./Note/component)
+
 * [React UI](./antd)

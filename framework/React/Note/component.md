@@ -14,11 +14,11 @@
 
 * React.createClass   // es5方式
 
-  - 方法自动绑定this
+  - component内的所有方法自动绑定this
 
 * extends React.Component   // 优先推荐的es6方式
 
-  - 手动bind作用域，未使用箭头函数或者指定this，则指向undefined
+  - 手动bind作用域，未使用箭头函数或者指定this，则指向undefined，不推荐使用createClass方式，将作用域指向的权限交还给开发者
 
 * Mixins
 
