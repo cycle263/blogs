@@ -1,6 +1,6 @@
 ## [redux](http://cn.redux.js.org/index.html)
 
-  > Redux 是为 Javascript 应用而生的可预估的状态容器。应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action，一个描述发生什么的对象。为了描述 action 如何改变 state 树，你需要编写 reducers。[redux运行案例](./examples/redux.html)
+  > Redux 是为 Javascript 应用而生的可预估的状态容器。应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action，一个描述发生什么的对象。为了描述 action 如何改变 state 树，需要编写 reducers。[redux运行案例](./examples/redux.html)
 
 * redux几个重要概念
 
@@ -30,6 +30,7 @@
   | component | -> | action | -> | reducer | -> state 的单向数据流转
   └-----------┘    └--------┘    └---------┘
 
+  // 让 state 的变化过程变的可预知和透明
   Action Creator => action => store.dispatch(action) => reducer(state, action) => 原 state state = nextState
   ```
 
@@ -122,3 +123,7 @@
 参考资料
 
 [阮一峰redux三部曲](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html)
+
+[redux中间件中文官网](http://cn.redux.js.org/docs/advanced/Middleware.html)
+
+[redux中文官网](https://www.redux.org.cn/)
