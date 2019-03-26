@@ -79,6 +79,10 @@
 
   redux-promise 的写法里 reducer 收到 action 时就已经被 resolve 了，这样如果要处理 loading 这种情景就还得写额外代码；另外，对于复杂的异步业务逻辑来说，大量的业务逻辑代码是放在 action 里处理还是在 reducer 层处理呢？
 
+* redux-observable
+
+  redux-observable 是基于 RxJS 实现的通过组合和取消异步动作去创建副作用的中间件。redux-observable 中处理异步的这一层叫 Epic，它接收一个以 action 流为参数的函数，并返回一个 action 流。
+
 * redux-saga
 
   redux-saga 是一个用于管理应用程序 Side Effect（副作用，例如：异步获取数据，访问浏览器缓存等）的 library，它的目标是让副作用管理更容易，执行更高效，测试更简单，在处理故障时更容易。redux-saga 是一个 redux 中间件，意味着这个线程可以通过正常的 redux action 从主应用程序启动，暂停和取消，它能访问完整的 redux state，也可以 dispatch redux action。
@@ -127,7 +131,7 @@
 
   put 用于触发 action，call 用于调用异步处理逻辑，select 用于从 state 中获取数据。详情如下：
 
-  - take(pattern) 在 Store 上等待指定的 action。在发起与 pattern 匹配的 action 之前，Generator 将暂停。  
+  - take(pattern) 在 Store 上等待指定的 action。在发起与 pattern 匹配的 action 之前，Generator 将暂停。
 
   - takeEvery(channel, saga, ...args) 在发起（dispatch）到 Store 并且匹配 pattern 的每一个 action 上派生一个 saga。也就是说，takeEvery 允许处理并发的 action，包括相同的action，但不保证顺序。其中，saga: Function: 为一个 Generator 函数。
 
@@ -198,6 +202,18 @@
 
   - 解决方案
 
+    + 判断store中的id和Promise的入参id是否相同
+
+    + reducer中判断action带过来的id和url的id是否一致
+
+    + redux-saga的 takeLatest 方法，新的action过来就会取消上一个
+
+    + Rxjs中的switchMap方法，新的 action 会将老的 action 取消掉
+
+  - 其他类似问题
+
+    + 智能搜索，用户输入请求节流
+
 备注：侵图告之必删
 
 参考资料
@@ -207,3 +223,5 @@
 [异步 Action](http://cn.redux.js.org/docs/advanced/AsyncActions.html)
 
 [redux中间件原理](https://juejin.im/post/59dc7e43f265da4332268906)
+
+[redux-saga中文文档](https://redux-saga-in-chinese.js.org/)

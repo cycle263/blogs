@@ -24,7 +24,6 @@ if (CSS.supports('position', 'sticky') || CSS.supports("position", "-webkit-stic
 
 - 同一个父容器中的sticky元素，如果定位值相等，则会重叠；如果属于不同父元素，则会鸠占鹊巢，挤开原来的元素，形成依次占位的效果。
 
-
 参考资料
 
 [说说position:sticky](https://www.zhangxinxu.com/wordpress/2018/12/css-position-sticky/)
