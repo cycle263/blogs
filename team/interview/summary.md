@@ -97,7 +97,7 @@
 * 路由的动态加载模块
 * 服务端渲染SSR   [【详情解析】]({{site.baseurl}}/front-end/performance/SSRAndCSR)
 * 介绍路由的history   [【详情解析】]({{site.baseurl}}/framework/React/router)
-* 介绍Redux数据流的流程
+* 介绍Redux数据流的流程   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/redux)
 * Redux如何实现多个组件之间的通信，多个组件使用相同状态如何进行管理
 * 多个组件之间如何拆分各自的state，每块小的组件有自己的状态，它们之间还有一些公共的状态需要维护，如何思考这块
 * 使用过的Redux中间件   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/other/middleware)
@@ -117,7 +117,6 @@
 
 ### 网易
 
-* 介绍redux，主要解决什么问题
 * 文件上传如何做断点续传
 * promise、async有什么区别
 * 搜索请求如何处理（防抖）

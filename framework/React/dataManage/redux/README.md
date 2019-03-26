@@ -26,9 +26,9 @@
 
   ```js
   // view中产生action，通过store.dispatch(action)将action交由reducer处理，最终根据处理的结果更新view。
-  ┌-----------┐    ┌--------┐    ┌---------┐
-  | component | -> | action | -> | reducer | -> state 的单向数据流转
-  └-----------┘    └--------┘    └---------┘
+  ┌----------------┐    ┌--------┐    ┌---------┐
+  | view/component | -> | action | -> | reducer | -> store/state 的单向数据流转
+  └----------------┘    └--------┘    └---------┘
 
   // 让 state 的变化过程变的可预知和透明
   Action Creator => action => store.dispatch(action) => reducer(state, action) => 原 state state = nextState
@@ -95,6 +95,8 @@
   - 交互频繁store庞大时会有卡顿
 
   - 不支持typescript
+
+  [redux的缺点参考](https://www.zhihu.com/question/277623017)
 
 ## 比较react
 

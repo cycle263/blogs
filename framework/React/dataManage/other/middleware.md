@@ -2,9 +2,15 @@
 
   middleware 是指可以被嵌入在框架接收请求到产生响应过程之中的代码。例如，Express 或者 Koa 的 middleware 可以完成添加 CORS headers、记录日志、内容压缩等工作。Redux middleware 被用于解决不同的问题，它提供的是位于 action 被发起之后，到达 reducer 之前的扩展功能，可以用来进行日志记录、创建崩溃报告、调用异步接口或者路由等等。
 
+* 常见的中间件
+
+  - redux-thunk、redux-promise、redux-saga、redux-observable等。
+
 * redux-thunk
 
   redux-thunk 选择以 middleware 的形式来增强 redux store 的 dispatch 方法（即：支持了 dispatch(function)），从而在拥有了异步获取数据能力的同时，又可以进一步将数据获取相关的业务逻辑从 View 层分离出去。
+
+  redux-thunk是 Redux 作者自己写的，Redux 本身只会处理同步的简单对象 action，但可以通过 redux-thunk 拦截处理函数（function）类型的 action，通过回调来控制触发普通 action，从而达到异步的目的。
 
   ```js
   // sync thunk
@@ -42,13 +48,46 @@
 
   缺点：回调地狱
 
+* redux-promise
+
+  redux-thunk 是将从异步请求返回的 promise 后 dispatch 成不同 action，并直接将这个 promise 作为 action 给 dispatch，但需要写很多重复而又繁琐的 .then().catch() 之类的代码，redux-promise 正是解决了这个问题。
+
+  ```js
+  // 核心代码
+  export default function promiseMiddleware({ dispatch }) {
+    return next => action => {
+      if (!isFSA(action))  {// 判断是否是标准的 flux action
+        return isPromise(action)
+          ? action.then(dispatch)
+          : next(action);
+      }
+
+      return isPromise(action.payload)
+        ? action.payload.then(
+            result => dispatch({ ...action, payload: result }),
+            error => {
+              dispatch({ ...action, payload: error, error: true });
+              return Promise.reject(error);
+            }
+          )
+        : next(action);
+    };
+  }
+  ```
+
+  - 缺点
+
+  redux-promise 的写法里 reducer 收到 action 时就已经被 resolve 了，这样如果要处理 loading 这种情景就还得写额外代码；另外，对于复杂的异步业务逻辑来说，大量的业务逻辑代码是放在 action 里处理还是在 reducer 层处理呢？
+
 * redux-saga
 
-  redux-saga 是一个用于管理应用程序 Side Effect（副作用，例如：异步获取数据，访问浏览器缓存等）的 library，它的目标是让副作用管理更容易，执行更高效，测试更简单，在处理故障时更容易。
+  redux-saga 是一个用于管理应用程序 Side Effect（副作用，例如：异步获取数据，访问浏览器缓存等）的 library，它的目标是让副作用管理更容易，执行更高效，测试更简单，在处理故障时更容易。redux-saga 是一个 redux 中间件，意味着这个线程可以通过正常的 redux action 从主应用程序启动，暂停和取消，它能访问完整的 redux state，也可以 dispatch redux action。
 
-  redux-saga 是一个 redux 中间件，意味着这个线程可以通过正常的 redux action 从主应用程序启动，暂停和取消，它能访问完整的 redux state，也可以 dispatch redux action。
+  另外，redux-saga 使用了 ES6 的 Generator 功能，让异步的流程更易于读取，写入和测试。
 
-  redux-saga 使用了 ES6 的 Generator 功能，让异步的流程更易于读取，写入和测试。
+  **原理机制**
+
+  redux-saga在原来 Redux 数据流中增加了 saga 层，用于监听 action 并衍生出新的 action 来对 store 进行操作。
 
   ```js
   import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
@@ -151,5 +190,20 @@
     }
     ```
 
+* redux数据流竞态问题
+
+  - 问题描述
+
+    查看某用户的详情信息，偶遇网络堵塞，loading太久，用户返回主页并进入另一个用户的详情信息页面，这时上个详情请求刚好返回，就会展示上个用户的信息。
+
+  - 解决方案
 
 备注：侵图告之必删
+
+参考资料
+
+[redux异步中间件对比](https://juejin.im/post/59e6cd68f265da43163c2821)
+
+[异步 Action](http://cn.redux.js.org/docs/advanced/AsyncActions.html)
+
+[redux中间件原理](https://juejin.im/post/59dc7e43f265da4332268906)
