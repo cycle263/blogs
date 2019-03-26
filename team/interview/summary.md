@@ -514,7 +514,7 @@ npm2和npm3+有什么区别
 * 介绍react context
 * 介绍class和ES5的类以及区别
 * 介绍箭头函数和普通函数的区别
-* 介绍defineProperty方法，什么时候需要用到
+* 介绍defineProperty方法    [【详情解析】]({{site.baseurl}}/ECMAScript/summary/defineProperty)
 * `for..in` 和 `object.keys` 的区别
 * 介绍闭包，使用场景
 * 使用闭包特权函数的使用场景
@@ -522,7 +522,7 @@ npm2和npm3+有什么区别
 
 ### 百分点
 
-* React15/16.x的区别
+* React15/16.x的区别    [【详情解析】]({{site.baseurl}}/framework/React/implement/fiber)
 * 重新渲染render会做些什么
 * 哪些方法会触发react重新渲染
 * state和props触发更新的生命周期分别有什么区别
