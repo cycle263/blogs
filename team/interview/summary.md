@@ -347,7 +347,7 @@
 * _construct是什么
 * new是怎么实现的
 * promise的精髓，以及优缺点
-* 如何实现H5手机端的适配
+* 如何实现H5手机端的适配    [【详情解析】]({{site.baseurl}}/css/articles/移动端适配)
 * rem、flex的区别（root em）
 * em和px的区别
 * React声明周期
