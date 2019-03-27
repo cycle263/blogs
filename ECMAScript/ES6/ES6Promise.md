@@ -1,3 +1,5 @@
+## promise
+
 * 1、Promise对象有以下两个特点：  
 
   -（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称Fulfilled）和
@@ -117,4 +119,4 @@
 
 * 调试噩梦
 
-针对以上问题，推荐使用ES8的 async/await。
+针对以上问题，推荐使用ES7语法的 async/await。

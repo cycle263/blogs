@@ -1,28 +1,32 @@
 ## Proxy 
 
-  > Proxy(拦截器或代理器)用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
-  
-  Proxy可以理解成在目标对象之前，架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。proxy这个词的原意是代理，用在这里表示由它来“代理”某些操作。<br />
+> Proxy(拦截器或代理器)用于修改某些操作的默认行为，等同于在语言层面做出修改，所以属于一种“元编程”（meta programming），即对编程语言进行编程。
 
-  ```js
-  var obj = new Proxy({}, {
-    get: function (target, key, receiver) {
-      console.log(`getting ${key}!`);
-      return Reflect.get(target, key, receiver);
-    },
-    set: function (target, key, value, receiver) {
-      console.log(`setting ${key}!`);
-      return Reflect.set(target, key, value, receiver);
-    }
-  });
-  ```
+Proxy可以理解成在目标对象之前，架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。proxy这个词的原意是代理，用在这里表示由它来“代理”某些操作。<br />
+
+```js
+var obj = new Proxy({}, {
+  get: function (target, key, receiver) {
+    console.log(`getting ${key}!`);
+    return Reflect.get(target, key, receiver);
+  },
+  set: function (target, key, value, receiver) {
+    console.log(`setting ${key}!`);
+    return Reflect.set(target, key, value, receiver);
+  }
+});
+```
+
+* 构造函数
 
   作为构造函数，Proxy接受两个参数。
 
-  第一个参数是所要代理的目标对象，即如果没有Proxy的介入，操作原来要访问的就是这个对象；  
+  - 第一个参数是所要代理的目标对象，即如果没有Proxy的介入，操作原来要访问的就是这个对象；  
 
-  第二个参数是一个设置对象，对于每一个被代理的操作，需要提供一个对应的处理函数，该函数将拦截对应的操作。  
+  - 第二个参数是一个设置对象，对于每一个被代理的操作，需要提供一个对应的处理函数，该函数将拦截对应的操作。  
   注意，要使得Proxy起作用，必须针对Proxy实例进行操作，而不是针对目标对象进行操作。  
+
+* proxy接口
 
   Proxy支持的拦截操作一览。对于没有设置拦截的操作，则直接落在目标对象上，按照原先的方式产生结果。  
 

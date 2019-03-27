@@ -19,6 +19,30 @@
 
   - 更广的适用性，yield 命令后面只能是Thunk函数或Promise对象，await命令后面，可以跟Promise对象和原始类型的值(数值，字符串等)
 
+  ```js
+  function autoRun(genF) {
+    return new Promise(function(resolve, reject) {
+      var gen = genF();
+      function step(nextF) {
+        try {
+          var next = nextF();
+        } catch(e) {
+          return reject(e); 
+        }
+        if(next.done) {
+          return resolve(next.value);
+        } 
+        Promise.resolve(next.value).then(function(v) {
+          step(function() { return gen.next(v); });      
+        }, function(e) {
+          step(function() { return gen.throw(e); });
+        });
+      }
+      step(function() { return gen.next(undefined); });
+    });
+  }
+  ```
+
 * await vs promise.then
 
   - await会暂停所在的async函数的执行, promise.then将函数加入回调链中之后(放入微任务队列中)，会继续执行当前函数，并且调试可以直接在await语句上打断点，语义和写法更加简单明了。
@@ -26,6 +50,8 @@
   - promise resolve异常时，promise所在的作用域已经不存在了，要打印它的堆栈信息，需要额外记录，对性能和资源都有一定消耗。另外，不能在then语句上断点调试，会直接跳过整个异步代码。
 
   - 在没有 await 的情况下执行 async 函数，它会立即执行，返回一个 Promise 对象，并且绝不会阻塞后面的语句，和普通返回 Promise 对象的函数并无区别。
+
+  **async/await的优势在于处理then链，更加语义简洁，并且能精准调试，并会返回异常的堆栈详情信息。**
 
   ```js
   // promise.then
@@ -70,7 +96,7 @@
     }
     ```
 
-  - await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try...catch 代码块中。
+  - await 命令后面的 Promise 对象，得到 resolve 的值，作为 await 表达式的运算结果；如果运行结果是 rejected，所以最好把 await 命令放在 try...catch 代码块中。
 
     ```js
     async function myFunction() {
@@ -89,7 +115,7 @@
     }
     ```
 
-  - await 命令只能用在 async 函数之中，如果用在普通函数或者全局作用域中，就会报错。
+  - await 命令只能用在 async 函数之中，如果用在普通函数或者全局作用域中，就会报错。这是因为async 函数调用不会造成阻塞，它内部所有的阻塞都被封装在一个 Promise 对象中异步执行。
 
     ```js
     async function dbFuc(db) {
