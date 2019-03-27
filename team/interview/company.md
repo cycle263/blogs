@@ -589,7 +589,6 @@
   function log(msg)　{
       console.log(msg);
   }
-   
   log("hello world!") // hello world!
   ```
   如果要传入多个参数呢？显然上面的方法不能满足要求，所以更好的方法是：
@@ -604,7 +603,7 @@
   
   对于apply和call两者在作用上是相同的，即是调用一个对象的一个方法，以另一个对象替换当前对象。将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。  
   
-  但两者在参数上有区别的。对于第一个参数意义都一样，但对第二个参数：   apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。 如 func.call(func1,var1,var2,var3)对应的apply写法为：func.apply(func1,[var1,var2,var3]) 。
+  但两者在参数上有区别的。对于第一个参数意义都一样，但对第二个参数：apply传入的是一个参数数组，也就是将多个参数组合成为一个数组传入，而call则作为call的参数传入（从第二个参数开始）。如 func.call(func1,var1,var2,var3)对应的apply写法为：`func.apply(func1,[var1,var2,var3])` 。
 
 * 9.在Javascript中什么是伪数组？如何将伪数组转化为标准数组？
   
@@ -647,7 +646,6 @@
   ```js
   Function.prototype.bind = Function.prototype.bind || function(context){
      var self = this;
-   
      return function(){
         return self.apply(context, arguments);
      };

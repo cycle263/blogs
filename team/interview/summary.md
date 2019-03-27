@@ -29,7 +29,7 @@
 * 实现一个可设置过期时间的localstorage
 * 实现一个sleep类
 * jsonp的实现？
-* 实现bind函数？
+* 实现bind函数？    [【详情解析】]({{site.baseurl}}/ECMAScript/ES6/ES6Function)
 * JS 的基本函数式使用，比如 reduce、curry？
 * 如何写一个深拷贝函数
 * event-loop 和 macro-task、micro-task 的理解       [【详情解析】]({{site.baseurl}}/javascripts/other/async/thread)
@@ -51,7 +51,7 @@
 
 ## ES6、ES7
 
-* Promise、generator、async/await 的原理解释
+* Promise、generator、async/await 的原理解释      [【详情解析】]({{site.baseurl}}/ECMAScript/ES6/ES7Async)
 * decorator（装饰器）
 
 ## 工程化
@@ -174,7 +174,6 @@
 
 ### 今日头条
 
-* 对async、await的理解，内部原理
 * 介绍下Promise，内部实现
 * 清除浮动
 * 定位问题（绝对定位、相对定位等）
@@ -186,7 +185,7 @@
 * connect原理
 * webpack介绍
 * == 和 ===的区别，什么情况下用相等==
-* bind、call、apply的区别
+* bind、call、apply的区别    [【详情解析】]({{site.baseurl}}/team/interview/selectWritten)
 * 动画的了解
 * 介绍下原型链（解决的是继承问题吗）
 
@@ -220,7 +219,6 @@
 
 * JS的原型
 * 变量作用域链
-* call、apply、bind的区别
 * 防抖和节流的区别
 * 介绍各种异步方案
 * react生命周期
@@ -285,7 +283,6 @@
 * 上下固定，中间滚动布局如何实现
 * [1, 2, 3, 4, 5]变成[1, 2, 3, a, b, 5]   `[1, 2, 3, 4, 5].splice(3, 1, 'a', 'b')`
 * 取数组的最大值（ES5、ES6）
-* apply和call的区别
 * ES5和ES6有什么区别
 * some、every、find、filter、map、forEach有什么区别
 * 上述数组随机取数，每次返回的值都不一样
@@ -388,7 +385,6 @@
 * JS怎么实现异步
 * 异步整个执行周期
 * Promise的三种状态
-* Async/Await怎么实现
 * Promise和setTimeout执行先后的区别
 * JS为什么要区分微任务和宏任务
 * Promise构造函数是同步还是异步执行，then呢
