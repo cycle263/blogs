@@ -1,6 +1,15 @@
-## async函数
+## async/await 函数
 
 函数前面的async意味着这个函数总是返回一个promise，如果代码中有return <非promise>语句，JavaScript会自动把返回的这个value值包装成promise的resolved值。其实，async 函数就是 Generator 函数的语法糖，也就是将 Generator 函数的星号（\*）替换成 async，将 yield 替换成 await，仅此而已。
+
+  ```js
+  async function testAsync() {
+    return "hello async";
+  }
+
+  const result = testAsync();
+  console.log(result);  // Promise {<resolved>: "hello async"}
+  ```
 
 * async vs Generator
 
@@ -15,6 +24,8 @@
   - await会暂停所在的async函数的执行, promise.then将函数加入回调链中之后(放入微任务队列中)，会继续执行当前函数，并且调试可以直接在await语句上打断点，语义和写法更加简单明了。
 
   - promise resolve异常时，promise所在的作用域已经不存在了，要打印它的堆栈信息，需要额外记录，对性能和资源都有一定消耗。另外，不能在then语句上断点调试，会直接跳过整个异步代码。
+
+  - 在没有 await 的情况下执行 async 函数，它会立即执行，返回一个 Promise 对象，并且绝不会阻塞后面的语句，和普通返回 Promise 对象的函数并无区别。
 
   ```js
   // promise.then
@@ -39,6 +50,24 @@
       console.log(await getJSON());
       return "done";
     };
+    ```
+
+  - await 不仅仅用于等待 Promise 对象 和 async函数的返回值，它可以等任意表达式的 **结果**，所以，await 后面实际是可以接普通函数调用或者直接量的。
+
+    ```js
+    function getSomething() {
+      return "something";
+    }
+
+    async function testAsync() {
+      return Promise.resolve("hello async");
+    }
+
+    async function test() {
+      const v1 = await getSomething();
+      const v2 = await testAsync();
+      console.log(v1, v2);
+    }
     ```
 
   - await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try...catch 代码块中。
