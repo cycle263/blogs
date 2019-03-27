@@ -112,7 +112,6 @@ Javascript集合数据结构主要有数组(Array)和对象(Object)，已经ES6�
   - Map(), Set(), WeakMap(), WeakSet()  
 
   - Promise.all(), Promise.race()  
-
   
 
 * **遍历器的return()，throw()**
