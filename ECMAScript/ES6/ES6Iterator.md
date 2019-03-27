@@ -1,6 +1,6 @@
 ## Iterator迭代器
 
-  > Javascript集合数据结构主要有数组(Array)和对象(Object)，已经ES6新增的Map和Set。遍历器（Iterator）是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。
+Javascript集合数据结构主要有数组(Array)和对象(Object)，已经ES6新增的Map和Set。遍历器（Iterator）是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。
 
 * **Iterator的作用有三个**
 
