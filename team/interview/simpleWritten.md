@@ -87,6 +87,15 @@ function test() {
 }
 test();
 
+var a = 10;
+(function () {
+    console.log(a, window.a);   // undefined 10
+    a = 5;
+    console.log(a, window.a);   // 5 10
+    var a = 20;
+    console.log(a, window.a);   // 20 10
+})()
+
 /******************** 作用域和原型链 *********************/
 function Foo() {
     getName = function () {
