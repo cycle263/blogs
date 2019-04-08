@@ -1,7 +1,8 @@
 $(function(){
     jQuery.fn.carousel = function(opts){
         var setttings = jQuery.extend({
-            intervalTime: 5     //轮询时间间隔
+            intervalTime: 5,     //轮询时间间隔, 单位秒
+            hoverStop: false,    //鼠标悬浮是否停止轮播
         }, opts);
 
         this.each(function(key, ele){
@@ -38,11 +39,13 @@ $(function(){
                     });
 
                     //鼠标悬浮停止循环播放
-                    carouselEle.find('.carousel-inner').hover(function(){
-                        clearInterval(carousel.intervalNum);
-                    }, function(){
-                        carousel.cycle();
-                    });
+                    if (setttings.hoverStop) {
+                        carouselEle.find('.carousel-inner').hover(function(){
+                            clearInterval(carousel.intervalNum);
+                        }, function(){
+                            carousel.cycle();
+                        });
+                    }
                 },
                 //兼容css3动画结束事件
                 whichTransitionEvent: function(){
@@ -85,6 +88,11 @@ $(function(){
                         jQuery('.carousel-inner .active', carouselEle).removeClass('active ' + direction);
                         jQuery('.carousel-inner .item', carouselEle).eq(next).removeClass(type + ' ' + direction).addClass('active');
                     });
+
+                    setTimeout(function(){
+                        jQuery('.carousel-inner .active', carouselEle).removeClass('active ' + direction);
+                        jQuery('.carousel-inner .item', carouselEle).eq(next).removeClass(type + ' ' + direction).addClass('active');
+                    }, 600);
                 }
             };
 

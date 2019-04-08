@@ -19,3 +19,12 @@
     - require文件搜索
 
     ![require加载案例](../images/example.png)
+
+* ES5 vs ES6
+
+```js
+// ES6
+import Component from 'component';
+// ES5
+var Component = require('component').default;
+```

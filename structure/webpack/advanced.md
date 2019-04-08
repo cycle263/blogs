@@ -53,7 +53,7 @@
   devServer: {
     hot: true,
     inline: true,
-    // 其实很简单的，只要配置这个参数就可以了
+    /* 配置这个参数 */
     proxy: {
       '/api/*': {
           target: 'http://devserver.net:5000',
@@ -122,7 +122,7 @@
     ```js
     entry: {
       app: path.resolve(APP_PATH, 'index.js'),
-      // 添加到打包的vendors里的库
+      /* 添加到打包的vendors里的库 */
       vendors: ['jquery', 'react']
     }
     ```

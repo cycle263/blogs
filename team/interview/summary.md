@@ -11,6 +11,7 @@
 * virtual-dom 的基本原理与简单的源码解释
 * pure-component 和 shouldComponentUpdate，pure-component, function-component 相关概念
 * 介绍下React中的this
+* React中的dialog组件实现方案，需要注意的坑点？
 
 ## Vue 的 MVVM 实现理解
 

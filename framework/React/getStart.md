@@ -4,17 +4,17 @@
 
 * Element
 
-  React.createElement(element, props[, children]),Element 是 createClass 的实例
+  `React.createElement(element, props[, children])`, Element 是 createClass 的实例
 
 * createClass
 
-  React.createClass({ ... })  
+  `React.createClass({ ... })  `
 
-  class MyComponent extends React.Component { ... }
+  `class MyComponent extends React.Component { ... }`
 
 * Component
 
-  从 React 0.13 开始，可以使用 ES6 Class 代替 React.createClass, class HelloMessage extends React.Component { ... }
+  从 React 0.13 开始，可以使用 ES6 Class 代替 `React.createClass`, `class HelloMessage extends React.Component { ... }`
 
   区别: 
 
