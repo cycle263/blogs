@@ -117,7 +117,7 @@
   ```
 
 
-## vs proxy属性代理
+## defineProperty vs proxy属性代理
 
 * defineProperty无法监听数组的索引赋值，也不玩监听数组长度变化；
 

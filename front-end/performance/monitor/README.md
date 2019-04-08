@@ -81,6 +81,15 @@
   }
   ```
 
+* 为何很多埋点都是请求1像素的gif图片？
+
+  - 无跨域问题
+  - gif图片最小只需要43个字节
+  - 执行无阻塞，不影响用户体验
+  - 图片请求不占用 Ajax 请求限额
+
+  其他方案，"204 No Content"
+
 参见资料
 
 [Script Error规范](https://github.com/BetterJS/badjs-report/issues/3)
