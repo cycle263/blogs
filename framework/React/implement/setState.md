@@ -4,9 +4,9 @@
 
 * setState是异步的吗？ 
 
-setState本身并不是异步的，而是如果在调用setState时，如果react正处于更新过程，当前更新会被暂存，等上一次更新执行后在执行，这个过程给人一种异步的假象。
+setState本身并不是异步的，而是如果在调用setState时，如果react正处于更新过程(isBatchingUpdates=true)，当前更新会被暂存，等上一次更新执行后在执行，这个过程给人一种异步的假象。
 
-setState 只在合成事件和钩子函数中是“异步”的（非实时的），在原生事件和setTimeout 中都是同步的。
+setState 只在合成事件和钩子函数中是“异步”的（非实时的），因为这些函数里，react正处于更新中，需要等待上次更新完后才能更新当前的；而在原生事件和setTimeout 中都是同步的，因为这次回调函数中，上次早就更新完成了。
 
 setState 的“异步”并不是说内部由异步代码实现，其实本身执行的过程和代码都是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致在合成事件和钩子函数中没法立马拿到更新后的值，形成了所谓的“异步”，当然可以通过第二个参数 setState(partialState, callback) 中的callback拿到更新后的结果。
 
@@ -31,7 +31,9 @@ setState 的“异步”并不是说内部由异步代码实现，其实本身�
 
 * 代码实现
 
-在 React 的 setState 函数实现中，会根据一个变量 isBatchingUpdates 判断是直接更新 this.state 还是放到队列(dirtyComponents)中回头再说；而 isBatchingUpdates 默认是 false，也就表示 setState 会同步更新 this.state。但是，有一个函数 batchedUpdates，这个函数会把 isBatchingUpdates 修改为 true，而当 React 在调用事件处理函数之前就会调用这个 batchedUpdates，造成的后果，就是由 React 控制的事件处理过程 setState 不会同步更新 this.state。也就是说，整个将 React 组件渲染到 DOM 中的过程就处于一个大的 transaction 中，有前置的 batchedUpdate 调用，isBatchingUpdates已经为true，生命周期函数或事件处理函数处于一个小的transaction中，也会受此影响而不进行立即更新。
+在 React 的 setState 函数实现中，会根据一个变量 isBatchingUpdates 判断是直接更新 this.state 还是放到队列(dirtyComponents)中回头再说；而 isBatchingUpdates 默认是 false，也就表示 setState 会同步更新 this.state。但是，有一个函数 batchedUpdates，这个函数会把 isBatchingUpdates 修改为 true，而当 React 在调用事件处理函数之前就会调用这个 batchedUpdates，造成的后果，就是由 React 控制的事件处理过程 setState 不会同步更新 this.state。
+
+也就是说，整个将 React 组件渲染到 DOM 中的过程就处于一个大的 transaction 中，有前置的 batchedUpdate 调用，isBatchingUpdates已经为true，生命周期函数或事件处理函数处于一个小的transaction中，也会受此影响而不进行立即更新。
 
 那么调用this.setState()后什么时候this.state才会更新？答案是即将要执行下一次的render函数时。
 

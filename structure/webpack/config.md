@@ -99,7 +99,7 @@
       对于 webpack-dev-server ，这个属性要放在 devServer 对象里。
 
         ```js
-        stats: {  // 打包过程的日志信息，更细节的配置
+        stats: {  /* 打包过程的日志信息，更细节的配置 */
             entrypoints: false,
             children: false,
             modules: false, // 不打印后面的模块详情信息

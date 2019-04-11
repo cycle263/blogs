@@ -170,6 +170,16 @@ module.exports = MyPlugin;
 
 - AddAssetHtmlPlugin 成的html文件中加入资源文件，如：dll文件的script引用等
 
+- duplicate-package-checker-webpack-plugin 分析得到有重复依赖的版本，并通过 resolve alias 避免多版本重复打包
+
+  ```json
+  resolve: {
+    alias: {
+      lodash: path.join(process.cwd(), 'node_modules/lodash'), 
+    }  
+  }
+  ```
+
 * **4、开发体验优化之:**
 
   - WebpackNotifierPlugin - 编译完成动态通知

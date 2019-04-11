@@ -238,6 +238,7 @@
 * 前端怎么做单元测试
 * webpack生命周期
 * webpack打包的整个过程
+* tree shaking原理（`同时使用esm和cjs模块规范，shaking失效`）
 * 常用的plugins
 * pm2怎么做进程管理，进程挂掉怎么处理
 * 不用pm2怎么做进程管理
@@ -318,15 +319,15 @@
 * Redux怎么实现属性传递，介绍下原理
 * React-Router的基本原理    [【详情解析】]({{site.baseurl}}/framework/React/router)
 * 网站SEO怎么处理
-* 介绍下HTTP状态码
-* 403、301、302是什么
-* 缓存相关的HTTP请求头
+* 介绍下HTTP状态码    [【详情解析】]({{site.baseurl}}/http/articles/httpProtocol)
+* 403、301、302是什么     [【详情解析】]({{site.baseurl}}/http/articles/httpProtocol)
+* 缓存相关的HTTP请求头    [【详情解析】]({{site.baseurl}}/http/articles/httpProtocol)
 * 介绍HTTPS       [【详情解析】]({{site.baseurl}}/http/articles/https)
 * HTTPS怎么建立安全通道     [【详情解析】]({{site.baseurl}}/http/articles/https)
 * HTTPS 握手过程中，客户端如何验证证书的合法性    [【详情解析】]({{site.baseurl}}/http/articles/https)
 * 前端性能优化（JS原生和React）
 * 用户体验做过什么优化
-* 对PWA有什么了解
+* 对PWA有什么了解  (`Manifest`) [【详情解析】](https://juejin.im/post/5ac8a67c5188255c5668b0b8)
 * 对安全有什么了解
 * 介绍下数字签名的原理
 * 前后端通信使用什么方案
@@ -439,21 +440,21 @@
 
 ### 宝宝树
 
-使用canvas绘图时如何组织成通用组件
-formData和原生的ajax有什么区别
-介绍下表单提交，和formData有什么关系
-介绍redux接入流程
-rudux和全局管理有什么区别（数据可控、数据响应）
-RN和原生通信
-介绍MVP怎么组织
-介绍异步方案
-promise如何实现then处理
-koa2中间件原理
-常用的中间件
-服务端怎么做统一的状态处理
-如何对相对路径引用进行优化
-node文件查找优先级
-npm2和npm3+有什么区别
+- 使用canvas绘图时如何组织成通用组件
+- formData和原生的ajax有什么区别
+- 介绍下表单提交，和formData有什么关系
+- 介绍redux接入流程
+- rudux和全局管理有什么区别（数据可控、数据响应）
+- RN和原生通信
+- 介绍MVP怎么组织
+- 介绍异步方案
+- promise如何实现then处理
+- koa2中间件原理
+- 常用的中间件
+- 服务端怎么做统一的状态处理
+- 如何对相对路径引用进行优化
+- node文件查找优先级
+- npm2和npm3+有什么区别
 
 ### 海康威视
 

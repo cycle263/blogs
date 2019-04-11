@@ -51,9 +51,9 @@
 
 * PureComponent作用失效
 
-  进行浅比较，非js基本类型失效，onClick回调使用箭头函数，每次回调匿名函数都会是不同对象，PureComponent作用失效。
+  - 进行浅比较，非js基本类型失效，onClick回调使用箭头函数，每次回调匿名函数都会是不同对象，PureComponent作用失效。
 
-  每次render生成新的对象，也会导致PureComponent作用失效。
+  - 每次render生成新的对象，也会导致PureComponent作用失效。
 
 * PureComponent是不是适合任何情况
 
