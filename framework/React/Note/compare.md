@@ -72,3 +72,9 @@
 * componentWillMount、componentWillReceiveProps、componentWillUpdate vs getDerivedStateFromProps
 
 ![getDerivedStateFromProps](../images/derived.webp)
+
+* fiber
+
+  [fiber参见](../implement/fiber)
+
+* hooks

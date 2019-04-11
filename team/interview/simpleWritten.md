@@ -141,6 +141,16 @@ foo.x = foo = {n:2};
 console.log(foo.x);
 console.log(bar.x);
 
+// 追溯原型链
+var func = function(){};
+Function.prototype.a = function(){console.log('a')};
+Object.prototype.b = function(){console.log('b')};
+var f = new func();
+func.a();
+func.b();
+f.a();
+f.b();
+
 
 
 /******************** 引用类型 *********************/
