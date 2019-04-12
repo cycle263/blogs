@@ -168,7 +168,7 @@
       });
       ```
 
-    + ECMAScript的dynamic import, 动态的 import() 提供一个基于Promise的API，写法： `import('lodash').then(_ => {})`，第三方插件方式包括：
+    + ECMAScript的dynamic import, 动态的 import() 提供一个基于Promise的API，写法： `import(/* webpackChunkName: "dynamicModule" */ 'lodash').then(_ => {})`，webpackChunkName为动态模块命名，这是webpack3引入的特性，并且要指定chunkFileName值，否则不生效。另外，第三方插件方式包括：
 
       - bundle-loader
       
