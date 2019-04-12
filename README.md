@@ -50,7 +50,7 @@
 
     - get start example  
 
-      ```react
+      ```jsx
       var HelloMessage = React.createClass({
         render: function() {
           return <div>Hello {this.props.name}</div>;
@@ -65,7 +65,7 @@
 
     - 将props转换成自己的state
 
-      ```react
+      ```jsx
       class Child extends Component {
           constructor(props) {
               super(props);

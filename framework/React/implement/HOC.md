@@ -70,6 +70,9 @@ ReactDOM.render(
         componentDidMount() {
           /* 可以方便地得到state，做一些更深入的修改 */
           console.log(this.state);
+          /* 调用元组件的生命周期函数 */
+          super.componentDidMount && super.componentDidMount();
+          super.setState({});
         }
         render() {
           /* 条件渲染 */

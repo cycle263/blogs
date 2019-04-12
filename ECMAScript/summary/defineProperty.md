@@ -122,3 +122,7 @@
 * defineProperty无法监听数组的索引赋值，也不玩监听数组长度变化；
 
 * defineProperty只能监听对象属性，无法监听对象本身，也就是属性值本身是对象，需要深层遍历来监听；
+
+## 参考资料
+
+[实现双向绑定Proxy比defineproperty优劣](https://juejin.im/post/5acd0c8a6fb9a028da7cdfaf)

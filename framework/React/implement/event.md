@@ -130,6 +130,9 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
 
 ### 为何要手动绑定this?
 
+react对生命周期的钩子函数都进行this绑定，但是对开发者自定义的函数并没有绑定this指向。其实，在react@0.13版本之前，
+React createClass这个API是默认绑定this的，绝大部分情况很安逸，但是开发者缺失去了对context的控制权。
+
 ```js
 // dispatchEvent调用了invokeGuardedCallback方法
 function invokeGuardedCallback(name, func, a) {
@@ -142,3 +145,8 @@ function invokeGuardedCallback(name, func, a) {
   }
 }
 ```
+
+
+## 参考资料
+
+[react为何不像vue一样自动绑定所有函数的this指向？](https://www.zhihu.com/question/300850914)
