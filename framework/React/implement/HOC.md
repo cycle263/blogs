@@ -8,20 +8,14 @@
 // MyComponent 是纯的 UI 组件
 <div className="index">
   <p>{this.props.text}</p>
-  <input
-    defaultValue={this.props.name}
-    onChange={this.props.onChange}
-  />
+  <input defaultValue={this.props.name} onChange={this.props.onChange} />
 </div>
 
 
-const App = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MyComponent);
+const App = connect(mapStateToProps, mapDispatchToProps)(MyComponent);
 
 // mapStateToProps: 定义 UI 组件参数与 State 之间的映射
-// mapDispatchToProps：定义 UI 组件与 Action 之间的映射
+// mapDispatchToProps: 定义 UI 组件与 Action 之间的映射
 function reducer(state = {
   text: '你好，访问者',
   name: '访问者'
@@ -35,7 +29,6 @@ function reducer(state = {
   }
 }
 const initState = {};
-
 const store = createStore(reducer, initState);
 
 ReactDOM.render(
@@ -51,7 +44,7 @@ ReactDOM.render(
 
 * HOC的实现方式
 
-  - 属性代理是最常见的高阶组件的使用方式，将被包裹组件的props和新生成的props一起传递给此组件，这称之为属性代理。
+  - 属性代理是最常见的高阶组件的使用方式，将被包裹组件的props和新生成的props一起传递给此组件，这称之为属性代理。实际上 ，这种方式生成的高阶组件就是原组件的父组件，上面的函数test就是一个HOC属性代理的实现方式。
 
     ```js
     export default function withHeader(WrappedComponent) {
@@ -62,14 +55,14 @@ ReactDOM.render(
           }
           /* 透传props，并且传递新的newProps */
           return <div>
-            <WrappedComponent {...this.props} {...newProps}/>
+            <WrappedComponent {...this.props} {...newProps} ref={ref => this.wappedRef = ref;}/>
           </div>
         }
       }
     }
     ```
 
-  - 基于反向继承的方式，React组件继承了被传入的组件，所以它能够访问到的区域、权限更多，相比属性代理方式，它更像打入组织内部，对其进行修改。
+  - 基于反向继承的方式，React组件继承了被传入的组件，所以它能够访问到的区域、权限更多，能通过this访问到原组件的生命周期、props、state、render等，相比属性代理方式，它更像打入组织内部，对其进行修改，比如操作组件的state，渲染劫持，获取refs等。
 
     ```js
     export default function (WrappedComponent) {
@@ -79,7 +72,29 @@ ReactDOM.render(
           console.log(this.state);
         }
         render() {
-          return super.render();
+          /* 条件渲染 */
+          return this.props.visible ? <div>
+            {/*公用title */}
+            <div className="title">{this.props.title}</div> 
+            {super.render()}
+          </div> : null
+        }
+      }
+    }
+
+    /* 渲染劫持 */
+    exprot default function (WrappedComponent) {
+      return class extends WrappedComponent {
+        render() {
+          /* tree对象属性的所有writable属性均被配置为false，因此使用cloneElement来增加新组件 */
+          const tree = super.render();
+          let newProps = {};
+          if (tree && tree.type === 'select') {
+            newProps = { test: 'select' };
+          }
+          const props = Object.assign({}, tree.props, newProps);
+          const newTree = React.cloneElement(tree, props, tree.props.children);
+          return newTree;
         }
       }
     }
@@ -89,7 +104,7 @@ ReactDOM.render(
 
 组合多个高阶组件，高阶组件为React组件增强了一个功能，如果需要同时增加多个功能需要组合多个高阶组件，使用compose可以简化上述过程，也能体现函数式编程思想。
 
-compose可以帮助我们组合任意个（包括0个）高阶函数，例如compose(a,b,c)返回一个新的函数d，函数d依然接受一个函数作为入参，只不过在内部会依次调用c,b,a，从表现层对使用者保持透明。compose函数实现方式有很多种，这里推荐其中一个recompact.compose。
+compose可以帮助我们组合任意个（包括0个）高阶函数，例如compose(a, b, c)返回一个新的函数d，函数d依然接受一个函数作为入参，只不过在内部会依次调用c, b, a，从表现层对使用者保持透明。compose函数实现方式有很多种，比如：recompact.compose。
 
   ```js
   @withHeader
@@ -97,7 +112,7 @@ compose可以帮助我们组合任意个（包括0个）高阶函数，例如com
   class Demo extends Component{ }
 
   /* use compose */
-  const enhance = compose(withHeader,withLoading);
+  const enhance = compose(withHeader, withLoading);
   @enhance
   class Demo extends Component{ }
   ```
@@ -110,6 +125,16 @@ compose可以帮助我们组合任意个（包括0个）高阶函数，例如com
 ### 高阶函数
 
 javascript中，函数可以当做参数传递，也可以被当做返回值返回，高阶函数就是这一类的函数。有哪些函数属于高阶函数呢？
+
+```js
+connect(mapStateToProps, mapDispatchToProps)(MyComponent);
+
+function connect(...otherProps) {
+  return (MyComponent) => {
+    return <MyComponent {...this.props} {...otherProps} />
+  }
+}
+```
 
 - 回调函数    `function func(callback) { callback(); }`
 
@@ -136,12 +161,12 @@ var currying = function(fn) {
   var args = [];
 
   return function() {
-      if (arguments.length === 0) {
-          return fn.applay(this, args);
-      } else {
-          args = args.concat(arguments);
-          return arguments.callee;
-      }
+    if (arguments.length === 0) {
+      return fn.applay(this, args);
+    } else {
+      args = args.concat(arguments);
+      return arguments.callee;
+    }
   }
 }
 ```
@@ -173,20 +198,20 @@ var throttle = function (fn, delay, atleast) {
   var previous = null;
 
   return function () {
-      var now = +new Date();
+    var now = +new Date();
 
-      if ( !previous ) previous = now;
+    if ( !previous ) previous = now;
 
-      if ( now - previous > atleast ) {
-          fn();
-          // 重置上一次开始时间为本次结束时间
-          previous = now;
-      } else {
-          clearTimeout(timer);
-          timer = setTimeout(function() {
-              fn();
-          }, delay);
-      }
+    if ( now - previous > atleast ) {
+        fn();
+        // 重置上一次开始时间为本次结束时间
+        previous = now;
+    } else {
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            fn();
+        }, delay);
+    }
   }
 };
 ```
