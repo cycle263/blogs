@@ -1,20 +1,17 @@
-## 浏览器判断
-
-```js
 var agent = navigator.userAgent.toLowerCase();
 var opera = window.opera,
 var browser = {
-  ie		:  /(msie\s|trident.*rv:)([\w.]+)/.test(agent), // 检测当前浏览器是否为IE
+  ie: /(msie\s|trident.*rv:)([\w.]+)/.test(agent), // 检测当前浏览器是否为IE
 
   isEdge: userAgent.indexOf("Edge") > -1, // 检测当前浏览器是否为edge
 
-  opera	: ( !!opera && opera.version ), // 检测当前浏览器是否为Opera
+  opera: (!!opera && opera.version), // 检测当前浏览器是否为Opera
 
-  webkit	: ( agent.indexOf( ' applewebkit/' ) > -1 ),  // 检测当前浏览器是否是webkit内核的浏览器
+  webkit: (agent.indexOf(' applewebkit/') > -1),  // 检测当前浏览器是否是webkit内核的浏览器
 
-  mac	: ( agent.indexOf( 'macintosh' ) > -1 ),  // 检测当前浏览器是否是运行在mac平台下
+  mac: (agent.indexOf('macintosh') > -1),  // 检测当前浏览器是否是运行在mac平台下
 
-  quirks: ( document.compatMode == 'BackCompat' ),  // 检测当前浏览器是否处于“怪异模式”下
+  quirks: (document.compatMode == 'BackCompat'),  // 检测当前浏览器是否处于“怪异模式”下
 
   trident: agent.indexOf('Trident') > -1, // IE内核   
 
@@ -29,19 +26,19 @@ var browser = {
   ios: !!agent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // ios终端   
 
   android: agent.indexOf('Android') > -1 || agent.indexOf('Linux') > -1, // android终端或者uc浏览器   
-  iPhone: agent.indexOf('iPhone') > -1 , // 是否为iPhone或者QQHD浏览器   
+  iPhone: agent.indexOf('iPhone') > -1, // 是否为iPhone或者QQHD浏览器   
 
   iPad: agent.indexOf('iPad') > -1, // 是否iPad     
 
   webApp: agent.indexOf('Safari') == -1 // 是否web应该程序，没有头部与底部  
 
 };
-var isPc = function() {
-  return browser.mobile || browser.ios || browser.android ||    
+var isPc = function () {
+  return browser.mobile || browser.ios || browser.android ||
     browser.iPhone || browser.iPad;
 };
 
-var isPC2 = function() {
+var isPC2 = function () {
   var userAgentInfo = navigator.userAgent;
   var Agents = ["Android", "iPhone",
     "SymbianOS", "Windows Phone",
@@ -55,4 +52,3 @@ var isPC2 = function() {
   }
   return flag;
 }
-```

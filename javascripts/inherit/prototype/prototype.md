@@ -2,9 +2,9 @@
 
 * 1、prototype、__proto__、getPrototypeOf区分  
 
-  C.prototype是指建立由new C()创建的对象的原型；  
-  obj.__proto__是指获取obj的原型对象的非标准方法；  
-  Object.getPrototypeOf(obj)是指ES5中用来获取obj的原型对象的标准方法；
+  - C.prototype是指建立由new C()创建的对象的原型；  
+  - obj.__proto__是指获取obj的原型对象的非标准方法；  
+  - Object.getPrototypeOf(obj)是指ES5中用来获取obj的原型对象的标准方法；
     
   ```js
   if(typeof Object.create === "undefined"){
@@ -20,7 +20,7 @@
   }
   ```
 
-  ![prototype原型](../images/prototype.jpg)
+  ![prototype原型](../../images/prototype.jpg)
   
 * 2、尽量使用Object.getPrototypeOf获取对象原型  
 

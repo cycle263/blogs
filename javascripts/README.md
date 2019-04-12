@@ -35,9 +35,9 @@
 
 * [内存泄漏](./other/js内存泄漏)
 
-* [JavaScript原型详解](./depth/prototype)
+* [JavaScript原型详解](./inherit/prototype/prototype)
 
-* [浏览器线程详解](./other/async/thread)
+* [浏览器线程详解](./depth/async/thread)
 
 
 
