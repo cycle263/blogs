@@ -4,6 +4,18 @@
 
 其原理就是，通过负载均衡技术，将不同地点的用户请求定向到最合适的缓存服务器上去获取内容，以减少源站的服务器压力，解决因分布、带宽、服务器性能带来的访问延迟问题。宽泛的说，CDN 就是源服务器的一层静态资源缓存。
 
+* 规范做法
+
+html文件放在服务端（避免被缓存），javascript、css、图片等资源放入不同的CDN服务器（避免浏览器并行下载限制），并开启长缓存带上hash值，用于更新缓存。
+
+* webpack配置
+
+```js
+output.publicPath: '//assets.cdn.com/id/hash/'    // js的cdn地址
+css-loader.publicPath: '//assets.cdn.com/id/hash/'    // css引入的资源（图片）的cdn地址
+webPlugin.stylePublicPath: '//assets.cdn.com/id/hash/'    // css的cdn地址
+```
+
 * 几大类型
 
   - 传统的文件存储

@@ -120,9 +120,9 @@
 
   - webpack-spritesmith 制作雪碧图
 
-  - raw-loader 可以将文本文件的内容读取出来，注入到js和css中
+  - raw-loader 可以将文本文件的内容读取出来，注入到js和css中，例如：读取SVG为html文本内容
 
-  - svg-inline-loader 跟raw-loader相似，不同之处，它会分析SVG的内容去掉不必要的部分，以减少SVG大小
+  - svg-inline-loader 跟raw-loader相似，不同之处，它会分析SVG的内容去掉不必要的部分，以减少SVG大小，也就是说它有压缩svg的功能
 
 
 [手写loader入门](https://juejin.im/post/5a698a316fb9a01c9f5b9ca0)
