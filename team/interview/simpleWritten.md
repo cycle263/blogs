@@ -146,10 +146,10 @@ var func = function(){};
 Function.prototype.a = function(){console.log('a')};
 Object.prototype.b = function(){console.log('b')};
 var f = new func();
-func.a();
-func.b();
-f.a();
-f.b();
+func.a();   // a
+func.b();  // b
+f.a();  // 异常
+f.b();  // a
 
 
 
