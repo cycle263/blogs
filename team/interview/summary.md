@@ -506,10 +506,10 @@
 * 介绍pureComponet
 * 介绍Function Component
 * React数据流
-* props和state的区别
+* props和state的区别   [【详情解析】]({{site.baseurl}}/framework/React/getStart)
 * 介绍react context
 * 介绍class和ES5的类以及区别
-* 介绍箭头函数和普通函数的区别
+* 介绍箭头函数和普通函数的区别    [【详情解析】]({{site.baseurl}}/team/interview/selectWritten)
 * 介绍defineProperty方法    [【详情解析】]({{site.baseurl}}/ECMAScript/summary/defineProperty)
 * `for..in` 和 `object.keys` 的区别
 * 介绍闭包，使用场景

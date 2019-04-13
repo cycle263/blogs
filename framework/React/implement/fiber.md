@@ -47,3 +47,8 @@ React 框架内部的运作可以分为 3 层：
   - high，在不久的将来立即执行
   - low，稍微延迟执行也没关系
   - offscreen，下一次render时或scroll时才执行
+
+
+## 参考资源
+
+[fiber架构和原理机制](https://github.com/acdlite/react-fiber-architecture)
