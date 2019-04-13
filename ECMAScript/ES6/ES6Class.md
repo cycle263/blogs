@@ -60,7 +60,7 @@
     //true
     ```
 
-  - 可以通过实例的__proto__属性为Class添加方法，这样会改变Class的原始定义，影响到所有实例。因此，必须谨慎使用，不推荐这样的写法
+  - 可以通过实例的__proto__属性为Class添加方法，这样会改变Class的原始定义，影响到所有实例。因此，必须谨慎使用，不推荐这样的写法，另外，new、Object.create和Object.setPrototypeOf可以设置__proto__，但推荐使用Object.getPrototypeOf和 Object.setPrototypeOf。
 
   - name属性总是返回紧跟在class关键字后面的类名。
 

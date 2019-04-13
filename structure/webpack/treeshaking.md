@@ -37,3 +37,7 @@ node_modules/redux/lib/index.js
   }
 }
 ```
+
+* **失效情况**
+
+必须采用ES6模块化语法的代码，因为ES6模块化的代码是静态的，webpack才能分析出需要剔除哪些代码。
