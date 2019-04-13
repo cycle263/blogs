@@ -2,6 +2,15 @@
 
 * Component
 
+  ```js
+  function Component(props, context, update) {}
+  Component.prototype.setState = function(partialState, callback) {}
+  const React = {
+    Component,
+    // ...
+  }
+  ```
+
   - class component
 
     + component
@@ -93,7 +102,7 @@
 
 * reconcile (diff算法)
 
-  react16将reconcile算法由之前的stack架构升级成了fiber架构，更近一步做的性能优化，不会阻塞js主线程，可以进行异步渲染。fiber架构底层是基于requestIdleCallback来调度diff算法的执行，也就是可以随时暂时diff比较执行，让用户输入、UI渲染等任务先行。
+  react16将reconcile算法由之前的stack架构升级成了fiber架构，更近一步做的性能优化，不会阻塞js主线程，可以进行异步渲染。fiber架构底层是基于requestIdleCallback来调度diff算法的执行，也就是可以随时暂时diff比较执行，让用户输入、UI渲染等任务先行。requestIdleCallback是一个当浏览器处于闲置状态时，调度工作的新的性能相关的API.
 
   ```js
   function reconcile(parentDom, instance, element) {
