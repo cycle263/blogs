@@ -138,6 +138,10 @@ webpack的优化技巧，提升构建速度(并行编译、hash缓存、预编�
     ]
     ```
 
+  - tree Shaking
+
+    Tree shaking一直是一个美丽而遥不可及的话题，它是一个术语，通常用于描述移除 JavaScript 上下文中的未引用代码。这个术语和概念实际上是兴起于 ES2015 模块打包工具 rollup。可以简单地理解为摇树，抖落掉枯萎无用的树叶。
+
   - HappyPack
 
     webpack的打包过程是io密集和计算密集型的操作，如果能同时fork多个进程并行处理各个任务，将会有效的缩短构建时间，HappyPack就能做到这点。其中happyThreadPool是根据cpu数量生成的共享进程池，防止过多的占用系统资源。

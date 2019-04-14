@@ -221,6 +221,7 @@ module.exports = MyPlugin;
     const autoWebPlugin = new AutoWebPlugin('pages', {  // pages目录下的所有入口
       template: './template.html',
       postEntrys: ['./commmon.css'],  // 公用资源文件
+      // 提出所有页面的公共代码
       commonsChunk: {
         name: 'common',
       },
