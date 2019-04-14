@@ -144,7 +144,9 @@ webpack的优化技巧，提升构建速度(并行编译、hash缓存、预编�
 
   - HappyPack
 
-    webpack的打包过程是io密集和计算密集型的操作，如果能同时fork多个进程并行处理各个任务，将会有效的缩短构建时间，HappyPack就能做到这点。其中happyThreadPool是根据cpu数量生成的共享进程池，防止过多的占用系统资源。
+    webpack的打包过程是io密集和计算密集型的操作，HappyPack能同时fork多个进程并行处理各个任务，处理完毕之后会将结果发给运行在主进程的核心调度器，它们之间的数据通信是通过进程间的通信API实现，这样将会有效的缩短构建时间。
+    
+    为了防止过多占用系统资源，可以配置`threadPool:happyThreadPool`来共享进程池。
 
     ```js
     const HappyPack = require('happypack');
