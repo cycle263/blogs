@@ -96,7 +96,7 @@
 * React声明周期及自己的理解
 * 如何配置React-Router
 * 路由的动态加载模块
-* 服务端渲染SSR   [【详情解析】]({{site.baseurl}}/front-end/performance/SSRAndCSR)
+* 服务端渲染SSR   [【详情解析】]({{site.baseurl}}/mobile/SSR/SSRAndCSR)
 * 介绍路由的history   [【详情解析】]({{site.baseurl}}/framework/React/router)
 * 介绍Redux数据流的流程   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/redux)
 * Redux如何实现多个组件之间的通信，多个组件使用相同状态如何进行管理
