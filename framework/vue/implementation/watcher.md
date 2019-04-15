@@ -1,3 +1,4 @@
+```js
 function Watcher(vm, exp, cb) {
   this.cb = cb;
   this.vm = vm;
@@ -40,3 +41,4 @@ Dep.prototype = {
     });
   }
 };
+```

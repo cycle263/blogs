@@ -112,6 +112,8 @@ React自己实现了一套高效的事件注册，存储，分发和重用逻辑
 
   - 需要使用浏览器原生事件，可以通过合成事件的nativeEvent属性获取
 
+  - 重复定义react合成事件，后面的会覆盖前面
+
 * vs 原生事件
 
   - target值不同，代理在Document或者react container元素

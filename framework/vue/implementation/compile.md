@@ -1,3 +1,4 @@
+```js
 /**
  * vue构造函数
  * @param {*} options 
@@ -84,3 +85,4 @@ function Watcher(el, vm, val, attr) {
 Watcher.prototype.update = function () {
   this.el[this.attr] = this.vm._data[this.val]; // 获取data的最新值 赋值给dom 更新视图
 }
+```

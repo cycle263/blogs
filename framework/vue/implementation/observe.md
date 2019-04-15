@@ -1,3 +1,4 @@
+```js
 /**
  * 数据监听器
  * @param {*} data 
@@ -61,3 +62,4 @@ function resetSchedulerState() {
   has = {}
   waiting = false
 }
+```

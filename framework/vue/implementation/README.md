@@ -1,78 +1,150 @@
 ## vue双向绑定的实现
 
-* 数据监听器Observer，对数据对象的所有属性进行监听，有变动获取最新值并通知订阅者
+* Observer
 
-* 指令解析器Compile，对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的更新函数
+  数据监听器Observer，对数据对象的所有属性进行监听，有变动获取最新值并通知订阅者。
 
-* Watcher函数，作为连接Observer和Compile的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的相应回调函数，从而更新视图
+  [Observer实现思路](./observe)
 
+* Compile
 
-## nextTick实现
+  指令解析器Compile，对每个元素节点的指令进行扫描和解析，根据指令模板替换数据，以及绑定相应的更新函数。
 
-* 背景
+  [Compile实现思路](./compile)
 
-  浏览器主线程的执行过程就是一个 tick，nextTick 顾名思义，就是下一个 tick。由于 JS 执行是单线程的，在一个 tick 的过程中，它可能会多次修改数据，Vue.js 并不需要每次去更新DOM视图，它会把这些数据的修改全部 push 到一个队列里，然后内部调用一次 nextTick 去更新视图，所以数据到 DOM 视图的变化是需要在下一个 tick 才能完成。
-  
-  js中的task分为macro task 和 micro task。
+* Watcher
+
+  Watcher函数，作为连接Observer和Compile的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的相应回调函数，从而更新视图。
+
+  [Watcher实现思路](./watcher)
+
+* v_modal的简单实现
+
+  自定义一个Form组件，通过contex向表单子组件暴露两个属：
+
+  - modal，Form表单的所有数据（包括表单元素子组件），一般用键值对表示，modal可以由父组件传入，也可自控。
+
+  - changeModal，改变modal数据的方法
 
   ```js
-  // 解释代码
-  for (macroTask of macroTaskQueue) {
-    // 1. Handle current MACRO-TASK
-    handleMacroTask();
+  class MyForm extends Component {
+    static childContextTypes = {
+      modal: PropTypes.object,
+      changeModal: PropTypes.func,
+    }
 
-    // 2. Handle all MICRO-TASK
-    for (microTask of microTaskQueue) {
-        handleMicroTask(microTask);
+    constructor(props, context) {
+      super(props, context);
+      this.state = {
+        modal: {},
+      };
+    }
+
+    changeModal = (k, v) => {
+      this.setState({
+        modal: { ...this.state.modal, [k]: v },
+      });
+    }
+
+    getChildContext() {
+      return {
+        modal: this.state.modal,
+        changeModal: this.changeModal,
+      };
+    }
+
+    onSubmit = () => {
+      // 提交form表单所有数据
+      console.log(this.state.modal);
+    }
+
+    render() {
+      return (
+        <div>
+          {this.props.children}
+          <button type="button" onClick={this.onSubmit}>提交</button>
+        </div>
+      )
+    }
+  }
+
+  // 双向绑定HOC
+  function proxyHoc(WrappedComponent) {
+    return class extends Component {
+      static contextTypes = {
+        model: PropTypes.object,
+        changeModel: PropTypes.func
+      }
+
+      onChange = (event) => {
+        const { changeModel } = this.context;
+        const { v_model } = this.props;
+        changeModel(v_model, event.target.value);
+      }
+
+      render() {
+        const { model } = this.context;
+        const { v_model } = this.props;
+        return <WrappedComponent {...this.props} value={model[v_model]} 
+          onChange={this.onChange} />;
+      }
+    }
+  }
+
+  // 表单校验HOC
+  function validateHoc(WrappedComponent) {
+    return class extends Component {
+      constructor(props) {
+        super(props);
+        this.state = { error: '' }
+      }
+      onChange = (event) => {
+        const { validator } = this.props;
+        if (validator && typeof validator.verifyFunc === 'function') {
+          if (!validator.verifyFunc(event.target.value)) {
+            this.setState({ error: validator.msg })
+          } else {
+            this.setState({ error: '' })
+          }
+        }
+      }
+      render() {
+        return <div>
+          <WrappedComponent onChange={this.onChange}  {...this.props} />
+          <div className="error-info">{this.state.error || ''}</div>
+        </div>
+      }
+    }
+  }
+
+  @proxyHoc
+  @validateHoc
+  class Input extends Component {
+    render() {
+      return <input {...this.props}></input>
+    }
+  }
+
+  export default class extends Component {
+    render() {
+      const validatorName = {
+        verifyFunc: (val) => !!val,
+        msg: '请输入name'
+      }
+      const validatorPwd = {
+        verifyFunc: (val) => val && val.length > 8,
+        msg: '密码必须大于8位'
+      }
+      return (
+        <MyForm>
+          <Input type="text" v_model="name" validator={validatorName} />
+          <Input type="password" v_model="pwd" validator={validatorPwd} />
+        </MyForm>
+      )
     }
   }
   ```
 
-* 2.5版本之前
 
-  `Promise -> MutationObserver -> setTimeout`
 
-  MutationObserver属于微任务，优先级小于Promise，主要用于监听一个DOM变动， 当DOM对象树发生任何变动时，Mutation Observer会得到通知。
-
-* 2.5版本之后
-
-  `setImmediate -> MessageChannel -> Promise -> setTimeout`
-
-  MessageChannel属于宏任务，优先级是：MessageChannel -> setTimeout。
-
-  变动原因：micro task 的执行优先级非常高，在某些场景下它甚至要比事件冒泡还要快，就会导致一些诡异的问题。所以最终 nextTick 采取的策略是默认走 micro task，对于一些 DOM 交互事件，如 v-on 绑定的事件回调函数的处理，会强制走 macro task。
-
-  对于 macro task 的执行，Vue.js 优先检测是否支持原生 setImmediate，这是一个高版本 IE 和 Edge 才支持的特性，不支持的话再去检测是否支持原生的 MessageChannel，如果也不支持的话就会降级为 setTimeout 0。
-
-  ```js
-  if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
-    timerFunc = () => {
-      setImmediate(nextTickHandler)
-    }
-  } else if (typeof MessageChannel !== 'undefined' && (
-    isNative(MessageChannel) ||
-    // PhantomJS
-    MessageChannel.toString() === '[object MessageChannelConstructor]'
-  )) {
-    const channel = new MessageChannel()
-    const port = channel.port2
-    channel.port1.onmessage = nextTickHandler
-    timerFunc = () => {
-      port.postMessage(1)
-    }
-  } else
-  /* istanbul ignore next */
-  if (typeof Promise !== 'undefined' && isNative(Promise)) {
-    // use microtask in non-DOM environments, e.g. Weex
-    const p = Promise.resolve()
-    timerFunc = () => {
-      p.then(nextTickHandler)
-    }
-  } else {
-    // fallback to setTimeout
-    timerFunc = () => {
-      setTimeout(nextTickHandler, 0)
-    }
-  }
-  ```
 

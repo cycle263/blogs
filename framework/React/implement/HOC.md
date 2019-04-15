@@ -1,46 +1,17 @@
 ## 高阶组件（HOC）
 
-由原始组件创造一个新的组件并且扩展它的行为。高阶组件通过包裹（wrapped）被传入的React组件，经过一系列处理，最终返回一个相对增强（enhanced）的React组件，供其他组件调用。
+高阶组件可以看作React对装饰模式的一种实现，是一个没有副作用的纯函数。其本质就是一个函数接受一个组件作为参数，并返回一个新的组件，新的组件主要是扩展它的行为。例如：高阶组件通过包裹（wrapped）被传入的React组件，经过一系列处理，最终返回一个相对增强（enhanced）的React组件，供其他组件调用。
 
-高阶组件是通过将原组件 包裹（wrapping） 在容器组件（container component）里面的方式来 组合（composes） 使用原组件。高阶组件就是一个没有副作用的纯函数。
-
-```jsx
-// MyComponent 是纯的 UI 组件
-<div className="index">
-  <p>{this.props.text}</p>
-  <input defaultValue={this.props.name} onChange={this.props.onChange} />
-</div>
-
-
-const App = connect(mapStateToProps, mapDispatchToProps)(MyComponent);
-
-// mapStateToProps: 定义 UI 组件参数与 State 之间的映射
-// mapDispatchToProps: 定义 UI 组件与 Action 之间的映射
-function reducer(state = {
-  text: '你好，访问者',
-  name: '访问者'
-}, action) {
-  switch (action.type) {
-    case 'change':
-      return {
-        name: action.payload,
-        text: '你好，' + action.payload
-      };
+ ```js
+  function showComp(WrappedComp) {
+    return class extends Component {
+      render() {
+        const { visible, ...props } = this.props;
+        return visible ? <WrappedComp {...props} /> : null;
+      }
+    }
   }
-}
-const initState = {};
-const store = createStore(reducer, initState);
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.body.appendChild(document.createElement('div'))
-);
-
-// Store由 Redux 提供的createStore方法生成，该方法接受reducer作为参数。
-// 为了把Store传入组件，必须使用 Redux 提供的Provider组件在应用的最外面，包裹一层。
-```
+  ```
 
 * HOC的实现方式
 
@@ -103,22 +74,80 @@ ReactDOM.render(
     }
     ```
 
-* compose（组合）
+* React中如何使用HOC
 
-组合多个高阶组件，高阶组件为React组件增强了一个功能，如果需要同时增加多个功能需要组合多个高阶组件，使用compose可以简化上述过程，也能体现函数式编程思想。
+  - compose（组合）
 
-compose可以帮助我们组合任意个（包括0个）高阶函数，例如compose(a, b, c)返回一个新的函数d，函数d依然接受一个函数作为入参，只不过在内部会依次调用c, b, a，从表现层对使用者保持透明。compose函数实现方式有很多种，比如：recompact.compose。
+  组合多个高阶组件，高阶组件为React组件增强了一个功能，如果需要同时增加多个功能需要组合多个高阶组件，使用compose可以简化上述过程，也能体现函数式编程思想。
+
+  compose可以帮助我们组合任意个（包括0个）高阶函数，例如compose(a, b, c)返回一个新的函数d，函数d依然接受一个函数作为入参，只不过在内部会依次调用c, b, a，从表现层对使用者保持透明。compose函数实现方式有很多种，比如：recompact.compose，lodash.flowRight，Redux提供的combineReducers函数等
+
+    ```js
+    /* use compose */
+    const enhance = compose(withHeader, withLoading);
+    @enhance
+    class Demo extends Component{ }
+    ```
+
+  另外，redux中的connect，其实就是一个HOC。
+
+    ```jsx
+    // MyComponent 是纯的 UI 组件
+    <div className="index">
+      <p>{this.props.text}</p>
+      <input defaultValue={this.props.name} onChange={this.props.onChange} />
+    </div>
+
+    const App = connect(mapStateToProps, mapDispatchToProps)(MyComponent);
+
+    // mapStateToProps: 定义 UI 组件参数与 State 之间的映射
+    // mapDispatchToProps: 定义 UI 组件与 Action 之间的映射
+    function reducer(state = {
+      text: '你好，访问者',
+      name: '访问者'
+    }, action) {
+      switch (action.type) {
+        case 'change':
+          return {
+            name: action.payload,
+            text: '你好，' + action.payload
+          };
+      }
+    }
+    const initState = {};
+    const store = createStore(reducer, initState);
+
+    ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.body.appendChild(document.createElement('div'))
+    );
+
+    // Store由 Redux 提供的createStore方法生成，该方法接受reducer作为参数。
+    // 为了把Store传入组件，必须使用 Redux 提供的Provider组件在应用的最外面，包裹一层。
+    ```
+
+  - 装饰器
+
+  使用ES7的Decorators让写法更加优雅
 
   ```js
   @withHeader
   @withLoading
   class Demo extends Component{ }
 
-  /* use compose */
-  const enhance = compose(withHeader, withLoading);
-  @enhance
-  class Demo extends Component{ }
+  // 或者结合compose
+  const hoc = compose(withHeader, withLoading);
+  @hoc
+  class MyConponent extends Component {}
   ```
+
+* HOC主要应用
+
+  - 公用渲染判断（权限，用户基本信息，日志埋点）
+  - 数据双向绑定
+  - 表单校验，自定义form组件，包裹所有表单元素，使用context传值
 
 * 与父组件区别
 
