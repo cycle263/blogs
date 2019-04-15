@@ -91,7 +91,7 @@
     class Demo extends Component{ }
     ```
 
-  另外，redux中的connect，其实就是一个HOC。
+  另外，redux中的connect，其实就是一个柯里化的HOC。
 
     ```jsx
     // MyComponent 是纯的 UI 组件
