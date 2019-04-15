@@ -26,7 +26,7 @@ module.exports = {
         }]
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'] //扩展名，import时可以不加的后缀名
+        extensions: ['.js', '.jsx'] //扩展名，import时可以不加的后缀名
     },
     plugins: [
         new CommonsChunkPlugin({

@@ -48,3 +48,21 @@
   [HOC详情参见](./HOC)
 
 * Hooks
+
+  Hooks是React v16.7.0-alpha中加入的新特性。它可以让你在class以外使用state和其他React特性。使用Hooks，可以在将含有state的逻辑从组件中抽象出来，实现状态逻辑复用，并且有利于测试和维护。
+
+  - State hook
+
+  ```js
+  export default function HookTest() {
+    const [count, setCount] = useState(0);
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => { setCount(count + 1); setNumber(number + 1); }}>
+          Click me
+          </button>
+      </div>
+    );
+  }
+  ```

@@ -20,6 +20,7 @@
     ```js
     export default function withHeader(WrappedComponent) {
       return class HOC extends Component {
+        getWrappedRef = () => this.wrappedRef;    /* 获取元组件的ref, React@16.3可以使用forward */
         render() {
           const newProps = {
             test:'hoc'
@@ -59,6 +60,7 @@
     /* 渲染劫持 */
     exprot default function (WrappedComponent) {
       return class extends WrappedComponent {
+        
         render() {
           /* tree对象属性的所有writable属性均被配置为false，因此使用cloneElement来增加新组件 */
           const tree = super.render();
@@ -152,6 +154,16 @@
 * 与父组件区别
 
 高阶组件作为一个函数，它可以更加纯粹地关注业务逻辑层面的代码，比如数据处理，数据校验，发送请求等，可以改善目前代码里业务逻辑和UI逻辑混杂在一起的现状。父组件则是UI层的东西，我们先前经常把一些业务逻辑处理放在父组件里，这样会造成父组件混乱的情况。为了代码进一步解耦，可以考虑使用高阶组件这种模式。
+
+* 高阶组件的基本原则
+
+  - 无副作用
+
+  高阶组件就是一个没有副作用的纯函数。函数的调用参数相同，则结构永远相同。它不依赖于函数外部任何状态或数据的变化，只依赖于入参。高阶组件函数不会产生任何可观察的副作用，例如网络请求，输入和输出设备或数据突变。
+
+  - 透传props
+
+  未使用或改变的props一定要透传给原组件，高阶组件增强原组件功能，但绝对不改变原组件props。
 
 
 ### 高阶函数
