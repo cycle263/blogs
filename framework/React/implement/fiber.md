@@ -28,6 +28,17 @@ st->op1->op2->op3(right)->op4->op5->op6->e
 
 task按照优先级之后，可能低优先级的任务永远不会执行，称之为starvation；task有可能被打断，需要重新执行，那么某些依赖生命周期实现的业务逻辑可能会受到影响。
 
+* 离散型交互
+
+  屏幕刷新频率是一个固定的刷新频率，通常是60次/秒，就是说，渲染一帧的时间要尽可能的低于16.6毫秒，否则在一些高频次交互动作中是会出现丢帧卡顿的情况，这就是因为渲染帧和刷新频率不同步造成的。
+
+  对于离散型交互动作，不要求一帧的渲染时间低于16.6毫秒，但是也是有标准RAIL模型需要遵循的。
+
+* requestIdleCallback Polyfill方案
+
+  由于浏览器兼容的问题，react项目组并没有直接使用requestIdleCallback API，而是使用的requestIdleCallback Polyfill方案。
+
+  直接固定死绘制每帧的总时间为33ms，借助requestAnimationFrame让一批批扁平的任务恰好控制在一批批的绘制每帧时间内执行。
 
 ### 调度器(Scheduler)
 
@@ -52,3 +63,5 @@ React 框架内部的运作可以分为 3 层：
 ## 参考资源
 
 [fiber架构和原理机制](https://github.com/acdlite/react-fiber-architecture)
+
+[浅谈React Scheduler任务管理](https://zhuanlan.zhihu.com/p/48254036)

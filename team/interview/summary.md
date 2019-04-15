@@ -155,7 +155,7 @@
 * Http报文的请求会有几个部分
 * cookie放哪里，cookie能做的事情和存在的价值
 * cookie和token都存放在header里面，为什么只劫持前者
-* cookie和session有哪些方面的区别
+* cookie和session有哪些方面的区别   `(client vs server, 安全性，容量)`
 * React中Dom结构发生变化后内部经历了哪些变化
 * React挂载的时候有3个组件，`textComponent、composeComponent、domComponent`，区别和关系，Dom结构发生变化时怎么区分data的变化，怎么更新，更新怎么调度，如果更新的时候还有其他任务存在怎么处理
 * key主要是解决哪一类的问题，为什么不建议用索引index（重绘）
