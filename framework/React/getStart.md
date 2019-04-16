@@ -67,11 +67,11 @@
     }
     ```
 
-* constructor为何定要调用super(props)
+* constructor为何定要调用super(props)?
 
-  super方法用来初始化this对象，如果要在constructor中使用到 this，则必须调用此方法，否则有异常抛出 `SyntaxError: unknown: 'this' is not allowed before super()`；没有写constructor方法react会自动调用。
+  在 JavaScript 中，super 指的是父类的构造函数。super方法用来初始化this对象，如果要在constructor中使用到 this，则必须调用此方法，否则有异常抛出 `SyntaxError: unknown: 'this' is not allowed before super()`；没有写constructor方法react会自动调用。
 
-  简单点说，`super(props)` 方法相当于ES5中继承的 `sup.prototype.constructor.call(this, props)` 语句作用。
+  而传参props和context，是为了在构造函数中使用这两个属性，例如：`this.props / this.context`。 简单点说，`super(props)` 方法相当于ES5中继承的 `sup.prototype.constructor.call(this, props) / sup.call(this, props)` 语句作用。
 
 * 绑定this作用域
 

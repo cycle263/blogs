@@ -23,6 +23,23 @@
       return <div>{this.props.children}</div>
     }
   })
+
+  // vue中的mixin
+  var Component = Vue.extend({
+    mixins: [extProp]
+  });
+
+  // mixin class
+  const mixin = function(obj, mixins) {
+    const newObj = obj;
+    newObj.prototype = Object.create(obj.prototype);
+    for (let prop in mixins) {
+      if (mixins.hasOwnProperty(prop)) {
+        newObj.prototype[prop] = mixins[prop];
+      }
+    }
+    return newObj;
+  };
   ```
   - Mixin 的问题有哪些呢？
 
@@ -76,3 +93,7 @@
     );
   }
   ```
+
+  - effect hook
+
+  `未完待续...`

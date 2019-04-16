@@ -1,13 +1,14 @@
 ## react
 
 * 如何实现一个搜索高亮的文件树？    `拆分成实现树和实现高亮搜索两个功能`
-* 解决页面loading状态和error状态的显示？
+* 解决页面loading状态和error状态的显示？  `高阶组件 + 请求劫持`
 * redux中如何优化action到store的书写效率？
-* react 的 diff 算法基本原理与源码解释
-* 为什么需要调用 super(props)？ 为什么推荐在componentDidMount中发起request请求？
+* react 的 diff 算法基本原理与源码解释    [【详情解析】]({{site.baseurl}}/framework/React/Note/diff)
+* constructor中为什么需要调用 super(props)？ [【详情解析】]({{site.baseurl}}/framework/React/getStart)
+* 为什么推荐在componentDidMount中发起request请求？
 * 如何细粒度地控制 react 组件更新
 * react 的 key 的作用以及实现原理，并设定一个具体情境进行分析
-* 对 Redux 和 Mobx 的设计理念理解
+* 对 Redux 和 Mobx 的设计理念理解   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/Mobx)
 * virtual-dom 的基本原理与简单的源码解释
 * pure-component 和 shouldComponentUpdate，pure-component, function-component 相关概念
 * 介绍下React中的this
