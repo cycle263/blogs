@@ -84,13 +84,15 @@
 
   * **[Modularity](./structure)**
 
-    AMD, CommonJS, CMD
+    AMD, CommonJS, CMD, UMD
 
     - CommonJS: 模块通过 require 方法来同步加载所要依赖的其他模块，然后通过 exports 或 module.exports 来导出需要暴露的接口。
 
     - AMD: 一个主要接口 define(id?, dependencies?, factory)，它要在声明模块的时候指定所有的依赖 dependencies，并且还要当做形参传到 factory 中，对于依赖的模块提前执行，依赖前置。
 
     - CMD: 规范和 AMD 很相似，尽量保持简单，并与 CommonJS 和 Node.js 的 Modules 规范保持了很大的兼容性。
+
+    - UMD: UMD是AMD和CommonJS的糅合，它支持AMD和CommonJS规范，同时还支持古老的全局模块模式。
 
   * **[Blob vs ArrayBuffer vs TypeArray](./Html/webAPI)**
 
