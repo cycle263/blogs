@@ -239,7 +239,7 @@
 * 前端怎么做单元测试
 * webpack生命周期
 * webpack打包的整个过程
-* tree shaking原理（`同时使用esm和cjs模块规范，shaking失效`）
+* tree shaking原理（`同时使用esm和cjs模块规范，shaking失效`）[【详情解析】]({{site.baseurl}}/structure/webpack/deep/treeshaking)
 * 常用的plugins
 * pm2怎么做进程管理，进程挂掉怎么处理
 * 不用pm2怎么做进程管理
@@ -311,7 +311,6 @@
 * 介绍Promise
 * Promise有几个状态
 * 说一下闭包
-* React的生命周期
 * componentWillReceiveProps的触发条件是什么
 * React16.3对生命周期的改变
 * 介绍下React的Filber架构
