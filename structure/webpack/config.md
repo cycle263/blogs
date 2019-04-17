@@ -22,9 +22,7 @@
 
     - publicPath 输出解析文件的目录，url相对于HTML页面。publicPath并不会对生成文件的路径造成影响，主要是对你的页面里面引入的资源的路径做对应的补全，常见的就是css文件里面引入的图片。因为输出目录和开发目录的结构的变化，如果不设置publicPath，就会造成图片路径找不到。
 
-    - libraryTarget  `umd`适合js模块库
-
-    - umdNamedDefine
+    - libraryTarget  配置如何暴露library，可选的值为：var、this、window、global、commonjs、commonjs2、amd、amd-require、umd等。通常使用umd即可，umd是一种混合规范，可以将library暴露为所有的模块定义下都可运行的方式，可以在CommonJS, AMD环境下运行，兼容性最好。
 
     **静态资源最终访问路径 = output.publicPath + 资源loader或插件等配置路径，另外publicPath应该以'/'结尾，同时其他loader或插件的配置不要以'/'开头。**
 

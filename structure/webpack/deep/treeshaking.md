@@ -65,3 +65,7 @@ node_modules/redux/lib/index.js
 [tree shaking性能优化实战](https://juejin.im/post/5a4dc842518825698e7279a9)
 
 [tree shaking如何失效了](https://zhuanlan.zhihu.com/p/32831172)
+
+[Tree-Shaking性能优化原理篇](https://juejin.im/post/5a4dc842518825698e7279a9)
+
+[ES6模块与Tree-Shaking](https://zhuanlan.zhihu.com/p/43844419)
