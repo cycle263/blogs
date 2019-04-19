@@ -120,7 +120,7 @@
 
 ## 其他
 
-[前端十大算法](https://juejin.im/post/5b72f0caf265da282809f3b5)
-[前端常见算法问题](https://juejin.im/entry/58be2168ac502e006c261ae7)
-[leetcode刷题](https://leetcode.com/)
-[前端算法与数据结构](https://zhuanlan.zhihu.com/p/27659059)
+- [前端十大算法](https://juejin.im/post/5b72f0caf265da282809f3b5)
+- [前端常见算法问题](https://juejin.im/entry/58be2168ac502e006c261ae7)
+- [leetcode刷题](https://leetcode.com/)
+- [前端算法与数据结构](https://zhuanlan.zhihu.com/p/27659059)
