@@ -14,7 +14,6 @@
   - no-cache -- HTML meta no-cache 定义页面缓存
   - expires -- HTML meta expires 定义网页缓存过期时间
 
-
 * 使用详解
   
   http-equiv类似于HTTP的头部协议，它回应给浏览器一些有用的信息，以帮助正确和精确地显示网页内容。
