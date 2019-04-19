@@ -16,6 +16,8 @@
 
 * [有趣的代码题](fun-interview)
 
+* [常见的算法题](algoInterview)
+
 ## 外部链接
 
 * 1、[2014年最新web前端开发面试题](http://www.phperz.com/article/14/0925/25668.html#jshttp://www.w3cfuns.com/article-5598http://weibo.com/p/23041887ca447d0102vpk4)
