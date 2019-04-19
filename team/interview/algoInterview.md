@@ -4,11 +4,9 @@
 
   ```js
   function swap(a, b) {
-    console.log(a, b);
     a = a - b;
     b = b + a;
     a = b - a;
-    console.log(a, b);
   }
   swap(3, 7);
   ```
@@ -68,6 +66,56 @@
 
   ```js
   var string = '(([]()[])[])';
+  ```
+
+* 数组扁平化
+
+  ```js
+  var arr = [[2],[[2,3],[2]],3,4];
+  arr.toString().split(',').map(item=> +item );
+  ```
+
+* 二分查找
+
+  ```js
+  // @arr 适合已经排序的数组
+  function binaryFind(arr, target, low = 0, high = arr.length - 1) {
+    const n = Math.floor((low+high) /2);
+    const cur = arr[n];
+    if(cur === target) {
+        return `找到了${target},在第${n+1}个`;
+    } else if(cur > target) {
+        return binaryFind(arr,target,low, n-1);
+    } else if (cur < target) {
+        return binaryFind(arr,target,n+1,high);
+    }
+    return -1;
+  }
+  ```
+
+* 找出数组里面任意两个数相加等于一个值k？
+
+  `排序去掉大于k的值，在[最小值，小于但最接近k的值] 区间进行二分查找`
+
+* 数组去重
+
+  ```js
+  // Set去重
+  function uniqueArray(arr){
+    return Array.from(new Set(arr));
+  }
+
+  // Object + Array
+  function uniqueArray(arr) {
+    var obj = {}, temp = []
+    arr.forEach(item => {
+      if (!obj[item]) {
+        ojb[item] = true;
+        temp.push(item);
+      }
+    });
+    return temp;
+  }
   ```
 
 ## 其他

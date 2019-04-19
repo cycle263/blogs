@@ -63,26 +63,34 @@
   ```js
   function autoGenerator(generator){
     var g = generator();
-
     function next(){
       var res = g.next();  // {value: xxx, done: xxx}
-
       if (res.done) {
-          return res.value;
+        return res.value;
       }
-
       if(typeof res.value === 'function'){    // 认为是回调
-          res.value(next);
+        res.value(next);
       }else if(typeof res.value === 'object' && typeof res.value.then === 'function'){     // 认为是promise
-          res.value.then(function(){
-              next();
-          })
+        res.value.then(() => next());
       }else{
-          next();
+        next();
       }
     }
-
     next();
+  }
+
+  function run(generat) {
+    const iterator = generat();
+    function autoRun(iteration) {
+      if(iteration.done) {
+        return iteration.value;
+      }  //出口
+      const anotherPromise = iteration.value;
+      anoterPromise.then(x => {
+        return autoRun(iterator.next(x));  //递归条件
+      });
+    }
+    return autoRun(iterator.next()) 
   }
   ```
   
