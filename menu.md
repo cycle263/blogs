@@ -90,7 +90,8 @@
     - [Unicode、ASCII和utf-8等编码如何区分？](./http/unicode)
     - [markdown入门基础](./team/Markdown)
     - [面试知识点概要](./team/interview/simpleInterview)
-    - [常用面试知识点简述](./team/interview/summary)
+    - [大厂面试知识点目录](./team/interview/summary)
+    - [常见算法题入门](./team/interview/algoInterview)
 
 * [返回首页](./)
 
