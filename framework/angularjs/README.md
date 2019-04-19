@@ -12,7 +12,7 @@
   - Timer事件($timeout, $interval)
   - 执行$digest()或$apply()
 
-  Object.defineProperties中的setter/getter实现属性变化监控watcher，IE低版本可以用 `Object.__defineGetter__ / Object.__defineSetter__ `替换。
+  Object.defineProperties中的setter/getter实现属性变化监控watcher，IE低版本可以用 `Object.__defineGetter__ / Object.__defineSetter__ `替换。__defineGetter__ 可以给调用的对象属性绑定函数。
 
   ```html
   <button ng-click="val=val+1">increase 1</button>
