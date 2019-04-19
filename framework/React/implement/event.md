@@ -149,6 +149,6 @@ function invokeGuardedCallback(name, func, a) {
 ```
 
 
-## 参考资料
+### 参考资料
 
 [react为何不像vue一样自动绑定所有函数的this指向？](https://www.zhihu.com/question/300850914)

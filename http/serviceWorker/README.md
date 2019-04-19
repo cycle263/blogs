@@ -106,6 +106,6 @@ this.addEventListener('fetch', event => {
 
 - 结合webpack，可以使用webpack插件 serviceworker-webpack-plugin
 
-参考资料
+### 参考资料
 
 [如何使用Service_Workers](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API/Using_Service_Workers)

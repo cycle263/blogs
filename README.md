@@ -28,7 +28,7 @@
       document.querySelectorAll('selector');
       ```
 
-  * **[Angularjs](./framework/angular)**
+  * **[Angularjs](./framework/angularjs)**
 
     Angular 1.3, Angular 2 ...
 
@@ -36,7 +36,7 @@
 
       index.html --> boot --> app
 
-    - **[脏检查机制](./framework/angular/双向绑定)**
+    - **[脏检查机制](./framework/angularjs/双向绑定)**
 
       指定事件触发后，才进入$digest cycle，$digest ttl默认为10
 

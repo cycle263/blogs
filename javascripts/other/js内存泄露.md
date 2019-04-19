@@ -127,7 +127,7 @@
 
 * ImageData, ArrayBuffer等合理使用，避免过多开销。
 
-参考资料
+### 参考资料
 
 [js内存管理](https://juejin.im/post/5ae86789f265da0ba062f220)
 

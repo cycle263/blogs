@@ -21,7 +21,7 @@
 
   `数据更改 -> setter -> Dep -> Watcher -> nextTick -> patch -> 更新视图`
 
-  ![vue流程图](../images/progress.jpeg)
+  ![vue流程图](./images/progress.jpeg)
 
 * 双向绑定
 
@@ -51,7 +51,7 @@
 
   创建 -> 挂载 -> 更新 -> 销毁
 
-  [vue生命周期](../images/lifecycle.jpg)
+  ![vue生命周期](./images/lifecycle.jpg)
 
 * 常用指令
 

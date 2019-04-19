@@ -60,7 +60,7 @@
   获取blockKey对应的contentBlock
 
 
-## 参考资料
+### 参考资料
 
 [draftjs开发富文本|marx](https://marxjiao.com/2017/08/14/use-draft-js/)
 [draftjs中文文档翻译](http://seejs.me/draft-js-cn/docs/apican-kao/richutils.html)

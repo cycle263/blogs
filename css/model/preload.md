@@ -72,8 +72,8 @@ onload="var script = document.createElement('script');
 
 ![chrome请求资源优先级简化版](../../front-end/images/load.jpg)
 
-参考资料
+### 参考资料
 
-[Link Preload 标签](http://eux.baidu.com/blog/fe/link-preload-%E6%A0%87%E7%AD%BE)
-[preload vs prefetch优先级](https://juejin.im/post/58e8acf10ce46300585a7a42)
-[什么是preload、prefetch](https://juejin.im/post/5b5984b851882561da216311)
+- [Link Preload 标签](http://eux.baidu.com/blog/fe/link-preload-%E6%A0%87%E7%AD%BE)
+- [preload vs prefetch优先级](https://juejin.im/post/58e8acf10ce46300585a7a42)
+- [什么是preload、prefetch](https://juejin.im/post/5b5984b851882561da216311)

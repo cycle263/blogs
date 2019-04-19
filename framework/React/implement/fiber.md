@@ -60,7 +60,7 @@ React 框架内部的运作可以分为 3 层：
   - offscreen，下一次render时或scroll时才执行
 
 
-## 参考资源
+### 参考资源
 
 [fiber架构和原理机制](https://github.com/acdlite/react-fiber-architecture)
 
