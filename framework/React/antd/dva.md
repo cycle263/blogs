@@ -10,6 +10,10 @@ dva 帮你自动化了Redux 架构一些繁琐的步骤，比如上面所说的r
 
 dva其实就是把之前Redux每个路由下的state、reducer、sagas写到一块去了，做了写到一块去也能做到以前redux能做的事，并且让思路变得很清晰。
 
+* 机制
+
+它的核心是提供了app.model方法，用于把 reducer, initialState, action, saga 封装到model层。
+
 * Subscription
 
 Subscription 语义是订阅，用于订阅一个数据源，然后根据条件 dispatch 需要的 action。数据源可以是当前的时间、服务器的 websocket 连接、keyboard 输入、geolocation 变化、history 路由变化等等。

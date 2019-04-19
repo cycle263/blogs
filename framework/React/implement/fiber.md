@@ -38,7 +38,7 @@ task按照优先级之后，可能低优先级的任务永远不会执行，称�
 
   由于浏览器兼容的问题，react项目组并没有直接使用requestIdleCallback API，而是使用的requestIdleCallback Polyfill方案。
 
-  直接固定死绘制每帧的总时间为33ms，借助requestAnimationFrame让一批批扁平的任务恰好控制在一批批的绘制每帧时间内执行。
+  直接固定死绘制每帧的总时间为33ms，借助 requestAnimationFrame 让一批批扁平的任务恰好控制在一批批的绘制每帧时间内执行。
 
 ### 调度器(Scheduler)
 

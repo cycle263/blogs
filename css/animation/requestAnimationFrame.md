@@ -28,6 +28,7 @@
 * 兼容
 
   ```js
+  // polyfill
   window.requestAnimFrame = (function(){
     return  window.requestAnimationFrame       ||
       window.webkitRequestAnimationFrame ||

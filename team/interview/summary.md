@@ -129,8 +129,8 @@
 * 介绍http2.0
 * 通过什么做到并发请求
 * http1.1时如何复用tcp连接
-* 介绍service worker
-* 介绍css3中position:sticky
+* 介绍service worker   [【详情解析】]({{site.baseurl}}/Html/webAPI/WebWorker/)
+* 介绍css3中 position: sticky   `粘性布局`
 * redux请求中间件如何处理并发
 * 介绍Promise，异常捕获
 * 介绍position属性包括CSS3新增

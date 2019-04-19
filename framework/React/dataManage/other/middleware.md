@@ -1,4 +1,4 @@
-## redux中间件
+## redux中间件（Middleware）
 
   middleware 是指可以被嵌入在框架接收请求到产生响应过程之中的代码。例如，Express 或者 Koa 的 middleware 可以完成添加 CORS headers、记录日志、内容压缩等工作。Redux middleware 被用于解决不同的问题，它提供的是位于 action 被发起之后，到达 reducer 之前的扩展功能，可以用来进行日志记录、创建崩溃报告、调用异步接口或者路由等等。
 
@@ -227,3 +227,5 @@
 [redux中间件原理](https://juejin.im/post/59dc7e43f265da4332268906)
 
 [redux-saga中文文档](https://redux-saga-in-chinese.js.org/)
+
+[中间件和异步操作](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html)

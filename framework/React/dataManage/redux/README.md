@@ -16,11 +16,46 @@
 
   - reducer: Store 收到 Action 以后，必须给出一个新的 State，这样 View 才会发生变化。这种 State 的计算过程就叫做 Reducer。决定应用数据新状态的函数，接收应用之前的状态和一个 action 返回数据的新状态，reducer作为一个函数，可以根据web应用之前的状态（previousState）和交互行为（通过flux中提到的action来表征），决定web应用的下一状态（newState），从而实现state端的数据更新处理。本质上是根据 action.type 来更新 state 并返回 nextState 的函数，“更新” 并不是指 reducer 可以直接对 state 进行修改。Redux 规定，须先复制一份 state，在副本 nextState 上进行修改操作。
 
-  - 纯函数: Reducer 函数最重要的特征是，它是一个纯函数。也就是说，只要是同样的输入，必定得到同样的输出，是幂等的。
+  - 纯函数: Reducer 函数最重要的特征是，它是一个纯函数。也就是说，只要是同样的输入，必定得到同样的输出，是幂等的。只承担计算 State 的功能，不合适承担其他功能。
 
   - middleware: redux 提供中间件的方式，完成一些 flux 流程的自定义控制，同时形成其插件体系
 
     [中间件案例](./examples/middle.html)
+
+* redux的API
+
+  - createStore方法可以接受整个应用的初始状态作为参数，那样的话，applyMiddleware就是第三个参数了。
+
+    ```js
+    const store = createStore(
+      reducer,
+      initial_state,
+      applyMiddleware(thunk, promise, logger)   /* 有顺序要求  */
+    );
+    ```
+
+  - applyMiddleware 是 Redux 的原生方法，作用是将所有中间件组成一个数组，依次执行。
+
+  ```js
+  // 源码
+  export default function applyMiddleware(...middlewares) {
+    return (createStore) => (reducer, preloadedState, enhancer) => {
+      var store = createStore(reducer, preloadedState, enhancer);
+      var dispatch = store.dispatch;
+      var chain = [];
+
+      var middlewareAPI = {
+        getState: store.getState,
+        dispatch: (action) => dispatch(action)
+      };
+      chain = middlewares.map(middleware => middleware(middlewareAPI));
+      // chain数组嵌套执行，最后增强store.dispatch
+      dispatch = compose(...chain)(store.dispatch);
+
+      return {...store, dispatch}
+    }
+  }
+  ```
 
 * 流程图
 
@@ -37,6 +72,10 @@
   ![常见redux流程图](./images/redux.png)
 
   ![redux流程比较图](./images/reduxCompare.jpg)
+
+* 异步流程
+
+  多种action存在，例如request的状态（pending, success, fail）
 
 * 适合场景
 
