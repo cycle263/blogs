@@ -68,11 +68,12 @@ console.log(a);       //第六个输出值        ---->  200
 
 /******************** 声明提升 *********************/
 // 声明提升
-var foo=function(){  console.log(1); }
+var foo = function(){  console.log(1); }
 function foo(){  console.log(2); }
 foo();  //结果为1
 
 // undefined、2、undefined
+// 考察变量申明提升，函数和字面量函数声明区别
 function test() {
   console.log(a);
   console.log(foo());

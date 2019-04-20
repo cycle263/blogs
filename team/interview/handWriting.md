@@ -114,4 +114,61 @@
 
 * 实现节流/节流
 
+  ```js
+  // @isDe 是否是防抖 
+  function throttle (fn, delay, isDe) {
+    let t = null;
+    return function(...arg) {
+      if (isDe) {
+        if (t) clearTimeout(t);
+        t = setTimeout(() => {
+          fn.apply(arg);
+        }, delay);
+      } else {
+        if (t) return;
+        fn.apply(arg);
+        setTimeout(() => {
+          t = null;
+        }, delay);
+      }
+    };
+  }
+
+   // @isDe 是否是防抖 
+  function throttle (fn, delay, isDe) {
+    let t = null;
+    let last = 0;
+    return function(...arg) {
+      if (isDe) {
+        if (t) clearTimeout(t);
+        t = setTimeout(() => {
+          fn(...arg);
+        }, delay);
+      } else {
+        if (!t) t = Date.now();
+        if (t - last < delay) return;
+        fn(...arg);
+        last = Date.now();
+      }
+    };
+  }
+  ```
+
 * 实现call/apply/bind
+
+  ```js
+  function call(fn, context, ...arg) {
+    context.func = fn;
+    let result = context.func(...arg);
+    delete context.func;
+    return result;
+  }
+
+  function bind(fn, context, ...arg) {
+    let refn =  fn.call(context, ...arg);
+    function Temp() {}
+    Temp.prototype = fn.prototype;
+    refn.prorotype = new Temp();
+    return refn;
+  }
+  ```
