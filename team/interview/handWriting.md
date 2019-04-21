@@ -13,6 +13,15 @@
 
 * 实现多版本继承
 
+  ```js
+  function extends(sup, sub) {
+    var temp = function(){};
+    temp.prototype = sup.prototype;
+    sub.prototype = new temp();
+    sub.prototype.constructor = sub;
+  }
+  ```
+
 * 实现promise
 
   ```js
