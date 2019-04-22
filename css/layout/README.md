@@ -26,10 +26,29 @@
 
 * 响应式布局
 
-  常用的CSS长度单位：
+  常用响应式CSS长度单位：
+
+  - 百分比
 
   - px
 
   - rem
 
   - vw、vh (viewport width | viewport height)
+
+  媒体查询
+
+    ```css
+    @media screen and (max-width: 980px) {
+      #head { … }
+      #content { … }
+      #footer { … }
+    }
+    ```
+
+
+### 参考资料
+
+[格栅化和响应式](https://www.uisdc.com/grid-systems-do-responsive-design)
+
+[响应式概念](https://baike.baidu.com/item/%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BD%91%E9%A1%B5%E8%AE%BE%E8%AE%A1/2519669?fr=aladdin)
