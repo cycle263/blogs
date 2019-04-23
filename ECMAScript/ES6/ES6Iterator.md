@@ -139,7 +139,7 @@ Javascript集合数据结构主要有数组(Array)和对象(Object)，已经ES6�
 
   - for: 比较麻烦，写法繁琐  
 
-  - forEach: 无法中止跳出，break命令或return命令都不能奏效。  
+  - forEach: 无法中止跳出，break命令或return命令都不能奏效。要跳出循环，需要使用`try{}catch`然后抛出异常方式。  
 
   - for...in: 数组中只能遍历键名，并且会遍历原型链的新增键。总之，for...in循环主要是为遍历对象而设计的，不适用于遍历数组。不过遍历对象时，推荐使用 hasOwnProperty 方法过滤原型方法被修改带来的副作用。
 

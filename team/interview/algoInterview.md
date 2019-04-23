@@ -116,7 +116,23 @@
 
 * 找出数组里面任意两个数相加等于一个值k？
 
-  `排序去掉大于k的值，在[最小值，小于但最接近k的值] 区间进行二分查找`
+  ```js
+  const arr = [2,5,8,4,12,32,21,28,14], k = 16;
+  const findSumIndexs = (arr, k) => {
+    let hasHash = {};
+    for(let i = 0; i < arr.length; i++) {
+      if (hasHash[k - arr[i]] !== undefined) {
+        return [hasHash[k - arr[i]], i];
+      } else {
+        hasHash[arr[i]] = i;
+      }
+    }
+    return [];
+  };
+  findSumIndexs(arr, k);
+  ```
+
+  `备选方案：排序去掉大于k的值，在[最小值，小于但最接近k的值] 区间进行二分查找`
 
 * 数组去重
 
