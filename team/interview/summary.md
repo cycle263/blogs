@@ -103,8 +103,8 @@
 * Redux如何实现多个组件之间的通信，多个组件使用相同状态如何进行管理
 * 多个组件之间如何拆分各自的state，每块小的组件有自己的状态，它们之间还有一些公共的状态需要维护，如何思考这块
 * 使用过的Redux中间件   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/other/middleware)
-* 如何解决跨域的问题，表单可以跨域吗？    [【详情解析】]({{site.baseurl}}/http/ajax/crossDomain)
-* 常见Http请求头
+* 如何解决跨域的问题，表单可以跨域吗？跨域请求是否发出去，是否返回了response？    [【详情解析】]({{site.baseurl}}/http/ajax/crossDomain)
+* 常见Http请求头  `content-type、content-length`
 * 移动端适配1px的问题
 * 介绍flex布局
 * 其他css方式设置垂直居中
@@ -228,7 +228,7 @@
 * 介绍DOM树对比
 * react中的key的作用
 * 如何设计状态树
-* 介绍css，xsrf
+* 介绍xss，xsrf
 * http缓存控制
 * 项目中如何应用数据结构
 * native提供了什么能力给RN
