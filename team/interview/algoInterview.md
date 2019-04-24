@@ -155,6 +155,23 @@
   }
   ```
 
+* 补集
+
+  ```js
+  // 补集，属于b不属于a
+  const complementSet = (a, b) => {
+    if (!Array.isArray(a) || !Array.isArray(b)) {
+      console.error('Must be array');
+      return [];
+    }
+    let result = [];
+    b.forEach(item => {
+      if (!a.includes(item)) result.push(item);
+    });
+    return result;
+  };
+  ```
+
 ## 其他
 
 - [前端十大算法](https://juejin.im/post/5b72f0caf265da282809f3b5)
