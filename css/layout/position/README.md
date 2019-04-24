@@ -1,5 +1,13 @@
 ## position
 
+* relative
+
+* absolute
+
+* fixed
+
+* static
+
 * sticky(粘性布局)
 
 表现为吸附，常见用于吸顶、吸底（例如手机APP的底部切换栏，顶部的title栏）。基本上，可以看出是position:relative和position:fixed的结合体——当元素在屏幕内，表现为relative，就要滚出显示器屏幕的时候，表现为fixed。
