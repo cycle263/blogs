@@ -3,7 +3,7 @@
 * **JavaScript**
 
   - [浏览器线程详解](./javascripts/depth/async/thread)
-  - [节流和防抖](./http/ajax/轮询(节流和防抖))
+  - [节流和防抖](./http/ajax/轮询-节流和防抖)
   - [语音识别](./Html/webAPI/Audio)
   - [浅谈blob和arraybuffer](./Html/webAPI/Blob/compare)
   - [同源跨域问题](./http/ajax/crossDomain)
@@ -18,7 +18,7 @@
       + [虚拟DOM比较](./framework/React/Note/diff)
       + [react context API](./framework/React/dataManage/context)
       + [redux](./framework\React\dataManage\redux)
-      + [redux中间件](./framework/React/dataManage/other)
+      + [redux中间件](./framework/React/dataManage/other/middleware)
 
     - angular
 
@@ -26,8 +26,8 @@
     
     - vue
       
-      + [双向绑定原理](./framework/vue)
-      + [状态管理机制](./framework/React/dataManage/redux)
+      + [双向绑定原理](./framework/vue/)
+      + [状态管理机制](./framework/React/dataManage/redux/)
 
     - jQuery
 
@@ -39,7 +39,7 @@
 * **EcmaScript**
 
     - [ES 6入门](./ECMAScript/ES6/ES6getStart)
-    - [ES6 特性详解](./ECMAScript)
+    - [ES6 特性详解](./ECMAScript/)
     - [ES6 函数详解](./ECMAScript/ES6/ES6Function)
     - [ES6 ArrayBuffer详解](./ECMAScript/ES6/ES6ArrayBuffer)
     - [ES6 Module深入理解](./ECMAScript/ES6/ES6Module)
@@ -59,7 +59,7 @@
 * **前端工程**
     - webpack
 
-      + [webpack入门](./structure/webpack)
+      + [webpack入门](./structure/webpack/)
       + [webpack深入使用](./structure/webpack/advanced)  
       + [webpack配置详解](./structure/webpack/config)
       + [webpack之loader详解](./structure/webpack/Loader)
@@ -70,7 +70,7 @@
 
     - git
 
-      + [git入门](./team/git)
+      + [git入门](./team/git/)
       + [git进阶详解](./team/git/advanced)
       + [git之rebase与merge区别？](./team/git/rebase)
       + [git之tag详解](./team/git/tags)
@@ -82,13 +82,13 @@
 
 * **网络基础**
 
-    - [websocket入门](./http/websocket)
+    - [websocket入门](./http/websocket/)
     - [formdata和octet-stream区别](./Html/form/formdata)
 
 * **其他**
 
-    - [Unicode、ASCII和utf-8等编码如何区分？](./http/unicode)
-    - [markdown入门基础](./team/Markdown)
+    - [Unicode、ASCII和utf-8等编码如何区分？](./http/unicode/)
+    - [markdown入门基础](./team/Markdown/)
     - [面试知识点概要](./team/interview/simpleInterview)
     - [大厂面试知识点目录](./team/interview/summary)
     - [常见算法题入门](./team/interview/algoInterview)

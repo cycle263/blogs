@@ -220,7 +220,7 @@
 
 * JS的原型
 * 变量作用域链
-* 防抖和节流的区别    [【详情解析】]({{site.baseurl}}/http/ajax/轮询(节流和防抖))
+* 防抖和节流的区别    [【详情解析】]({{site.baseurl}}/http/ajax/轮询-节流和防抖)
 * 介绍各种异步方案
 * react生命周期
 * 介绍Fiber       [【详情解析】]({{site.baseurl}}/framework/React/implement/fiber)

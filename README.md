@@ -2,11 +2,11 @@
 
 **[文章总目录](./menu)**
 
-### 1. [Javascript](./javascripts) 、 [框架](./framework) 、 [ES6](./ECMAScript)
+### 1. [Javascript](./javascripts/) 、 [框架](./framework/) 、 [ES6](./ECMAScript/)
 
   * **[context vs scope](./javascripts/depth/context)**
 
-  * **[jQuery](./framework/jQuery)**
+  * **[jQuery](./framework/jQuery/)**
 
     jQuery API,  Principle of jQuery
 
@@ -28,7 +28,7 @@
       document.querySelectorAll('selector');
       ```
 
-  * **[Angularjs](./framework/angularjs)**
+  * **[Angularjs](./framework/angularjs/)**
 
     Angular 1.3, Angular 2 ...
 
@@ -40,7 +40,7 @@
 
       指定事件触发后，才进入$digest cycle，$digest ttl默认为10
 
-  * **[Reactjs](./framework/React)、[Redux](./framework/React/redux)、[React-redux](./framework/React/redux/react-redux)**
+  * **[Reactjs](./framework/React/)、[Redux](./framework/React/dataManage/redux/)、[React-redux](./framework/React/dataManage/redux/react-redux)**
 
     > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
@@ -82,7 +82,7 @@
       }
       ```
 
-  * **[Modularity](./structure)**
+  * **[Modularity](./structure/)**
 
     AMD, CommonJS, CMD, UMD
 
@@ -94,7 +94,7 @@
 
     - UMD: UMD是AMD和CommonJS的糅合，它支持AMD和CommonJS规范，同时还支持古老的全局模块模式。
 
-  * **[Blob vs ArrayBuffer vs TypeArray](./Html/webAPI)**
+  * **[Blob vs ArrayBuffer vs TypeArray](./Html/webAPI/)**
 
     > 二进制数组是JavaScript操作二进制数据的一个接口。(ArrayBuffer对象、TypedArray视图和DataView视图)。三者之间的关系可以理解为：Blob <-> ArrayBuffer <-> TypeArray <—> Array
 
@@ -118,7 +118,7 @@
 
       + [Babel转码器](./structure/babel/)，配置文件.babelrc
 
-    - [ES6特性详解](./ECMAScript)
+    - [ES6特性详解](./ECMAScript/)
 
   * **[Debug](front-end/debug/)**  
 
@@ -126,7 +126,7 @@
 
     - dora(dora-plugin-proxy)
 
-### 2. [Css(css库和css3)](./css)
+### 2. [Css(css库和css3)](./css/)
 
   * **css library**  
 
@@ -174,7 +174,7 @@
 
   DOCTYPE用于告知浏览器的解析器用什么文档标准解析这个文档。
 
-  * **[canvas](canvas) 画布**
+  * **[canvas](Html/canvas/) 画布**
 
   * **[svg](https://developer.mozilla.org/en-US/docs/SVG)、 [WebGL(3D)](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API)**
 
@@ -188,7 +188,7 @@
     | 矢量图(自由缩放) | 位图(放大失真) |  
     | 适合复杂度高的大型渲染应用(地图) | 适合图像密集的游戏，或者频繁重绘的应用 |
 
-  * **[语音识别](./Html/webAPI/Audio)**
+  * **[语音识别](./Html/webAPI/Audio/)**
 
   * **Web Worker**
 
@@ -238,15 +238,15 @@
 
     - [IETF](https://www.ietf.org)  制定忘了协议标准，包括HTTP，JSON等
 
-  * **[Http协议(Http2)](http)**
+  * **[Http协议(Http2)](http/)**
     
     是基于 TCP/IP 协议的应用层协议。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。
 
-  * **[ajax轮询](http/ajax/轮询)**
+  * **[ajax轮询](http/ajax/轮询-节流和防抖)**
 
     定时发送ajax请求，但是需要服务器有很快的处理速度和资源。轮询又分为长轮询和短轮询，长轮询则是客户端发起请求，服务端有数据更新则响应，没有则sleep挂起循环，直到有新数据才响应，除非超过一定的时限才会断开连接；短轮询则不分是非有数据更新，都直接响应。用长轮询（long polling）来模拟WebSocket，需要很高的并发量。
 
-  * **[WebSocket](./http/websocket)**
+  * **[WebSocket](./http/websocket/)**
 
     Websocket是一个持久化的协议，相对于HTTP这种非持久的协议来说.跟HTTP协议基本没有关系，只是为了兼容现有浏览器的握手规范而已，也就是说它是HTTP协议上的一种补充。Web Socket 连接不是基于 HTTP 传输的，它是一种 HTML 5 为 Web 定制的全双工通讯协议，没有“请求 - 响应”的概念，浏览器与服务器完全平等，连接一旦建立就一直开放，双方可随时向对方发送任意数据，没有推拉之分。  
 
@@ -254,7 +254,7 @@
 
     目前主流的浏览器都支持WebSocket，并且有第三方的API：Guillermo Rauch创建了一个Socket.IO，遵循Engine.IO协议。  
 
-  * **[请求优化](front-end/performance)**
+  * **[请求优化](front-end/performance/)**
 
     - cookie free: 静态资源不同域名，最好CDN，避免发送多余的cookie信息。
 
@@ -296,7 +296,7 @@
 
     - 性能优化
 
-  * **[git](team/git)**
+  * **[git](team/git/)**
 
     ```js
     $ git clone someobject.git
@@ -323,15 +323,15 @@
     + 更改提醒（gulp-notify）
     + 清除文件（del）
 
-  * **[webpack](structure/webpack)**  
+  * **[webpack](structure/webpack/)**  
 
-  * **[markdown](team/Markdown) 常用语法**
+  * **[markdown](team/Markdown/) 常用语法**
 
-  * **常见[shell命令](team/linux)**
+  * **常见[shell命令](team/system/)**
 
-  * **[Unicode vs Utf-8 vs ASCII](./http/unicode)对比详解**
+  * **[Unicode vs Utf-8 vs ASCII](./http/unicode/)对比详解**
 
-  * **[interview](team/interview)**
+  * **[interview](team/interview/)**
 
   * [大厂面试知识点目录](./team/interview/summary)
 
