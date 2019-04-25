@@ -2,6 +2,15 @@
 
 > 设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。
 
+* 六大属性
+
+`justify-content、justify-items、justify-self`
+
+`align-content、align-items、align-self`
+
+未完待续...
+
+
 ![flex](./images/flex.png)
 
 ```css

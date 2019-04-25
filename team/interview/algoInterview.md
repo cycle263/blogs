@@ -172,6 +172,20 @@
   };
   ```
 
+* 字符占位算法
+
+  ```js
+  // 检查字符串长度，非Ascii字符算2位
+  export function getStrLength(str) {
+    if (typeof str !== 'string') return null;
+    const b = str.match(/[^\x00-\xff]/g);
+    return {
+      length:(str.length + (!b ? 0 : b.length)),
+      notAsciiLen: b.length,
+    };
+  };
+  ```
+
 ## 其他
 
 - [前端十大算法](https://juejin.im/post/5b72f0caf265da282809f3b5)
