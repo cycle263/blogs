@@ -1,16 +1,26 @@
-## security
+## Web安全常识总结(security)
 
-* xss ( Cross Site Script, 跨站脚本攻击)
+* xss(Cross Site Script, 跨站脚本攻击)
 
-  XSS 就是攻击者在 Web 页面中插入恶意脚本，当用户浏览页面时，促使脚本执行，从而达到攻击目的。XSS 的特点就是想尽一切办法在目标网站上执行第三方脚本。
+  XSS 就是攻击者在 Web 页面中插入恶意javascript脚本和html，当用户浏览该页之时，嵌入其中 Web 里面的脚本代码会被执行，从而达到攻击目的。
+
+  **攻击危害**
+
+  - 虚假form表单骗取用户信息，储存危害脚本或代码
+  - 脚本获取cookie信息，并发起恶心请求
+  - 渲染虚假信息和图片，骗取用户信任
   
-  解决办法：
+  **解决办法：**
 
   - 从客户端和服务器端双重验证所有的输入数据，这一般能阻挡大部分注入的脚本
+  - 对所有的数据进行适当的编码， HTML 转义，包括链接跳转，redirect_to重定向等，简单的做法是，对所有输入输出的内容，将引号、尖括号、斜杠进行转义
+  - 设置 HTTP Header 中的 `Content-Security-Policy`， meta 标签的方式 `<meta http-equiv="Content-Security-Policy">`
+  - Web 页面渲染的所有内容或者渲染的数据都必须来自于服务端，尽量不要取URL或者document.referrer等取数据渲染，尽量不要使用`eval、setTimeout`等可以直接执行字符串的方法，无法避免则需进行 escape 转义
+  - 预防xss攻击获取cookie，可以在每个cookie属性里设置为HttpOnly
 
-  - 对所有的数据进行适当的编码， HTML 转义，包括链接跳转，redirect_to重定向等
+  **富文本**
 
-  - 设置 HTTP Header： "X-XSS-Protection: 1"
+  对于富文本来说，显然不能通过上面的办法来转义所有字符，因为这样会把需要的格式也过滤掉。对于这种情况，通常采用白名单过滤的办法。成熟的js库有，` js-xss`。
 
 * SQL injection (SQL注入)
 
