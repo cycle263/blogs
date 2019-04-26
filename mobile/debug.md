@@ -70,6 +70,12 @@ window.onerror = function(messageOrEvent, source, lineno, colno, error) {
 
   无法读取证书文件，可以在设置中搜索`安装证书`。
 
+* webview调试
+
+  webkit支持远程调试，需要将APP的debug模式打开，不过大部分APP是不支持直接打开的。解决方案比较繁琐，需要对手机进行root，然后按照xposed框架及其WebViewDebugHook模块，安装完毕后重启激活了Xposed。
+
+  手机usb连接电脑，使用 chrome 打开 `chrome://inspect`，然后打开任意 App 的 webview，就可以进行调试了。
+
 
 ### 参考资料
 

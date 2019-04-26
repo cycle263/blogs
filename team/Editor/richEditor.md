@@ -24,7 +24,17 @@
 
 基于draft.js开发的react富文本编辑器
 
-* [braft-editor](https://braft.margox.cn/)
+* [braft-editor](https://braft.margox.cn/)    
+
+  **重点推荐**
+
+  是一款基于 draft-Js 和 ant-design 实现的 react 富文本编辑器组件。
+
+* [react-lz-editor](https://github.com/leejaen/react-lz-editor)   
+
+  **重点推荐**
+
+  也是一款基于 draft-Js 和 ant-design 实现的 react 富文本编辑器组件。
 
 * react-rte
 
@@ -41,4 +51,6 @@
 * [simplemde-markdown-editor](https://simplemde.com/)
 
 * react-markdown-editor
+
+* CycleEditor
 
