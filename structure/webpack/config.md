@@ -66,6 +66,8 @@
 
     - cheap-module-eval-source-map 这是最快生成source map的方法，生成后的Source Map 会和打包后的 JavaScript 文件同行显示，但没有列映射，开发环境不压缩的情况下，可以尝试
 
+    [sourcemap的详解](http://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html)
+
 * **resolve**
 
     确定模块如何被解析。

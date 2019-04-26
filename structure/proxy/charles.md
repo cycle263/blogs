@@ -60,3 +60,8 @@
   - Charles Proxy -> SSL Proxying Settings... -> 勾选Enable SSL Proxying -> Add 需要代理的地址和端口
 
     `as.tests.com:443`
+
+
+### 参考资料
+
+[charles入门到精通](http://blog.devtang.com/2015/11/14/charles-introduction/)

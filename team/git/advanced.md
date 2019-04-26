@@ -111,7 +111,7 @@
 
   - 恢复代码  会产生新的commit
 
-    git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit。
+    git revert 是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit。
 
     `git revert [commit]` 恢复到指定的某个版本
 

@@ -54,6 +54,8 @@ window.onerror = function(messageOrEvent, source, lineno, colno, error) {
   <script src="http://ip.ip.ip.ip:8888/target/target-script-min.js#anonymous"></script>
   ```
 
+  也可以使用charles来rewrite请求的response，比如：添加一个body类型属性
+
 * spy-debugger真机调试
 
   Spy-debugger内部集成了weinre，代理方式拦截所有的html请求，并自动注入weinre需要的js代码。
