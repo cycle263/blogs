@@ -2,7 +2,7 @@
 
 dva、roadhog、atool-build、umi、antd pro、bigfish、next.js
 
-* roadhog是基于webpack的配置工具，为了简化配置而诞生
+* roadhog是基于webpack的配置工具，为了简化配置而诞生，类似的工具有crate-react-app
 
 * umi可以简单看做roadhog+router+antd，加以插件机制的解决方案，类似于next.js
 
