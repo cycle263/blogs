@@ -85,6 +85,10 @@
     - [websocket入门](./http/websocket/)
     - [formdata和octet-stream区别](./Html/form/formdata)
 
+* **开发规范**
+
+    - [前端开发规范](./front-end/)
+
 * **其他**
 
     - [Unicode、ASCII和utf-8等编码如何区分？](./http/unicode/)
