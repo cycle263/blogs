@@ -1,3 +1,14 @@
+## css未来显示模块
+
+* 内部显示类型 inner display type
+
+  定义元素内部元素的布局方式
+
+* 外部显示类型 outer display type
+
+  定义元素外部元素的布局方式
+
+
 ## css常见知识
 
 * white-space: pre-wrap

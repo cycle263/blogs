@@ -2,7 +2,7 @@
 
   > 弹性布局，任何一个容器都可以指定为flex布局。`display: flex|inline-flex`
 
-* container
+* 容器属性 container
 
   > main axis(x轴、主轴) 和 cross axis(y轴、交叉轴)
 
@@ -23,19 +23,19 @@
 
   - flex-flow [<flex-direction> || <flex-wrap>] 上面两个的合体
 
-  - justify-content [flex-start | flex-end | center | space-between | space-around] 定义了项目在主轴上的对齐方式。注意，主轴可能是水平的也可能是垂直的。
+  - **justify-content** [flex-start | flex-end | center | space-between | space-around] 定义了项目在主轴上的对齐方式。注意，主轴可能是水平的也可能是垂直的。
 
   ![](./images/justify.png)
 
-  - align-items [flex-start | flex-end | center | baseline | stretch(拉伸占满)] 交叉轴相对本轴线的对齐方式，也可以作用于多行flex容器，但都必须有自由空间。align-items作用于所有items，align-self只作用于自身item.
+  - **align-items** [flex-start | flex-end | center | baseline | stretch(拉伸占满)] 交叉轴相对本轴线的对齐方式，也可以作用于多行flex容器，但都必须有自由空间。align-items作用于所有items，align-self只作用于自身item.
 
   ![](./images/align.png)
 
-  - align-content [flex-start | flex-end | center | space-between | space-around | stretch] 定义了多根轴线的对齐方式。单行flex容器，该属性不起作用，会被忽略，也就是说对于多行item时有作用。
+  - **align-content** [flex-start | flex-end | center | space-between | space-around | stretch] 定义了多根轴线的对齐方式，也就是多行之间的行间距。单行flex容器，该属性不起作用，会被忽略，也就是说对于多行item时有作用。
 
   ![](./images/align-content.png)
 
-* item
+* 本身属性 item
 
   > item 则沿着 main axis排布。
 
@@ -49,7 +49,7 @@
 
   - flex none | [ <flex-grow> <flex-shrink>? || <flex-basis> ] flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto，后两个属性可选。
 
-  - align-self [auto | flex-start | flex-end | center | baseline | stretch] 让单个item有与其他item不一样的对齐方式，可覆盖align-items属性，默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。既可以作用于单行flex，也可以作用于多行flex。
+  - **align-self** [auto | flex-start | flex-end | center | baseline | stretch] 让单个item有与其他item不一样的对齐方式，可覆盖align-items属性，默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。既可以作用于单行flex，也可以作用于多行flex。
 
 * 备注
 

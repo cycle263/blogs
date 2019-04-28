@@ -8,7 +8,24 @@
 
 `align-content、align-items、align-self`
 
-未完待续...
+* flex简写
+
+`flex: 0 1 auto` 不能伸展，但可收缩
+
+`flex: 1 1 auto` 伸缩自如
+
+`flex: 0 0 auto` 完全不能伸缩
+
+* 自动margin
+
+  ```css
+  .automarigin {
+    display: flex;
+  }
+  .automargin div {
+    margint-top: auto;  // 推到下方
+  }
+  ```
 
 
 ![flex](./images/flex.png)
