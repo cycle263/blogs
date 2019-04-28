@@ -1,4 +1,4 @@
-## web api
+## FormData、Blob、File、ArrayBuffer数据类型大比对
 
   > [MDN-web api](https://developer.mozilla.org/en-US/docs/Web/API)
 
@@ -33,3 +33,8 @@
   > a标签包含download属性，则直接下载该资源，文件名为download指定的文件名称
 
   其他方式：加上Content-Disposition: attachment 这个响应头，浏览器不直接打开，以附件的形式下载。
+
+
+### 参考资料
+
+[FormData、Blob、File、ArrayBuffer数据类型](https://www.zhangxinxu.com/wordpress/2013/10/understand-domstring-document-formdata-blob-file-arraybuffer/)

@@ -93,3 +93,6 @@ npm是 node 自带的包管理工具，也是世界上最大规模的包管理�
 
 - npm ls  查看完整的依赖树结构
 
+- npm cache clean --force  清除npm缓存
+
+

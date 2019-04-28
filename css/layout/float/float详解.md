@@ -43,3 +43,17 @@
       .clearfix{zoom:1;}
       .clearfix:after{display:block; content:'clear both'; clear:both; height:0; visibility:hidden;}
       ```
+
+* 新特性结合
+
+- shape-outside
+
+- shape-image-threshold
+
+- shape-margin
+
+- exclusions
+
+- regions
+
+- 

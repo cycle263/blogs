@@ -22,6 +22,8 @@
 
   当xhr为一个sync同步请求时，xhr.timeout必须置为0，否则会抛错。
 
+  常使用`Promise.race`模拟请求超时问题。
+
 * async vs sync
 
   当xhr为同步请求时，有如下限制：
@@ -35,6 +37,7 @@
 * send类型
 
   - ArrayBuffer
+
   - Blob
 
   - Document，如果data是 Document 类型，同时也是HTML Document类型，则content-type默认值为text/html; charset=UTF-8;否则为application/xml; charset=UTF-8。
