@@ -56,9 +56,11 @@
 * clip-path
 * object-fit(适用于img标签，类似于背景图的background-size)
 * box-shadom
+* shape-outside
 * border-image
-* gradient
-* mix-blend-mode(混合模式)
+* gradient (渐变)
+* mask-composite(遮罩)
+* mix-blend-mode(混合模式) / background-blend-mode
 * filter(滤镜)
 * text-decoration
 * stroke-width
@@ -80,7 +82,7 @@
   @color: red;
   color: @color;
   ```
-* filters
+
 * Houdini - js in css(css parsing api, css layout api, CSS Properties and Values API, Worklets)
 
 

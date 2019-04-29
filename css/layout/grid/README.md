@@ -43,3 +43,5 @@ Grid Layout 是一种基于二维网格的布局系统，旨在完全改变我�
 [grid-MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-row)
 
 [腾讯云grid手册](https://cloud.tencent.com/developer/section/1072093)
+
+[css常见函数](http://www.w3chtml.com/css3/values/functional/)
