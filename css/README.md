@@ -52,7 +52,7 @@
 
 * scroll-snap （元素平滑定位增强）  [scroll-snap](https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/)
 * scrollbar-width, scrollbar-color  (自定义滚动条)
-* font-feature-settings, font-display
+* font-feature-settings, font-display （字体中的高级印刷功能、加载字体过程中后备字体）
 * clip-path
 * object-fit(适用于img标签，类似于背景图的background-size)
 * box-shadom
