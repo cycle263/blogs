@@ -7,14 +7,59 @@
       .progress{height: 10px;border-radius: 7px;display: inline-block;}
       .progress-outer{position:relative; width:240px;border: 1px solid #ccc;margin-right: 8px;}
       .progress-inner{position:absolute;top: 0;left: 0;background-color: #3FC7FA;width: 120px;}
+      .dynamic-border-radius {
+        width: 50vmin;
+        height: 50vmin;
+        border: 10px dashed #000;
+        border-radius: 50%;
+        --x: 84;
+        --y: 75;
+        --size: 320;
+        --dx: calc(var(--size) - var(--x));
+        --dy: calc(var(--size) - var(--y));
+        border-radius:
+          calc(var(--x) / var(--size) * 100%)
+          calc(var(--dx) / var(--size) * 100%)
+          calc(var(--dx) / var(--size) * 100%)
+          calc(var(--x) / var(--size) * 100%) /
+          calc(var(--y) / var(--size) * 100%)
+          calc(var(--y) / var(--size) * 100%)
+          calc(var(--dy) / var(--size) * 100%)
+          calc(var(--dy) / var(--size) * 100%) ;
+      }
+      .dynamic-border-radius:not([onhover]) {
+        transition: border-radius .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-radius: 50%;
+      }
     </style>
   </head>
   <body>
+    <!-- progress -->
     <div>
       <span class="progress progress-outer">
         <span class="progress progress-inner"></span>
       </span>
       <span>50%</span>
     </div>
+
+    <!-- dynamic-border-radius -->
+    <div class="dynamic-border-radius"></div>
+
+    <script>
+      (function(){
+        var body = document.body;
+        var borderEle = document.querySelector('.dynamic-border-radius');
+        borderEle.addEventListener('mousemove', function (e) {
+          const { clientX, clientY } = e;
+          borderEle.style = `--x:${clientX};--y:${clientY};--size:${320}`;
+        });
+        borderEle.addEventListener('mouseenter', function(){
+          borderEle.setAttribute('onhover', true);
+        });
+        borderEle.addEventListener('mouseleave', function () {
+          borderEle.removeAttribute('onhover');
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -2,6 +2,18 @@
 
 Grid Layout 是一种基于二维网格的布局系统，旨在完全改变我们设计基于网格的用户界面的方式，弥补网页开发在二维布局能力上的缺陷。
 
+* 函数
+
+  - repeat
+
+  - minmax
+
+  - auto-fill / auto-fit
+
+* 单位
+
+  fr / min-content / max-content / vm、vh / number%  
+
 * 属性
 
   - grid-template-rows，指定每行的高度，单位fr表示网格轨道。

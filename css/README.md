@@ -48,6 +48,42 @@
   }
   ```
 
+### css3新特性
+
+* scroll-snap  
+* scrollbar-width, scrollbar-color
+* font-feature-settings, font-display
+* clip-path
+* object-fit(适用于img标签，类似于背景图的background-size)
+* box-shadom
+* border-image
+* gradient
+* mix-blend-mode(混合模式)
+* filter(滤镜)
+* text-decoration
+* stroke-width
+* css-variables(--css)
+
+  ```css
+  :root{ 
+    --color: red;
+    a {
+      color: var(--color);
+    }
+  }
+
+  /* scss */
+  $color: red;
+  color: $color;
+
+  /* less */
+  @color: red;
+  color: @color;
+  ```
+* filters
+* Houdini - js in css(css parsing api, css layout api, CSS Properties and Values API, Worklets)
+
+
 ### 參考资料
 
 [参考引用](https://www.jianshu.com/p/db82a546267a)

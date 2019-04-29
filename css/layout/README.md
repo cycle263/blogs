@@ -48,6 +48,8 @@
 
 * ruby
 
+* box alignment
+
 ### 参考资料
 
 [格栅化和响应式](https://www.uisdc.com/grid-systems-do-responsive-design)

@@ -6,6 +6,12 @@
 
   代表每秒输出帧数，也就是浏览器每秒展示出多少张静态的图像。
 
+* 性能优化
+
+  可以的话，只对 transform 和 opacity进行动画化，因为所有的浏览器对transform和opacity的支持都非常流畅。
+
+
+
 ### css3 animation
 
 CSS3 动画是当今盛行的 Web 端制作动画的方式之一，对于移动设备来说覆盖率已经非常广泛，在日常开发中可以使用。CSS3 动画只能通过对 CSS 样式的改变控制 DOM 进行动画。
@@ -58,3 +64,11 @@ JavaScript 使用 setInterval 进行定时调用函数，目前更加推荐使�
 * CSS3 动画 GPU加速
 
     [GPU 加速是什么](https://juejin.im/entry/58f0a6b58d6d81006471fe8a)
+
+### Web Animations API
+
+
+
+### 参考资料
+
+[css动画十件必知事](https://birtles.github.io/cssconf2019)
