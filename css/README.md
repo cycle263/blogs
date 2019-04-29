@@ -50,7 +50,7 @@
 
 ### css3新特性
 
-* scroll-snap  
+* scroll-snap （元素平滑定位增强）  [scroll-snap](https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/)
 * scrollbar-width, scrollbar-color
 * font-feature-settings, font-display
 * clip-path
