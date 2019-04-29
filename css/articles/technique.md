@@ -97,7 +97,7 @@
 
 * 7、CSS实现垂直水平居中
 
-  - 方法1:
+  - 方法1: absolute
   ```css
   .parent {
     width:800px;
@@ -114,7 +114,7 @@
     background-color: red;
   }
   ```
-  - 方法2：
+  - 方法2： table-cell
   ```css
   .parent {
     width:800px;
@@ -131,7 +131,7 @@
     background-color: red;
   }
   ```
-  - 方法3：
+  - 方法3： flex + justify-content + align-items
   ```css
   .parent {
     width:800px;
@@ -147,7 +147,7 @@
     background-color: red;
   }
   ```
-  - 方法4：
+  - 方法4： absolute + margin
   ```css
   .parent {
     width:800px;
@@ -169,7 +169,7 @@
     background-color: red;
   }   
   ```
-  - 方法5：
+  - 方法5： absolute + translate
   ```css
   .wraper {
     position: relative;
