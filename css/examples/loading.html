@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <title>loading</title>
-    <link rel="stylesheet" href="https://os.tests.com/tests/PmAIFlrKSTLuatH.css" media="screen" title="no title" charset="utf-8">
     <style media="screen">
     	html,body{
     		height: 100%;
@@ -77,6 +76,30 @@
           transform: rotate(360deg) scale(1);
         }
       }
+      .point::after {
+        --size: 14px;
+        content: ' ';
+        width: var(--size);
+        height: 24px;
+        position: relative;
+        background-color: #F5F5F9;
+        display: inline-block;
+        animation: points 2s infinite steps(2, start);
+      }
+      @keyframes points {
+        50% {
+          left: -9px;
+        }
+        100% {
+          left: 0px;
+        }
+      }
+
+      .point1::before {
+        content: '...';
+        position: absolute;
+        animation: dot1 1s infinite step-start both;
+      }
     </style>
 </head>
 <body>
@@ -84,7 +107,7 @@
     <div class="loader">
   		<div class="arc-1"></div>
   		<div class="arc-2"></div>
-  		加载中...
+  		加载中<span class="point">...</span>
     </div>
   </div>
 
@@ -97,6 +120,11 @@
   <div class="container">
     <div class="item left"></div>
     <div class="item left"></div>
+  </div>
+
+  <div class="point1">
+    加载中1
+    <span></span>
   </div>
   <script type="text/javascript">
     (function(){
@@ -111,7 +139,7 @@
       img.src = "../images/selector.jpg";
       document.body.append(img);
 
-      arc.style.display = 'none';
+      // arc.style.display = 'none';
 
       tarea.addEventListener('keypress', function(){
         this.style.paddingTop = (this.offsetHeight - parseInt(this.style.lineHeight))/2 + 'px';

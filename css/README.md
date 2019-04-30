@@ -11,6 +11,8 @@
 
 ## css常见知识
 
+* text-decoration(设置文本排版)
+
 * white-space: pre-wrap
 
   ![pre-wrap](./images/wrap.png)
@@ -52,18 +54,27 @@
 
 * scroll-snap （元素平滑定位增强）  [scroll-snap](https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/)
 * scrollbar-width, scrollbar-color  (自定义滚动条)
+
 * font-feature-settings, font-display （字体中的高级印刷功能、加载字体过程中后备字体）
+
+
 * clip-path （区域内的部分显示，区域外的隐藏）
+* stroke-width
 * object-fit(适用于img标签，类似于背景图的background-size)
+* filter(滤镜)
+  `filter: hue-rotate(0deg)   // 色相变化`
+* border-image
+
 * box-shadom
 * shape-outside
-* border-image
+* perspective
+
 * gradient (渐变)
 * mask-composite(遮罩)
 * mix-blend-mode(混合模式) / background-blend-mode
-* filter(滤镜)
-* text-decoration
-* stroke-width
+
+  修改图片颜色
+
 * css-variables(--css)
 
   ```css
