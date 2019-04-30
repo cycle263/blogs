@@ -55,28 +55,40 @@
 * scroll-snap （元素平滑定位增强）  [scroll-snap](https://www.zhangxinxu.com/wordpress/2018/11/know-css-scroll-snap/)
 * scrollbar-width, scrollbar-color  (自定义滚动条)
 
-* font-feature-settings, font-display （字体中的高级印刷功能、加载字体过程中后备字体）
-
+* font-feature-settings, font-display（字体中的高级印刷功能、加载字体过程中后备字体）
 
 * clip-path （区域内的部分显示，区域外的隐藏）
-* stroke-width
+* stroke-width （指定svg对象的轮廓的宽度）
 * object-fit(适用于img标签，类似于背景图的background-size)
 * filter(滤镜)
-  `filter: hue-rotate(0deg)   // 色相变化`
-* border-image
+
+  `filter: hue-rotate(0deg)   // 色相变化， 给图像应用色相旋转`
+  - blur 高斯模糊
+  - brightness 线性乘法，使其看起来更亮或更暗
+  - contrast 对比度
+  - drop-shadow  给图像设置一个阴影效果
+  - grayscale 转为灰色图像
+  - invert  反转输入图像
+  - opacity  透明度
+  - saturate  图像饱和度
+  - sepia  将图像转换为深褐色
+
+* border-image （允许在元素的边框上绘制图像）
 
 * box-shadom
-* shape-outside
+* shape-outside   非矩形的形状
 
-  polygon
-  
-* perspective
+  polygon（多边形）、circle、ellipse（椭圆）、path
+
+* perspective （透视，景深）
 
 * gradient (渐变)
 * mask-composite(遮罩)
 * mix-blend-mode(混合模式) / background-blend-mode
 
-  修改图片颜色
+  当层重叠时计算像素最终颜色值，以此来修改图片颜色。
+
+  normal | multiply | screen | overlay | darken | lighten | color-dodge | color-burn | hard-light | soft-light | difference | exclusion | hue | saturation | color | luminosity
 
 * css-variables(--css)
 
