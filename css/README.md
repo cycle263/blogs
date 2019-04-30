@@ -67,6 +67,9 @@
 
 * box-shadom
 * shape-outside
+
+  polygon
+  
 * perspective
 
 * gradient (渐变)

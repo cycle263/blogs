@@ -8,7 +8,8 @@
     <style media="screen">
     	html,body{
     		height: 100%;
-    		background-color: #F5F5F9;
+        background-color: #F5F5F9;
+        margin: 16px;
     	}
       .arc-rotate{
         position: fixed;
@@ -98,7 +99,26 @@
       .point1::before {
         content: '...';
         position: absolute;
-        animation: dot1 1s infinite step-start both;
+        animation: dot1 2s infinite step-start both;
+      }
+      /* 占位 */
+      .point1::after {
+        content: '...';
+        color: transparent;
+      }
+      @keyframes dot1 {
+        33% {content: '.';}
+        66% {content: '..';}
+      }
+      .point2 {
+        display: inline-block; min-width: 2px; min-height: 2px;
+        margin-right: 8px;
+        box-shadow: 2px 0, 6px 0, 10px 0;
+        animation: dot2 2s infinite step-start both;
+      }
+      @keyframes dot2 {
+        33% { box-shadow: 2px 0; }         /* 1个点 */
+        67% { box-shadow: 2px 0, 6px 0; }  /* 2个点 */ 
       }
     </style>
 </head>
@@ -122,10 +142,11 @@
     <div class="item left"></div>
   </div>
 
-  <div class="point1">
-    加载中1
-    <span></span>
-  </div>
+  <span class="point1"></span>
+
+  <span class="point2"></span>
+
+  <!-- script -->
   <script type="text/javascript">
     (function(){
       var canvas = document.getElementById("canvas"),

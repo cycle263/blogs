@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>pie</title>
+  <style>
+    .pie {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      margin: 32px auto;
+      overflow: hidden;
+      background-color: red;    
+    }
+    .pie-left, .pie-right {
+      display: inline-block;
+      width: 50%; 
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background-color: #fff;
+    }
+    .pie-left::before, 
+    .pie-right::before,
+    .pie-right::after {
+      content: ' ';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: tomato;
+    }
+    .pie-left::before {
+      left: 100%;
+      transform-origin: left;
+      transform: rotate(calc(3.6deg * (var(--percent) - 50)));
+      opacity: calc(99999 * (var(--percent) - 50));
+      transition: transform 2s linear, opacity 0s 1.5s linear;
+    }
+    .pie-right::before {
+      right: 100%;
+      transform-origin: right;
+      transform: rotate(calc(3.6deg * var(--percent)));
+      transition: transform 2s linear;
+    }
+    .pie-right::after {
+      opacity: calc(99999 * (var(--percent) - 50));
+      transition: opacity 0s 1.1s linear;
+    }
+  </style>
+</head>
+<body>
+  <div class="pie" style="--percent:0;">
+    <span class="pie-left"></span>
+    <span class="pie-right" style="margin-left: -4px;"></span>
+  </div>
+
+  <script>
+  (function(){
+    var pie = document.querySelector('.pie');
+    setTimeout(() => {
+      pie.style = '--percent: 60;';
+    }, 2000);
+  })();
+  </script>
+</body>
+</html>
