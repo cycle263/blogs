@@ -90,7 +90,10 @@
 
   其他方案，"204 No Content"
 
-参见资料
+### 参考资料
 
 [Script Error规范](https://github.com/BetterJS/badjs-report/issues/3)
+
 [解决Script Error的另类思路](https://cloud.tencent.com/developer/article/1367170)
+
+[让前端监控数据采集更高效](https://segmentfault.com/a/1190000018918875)

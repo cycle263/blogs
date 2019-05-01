@@ -52,6 +52,8 @@
 
 * 16、[css经典面试](https://juejin.im/post/5cc59e41e51d456e62545b66)
 
+* 17、[2019前端自查清单](https://segmentfault.com/a/1190000018873042)
+
 #### [返回首页](../../)
 
 
