@@ -22,6 +22,7 @@
 * 单向数据流和双向绑定的优缺点？
 * vue的响应式原理，依赖收集、监听数组？
 * 实现一个vue的mixin方法
+* 前后端分离的项目如何seo？
 
 ## JavaScript
 
@@ -39,6 +40,7 @@
 * 执行上下文分哪几类？和作用域有什么区别？执行栈是什么？js的基本数据类型哪些存储在堆，哪些存在栈？ [【详情解析】]({{site.baseurl}}/javascripts/depth/context)
 * 如何判断点是否在方形或者圆形内，如何判断两个方形是否重叠？
 * src vs href ?     [【详情解析】]({{site.baseurl}}/Html/common/href)
+* 向1000个并排的div元素中，插入一个平级的div元素，如何优化插入的性能？
 
 
 ## HTML、CSS
@@ -318,13 +320,14 @@
 * 父子组件之间如何通信
 * Redux怎么实现属性传递，介绍下原理
 * React-Router的基本原理    [【详情解析】]({{site.baseurl}}/framework/React/router)
-* 网站SEO怎么处理
+* 网站SEO怎么处理，优化？
 * 介绍下HTTP状态码    [【详情解析】]({{site.baseurl}}/http/articles/httpProtocol)
 * 403、301、302是什么     [【详情解析】]({{site.baseurl}}/http/articles/httpProtocol)
 * 缓存相关的HTTP请求头    [【详情解析】]({{site.baseurl}}/http/articles/httpProtocol)
 * 介绍HTTPS       [【详情解析】]({{site.baseurl}}/http/articles/https)
 * HTTPS怎么建立安全通道     [【详情解析】]({{site.baseurl}}/http/articles/https)
 * HTTPS 握手过程中，客户端如何验证证书的合法性    [【详情解析】]({{site.baseurl}}/http/articles/https)
+* 如何劫持https的请求?
 * 前端性能优化（JS原生和React）
 * 用户体验做过什么优化
 * 对PWA有什么了解  (`Manifest`) [【详情解析】](https://juejin.im/post/5ac8a67c5188255c5668b0b8)
@@ -335,6 +338,7 @@
 * Access-Control-Allow-Origin在服务端哪里配置
 * csrf跨站攻击怎么解决
 * 前端和后端怎么联调
+* git中的reflog、cherry-pick用来干什么？
 
 ### 兑吧
 
