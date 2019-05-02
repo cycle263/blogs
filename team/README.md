@@ -4,9 +4,11 @@
 
   airbnb 代码规范 + eslint + 发布流程规范化
 
+  后期推行typescript规范
+
 * 未来技术方向
 
-  - PWA + 小程序
+  - PWA + 小程序 + Flutter
 
   - 小中台 + 微服务
 
