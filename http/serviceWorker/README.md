@@ -6,7 +6,7 @@ Service Worker设计为完全异步，同步API（如XHR和localStorage）不能
 
 Service Worker 还允许你检测网络请求的状况，并让你作出相应的响应，但Service Worker 要求必须是Https的网络环境，为了便于本地开发，localhost 也被浏览器认为是安全源。
 
-* SW的lifecycle
+* Service worker的lifecycle
 
 ```js
 ┌--------------┐    ┌--------------┐    ┌------------┐
@@ -30,6 +30,8 @@ Service Worker 还允许你检测网络请求的状况，并让你作出相应�
 
 * 初始化注册
 
+注册函数返回promise。
+
 chrome浏览器已经很好的支持了Service Worker的debug功能，可在浏览器输入`chrome://inspect/#service-workers`查看是否注册成功，也可以在控制台的application里查看。如果注册成功，service worker就会被下载到客户端并尝试安装或激活，这将作用于整个域内用户可访问的URL，或者其特定子集。
 
 ```js
@@ -37,11 +39,11 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/service-worker.js', {
     scope: '/app/'  // 指定可以访问的作用域或者目录
   }).then(function(registration) {
-  // Registration was successful
-  console.log('ServiceWorker registration successful with scope: ', registration.scope);
-}).catch(function(err) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+  }).catch(function(err) {
     console.log('ServiceWorker registration failed: ', err);
-   });
+  });
 }
 ```
 
@@ -99,6 +101,14 @@ this.addEventListener('fetch', event => {
 * service worker 所有支持的事件
 
   install、activate、message、fetch、sync、push
+
+  ```js
+  self.addEventListener('fetch', function(event){ // 监听fetch事件
+    if(/\.jpg$/.test(event.request.url)) {
+      event.respondWith(fetch('/images/unicorn.jpg'));
+    }
+  });
+  ```
 
 * 常见问题
 
