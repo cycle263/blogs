@@ -8,6 +8,8 @@ Npm script是npm的内置功能，npm脚本都存放在package.json文件里的s
   
   比较特别的是，`npm run`新建的这个Shell，会将当前目录的`node_modules/.bin`子目录加入PATH变量，执行结束后，再将PATH变量恢复原样。由于npm脚本的唯一要求就是可以在 shell 中执行，因此它不一定是Node 脚本，任何可执行文件都可以写在里面。
 
+  例如：`npm run build` 其实就是一个软链接，指向`node_modules/.bin/webpack.js`脚本。
+
 * 通配符和传参
 
   由于 npm 脚本就是 Shell 脚本，因为可以使用 Shell 通配符。*表示任意文件名，**表示任意一层子目录。向 npm 脚本传入参数，要使用 -- 标明。
