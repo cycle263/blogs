@@ -38,21 +38,33 @@ cookie由服务器生成，发送给浏览器，浏览器把cookie以kv形式保
 
 http请求是无状态的，为了区分不同用户的登录状态，会在服务端生成一个session id，并随着请求一并带过来。但是，服务端保存session id既浪费空间，又缺乏可靠性，特别是在做了负载均衡的情况下，可扩展性成了大问题。
 
-因此，服务端会给用户发放一个token 令牌，并进行HMAC-SHA256算法和密钥进行加密签名，服务端不保存此token，用同样的方式做签名对比，来验证用户的登录状态。
+因此，服务端会给用户发放一个token 令牌，并用HMAC-SHA256算法进行对称加密，将URL和时间戳、token三者融合进行加验签名，服务端不保存此token，用同样的方式做对比，来验证用户的登录状态。
 
 ## token
 
-正因为session验证存在的诸多问题，Token身份验证能解决其存在的大部分问题。
+正因为session验证存在的诸多问题，Token身份验证能解决其存在的大部分问题，并且登录验证一般使用https协议，以保证token的安全性。
 
 * 特性
 
   - 无状态，可以扩展
   - 跨终端，跨程序
-  - 安全
+  - 安全，能够防止CSRF
 
 * 验证过程
 
-  `登录请求 -> 服务端验证，返回token -> 客户端储存token，用于后续的每次请求 -> 服务端验证带token的每个请求`
+  `登录请求 -> 服务端验证，返回token -> 客户端储存token(对称加密存储)，用于后续的每次请求 -> 服务端验证带token的每个请求`
+
+* 验证方法
+
+  实施 Token 验证的方法挺多的，还有一些标准方法，比如 JWT，读作：jot ，表示：JSON Web Tokens。JWT 标准的 Token 有三个部分：header（头部）、payload（数据）、signature（签名）
+
+  - header：里面包含了使用的加密算法
+  - Payload：里面是 Token 的具体内容
+  - signature：这部分内容有三个部分，先是用 Base64 编码的 header.payload ，再用加密算法加密一下，加密的时候要放进去一个 Secret ，这个相当于是一个密码，这个密码秘密地存储在服务端。
+
+  中间用点分隔开，并且都会使用 Base64 编码，所以真正的 Token 看起来像这样：
+
+  `eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJuaW5naGFvLm5ldCIsImV4cCI6IjE0Mzg5NTU0NDUiLCJuYW1lIjoid2FuZ2hhbyIsImFkbWluIjp0cnVlfQ.SwyHTEx_RQppr97g4J5lKXtabJecpejuef8AqKYMAJc`
 
 
 ### cookie vs session
