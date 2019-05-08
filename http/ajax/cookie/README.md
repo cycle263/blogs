@@ -6,11 +6,11 @@ cookie由服务器生成，发送给浏览器，浏览器把cookie以kv形式保
 
 * 特性
 
-ajax和jsonp默认是带上cookie；cors跨域和fetch默认是不带上cookie；
+  ajax和jsonp默认是带上cookie；cors跨域和fetch默认是不带上cookie；
 
-fetch要带上cookie需设置options  -  credentials属性，可设置为include(任意域名都带上)或者same-origin
+  fetch要带上cookie需设置options  -  credentials属性，可设置为include(任意域名都带上)或者same-origin
 
-cors跨域请求，可加上这个option `xhrFields: { withCredentials: true }, crossDomain: true, `
+  cors跨域请求，可加上这个option `xhrFields: { withCredentials: true }, crossDomain: true,`
 
 * 获取的所有cookie
 
@@ -36,7 +36,23 @@ cors跨域请求，可加上这个option `xhrFields: { withCredentials: true }, 
 
 ## session
 
-http请求是无状态的，为了区分不同用户的登录状态，会在服务端生成一个session id，并随着请求一并带过来。但是，服务端保存session id既浪费空间，又缺乏可靠性，因此，服务端会给用户发放一个token 令牌，并进行HMAC-SHA256算法和密钥进行加密签名，服务端不保存此token，用同样的方式做签名对比，来验证用户的登录状态。
+http请求是无状态的，为了区分不同用户的登录状态，会在服务端生成一个session id，并随着请求一并带过来。但是，服务端保存session id既浪费空间，又缺乏可靠性，特别是在做了负载均衡的情况下，可扩展性成了大问题。
+
+因此，服务端会给用户发放一个token 令牌，并进行HMAC-SHA256算法和密钥进行加密签名，服务端不保存此token，用同样的方式做签名对比，来验证用户的登录状态。
+
+## token
+
+正因为session验证存在的诸多问题，Token身份验证能解决其存在的大部分问题。
+
+* 特性
+
+  - 无状态，可以扩展
+  - 跨终端，跨程序
+  - 安全
+
+* 验证过程
+
+  `登录请求 -> 服务端验证，返回token -> 客户端储存token，用于后续的每次请求 -> 服务端验证带token的每个请求`
 
 
 ### cookie vs session
