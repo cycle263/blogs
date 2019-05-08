@@ -1,19 +1,27 @@
 ## cookie
 
+cookie 是一个非常具体的东西，指的就是浏览器里面能永久存储的一种数据，仅仅是浏览器实现的一种数据存储功能。
+
+cookie由服务器生成，发送给浏览器，浏览器把cookie以kv形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie是存在客户端上的，所以浏览器加入了一些限制确保cookie不会被恶意使用，同时不会占据太多磁盘空间，所以每个域的cookie数量是有限的。
+
+* 特性
+
 ajax和jsonp默认是带上cookie；cors跨域和fetch默认是不带上cookie；
 
 fetch要带上cookie需设置options  -  credentials属性，可设置为include(任意域名都带上)或者same-origin
 
 cors跨域请求，可加上这个option `xhrFields: { withCredentials: true }, crossDomain: true, `
 
-* 1、获取的所有cookie: document.cookie.  
+* 获取的所有cookie
+
+  document.cookie.  
 
   Cookie是一个键值对形式的字符串。只能用这个方法一次赋值或更新一个cookie。  
   ```js
   example: document.cookie = "someCookieName=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
   ```
 
-* 2、以下可选的cookie属性值跟在键值对后，定义cookie的设定/更新，跟着一个分号以作分隔：  
+* 以下可选的cookie属性值跟在键值对后，定义cookie的设定/更新，跟着一个分号以作分隔：  
 
   -  ;path=path (例如 '/', '/mydir') 如果没有定义，默认为当前文档位置的路径。  
   -  ;domain=domain (例如 'example.com'， '.example.com' (包括所有子域名), 'subdomain.example.com') 如果没有定义，默认为当前文档位   置的路径的域名部分。  
@@ -21,9 +29,15 @@ cors跨域请求，可加上这个option `xhrFields: { withCredentials: true }, 
   -  ;expires=date-in-GMTString-format 如果没有定义，cookie会在对话结束时过期，这个值的格式参见Date.toUTCString()    
   -  ;secure (cookie只通过https协议传输)  
 
-* 3、cookie的值字符串可以用encodeURIComponent()来保证它不包含任何逗号、分号或空格(cookie值中禁止使用这些值).
+* cookie的值字符串可以用encodeURIComponent()来保证它不包含任何逗号、分号或空格(cookie值中禁止使用这些值).
 
 * `1969-12-31T23:59:59.000Z` 是一个会话周期(session), 临时性Cookie，不会被持久化，也就是关闭你的浏览器后，这个cookie就会消失。这个是chrome特意用来表示会话周期的。
+
+
+## session
+
+http请求是无状态的，为了区分不同用户的登录状态，会在服务端生成一个session id，并随着请求一并带过来。但是，服务端保存session id既浪费空间，又缺乏可靠性，因此，服务端会给用户发放一个token 令牌，并进行HMAC-SHA256算法和密钥进行加密签名，服务端不保存此token，用同样的方式做签名对比，来验证用户的登录状态。
+
 
 ### cookie vs session
 
