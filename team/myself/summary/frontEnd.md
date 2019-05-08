@@ -12,7 +12,7 @@
 
 * 5. 可视化开发（webGL、canvas、svg、D3.js）
 
-* 6. 全栈开发（前后端通吃，typescript、nodejs、php、go、deno）
+* 6. 全栈开发（typescript、nodejs、go、deno）
 
 参考百度统计，Google Analytics，[cnzz统计](http://open.cnzz.com/a/new/trackevent/)
 

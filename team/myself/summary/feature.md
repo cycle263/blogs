@@ -77,4 +77,4 @@
 
 * [ ] markdown转换成精致的PPT
 
-* [ ] airbnb规范翻译
+* [x] airbnb规范翻译
