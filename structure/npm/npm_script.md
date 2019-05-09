@@ -107,4 +107,9 @@ Npm script是npm的内置功能，npm脚本都存放在package.json文件里的s
 
   - window环境不支持`${npm_package_family}/${npm_package_name}`变量方式来指定路径，估计原因：window环境不是bash脚本，不支持${}写法，可以将脚本移到单独的node js文件里执行。可以安装cross-env包解决。
 
+  - 设置NODE_ENV参数在cmd中报错(bash中是否报错？)，`NODE_ENV=development` -> `set NODE_ENV=development` 或者使用cross-env库 `cross-env NODE_ENV=production`
+
+  - 单引号无法使用，建议使用双引号。`"start": "dora --plugins 'proxy,webpack,webpack-hmr'",`
+  -->  `"start": "dora --plugins \"proxy,webpack,webpack-hmr\"",`
+
 [npm scripts详解参见](http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html)
