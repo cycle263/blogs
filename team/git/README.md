@@ -207,4 +207,9 @@
     或者  
     `git config --global push.default simple`  
 
+
+### 参考链接
+
+[git奇技淫巧](https://github.com/521xueweihan/git-tips)
+
 [git参照文档](https://www.yiibai.com/git)

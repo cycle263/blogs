@@ -46,3 +46,8 @@
 
     - [http状态码详解](http://tool.oschina.net/commons?type=5)
 
+
+### 参考资料
+
+[http协议知识要点总结](https://github.com/CyC2018/CS-Notes/blob/master/notes/HTTP.md)
+
