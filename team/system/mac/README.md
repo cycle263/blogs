@@ -49,3 +49,5 @@
 * shell退出远程
 
   `exit / logout`
+
+* mac环境大小写不敏感
