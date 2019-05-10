@@ -212,11 +212,25 @@
 
     - worker新线程：  
 
-        1.通过postMessage( data ) 方法来向主线程发送数据。  
+      1.通过postMessage( data ) 方法来向主线程发送数据。  
 
-        2.绑定onmessage方法来接收主线程发送过来的数据。  
+      2.绑定onmessage方法来接收主线程发送过来的数据。  
 
-    - 全局对象
+    - web worker通信
+
+      + postMessage，传递字符串或者json对象
+
+      + Broadcast Channel，广播通道，允许我们向共享同一个源的所有上下文发送消息。同一个源下的所有的浏览器页签，内联框架（iframe）或者 workers 都可以发送和接收消息。不过，广播信道浏览器兼容性不太好。
+
+    - web workers分类
+
+      + share worker
+
+      + service worker
+
+        service worker是PWA的核心，实际上是一个在网络应用与浏览器或网络层之间的代理层。它可以拦截网络请求，使得离线访问成为可能。
+
+      + 一般web worker
 
   * **localStorage vs sessionStorage**
 
