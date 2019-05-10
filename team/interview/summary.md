@@ -8,7 +8,7 @@
 * 为什么推荐在componentDidMount中发起request请求？
 * 如何细粒度地控制 react 组件更新
 * react 的 key 的作用以及实现原理，并设定一个具体情境进行分析
-* 对 Redux 和 Mobx 的设计理念理解   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/Mobx)
+* 对 Redux 和 Mobx 的设计理念理解   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/other/Mobx)
 * virtual-dom 的基本原理与简单的源码解释
 * pure-component 和 shouldComponentUpdate，pure-component, function-component 相关概念
 * 介绍下React中的this

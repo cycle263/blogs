@@ -8,6 +8,8 @@
 
   * **[context vs scope](./javascripts/depth/context)**
 
+    作用域是基于函数，js解释器在创建 执行上下文栈 的时候,会同时创建一个 scope chain（单向链表）。在执行上下文的执行阶段的时候, 当需要访问某个变量时, 会首先在当前的执行上下文的VO中查找。如果找不到, 就往链表的下一个位置查找，一直到最后一个位置。
+
   * **[jQuery](./framework/jQuery/)**
 
     jQuery API,  Principle of jQuery

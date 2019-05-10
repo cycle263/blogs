@@ -64,7 +64,7 @@
 
   - [react-redux](./dataManage/redux/react-redux) React专用状态管理库
 
-  - [Mobx](./dataManage/Mobx)
+  - [Mobx](./dataManage/other/Mobx)
 
   - [falcor](./dataManage/falcor)
 
