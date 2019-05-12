@@ -36,6 +36,10 @@ PWA 能做到原生应用的体验不是靠特指某一项技术，而是经过�
 
   `<link rel="manifest" href="/manifest.json">`, manifest.json文件遵循[web app manifest规范](www.w3.org/TR/appmanifest/)。
 
+  - 用途
+
+    安装web应用到主屏幕，控制不同元素的感官。
+
 
 ### 其他
 
