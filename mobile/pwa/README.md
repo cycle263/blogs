@@ -28,8 +28,18 @@ PWA 能做到原生应用的体验不是靠特指某一项技术，而是经过�
   - 所有的数据传输必须使用安全的HTTPS连接
   - 渐进式Web应用可以离线缓存数据，并且会在重新连接互联网时重新同步数据
 
+* service worker缓存
+
+  service worker缓存让开发者可以缓存所有需要的资源，例如：拦截http请求和响应，并根据需要调整它们。
+
+* Mainfest文件
+
+  `<link rel="manifest" href="/manifest.json">`, manifest.json文件遵循[web app manifest规范](www.w3.org/TR/appmanifest/)。
+
 
 ### 其他
 
 * [免费https证书授权](https://letsencrypt.org)
+
+* [sw-toolbox一个service worker缓存请求库](https://github.com/GoogleChromeLabs/sw-toolbox)
 
