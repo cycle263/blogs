@@ -342,6 +342,8 @@
 * csrf跨站攻击怎么解决
 * 前端和后端怎么联调
 * git中的reflog、cherry-pick用来干什么？
+* 理解Viewport、em、rem的原理和用法，分辨率、px、ppi、dpi、dp的区别和实际应用
+* npm、yarn依赖包管理的原理，两者的区别
 
 ### 兑吧
 
@@ -350,6 +352,7 @@
 * 盒子模型，以及标准情况和IE下的区别
 * 如何实现高度自适应
 * prototype和__proto__区别
+  `prototype是构造函数的属性。__proto__ 是每个实例都有的属性，可以访问 [[prototype]] 属性。实例的__proto__ 与其构造函数的prototype指向的是同一个对象。`
 * _construct是什么
 * new是怎么实现的
 * promise的精髓，以及优缺点

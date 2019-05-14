@@ -184,6 +184,10 @@
 
 * 简单实现async函数
 
+* 实现 JSON.stringify
+
+* 实现 懒加载
+
 * 实现 EventEmitter
 
   ```js
