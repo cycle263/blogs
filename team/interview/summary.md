@@ -349,7 +349,7 @@
 * CSS选择器有哪些
 * 盒子模型，以及标准情况和IE下的区别
 * 如何实现高度自适应
-* prototype和——proto——区别
+* prototype和__proto__区别
 * _construct是什么
 * new是怎么实现的
 * promise的精髓，以及优缺点
