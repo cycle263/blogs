@@ -19,5 +19,5 @@
 
   分析原因：http缓存值设置的太小
 
-  解决办法：`git config --global http.postBuffer  524288000`
+  解决办法：修改post缓存值，`git config --global http.postBuffer  524288000`
     
