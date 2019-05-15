@@ -51,3 +51,7 @@
   `exit / logout`
 
 * mac环境大小写不敏感
+
+### 其他资料
+
+[iterm2主题配色](https://www.jianshu.com/p/9c3439cc3bdb)
