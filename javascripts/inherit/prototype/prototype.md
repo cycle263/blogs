@@ -74,3 +74,7 @@
   ```
 
 备注：侵图必删
+
+### 其他资料
+
+[彻底弄到原型链](https://www.cnblogs.com/xiaohuochai/p/5721552.html)

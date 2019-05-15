@@ -186,3 +186,117 @@ swapone(obj3, obj4)
 console.log(obj3)  //输出什么   {name: '111'}
 console.log(obj4)  //输出什么   {age: 3}
 ```
+
+
+CSS基础题：
+
+1.请用css画一个月亮(月牙儿🌛) ?
+2.三栏布局，两边宽度固定，中间自适应：请列出4种以上的方法 ?
+3.请具体描述一下css中 BFC, IFC, GFC, FFC是什么 ？
+4.请用一个div + css写一个九宫格布局要求每个格子的颜色不同 ？
+5.css中命名冲突如何解决 ？
+
+
+javascript基础题：
+
+一.请写出下面输出值, 并且写出打开注释以后的输出值 ？(考察this)
+
+```js
+this.a = 20;
+var test = {
+    a: 40,
+    init: () => {
+        console.log(this.a);
+        function go() {
+            // this.a = 60;
+            console.log(this.a);
+        }
+        go.prototype.a = 50;
+        return go;
+    }
+};
+// var p = test.init();
+// p();
+new (test.init())()
+```
+
+二：请写出下面代码的弹出值和打印值 ？(考察作用域相关)
+
+```js
++function(){
+    alert(a);
+    a();
+    var a = function () {
+        console.log(1);
+    }
+    function a() {
+        console.log(2);
+    }
+    alert(a);
+    a();
+    var c = d = a;
+}();
+alert(d);
+alert(c);
+```
+
+三：请写出下面输出值 (考察原型原型链)
+
+```js
+Object.prototype.a = 'a';
+Function.prototype.a = 'a1';
+function Person(){};
+var fe = new Person();
+console.log('fe.a', fe.a);
+console.log(1..a);
+```
+
+四：请写出下列代码的输出结果（考察事件循环队列和promise）
+
+```js
+async function async1() {
+    return new Promise(resolve => {
+        Promise.resolve().then(() => {
+            async2().then(resolve)
+        })
+    }).then(() => {
+        console.log('6')
+    })
+}
+async function async2() {
+    console.log('1')
+}
+async1()
+
+Promise.resolve().then(function () {
+    console.log('2')
+}).then(function () {
+    console.log('4')
+}).then(function () {
+    console.log('7')
+})
+
+Promise.resolve().then(function () {
+    console.log('3')
+}).then(function () {
+    console.log('5')
+}).then(function () {
+    console.log('8')
+})
+```
+
+es6基础题：
+
+一：请实现一个Promise.race函数（考察promise）
+
+二：请实现一个函数composeFunctions效果如下
+
+```js
+// composeFunctions(fn1,fn2,fn3,fn4)等价于fn4(fn3(fn2(fn1))
+const add = x => x + 1;
+const multiply = (x, y) => x * y;
+const multiplyAdd = composeFunctions(multiply, add);
+multiplyAdd(3, 4) // 返回 13
+```
+    
+    
