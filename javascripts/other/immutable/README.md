@@ -44,3 +44,5 @@ Immutable Data 就是一旦创建，就不能再被更改的数据。对 Immutab
 * Repeat() 重复数组
 
   `Repeat<T>(value: T, times?: number): Seq.Indexed<T>`
+
+* get vs getIn

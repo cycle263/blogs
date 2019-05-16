@@ -10,7 +10,7 @@
 
 * model
 
-  Model分为dataModel和uiModel，便于区分服务端数据和本地UI数据，并且都是基于immutablejs。dataModel 实现服务端数据接口的数据交互，uiModel 是本地 UI 数据集合。具体参见src/model目录下的data-route和ui-route。
+  Model分为dataModel和uiModel，便于区分服务端数据和本地UI数据，并且都是基于 immutablejs。dataModel 实现服务端数据接口的数据交互，uiModel 是本地 UI 数据集合。具体参见src/model目录下的data-route和ui-route。
 
 * view
 
