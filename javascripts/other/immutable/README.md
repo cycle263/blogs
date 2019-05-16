@@ -46,3 +46,5 @@ Immutable Data 就是一旦创建，就不能再被更改的数据。对 Immutab
   `Repeat<T>(value: T, times?: number): Seq.Indexed<T>`
 
 * get vs getIn
+
+  `get(key: number, notSetValue?: T)`  vs   `getIn([key: number, ...] notSetValue?: T)`
