@@ -35,3 +35,18 @@
 - 5、lodash.cloneDeep
 
 - 6、MessageChannel的postMessage和Worker的postMessage，都是深复制数据传递，但也不能序列化函数
+
+    ```js
+    function structuralClone(obj) {
+        return new Promise(resolve => {
+            const {port1, port2} = new MessageChannel();
+            port2.onmessage = ev => resolve(ev.data);
+            port1.postMessage(obj);
+        });
+    }
+    const obj = {};
+    const clone = await structuralClone(obj);
+    ```
+
+    类似的 API 还有 History API 、Notification API 等，都是利用了结构化克隆算法（Structured Clone） 实现传输值的。
+
