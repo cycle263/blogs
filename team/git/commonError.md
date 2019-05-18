@@ -28,7 +28,7 @@
   git config --global http.postBuffer  524288000
   #压缩配置
   git config --global core.compression -1 
-  #修改配置文件
+  #修改配置文件， 打开调试信息
   export GIT_TRACE_PACKET=1
   export GIT_TRACE=1
   export GIT_CURL_VERBOSE=1
