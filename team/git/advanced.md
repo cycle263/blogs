@@ -34,6 +34,7 @@
 
   - 查看所有的配置  
     `git config --list`
+    `git config --global --list   // 查看全局的所有配置项`
 
   - push提示log中有不符合规定的邮箱
     撤销不符合规定的commitid，或者还原后重新commit，方能push到远端
