@@ -19,3 +19,4 @@ dva其实就是把之前Redux每个路由下的state、reducer、sagas写到一�
 Subscription 语义是订阅，用于订阅一个数据源，然后根据条件 dispatch 需要的 action。数据源可以是当前的时间、服务器的 websocket 连接、keyboard 输入、geolocation 变化、history 路由变化等等。
 
 ![dva流程](../../images/dva.jpeg)
+
