@@ -103,3 +103,7 @@
     mapDispatchToProps
   )(TodoList)
   ```
+
+### 参考资料
+
+[react-redux Connect方法](https://www.jianshu.com/p/e3cdce986ee2)
