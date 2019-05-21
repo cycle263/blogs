@@ -2,21 +2,19 @@
 
 * [电话面试知识点简述](simpleInterview)
 
-* [常用面试知识点简述](summary)
+* [大厂面试知识点](summary)
 
-* [简单常用笔试选择题](./prints/selectWritten)
+* [简单常用笔试选择题](selectWritten)
 
 * [简单笔试代码输出题](simpleWritten)
 
-* [常规面试题](comInterview)
+* [古老的面试题](comInterview)
 
-* [常规H5面试题](h5)
+* [一般公司面试题](company)
 
-* [常规公司面试题](company)
+* [有趣的手写题](handWriting)
 
-* [有趣的代码题](fun-interview)
-
-* [常见的手写题](handWriting)
+* [常见的算法题](algoInterview)
 
 ## 外部链接
 
