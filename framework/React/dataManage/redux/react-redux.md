@@ -84,7 +84,7 @@
         }
       }
     }
-
+    
     const mapDispatchToProps = (dispatch, ownProps) => {
       return {
         increase: (...args) => dispatch(actions.increase(...args)),

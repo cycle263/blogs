@@ -87,3 +87,8 @@
 		"typescript.tsdk": "*/typescript/,*/ts/",		// 指定需要tslint的目录
 	}
 	```
+
+
+### 参考文档
+
+[vscode常用插件](https://github.com/varHarrie/varharrie.github.io/issues/10)
