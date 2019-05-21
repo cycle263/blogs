@@ -228,4 +228,6 @@
 
 [redux-saga中文文档](https://redux-saga-in-chinese.js.org/)
 
+[redux中间件的对比](https://www.cnblogs.com/vvjiang/p/9505646.html)
+
 [中间件和异步操作](http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html)
