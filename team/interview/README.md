@@ -4,11 +4,11 @@
 
 * [常用面试知识点简述](summary)
 
-* [简单常用笔试选择题](selectWritten)
+* [简单常用笔试选择题](./prints/selectWritten)
 
 * [简单笔试代码输出题](simpleWritten)
 
-* [常规面试题](common-interview)
+* [常规面试题](comInterview)
 
 * [常规H5面试题](h5)
 
@@ -16,7 +16,7 @@
 
 * [有趣的代码题](fun-interview)
 
-* [常见的算法题](algoInterview)
+* [常见的手写题](handWriting)
 
 ## 外部链接
 
