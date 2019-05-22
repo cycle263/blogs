@@ -24,3 +24,7 @@
 * Chakra        -   IE9、Edge
 
 * Nitro         -   Safari
+
+### chrome页面性能分析
+
+* Audits 面板

@@ -61,6 +61,8 @@
 
   * connect是真正的重点，它是一个科里化函数，也就是一个代理模式实现的高阶组件，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）
 
+    `connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])`
+
     - mapStateToProps：负责输入逻辑，即将 **state映射到 UI 组件** 的参数（props）。构建好Redux系统的时候，它会被自动初始化，但是你的React组件并不知道它的存在，因此你需要分拣出你需要的Redux状态，所以你需要绑定一个函数，它的参数是state，简单返回你关心的几个值。
 
     传入mapStateToProps之后，会订阅store的状态改变，在每次store的state发生变化的时候，都会被调用。
