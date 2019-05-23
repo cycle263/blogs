@@ -16,6 +16,8 @@
   
   - 解构赋值允许指定默认值。ES6内部使用严格相等运算符（===），判断一个位置是否有值。所以，如果一个数组成员不严格等于undefined，默认值是不会生效的。解构赋值不仅适用于var命令，也适用于let和const命令。  
 
+  - rest元素必须在最后一个元素，否则提示异常 `Uncaught SyntaxError: Rest element must be last element`
+
 * 2、字符串的解构赋值  
 
   由于JavaScript引擎内部，某些场合时，字符串会被转为类似数组的对象。因此，字符串也可以解构赋值。

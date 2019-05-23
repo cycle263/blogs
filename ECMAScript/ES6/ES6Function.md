@@ -19,7 +19,7 @@
 
   - 如果传入undefined，将触发该参数等于默认值，null则没有这个效果。
   
-  - 指定了默认值以后，函数的length属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，length属性将失真。 `(function(a, b, c = 5){}).length // 2`
+  - 指定了默认值以后，函数的length属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，length属性将失真，另外，length也不包括rest。 `(function(a, b, c = 5){}).length // 2`
 
   - 参数变量是默认声明的，所以不能用let或const再次声明。另外，参数默认值是惰性求值的。
 
@@ -58,6 +58,14 @@
   // rest参数的写法
   const sortNumbers = (...numbers) => numbers.sort();
   ```
+
+  vs arguments
+
+  - rest参数只包含那些没有对应形参的实参；而 arguments 对象包含了传给函数的所有实参。
+
+  - arguments 对象不是一个真实的数组；而rest参数是真实的 Array 实例，也就是说你能够在它上面直接使用所有的数组方法。
+
+  - arguments 对象对象还有一些附加的属性 (比如callee属性)。
 
 * **3、扩展运算符**  
 

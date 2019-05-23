@@ -26,8 +26,9 @@
 
 ## JavaScript
 
+* js有哪几种继承方式，分别有什么优缺点？
 * try catch finally中分别有return，会如何执行？多个return如何执行？
-* 实现一个promise的all方法
+* 实现一个promise的all方法，race方法？
 * 实现一个发布订阅类
 * 实现一个可设置过期时间的localstorage
 * 实现一个sleep类
@@ -40,6 +41,7 @@
 * 执行上下文分哪几类？和作用域有什么区别？执行栈是什么？js的基本数据类型哪些存储在堆，哪些存在栈？ [【详情解析】]({{site.baseurl}}/javascripts/depth/context)
 * 如何判断点是否在方形或者圆形内，如何判断两个方形是否重叠？
 * src vs href ?     [【详情解析】]({{site.baseurl}}/Html/common/href)
+* aysnc vs defer ?
 * 向1000个并排的div元素中，插入一个平级的div元素，如何优化插入的性能？
 * 求取数组中任意两个元素之和等于目标值的算法，要求算法复杂度低于O(n&sup2;)
 
@@ -319,8 +321,8 @@
 * 说一下闭包
 * componentWillReceiveProps的触发条件是什么
 * React16.3对生命周期的改变
-* 介绍下React的Filber架构
-* 画Filber渲染树
+* 介绍下React的Fiber架构
+* 画Fiber渲染树
 * 父子组件之间如何通信
 * Redux怎么实现属性传递，介绍下原理
 * React-Router的基本原理    [【详情解析】]({{site.baseurl}}/framework/React/router)
