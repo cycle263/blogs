@@ -168,3 +168,5 @@
 [redux中间件中文官网](http://cn.redux.js.org/docs/advanced/Middleware.html)
 
 [redux中文官网](https://www.redux.org.cn/)
+
+[redux常见思考问题](http://cn.redux.js.org/docs/faq/ImmutableData.html)

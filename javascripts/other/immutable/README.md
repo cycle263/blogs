@@ -55,3 +55,5 @@ Immutable Data 就是一旦创建，就不能再被更改的数据。对 Immutab
 ### 参考资料
 
 [数据immutable方案比较](https://juejin.im/post/5bbad07ce51d450e894e4228)
+
+[是否需要用immutable](https://cn.redux.js.org/docs/recipes/UsingImmutableJS.html)
