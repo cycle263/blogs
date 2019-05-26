@@ -53,6 +53,30 @@
   head.appendChild(script);
   ```
 
+* 其他快速脚本
+
+```js
+var m = ['A','B','C','D'];
+$('ol[type]').parent().map((i,ele) => {
+	var s = $(ele).html().match(/\<span class="studentAnswer"\> ([A-Z]) \<\/span\>/)[1];
+	return m.findIndex(item => item === s);
+}).toArray();
+
+jQuery('ol[type]').toArray().map(item => {
+	var i = -1;
+	$(item).find('li').each((index, ele) => {
+		if($(ele).find('img').length)
+			i = index;
+    });
+	return i;
+});
+
+var data = [0, 3, 0, 1, 1, 1, 0, 0, 0, 3, 2, 3, 0, 3, 2, 0, 2, 3, 0, 0, 3, 3, 2, 0, 0, 0, 0, 1, 3, 1, 1, 0, 0, 2, 2, 2, 0, 2, 3, 0, 2, 2, 1, 1, 0, 3, 1, 3, 2, 1];
+jQuery('ol[type]').each((i, ele) => {
+	$(ele).find('input').eq(data[i]).prop('checked', true);
+});
+```
+
 
 ## github搜索技巧
 
