@@ -20,3 +20,8 @@ Subscription 语义是订阅，用于订阅一个数据源，然后根据条件 
 
 ![dva流程](../../images/dva.jpeg)
 
+
+### 参考资料
+
+[dva介绍](https://dvajs.com/guide/introduce-class.html#app-model)
+
