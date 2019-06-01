@@ -17,6 +17,36 @@ Immutable Data 就是一旦创建，就不能再被更改的数据。对 Immutab
   - Record
   - Seq
 
+* 性能优化
+
+  Immutable 则提供了简洁高效的判断数据是否变化的方法，只需 `===` 和 `is` 比较就能知道是否需要执行 `render()`，而这个操作几乎 0 成本，所以可以极大提高性能。也可以借助 `React.addons.PureRenderMixin` 或支持 class 语法的pure-render-decorator 来实现。
+
+  ```js
+  import { is } from 'immutable';
+
+  shouldComponentUpdate: (nextProps = {}, nextState = {}) => {
+    const thisProps = this.props || {}, thisState = this.state || {};
+
+    if (Object.keys(thisProps).length !== Object.keys(nextProps).length ||
+        Object.keys(thisState).length !== Object.keys(nextState).length) {
+      return true;
+    }
+
+    for (const key in nextProps) {
+      if (thisProps[key] !== nextProps[key] || ！is(thisProps[key], nextProps[key])) {
+        return true;
+      }
+    }
+
+    for (const key in nextState) {
+      if (thisState[key] !== nextState[key] || ！is(thisState[key], nextState[key])) {
+        return true;
+      }
+    }
+    return false;
+  }
+  ```
+
 * 优点
 
   - Immutable降低了Mutable带来的复杂度，可变（Mutable）数据耦合了Time和Value的概念，造成了数据很难被回溯。
@@ -50,6 +80,26 @@ Immutable Data 就是一旦创建，就不能再被更改的数据。对 Immutab
 * get vs getIn
 
   `get(key: number, notSetValue?: T)`  vs   `getIn([key: number, ...] notSetValue?: T)`
+
+* Cursor
+
+  由于 Immutable 数据一般嵌套非常深，为了便于访问深层数据，Cursor 提供了可以直接访问这个深层数据的引用。
+
+  ```js
+  import Immutable from 'immutable';
+  import Cursor from 'immutable/contrib/cursor';
+
+  let data = Immutable.fromJS({ a: { b: { c: 1 } } });
+  // 让 cursor 指向 { c: 1 }
+  let cursor = Cursor.from(data, ['a', 'b'], newData => {
+    // 当 cursor 或其子 cursor 执行 update 时调用
+    console.log(newData);
+  });
+
+  cursor.get('c'); // 1
+  cursor = cursor.update('c', x => x + 1);
+  cursor.get('c'); // 2
+  ```
 
 
 ### 参考资料
