@@ -1,8 +1,8 @@
 ## react-redux
 
-  > redux本身是个非常纯粹的状态管理库，需要通过react-redux这个库的帮助来管理react的状态。
+  > redux本身是个非常纯粹的状态管理库，需要通过react-redux这个库的帮助来管理react的状态。Redux中dispatch触发store tree中state变化，并不会导致React重新渲染。react-redux才是真正触发React重新渲染的模块。
   
-  Redux 的作者封装了一个 React 专用的库 React-Redux。React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。
+  React-Redux是Redux 的作者封装了一个 React 专用的库。React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。
   
   **React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是由 React-Redux 自动生成。也就是说，用户负责视觉层，状态管理则是全部交给它。**
 
@@ -94,6 +94,25 @@
       }
     }
     ```
+
+    - mergeProps: mergeProps是一个函数，定义了mapState,mapDispatch及this.props的合并规则，默认合并规则如下：
+
+    ```js
+    const mergeProps = (stateProps, dispatchProps, parentProps) => {
+      return {
+        ...stateProps,
+        ...dispatchProps,
+        ...parentProps,
+      }
+    }
+    ```
+
+    - options: options是一个对象，包含pure和withRef两个属性。
+
+      + pure, 表示是否开启pure优化，默认值为true
+
+      + withRef, 用来给包装在里面的组件一个ref，可以通过getWrappedInstance方法来获取这个ref，默认为false。
+
 
 ### 案例
 
