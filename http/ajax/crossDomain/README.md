@@ -18,9 +18,28 @@
 
   但是有三个标签是允许跨域加载资源： img、link、script
 
+### chrome关闭同源策略
+
+```js
+// mac
+//chrome 浏览器
+open -a "Google Chrome" --args --disable-web-security  --user-data-dir
+//safari 浏览器 
+open -a '/Applications/Safari.app' --args --disable-web-security --user-data-dir 
+
+
+// linux
+chromium-browser --disable-web-security  
+
+
+// window
+"C:\Users\UserName\AppData\Local\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir
+```
 
 ## cors跨域详细总结
 
 [跨域常见的解决思路](crossDomain)
 
 [跨域详解 - 阮一峰](http://www.ruanyifeng.com/blog/2016/04/cors.html)
+
+[关闭Chrome同源策略](https://www.cnblogs.com/zhongxia/p/5416024.html)
