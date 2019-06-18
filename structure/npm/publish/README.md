@@ -8,6 +8,8 @@
   // npm set registry https://registry.npm.taobao.org
   ```
 
+  备注：npmrc配置文件里，也可进行配置，并且优先级更高
+
 * npm私有模块搭建
 
   - npm 公有包
