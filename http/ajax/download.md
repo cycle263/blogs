@@ -2,6 +2,8 @@
 
 * a标签download属性
 
+  download 属性是 HTML 5 的新特性，因此它不支持旧版本的浏览器。
+
 * window.open下载链接
 
   response header设置如下：
@@ -72,3 +74,5 @@
 [Http头Content-Disposition](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition)
 
 [ajax下载文件](https://cloud.tencent.com/developer/ask/43902)
+
+[如何用JavaScript下载文件](https://scarletsky.github.io/2016/07/03/download-file-using-javascript/)

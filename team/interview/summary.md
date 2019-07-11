@@ -279,6 +279,7 @@
 ### 饿了么
 
 * 小程序里面开页面最多多少
+* token vs cookie vs session
 * React子父组件之间如何传值
 * Emit事件怎么发，需要引入什么？
 * React高阶组件，和普通组件有什么区别？   [【详情解析】]({{site.baseurl}}/framework/React/implement/HOC)
