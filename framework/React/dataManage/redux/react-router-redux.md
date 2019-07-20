@@ -45,4 +45,4 @@ ReactDOM.render(
 
 - 默认情况下，期望能在state.routing中找到state历史记录。如果wrapper阻止直接访问属性，或者您希望将路由状态放在其他位置，则通过syncHistoryWithStore上的selectLocationState选项传递选择器函数来访问历史状态。
 
-- 提供您自己的reducer函数，该函数将接收LOCATION_CHANGE类型的操作，并将合并的有效负载返回到路由状态的locationBeforeTransitions属性。 例如：state.set("routing", { locationBeforeTransitions: action.payload })。
+- 提供您自己的reducer函数，该函数将接收LOCATION_CHANGE类型的操作，并将合并的有效负载返回到路由状态的locationBeforeTransitions属性。 例如：`state.set("routing", { locationBeforeTransitions: action.payload })`。

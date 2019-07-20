@@ -4,7 +4,7 @@
 
 * redux几个重要概念
 
-  - store: 应用数据的存储中心，整个应用只能有一个 Store。由 Redux 的 createStore(reducer) 生成
+  - store: 应用数据的存储中心，又称为数据源，整个应用只能有一个 Store。由 Redux 的 createStore(reducer) 生成
 
   - state: 如果想得到某个时点的数据，就要对 Store 生成快照。这种时点的数据集合，就叫做 State。通过 store.getState() 获取，本质上一般是一个存储着整个应用状态的对象。Redux 规定， 一个 State 对应一个 View。只要 State 相同，View 就相同。
 
