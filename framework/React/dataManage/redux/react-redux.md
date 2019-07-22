@@ -27,6 +27,12 @@
 ### 常见概念
 
   * Provider是一个普通组件，也是一个代理模式实现的高阶组件，可以作为顶层app的分发点，它只需要store属性就可以了。它会将state分发给所有被connect的组件，不管它在哪里，被嵌套多少层。一般的做法是，Provider在根组件外面包了一层，这样一来，所有子组件就默认都可以拿到state了。其过程就是，接收 redux 生成的 store 做参数后，通过上下文 context 将 store 传递进被代理组件。
+
+  ```js
+  ┌----------┐              ┌---------┐    ┌-----------┐
+  | provider | - context -> | connect | -> | component | -> store/state 的单向数据流转
+  └----------┘              └---------┘    └-----------┘
+  ```
   
   **Provider的原理是React组件的context属性**，getChildContext传递给子组件对应属性。注意：如果 contextTypes 没有定义，context 将是一个空对象。
 
@@ -59,7 +65,7 @@
     )
     ```
 
-  * connect是真正的重点，它是一个科里化函数，也就是一个代理模式实现的高阶组件，意思是先接受两个参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）
+  * connect是真正的重点，它是一个科里化函数，也就是一个代理模式实现的高阶组件，意思是先接受一些参数（数据绑定mapStateToProps和事件绑定mapDispatchToProps），再接受一个参数（将要绑定的组件本身）
 
     `connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])`
 
