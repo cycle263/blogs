@@ -19,3 +19,8 @@
 * 清理host和DNS缓存
 
   `chrome://net-internals/#dns`
+
+* 查看端口号是否被占用
+
+  `netstat -aon|findstr 1099`
+  `taskkill -f -pid 5608`
