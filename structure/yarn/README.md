@@ -20,6 +20,11 @@ yarn cache list # 列出已缓存的每个包
 yarn cache dir # 返回 全局缓存位置 
 yarn cache clean # 清除缓存
 
+yarn config get registry
+
+-f or --force   不管是否安装过，都要强制重新安装
+  npm i --verbose   查看安装的详细信息
+
 ### yarn vs npm
 
 
