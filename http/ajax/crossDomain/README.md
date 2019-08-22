@@ -10,6 +10,8 @@
 
   同源策略限制内容有：
 
+    - iframe内容
+
     - Cookie、LocalStorage、IndexedDB 等存储性内容
 
     - DOM 节点
