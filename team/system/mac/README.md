@@ -36,7 +36,7 @@
 
 * 查看端口号占用情况
 
-  `lsof -i tcp:port`
+  `lsof -i tcp:port`  or `sudo lsof -i :port`
 
   `kill -9 PID  // 杀死进程` 
 
