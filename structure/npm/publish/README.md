@@ -1,5 +1,13 @@
 ## 发布模块
 
+* 步骤
+
+  ```js
+  npm adduser
+
+  npm publish
+  ```
+
 * 注意修改registry
 
   ```js

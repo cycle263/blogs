@@ -20,6 +20,8 @@ yarn cache list # 列出已缓存的每个包
 yarn cache dir # 返回 全局缓存位置 
 yarn cache clean # 清除缓存
 
+yarn global list 查看全局安装的包
+
 yarn config get registry
 
 -f or --force   不管是否安装过，都要强制重新安装
