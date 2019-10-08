@@ -86,6 +86,10 @@ redux 的痛点，对异步 action 有心无力，接着出现了 redux-thunk、
 
   - 个人维护的项目
 
+* 其他推荐
+
+  - rematch， dva 选择了用 generator，而 rematch 选择了用 async/await
+
 ### 参考文档
 
 [数据流各库的对比](https://zhuanlan.zhihu.com/p/53599723)
