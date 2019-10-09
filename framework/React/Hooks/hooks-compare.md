@@ -102,7 +102,7 @@
 
   - effect hook
 
-  `未完待续...`
+  useEffect 与 React 类中的 componentDidMount，componentDidUpdate，和 componentWillUnmount 有相同的功能，但是统一为单个 API。
 
 - 常见问题
 
