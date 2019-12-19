@@ -14,7 +14,7 @@
 
   + private：所有内容只有客户端可以缓存，代理服务器不可以缓存，Cache-Control的默认取值。
 
-  + no-cache: 强制向源服务器再次验证，响应中包含no-cache，那么缓存服务器则不能对资源进行缓存。需要注意的是，no-cache这个名字有一点误导。设置了no-cache之后，并不是说浏览器就不再缓存数据，只是浏览器在使用缓存数据时，需要先确认一下数据是否还跟服务器保持一致，可以理解为协商缓存
+  + no-cache: 强制向源服务器再次验证，响应中包含no-cache，那么缓存服务器则不能对资源进行缓存。需要注意的是，no-cache这个名字有一点误导,设置了no-cache之后，并不是说浏览器就不再缓存数据，只是浏览器在使用缓存数据时，需要先确认一下数据是否还跟服务器保持一致，可以理解为协商缓存.
 
   + no-store：所有内容都不会被缓存，即不使用强制缓存，也不使用协商缓存
 
@@ -22,7 +22,7 @@
 
 ![cache-control流程](../images/maxage.png)
 
-* 协商缓存：向服务器发送请求，服务器会根据这个请求的request header的一些参数来判断是否命中协商缓存，如果命中，则返回304状态码并带上新的response header通知浏览器从缓存中读取资源；另外协商缓存需要与cache-control共同使用。
+* 协商缓存：向服务器发送请求，服务器会根据这个请求的request header的一些参数来判断是否命中协商缓存，如果命中，则返回304状态码并带上新的response header通知浏览器从缓存中读取资源；另外协商缓存需要与cache-control共同使用, 协商缓存经常作为在强制缓存失效后的一种后备方案。
 
 协商缓存包括：etag 和 last-modified，last-modified的设置标准是资源的上次修改时间；而etag是为了应对资源修改时间可能很频繁的情况出现的，是基于资源的内容计算出来的值，因此优先级也较高，精度也要优于last-modified。
 
@@ -81,11 +81,30 @@ cache-control: max-age=31536000
 
 * service worker
 
-  Service Worker 能够操作的缓存是永久缓存，除非主动去删除或者容量超过限制，具体位置参见 Application -> Cache Storage 
+  Service Worker 能够操作的缓存是永久缓存，除非主动去删除或者容量超过限制，具体位置参见 Application -> Cache Storage 。
+
+  Service Worker 没能命中缓存，一般情况会使用 fetch() 方法继续获取资源。浏览器就去 memory cache 或者 disk cache 中继续匹配缓存是否命中。值得注意的是，即使是没有命中service worker的缓存，也会被标注为 from serviceworker。
 
 * request network
 
   上述 3 个位置都没有找到缓存，那么浏览器会正式发送网络请求去获取内容。
+
+* 总结流程
+
+  ```
+  service worker -> fetch -> memory cache -> disk cache -> 强缓存 -> 协商缓存 -> request -> 缓存disk cache
+  ```
+
+### 浏览器不缓存方案
+
+```html
+<meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
+<meta http-equiv="Last-Modified" content="Sat, 10 Nov 1997 09:08:07 GMT">
+```
+
+或者url拼接 时间戳、hash值
 
 ### 参考资料
 
