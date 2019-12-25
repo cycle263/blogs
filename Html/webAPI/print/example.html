@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+  <link rel="stylesheet" href="https://ant-design.gitee.io/index-daf35104-2.css">
+</head>
+<body>
+  <div style="display: none;">
+    <form method="post" class="page" action="#" id="printJS-form">
+      <div style="display: flex; margin-bottom: 10px;">
+        <div style="flex: 1;padding-right: 10px;">
+          Name:
+          <input type="text" name="name" id="name" value="John Doe" placeholder="Name">
+        </div>
+        <div style="flex: 1;">
+          Email:
+          <input type="text" name="email" id="email" value="john@doe.com" placeholder="Email">
+        </div>
+      </div>
+      <div>
+        <div>
+          Message:
+          <textarea name="message" id="message" placeholder="Message">Print HTML Elements</textarea>
+        </div>
+      </div>
+    </form>
+
+    <div class="ant-table-body ant-table-bordered" id="printJS-form1"><table class=""><colgroup><col><col><col><col><col></colgroup><thead class="ant-table-thead"><tr><th class=""><span class="ant-table-header-column"><div><span class="ant-table-column-title">Name</span><span class="ant-table-column-sorter"></span></div></span></th><th class=""><span class="ant-table-header-column"><div><span class="ant-table-column-title">Age</span><span class="ant-table-column-sorter"></span></div></span></th><th class="" colspan="2"><span class="ant-table-header-column"><div><span class="ant-table-column-title">Home phone</span><span class="ant-table-column-sorter"></span></div></span></th><th class="ant-table-row-cell-last"><span class="ant-table-header-column"><div><span class="ant-table-column-title">Address</span><span class="ant-table-column-sorter"></span></div></span></th></tr></thead><tbody class="ant-table-tbody"><tr class="ant-table-row ant-table-row-level-0" data-row-key="1"><td class=""><a>John Brown</a></td><td class="">32</td><td class="">0571-22098909</td><td class="">18889898989</td><td class="">New York No. 1 Lake Park</td></tr><tr class="ant-table-row ant-table-row-level-0" data-row-key="2"><td class=""><a>Jim Green</a></td><td class="">42</td><td class="">0571-22098333</td><td class="">18889898888</td><td class="">London No. 1 Lake Park</td></tr><tr class="ant-table-row ant-table-row-level-0" data-row-key="3"><td class=""><a>Joe Black</a></td><td class="">32</td><td class="" rowspan="2">0575-22098909</td><td class="">18900010002</td><td class="">Sidney No. 1 Lake Park</td></tr><tr class="ant-table-row ant-table-row-level-0" data-row-key="4"><td class=""><a>Jim Red</a></td><td class="">18</td><td class="">18900010002</td><td class="">London No. 2 Lake Park</td></tr><tr class="ant-table-row ant-table-row-level-0" data-row-key="5"><td class="" colspan="5"><a>Jake White</a></td></tr></tbody></table></div>
+  </div>
+  <button type="button" onclick="printJS({ printable: 'printJS-form1', type: 'html', css: 'https://ant-design.gitee.io/index-daf35104-2.css', header: 'PrintJS - Form Element Selection' })">
+    Print Form with Header
+  </button>
+  <button type="button" onclick="printJS({
+    printable: [{
+      name: 'test1',
+      email: 'test@alipay.com',
+      phone: 13745343483,
+    }],
+    properties: [
+        { field: 'name', displayName: 'Full Name'},
+        { field: 'email', displayName: 'E-mail'},
+        { field: 'phone', displayName: 'Phone'}
+      ],
+      type: 'json'
+    })">
+    Print with custom table header text
+  </button>
+  <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+</body>
+</html>

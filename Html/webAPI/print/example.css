@@ -1,0 +1,12 @@
+@media print {
+  @page {
+    margin: 0;
+  }
+  .page {
+    margin: 2cm;
+  }
+}
+.page {
+  break-after: page;
+  page-break-after: always;
+}
