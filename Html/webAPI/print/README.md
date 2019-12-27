@@ -31,3 +31,9 @@
       }
     }
     ```
+
+### 推荐第三方库
+
+[Print.js](https://github.com/crabbly/Print.js)
+
+[Print.js demo](./example.html)
