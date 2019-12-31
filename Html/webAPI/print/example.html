@@ -7,6 +7,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
   <link rel="stylesheet" href="./antd.css">
+  <link rel="stylesheet" href="./example.css">
 </head>
 <body>
   <div style="display: none;">
@@ -82,11 +83,11 @@
       </table>
     </div>
   </div>
-  <button type="button" onclick="printJS({ printable: 'printJS-form', type: 'html', css: './antd.css', header: 'PrintJS - Form Element Selection' })">
+  <button type="button" onclick="printJS({ printable: 'printJS-form', type: 'html', style: 'width: 264mm;', css: './antd.css', header: 'PrintJS - Form Element Selection' })">
     Print Form with Header
   </button>
   <button type="button" onclick="printJS({ printable: 'printJS-form1', type: 'html', css: './antd.css', header: 'PrintJS - Form Element Selection' })">
-    Print Form with Header1
+    Print Table with Header and Footer
   </button>
   <button type="button" onclick="printJS({
     printable: [{
