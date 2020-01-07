@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
-  <link rel="stylesheet" href="./antd.css">
   <link rel="stylesheet" href="./example.css">
 </head>
 <body>
-  <div style="display: none;">
+  <div>
     <form method="post" class="page" action="#" id="printJS-form">
       <div style="display: flex; margin-bottom: 10px;">
         <div style="flex: 1;padding-right: 10px;">
@@ -31,8 +30,14 @@
     </form>
 
     <div class="ant-table-body ant-table-bordered" id="printJS-form1">
-      <table class="">
-        <colgroup><col><col><col><col><col></colgroup>
+      <table>
+        <colgroup>
+          <col width="20%" />
+          <col width="15%" />
+          <col width="20%" />
+          <col width="20%" />
+          <col width="25%" />
+        </colgroup>
         <thead class="ant-table-thead">
           <tr>
             <th class=""><span class="ant-table-header-column"><div><span class="ant-table-column-title">Name</span><span class="ant-table-column-sorter"></span></div></span></th>
@@ -46,7 +51,7 @@
             <th class="" colspan="2"><span class="ant-table-header-column"><div><span class="ant-table-column-title">Home phone</span><span class="ant-table-column-sorter"></span></div></span></th>
             <th class="ant-table-row-cell-last"><span class="ant-table-header-column"><div><span class="ant-table-column-title">Address</span><span class="ant-table-column-sorter"></span></div></span></th>
           </tr>
-          <tr><th colspan="4">这是我的说明</th></tr>
+          <tr><th colspan="5">这是我的说明</th></tr>
         </thead>
         <tbody class="ant-table-tbody">
           <tr class="ant-table-row ant-table-row-level-0" data-row-key="1"><td class=""><a>John Brown</a></td><td class="">32</td><td class="">0571-22098909</td><td class="">18889898989</td><td class="">New York No. 1 Lake Park</td></tr><tr class="ant-table-row ant-table-row-level-0" data-row-key="2"><td class=""><a>Jim Green</a></td><td class="">42</td><td class="">0571-22098333</td><td class="">18889898888</td><td class="">London No. 1 Lake Park</td></tr>
@@ -77,16 +82,16 @@
           <tr class="ant-table-row ant-table-row-level-0" data-row-key="1"><td class=""><a>John Brown</a></td><td class="">32</td><td class="">0571-22098909</td><td class="">18889898989</td><td class="">New York No. 1 Lake Park</td></tr><tr class="ant-table-row ant-table-row-level-0" data-row-key="2"><td class=""><a>Jim Green</a></td><td class="">42</td><td class="">0571-22098333</td><td class="">18889898888</td><td class="">London No. 1 Lake Park</td></tr>
         </tbody>
         <tfoot>
-          <tr><th colspan="4">这是我的备注1</th><th colspan="4">这是我的备注1</th></tr>
-          <tr><th colspan="4">这是我的备注2</th><th colspan="4">这是我的备注1</th></tr>
+          <tr><th colspan="4">这是我的备注1</th><th colspan="2">这是我的备注1</th></tr>
+          <tr><th colspan="4">这是我的备注2</th><th colspan="2">这是我的备注1</th></tr>
         </tfoot>
       </table>
     </div>
   </div>
-  <button type="button" onclick="printJS({ printable: 'printJS-form', type: 'html', style: 'width: 264mm;', css: './antd.css', header: 'PrintJS - Form Element Selection' })">
+  <button type="button" onclick="printJS({ printable: 'printJS-form', type: 'html', css: './example.css', style: 'width: 264mm;', header: 'PrintJS - Form Element Selection' })">
     Print Form with Header
   </button>
-  <button type="button" onclick="printJS({ printable: 'printJS-form1', type: 'html', css: './antd.css', header: 'PrintJS - Form Element Selection' })">
+  <button type="button" onclick="printJS({ printable: 'printJS-form1', type: 'html', css: './example.css', header: 'PrintJS - Form Element Selection' })">
     Print Table with Header and Footer
   </button>
   <button type="button" onclick="printJS({
@@ -104,6 +109,6 @@
     })">
     Print with custom table header text
   </button>
-  <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+  <script src="https://printjs-4de6.kxcdn.com/print.js"></script>
 </body>
 </html>
