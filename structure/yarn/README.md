@@ -15,6 +15,8 @@ yarn install --force // 强制重新下载所有包
 yarn install --no-lockfile  不读取或生成 yarn.lock 锁文件。
 
 yarn upgrade 用于更新包到基于规范范围的最新版本
+yarn upgrade --latest 忽略在 package.json 中指定的版本范围。
+yarn upgrade vue@latest  指定某依赖包更新到最新版
 
 yarn cache list # 列出已缓存的每个包 
 yarn cache dir # 返回 全局缓存位置 
@@ -26,8 +28,6 @@ yarn config get registry
 
 -f or --force   不管是否安装过，都要强制重新安装
   npm i --verbose   查看安装的详细信息
-
-### yarn vs npm
 
 
 ### 参考资料
