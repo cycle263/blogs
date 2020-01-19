@@ -44,7 +44,7 @@
 
     指定事件触发后，才进入$digest cycle，$digest ttl 默认为 10
 
-- **[Reactjs](./framework/React/)、[Redux](./framework/React/dataManage/redux/)、[React-redux](./framework/React/dataManage/redux/react-redux)**
+- **[Reactjs](./framework/React/)、[Redux](./framework/dataManage/redux/)、[React-redux](./framework/dataManage/redux/react-redux)**
 
   > 一个基于 state 和 props 的组件渲染函数，state 是自己的，props 是外面引入的，产生变化就重新渲染一遍。
 
@@ -86,7 +86,7 @@
     }
     ```
 
-  - [dva](./framework/React/dataManage/dva/)
+  - [dva](./framework/dataManage/dva/)
 
 - **[Modularity](./structure/)**
 

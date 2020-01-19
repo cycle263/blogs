@@ -8,7 +8,7 @@
 * 为什么推荐在componentDidMount中发起request请求？
 * 如何细粒度地控制 react 组件更新
 * react 的 key 的作用以及实现原理，并设定一个具体情境进行分析
-* 对 Redux 和 Mobx 的设计理念理解   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/other/Mobx)
+* 对 Redux 和 Mobx 的设计理念理解   [【详情解析】]({{site.baseurl}}/framework/dataManage/other/Mobx)
 * virtual-dom 的基本原理与简单的源码解释
 * pure-component 和 shouldComponentUpdate，pure-component, function-component 相关概念
 * 介绍下React中的this
@@ -106,10 +106,10 @@
 * 路由的动态加载模块
 * 服务端渲染SSR   [【详情解析】]({{site.baseurl}}/mobile/SSR/SSRAndCSR)
 * 介绍路由的history   [【详情解析】]({{site.baseurl}}/framework/React/router)
-* 介绍Redux数据流的流程   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/redux)
+* 介绍Redux数据流的流程   [【详情解析】]({{site.baseurl}}/framework/dataManage/redux)
 * Redux如何实现多个组件之间的通信，多个组件使用相同状态如何进行管理
 * 多个组件之间如何拆分各自的state，每块小的组件有自己的状态，它们之间还有一些公共的状态需要维护，如何思考这块
-* 使用过的Redux中间件   [【详情解析】]({{site.baseurl}}/framework/React/dataManage/other/middleware)
+* 使用过的Redux中间件   [【详情解析】]({{site.baseurl}}/framework/dataManage/other/middleware)
 * 如何解决跨域的问题，表单可以跨域吗？跨域请求是否发出去，是否返回了response？    [【详情解析】]({{site.baseurl}}/http/ajax/crossDomain)
 * 常见Http请求头  `content-type、content-length`
 * 移动端适配1px的问题

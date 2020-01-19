@@ -58,15 +58,15 @@
   
 * 状态管理框架
 
-  - [redux](./dataManage/redux)
+  - [redux](../dataManage/redux)
 
     Redux 是为 Javascript 应用而生的可预估的状态容器。应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。惟一改变 state 的办法是触发 action。
 
-  - [react-redux](./dataManage/redux/react-redux) React专用状态管理库
+  - [react-redux](../dataManage/redux/react-redux) React专用状态管理库
 
-  - [Mobx](./dataManage/other/Mobx)
+  - [Mobx](../dataManage/other/Mobx)
 
-  - [falcor](./dataManage/falcor)
+  - [falcor](../dataManage/falcor)
 
 
 ## 其他文章
@@ -87,9 +87,9 @@
 
 * [React UI](./antd)
 
-* [react通信方式](./dataManage/Communication)
+* [react通信方式](../dataManage/Communication)
 
-* [react context](./dataManage/context)
+* [react context](../dataManage/context)
 
 * [react ref](./implement/ref)
 

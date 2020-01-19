@@ -13,12 +13,12 @@
 
       + [setState详解](./framework/React/implement/setState)
       + [react合成事件](./framework/React/implement/event)
-      + [组件之间通信详解](./framework/React/dataManage/Communication)
+      + [组件之间通信详解](./framework/dataManage/Communication)
       + [初试React route 4](./framework/React/router/router4)
       + [虚拟DOM比较](./framework/React/Note/diff)
-      + [react context API](./framework/React/dataManage/context)
+      + [react context API](./framework/dataManage/context)
       + [redux](./framework\React\dataManage\redux)
-      + [redux中间件](./framework/React/dataManage/other/middleware)
+      + [redux中间件](./framework/dataManage/other/middleware)
 
     - angular
 
@@ -27,7 +27,7 @@
     - vue
       
       + [双向绑定原理](./framework/vue/)
-      + [状态管理机制](./framework/React/dataManage/redux/)
+      + [状态管理机制](./framework/dataManage/redux/)
 
     - jQuery
 
