@@ -357,4 +357,6 @@ DOCTYPE 用于告知浏览器的解析器用什么文档标准解析这个文档
 
 - [大厂面试知识点目录](./team/interview/summary)
 
+- [电话面试知识点](./team/interview/simpleInterview)
+
 备注说明: 若代码和图片有侵权，联系必删
