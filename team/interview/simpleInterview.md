@@ -14,9 +14,9 @@
 
 ## 框架类库
 
-* **react**创建组件的两种方式的区别（createClass, extends Component）？生命周期？数据模型(redux、flux、Mobx、reselect)-什么场景适用？无状态函数组件(纯函数)，及其优势? react适合什么项目? redux的三大原则？redux的缺陷(繁琐，临时状态，数据库vs状态管理，传递效率低-扁平化，交互频繁更新效率低-数据庞大)？redux中间件（saga, thunk, promise）？组件之间通信(订阅发布)？refs 的作用？jsx语法？虚拟DOM和diff算法原理(按需更新，tree分层比较, 同层component按类型和结构比较，同一层级的同组子节点element diff通过key比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步? - 在React控制之外的情况-setTimeout、event，setState会同步更新)？) 类组件和函数式组件选择？展示组件和容器组件？受控组件和非受控组件？循环组件需要用key(diff算法优化, unique)? 为什么不建议使用index作key(顺序变动-性能变差)? 
+* **react**创建组件的两种方式的区别（createClass, extends Component）？生命周期？数据模型(redux、flux、Mobx、reselect)-什么场景适用？无状态函数组件(纯函数)，及其优势? react适合什么项目? redux的三大原则？redux的缺陷(繁琐，临时状态，数据库vs状态管理，传递效率低-扁平化，交互频繁更新效率低-数据庞大)？redux中间件（saga, thunk, promise）？组件之间通信(订阅发布)？refs 的作用？jsx语法？虚拟DOM和diff算法原理(按需更新，tree分层比较, 同层component按类型和结构比较，同一层级的同组子节点element diff通过key比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步? - 在React控制之外的情况-setTimeout、event，setState会同步更新)？) 类组件和函数式组件选择？展示组件和容器组件？受控组件和非受控组件？循环组件需要用key(diff算法优化, unique)? 为什么不建议使用index作key(顺序变动-性能变差)? hooks的使用？
 
-* **react高级**react合成事件和js原生事件区别(冒泡到document)？如何阻止原生事件的冒泡？(避免原生事件与React事件混用，或者通过target进行判断, e.nativeEvent.stopImmediatePropagation) shouldComponentUpdate什么场景适用(手动判断是否render)？调和算法Fiber? 如何保持父子组件之间的松耦合？Redux与React中的context的对比(16.3版本之前后context使用区别)？redux vs mbox（可回溯）? 组件数属性传递(context)？优化手段有哪些？React.Children作用（自动传递给包含着它的组件）? 高阶组件(属性代理方式-新旧props一起传递，反向继承方式-继承包裹组件)？高阶组件的主要功能是封装并抽离组件的通用逻辑，让此部分逻辑在组件间更好地被复用。react优化手段（react_pref，key, shouldComponentUpdate, 事件绑定方式，PureComponent）React 动画实现的几种方式？为何要手动绑定this？
+* **react高级**react合成事件和js原生事件区别(冒泡到document)？如何阻止原生事件的冒泡？(避免原生事件与React事件混用，或者通过target进行判断, e.nativeEvent.stopImmediatePropagation) shouldComponentUpdate什么场景适用(手动判断是否render)？调和算法Fiber? 如何保持父子组件之间的松耦合？Redux与React中的context的对比(16.3版本之前后context使用区别)？redux vs mbox（可回溯）? 组件数属性传递(context)？优化手段有哪些？React.Children作用（自动传递给包含着它的组件）? 高阶组件(属性代理方式-新旧props一起传递，反向继承方式-继承包裹组件)？高阶组件的主要功能是封装并抽离组件的通用逻辑，让此部分逻辑在组件间更好地被复用。react优化手段（react_pref，key, shouldComponentUpdate, 事件绑定方式，PureComponent）React 动画实现的几种方式？为何要手动绑定this？ 
 
 * angular 双向绑定机制 -> 脏检查机制 (digest流程-->检查所有watcher) 不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？(track by $index)ng-click中能写js原生对象方法吗？factory、service、provider什么关系？zone.js（拦截异步任务以及追踪异步任务，采用猴子补丁，异步任务都将运行在global.zone的上下文中）
 
@@ -32,21 +32,21 @@
 
 * gulp、grunt、webpack等构建工具各自优缺点，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案。  
 
-* 常用的页面 **性能**指标？用什么工具来测试这些指标？常见的前端优化措施：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存资源缓存，图片服务器，减少DOM操作，模块化, 离线包等。 怎么理解组件化/模块化，组件化诉求复用(更多关注UI)，模块化诉求解耦(关注数据和功能封装)，组件接口设计，组件划分粒度？怎么绕开防盗链？babel转码的实现原理？commonJS和AMD规范区别？和ES6的模块有什么不同？
+* 常用的页面 **性能**指标？用什么工具来测试这些指标？常见的前端优化措施：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存资源缓存，图片服务器，减少DOM操作，模块化, 离线包等。 怎么理解组件化/模块化，组件化诉求复用(更多关注UI)，模块化诉求解耦(关注数据和功能封装)，组件接口设计，组件划分粒度？怎么绕开防盗链？babel转码的实现原理？commonJS和AMD规范区别？和ES6的模块有什么不同？(值的引用，静态编译)
 
 * 理想的前端开发和部署流程？（对前端工程进行流程化开发，nginx的combo技术，对前端GUI软件编译合并打包）无缝发布部署，先部署页面还是资源？非覆盖式更新，灰度发布(全量发布)，脚本异常监控和分析，安全性监控？自动化测试框架（mocha）？SPA(单页面)优势？（减少请求，减少页面刷新，更适合多端） 版本控制系统(svn、git)? SSR vs CSR ？直出 和 同构？
 
 * 依赖包冲突如何解决？线上环境有问题，线下无问题，如何调试解决？怎么样保证所有手机的兼容问题，跨平台兼容问题，低版本浏览器兼容问题？介绍下 npm 模块安装机制，为什么输入 npm install 就可以自动安装对应的模块？
 
 ## 全面性考察
-* 浏览器和 Node 事件循环的区别？ 浏览器内核一般包括哪些线程？（GUI 渲染线程，javascript 引擎线程，浏览器事件触发线程，定时触发器线程，异步 http 请求线程）html文档解析过程？在浏览器中输入url到页面内容全部显示？
+* 浏览器和 Node 事件循环的区别？宏任务 vs 微任务？ 浏览器内核一般包括哪些线程？（GUI 渲染线程，javascript 引擎线程，浏览器事件触发线程，定时触发器线程，异步 http 请求线程）html文档解析过程？在浏览器中输入url到页面内容全部显示？
   （从上至下，从外至内。url -> 域名解析 -> ip地址和端口，建立TCP连接 -> 服务器返回HTML响应 -> 浏览器展示html -> css/img/script响应 -> 异步ajax响应）
 
 * 前端安全：sql注入? XSS(跨站脚本攻击->输入特殊字符转义过滤)? CSRF(跨站请求伪造->表单增加hash值，POST更新)？同源策略？ jsBridge原因和安全（webview，注入js; 拦截url->分析->执行原生方法->传递回调）？劫持cookie 或者 token？
 
 ## 加分技能
 
-* **http**协议？Get vs Post(历史记录和日志，参数容量限制，明文显示) websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 如何基于http协议建立一个长连接？浏览器缓存种类、区别与使用细节？post请求是否可以网络缓存？http 304状态码？301 vs 302(永久重定向和临时，SEO地址和内容抓取不同)? 协商缓存（etag、last-modified）与强制缓存（cache-control、expires）的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。https加密的原理？http请求的幂等性（get,delete,put幂等，post不满足）cookie vs session(client vs server, 安全性，容量)？TCP三次握手 + 四次挥手？
+* **http**协议？Get vs Post(历史记录和日志，参数容量限制，明文显示) websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 如何基于http协议建立一个长连接？浏览器缓存种类、区别与使用细节？post请求是否可以网络缓存？http 304状态码？301 vs 302(永久重定向和临时，SEO地址和内容抓取不同)? 协商缓存（etag、last-modified）与强制缓存（cache-control、expires）的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。no-cache vs no-store? https加密的原理？http请求的幂等性（get,delete,put幂等，post不满足）cookie vs session(client vs server, 安全性，容量)？TCP三次握手 + 四次挥手？
 
 * 熟悉的设计模式：订阅模式、观察者模式、工厂模式，单例模式; 流行的mvc，mvvc，mv*架构模式；接口的设计：REST API vs GraphQL(Apollo-请求多组数据)；其他脚本语言：typescrpt?  编码格式，字节码等： encodeURI vs escape(utf-8 vs unicode)？ASCII、Unicode、GBK、UTF-8之间的关系？编码之间的转换(gbk -> utf-8)？新开发模式：PWA-渐进式增强progressive web app?(全屏运行、离线能力、推送通知) ，小程序，多端开发，WebAssembly-字节码标准(Java 字节码)?
 

@@ -134,3 +134,5 @@
 [stack三种含义](http://www.ruanyifeng.com/blog/2013/11/stack.html)
 
 [js垃圾回收专题](https://juejin.im/post/5c5ebc505188256219174f19)
+
+[MDN - 内存管理](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management)
