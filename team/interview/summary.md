@@ -567,3 +567,9 @@
 * 介绍下DFS深度优先
 * 介绍下观察者模式
 * 观察者模式里面使用的数据结构(不具备顺序 ，是一个list)
+
+### 参考资料
+
+[2020面试大全](https://q.shanyue.tech/interview.html)
+
+[meituan面试记录表](https://zhuanlan.zhihu.com/p/112254085)
