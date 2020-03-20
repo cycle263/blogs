@@ -29,6 +29,7 @@
   Rewrite 功能很强大的，包括 header 的增删改和 param 的增删改，还有 body 修改等。
 
   ![rewrite](./images/rewrite.png)
+  ![rewrite1](./images/rewrite1.png)
 
 - Map Remote
 

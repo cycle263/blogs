@@ -23,6 +23,8 @@
 
   复杂请求的 CORS 请求，会在正式通信之前，增加一次 HTTP 查询请求，称为"预检"请求,该请求是 option 方法的，通过该请求来知道服务端是否允许跨域请求。`预请求options --> response(是否接受后续真正的请求) --> 真实请求POST(get请求不会发送预请求) --> response`
 
+  设置Sec-Fetch-Mode：cors、no-cors等，'no-cors'表示不垮域，后端不需要配置cors header。当 credentials 为include时， Access-Control-Allow-Origin 不能设置为 '*' 。
+
 * 5、利用Apache转发路由（不是跳转），Win上有WAMP，Linux上有LAMP；且Apache的转发设置起来非常简单方便。开发时甚至可以直接把转发配置为客户端到VS或Eclipse，方便调试；线后把转发切换成客户端到Apache自身或IIS或Tomcat或WebLogic或Nginx等等。  
 
 * 6、用nginx把B网站的数据url反向代理。实现原理类似于 Node 中间件代理，需要你搭建一个中转 nginx 服务器，用于转发请求。
@@ -72,3 +74,8 @@
 * 10、websocket
 
   WebSocket 是一种双向通信协议，在建立连接之后，WebSocket 的 server 与 client 都能主动向对方发送或接收数据。
+
+
+### 参考资料
+
+[Request.mode](https://developer.mozilla.org/en-US/docs/Web/API/Request/mode)
