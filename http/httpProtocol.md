@@ -130,6 +130,8 @@
 
   - Access-Control-Allow-Credentials: 告知客户端,当请求的credientials属性是true的时候,响应是否可以被得到
 
+  - X-Frame-Options 响应报头可以被用来指示一个浏览器是否应该被允许在一个以呈现页面<frame>，<iframe>或<object>。通过确保其内容未嵌入其他网站，网站可以使用此功能来避免 点击劫持 攻击。
+
 
 ### 其他http协议对比
 

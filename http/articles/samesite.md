@@ -16,6 +16,12 @@
 
 ![charles-samesite](../images/charles-samesite.jpg)
 
+### 其他概念
+
+* Set-Cookie
+
+HTTP 响应报头被用于从服务器向用户代理发送 cookie。也就是服务端向用户端种cookie。
+
 ### 参考资料
 
 [chrome80稳定版发布](https://www.oschina.net/news/113190/chrome-80-stable-released)
