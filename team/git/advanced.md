@@ -103,6 +103,8 @@
     `git reset --hard HEAD^^`   回滚到上上个版本
     `git reset --hard HEAD~10`  回滚到前10个版本
 
+    `git push origin HEAD --force`   删除commit回滚之后，强制提交到远端
+
   - 暂存数据 -- (暂存本地修改，工作区还原到上次提交)
 
     `git stash`  暂存工作区代码到本地栈
