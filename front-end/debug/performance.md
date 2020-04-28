@@ -52,3 +52,13 @@
 
     - Page is mobile friendly
     - Document does not have a meta description
+
+* 火焰图
+
+- y 轴表示调用栈，每一层都是一个函数。调用栈越深，火焰就越高，火焰尖就是正在执行的函数，上方都是它的父函数。
+
+- x 轴表示时间轴u，如果一个函数在x轴占据的宽度越宽，就表示它执行的时间长。
+
+### 参考资料
+
+[读懂火焰图](http://www.ruanyifeng.com/blog/2017/09/flame-graph.html)
