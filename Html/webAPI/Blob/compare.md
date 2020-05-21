@@ -242,7 +242,7 @@
   }
   ```
 
-* gbk -> utf-8
+* gb2312 -> utf-8
 
   ```js
   function GB2312UTF8(){

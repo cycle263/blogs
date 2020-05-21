@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var mockData = [{
+      receiveOrgName: '收货机构八爪鱼',
+      receiverName: '汪金凤',
+      skuName: '物品0221-批次无生产日期（190g-红色-双份）'
+    }, {
+      receiveOrgName: '收货机构紫色红薯',
+      receiverName: '汪金凤',
+      skuName: '瓶颈物品02215343-批次无生产日期（190g-红色-双份）'
+    }, {
+      receiveOrgName: '收货机构八爪鱼1',
+      receiverName: '汪金凤',
+      skuName: '物品0221-批次无生产日期（190g-红色-双份）123，需要黄辉换行的页面的名称，这个足够从的发动机萨拉发动机放得开撒龙卷风'
+    }, {
+      receiveOrgName: '收货机构紫色红薯2',
+      receiverName: '汪金凤',
+      skuName: '瓶颈物品02215343-批次无生产日期（190g-红色-双份）1234'
+    }];
+
+    /**
+     * 提交打印表单
+     * @obj 必填 数据来意
+     * @ip 打印机IP地址
+     * @charset 字符集编码
+     */
+    const submitPrintForm = (obj = {}, ip = '10.180.10.111', charset = 'GBK') => {
+        var temp = `TEXT 30,100,"TSS24.BF2",0,1,1,"名称：${obj.skuName}"`, skuStr1, skuStr2; 
+        if (obj.skuName && obj.skuName.length > 20) {
+          skuStr1 = obj.skuName.substr(0, 20);
+          skuStr2 = obj.skuName.substr(20);
+          temp = `TEXT 30,100,"TSS24.BF2",0,1,1,"名称：${skuStr1}"
+          TEXT 30,140,"TSS24.BF2",0,1,1,"${skuStr2}"`;
+        }
+        var str = `SIZE 60 mm, 40 mm
+          SPEED 5
+          DENSITY 7
+          DIRECTION 1
+          REFERENCE 0,0
+          OFFSET 0 mm
+          SHIFT 0
+          CLS
+          TEXT 30,10,"TSS24.BF2",0,1,1,"${obj.receiveOrgName}"
+          BAR 30,60,420,2
+          ${temp}
+          TEXT 30,${skuStr1 ? 180 : 140},"TSS24.BF2",0,1,1,"收货人：${obj.receiverName}"
+          PRINT 1
+          `;
+        var form = document.createElement('form');
+        form.method = 'get';
+        form.style.display = 'none';
+        form.target = 'test_none';
+        form.acceptCharset = charset || 'GBK';
+        var content = document.createElement('textarea');
+        content.type = 'hidden';
+        content.name = 'content';
+        content.innerHTML = str;
+        form.appendChild(content);
+        var send = document.createElement('input');
+        send.type = 'hidden';
+        send.name = 'Send';
+        send.value = ' Print Test ';
+        form.appendChild(send);
+        form.action = `http://${ip}/prt_test.htm`;
+        document.body.appendChild(form);
+        form.submit();
+        // 删除临时节点
+        // form.parentNode.removeChild(form);
+    };
+
+    mockData.forEach(item => {
+        submitPrintForm(item);
+    })
+  </script>
+</body>
+</html>

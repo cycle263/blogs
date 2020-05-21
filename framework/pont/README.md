@@ -2,7 +2,7 @@
 
 * vscode中安装pont插件
 
-* 全局安装pont-engine `yarn global add pont-engine`
+* 安装pont-engine `yarn add pont-engine`
 
 * 自动生成pont-config.json文件  `pont start`
 
@@ -12,3 +12,4 @@
 
   `pont diff`  查看远程数据和本地数据在模块、基类上的差异，以作针对性、选择性同步
 
+* pont-template，修改request方法的模板
