@@ -17,7 +17,7 @@ Pont 用于桥接前后端数据层，对接的后端 API 使用 Java Swagger，
 
 * 2、安装pont-engine依赖包
 
-* 3、配置pont-config，执行状态栏的generate命令生成元数据
+* 3、配置pont-config，执行状态栏的generate命令生成元数据，对应pontAPI目录。
 
   ```js
   // 接口模板
@@ -47,7 +47,6 @@ Pont 用于桥接前后端数据层，对接的后端 API 使用 Java Swagger，
 
   ```js
   // services
-  import "../../../../pontAPI"; // 引入元数据
 
   export async function queryLineList(params: any) {
     return API.DataLine.query.request(params, {});
