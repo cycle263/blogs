@@ -22,7 +22,25 @@
 
   解决方案：删除两个密钥，并且在对应GitHub和gitlab上删除用户的公钥，然后重新生成一份id_rsa的两份key，重新到两个远端配置公钥。
 
+  ```bash
+  # gitlab
+  Host gitlab.com
+  HostName gitlab.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/gitlab_id_rsa
+
+  # github
+  Host github.com
+  HostName github.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/github_id_rsa
+  ```
+
   分析原因：猜测config配置上有问题，待排查确定
+
+* 配置正确，依然拒绝连接
+
+  尝试`~/.ssh/known_hosts`文件的公钥匹配记录，避免缓存干扰
 
 
 ### 参考资料
