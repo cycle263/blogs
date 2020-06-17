@@ -17,6 +17,13 @@ TypeScript的核心原则之一是对值所具有的结构进行类型检查。
     color?: string;   // 可选属性
     width?: number;   // 可选属性
   }
+  declare const myConfig: SquareConfig;
+
+  // 内联写法
+  declare const myConfig: {
+    color?: string;
+    width?: number;
+  }
   ```
 
 * 只读属性
@@ -50,7 +57,6 @@ TypeScript的核心原则之一是对值所具有的结构进行类型检查。
   function createSquare(config: SquareConfig): { color: string; area: number } {
     // ...
   }
-
   let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig);  // 断言
 
   // 索引签名
@@ -58,5 +64,40 @@ TypeScript的核心原则之一是对值所具有的结构进行类型检查。
     color?: string;
     width?: number;
     [propName: string]: any;
+  }
+  ```
+
+* 接口开放性
+
+  ```ts
+  // Lib a.d.ts
+  interface Point {
+    x: number,
+    y: number
+  }
+  declare const myPoint: Point
+
+  // Lib b.d.ts
+  interface Point {
+    z: number
+  }
+
+  // Your code
+  myPoint.z // Allowed!
+  ```
+
+* 实现接口
+
+  ```ts
+  interface Point {
+    x: number;
+    y: number;
+    z: number; // New member
+  }
+
+  class MyPoint implements Point {
+    // ERROR : missing member `z`
+    x: number;
+    y: number;
   }
   ```

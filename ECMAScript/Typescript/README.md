@@ -1,6 +1,6 @@
 ## TypeScript
 
-Typescript是JavaScript类型的超集，可以编译成纯JavaScript。
+Typescript是JavaScript类型的超集，可以编译成纯JavaScript。设计目标之一是让你在 TypeScript 中安全、轻松地使用现有的 JavaScript 库，TypeScript 通过声明文件来做到这一点。
 
 * 基本类型
 
@@ -51,4 +51,40 @@ Typescript是JavaScript类型的超集，可以编译成纯JavaScript。
 
   // 指定类型
   let {a, b}: {a: string, b: number} = o;
+  ```
+
+* 可调用 和 可实例化
+
+  ```ts
+  // 可调用
+  interface ReturnString {
+    (): string;
+  };
+  declare const foo: ReturnString;
+
+  // 可实例化
+  interface CallMeWithNewToGetString {
+    new (): string;
+  };
+  declare const Foo: CallMeWithNewToGetString;
+  ```
+
+* 字面量验证
+
+  ```ts
+  function logName(something: { name: string }) {
+    console.log(something.name);
+  }
+
+  const person = { name: 'matt', job: 'being awesome' };
+  const animal = { name: 'cow', diet: 'vegan, but has milk of own specie' };
+  const randow = { note: `I don't have a name property` };
+
+  logName(person); // ok
+  logName(animal); // ok
+  logName(randow); // Error: 没有 `name` 属性
+
+  // 允许额外属性
+  let x: { foo: number, [x: string]: any };
+  x = { foo: 1, baz: 2 }; // ok, 'baz' 属性匹配于索引签名
   ```
