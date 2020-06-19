@@ -7,7 +7,7 @@
   八个二进制位就可以组合出256种状态，这被称为一个字节（byte）, 也就是一个字节都可以表示256个字符。上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为 ASCII 码，一直沿用至今。
 
   ASCII 码一共规定了128个字符的编码，比如空格SPACE是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），前32中编码规定了特殊用途，如换行、警报声等，都称之为控制码。ascii只占用了一个字节的后面7位，最前面的一位统一规定为0。后来加身很多画表格用到的横线和竖线、交叉等形状，这些从128到255的字符集被称为“扩展字符集”。
-  
+
   一个字节只能表示256种符号，肯定是不够的，就必须使用多个字节表达一个符号。比如，简体中文常见的编码方式是 GB2312，使用两个字节表示一个汉字，所以理论上最多可以表示 256 x 256 = 65536 个符号。但实际上，GB2312编码方案只包含了第一个字节0xA1到0xF7，第二个字节0xA1到0xFE，大约7000多个简体汉字，当然其中还包含了部分数学符号、罗马希腊字母等。
 
   汉字生僻字太多，后来又扩展了剩余的第二字节坑位，共计两万多个编码，这套编码集被称为GBK1.0。再后来少数民族的字符也扩充进来，GBK扩充成了GB18030。
@@ -52,7 +52,7 @@
   - GB18030
 
     2000年的GB18030是取代GBK1.0的正式国家标准。该标准收录了27484个汉字，同时还收录了藏文、蒙文、维吾尔文等主要的少数民族文字。
-  
+
   <u>从ASCII、GB2312、GBK到GB18030，这些编码方法是向下兼容的，即同一个字符在这些方案中总是有相同的编码，后面的标准支持更多的字符。而Unicode只与ASCII兼容（更准确地说，是与ISO-8859-1兼容），与GB码不兼容。例如“汉”字的Unicode编码是6C49，而GB码是BABA。</u>
 
 * **UTF-8**
@@ -86,6 +86,8 @@
 
 * **[ASCII对照表](http://tool.oschina.net/commons?type=4)**
 
+* **[字符编码](https://feedpanda.netlify.app/posts/cs/character-encoding/)**
+
 <br /><br />
 
 
@@ -95,7 +97,7 @@
 * **escape**
 
   escape不能直接用于URL编码，它的真正作用是返回一个字符的Unicode编码值。escape方法把字符串生成十六进制转义序列字符（特色字符如: @*_+-./ 被排除在外），当该值小于等于0xFF时，用一个2位转移序列：%xx 表示；大于的话则使用4位序列：%uxxxx 表示。
-  
+
   目前该方法以及废弃，推荐使用encodeURI。escape 的编码有一个弊端在于，它后面是4位16进制，故不支持基本多文种平面（BMP）外的字符（unicode大于0xffff）的字符；而encodeURI是基于 UTF-8的，编码本身理论上可以支持0x10ffff内的字符（实际上现在的JavaScript不支持BMP外的字符，所以encodeURI也不支持 ）。
 
   ```js
@@ -110,10 +112,10 @@
   ![保留字符](../images/encodeURI.jpg)
 
   ```js
-  encodeURI("http://ydr.me?user=hello world"); 
+  encodeURI("http://ydr.me?user=hello world");
   // "http://ydr.me?user=hello%20world"
 
-  encodeURIComponent("http://ydr.me?user=hello world"); 
+  encodeURIComponent("http://ydr.me?user=hello world");
   // "http%3A%2F%2Fydr.me%3Fuser%3Dhello%20world"
   ```
 
