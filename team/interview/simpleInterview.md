@@ -16,7 +16,7 @@
 
 * **react**创建组件的两种方式的区别（createClass, extends Component）？生命周期？数据模型(redux、flux、Mobx、reselect)-什么场景适用？无状态函数组件(纯函数)，及其优势? react适合什么项目? redux的三大原则？redux的缺陷(繁琐，临时状态，数据库vs状态管理，传递效率低-扁平化，交互频繁更新效率低-数据庞大)？redux中间件（saga, thunk, promise）？组件之间通信(订阅发布)？refs 的作用？jsx语法？虚拟DOM和diff算法原理(按需更新，tree分层比较, 同层component按类型和结构比较，同一层级的同组子节点element diff通过key比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步? - 在React控制之外的情况-setTimeout、event，setState会同步更新)？) 类组件和函数式组件选择？展示组件和容器组件？受控组件和非受控组件？循环组件需要用key(diff算法优化, unique)? 为什么不建议使用index作key(顺序变动-性能变差)? hooks的使用？异步渲染？
 
-* **react高级**react合成事件和js原生事件区别(冒泡到document)？如何阻止原生事件的冒泡？(避免原生事件与React事件混用，或者通过target进行判断, e.nativeEvent.stopImmediatePropagation) shouldComponentUpdate什么场景适用(手动判断是否render)？调和算法Fiber? 如何保持父子组件之间的松耦合？Redux与React中的context的对比(16.3版本之前后context使用区别)？redux vs mbox（可回溯）? 组件数属性传递(context)？优化手段有哪些？React.Children作用（自动传递给包含着它的组件）? 高阶组件(属性代理方式-新旧props一起传递，反向继承方式-继承包裹组件)？高阶组件的主要功能是封装并抽离组件的通用逻辑，让此部分逻辑在组件间更好地被复用。react优化手段（react_pref，key, shouldComponentUpdate, 事件绑定方式，PureComponent）React 动画实现的几种方式？为何要手动绑定this？ 
+* **react高级**react合成事件和js原生事件区别(冒泡到document)？如何阻止原生事件的冒泡？(避免原生事件与React事件混用，或者通过target进行判断, e.nativeEvent.stopImmediatePropagation) shouldComponentUpdate什么场景适用(手动判断是否render)？调和算法Fiber? 如何保持父子组件之间的松耦合？Redux与React中的context的对比(16.3版本之前后context使用区别)？redux vs mbox（可回溯）? 组件数属性传递(context)？优化手段有哪些？React.Children作用（自动传递给包含着它的组件）? 高阶组件(属性代理方式-新旧props一起传递，反向继承方式-继承包裹组件)？高阶组件的主要功能是封装并抽离组件的通用逻辑，让此部分逻辑在组件间更好地被复用。react优化手段（react_pref，key, shouldComponentUpdate, 事件绑定方式，PureComponent）React 动画实现的几种方式？为何要手动绑定this？
 
 * angular 双向绑定机制 -> 脏检查机制 (digest流程-->检查所有watcher) 不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？(track by $index)ng-click中能写js原生对象方法吗？factory、service、provider什么关系？zone.js（拦截异步任务以及追踪异步任务，采用猴子补丁，异步任务都将运行在global.zone的上下文中）
 
@@ -57,13 +57,15 @@
 
 # 精品汇总
 
-- script defer(渲染完再按顺序执行) vs async(下载完就执行)? 内联脚本 vs 外联脚本 vs 外联css？href vs src ? 
+- script defer(渲染完再按顺序执行) vs async(下载完就执行)? 内联脚本 vs 外联脚本 vs 外联css？href vs src ?
 
-- es6 module vs commonjs module ? let vs const vs var 
+- es6 module vs commonjs module ? let vs const vs var
 
 - CSS的position有几个值，分别有什么行为？函数字面量和函数声明定义的两种函数，有哪些细节区别？
 
 - setState异步？ diff算法策略？ 双向绑定 vs 单向数据流 ？合成事件 ？ redux的中间件
+
+- 如何渲染上百万的数据？分别有哪些优化思路？
 
 ## 实践题
 

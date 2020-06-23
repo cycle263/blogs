@@ -72,7 +72,7 @@
   - cache-loader 在一些性能开销较大的 loader 之前添加此 loader，以将结果缓存到磁盘里。保存和读取这些缓存文件会有一些时间开销，所以请只对性能开销较大的 loader 使用此 loader。
 
   - expose-loader 用来把模块暴露到全局变量
-  
+
   ```json
   {
     test: require.resolve('jquery'),  // require.resolve 用来得到模块对应的绝对路径
@@ -104,7 +104,7 @@
       test: /\.(png|jpg|gif)$/,
       limit: 8192, // 大于8192字节的正常打包，小于8192字节的以base64的方式引入
       name: images/[hash:8]-[name].[ext],
-      loader: 'url-loader' 
+      loader: 'url-loader'
     }]
   }
   ```
@@ -124,5 +124,10 @@
 
   - svg-inline-loader 跟raw-loader相似，不同之处，它会分析SVG的内容去掉不必要的部分，以减少SVG大小，也就是说它有压缩svg的功能
 
+* loader比较
+
+  - babel-loader vs eslint-loader vs tslint-loader
+
+  
 
 [手写loader入门](https://juejin.im/post/5a698a316fb9a01c9f5b9ca0)
