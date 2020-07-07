@@ -20,7 +20,7 @@
 
 * angular 双向绑定机制 -> 脏检查机制 (digest流程-->检查所有watcher) 不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？(track by $index)ng-click中能写js原生对象方法吗？factory、service、provider什么关系？zone.js（拦截异步任务以及追踪异步任务，采用猴子补丁，异步任务都将运行在global.zone的上下文中）
 
-* **vue** 双向绑定(dom监听 + data监听 -> 访问器属性劫持 + 发布订阅模式进行通知)？ vs 单向数据流？模板语法，遇到过vuejs页面闪烁吗？vue2采用虚拟DOM的目的?(抽象化，适配非DOM平台，SSR、同构) v-if vs v-show区别(是否渲染, 频繁切换状态的性能差别)？vue 虚拟DOM和react 虚拟DOM的区别(Snabbdom,ReactDom;diff算法不同)? 有哪些生命周期钩子函数？子系统的实现原理？ Vue.nextTick使用场景(类似于this.setState中的回调)？独立构建(standalone)和运行时构建(runtime-only)区别？vuex vs redux？
+* **vue** 双向绑定(dom监听 + data监听 -> 访问器属性劫持 + 发布订阅模式进行通知)？ vs 单向数据流？模板语法，遇到过vuejs页面闪烁吗？vue2采用虚拟DOM的目的?(抽象化，适配非DOM平台，SSR、同构) v-if vs v-show区别(是否渲染, 频繁切换状态的性能差别)？vue 虚拟DOM和react 虚拟DOM的区别(Snabbdom,ReactDom;diff算法不同)? 有哪些生命周期钩子函数？子系统的实现原理？ Vue.nextTick使用场景(类似于this.setState中的回调)？独立构建(standalone)和运行时构建(runtime-only)区别？vuex vs redux？style上加scoped属性？
 
 * jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ? input标签的onchange事件怎么触发？输入后触发请使用jquery的input事件。
 
