@@ -61,6 +61,22 @@ var steamroller = item => {
 
 [].filter(steamroller);
 
+// 检查叶子节点的祖先节点是否需要置灰
+const checkedLeafExist = (item: any, existingData: Array<any>) => {
+  const children = item.children;
+  if (children && children.length) {  // 父节点
+    return children.every((leaf: any) => {
+      return checkedLeafExist(leaf, existingData);
+    });
+  } else if (children && !children.length) {  // 叶子节点，最终结果依赖此判断
+    return existingData.some(
+      ({ key }: any) => key === item.key,
+    );
+  } else {  // 其他情况都返回true
+    return true;
+  }
+};
+
 // 树形扁平化
 let checkedkeys = [];
 const steamroller = arr => arr.map(item => {
@@ -71,6 +87,3 @@ const steamroller = arr => arr.map(item => {
 });
 
 steamroller([])
-
-
-

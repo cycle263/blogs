@@ -32,6 +32,10 @@
     }
     ```
 
+* 其他思路
+
+  - htmlToCanvas、jspdf转换成pdf进行打印
+
 ### 推荐第三方库
 
 [Print.js](https://github.com/crabbly/Print.js)
