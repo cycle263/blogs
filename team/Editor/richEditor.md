@@ -1,5 +1,7 @@
 ## 知名的富文本编辑器
 
+![富文本开发类型](../images/richText.jpg)
+
   WYSIWYG(what you see is what you get)
 
 * Ueditor
@@ -54,3 +56,7 @@
 
 * CycleEditor
 
+
+#### 参考资料
+
+[语雀富文本演进](https://myslide.cn/slides/21863)

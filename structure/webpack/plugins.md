@@ -39,6 +39,14 @@ class MyPlugin {
 module.exports = MyPlugin;
 ```
 
+#### plugin vs loaders
+
+* Loader 本质是一个函数，转换接收内容，返回转换结果，Plugin本质上是一个类，监听运行生命周期中广播的事件，在合适时机通过 webpack 提供的API改变输出结果。
+
+* Loader在module.rule中配置，类型是数组，每一项对应一个模块解析规则，Plugin在plugin中配置，类型是数组，每一项对应一个扩展器实例，参数通过构造函数传入。
+
+* Loader在webpack中扮演着转换器的角色，用于转换模块源码，简单理解就是将文件转换成另外形式的文件；Loader的转换过程是附属在整个Webpack构建流程中的，意味着打包时间包含了压缩图片的时间成本，对于追求webpack性能优化来说实属有点违背原则。而Plugin恰好是监听webpack运行生命周期中广播的事件，在合适时机通过webpack提供的API改变输出结果，所以可在整个Webpack构建流程完成后(全部打包文件输出完成后)插入压缩图片的操作。
+
 * **1、代码优化之:**
 
   - CommonsChunkPlugin - 抽取公共代码。可以提取出多个代码块都依赖的模块形成一个单独的模块。要发挥CommonsChunkPlugin的作用还需要浏览器缓存机制的配合。在应用有多个页面的场景下提取出所有页面公共的代码减少单个页面的代码，在不同页面之间切换时所有页面公共的代码之前被加载过而不必重新加载。这个方法可以非常有效的提升应用性能。
@@ -175,7 +183,7 @@ module.exports = MyPlugin;
   ```json
   resolve: {
     alias: {
-      lodash: path.join(process.cwd(), 'node_modules/lodash'), 
+      lodash: path.join(process.cwd(), 'node_modules/lodash'),
     }  
   }
   ```
