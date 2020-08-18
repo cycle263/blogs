@@ -9,3 +9,9 @@ vuex 就是一个仓库，仓库里放了很多对象。其中 state 就是数�
   - 可读性更好
 
   - 降低耦合性
+
+* mutation
+
+  - this.$store.commit('method')
+
+  - 
