@@ -4,6 +4,8 @@
 
   - Blob对象：是现代浏览器中提供的能够装载二进制流（文件）的容器对象，该对象代表了一段二进制数据，提供了一系列操作接口。其他操作二进制数据的API（比如File对象），都是建立在Blob对象基础上的，继承了它的属性和方法。
 
+  - File对象：继承了Blob所有的属性和方法，可以理解为特殊的Blob对象，扩展了关于file更多的属性值。
+
   - ArrayBuffer对象：是能够装载Blob（二进制流）数据的原始缓冲区，代表内存之中的一段二进制数据，ArrayBuffer不能直接通过js读写，但是可以通过“视图”进行操作。“视图”部署了数组接口，这意味着，可以用数组的方法操作内存。
 
   - TypedArray视图：共包括9种类型的视图，比如Uint8Array（无符号8位整数）数组视图, Int16Array（16位整数）数组视图, Float32Array（32位浮点数）数组视图等等。
@@ -12,7 +14,7 @@
 
   简单说，ArrayBuffer对象代表原始的二进制数据，TypedArray视图用来读写简单类型的二进制数据，DataView视图用来读写复杂类型的二进制数据。
 
-  
+
 * websocket接受arraybuffer
 
   ```js
@@ -185,7 +187,7 @@
   function UnicodeToUtf8(unicode) {
     var uchar;
     var utf8str = "";
-    
+
     for(let i = 0; i < unicode.length; i += 2){			
       uchar = (unicode[i] << 8) | unicode[i + 1];				// UNICODE为2字节编码，一次读入2个字节
       utf8str = utf8str + String.fromCharCode(uchar);	// 使用String.fromCharCode强制转换
@@ -255,15 +257,15 @@
         return retV;
       }
       return -1;
-    } 
+    }
     this.Hex2Utf8 = function(s){
       var retS = "";
       var tempS = "";
       var ss = "";
       if(s.length == 16){
         tempS = "1110" + s.substring(0, 4);
-        tempS += "10" + s.substring(4, 10); 
-        tempS += "10" + s.substring(10,16); 
+        tempS += "10" + s.substring(4, 10);
+        tempS += "10" + s.substring(10,16);
         var sss = "0123456789ABCDEF";
         for(var i = 0; i < 3; i ++){
           retS += "%";
@@ -274,7 +276,7 @@
         return retS;
       }
       return "";
-    } 
+    }
     this.Dec2Dig = function(n1) {
       var s = "";
       var n2 = 0;

@@ -22,6 +22,10 @@
 
   - charles, Fiddle, devServer.proxy, SwitchyOmega
 
+* overrides
+
+  指定chrome本地资源替换远端前端资源
+
 * 模拟
 
   - mockjs
@@ -77,6 +81,10 @@
   Sources下面的左侧的Sinppets代码片段按钮，可以保存一些调试或测试代码小片段，并且可以端点调试，反复运行。
 
   [snippets调试调用堆栈](../images/stack.png)
+
+* 6、关闭samesite警告
+
+  chrome://flags，搜索samesite，SameSite by default cookies项设置为disabled
 
 
 ## chrome 调试知识点
