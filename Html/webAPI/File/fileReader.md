@@ -8,7 +8,7 @@
 
   - readAsText(Blob|File, opt_encoding)：返回文本字符串。默认情况下，文本编码格式是’UTF-8’，可以通过可选的格式参数，指定其他编码格式的文本。
 
-  - readAsDataURL(Blob|File)：返回一个基于Base64编码的data-uri对象。
+  - readAsDataURL(Blob|File)：返回一个基于Base64编码的data-uri对象，就是以 data:image/png;base64开头的一种URL,然后可以直接放在 image.src 里，这样本地图片就显示出来了。
 
   - readAsArrayBuffer(Blob|File)：返回一个ArrayBuffer对象。
 

@@ -442,6 +442,17 @@
     return blob;
   }
 
+  // dataURL（base64）转换为Blob对象
+  function b64toBlob(b64Data, contentType) {
+    let bytes = atob(b64Data.split(",")[1]);
+    let arrayBuffer = new ArrayBuffer(bytes.length);
+    let uInt8Array = new Uint8Array();
+    for (let i = 0; i < bytes.length; i++) {
+      uInt8Array[i] = bytes.charCodeAt[i];
+    }
+    return new Blob([arrayBuffer], { type: contentType || "image/png" });
+  }
+
   // Blob对象 to dataURL-base64
   function blobToDataURL(blob, callback) {
       var fr = new FileReader();
