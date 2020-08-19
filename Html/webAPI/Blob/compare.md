@@ -14,6 +14,7 @@
 
   简单说，ArrayBuffer对象代表原始的二进制数据，TypedArray视图用来读写简单类型的二进制数据，DataView视图用来读写复杂类型的二进制数据。
 
+![转换图](../../images/blob2buffer.png)
 
 * websocket接受arraybuffer
 
