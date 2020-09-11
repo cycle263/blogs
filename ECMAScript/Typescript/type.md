@@ -123,3 +123,5 @@
   fooReadonly.bar = 456; // Error: bar 属性只读
   ```
 
+
+### 泛型

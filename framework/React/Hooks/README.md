@@ -21,3 +21,5 @@ Hooks 是一种函数，该函数允许您从函数式组件 “勾住(hook into
 ### 参考资料
 
 [Hooks 官网资料](http://react.html.cn/docs/hooks-faq.html)
+
+[快速熟悉hooks](https://juejin.im/post/6844903709927800846)

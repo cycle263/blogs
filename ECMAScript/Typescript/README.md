@@ -88,3 +88,13 @@ Typescript是JavaScript类型的超集，可以编译成纯JavaScript。设计�
   let x: { foo: number, [x: string]: any };
   x = { foo: 1, baz: 2 }; // ok, 'baz' 属性匹配于索引签名
   ```
+
+### TS如何工作？
+
+* TypeScript 文本首先会被解析为 token 流，具体过程就是按照分隔符去分割文本。
+
+* 接着 token 流会被转换为 AST，也就是抽象语法树。
+
+* binder 则根据 AST 信息生成 Symbol（TypeScript 中的一个数据结构）。拿上面的图来说，就是 number 节点。
+
+* 当我们需要类型检查的时候， checker 会根据前面生成的 AST 和 symbols 生成类型检查结果；当我们需要生成 JS 文件的时候，emitter 同样会根据前面生成的 AST 和 symbols 生成 JS 文件。
