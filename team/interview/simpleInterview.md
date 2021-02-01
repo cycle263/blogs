@@ -44,6 +44,8 @@
 
 * 前端安全：sql注入? XSS(跨站脚本攻击->输入特殊字符转义过滤)? CSRF(跨站请求伪造->表单增加hash值，POST更新)？同源策略？ jsBridge原因和安全（webview，注入js; 拦截url->分析->执行原生方法->传递回调）？劫持cookie 或者 token？
 
+* 斐波那契数列实现的几种方式？算法复杂度分别是多少？
+
 ## 加分技能
 
 * **http**协议？Get vs Post(历史记录和日志，参数容量限制，明文显示) websocket vs http?(有并集, 相互推送信息，数据的传输使用帧来传递，并且允许跨域通信) 如何基于http协议建立一个长连接？浏览器缓存种类、区别与使用细节？post请求是否可以网络缓存？http 304状态码？301 vs 302(永久重定向和临时，SEO地址和内容抓取不同)? 协商缓存（etag、last-modified）与强制缓存（cache-control、expires）的区别在于强制缓存不需要访问服务器，返回结果是200，协商缓存需要访问服务器，如果命中缓存的话，返回结果是304。no-cache vs no-store? https加密的原理？http请求的幂等性（get,delete,put幂等，post不满足）cookie vs session(client vs server, 安全性，容量)？TCP三次握手 + 四次挥手？
