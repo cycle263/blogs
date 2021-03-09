@@ -298,5 +298,10 @@ const multiply = (x, y) => x * y;
 const multiplyAdd = composeFunctions(multiply, add);
 multiplyAdd(3, 4) // 返回 13
 ```
+
+1、手写React diff算法
+2、解析URL查询参数函数
+3、deepMerge函数（覆盖字符串，对象合并）
+4、自定义请求器（缓存、loadingCounter、同步请求、超时报错、统计pending请求数量）
     
     
