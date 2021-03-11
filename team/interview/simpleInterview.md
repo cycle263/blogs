@@ -14,13 +14,13 @@
 
 ## 框架类库
 
-* **react**创建组件的两种方式的区别（createClass, extends Component）？生命周期？数据模型(redux、flux、Mobx、reselect)-什么场景适用？无状态函数组件(纯函数)，及其优势? react适合什么项目? redux的三大原则？redux的缺陷(繁琐，临时状态，数据库vs状态管理，传递效率低-扁平化，交互频繁更新效率低-数据庞大)？redux中间件（saga, thunk, promise）？组件之间通信(订阅发布)？refs 的作用？jsx语法？虚拟DOM和diff算法原理(按需更新，tree分层比较, 同层component按类型和结构比较，同一层级的同组子节点element diff通过key比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步? - 在React控制之外的情况-setTimeout、event，setState会同步更新)？) 类组件和函数式组件选择？展示组件和容器组件？受控组件和非受控组件？循环组件需要用key(diff算法优化, unique)? 为什么不建议使用index作key(顺序变动-性能变差)? hooks的使用？异步渲染？react vs vue？（数据监听-proxy vs setstate~不算监听、数据流、事件、diff算法、mixin vs hoc、redux vs vuex）
+* **react**创建组件的两种方式的区别（createClass, extends Component）？生命周期？数据模型(redux、flux、Mobx、reselect)-什么场景适用？无状态函数组件(纯函数)，及其优势? react适合什么项目? redux的三大原则？redux的缺陷(繁琐，临时状态，数据库vs状态管理，传递效率低-扁平化，交互频繁更新效率低-数据庞大)？redux中间件（saga, thunk, promise）？组件之间通信(订阅发布)？refs 的作用？jsx语法？虚拟DOM和diff算法原理(按需更新，tree分层比较, 同层component按类型和结构比较，同一层级的同组子节点element diff通过key比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步? - 在React控制之外的情况-setTimeout、event，setState会同步更新)？) 类组件和函数式组件选择？展示组件和容器组件？受控组件和非受控组件？循环组件需要用key(diff算法优化, unique)? 为什么不建议使用index作key(顺序变动-性能变差)? hooks的使用？异步渲染？react vs vue？（数据监听-proxy vs setstate~不算监听、数据流(子向父通信：回调 vs 事件)、事件、diff算法、mixin vs hoc（侵入性）、redux vs vuex）
 
-* **react高级**react合成事件和js原生事件区别(冒泡到document)？如何阻止原生事件的冒泡？(避免原生事件与React事件混用，或者通过target进行判断, e.nativeEvent.stopImmediatePropagation) shouldComponentUpdate什么场景适用(手动判断是否render)？调和算法Fiber-diff原理和调度原理? 如何保持父子组件之间的松耦合？Redux与React中的context的对比(16.3版本之前后context使用区别)？redux vs mbox（可回溯）? 组件数属性传递(context)？优化手段有哪些？React.Children作用（自动传递给包含着它的组件）? 高阶组件(属性代理方式-新旧props一起传递，反向继承方式-继承包裹组件)？高阶组件的主要功能是封装并抽离组件的通用逻辑，让此部分逻辑在组件间更好地被复用。react优化手段（react_pref，key, shouldComponentUpdate, 事件绑定方式，PureComponent）React 动画实现的几种方式？为何要手动绑定this？hook 为何不能用if包裹？
+* **react高级**react合成事件和js原生事件区别(冒泡到document)？如何阻止原生事件的冒泡？(避免原生事件与React事件混用，或者通过target进行判断, e.nativeEvent.stopImmediatePropagation) shouldComponentUpdate什么场景适用(手动判断是否render)？调和算法Fiber-diff原理和调度原理?(requestIdleCallback, requestAnimationFrame, 两颗 Fiber Tree：current、workInProgress) 如何保持父子组件之间的松耦合？Redux与React中的context的对比(16.3版本之前后context使用区别)？redux vs mbox（可回溯）? 组件数属性传递(context)？优化手段有哪些？React.Children作用（自动传递给包含着它的组件）? 高阶组件(属性代理方式-新旧props一起传递，反向继承方式-继承包裹组件)？高阶组件的主要功能是封装并抽离组件的通用逻辑，让此部分逻辑在组件间更好地被复用。react优化手段（react_pref，key, shouldComponentUpdate, 事件绑定方式，PureComponent）React 动画实现的几种方式？为何要手动绑定this？hooks 为何不能在条件语句使用？（保证多次调用顺序一致）useEffect vs useLayoutEffect的执行时机（effectList里task是异步执行，绘制完成后执行，componentDidMount和useLayoutEffect改变真实DOM后执行渲染绘制之前-线程互斥~同步执行effect函数）？修改 DOM 的操作里放到 useLayoutEffect？render为何不能包裹并列多节点（单一根节点）？
 
 * angular 双向绑定机制 -> 脏检查机制 (digest流程-->检查所有watcher) 不同团队整合angular应用？依赖注入？ng-repeat迭代数组中的相同值会怎样？(track by $index)ng-click中能写js原生对象方法吗？factory、service、provider什么关系？zone.js（拦截异步任务以及追踪异步任务，采用猴子补丁，异步任务都将运行在global.zone的上下文中）
 
-* **vue** 双向绑定(dom监听 + data监听 -> 访问器属性劫持 + 发布订阅模式进行通知)？ vs 单向数据流？模板语法，遇到过vuejs页面闪烁吗？vue2采用虚拟DOM的目的?(抽象化，适配非DOM平台，SSR、同构) v-if vs v-show区别(是否渲染, 频繁切换状态的性能差别)？vue 虚拟DOM和react 虚拟DOM的区别(Snabbdom,ReactDom;diff算法不同)? 有哪些生命周期钩子函数？子系统的实现原理？ Vue.nextTick使用场景(类似于this.setState中的回调)？独立构建(standalone)和运行时构建(runtime-only)区别？vuex vs redux？style上加scoped属性？
+* **vue** 双向绑定(dom监听 + data监听 -> 访问器属性劫持 + 发布订阅模式进行通知)？ vs 单向数据流？模板语法，遇到过vuejs页面闪烁吗？vue2采用虚拟DOM的目的?(抽象化，适配非DOM平台，SSR、同构) v-if vs v-show区别(是否渲染, 频繁切换状态的性能差别)？vue 虚拟DOM和react 虚拟DOM的区别(Snabbdom,ReactDom;diff算法不同)? 有哪些生命周期钩子函数？子系统的实现原理？ Vue.nextTick使用场景(类似于this.setState中的回调)？独立构建(standalone)和运行时构建(runtime-only)区别？vuex vs redux？(修改 vs 替换、proxy vs diff) style上加scoped属性？
 
 * jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ? input标签的onchange事件怎么触发？输入后触发请使用jquery的input事件。
 
@@ -32,7 +32,7 @@
 
 * gulp、grunt、webpack、Rollup等构建工具各自优缺点，相比grunt而言，gulp容易上手，基于stream,管道拼接多个tash; webpack提供模块化解决方案，支持es6写法的预编译解决方案。  
 
-* 常用的页面 **性能**指标？用什么工具来测试这些指标？常见的前端优化措施：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存资源缓存，图片服务器，减少DOM操作，模块化, 离线包等。 怎么理解组件化/模块化，组件化诉求复用(更多关注UI)，模块化诉求解耦(关注数据和功能封装)，组件接口设计，组件划分粒度？怎么绕开防盗链？babel转码的实现原理？commonJS和AMD规范区别？和ES6的模块有什么不同？(值的引用，静态编译)
+* 常用的页面 **性能**指标？用什么工具来测试这些指标？常见的前端优化措施：合并压缩，雪碧图，按需加载，惰性加载，减少请求，网页Gzip，CDN托管，data缓存资源缓存，图片服务器，减少DOM操作，模块化, 离线包等。 怎么理解组件化/模块化，组件化诉求复用(更多关注UI)，模块化诉求解耦(关注数据和功能封装)，组件接口设计，组件划分粒度？怎么绕开防盗链？babel转码的实现原理？（parse->AST->Transform->Code）commonJS和AMD规范区别？和ES6的模块有什么不同？(值的引用，静态编译)
 
 * 理想的前端开发和部署流程？（对前端工程进行流程化开发，nginx的combo技术，对前端GUI软件编译合并打包）无缝发布部署，先部署页面还是资源？非覆盖式更新，灰度发布(全量发布)，脚本异常监控和分析，安全性监控？自动化测试框架（mocha）？SPA(单页面)优势？（减少请求，减少页面刷新，更适合多端） 版本控制系统(svn、git)? SSR vs CSR ？直出 和 同构？
 
