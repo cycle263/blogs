@@ -287,7 +287,7 @@ Promise.resolve().then(function () {
 
 es6基础题：
 
-一：请实现一个Promise.race函数（考察promise）
+一：请实现一个Promise.race、Promise.all 函数（考察promise）
 
 二：请实现一个函数composeFunctions效果如下
 
