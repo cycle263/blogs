@@ -12,6 +12,8 @@
 
 * canvas、svg区别和各自特点，分别适合什么场景？canvas绘制边缘不够平滑？怎么绘制1像素宽的直线？canvas用css方式放大？Canvas适合像素处理，动态渲染和大数据量绘制, SVG是一整套独立的矢量图形语言，适合静态图片展示，高保真文档查看。
 
+* 小程序架构存在什么优缺点？参数传值有哪些方式？双向绑定和Vue的有什么区别？wxss和css有什么不同？bingtap和catchtap的区别是什么？小程序关联微信公众号如何确定用户的唯一性？小程序的声明周期函数？wxs是什么，有什么作用？常见的小程序性能问题是什么？如何优化setData? (list最小原则，数据路径的写法) 视图层和逻辑层怎么数据传递？（evaluateJavaScript，string通信 -> script执行传递给context）
+
 ## 框架类库
 
 * **react**创建组件的两种方式的区别（createClass, extends Component）？生命周期？数据模型(redux、flux、Mobx、reselect)-什么场景适用？无状态函数组件(纯函数)，及其优势? react适合什么项目? redux的三大原则？redux的缺陷(繁琐，临时状态，数据库vs状态管理，传递效率低-扁平化，交互频繁更新效率低-数据庞大)？redux中间件（saga, thunk, promise）？组件之间通信(订阅发布)？refs 的作用？jsx语法？虚拟DOM和diff算法原理(按需更新，tree分层比较, 同层component按类型和结构比较，同一层级的同组子节点element diff通过key比较)？setState实现(存入pending队列，判断是否处于batch update，为何不是实时的(异步? - 在React控制之外的情况-setTimeout、event，setState会同步更新)？) 类组件和函数式组件选择？展示组件和容器组件？受控组件和非受控组件？循环组件需要用key(diff算法优化, unique)? 为什么不建议使用index作key(顺序变动-性能变差)? hooks的使用？异步渲染？react vs vue？（数据监听-proxy vs setstate~不算监听、数据流(子向父通信：回调 vs 事件)、事件、diff算法、mixin vs hoc（侵入性）、redux vs vuex）
@@ -23,6 +25,8 @@
 * **vue** 双向绑定(dom监听 + data监听 -> 访问器属性劫持 + 发布订阅模式进行通知)？ vs 单向数据流？模板语法，遇到过vuejs页面闪烁吗？vue2采用虚拟DOM的目的?(抽象化，适配非DOM平台，SSR、同构) v-if vs v-show区别(是否渲染, 频繁切换状态的性能差别)？vue 虚拟DOM和react 虚拟DOM的区别(Snabbdom,ReactDom;diff算法不同)? 有哪些生命周期钩子函数？子系统的实现原理？ Vue.nextTick使用场景(类似于this.setState中的回调)？独立构建(standalone)和运行时构建(runtime-only)区别？vuex vs redux？(修改 vs 替换、proxy vs diff) style上加scoped属性？
 
 * jQuery的事件绑定方式(on/bind)？$(window).load>$.fn.ready=DOMContentLoaded事件，$冲突(noConflict)？sizzle选择器?detach vs remove(事件和data)？为什么存在prop方法(html属性attribute和dom对象属性property)？.get() vs [] vs eq() - jq ? input标签的onchange事件怎么触发？输入后触发请使用jquery的input事件。
+
+* 小程序架构存在什么优缺点？参数传值有哪些方式？双向绑定和Vue的有什么区别？wxss和css有什么不同？bingtap和catchtap的区别是什么？小程序关联微信公众号如何确定用户的唯一性？小程序的声明周期函数？wxs是什么，有什么作用？常见的小程序性能问题是什么？如何优化setData? (list最小原则，数据路径的写法) 视图层和逻辑层怎么数据传递？（evaluateJavaScript，string通信 -> script执行传递给context）
 
 * 可视化：d3.js、echart(canvas)、highchart(svg)、Three.js(基于D3)、highstock、EaselJS、flv.js，如何技术选型？优缺点
 
