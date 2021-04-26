@@ -1,6 +1,7 @@
 ## react-router
 
 React Router 保持 UI 与 URL 同步。它拥有简单的 API 与强大的功能例如代码缓冲加载、动态路由匹配、以及建立正确的位置过渡处理。在react-router中，URL对应Location对象，而UI是由react components来决定的，这样就转变成location与components之间的同步问题。
+路由的本质，根据输入的URL地址，匹配不同的数据model并显示对应的组件。
 
 ![路由流程](../images/router.jpg)
 ```js
